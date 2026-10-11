@@ -1,0 +1,12 @@
+Diff in /Users/bpstr/Github/edit-ac/cli/src/main.rs:14:
+         [] => println!("{HELP}"),
+         [flag] if flag == "--help" => println!("{HELP}"),
+         [flag] if flag == "--version" => {
+-            println!("editac {} (development scaffold)", env!("CARGO_PKG_VERSION"));
++            println!(
++                "editac {} (development scaffold)",
++                env!("CARGO_PKG_VERSION")
++            );
+         }
+         _ => {
+             eprintln!("Unsupported argument. Run editac --help; no data commands are implemented.");

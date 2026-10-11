@@ -1,0 +1,19 @@
+{
+  "name": "@edit-ac/architecture",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Architecture and deterministic development-roadmap checks for Edit-ac.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "validate:roadmaps": "node scripts/validate-roadmaps.mjs",
+    "check": "npm run validate:roadmaps"
+  },
+  "devDependencies": {
+    "@bpstr/roadmap-runner": "0.8.0"
+  },
+  "license": "Apache-2.0",
+  "packageManager": "npm@11.17.0"
+}

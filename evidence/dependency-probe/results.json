@@ -1,0 +1,52 @@
+{
+  "recorded_date": "2026-10-11",
+  "rust_version": "1.97.1",
+  "native_target": "aarch64-apple-darwin",
+  "browser_target": "wasm32-unknown-unknown",
+  "cargo_lock_sha256": "8e21313b43e64bb764646901a206f0aab7c9d28a53f12fd8d40b49f294e63249",
+  "resolved_package_count": 103,
+  "attempts": [
+    {
+      "log": "logs/fmt.log",
+      "exit_code": 0
+    },
+    {
+      "log": "logs/native.log",
+      "exit_code": 0
+    },
+    {
+      "log": "logs/wasm-target.log",
+      "exit_code": 0
+    },
+    {
+      "log": "logs/wasm-initial.log",
+      "exit_code": 101
+    },
+    {
+      "log": "logs/wasm-verified.log",
+      "exit_code": 0
+    },
+    {
+      "log": "logs/native-locked.log",
+      "exit_code": 0
+    },
+    {
+      "log": "logs/wasm-tree.log",
+      "exit_code": 0
+    }
+  ],
+  "executed": 7,
+  "passed": 6,
+  "failed": 1,
+  "skipped": 0,
+  "test_cases": 0,
+  "initial_wasm_failure": "Compiler selection mismatch; explicit rustup RUSTC resolved E0463 without dependency changes.",
+  "final_native_check": "passed",
+  "final_wasm_check": "passed",
+  "limitations": [
+    "Compile/type-check evidence only",
+    "No linked WASM or JavaScript execution",
+    "No Yjs/schema conformance",
+    "No generated or executed native SDK bindings"
+  ]
+}

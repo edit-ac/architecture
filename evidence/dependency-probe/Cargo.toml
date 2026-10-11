@@ -1,0 +1,24 @@
+[package]
+name = "editac-dependency-probe"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.97.1"
+license = "Apache-2.0"
+publish = false
+description = "Compile-only dependency evidence; not an edit.ac implementation"
+
+# Keep this evidence project isolated from any enclosing implementation workspace.
+[workspace]
+
+[features]
+default = []
+native-probe = ["dep:uniffi"]
+
+[dependencies]
+yrs = { version = "=0.28.0", features = ["small-client"] }
+pulldown-cmark = "=0.13.4"
+wasm-bindgen = "=0.2.129"
+uniffi = { version = "=0.32.2", optional = true }
+
+[lints.rust]
+unsafe_code = "forbid"
