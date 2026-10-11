@@ -1,0 +1,147 @@
+{
+  "gate": "FND-1.11",
+  "state": "implemented and locally verified; structural cross-language qualification remains FND-1.12; not deployed",
+  "date": "2026-10-11T14:46:21.244983+00:00",
+  "source_revision": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "prompt_revision": "7eaa063f3629",
+  "core_base_revision": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "architecture_base_revision": "d182226517938592ea97af059e724b9ab53b7020",
+  "implementation_state": "uncommitted working tree; prior changes preserved",
+  "source_hashes": {
+    "../architecture/specs/engine.md": "f99fdcf2a0302189d91cd28899d8c0daff99997214fcf9b203eca069ba207a8d",
+    "../architecture/specs/protocol-v1.md": "dd8c7aa6c73a03a35ec41de83822314dfc5bf7d575f3ac19566421b6393eeb3b",
+    "../architecture/specs/schema-v1.md": "9c9dcdb3e9edad74d841c55ec11a99962f3e002b823758e88e531291b6d82d23",
+    "Cargo.lock": "060d19d9224d624f4ef1064d74c97adc276d65b890a36b7476a3f86b1d5eacc4",
+    "Cargo.toml": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7",
+    "crates/editac-core/Cargo.toml": "36130d9a3ed697bd989341e6e7fc412eb53900497b5a1d47aa443e7fecf68798",
+    "crates/editac-core/tests/delete_edit_probe.rs": "ec38b66ddbc3b779e78ec62bcc7119f83ef8a30f01e7a64fec7d74da008fff27",
+    "crates/editac-core/tests/hierarchy_probe.rs": "e326aefc13500007ee01d54fe4b03d70e59221f54c141f88c00da750d9b7440e",
+    "crates/editac-core/tests/interop.rs": "80712a38c7efbaa070d00d7caf8cb05cdb8df37207302bff1adf7ff063e5f75a",
+    "crates/editac-core/tests/schema_profile.rs": "935cb2dd50a741b60fe9196ce74f320bc25784fdc6c908bce4e78b754d330b8c",
+    "crates/editac-core/tests/split_join_probe.rs": "f14983e388ac33f2d1f1aa955728ffbd3ef66024f3c5feb0a19e53ebfb3ea0dd",
+    "crates/editac-core/tests/structure_conflicts.rs": "678b51e25b88e4da46ff9a7394bee75e3a19b2b9d08b2a196d450fa1b3914e81",
+    "crates/editac-core/tests/support/delete_edit.rs": "d8c4499fd60d246d11d820168d9f00d4b74d872192752c23036ca5e7707a0878",
+    "crates/editac-core/tests/support/hierarchy.rs": "3e0cd05d5e642960542d0ef23710d612d6efec8d9f37e9febf259d82726b74b8",
+    "crates/editac-core/tests/support/split_join.rs": "228de96348aa049ee8060779680a253bf60c45b8f86a2eb33daf1877e8d90896",
+    "crates/editac-core/tests/support/structure_conflicts.rs": "fc7db9fbb76647466645929ed6a6ccdc029b125b7a1f594dd9748f782d77a38b",
+    "crates/editac-core/tests/support/structure_registry.rs": "4c24dbd1d4c6ffb2661cecb573060819e57b5bc0cfdc6996afaea3eded06031c",
+    "crates/editac-core/tests/support/structure_xml.rs": "d54b99e41f38565a2b33c8b6cdb6261e8193d97e35204c35c253e02edabf671c",
+    "fixtures/interop/bridge.mjs": "2d0c60fc33a3b6eb5e2d8084d90107bc3574d3a3c02c00e511436f9f8885d17a",
+    "fixtures/schema-v1/README.md": "005cdeb4f8fde591b72a9a15f332ef7f36bf956e2928567a7edbb6a6da9dd95a",
+    "fixtures/schema-v1/mapping.mjs": "db149fb331841733dc2fd1139c8ccb70c21bc9d7c734975d8da176d75c6f2527",
+    "fixtures/schema-v1/seed.json": "2f62ebe2bd82ccf110604b35b8d765b8abe44462e94534b002a4cb1c82910760",
+    "package-lock.json": "f09ce3d46713bf01d505632d987f9beea9d52f4faf78bb9e0b762b878f5ea7ea",
+    "package.json": "9435062aeae52176a5cccbec460c469854792939414f332ef0ca4ca6eae94bd5",
+    "rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b",
+    "tests/interop.test.mjs": "2db18fb4ab6e8a4c03c0e01fcc4a76e8086392bba2f7f41e3ad8e517157857dd",
+    "tests/schema-profile.test.mjs": "428571c5f603ffac5b00dc493d7239d4920f020d81c501dcc62394bdd56eea87"
+  },
+  "environment": "PATH=/Users/bpstr/.cargo/bin:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH; RUSTDOC=/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+  "runtime": {
+    "rust": "1.97.1",
+    "rustdoc": "1.97.1",
+    "node": "24.19.0",
+    "yrs": "0.28.0 small-client UTF-16 v1",
+    "yjs": "13.6.33",
+    "y-protocols": "1.0.7"
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test schema_profile --locked",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "schema-profile-rust.log",
+      "sha256": "ad5dce6b29457d318afa9e09e07c64b72e62e34da1c61a1d7961ada5bf68262e"
+    },
+    {
+      "command": "node --test tests/schema-profile.test.mjs",
+      "exit": 0,
+      "executed": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "schema-profile-js.log",
+      "sha256": "797d5f09030331c56f21498c0c1f7f5e45588c9ca0b526c4b1ab2b31bd41ff27"
+    },
+    {
+      "command": "cargo test -p editac-core --test structure_conflicts --locked",
+      "exit": 0,
+      "executed": 24,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "structure-conflicts.log",
+      "sha256": "662a95485cd74405c53c58133b474654827b75a3ae99eb068bfd3b45a8302046"
+    },
+    {
+      "command": "node --test tests/interop.test.mjs",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "interop-js.log",
+      "sha256": "7d6823ed69cfb171522ff9cb7b8d5efd92e3a971e8318580113a7649fd4bf24f"
+    },
+    {
+      "command": "cargo test -p editac-core --locked",
+      "exit": 0,
+      "executed": 56,
+      "passed": 56,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "core-integration.log",
+      "sha256": "35d951cd2720451bdca6ddebbc93ccef5e50b7e6287c0d475909540ba1f18c2c"
+    }
+  ],
+  "format": {
+    "command": "cargo fmt --all -- --check",
+    "exit": 0,
+    "log": "format-check.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "fixtures": {
+    "seed": "core/fixtures/schema-v1/seed.json",
+    "writer": 11,
+    "provider_calls": 0,
+    "cross_language_structural_exchange": false,
+    "prior_composed_artifacts": "../foundation-conflicts/receipt.json; all 17 prior source hashes unchanged; canonical reverified"
+  },
+  "hygiene": {
+    "removed_path": "/Users/bpstr/Github/edit-ac/core/target/debug/incremental/schema_profile-2pqtxq0dw4l1o",
+    "removed_bytes": 17354961,
+    "unused_check": "lsof +D exit 1, empty stdout",
+    "free_after_bytes": 18649579520,
+    "protected_services": "No processes signaled; other-workspace listeners preserved",
+    "task_owned_servers_browsers": 0
+  },
+  "failures": [],
+  "limitations": [
+    "Production resource/shape admission, collision guards and persistence ports remain downstream",
+    "Fixed optional pair only; no overlapping layouts, tombstone restoration or compaction",
+    "Empty Rust unit/doc harnesses are compile-only, not acceptance tests"
+  ],
+  "documentation_finalization": "Clarified that invalid placements use the specified retained read fallback; no tested code changed after verification.",
+  "diff_checks": [
+    {
+      "repository": "core",
+      "exit": 0,
+      "log": "diff-check-core.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "repository": "architecture",
+      "exit": 0,
+      "log": "diff-check-architecture.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

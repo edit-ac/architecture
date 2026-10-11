@@ -1,0 +1,10 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error: mismatched closing delimiter: `]`
+  --> crates/editac-core/tests/schema_interop.rs:56:9
+   |
+56 | ...   ("spans",array(b.spans.iter().map(|s|object([("source",s.source.clone().into()),("identity",identity(doc,&s.source)),("start",s.start.into()),("end",s...
+   |       ^ unclosed delimiter
+57 | ...   ("runs",array(b.runs.iter().map(|(s,marks)|array([s.clone().into(),array(marks.iter().map(|(k,v)|array([k.clone().into(),v.clone().into()])))]))))])
+   |                                                                                                                                                         ^ mismatched closing delimiter
+
+error: could not compile `editac-core` (test "schema_interop") due to 1 previous error

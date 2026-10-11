@@ -1,0 +1,161 @@
+{
+  "source_revision": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "core_base_revision": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "implementation_state": "uncommitted working tree; SHA-256 identifies tested content",
+  "runtime": {
+    "rust": "1.97.1",
+    "node": "24.19.0",
+    "yrs": "0.28.0 small-client",
+    "yjs": "13.6.33 dev-only",
+    "offsets": "UTF-16",
+    "update_encoding": "v1"
+  },
+  "files": {
+    "crates/editac-core/tests/interop.rs": "80712a38c7efbaa070d00d7caf8cb05cdb8df37207302bff1adf7ff063e5f75a",
+    "tests/interop.test.mjs": "2db18fb4ab6e8a4c03c0e01fcc4a76e8086392bba2f7f41e3ad8e517157857dd",
+    "fixtures/interop/bridge.mjs": "2d0c60fc33a3b6eb5e2d8084d90107bc3574d3a3c02c00e511436f9f8885d17a",
+    "fixtures/interop/README.md": "9f1219f129ed7f1f6021c6ace907403e64344d7ffca4e739e3672cb171d6df77",
+    "package.json": "9435062aeae52176a5cccbec460c469854792939414f332ef0ca4ca6eae94bd5",
+    "Cargo.lock": "060d19d9224d624f4ef1064d74c97adc276d65b890a36b7476a3f86b1d5eacc4",
+    "package-lock.json": "f09ce3d46713bf01d505632d987f9beea9d52f4faf78bb9e0b762b878f5ea7ea",
+    "rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b"
+  },
+  "artifacts": {
+    "artifacts/js-0.bin": {
+      "sha256": "a81dd584362024d63957337c6865e2a7bfbfc011f9cb161e0699beb512fe662f",
+      "bytes": 122
+    },
+    "artifacts/js-1.bin": {
+      "sha256": "dc3a74413e11fb7762765d93332934634e7c5e5be87f02d3c3a40d238e1d2a80",
+      "bytes": 46
+    },
+    "artifacts/js-2.bin": {
+      "sha256": "4b32457230f02755f029d847271f4b23122140f0a582dccdee1ba49761ac1145",
+      "bytes": 28
+    },
+    "artifacts/js-for-rust-sv.bin": {
+      "sha256": "4b8cc6261208db78b2c33d1a2bc6cc2d04175754a3a1256f563768a1530e6daa",
+      "bytes": 7
+    },
+    "artifacts/js-for-rust.bin": {
+      "sha256": "3f74735fdd50c10c4c881549a4c8afb832093217c9727f097c2e3c3a6ba48e1b",
+      "bytes": 59
+    },
+    "artifacts/js-full.bin": {
+      "sha256": "283340f86c2db20da9d54677ebeeb3bfcd7ab84bb617a8f51153a68470d1d48b",
+      "bytes": 189
+    },
+    "artifacts/js-sv-0.bin": {
+      "sha256": "9fefc65ae3d2443eeb04e8b092f96ab6ebaba12a07450500585f3847bc61b392",
+      "bytes": 3
+    },
+    "artifacts/js-sv-1.bin": {
+      "sha256": "d195c30580b6cbcc3942798d25379716f33e7756c08097a9731a16c21f2da2b8",
+      "bytes": 3
+    },
+    "artifacts/js-sv-2.bin": {
+      "sha256": "14bff0290fc4d3180b03d410bf85b53eba425667b67d60683af9e776753bba6e",
+      "bytes": 3
+    },
+    "artifacts/rust-0.bin": {
+      "sha256": "9db2cc07a73514f4c21feb4a79aa0b3a0536515c03c9375a0461a4c9eeeb6505",
+      "bytes": 132
+    },
+    "artifacts/rust-1.bin": {
+      "sha256": "c0c0f00345fdc0bb120a69c79b0da7b2f15f138be00ccd66f1ba4ea5412e2502",
+      "bytes": 53
+    },
+    "artifacts/rust-2.bin": {
+      "sha256": "e4505af3501c36faf5d418900953d0204794b8f2f65b2133f0fe5ab9a5b59822",
+      "bytes": 31
+    },
+    "artifacts/rust-for-js.bin": {
+      "sha256": "776e6ee129a7e8fd1ea5bbcc0ffa9feafc864e93c76acbcef1d1b7b23e57e0c3",
+      "bytes": 69
+    },
+    "artifacts/rust-sv-0.bin": {
+      "sha256": "04cef3cc2ae6f00503c0fb20a94624c148ca0f0e884ab36d5e670b9ab911f25a",
+      "bytes": 4
+    }
+  },
+  "commands": [
+    {
+      "command": "cargo test -p editac-core --test interop --locked",
+      "env": "PATH=/Users/bpstr/.cargo/bin:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH; EDITAC_INTEROP_OUTPUT=architecture/evidence/foundation-interop/artifacts (absolute path)",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "rust.log"
+    },
+    {
+      "command": "node --test tests/interop.test.mjs",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "embedded_rust": {
+        "executed": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "log": "node.log"
+    },
+    {
+      "command": "cargo test -p editac-core --test protocol_toolchain --locked --offline",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "log": "protocol-rust.log"
+    },
+    {
+      "command": "node --test tests/protocol-toolchain.test.mjs",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "log": "protocol-node.log"
+    },
+    {
+      "command": "cargo fmt --all -- --check",
+      "exit": 0,
+      "log": "format-check.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "diff-check.log"
+    }
+  ],
+  "preserved_failure": {
+    "log": "rust-initial.log",
+    "result": "compile failed E0277: ClientID does not implement From<u64>; zero tests executed; repaired with ClientID::new",
+    "exit_code": "not captured from initial yielded shell"
+  },
+  "limits": "local binary integration; no durable acknowledgment, production schema, anchor, deployed behavior or paid inference qualification",
+  "source_snapshot_sha256": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "cleanup": {
+    "removed_path": "/Users/bpstr/Github/edit-ac/core/target",
+    "logical_bytes_removed": 152478981,
+    "data_volume_free_bytes": 21104107520,
+    "ownership": "all files created this session, no open files, no Cargo/Rust process remained; no session browsers/servers started; other process candidates preserved"
+  },
+  "logs": {
+    "format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "format-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "node.log": "5d0a5cdd758b9c3535354e7dc6e2c4c7b42eb329074405e67a19901650b06f55",
+    "diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "protocol-node.log": "cdf9192e07c996802b81314663dd97a40d5f1bf981e5f1548ffc625d4f8ddab8",
+    "rust.log": "df44a107d56902212e0e193a6f1d89c2da4ac50ca2f96f0542ab21602f6939bd",
+    "protocol-rust.log": "50341aa20a198e67a8d8579b85eaa015884966a5bbccc9a82e98b6d81aa47a9c",
+    "rust-initial.log": "742914e8eaa1de6c0cbcd369fd501ad688a0f9365105318186b208b9ab140f51"
+  }
+}

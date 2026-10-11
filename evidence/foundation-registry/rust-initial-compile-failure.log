@@ -1,0 +1,80 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling serde_core v1.0.229
+   Compiling libc v0.2.190
+   Compiling rustversion v1.0.23
+   Compiling pin-project-lite v0.2.17
+   Compiling parking v2.2.1
+   Compiling crossbeam-utils v0.8.23
+   Compiling smallvec v1.16.3
+   Compiling parking_lot_core v0.9.12
+   Compiling zmij v1.0.23
+   Compiling event-listener v5.4.2
+   Compiling scopeguard v1.2.0
+   Compiling cfg-if v1.0.5
+   Compiling serde_json v1.0.152
+   Compiling serde v1.0.229
+   Compiling thiserror v2.0.21
+   Compiling lock_api v0.4.14
+   Compiling event-listener-strategy v0.5.4
+   Compiling syn v3.0.7
+   Compiling once_cell v1.21.4
+   Compiling memchr v2.8.3
+   Compiling hashbrown v0.14.5
+   Compiling itoa v1.0.18
+   Compiling async-lock v3.4.2
+   Compiling smallstr v0.3.1
+   Compiling fastrand v2.5.0
+   Compiling arc-swap v1.9.2
+   Compiling dashmap v6.2.1
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling async-trait v0.1.92
+   Compiling yrs v0.28.0
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0369]: binary operation `>=` cannot be applied to type `yrs::Number`
+   --> crates/editac-core/tests/structure_registry.rs:128:20
+    |
+128 |     assert!(*order >= 0.0 && *order <= u32::MAX as f64 && order.fract() == 0.0);
+    |             ------ ^^ --- {float}
+    |             |
+    |             yrs::Number
+    |
+note: `yrs::Number` does not implement `PartialOrd<{float}>`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:280:1
+    |
+280 | pub enum Number {
+    | ^^^^^^^^^^^^^^^ `yrs::Number` is defined in another crate
+
+error[E0369]: binary operation `<=` cannot be applied to type `yrs::Number`
+   --> crates/editac-core/tests/structure_registry.rs:128:37
+    |
+128 |     assert!(*order >= 0.0 && *order <= u32::MAX as f64 && order.fract() == 0.0);
+    |                              ------ ^^ --------------- f64
+    |                              |
+    |                              yrs::Number
+    |
+note: `yrs::Number` does not implement `PartialOrd<f64>`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:280:1
+    |
+280 | pub enum Number {
+    | ^^^^^^^^^^^^^^^ `yrs::Number` is defined in another crate
+
+error[E0599]: no method named `fract` found for reference `&yrs::Number` in the current scope
+   --> crates/editac-core/tests/structure_registry.rs:128:65
+    |
+128 |     assert!(*order >= 0.0 && *order <= u32::MAX as f64 && order.fract() == 0.0);
+    |                                                                 ^^^^^ method not found in `&yrs::Number`
+
+error[E0605]: non-primitive cast: `yrs::Number` as `u32`
+   --> crates/editac-core/tests/structure_registry.rs:149:16
+    |
+149 |         order: *order as u32,
+    |                ^^^^^^^^^^^^^ an `as` expression can be used to convert enum types to numeric types only if the enum type is unit-only or field-less
+    |
+    = note: see https://doc.rust-lang.org/reference/items/enumerations.html#casting for more information
+
+Some errors have detailed explanations: E0369, E0599, E0605.
+For more information about an error, try `rustc --explain E0369`.
+error: could not compile `editac-core` (test "structure_registry") due to 4 previous errors

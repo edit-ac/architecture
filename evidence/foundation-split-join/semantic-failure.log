@@ -1,0 +1,48 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.56s
+     Running tests/split_join_probe.rs (target/debug/deps/split_join_probe-4f7b12b1021e7c4c)
+
+running 5 tests
+test concurrent_join_edit_keeps_both_texts_and_routes_original_selections_to_joined_owner ... FAILED
+test concurrent_split_edit_partitions_original_text_and_selection_with_fixed_affinity ... FAILED
+test invalid_split_and_repeated_transform_reject_before_mutation_and_edge_splits_keep_identity ... FAILED
+test split_survives_concurrent_deletion_of_boundary_and_preserves_replacement_marks ... FAILED
+test disconnected_join_edit_and_dependent_delta_replay_keep_stable_target_ownership ... ok
+
+failures:
+
+---- concurrent_join_edit_keeps_both_texts_and_routes_original_selections_to_joined_owner stdout ----
+
+thread 'concurrent_join_edit_keeps_both_texts_and_routes_original_selections_to_joined_owner' (149073689) panicked at crates/editac-core/tests/support/split_join.rs:293:51:
+called `Option::unwrap()` on a `None` value
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- concurrent_split_edit_partitions_original_text_and_selection_with_fixed_affinity stdout ----
+
+thread 'concurrent_split_edit_partitions_original_text_and_selection_with_fixed_affinity' (149073690) panicked at crates/editac-core/tests/support/split_join.rs:293:51:
+called `Option::unwrap()` on a `None` value
+
+---- invalid_split_and_repeated_transform_reject_before_mutation_and_edge_splits_keep_identity stdout ----
+
+thread 'invalid_split_and_repeated_transform_reject_before_mutation_and_edge_splits_keep_identity' (149073692) panicked at crates/editac-core/tests/split_join_probe.rs:381:9:
+assertion `left == right` failed
+  left: Ok(())
+ right: Err("invalid UTF-16 boundary")
+
+---- split_survives_concurrent_deletion_of_boundary_and_preserves_replacement_marks stdout ----
+
+thread 'split_survives_concurrent_deletion_of_boundary_and_preserves_replacement_marks' (149073693) panicked at crates/editac-core/tests/split_join_probe.rs:81:5:
+assertion `left == right` failed: rich text marks must follow original content
+  left: [("a", []), ("👩\u{200d}💻", [("code", "true")])]
+ right: [("a", [])]
+
+
+failures:
+    concurrent_join_edit_keeps_both_texts_and_routes_original_selections_to_joined_owner
+    concurrent_split_edit_partitions_original_text_and_selection_with_fixed_affinity
+    invalid_split_and_repeated_transform_reject_before_mutation_and_edge_splits_keep_identity
+    split_survives_concurrent_deletion_of_boundary_and_preserves_replacement_marks
+
+test result: FAILED. 1 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+error: test failed, to rerun pass `-p editac-core --test split_join_probe`

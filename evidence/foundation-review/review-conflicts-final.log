@@ -1,0 +1,82 @@
+   Compiling editac-core v0.0.0 (/private/tmp/edit-ac-foundation-review/workspace/core/crates/editac-core)
+warning: function `fixture` is never used
+ --> crates/editac-core/tests/support/hierarchy.rs:9:15
+  |
+9 | pub(crate) fn fixture() -> Doc {
+  |               ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `relative` is never used
+  --> crates/editac-core/tests/support/split_join.rs:86:4
+   |
+86 | fn relative<T: yrs::ReadTxn>(
+   |    ^^^^^^^^
+
+warning: method `len` is never used
+   --> crates/editac-core/tests/support/split_join.rs:179:19
+    |
+175 | impl Block {
+    | ---------- method in this implementation
+...
+179 |     pub(crate) fn len(&self) -> u32 {
+    |                   ^^^
+
+warning: function `project` is never used
+   --> crates/editac-core/tests/support/split_join.rs:234:15
+    |
+234 | pub(crate) fn project(doc: &Doc) -> Vec<Block> {
+    |               ^^^^^^^
+
+warning: struct `Anchor` is never constructed
+   --> crates/editac-core/tests/support/split_join.rs:320:19
+    |
+320 | pub(crate) struct Anchor {
+    |                   ^^^^^^
+
+warning: function `anchor` is never used
+   --> crates/editac-core/tests/support/split_join.rs:325:15
+    |
+325 | pub(crate) fn anchor(doc: &Doc, key: &str, index: u32, assoc: Assoc) -> Anchor {
+    |               ^^^^^^
+
+warning: function `resolve` is never used
+   --> crates/editac-core/tests/support/split_join.rs:337:15
+    |
+337 | pub(crate) fn resolve(doc: &Doc, anchor: &Anchor) -> Option<(String, u32)> {
+    |               ^^^^^^^
+
+warning: `editac-core` (test "structure_conflicts") generated 7 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.76s
+     Running tests/structure_conflicts.rs (target/debug/deps/structure_conflicts-77a255bcef2aa467)
+
+running 26 tests
+test delete_edit::known_tombstone_rejects_local_edit_and_recovery_reads_never_resurrect ... ok
+test delete_edit::deletion_after_observed_edit_preserves_the_same_recovery_content ... ok
+test delete_edit::concurrent_delete_edit_retains_rich_content_independent_of_writer_order ... ok
+test concurrent_split_and_maximum_order_move_preserve_explicit_recovery ... ok
+test hierarchy::concurrent_valid_moves_create_cycle_cut_without_repair_writes ... ok
+test delete_edit::disconnected_edits_and_dependent_deltas_merge_into_hidden_recovery ... ok
+test concurrent_cycle_and_delete_preserve_one_visible_root_and_recovery ... ok
+test hierarchy::invalid_local_moves_reject_before_mutation_and_order_ties_use_stable_ids ... ok
+test deleted_parent_promotes_visible_child_without_repair_writes ... ok
+test deleting_absorbed_source_hides_only_its_span ... ok
+test deleting_join_owner_hides_all_owned_sources_without_losing_identity ... ok
+test deletion_masks_both_split_owners_but_retains_concurrent_marked_content ... ok
+test maximum_order_local_split_rejects_without_mutation ... ok
+test concurrent_split_join_selects_complete_join_descriptor ... ok
+test split_join::concurrent_join_edit_keeps_both_texts_and_routes_original_selections_to_joined_owner ... ok
+test hierarchy::self_cycle_orphans_invalid_parent_and_missing_placement_preserve_content ... ok
+test hierarchy::late_parent_arrival_resolves_orphan_without_persisting_a_repair ... ok
+test split_join::invalid_split_and_repeated_transform_reject_before_mutation_and_edge_splits_keep_identity ... ok
+test hierarchy::duplicate_placements_choose_one_atomic_tuple_with_both_writer_assignments ... ok
+test split_join::concurrent_split_edit_partitions_original_text_and_selection_with_fixed_affinity ... ok
+test split_join::split_survives_concurrent_deletion_of_boundary_and_preserves_replacement_marks ... ok
+test joined_owner_with_absorbed_parent_is_projected_at_root ... ok
+test reversed_writer_assignment_selects_complete_split_descriptor ... ok
+test split_join::disconnected_join_edit_and_dependent_delta_replay_keep_stable_target_ownership ... ok
+test hierarchy::nested_list_moves_retain_subtree_and_concurrent_marked_edit ... ok
+test hierarchy::deep_remote_hierarchy_is_iterative_and_bounded ... ok
+
+test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.32s
+

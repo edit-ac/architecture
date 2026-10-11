@@ -1,0 +1,36 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: unused imports: `Out`, `StateVector`, and `updates::encoder::Encode`
+  --> crates/editac-core/tests/schema_interop.rs:13:27
+   |
+13 |     Any, Assoc, Doc, Map, Out, ReadTxn, StateVector, Text, Transact, XmlOut, XmlTextPrelim,
+   |                           ^^^           ^^^^^^^^^^^
+14 |     updates::encoder::Encode,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0308]: mismatched types
+   --> crates/editac-core/tests/schema_interop.rs:211:62
+    |
+211 |                     Any::Number(if *assoc == Assoc::Before { -1.0 } else { 0.0 }),
+    |                                                              ^^^^ expected `Number`, found floating-point number
+    |
+help: try wrapping the expression in `yrs::Number::Float`
+    |
+211 |                     Any::Number(if *assoc == Assoc::Before { yrs::Number::Float(-1.0) } else { 0.0 }),
+    |                                                              +++++++++++++++++++    +
+
+error[E0308]: mismatched types
+   --> crates/editac-core/tests/schema_interop.rs:211:76
+    |
+211 |                     Any::Number(if *assoc == Assoc::Before { -1.0 } else { 0.0 }),
+    |                                                                            ^^^ expected `Number`, found floating-point number
+    |
+help: try wrapping the expression in `yrs::Number::Float`
+    |
+211 |                     Any::Number(if *assoc == Assoc::Before { -1.0 } else { yrs::Number::Float(0.0) }),
+    |                                                                            +++++++++++++++++++   +
+
+For more information about this error, try `rustc --explain E0308`.
+warning: `editac-core` (test "schema_interop") generated 1 warning
+error: could not compile `editac-core` (test "schema_interop") due to 2 previous errors; 1 warning emitted

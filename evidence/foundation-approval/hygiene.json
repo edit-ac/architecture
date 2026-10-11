@@ -1,0 +1,123 @@
+{
+  "runs": [
+    {
+      "run": "wasm",
+      "teardown": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "browserProcessExited": true
+      },
+      "processes": [
+        {
+          "pid": 95050,
+          "launcher": "node --test tests/wasm-load.test.mjs",
+          "workspace": "/Users/bpstr/Github/edit-ac/core/",
+          "port": 54174,
+          "purpose": "task-owned fixture assets",
+          "log": "wasm-load.log",
+          "current_command": "",
+          "exited": true
+        },
+        {
+          "pid": 95071,
+          "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+          "workspace": "/Users/bpstr/Github/edit-ac/core/",
+          "purpose": "task-owned Chromium WASM checks",
+          "log": "wasm-load.log",
+          "current_command": "",
+          "exited": true
+        }
+      ],
+      "port": 54174,
+      "listener": "",
+      "temp": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-wasm-load-wGw9BZ",
+      "temp_removed": true
+    },
+    {
+      "run": "wasm-repaired",
+      "teardown": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "browserProcessExited": true
+      },
+      "processes": [
+        {
+          "pid": 96433,
+          "launcher": "node --test tests/wasm-load.test.mjs",
+          "workspace": "/Users/bpstr/Github/edit-ac/core/",
+          "port": 54210,
+          "purpose": "task-owned fixture assets",
+          "log": "wasm-load.log",
+          "current_command": "",
+          "exited": true
+        },
+        {
+          "pid": 96478,
+          "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+          "workspace": "/Users/bpstr/Github/edit-ac/core/",
+          "purpose": "task-owned Chromium WASM checks",
+          "log": "wasm-load.log",
+          "current_command": "",
+          "exited": true
+        }
+      ],
+      "port": 54210,
+      "listener": "",
+      "temp": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-wasm-load-QbcctD",
+      "temp_removed": true
+    },
+    {
+      "run": "wasm-final",
+      "teardown": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "browserProcessExited": true
+      },
+      "processes": [
+        {
+          "pid": 98577,
+          "launcher": "node --test tests/wasm-load.test.mjs",
+          "workspace": "/Users/bpstr/Github/edit-ac/core/",
+          "port": 54274,
+          "purpose": "task-owned fixture assets",
+          "log": "wasm-load.log",
+          "current_command": "",
+          "exited": true
+        },
+        {
+          "pid": 98668,
+          "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+          "workspace": "/Users/bpstr/Github/edit-ac/core/",
+          "purpose": "task-owned Chromium WASM checks",
+          "log": "wasm-load.log",
+          "current_command": "",
+          "exited": true
+        }
+      ],
+      "port": 54274,
+      "listener": "",
+      "temp": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-wasm-load-JwMfp9",
+      "temp_removed": true
+    }
+  ],
+  "removed_paths": [
+    "/Users/bpstr/Github/edit-ac/core/target/debug/incremental/schema_interop-06fvbcaiye9kq"
+  ],
+  "reclaimed_bytes": 19428305,
+  "free_before_bytes": 19199008768,
+  "free_after_bytes": 16983252992,
+  "new_incremental_paths": [
+    "target/debug/incremental/schema_interop-06fvbcaiye9kq"
+  ],
+  "note": "Removed only newly created inactive schema_interop incremental cache after exact path/baseline and lsof checks. Temporary package consumers auto-removed. Retained compiled qualification evidence and all unrelated source/cache/services. Global free-space changes are not attributed to this session.",
+  "untouched_cleanup_candidates": {
+    "core/target": {
+      "KiB": 407024,
+      "scope": "pre-existing artifacts; not this session cleanup"
+    },
+    "core/node_modules": {
+      "KiB": 61312,
+      "scope": "pre-existing installed dependencies; preserved"
+    }
+  }
+}

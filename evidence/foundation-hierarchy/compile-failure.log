@@ -1,0 +1,67 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: unused import: `StateVector`
+ --> crates/editac-core/tests/hierarchy_probe.rs:6:30
+  |
+6 | use yrs::{Doc, Map, ReadTxn, StateVector, Text, Transact};
+  |                              ^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0599]: no method named `is_finite` found for reference `&yrs::Number` in the current scope
+  --> crates/editac-core/tests/support/hierarchy.rs:64:26
+   |
+64 |                     if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 =>
+   |                          ^^^^^^^^^ method not found in `&yrs::Number`
+
+error[E0369]: binary operation `>=` cannot be applied to type `yrs::Number`
+   --> crates/editac-core/tests/support/hierarchy.rs:64:44
+    |
+ 64 |                     if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 =>
+    |                                         -- ^^ --- {float}
+    |                                         |
+    |                                         yrs::Number
+    |
+note: `yrs::Number` does not implement `PartialOrd<{float}>`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:280:1
+    |
+280 | pub enum Number {
+    | ^^^^^^^^^^^^^^^ `yrs::Number` is defined in another crate
+
+error[E0369]: binary operation `<=` cannot be applied to type `yrs::Number`
+   --> crates/editac-core/tests/support/hierarchy.rs:64:57
+    |
+ 64 |                     if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 =>
+    |                                                      -- ^^ --------------- f64
+    |                                                      |
+    |                                                      yrs::Number
+    |
+note: `yrs::Number` does not implement `PartialOrd<f64>`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:280:1
+    |
+280 | pub enum Number {
+    | ^^^^^^^^^^^^^^^ `yrs::Number` is defined in another crate
+
+error[E0599]: no method named `fract` found for reference `&yrs::Number` in the current scope
+  --> crates/editac-core/tests/support/hierarchy.rs:64:81
+   |
+64 |                     if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 =>
+   |                                                                                 ^^^^^ method not found in `&yrs::Number`
+
+error[E0605]: non-primitive cast: `yrs::Number` as `u32`
+  --> crates/editac-core/tests/support/hierarchy.rs:66:42
+   |
+66 |                     Some((p.to_string(), *n as u32))
+   |                                          ^^^^^^^^^ an `as` expression can be used to convert enum types to numeric types only if the enum type is unit-only or field-less
+   |
+   = note: see https://doc.rust-lang.org/reference/items/enumerations.html#casting for more information
+
+warning: unused import: `ReadTxn`
+ --> crates/editac-core/tests/support/hierarchy.rs:6:31
+  |
+6 | use yrs::{Any, Doc, Map, Out, ReadTxn, Text, Transact, XmlOut, XmlTextPrelim};
+  |                               ^^^^^^^
+
+Some errors have detailed explanations: E0369, E0599, E0605.
+For more information about an error, try `rustc --explain E0369`.
+warning: `editac-core` (test "hierarchy_probe") generated 2 warnings
+error: could not compile `editac-core` (test "hierarchy_probe") due to 5 previous errors; 2 warnings emitted

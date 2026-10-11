@@ -1,0 +1,17 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0282]: type annotations needed for `Vec<_>`
+   --> crates/editac-core/tests/support/hierarchy.rs:116:13
+    |
+116 |         let mut path = Vec::new();
+    |             ^^^^^^^^
+...
+121 |                 let cut = path[i..].iter().min().unwrap().clone();
+    |                           ------------------------------- type must be known at this point
+    |
+help: consider giving `path` an explicit type, where the placeholder `_` is specified
+    |
+116 |         let mut path: Vec<T> = Vec::new();
+    |                     ++++++++
+
+For more information about this error, try `rustc --explain E0282`.
+error: could not compile `editac-core` (test "hierarchy_probe") due to 1 previous error

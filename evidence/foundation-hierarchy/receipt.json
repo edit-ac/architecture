@@ -1,0 +1,132 @@
+{
+  "gate": "FND-1.9",
+  "state": "implemented and locally verified; test-only candidate; not deployed/frozen",
+  "date": "2026-10-11T14:25:13.379531+00:00",
+  "source_revision": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "prompt_revision": "7eaa063f3629",
+  "core_base_revision": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "architecture_base_revision": "d182226517938592ea97af059e724b9ab53b7020",
+  "implementation_state": "uncommitted working tree identified by hashes; prior changes preserved",
+  "source_hashes": {
+    "crates/editac-core/tests/hierarchy_probe.rs": "e326aefc13500007ee01d54fe4b03d70e59221f54c141f88c00da750d9b7440e",
+    "crates/editac-core/tests/support/hierarchy.rs": "3e0cd05d5e642960542d0ef23710d612d6efec8d9f37e9febf259d82726b74b8",
+    "crates/editac-core/tests/support/structure_registry.rs": "4c24dbd1d4c6ffb2661cecb573060819e57b5bc0cfdc6996afaea3eded06031c",
+    "Cargo.toml": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7",
+    "Cargo.lock": "060d19d9224d624f4ef1064d74c97adc276d65b890a36b7476a3f86b1d5eacc4",
+    "crates/editac-core/Cargo.toml": "36130d9a3ed697bd989341e6e7fc412eb53900497b5a1d47aa443e7fecf68798",
+    "rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b",
+    "tests/interop.test.mjs": "2db18fb4ab6e8a4c03c0e01fcc4a76e8086392bba2f7f41e3ad8e517157857dd",
+    "package.json": "9435062aeae52176a5cccbec460c469854792939414f332ef0ca4ca6eae94bd5",
+    "package-lock.json": "f09ce3d46713bf01d505632d987f9beea9d52f4faf78bb9e0b762b878f5ea7ea"
+  },
+  "runtime": {
+    "rust": "1.97.1",
+    "rustdoc": "1.97.1",
+    "node": "24.19.0",
+    "yrs": "0.28.0 small-client"
+  },
+  "environment": "PATH=/Users/bpstr/.cargo/bin:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH; RUSTDOC=/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc; EDITAC_HIERARCHY_OUTPUT only in canonical test",
+  "fixtures": {
+    "recipe": "fixed IDs/operations/UTF-16 offsets; no RNG; real Yrs v1 updates",
+    "arrival_permutations": 54,
+    "receiving_replicas_per_permutation": 3,
+    "fresh_restores": 162,
+    "deep_nodes": 517,
+    "text": "a😀b; bold emoji; nested concurrent italic !; late parent text later"
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test hierarchy_probe --locked",
+      "exit": 0,
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "hierarchy.log",
+      "sha256": "aa4073bbb54f1f55f1123bba5adb7cf4e47c157538d2d6e8f09628cb2ef8b687",
+      "bytes": 900
+    },
+    {
+      "command": "cargo test -p editac-core --locked",
+      "exit": 0,
+      "executed": 29,
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "core-integration.log",
+      "sha256": "d8010796f929b4443455daf6898cf8ee35dfd41fea93fa8526ae365ee55eb9ce",
+      "bytes": 4569
+    },
+    {
+      "command": "node --test tests/interop.test.mjs",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "log": "js-integration.log",
+      "sha256": "ccb2ea24de20f0bb1e3d61a7f8f88e4228bc42ba8c1decf8aed1193d1f7a2386"
+    },
+    {
+      "command": "cargo fmt --all -- --check",
+      "exit": 0,
+      "log": "format-check.log",
+      "state": "format check, not test suite"
+    }
+  ],
+  "preserved_failures": {
+    "compile-failure.log": "5 compiler errors; zero tests executed; repaired Number conversion",
+    "type-inference-failure.log": "1 compiler error; zero tests executed; repaired Vec/String type"
+  },
+  "artifacts": {
+    "artifacts/cycle-0.bin": "ecdca4bce061bd80a06f3b784c43e9fa3ffb85da11c099860d76e9402336a5e0",
+    "artifacts/cycle-1.bin": "df9533c8efdd02b1f5d7214d78babdf6ae7e9a64a38abc9f7735194c3e82491a",
+    "artifacts/cycle-2.bin": "a523e24b6d0f252e9fcb0ad425d587500c4f65c06e981de91bfc1d438c3f480e",
+    "artifacts/cycle.txt": "f6cd3a63071ebb43eefc2b4d7370876ddf79ef569ac86baee620f303ac537443",
+    "artifacts/duplicate-0-0.bin": "ecdca4bce061bd80a06f3b784c43e9fa3ffb85da11c099860d76e9402336a5e0",
+    "artifacts/duplicate-0-1.bin": "f3854b84d44e68438b74723c2b4414f0c5bbc6da56e647246dbc6299c9d92bb2",
+    "artifacts/duplicate-0-2.bin": "9fec573ee0dc33c73471ac6ebbf8aeeaecab3630eb79be1be993811a9fa7f8d6",
+    "artifacts/duplicate-0.txt": "c2227adf4d050be381b6d3ea6c66d12622743f3f8baa2fac654ad5ca58789b6d",
+    "artifacts/duplicate-1-0.bin": "ecdca4bce061bd80a06f3b784c43e9fa3ffb85da11c099860d76e9402336a5e0",
+    "artifacts/duplicate-1-1.bin": "d328610915182c7aac1d06d6a89aa87fcdd370a6755056accc7bab7989c66707",
+    "artifacts/duplicate-1-2.bin": "27389157f408da857d49f2aca1054b15a1c96cf1022dd235fb6635bc1398638f",
+    "artifacts/duplicate-1.txt": "324e4fbb67552226073ddce14f6fa22f8e915bcd7e739d813da3b9c4f4db095d",
+    "artifacts/late-parent-0.bin": "ecdca4bce061bd80a06f3b784c43e9fa3ffb85da11c099860d76e9402336a5e0",
+    "artifacts/late-parent-1.bin": "d20e640b2c57f7aab4a29f120ac78da8d9576d60925b27445290756b9d41b0c5",
+    "artifacts/late-parent-2.bin": "aad15360e476864bf45c2fa313fc7269e103781922e483b10ddc955f3b5d48a7",
+    "artifacts/late-parent.txt": "7311bbf5ce3c57092230ed4ba419547132a746dfd4d45c15e43ed9dacb32661c",
+    "artifacts/nested-0.bin": "ecdca4bce061bd80a06f3b784c43e9fa3ffb85da11c099860d76e9402336a5e0",
+    "artifacts/nested-1.bin": "0a0d575c52ed878b66d8db2f3db540fb0370b813a0daa2e4819aefc31e8cfe02",
+    "artifacts/nested-2.bin": "e3dc9a7f9a9a60f2341ed07d3ff18ffbc339efea8b53e9ec167d39bbcdf0a71e",
+    "artifacts/nested-3.bin": "1eb21120bb0788e21a37c51db002f5f849619c7b2a185641fd53f4d9fe88335d",
+    "artifacts/nested.txt": "3ebbbdc43ec77282f04aaff3eee11932842ea78be4c1e7f3103545d62b615ade",
+    "artifacts/orphans-0.bin": "ecdca4bce061bd80a06f3b784c43e9fa3ffb85da11c099860d76e9402336a5e0",
+    "artifacts/orphans-1.bin": "8a974a845b81ba0cd87b26ce1156550b2541547f248b89a218c7682c5cccc96f",
+    "artifacts/orphans-2.bin": "46a0a3ecd543921020f2792bef4ddd66c23233a21012345544bbc9003a3eec45",
+    "artifacts/orphans.txt": "e93b1e05d3075d6cd8938e9078ce046940b4bfb90c9134e09ff3cfd097cdc330"
+  },
+  "supervisor_check": {
+    "source_hashes": {
+      "checked": 8,
+      "mismatches": []
+    },
+    "artifacts": {
+      "checked": 52,
+      "mismatches": []
+    }
+  },
+  "cleanup": {
+    "removed": [
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/incremental/hierarchy_probe-3367e45q15pwi",
+        "kib": 22828
+      }
+    ],
+    "remaining_free_kib": 18699612,
+    "process_cleanup": "No task-owned servers/browsers started; hierarchy tests exited. Other workspace services preserved.",
+    "preserved": "source, prior build caches, credentials, all evidence and other-task processes"
+  },
+  "summary_sha256": "5ef5e29164d677d89875bb71c2294853a86c4ebfb5e4dab3e7b3470a392ad195"
+}

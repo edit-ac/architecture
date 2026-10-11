@@ -1,0 +1,67 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: function `fixture` is never used
+ --> crates/editac-core/tests/support/hierarchy.rs:9:15
+  |
+9 | pub(crate) fn fixture() -> Doc {
+  |               ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `relative` is never used
+  --> crates/editac-core/tests/support/split_join.rs:86:4
+   |
+86 | fn relative<T: yrs::ReadTxn>(
+   |    ^^^^^^^^
+
+warning: method `len` is never used
+   --> crates/editac-core/tests/support/split_join.rs:175:19
+    |
+171 | impl Block {
+    | ---------- method in this implementation
+...
+175 |     pub(crate) fn len(&self) -> u32 {
+    |                   ^^^
+
+warning: struct `Anchor` is never constructed
+   --> crates/editac-core/tests/support/split_join.rs:309:19
+    |
+309 | pub(crate) struct Anchor {
+    |                   ^^^^^^
+
+warning: function `anchor` is never used
+   --> crates/editac-core/tests/support/split_join.rs:314:15
+    |
+314 | pub(crate) fn anchor(doc: &Doc, key: &str, index: u32, assoc: Assoc) -> Anchor {
+    |               ^^^^^^
+
+warning: function `resolve` is never used
+   --> crates/editac-core/tests/support/split_join.rs:326:15
+    |
+326 | pub(crate) fn resolve(doc: &Doc, anchor: &Anchor) -> Option<(String, u32)> {
+    |               ^^^^^^^
+
+warning: `editac-core` (test "structure_conflicts") generated 6 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.18s
+     Running tests/structure_conflicts.rs (target/debug/deps/structure_conflicts-77a255bcef2aa467)
+
+running 22 tests
+test delete_edit::known_tombstone_rejects_local_edit_and_recovery_reads_never_resurrect ... ok
+test delete_edit::deletion_after_observed_edit_preserves_the_same_recovery_content ... ok
+test delete_edit::concurrent_delete_edit_retains_rich_content_independent_of_writer_order ... ok
+test hierarchy::concurrent_valid_moves_create_cycle_cut_without_repair_writes ... ok
+test delete_edit::disconnected_edits_and_dependent_deltas_merge_into_hidden_recovery ... ok
+test hierarchy::invalid_local_moves_reject_before_mutation_and_order_ties_use_stable_ids ... ok
+test hierarchy::late_parent_arrival_resolves_orphan_without_persisting_a_repair ... ok
+test hierarchy::duplicate_placements_choose_one_atomic_tuple_with_both_writer_assignments ... ok
+test hierarchy::self_cycle_orphans_invalid_parent_and_missing_placement_preserve_content ... ok
+test hierarchy::nested_list_moves_retain_subtree_and_concurrent_marked_edit ... ok
+test split_join::concurrent_join_edit_keeps_both_texts_and_routes_original_selections_to_joined_owner ... ok
+test split_join::concurrent_split_edit_partitions_original_text_and_selection_with_fixed_affinity ... ok
+test split_join::disconnected_join_edit_and_dependent_delta_replay_keep_stable_target_ownership ... ok
+test split_join::invalid_split_and_repeated_transform_reject_before_mutation_and_edge_splits_keep_identity ... ok
+test split_join::split_survives_concurrent_deletion_of_boundary_and_preserves_replacement_marks ... ok
+test hierarchy::deep_remote_hierarchy_is_iterative_and_bounded ... ok
+error: test failed, to rerun pass `-p editac-core --test structure_conflicts`
+
+Caused by:
+  process didn't exit successfully: `/Users/bpstr/Github/edit-ac/core/target/debug/deps/structure_conflicts-77a255bcef2aa467` (signal: 15, SIGTERM: termination signal)

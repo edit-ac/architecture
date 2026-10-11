@@ -1,0 +1,221 @@
+{
+  "gate": "FND-1.13",
+  "state": "implemented and locally verified; not deployed or published",
+  "date": "2026-10-11T15:12:35.668753+00:00",
+  "source_revision": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "source_snapshot_sha256": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "prompt_revision": "7eaa063f3629",
+  "core_base_revision": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "architecture_base_revision": "d182226517938592ea97af059e724b9ab53b7020",
+  "implementation_state": "Uncommitted working tree; unrelated earlier changes preserved",
+  "runtime": {
+    "rust": "1.97.1",
+    "node": "v26.4.0",
+    "npm": "11.17.0",
+    "wasm_bindgen": "0.2.129",
+    "browser": {
+      "version": "156.0.8078.4",
+      "playwright": "1.64.0"
+    }
+  },
+  "checks": [
+    {
+      "command": "WASM_BINDGEN=$PWD/target/foundation-tools/wasm-bindgen-0.2.129-aarch64-apple-darwin/wasm-bindgen npm run build:wasm",
+      "exit": 0,
+      "kind": "actual release WASM compile, web-target binding generation and core TypeScript build",
+      "log": "build-initial.log"
+    },
+    {
+      "command": "EDITAC_WASM_OUTPUT=$PWD/../architecture/evidence/foundation-wasm node --test tests/wasm-load.test.mjs",
+      "exit": 0,
+      "executed": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "log": "wasm-load-initial.log"
+    },
+    {
+      "command": "cargo check --workspace --all-targets --locked --offline",
+      "exit": 0,
+      "kind": "compile-only; 6 existing unused-code warnings in structure_conflicts harness",
+      "log": "cargo-check.log"
+    },
+    {
+      "command": "npm run check:packages",
+      "exit": 0,
+      "kind": "all three package typechecks/builds and three actual compiled imports; probes, not test-suite counts",
+      "log": "packages.log"
+    },
+    {
+      "command": "cargo fmt --all -- --check",
+      "exit": 0,
+      "log": "fmt.log"
+    },
+    {
+      "command": "git diff --check; git -C ../architecture diff --check",
+      "exit": 0
+    }
+  ],
+  "acceptance": {
+    "supplied_url": "actual pinned Chromium ESM, only /assets/supplied.wasm requested",
+    "packed_consumer": "npm pack then offline local tarball installation; actual Chromium package JS and asset loading; bytes match built binary",
+    "ssr": "built and installed package imports with throwing browser-global/fetch/WebAssembly guards; no implicit document construction",
+    "fixture": "real Yrs UTF-16 XML/text fixture, emoji/ZWJ/combining/RTL and bold attribute decoded by pinned Yjs; JS-authored italic update applied twice through WASM, malformed decode rejected without change",
+    "init_lifecycle": "same-URL promise coalescing, different URL rejection, failed fetch retry, creation count zero after init",
+    "asset_metadata": "generated dist/wasm never contains or overwrites handwritten package.json"
+  },
+  "limits": [
+    "Disposable earlier interop XML fixture, not production frozen-schema commands",
+    "Native browser ESM and local package consumer qualified; bundler asset rewriting and wider browser matrix not claimed",
+    "Trusted fixture update transport only; no persistence, durability acknowledgment, deployment or provider calls"
+  ],
+  "toolchain": "toolchain.json",
+  "harness": "harness.json",
+  "hygiene": "hygiene.json",
+  "source_hashes": {
+    "crates/editac-wasm/Cargo.toml": {
+      "bytes": 426,
+      "sha256": "2ee5180ac3ccbee41e87b6dab630fd3922f0a7303cfb16f99755e5db4f3e7d96"
+    },
+    "crates/editac-wasm/src/lib.rs": {
+      "bytes": 2666,
+      "sha256": "0588e7c8742d2ae070da402e8580886c16b8c6aaf8c918c9f213a416fc17f38f"
+    },
+    "packages/core/package.json": {
+      "bytes": 717,
+      "sha256": "ffad2c91ab98dfbb20d4b5d1ce2b6b7136347f7b1752298d4ebeba9396e66c26"
+    },
+    "packages/core/src/index.ts": {
+      "bytes": 1753,
+      "sha256": "1839fce6e2cdf2c7c7254e14a69134fe8f043dfef6b29de89e212b383f8ac441"
+    },
+    "packages/core/README.md": {
+      "bytes": 2622,
+      "sha256": "247a8ebfa428ee9f3ae4e12db491275e9f5b5e0dbe8d6519851c98b4e3b066cd"
+    },
+    "scripts/build-wasm.mjs": {
+      "bytes": 1842,
+      "sha256": "7ca07827c665ba81bc8f0bd0a4b797001083dd3d58d6a8ed54de6689996b2028"
+    },
+    "tests/wasm-load.test.mjs": {
+      "bytes": 11357,
+      "sha256": "81a9c0c31be2c827b3f346745d4afebcb47e999764a95a36c050874212a0b46c"
+    },
+    "Cargo.toml": {
+      "bytes": 406,
+      "sha256": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7"
+    },
+    "Cargo.lock": {
+      "bytes": 10692,
+      "sha256": "4ecf973972bc8634029a51875e176cefcdd04ee72e5bd712daad60f4062cd4d7"
+    },
+    "package.json": {
+      "bytes": 1345,
+      "sha256": "b451b34b7e9ed3bb30dd805f1259c4f9db03fe46f73e0638fcf14d8b1fb42982"
+    },
+    "package-lock.json": {
+      "bytes": 16713,
+      "sha256": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+    },
+    "rust-toolchain.toml": {
+      "bytes": 113,
+      "sha256": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b"
+    },
+    "README.md": {
+      "bytes": 4119,
+      "sha256": "613fcccc43859171ec563e2b7a3d1f4f14fe58761a649547e4c50acd407fb0c1"
+    }
+  },
+  "evidence_hashes": {
+    "artifacts/editac_wasm.d.ts": {
+      "bytes": 2440,
+      "sha256": "3d96a4177daa5cc0c5b1531be71de057e63115901b3dd98155d7a5f9c3aa45bb"
+    },
+    "artifacts/editac_wasm.js": {
+      "bytes": 8523,
+      "sha256": "4809ee8282dcb1faae55cf7d97b1b22c7c84300ab88ce35b6d660a17a237f835"
+    },
+    "artifacts/editac_wasm_bg.wasm": {
+      "bytes": 664648,
+      "sha256": "a57f50e4bf34284e7ff196e14ef5144078a167b45ae0fb3ddeb97eb0e4972975"
+    },
+    "artifacts/editac_wasm_bg.wasm.d.ts": {
+      "bytes": 914,
+      "sha256": "63ed7ef86c70bfa5b792245dd70c29b1802bfac54075b7c7578d5080dcbc029c"
+    },
+    "artifacts/editac_wasm_raw.wasm": {
+      "bytes": 688042,
+      "sha256": "ed9672434adb5a2fd8b67e0240328787cf63d0839021602854120b7d96aafa1d"
+    },
+    "artifacts/index.d.ts": {
+      "bytes": 672,
+      "sha256": "8083b6a9dedc8dcd72d3e69e9f1d433dd5cd513cda7a92a5b339d11b2faed361"
+    },
+    "artifacts/index.js": {
+      "bytes": 1228,
+      "sha256": "3810e619376f5ad8dc2edae6b7060abbcb1a953106c82d8938eecbfed2855af6"
+    },
+    "browser-install.log": {
+      "bytes": 4546,
+      "sha256": "2e9cd1f8317538fb9dd2e465cc15cb5ddd840c37b67ba94765cb6a01f6af419b"
+    },
+    "build-initial.log": {
+      "bytes": 1860,
+      "sha256": "daa71710f39c96b81d4486a19a4774a01b114c70c82600e85ebc86782d2a2403"
+    },
+    "built-fixture-v1.bin": {
+      "bytes": 162,
+      "sha256": "3fe0d6f433c3b69c0b1ce4e68ecca37f7b10ea371371afedecb73daf49ef9d1c"
+    },
+    "cargo-check.log": {
+      "bytes": 3056,
+      "sha256": "3f7a957502c65de2b6781f2de3f7ab74270accedbc1e2cff3a354da2d290850a"
+    },
+    "cargo-lock-refresh.log": {
+      "bytes": 67,
+      "sha256": "a3436cb2ce3aebb7b3d7010022b6fdd3120db70fabedd4f1f7af7ec0f736db09"
+    },
+    "fmt.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "harness.json": {
+      "bytes": 2276,
+      "sha256": "9b1446aa17a80dc1fbef9f46d978cef6a028b6bed4d5da040040e73221514ede"
+    },
+    "hygiene.json": {
+      "bytes": 754,
+      "sha256": "6223f5081dba966d607a058bd8bccc9cec1c16b9b2bb8b9b931b2eb59f240712"
+    },
+    "js-edited-fixture-v1.bin": {
+      "bytes": 234,
+      "sha256": "68ccada1ddc8ddeaaba04b56cb1f5b4704a5898b6527660436a04e9f6d614d4b"
+    },
+    "lock-refresh.log": {
+      "bytes": 132,
+      "sha256": "9783618752807835d33ed2e425417beb6d4bdddc1bd72f5a1eaf2b9ac2314acd"
+    },
+    "packages.log": {
+      "bytes": 781,
+      "sha256": "eb5ee4ebac2f60810bce542d6c283aa4abfdb6825b88897e11a68a83fafcbcb7"
+    },
+    "packed-fixture-v1.bin": {
+      "bytes": 162,
+      "sha256": "539a3ba08f36cc31d8ff7e8e8472c7a7330eb298dc2b25bb15bce33033d407d0"
+    },
+    "toolchain.json": {
+      "bytes": 339,
+      "sha256": "83fbe19a395dfae41550dde56d9457927ecbe9bdab53142036e53ca3dc5b4680"
+    },
+    "tooling-install.log": {
+      "bytes": 139,
+      "sha256": "e9ffe33ed67ef705147853485aff1cbc64ddb89c68d9b7c2edd5421155fca18f"
+    },
+    "wasm-load-initial.log": {
+      "bytes": 737,
+      "sha256": "2c745e589b3ad6795b469b20e3914c59ae74c96ffc468fb1730f62c65b55ea04"
+    }
+  }
+}

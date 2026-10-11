@@ -1,0 +1,45 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0277]: the trait bound `u64: From<ClientID>` is not satisfied
+   --> crates/editac-core/src/document.rs:204:49
+    |
+204 |                 let id = format!("n-{:x}-{:x}", u64::from(doc.client_id()), counter);
+    |                                                 ^^^ the trait `From<ClientID>` is not implemented for `u64`
+    |
+    = help: `u64` implements trait `From<T>`:
+              From<bool>
+              From<char>
+              From<std::ascii::Char>
+              From<u16>
+              From<u32>
+              From<u8>
+
+error[E0277]: the trait bound `u64: From<ClientID>` is not satisfied
+   --> crates/editac-core/src/document.rs:266:28
+    |
+266 |             .map(|(id, _)| u64::from(*id) as u32)
+    |                            ^^^ the trait `From<ClientID>` is not implemented for `u64`
+    |
+    = help: `u64` implements trait `From<T>`:
+              From<bool>
+              From<char>
+              From<std::ascii::Char>
+              From<u16>
+              From<u32>
+              From<u8>
+
+error[E0277]: the trait bound `u64: From<ClientID>` is not satisfied
+   --> crates/editac-core/src/document.rs:317:18
+    |
+317 |         let id = u64::from(doc.client_id()) as u32;
+    |                  ^^^ the trait `From<ClientID>` is not implemented for `u64`
+    |
+    = help: `u64` implements trait `From<T>`:
+              From<bool>
+              From<char>
+              From<std::ascii::Char>
+              From<u16>
+              From<u32>
+              From<u8>
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `editac-core` (lib) due to 3 previous errors

@@ -1,0 +1,302 @@
+{
+  "gate": "FND-1.8",
+  "state": "implemented and locally verified; disposable probe, not adopted schema or deployed",
+  "date": "2026-10-11T14:17:45.893277+00:00",
+  "source_revision": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "source_snapshot_sha256": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "loaded_prompt_revision": "7eaa063f3629",
+  "core_base_revision": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "architecture_base_revision": "9e23cbb980b39ecaa9f99c6b5847066d86cf2e2f",
+  "implementation_files": {
+    "crates/editac-core/tests/split_join_probe.rs": "f14983e388ac33f2d1f1aa955728ffbd3ef66024f3c5feb0a19e53ebfb3ea0dd",
+    "crates/editac-core/tests/support/split_join.rs": "658c89e87eececc95d44c9e668980a1400958c873460adced46c4c24f1e67148",
+    "crates/editac-core/tests/support/structure_registry.rs": "4c24dbd1d4c6ffb2661cecb573060819e57b5bc0cfdc6996afaea3eded06031c",
+    "crates/editac-core/src/lib.rs": "cb28b4065b2cc6a305d6d09a8478601c146a7c318be84b46fe87859aaa63b0b5",
+    "Cargo.toml": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7",
+    "Cargo.lock": "060d19d9224d624f4ef1064d74c97adc276d65b890a36b7476a3f86b1d5eacc4",
+    "crates/editac-core/Cargo.toml": "36130d9a3ed697bd989341e6e7fc412eb53900497b5a1d47aa443e7fecf68798",
+    "rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b",
+    "package.json": "9435062aeae52176a5cccbec460c469854792939414f332ef0ca4ca6eae94bd5",
+    "package-lock.json": "f09ce3d46713bf01d505632d987f9beea9d52f4faf78bb9e0b762b878f5ea7ea",
+    "tests/interop.test.mjs": "2db18fb4ab6e8a4c03c0e01fcc4a76e8086392bba2f7f41e3ad8e517157857dd"
+  },
+  "runtime": [
+    "v24.19.0",
+    "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+    "rustdoc 1.97.1 (8bab26f4f 2026-07-14)"
+  ],
+  "environment": "PATH=/Users/bpstr/.cargo/bin:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH; RUSTDOC=$(rustup which rustdoc); EDITAC_SPLIT_JOIN_OUTPUT only in canonical check",
+  "fixtures": {
+    "inputs": {
+      "a😀b": "6fba5b2ea783ded096fc2444d540ffbdf49168df30993b155b7efb683313f110",
+      "cאבd": "f4c143cc1ba16592474bd1f1224d32c4023b086336684ca17a62107d83950d6b"
+    },
+    "recipe": "fixed schedules, explicit client IDs and UTF-16 offsets; no RNG",
+    "format": "Yrs 0.28.0 small-client; v1; UTF-16",
+    "all_arrival_permutations": 160,
+    "snapshot_restores": 160,
+    "editing_writers": 17,
+    "replay": "duplicate each update; reverse replay; initialization and dependent delta may arrive late",
+    "text_objects": 2,
+    "trace_files": 9,
+    "binary_updates": 27
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test split_join_probe --locked",
+      "exit": 0,
+      "log": "evidence/foundation-split-join/split-join.log",
+      "bytes": 839,
+      "sha256": "82f2d7ac0b7f6cfbb1701bf5918431eb7cd8324647d45f6f9716549cf963eb41",
+      "executed": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0
+    },
+    {
+      "command": "cargo test -p editac-core --locked",
+      "exit": 0,
+      "log": "evidence/foundation-split-join/rust-integration.log",
+      "bytes": 3828,
+      "sha256": "5a7e5b47f6f1501bd69d7473a9693a267001d5fe36791197ff36bda11eaafc7c",
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "compile_only_empty_harnesses": 2
+    },
+    {
+      "command": "node --test tests/interop.test.mjs",
+      "exit": 0,
+      "log": "evidence/foundation-split-join/js-integration.log",
+      "bytes": 419,
+      "sha256": "1fdca20141c3d8332e47703c7a37fa5be477ec2bd9cf5a3e2297de3758b4693f",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "rust_setup_tests": 1
+    },
+    {
+      "command": "cargo fmt --all --check",
+      "exit": 0,
+      "log": "evidence/foundation-split-join/format.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "format, not test suite"
+    }
+  ],
+  "preserved_checks": [
+    {
+      "command": "cargo test -p editac-core --test split_join_probe --locked",
+      "exit": 101,
+      "log": "evidence/foundation-split-join/compile-failure.log",
+      "bytes": 1144,
+      "sha256": "7ad16bf3c3d3bee86cac1bfa58b0c59b9e9f3d4f4de7fe2455a0eebc5c5b127c",
+      "kind": "compile error; no tests executed; repaired explicit AsRef branch"
+    },
+    {
+      "command": "cargo test -p editac-core --test split_join_probe --locked",
+      "exit": 101,
+      "log": "evidence/foundation-split-join/lock-failure.log",
+      "bytes": 521,
+      "sha256": "cfab8b2568060b46cd9c61205d986fb6db05d47294a853d324b5d74776834d99",
+      "started": 5,
+      "completed": 0,
+      "interrupted": 5,
+      "kind": "task test SIGTERM after deadlock; repaired lookup lock ordering"
+    },
+    {
+      "command": "cargo test -p editac-core --test split_join_probe --locked",
+      "exit": 101,
+      "log": "evidence/foundation-split-join/semantic-failure.log",
+      "bytes": 2813,
+      "sha256": "79262d7dbc1652f4c765066d901321957c37b94e3ebcfad15b0578711ccf9af3",
+      "executed": 5,
+      "passed": 1,
+      "failed": 4,
+      "skipped": 0,
+      "kind": "repaired plain offsets/end anchors; documented replacement ownership"
+    },
+    {
+      "command": "node --test tests/interop.test.mjs",
+      "exit": 0,
+      "log": "evidence/foundation-split-join/js-host-runtime.log",
+      "bytes": 600,
+      "sha256": "7ab1e70cb8b64068c3a1f9ab3b58d82e461ed887305d4771b34e0d48bb7b55a2",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "runtime": "Node v26.4.0; supplemental only; pinned runtime check subsequently passed"
+    }
+  ],
+  "supervisor_prerequisite": {
+    "receipt": "evidence/foundation-structure/receipt.json",
+    "source_hashes_matching": 8,
+    "artifact_hashes_matching": 52,
+    "new_check": "not rerun; unchanged seeded comparison reused"
+  },
+  "artifacts": {
+    "evidence/foundation-split-join/artifacts/join-disconnected-dependent-0.bin": {
+      "bytes": 344,
+      "sha256": "43aa9096297529ef26f1769a0a99ff3bd63e66af1e82c041a80478bba5ea9c6c"
+    },
+    "evidence/foundation-split-join/artifacts/join-disconnected-dependent-1.bin": {
+      "bytes": 21,
+      "sha256": "62647d9961fdba99959b3737ba047c9812b6f9e3dcb804592f15c8f0f31b6628"
+    },
+    "evidence/foundation-split-join/artifacts/join-disconnected-dependent-2.bin": {
+      "bytes": 81,
+      "sha256": "26c22194c3ad8729098ad5b077627868d58367d9798b04d71aa332ccca1de870"
+    },
+    "evidence/foundation-split-join/artifacts/join-disconnected-dependent-3.bin": {
+      "bytes": 50,
+      "sha256": "474347c2379c546e90d1cdb74e2d3f8e6938fb96f97a52b95e082207da8bc4df"
+    },
+    "evidence/foundation-split-join/artifacts/join-disconnected-dependent-4.bin": {
+      "bytes": 46,
+      "sha256": "2a727e2a16c6f838ff484d78c434aa21e659e3dd38b06333ca008e92f791e1ec"
+    },
+    "evidence/foundation-split-join/artifacts/join-disconnected-dependent.txt": {
+      "bytes": 14068,
+      "sha256": "800a884da4157be6f30d605498c32894990ac39d28752bc15f12235df0321201"
+    },
+    "evidence/foundation-split-join/artifacts/join-edit-41-0.bin": {
+      "bytes": 344,
+      "sha256": "43aa9096297529ef26f1769a0a99ff3bd63e66af1e82c041a80478bba5ea9c6c"
+    },
+    "evidence/foundation-split-join/artifacts/join-edit-41-1.bin": {
+      "bytes": 21,
+      "sha256": "21635fef9c7f404f006cc2243c708779ed2cf612f8715808cff6b4335c4e358a"
+    },
+    "evidence/foundation-split-join/artifacts/join-edit-41-2.bin": {
+      "bytes": 103,
+      "sha256": "d0a0b090b6900ae163906f576ba9e5a75dcbc36d6aec5d0c987c61581f9563be"
+    },
+    "evidence/foundation-split-join/artifacts/join-edit-41.txt": {
+      "bytes": 3170,
+      "sha256": "6865b3bd7eabb0989a80ad57503be9f098aa2bb0436745185a41dc1dfd47d80c"
+    },
+    "evidence/foundation-split-join/artifacts/join-edit-42-0.bin": {
+      "bytes": 344,
+      "sha256": "43aa9096297529ef26f1769a0a99ff3bd63e66af1e82c041a80478bba5ea9c6c"
+    },
+    "evidence/foundation-split-join/artifacts/join-edit-42-1.bin": {
+      "bytes": 21,
+      "sha256": "13008b0afa806d43bd92863af40bb51afd856d4b44a00813f15daba788441546"
+    },
+    "evidence/foundation-split-join/artifacts/join-edit-42-2.bin": {
+      "bytes": 103,
+      "sha256": "b22e7c30e4d83ae7f691be0140fea03935e79a6e862176843d93ea8e203ac4d3"
+    },
+    "evidence/foundation-split-join/artifacts/join-edit-42.txt": {
+      "bytes": 3170,
+      "sha256": "6865b3bd7eabb0989a80ad57503be9f098aa2bb0436745185a41dc1dfd47d80c"
+    },
+    "evidence/foundation-split-join/artifacts/split-delete-31-0.bin": {
+      "bytes": 344,
+      "sha256": "43aa9096297529ef26f1769a0a99ff3bd63e66af1e82c041a80478bba5ea9c6c"
+    },
+    "evidence/foundation-split-join/artifacts/split-delete-31-1.bin": {
+      "bytes": 28,
+      "sha256": "19cc644272dd8319a492eadec4ba205fc5e3ebca161aba825d1e27cdd284c9d9"
+    },
+    "evidence/foundation-split-join/artifacts/split-delete-31-2.bin": {
+      "bytes": 56,
+      "sha256": "98d294e80dd73f85f1b1641d62bd6803ea4c606bdd65404767abd8d9073d1b4a"
+    },
+    "evidence/foundation-split-join/artifacts/split-delete-31.txt": {
+      "bytes": 2634,
+      "sha256": "085d504ed6625f85b8ba1bfa10db8efe701736386909db8da24565b20799b1b2"
+    },
+    "evidence/foundation-split-join/artifacts/split-delete-32-0.bin": {
+      "bytes": 344,
+      "sha256": "43aa9096297529ef26f1769a0a99ff3bd63e66af1e82c041a80478bba5ea9c6c"
+    },
+    "evidence/foundation-split-join/artifacts/split-delete-32-1.bin": {
+      "bytes": 28,
+      "sha256": "0e6ca2efc3f93095319a6abf64b80093e191dd85b1f1211ff051910e9afb962a"
+    },
+    "evidence/foundation-split-join/artifacts/split-delete-32-2.bin": {
+      "bytes": 56,
+      "sha256": "16e133672836a4fd29f23d673baaf9e79016c9d60fe531fefdc9804e21d5dd47"
+    },
+    "evidence/foundation-split-join/artifacts/split-delete-32.txt": {
+      "bytes": 2634,
+      "sha256": "085d504ed6625f85b8ba1bfa10db8efe701736386909db8da24565b20799b1b2"
+    },
+    "evidence/foundation-split-join/artifacts/split-edge-0-0.bin": {
+      "bytes": 344,
+      "sha256": "43aa9096297529ef26f1769a0a99ff3bd63e66af1e82c041a80478bba5ea9c6c"
+    },
+    "evidence/foundation-split-join/artifacts/split-edge-0-1.bin": {
+      "bytes": 28,
+      "sha256": "4cbcf34e259590b4aed5fd5afba0a275dad6b33486c917a9f53973875bf66a5c"
+    },
+    "evidence/foundation-split-join/artifacts/split-edge-0.txt": {
+      "bytes": 1819,
+      "sha256": "6c45819cadb7e2535df9359f4b393909f31275e3c8e4f3132e72ac86ad1de146"
+    },
+    "evidence/foundation-split-join/artifacts/split-edge-4-0.bin": {
+      "bytes": 344,
+      "sha256": "43aa9096297529ef26f1769a0a99ff3bd63e66af1e82c041a80478bba5ea9c6c"
+    },
+    "evidence/foundation-split-join/artifacts/split-edge-4-1.bin": {
+      "bytes": 28,
+      "sha256": "3c342cba5daebd8310afdb4d9bed37520a194746054c5c6e33d9bc5a613cadff"
+    },
+    "evidence/foundation-split-join/artifacts/split-edge-4.txt": {
+      "bytes": 1819,
+      "sha256": "d1272391980bf3b0ba57c498d545e320d10e0f7df24a73a213f8899c6e5f7f07"
+    },
+    "evidence/foundation-split-join/artifacts/split-insert-21-0.bin": {
+      "bytes": 344,
+      "sha256": "43aa9096297529ef26f1769a0a99ff3bd63e66af1e82c041a80478bba5ea9c6c"
+    },
+    "evidence/foundation-split-join/artifacts/split-insert-21-1.bin": {
+      "bytes": 28,
+      "sha256": "4e2bd9b1b35f39eaffd7940c65d17cbed04cbbe2438cd181637b8de02f7324bb"
+    },
+    "evidence/foundation-split-join/artifacts/split-insert-21-2.bin": {
+      "bytes": 125,
+      "sha256": "7aefbc0a412aa70927b7345cca118308c62e8433cba9e1211ef6a8170a213fa9"
+    },
+    "evidence/foundation-split-join/artifacts/split-insert-21.txt": {
+      "bytes": 4043,
+      "sha256": "cec53d8edc545695931333d7531c847493087bfdc703590ffeeefe472915157d"
+    },
+    "evidence/foundation-split-join/artifacts/split-insert-22-0.bin": {
+      "bytes": 344,
+      "sha256": "43aa9096297529ef26f1769a0a99ff3bd63e66af1e82c041a80478bba5ea9c6c"
+    },
+    "evidence/foundation-split-join/artifacts/split-insert-22-1.bin": {
+      "bytes": 28,
+      "sha256": "eda7c8598acaea4da77e717273b5904cbebd0500e4d06f6925e29da88f31f505"
+    },
+    "evidence/foundation-split-join/artifacts/split-insert-22-2.bin": {
+      "bytes": 125,
+      "sha256": "1939e03d6ea48e4708b7447d7928dd64b10edf09784a16b91f65a4d4ef99cfde"
+    },
+    "evidence/foundation-split-join/artifacts/split-insert-22.txt": {
+      "bytes": 4043,
+      "sha256": "cec53d8edc545695931333d7531c847493087bfdc703590ffeeefe472915157d"
+    }
+  },
+  "summary_sha256": "357202aa8f9b45e7069a3bed2d5187894fad1dee40ac934f520833e3994bd50f",
+  "hygiene": {
+    "task_processes_remaining": 0,
+    "removed": [
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/incremental/split_join_probe-1cx8m7yp35q7j",
+        "allocated_kib": 19112
+      }
+    ],
+    "df_after": "Filesystem   1024-blocks      Used Available Capacity  iused     ifree %iused  Mounted on\n/dev/disk3s5   482797652 424286192  18078388    96% 10611289 180783880    6%   /System/Volumes/Data\n",
+    "services": "No task-owned servers/browsers started; existing other-workspace services/listeners preserved. Only deadlocked task test PID 18499 stopped."
+  }
+}

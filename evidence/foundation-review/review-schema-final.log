@@ -1,0 +1,31 @@
+
+> edit-ac-workspace@0.0.0 check:schema
+> node --test tests/schema-profile.test.mjs tests/schema-interop.test.mjs
+
+✔ frozen schema move-edit: both initializers, real bidirectional updates, anchors and retained identities (1.252291ms)
+✔ frozen schema move-move: both initializers, real bidirectional updates, anchors and retained identities (0.443583ms)
+✔ frozen schema delete-edit: both initializers, real bidirectional updates, anchors and retained identities (0.421667ms)
+✔ frozen schema edit-edit: both initializers, real bidirectional updates, anchors and retained identities (0.29875ms)
+✔ frozen schema split-edit: both initializers, real bidirectional updates, anchors and retained identities (0.372333ms)
+✔ frozen schema join-edit: both initializers, real bidirectional updates, anchors and retained identities (1.710167ms)
+✔ frozen schema split-join: both initializers, real bidirectional updates, anchors and retained identities (0.282125ms)
+✔ frozen schema cycle-edit: both initializers, real bidirectional updates, anchors and retained identities (0.258542ms)
+✔ frozen schema js-move-edit: both initializers, real bidirectional updates, anchors and retained identities (0.350292ms)
+✔ frozen schema js-delete-edit: both initializers, real bidirectional updates, anchors and retained identities (0.290583ms)
+✔ frozen schema js-split-edit: both initializers, real bidirectional updates, anchors and retained identities (0.3215ms)
+✔ frozen schema js-join-edit: both initializers, real bidirectional updates, anchors and retained identities (0.217709ms)
+✔ frozen schema js-edit-edit: both initializers, real bidirectional updates, anchors and retained identities (0.198083ms)
+✔ maximum-order local split rejects before mutation (7.607458ms)
+✔ concurrent split and maximum-order move preserves explicit recovery through replay and restore (13.453875ms)
+✔ frozen JS roots, nested types, atomic values and UTF-16 marks match the recipe (0.773125ms)
+✔ every unsupported profile field and wrong identity rejects before byte application (1.114917ms)
+✔ restore replays one initializer idempotently with restore origin and no reseeding (0.846416ms)
+✔ opaque kinds and marks survive checkpoint replay without extension execution (0.507333ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1800.712708

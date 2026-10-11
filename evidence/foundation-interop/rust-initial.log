@@ -1,0 +1,45 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling libc v0.2.190
+   Compiling serde_core v1.0.229
+   Compiling pin-project-lite v0.2.17
+   Compiling rustversion v1.0.23
+   Compiling crossbeam-utils v0.8.23
+   Compiling smallvec v1.16.3
+   Compiling zmij v1.0.23
+   Compiling parking_lot_core v0.9.12
+   Compiling parking v2.2.1
+   Compiling event-listener v5.4.2
+   Compiling scopeguard v1.2.0
+   Compiling cfg-if v1.0.5
+   Compiling serde v1.0.229
+   Compiling thiserror v2.0.21
+   Compiling serde_json v1.0.152
+   Compiling syn v3.0.7
+   Compiling lock_api v0.4.14
+   Compiling event-listener-strategy v0.5.4
+   Compiling once_cell v1.21.4
+   Compiling hashbrown v0.14.5
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.3
+   Compiling async-lock v3.4.2
+   Compiling smallstr v0.3.1
+   Compiling fastrand v2.5.0
+   Compiling dashmap v6.2.1
+   Compiling arc-swap v1.9.2
+   Compiling thiserror-impl v2.0.21
+   Compiling serde_derive v1.0.229
+   Compiling async-trait v0.1.92
+   Compiling yrs v0.28.0
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0277]: the trait bound `ClientID: From<u64>` is not satisfied
+  --> crates/editac-core/tests/interop.rs:26:23
+   |
+26 |         client_id: id.into(),
+   |                       ^^^^ the trait `From<u64>` is not implemented for `ClientID`
+   |
+   = note: required for `u64` to implement `Into<ClientID>`
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `editac-core` (test "interop") due to 1 previous error

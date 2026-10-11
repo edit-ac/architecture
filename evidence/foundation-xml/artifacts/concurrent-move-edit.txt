@@ -1,0 +1,244 @@
+original=Projection {
+    parent: 0,
+    block_id: "block-1",
+    element_identity: "<11#4>",
+    text_identity: "<11#6>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 4,
+}
+concurrent-edit-before-delivery=Projection {
+    parent: 0,
+    block_id: "block-1",
+    element_identity: "<11#4>",
+    text_identity: "<11#6>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "!",
+            [
+                (
+                    "italic",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 5,
+}
+converged-move=Projection {
+    parent: 1,
+    block_id: "block-1",
+    element_identity: "<22#0>",
+    text_identity: "<22#2>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 4,
+}
+order=[0, 1, 2] duplicate+reverse-replay: Projection {
+    parent: 1,
+    block_id: "block-1",
+    element_identity: "<22#0>",
+    text_identity: "<22#2>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 4,
+}
+order=[0, 2, 1] duplicate+reverse-replay: Projection {
+    parent: 1,
+    block_id: "block-1",
+    element_identity: "<22#0>",
+    text_identity: "<22#2>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 4,
+}
+order=[1, 0, 2] duplicate+reverse-replay: Projection {
+    parent: 1,
+    block_id: "block-1",
+    element_identity: "<22#0>",
+    text_identity: "<22#2>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 4,
+}
+order=[1, 2, 0] duplicate+reverse-replay: Projection {
+    parent: 1,
+    block_id: "block-1",
+    element_identity: "<22#0>",
+    text_identity: "<22#2>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 4,
+}
+order=[2, 0, 1] duplicate+reverse-replay: Projection {
+    parent: 1,
+    block_id: "block-1",
+    element_identity: "<22#0>",
+    text_identity: "<22#2>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 4,
+}
+order=[2, 1, 0] duplicate+reverse-replay: Projection {
+    parent: 1,
+    block_id: "block-1",
+    element_identity: "<22#0>",
+    text_identity: "<22#2>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 4,
+}
+Outcome: the visible clone retains initial text/marks and logical block ID, but has new element/text BranchIDs. The concurrent !/italic edit targets the removed original and is absent from the visible destination. Convergence alone does not qualify this move candidate.

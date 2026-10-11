@@ -1,0 +1,70 @@
+
+> edit-ac-workspace@0.0.0 check:wasm
+> npm run build:wasm && node --test tests/wasm-load.test.mjs
+
+
+> edit-ac-workspace@0.0.0 build:wasm
+> node scripts/build-wasm.mjs
+
+wasm-bindgen 0.2.129
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling wasm-bindgen-shared v0.2.129
+   Compiling rustversion v1.0.23
+   Compiling bumpalo v3.20.3
+   Compiling cfg-if v1.0.5
+   Compiling once_cell v1.21.4
+   Compiling serde_core v1.0.229
+   Compiling smallvec v1.16.3
+   Compiling getrandom v0.4.3
+   Compiling crossbeam-utils v0.8.23
+   Compiling zmij v1.0.23
+   Compiling parking_lot_core v0.9.12
+   Compiling pin-project-lite v0.2.17
+   Compiling event-listener v5.4.2
+   Compiling wasm-bindgen v0.2.129
+   Compiling syn v3.0.7
+   Compiling thiserror v2.0.21
+   Compiling serde_json v1.0.152
+   Compiling scopeguard v1.2.0
+   Compiling serde v1.0.229
+   Compiling lock_api v0.4.14
+   Compiling event-listener-strategy v0.5.4
+   Compiling hashbrown v0.14.5
+   Compiling memchr v2.8.3
+   Compiling itoa v1.0.18
+   Compiling async-lock v3.4.2
+   Compiling arc-swap v1.9.2
+   Compiling smallstr v0.3.1
+   Compiling dashmap v6.2.1
+   Compiling wasm-bindgen-macro-support v0.2.129
+   Compiling thiserror-impl v2.0.21
+   Compiling serde_derive v1.0.229
+   Compiling async-trait v0.1.92
+   Compiling wasm-bindgen-macro v0.2.129
+   Compiling fastrand v2.5.0
+   Compiling yrs v0.28.0
+   Compiling editac-core v0.0.0 (/private/tmp/edit-ac-foundation-review/workspace/core/crates/editac-core)
+   Compiling editac-wasm v0.0.0 (/private/tmp/edit-ac-foundation-review/workspace/core/crates/editac-wasm)
+    Finished `release` profile [optimized] target(s) in 20.06s
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+{"artifact":"editac_wasm_bg.wasm","bytes":664648,"sha256":"a57f50e4bf34284e7ff196e14ef5144078a167b45ae0fb3ddeb97eb0e4972975"}
+{"artifact":"editac_wasm.js","bytes":8523,"sha256":"4809ee8282dcb1faae55cf7d97b1b22c7c84300ab88ce35b6d660a17a237f835"}
+✔ built and packed SSR imports perform no browser access, fetch or WASM initialization (5396.188583ms)
+✔ built browser consumer loads actual compiled WASM at the explicit asset URL (555.836166ms)
+✔ packed browser consumer loads actual compiled WASM at the explicit asset URL (297.456708ms)
+✔ failed asset initialization is observable and retry creates no document until requested (213.219375ms)
+✔ compiled bridge applies JS-authored marked Unicode v1 updates and rejects malformed bytes (143.773292ms)
+✔ packed binary and glue bytes are measured and generated output does not replace package metadata (1.283084ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7436.710833

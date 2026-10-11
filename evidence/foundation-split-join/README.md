@@ -1,0 +1,33 @@
+# Split and join conflict probe — FND-1.8
+
+Implemented and locally verified with real Yrs replicas and deterministic local update delivery; not deployed or adopted as a production schema. `receipt.json` records immutable source/prompt revisions, tested source hashes, exact commands, counts and artifact hashes. Source/live roadmap files were not edited.
+
+## Disposable ownership policy
+
+The harness extends the selected stable registry, retaining two original `XmlTextRef` objects (`block-1`: `a😀b`, bold emoji at UTF-16 [1,3); `block-2`: `cאבd`, code-marked RTL at [1,3)). Every replica has one Yrs document. Original placement entries remain atomic tuples. A separate atomic descriptor for this fixture's affected pair stores `original`, `split` with an encoded relative cut, or `join`; its complete replacement prevents a half-transformed pair. This pair-scoped experiment does not qualify a scalable layout schema or simultaneous structural/structural commands.
+
+Split creates two logical projections of the *same* first shared text, [0,cut) and [cut,len), keeping the source placement and placing `block-split` immediately after it. The second block stays at its existing placement. The cut is Yrs `Assoc::Before`, not an absolute offset. Concurrent insertion at a surviving cut belongs to the right block; insertion before it shifts the cut. A concurrent replacement deleting the referenced boundary resolves the cut after that replacement in the tested Yrs schedule: source becomes `a👩‍💻`, with code-marked replacement and retained identity, while the destination is empty. The fixture deliberately asserts this policy rather than forcing a different cursor interpretation or writing a repair. Empty edge splits also retain the original text identity.
+
+Join projects both original text references in order under `block-1` and its existing placement. The second block has no independent visible placement, but its text remains registered and editable. No text characters or marks are copied, removed or reinserted by split/join. The registry contains exactly two shared texts throughout; every projected span records the original shared identity. Projection verifies complete, non-overlapping ownership of every current UTF-16 character.
+
+Original selections are stored as source-text key plus encoded Yrs relative anchor. Resolution verifies the original branch, then maps the current source position to the owning logical block and local UTF-16 offset. At a split boundary, Before chooses the left end and After the right start. At a join, second-text offsets gain the first span's current length. A right-affinity text-end uses a type-scoped relative endpoint because pinned Yrs `sticky_index` returns None at that endpoint. Deleted-character anchors follow the documented collapse behavior tested here; no deleted-node async-command or undo policy is inferred. Offset validation reads plain rich-text diff content, excluding serialized XML mark tags, and rejects positions inside surrogate pairs before mutation.
+
+## Expected semantic cases
+
+- Concurrent split/edit, both writer-ID assignments: source `^a😀`, destination `!bאב`, second block unchanged. Prefix/boundary/tail insertions retain underline/bold/italic/code marks. Original emoji selection stays in source; original `b` and tail endpoints resolve to destination with exact offsets.
+- Concurrent split/boundary deletion, both assignments: replacement `👩‍💻` stays in source as described above, destination empty, second block unchanged. The original range's left/end selections resolve to source offsets 1/6; marks and identities survive.
+- Concurrent join/edit, both assignments: one block `a😀!bc👩‍💻אבd`, exact rich runs and two original identities. Original second-block RTL selection resolves to joined offsets 11/13; the join seam resolves to offset 5.
+- Disconnected join/edit with dependent delta: three writers, a stored pre-join target, ZWJ insertion, subsequent relative-target insertion, and independent first-text edit produce `a😀!bc👩‍💻!אבd`. The original cursor resolves to joined offset 12 on all writers.
+- Invalid split: surrogate-interior/out-of-range positions leave update bytes, state vector and projection unchanged. Edge splits at 0/end and repeated-transform rejection preserve text identities and update bytes.
+
+All 17 editing writers have explicit semantic assertions. All 160 observer arrival permutations (36 concurrent, 120 disconnected/dependent, 4 edge) include initialization/deltas arriving late, duplicate delivery, reverse replay and fresh snapshot restore. Every schedule asserts content, marks, placement, shared identity and the applicable anchor expectations. Projection/selection reads leave full update bytes and state vector unchanged. `artifacts/` contains nine traces and 27 v1 binary updates. These are actual merge/restore boundaries, not prepared semantic answers or byte-only convergence.
+
+## Verification and limitations
+
+Canonical `split_join_probe`: 5 passed. Full core integration: 22 passed. Pinned Node interop: 3 passed, whose setup additionally executes 1 Rust interop test. No failures, skips or filtered tests in accepted runs. Empty Rust unit/doc harnesses are compile-only, not acceptance credit. Formatting passed. Rust/rustdoc 1.97.1, Node 24.19.0, Yrs 0.28.0 small-client and UTF-16/v1 were used.
+
+Preserved failures: ambiguous AsRef compile error (repaired with explicit branch type); five started tests deadlocked on root lookup during a read transaction (task-owned PID stopped, lookups moved before transaction); semantic run with 1 pass/4 failures (plain-offset validation, growing-end anchor construction and documented boundary-deletion expectation repaired). The first Node pass used host 26.4.0; its log remains supplemental, and only that environment-invalidated check was rerun with pinned Node. Full successful logs and exit sidecars remain alongside the failures.
+
+FND-1.6 supervisor prerequisite evidence was reused: all eight recorded source hashes still match, with shared seeded inputs, two candidates, both race families and 96 schedules in its receipt. No unchanged comparison was rerun. This probe does not qualify composition with tombstones/hierarchy, multiple competing split/join commands, undo, persistence acknowledgment, JS structural interoperability or final schema; the original later gates still govern those boundaries.
+
+No task-owned browsers/servers were started. Other-workspace processes and listeners were preserved. Removed only this session's inactive `core/target/debug/incremental/split_join_probe-1cx8m7yp35q7j` (19,112 KiB). Data volume has about 17.2 GiB free; broader cleanup was not authorized or performed.

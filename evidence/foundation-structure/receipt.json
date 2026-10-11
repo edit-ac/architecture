@@ -1,0 +1,315 @@
+{
+  "gate": "FND-1.6",
+  "state": "implemented and locally verified; not deployed; conflict-test candidate selected only",
+  "date": "2026-10-11T13:57:36.696256+00:00",
+  "source_revision": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "source_snapshot_sha256": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "core_base_revision": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "architecture_base_revision": "9e23cbb980b39ecaa9f99c6b5847066d86cf2e2f",
+  "implementation_state": "uncommitted working tree; hashes identify tested code; formatting-only normalization between narrow and broad tests",
+  "runtime": {
+    "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+    "cargo": "cargo 1.97.1 (c980f4866 2026-06-30)",
+    "node": "v24.19.0",
+    "yrs": "0.28.0 small-client, UTF-16, update v1",
+    "rustdoc": "matching rustup 1.97.1 via RUSTDOC=$(rustup which rustdoc)"
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test structure_probe --locked",
+      "environment": "EDITAC_STRUCTURE_OUTPUT=$PWD/benchmarks/structure; PATH=/Users/bpstr/.cargo/bin:$PATH; RUSTDOC=$(rustup which rustdoc)",
+      "exit": 0,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "measured": 0,
+      "filtered": 0,
+      "executed": 2,
+      "zero_test_harnesses": 0,
+      "log": "evidence/foundation-structure/structure.log",
+      "log_sha256": "f824b9d6bb11df90a1cfe1cf2e121ce40593f2b826bc6d6aaa7e992a4ab03825"
+    },
+    {
+      "command": "cargo test -p editac-core --locked",
+      "environment": "same pinned PATH/RUSTDOC",
+      "exit": 0,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "measured": 0,
+      "filtered": 0,
+      "executed": 13,
+      "zero_test_harnesses": 2,
+      "log": "evidence/foundation-structure/core-integration.log",
+      "log_sha256": "b89676900683309c7c7c9f33dc7365fc70f4c2710c4781c2e6d66f71855428fe"
+    },
+    {
+      "command": "node --test tests/interop.test.mjs",
+      "environment": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.cargo/bin:$PATH; RUSTDOC=$(rustup which rustdoc)",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "rust_setup_tests": 1,
+      "log": "evidence/foundation-structure/js-integration.log",
+      "log_sha256": "f5041e3aaa5fcd984ecd03343587d8ca010694fcb8644a3408e49faf945f609d"
+    },
+    {
+      "command": "cargo fmt --all --check",
+      "environment": "PATH=/Users/bpstr/.cargo/bin:$PATH",
+      "exit": 0,
+      "kind": "format check, not a test suite",
+      "log": "evidence/foundation-structure/format-check.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "proof_cases": {
+    "race_families": 2,
+    "seeded_inputs": 4,
+    "candidates": 2,
+    "writer_outcomes": 32,
+    "replay_schedules": 96,
+    "binary_artifacts": 48
+  },
+  "selection": "stable registry for conflict tests; XML replacement loses edit and creates duplicate blocks",
+  "source_hashes": {
+    "crates/editac-core/tests/structure_probe.rs": "57219d4abcf29af5c9c20d6c66f1f5c6e1a3b23d7d3c2563a4894c8b6f9ed982",
+    "crates/editac-core/tests/structure_xml.rs": "321e31351f2b745882b4bd00af5b3c64d27100e668c9add18b68829cc0610d29",
+    "crates/editac-core/tests/structure_registry.rs": "e0a14851b2ce12fa63100d16f73705fb40c7e91586dbf75d0f3c8652a4075be2",
+    "crates/editac-core/tests/support/structure_registry.rs": "4c24dbd1d4c6ffb2661cecb573060819e57b5bc0cfdc6996afaea3eded06031c",
+    "crates/editac-core/tests/support/structure_xml.rs": "d54b99e41f38565a2b33c8b6cdb6261e8193d97e35204c35c253e02edabf671c",
+    "Cargo.lock": "060d19d9224d624f4ef1064d74c97adc276d65b890a36b7476a3f86b1d5eacc4",
+    "rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b",
+    "fixtures/manifest.json": "ac4832d4d3637543e8d1b04cb05877f9c8c740eb47245e09df6c0d83a8b109ce"
+  },
+  "artifacts": {
+    "benchmarks/structure/implementation-cost.json": {
+      "bytes": 996,
+      "sha256": "77aa404d01b6f82e6ec1b1ff765eca7dfb968a56e13eecc24f265f07bd5184b3"
+    },
+    "benchmarks/structure/inputs.json": {
+      "bytes": 2338,
+      "sha256": "e54fc3acf5107e0bdc7e0a88dd0914e8161c1a91630986d9c63cdc86e26de9c4"
+    },
+    "benchmarks/structure/move-edit-0-Registry-0.bin": {
+      "bytes": 202,
+      "sha256": "e5196382678585bd88bd2e847fd2b5b8eb0a2735b4344168ff4d8755fb45250b"
+    },
+    "benchmarks/structure/move-edit-0-Registry-1.bin": {
+      "bytes": 24,
+      "sha256": "180e8db30383b19d1792538e2fdea0aa89141d58512420eb67f3cb480d6c84b4"
+    },
+    "benchmarks/structure/move-edit-0-Registry-2.bin": {
+      "bytes": 46,
+      "sha256": "9bcec48d8f44b69cf595bdd2cbf9f4d0133d63a6fb4c9ba5f6b3ec4cb8c7901f"
+    },
+    "benchmarks/structure/move-edit-0-Xml-0.bin": {
+      "bytes": 157,
+      "sha256": "06a75804ce0dcf036c9f7ec6f3819e4184475b2aa3f728bf2a1fa5892614d497"
+    },
+    "benchmarks/structure/move-edit-0-Xml-1.bin": {
+      "bytes": 110,
+      "sha256": "36b31e7021131a2bd42c4632de6c1679ba963cb183e91b5e211aefb1cacc91e3"
+    },
+    "benchmarks/structure/move-edit-0-Xml-2.bin": {
+      "bytes": 46,
+      "sha256": "a8d14455a4693b9e0ddc6f2da182b535ec089a68e0b1dd55b51b0fd14939f79e"
+    },
+    "benchmarks/structure/move-edit-1-Registry-0.bin": {
+      "bytes": 210,
+      "sha256": "3bde49b466fc1bca0f62f66f5e0ba6ffbbc96a248ed62b91b9cb64a1da9939a4"
+    },
+    "benchmarks/structure/move-edit-1-Registry-1.bin": {
+      "bytes": 24,
+      "sha256": "f4a872878ab749bb4506b40f9db7ab39233040b8fd039355f77acbe7a21d76ce"
+    },
+    "benchmarks/structure/move-edit-1-Registry-2.bin": {
+      "bytes": 46,
+      "sha256": "ce1a8098f95b385089cd462e59fa3db9b4f928ce7c749f17f571c10913158d80"
+    },
+    "benchmarks/structure/move-edit-1-Xml-0.bin": {
+      "bytes": 165,
+      "sha256": "5671840df505df3fcc242485416c1c0f4a9413932db3f7a13c365959c7000d10"
+    },
+    "benchmarks/structure/move-edit-1-Xml-1.bin": {
+      "bytes": 118,
+      "sha256": "81988522c4336e02f4eadacac7853f965dc20fcd5d6f412aa36f38ee011902c2"
+    },
+    "benchmarks/structure/move-edit-1-Xml-2.bin": {
+      "bytes": 46,
+      "sha256": "d901f1b1b6d3b9fdbbeee9f2a6ec79a7273c4837458fa9f8260bdbb5d617ea45"
+    },
+    "benchmarks/structure/move-edit-2-Registry-0.bin": {
+      "bytes": 207,
+      "sha256": "c2116791222e8a3e110d5530f6063973aebee61a2f6e8a269e789d001dde86a6"
+    },
+    "benchmarks/structure/move-edit-2-Registry-1.bin": {
+      "bytes": 24,
+      "sha256": "ddfb89f00febc8de1490a718adee3c18dc23db768898af4a10fc0da0f6f2f0b6"
+    },
+    "benchmarks/structure/move-edit-2-Registry-2.bin": {
+      "bytes": 46,
+      "sha256": "bf78e6aedd3697748e6eb9aae4b7bc463db984b79d87e9b6f421bdfb4aab0d0b"
+    },
+    "benchmarks/structure/move-edit-2-Xml-0.bin": {
+      "bytes": 162,
+      "sha256": "381643d64e19d275e554dc454221711f1b63e04e0635d248f26502dde4d11485"
+    },
+    "benchmarks/structure/move-edit-2-Xml-1.bin": {
+      "bytes": 114,
+      "sha256": "405fcf0031b84b3811a3cd83a92769279a1ee3e521db7684ec63fe1c464c7b4b"
+    },
+    "benchmarks/structure/move-edit-2-Xml-2.bin": {
+      "bytes": 46,
+      "sha256": "c27a675ac47780f7639f9193073e2ebf964cc803a9e1a76feb73812bd0998754"
+    },
+    "benchmarks/structure/move-edit-3-Registry-0.bin": {
+      "bytes": 205,
+      "sha256": "2ea543a12c09c866204bf6d6fc3913468c000dad89dc4bd943d6cf92e63ea6f8"
+    },
+    "benchmarks/structure/move-edit-3-Registry-1.bin": {
+      "bytes": 24,
+      "sha256": "5d666a9cfe1ac293e212cf6964f20289f712f10a8b1937a7674f24f7edbda07a"
+    },
+    "benchmarks/structure/move-edit-3-Registry-2.bin": {
+      "bytes": 46,
+      "sha256": "331ceade1764682818b7b378b597f75fdce02a5eecdd9c4d4df232b504dfdcf6"
+    },
+    "benchmarks/structure/move-edit-3-Xml-0.bin": {
+      "bytes": 160,
+      "sha256": "01b318c24e5990cda3ca0db9d22528bab349246d7fc9d516c7be8993a43b9f0b"
+    },
+    "benchmarks/structure/move-edit-3-Xml-1.bin": {
+      "bytes": 113,
+      "sha256": "94719ee14e3ca5fd5bdc734bae8645c9dd5ede248bf6441cdfba16772632d991"
+    },
+    "benchmarks/structure/move-edit-3-Xml-2.bin": {
+      "bytes": 46,
+      "sha256": "1d70c47918d573afb60ee5ee4639a1e7fb370e7f3ed805727cdb532666ea0b26"
+    },
+    "benchmarks/structure/move-edit.txt": {
+      "bytes": 31889,
+      "sha256": "0e0c6be29223a767df88d2697c4a2a9d8e530139d05ef24b382a5e8761680576"
+    },
+    "benchmarks/structure/move-move-0-Registry-0.bin": {
+      "bytes": 202,
+      "sha256": "e5196382678585bd88bd2e847fd2b5b8eb0a2735b4344168ff4d8755fb45250b"
+    },
+    "benchmarks/structure/move-move-0-Registry-1.bin": {
+      "bytes": 24,
+      "sha256": "180e8db30383b19d1792538e2fdea0aa89141d58512420eb67f3cb480d6c84b4"
+    },
+    "benchmarks/structure/move-move-0-Registry-2.bin": {
+      "bytes": 23,
+      "sha256": "26299ea09af7a598cac28b6037901acc329c8517371ec2b885b88c2f022e48a6"
+    },
+    "benchmarks/structure/move-move-0-Xml-0.bin": {
+      "bytes": 157,
+      "sha256": "06a75804ce0dcf036c9f7ec6f3819e4184475b2aa3f728bf2a1fa5892614d497"
+    },
+    "benchmarks/structure/move-move-0-Xml-1.bin": {
+      "bytes": 110,
+      "sha256": "36b31e7021131a2bd42c4632de6c1679ba963cb183e91b5e211aefb1cacc91e3"
+    },
+    "benchmarks/structure/move-move-0-Xml-2.bin": {
+      "bytes": 109,
+      "sha256": "e3bfe0b1246101831e2acc9f5735af04b6f2a0638a2116856d37005fd64880c8"
+    },
+    "benchmarks/structure/move-move-1-Registry-0.bin": {
+      "bytes": 210,
+      "sha256": "3bde49b466fc1bca0f62f66f5e0ba6ffbbc96a248ed62b91b9cb64a1da9939a4"
+    },
+    "benchmarks/structure/move-move-1-Registry-1.bin": {
+      "bytes": 24,
+      "sha256": "f4a872878ab749bb4506b40f9db7ab39233040b8fd039355f77acbe7a21d76ce"
+    },
+    "benchmarks/structure/move-move-1-Registry-2.bin": {
+      "bytes": 23,
+      "sha256": "34857a9ef103861e1df11904fa5ec1d6b8e437391d825400125ff6106bea028b"
+    },
+    "benchmarks/structure/move-move-1-Xml-0.bin": {
+      "bytes": 165,
+      "sha256": "5671840df505df3fcc242485416c1c0f4a9413932db3f7a13c365959c7000d10"
+    },
+    "benchmarks/structure/move-move-1-Xml-1.bin": {
+      "bytes": 118,
+      "sha256": "81988522c4336e02f4eadacac7853f965dc20fcd5d6f412aa36f38ee011902c2"
+    },
+    "benchmarks/structure/move-move-1-Xml-2.bin": {
+      "bytes": 117,
+      "sha256": "409abab1274d08f79360cc1b9eb33f00eda8365c15f4a6426f6d819a14e3ef5a"
+    },
+    "benchmarks/structure/move-move-2-Registry-0.bin": {
+      "bytes": 207,
+      "sha256": "c2116791222e8a3e110d5530f6063973aebee61a2f6e8a269e789d001dde86a6"
+    },
+    "benchmarks/structure/move-move-2-Registry-1.bin": {
+      "bytes": 24,
+      "sha256": "ddfb89f00febc8de1490a718adee3c18dc23db768898af4a10fc0da0f6f2f0b6"
+    },
+    "benchmarks/structure/move-move-2-Registry-2.bin": {
+      "bytes": 23,
+      "sha256": "4e1d36cf67adf844565a72163f1ad935604653254aab9b1bd3aee85760cfcbf1"
+    },
+    "benchmarks/structure/move-move-2-Xml-0.bin": {
+      "bytes": 162,
+      "sha256": "381643d64e19d275e554dc454221711f1b63e04e0635d248f26502dde4d11485"
+    },
+    "benchmarks/structure/move-move-2-Xml-1.bin": {
+      "bytes": 114,
+      "sha256": "405fcf0031b84b3811a3cd83a92769279a1ee3e521db7684ec63fe1c464c7b4b"
+    },
+    "benchmarks/structure/move-move-2-Xml-2.bin": {
+      "bytes": 114,
+      "sha256": "758001a96b1f075f232ba3da0c2cac964ffeefdc3b7acb3119f4da9b9e707453"
+    },
+    "benchmarks/structure/move-move-3-Registry-0.bin": {
+      "bytes": 205,
+      "sha256": "2ea543a12c09c866204bf6d6fc3913468c000dad89dc4bd943d6cf92e63ea6f8"
+    },
+    "benchmarks/structure/move-move-3-Registry-1.bin": {
+      "bytes": 24,
+      "sha256": "5d666a9cfe1ac293e212cf6964f20289f712f10a8b1937a7674f24f7edbda07a"
+    },
+    "benchmarks/structure/move-move-3-Registry-2.bin": {
+      "bytes": 23,
+      "sha256": "28d79009d633aecc003f8179f72dc1d33de941cb09b76694cef159d081a7a461"
+    },
+    "benchmarks/structure/move-move-3-Xml-0.bin": {
+      "bytes": 160,
+      "sha256": "01b318c24e5990cda3ca0db9d22528bab349246d7fc9d516c7be8993a43b9f0b"
+    },
+    "benchmarks/structure/move-move-3-Xml-1.bin": {
+      "bytes": 113,
+      "sha256": "94719ee14e3ca5fd5bdc734bae8645c9dd5ede248bf6441cdfba16772632d991"
+    },
+    "benchmarks/structure/move-move-3-Xml-2.bin": {
+      "bytes": 112,
+      "sha256": "0d5a024fdf689f9439d68715b9c9716d2cac20de5609873670daa72714eaa3ae"
+    },
+    "benchmarks/structure/move-move.txt": {
+      "bytes": 32599,
+      "sha256": "d9b0d9d22951cb3ad83d0eb4abdeb9c0cda9397f19ee3ab3a1c7c1079f8ec556"
+    }
+  },
+  "diagnostic_repair": "Initial helper extraction visibility rewrite also matched qualified expressions/imports; cargo fmt parse failure repaired before candidate test compilation. No feature assertion failure. Original failure diagnostic summarized separately; old registry rustdoc failure preserved untouched.",
+  "cleanup": {
+    "removed": [
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/incremental/structure_probe-3tdn76jxybp1i",
+        "allocated_kib": 20492
+      }
+    ],
+    "remaining_free_kib": 15930480,
+    "preserved": [
+      "target dependencies and prior build evidence",
+      "node_modules",
+      "all other workspace processes"
+    ],
+    "scope": "Only new comparison-test incremental cache; reproducible and inactive. Broader disk cleanup requires separate approval."
+  },
+  "evidence_summary_sha256": "ce30a5dd02336819cad595d742cd8d5417c4f1beacdbc9bc0e27ea3da1647fea"
+}

@@ -1,0 +1,178 @@
+{
+  "gate": "FND-1.4",
+  "state": "implemented and locally verified; not deployed",
+  "date": "2026-10-11",
+  "source_snapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/01-foundation-7e3823cd1400/source-68b66c0ed334.md",
+  "source_sha256": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "prompt_revision": "7eaa063f3629",
+  "core_base": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "architecture_base": "1a23b144ec256ad75f3debac45e1a9c493e8e5d3",
+  "runtime": {
+    "rust": "1.97.1",
+    "node": "24.19.0",
+    "yrs": "0.28.0, small-client, UTF-16, update-v1"
+  },
+  "environment": {
+    "PATH": "/Users/bpstr/.cargo/bin:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH",
+    "EDITAC_XML_TRACE_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/foundation-xml/artifacts"
+  },
+  "implementation": {
+    "crates/editac-core/tests/structure_xml.rs": "938b7d459151fefd258d2cfb1b44638b1a463b01c9ec43b63386e3e4553ab6bb"
+  },
+  "fixture": {
+    "input": "a😀b",
+    "input_utf8_bytes": 6,
+    "input_utf16_units": 4,
+    "expected_edited": "a😀!b",
+    "edited_utf8_bytes": 7,
+    "edited_utf16_units": 5,
+    "seed": "fixed minimal astral case from FND-1.2 (manifest seed 1592594996); no random operations",
+    "client_ids": [
+      11,
+      22,
+      33,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105
+    ],
+    "delivery": "all 6 base/move/edit permutations, each update duplicated, then reverse replay"
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test structure_xml --locked",
+      "exit": 0,
+      "executed_passed_failed_skipped": [
+        3,
+        3,
+        0,
+        0
+      ],
+      "filtered": 0,
+      "log": "rust.log"
+    },
+    {
+      "command": "cargo test -p editac-core --test interop --locked",
+      "exit": 0,
+      "executed_passed_failed_skipped": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "filtered": 0,
+      "log": "interop-rust.log"
+    },
+    {
+      "command": "node --test tests/interop.test.mjs",
+      "exit": 0,
+      "executed_passed_failed_skipped": [
+        3,
+        3,
+        0,
+        0
+      ],
+      "filtered": null,
+      "log": "interop-node.log"
+    },
+    {
+      "command": "cargo fmt --all -- --check",
+      "exit": 0,
+      "executed_passed_failed_skipped": null,
+      "filtered": null,
+      "log": "format-check.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "executed_passed_failed_skipped": null,
+      "filtered": null,
+      "log": "diff-check.log"
+    }
+  ],
+  "initial_check": "rust-initial.log: 3 passed, zero failures/skips; unused import warning subsequently removed. No feature failure. Final source differs from tested source only by rustfmt import wrapping.",
+  "preserved_failure": {
+    "log": "format-check-initial.log",
+    "exit": 1,
+    "executed_tests": 0,
+    "repair": "rustfmt import wrapping after unused import removal; final format check exit 0"
+  },
+  "interop_node_setup": "invokes existing Rust interop harness; separate interop-rust.log provides authoritative 1/1/0/0 count",
+  "artifacts": {
+    "artifacts/base.bin": {
+      "sha256": "f182a921789eda63de9b1af579f0def0e15ec1eada27f6413e1c5a18aeaa6776",
+      "bytes": 145
+    },
+    "artifacts/concurrent-move-edit.txt": {
+      "sha256": "2d2b6a8188a5b82b5e7969a69741da40a7c15b0a76c62867b98e9791d07395aa",
+      "bytes": 4556
+    },
+    "artifacts/edit-in-place.txt": {
+      "sha256": "6249eb82287594d4fe5da20b7ecd1a369f176a50e6add6425164cd16e620ad25",
+      "bytes": 1023
+    },
+    "artifacts/edit.bin": {
+      "sha256": "1ec7b345820f87115349a48a14bcbb8805af90cd09aad2005b0b48c41c5e5841",
+      "bytes": 46
+    },
+    "artifacts/move.bin": {
+      "sha256": "c5442053d20a81ca98b317e80c48fbb7246beb8e298ab9806ec5088e74a46e58",
+      "bytes": 83
+    },
+    "artifacts/sequential-move.txt": {
+      "sha256": "4eb605ea8bc2ee264481c0b05332a058de80eafc7f3621fcee44c4d1a13a557f",
+      "bytes": 1784
+    }
+  },
+  "logs": {
+    "diff-check.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "format-check-initial.log": {
+      "sha256": "2b67325104332db7712301b3086911636f6fd1d0eb442d8c6edae78ac2ba6e75",
+      "bytes": 460
+    },
+    "format-check.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "format.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "interop-node.log": {
+      "sha256": "80af1383b15dad80d7f9ef11601d461b561e30703bf47ab62deb78753a0994a1",
+      "bytes": 420
+    },
+    "interop-rust.log": {
+      "sha256": "c1ea55fc6323f0b47cd364e1382d49304948f676fbb5756432d085962d7651e6",
+      "bytes": 314
+    },
+    "rust-initial.log": {
+      "sha256": "5d36ef976bd629f48a627b7eb5fcd230b054b0ac572cc5223fef9960494e2d8d",
+      "bytes": 2076
+    },
+    "rust.log": {
+      "sha256": "2ff2e291bee791605c4889f533be669e272e149f5295989bc560d914ca8b9fe9",
+      "bytes": 587
+    }
+  },
+  "cleanup": {
+    "removed_path": "/Users/bpstr/Github/edit-ac/core/target",
+    "logical_bytes": 185183048,
+    "allocated_file_bytes": 188690432,
+    "remaining_free_bytes": 22060810240,
+    "ownership": "target absent at discovery; every file created after session start; no open files immediately before removal; all captured test sessions exited",
+    "processes": "No task-owned server/browser started; other tasks and listeners preserved",
+    "allocated_tree_bytes_by_du": 166670336,
+    "free_space_change_includes_other_activity": true
+  },
+  "limitations": [
+    "test-only XML clone/remove candidate; no final schema",
+    "convergent visible content can omit edits targeting the removed original",
+    "no provider, browser, durability, anchor or performance qualification"
+  ]
+}

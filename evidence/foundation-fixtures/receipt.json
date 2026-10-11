@@ -1,0 +1,48 @@
+{
+  "gate": "FND-1.2",
+  "verified": "2026-10-11",
+  "sourceRevision": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "snapshotSha256": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "promptRevision": "7eaa063f3629",
+  "coreBase": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "architectureBase": "1a23b144ec256ad75f3debac45e1a9c493e8e5d3",
+  "implementation": "uncommitted working-tree paths identified by SHA-256",
+  "implementationSha256": {
+    "fixtures/generate.mjs": "ea4c3779579e7f4f519326ff80f49c60434132ebf450457833a690f1fd819c6f",
+    "fixtures/manifest.json": "ac4832d4d3637543e8d1b04cb05877f9c8c740eb47245e09df6c0d83a8b109ce",
+    "fixtures/README.md": "810867f2a1866aa3c4904ac005566430727a8382353daf2c1f98fda314732944",
+    "tests/fixtures.test.mjs": "9b82afc08d7268261b88363c5a8dbd43c8689ae7a04f4ab52de5256c43193b32",
+    "package.json": "cd4b4293dd954327ec7b9dfa0df7c3362a0890dd30dc386ceca4c94a2bec54e0"
+  },
+  "node": "v24.19.0",
+  "seed": 1592594996,
+  "checks": [
+    {
+      "command": "node --test tests/fixtures.test.mjs",
+      "exit": 0,
+      "executed": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "logs/fixtures-initial.log"
+    },
+    {
+      "command": "node --test tests/protocol-toolchain.test.mjs",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "logs/js-integration.log"
+    },
+    {
+      "command": "git diff --check -- package.json fixtures tests/fixtures.test.mjs",
+      "exit": 0,
+      "log": "logs/diff-check.log"
+    }
+  ],
+  "reproducibility": "reproducibility.json",
+  "qualification": "input recipes and semantic string oracle only; no applied Aged CRDT, engine anchors, structural schema or provider result"
+}

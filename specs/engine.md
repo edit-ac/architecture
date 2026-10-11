@@ -1,6 +1,6 @@
 # Shared engine contract
 
-Status: development contract; structural representation remains behind an evidence gate.
+Status: development contract; the bounded foundation profile is locally qualified in [foundation evidence](../evidence/foundation.md). Production engine behavior remains subject to its own gates.
 Scope: web editor release, with portable Rust interfaces for later native adapters.
 The initial roadmap's full native SDK parity requirement is deferred by the current project scope.
 This document describes required behavior; it does not assert that the engine is implemented.
@@ -19,7 +19,7 @@ This document describes required behavior; it does not assert that the engine is
 ## Compatibility profile
 
 Start the compatibility spike with Yrs 0.28.0, Yjs 13.6.33 and y-protocols 1.0.7.
-These pins are candidates until the lockfiles and interoperability evidence qualify them.
+These exact pins are qualified for the bounded foundation profile; upgrades require new interoperability evidence.
 Enable Yrs `small-client` for the stable Yjs 13 line; the 0.28 default is different.
 Set `OffsetKind::Utf16` explicitly in a single document-construction path.
 Use update encoding v1 for the baseline; v2 requires a separate qualified profile.
@@ -28,6 +28,18 @@ Generate a distinct client ID for every independently editing live replica, incl
 Never restore one persisted writer ID into two simultaneously active writers.
 Freeze root shared-type names and types with the schema decision.
 Pin dependency versions and options in fixtures; upgrades rerun the compatibility suite.
+
+The foundation freeze specifies exact roots and bounded ownership in
+[schema-v1.md](schema-v1.md), and metadata/admission in
+[protocol-v1.md](protocol-v1.md). FND-1.12 qualifies this exact fixed-pair mapping
+with pinned Yrs/Yjs moves, deletion, overlapping edits, split/join ownership and
+binary relative anchors from both languages; see
+[structural exchange evidence](../evidence/foundation-schema-interop/README.md).
+This is deterministic local interoperability evidence. The actual compiled fixture
+WASM boundary is separately qualified by [loading evidence](../evidence/foundation-wasm/README.md)
+for supplied-URL and local packed native ESM consumers, with SSR-safe import.
+It uses the earlier XML/text fixture, not production registry commands.
+Production commands, admission ports and persistence remain subsequent gates.
 
 ## Positions and anchors
 

@@ -1,0 +1,45 @@
+{
+  "verified": {
+    "source_hashes": 48,
+    "evidence_hashes": 1299,
+    "prior_receipts": 13
+  },
+  "mismatches": [],
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --locked",
+      "exit": 0,
+      "executed": 57,
+      "passed": 57,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "core-final.log",
+      "empty_compile_only_harnesses": 2
+    },
+    {
+      "command": "node --test tests/schema-interop.test.mjs tests/wasm-load.test.mjs",
+      "exit": 0,
+      "executed": 19,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "log": "combined-node-final.log",
+      "setup": "additionally asserts actual Rust schema_interop 1/1 in setup"
+    },
+    {
+      "command": "node --test tests/wasm-load.test.mjs",
+      "exit": 0,
+      "executed": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "log": "wasm-repaired.log",
+      "reason": "narrow verification after evidence-directory setup repair, before original combined integration check"
+    }
+  ]
+}

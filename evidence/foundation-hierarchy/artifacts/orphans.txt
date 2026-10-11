@@ -1,0 +1,145 @@
+Projection {
+    nodes: {
+        "a": Node {
+            parent: "@root",
+            order: 3,
+            reason: Some(
+                "cycle-cut",
+            ),
+            identity: "<11#2>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+        "b": Node {
+            parent: "@root",
+            order: 1,
+            reason: None,
+            identity: "<11#11>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+        "c": Node {
+            parent: "@root",
+            order: 0,
+            reason: Some(
+                "invalid-or-missing-placement",
+            ),
+            identity: "<11#20>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+        "d": Node {
+            parent: "@root",
+            order: 0,
+            reason: Some(
+                "orphan-or-invalid-parent",
+            ),
+            identity: "<11#29>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+        "e": Node {
+            parent: "@root",
+            order: 0,
+            reason: Some(
+                "orphan-or-invalid-parent",
+            ),
+            identity: "<11#38>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+    },
+    traversal: [
+        "c",
+        "d",
+        "e",
+        "b",
+        "a",
+    ],
+    edge_visits: 5,
+}

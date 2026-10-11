@@ -1,0 +1,183 @@
+{
+  "gate": "FND-1.7",
+  "state": "implemented and locally verified; test-only policy; not deployed or adopted as schema",
+  "date": "2026-10-11T14:04:34.128836+00:00",
+  "source_revision": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "loaded_prompt_revision": "7eaa063f3629",
+  "core_base_revision": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "implementation_files": {
+    "crates/editac-core/tests/delete_edit_probe.rs": "ec38b66ddbc3b779e78ec62bcc7119f83ef8a30f01e7a64fec7d74da008fff27",
+    "crates/editac-core/tests/support/delete_edit.rs": "d8c4499fd60d246d11d820168d9f00d4b74d872192752c23036ca5e7707a0878",
+    "crates/editac-core/tests/support/structure_registry.rs": "4c24dbd1d4c6ffb2661cecb573060819e57b5bc0cfdc6996afaea3eded06031c",
+    "crates/editac-core/src/lib.rs": "cb28b4065b2cc6a305d6d09a8478601c146a7c318be84b46fe87859aaa63b0b5",
+    "Cargo.toml": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7",
+    "Cargo.lock": "060d19d9224d624f4ef1064d74c97adc276d65b890a36b7476a3f86b1d5eacc4",
+    "rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b",
+    "package.json": "9435062aeae52176a5cccbec460c469854792939414f332ef0ca4ca6eae94bd5",
+    "package-lock.json": "f09ce3d46713bf01d505632d987f9beea9d52f4faf78bb9e0b762b878f5ea7ea",
+    "tests/interop.test.mjs": "2db18fb4ab6e8a4c03c0e01fcc4a76e8086392bba2f7f41e3ad8e517157857dd"
+  },
+  "fixtures": {
+    "input": "a\ud83d\ude00b",
+    "input_sha256": "6fba5b2ea783ded096fc2444d540ffbdf49168df30993b155b7efb683313f110",
+    "seed": null,
+    "recipe": "fixed operations and explicit writer IDs; no RNG",
+    "format": "v1 updates; UTF-16; Yrs 0.28.0 small-client",
+    "all_arrival_permutations": 138,
+    "snapshot_restores": 138,
+    "writer_replicas": 9,
+    "replay": "duplicate every update plus reverse replay; initialization and dependent delta may arrive late"
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test delete_edit_probe --locked",
+      "environment": "PATH=/Users/bpstr/.cargo/bin:$PATH; RUSTDOC=$(rustup which rustdoc); EDITAC_DELETE_EDIT_OUTPUT=$PWD/../architecture/evidence/foundation-delete-edit/artifacts",
+      "exit": 0,
+      "exit_evidence": "complete successful Cargo test result",
+      "executed": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "measured": 0,
+      "filtered": 0,
+      "zero_test_harnesses": 0,
+      "log": "evidence/foundation-delete-edit/delete-edit.log",
+      "log_sha256": "5e1c2551c0aeb76b2a04e236493b3dedd29048730fcc594fbe2ff2aa33f6f158"
+    },
+    {
+      "command": "cargo test -p editac-core --locked",
+      "environment": "PATH=/Users/bpstr/.cargo/bin:$PATH; RUSTDOC=$(rustup which rustdoc)",
+      "exit": 0,
+      "exit_evidence": "core-integration.exit",
+      "executed": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "measured": 0,
+      "filtered": 0,
+      "zero_test_harnesses": 2,
+      "log": "evidence/foundation-delete-edit/core-integration.log",
+      "log_sha256": "09812148c436371bfe12aa3712ba69a59be92088e44ddf5596d33e7bf72114c1"
+    },
+    {
+      "command": "node --test tests/interop.test.mjs",
+      "environment": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.cargo/bin:$PATH; RUSTDOC=$(rustup which rustdoc)",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "rust_setup_tests": 1,
+      "log": "evidence/foundation-delete-edit/js-integration.log",
+      "log_sha256": "0842f859e731ca0c044f0adcc7ea649c18f83ebefde1449c4b35a6e5282a9357"
+    },
+    {
+      "command": "cargo fmt --all --check",
+      "exit": 0,
+      "kind": "format check, not a test suite",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "artifacts": {
+    "evidence/foundation-delete-edit/artifacts/concurrent-21-22-0.bin": {
+      "bytes": 190,
+      "sha256": "46daa4e0dac73376064b80508cd25be11499d712611ef081348c3967308026f6"
+    },
+    "evidence/foundation-delete-edit/artifacts/concurrent-21-22-1.bin": {
+      "bytes": 41,
+      "sha256": "a5cba31382cfa175c2ab454f4f131a3c6ba41c7aecba76a1d36ddfec18b07691"
+    },
+    "evidence/foundation-delete-edit/artifacts/concurrent-21-22-2.bin": {
+      "bytes": 46,
+      "sha256": "448ffd1b296888661a7ef6807223c04a5cb6bc2ef85f14731db79beef329352b"
+    },
+    "evidence/foundation-delete-edit/artifacts/concurrent-21-22.txt": {
+      "bytes": 1536,
+      "sha256": "d374b27df54b2b5e84533d8b12670fdbe306d693b1660885bab5c4ff5ae128bc"
+    },
+    "evidence/foundation-delete-edit/artifacts/concurrent-22-21-0.bin": {
+      "bytes": 190,
+      "sha256": "46daa4e0dac73376064b80508cd25be11499d712611ef081348c3967308026f6"
+    },
+    "evidence/foundation-delete-edit/artifacts/concurrent-22-21-1.bin": {
+      "bytes": 41,
+      "sha256": "ddb326dff5fab391b2447ed5b80a740f9f6715dadfdbfe21972ba90aeb12e2dc"
+    },
+    "evidence/foundation-delete-edit/artifacts/concurrent-22-21-2.bin": {
+      "bytes": 46,
+      "sha256": "fc43d6f00ea00af6f63784091cc4baa7cc0d633df5fdc61ea1cbc1efef46ae32"
+    },
+    "evidence/foundation-delete-edit/artifacts/concurrent-22-21.txt": {
+      "bytes": 1536,
+      "sha256": "d374b27df54b2b5e84533d8b12670fdbe306d693b1660885bab5c4ff5ae128bc"
+    },
+    "evidence/foundation-delete-edit/artifacts/disconnected-dependent-edits-0.bin": {
+      "bytes": 190,
+      "sha256": "46daa4e0dac73376064b80508cd25be11499d712611ef081348c3967308026f6"
+    },
+    "evidence/foundation-delete-edit/artifacts/disconnected-dependent-edits-1.bin": {
+      "bytes": 41,
+      "sha256": "a5cba31382cfa175c2ab454f4f131a3c6ba41c7aecba76a1d36ddfec18b07691"
+    },
+    "evidence/foundation-delete-edit/artifacts/disconnected-dependent-edits-2.bin": {
+      "bytes": 46,
+      "sha256": "448ffd1b296888661a7ef6807223c04a5cb6bc2ef85f14731db79beef329352b"
+    },
+    "evidence/foundation-delete-edit/artifacts/disconnected-dependent-edits-3.bin": {
+      "bytes": 56,
+      "sha256": "b7c05d9a28daf70a6279d38bebca21e18fe89290b80c21861a5521b097a353c7"
+    },
+    "evidence/foundation-delete-edit/artifacts/disconnected-dependent-edits-4.bin": {
+      "bytes": 49,
+      "sha256": "3a92f0c0add58e8cfdc42c10cac3b78c1ec5792356b7dc5d364aca4188940a74"
+    },
+    "evidence/foundation-delete-edit/artifacts/disconnected-dependent-edits.txt": {
+      "bytes": 13113,
+      "sha256": "69fde8b408422360fda609a0f3c05df64aadd10c01ba92c3ef4a8221c86ae806"
+    },
+    "evidence/foundation-delete-edit/artifacts/edit-then-delete-0.bin": {
+      "bytes": 190,
+      "sha256": "46daa4e0dac73376064b80508cd25be11499d712611ef081348c3967308026f6"
+    },
+    "evidence/foundation-delete-edit/artifacts/edit-then-delete-1.bin": {
+      "bytes": 46,
+      "sha256": "fc43d6f00ea00af6f63784091cc4baa7cc0d633df5fdc61ea1cbc1efef46ae32"
+    },
+    "evidence/foundation-delete-edit/artifacts/edit-then-delete-2.bin": {
+      "bytes": 41,
+      "sha256": "ddb326dff5fab391b2447ed5b80a740f9f6715dadfdbfe21972ba90aeb12e2dc"
+    },
+    "evidence/foundation-delete-edit/artifacts/edit-then-delete.txt": {
+      "bytes": 1536,
+      "sha256": "d374b27df54b2b5e84533d8b12670fdbe306d693b1660885bab5c4ff5ae128bc"
+    },
+    "evidence/foundation-delete-edit/artifacts/known-tombstone-0.bin": {
+      "bytes": 226,
+      "sha256": "3d74719bb58b1bce40da129b53476a54715046e3d0d89369aa5b2e55524ef6fb"
+    },
+    "evidence/foundation-delete-edit/artifacts/known-tombstone.txt": {
+      "bytes": 1469,
+      "sha256": "5c0a51f7d0ceff451b2d1c786b0962b80b9ae313e0739e2bf6b31050f88679c1"
+    }
+  },
+  "limits": [
+    "Delete/edit candidate only; no production schema, undo restoration or compaction qualification",
+    "Tombstone visibility and explicit recovery are read projections of one Yrs replica; content/marks/identity are asserted",
+    "Empty unit/doc harnesses are compile-only and not acceptance evidence",
+    "Pre-existing unused BLOCK warning in structure_registry remains; no new probe warnings"
+  ],
+  "cleanup": {
+    "removed": [
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/incremental/delete_edit_probe-3uwp3nyt14s8u",
+        "allocated_kib": 9276
+      }
+    ],
+    "remaining_free_kib": 18371272,
+    "no_task_owned_browsers_or_servers": true,
+    "other_workspace_services": "preserved; no signals sent"
+  },
+  "evidence_summary_sha256": "f1e8ec3b8d2ae15cc2b5b22235dbf6e721c5f8d95292c120ee51a290ef472069"
+}

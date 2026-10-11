@@ -1,0 +1,27 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0282]: type annotations needed
+   --> crates/editac-core/tests/support/split_join.rs:245:46
+    |
+245 |             assert_eq!(offset.branch.id(), a.as_ref().id());
+    |                                              ^^^^^^
+    |
+help: try using a fully qualified path to specify the expected types
+    |
+245 -             assert_eq!(offset.branch.id(), a.as_ref().id());
+245 +             assert_eq!(offset.branch.id(), <XmlTextRef as AsRef<T>>::as_ref(&a).id());
+    |
+
+error[E0282]: type annotations needed
+   --> crates/editac-core/tests/support/split_join.rs:303:32
+    |
+303 |     if offset.branch.id() != t.as_ref().id() {
+    |                                ^^^^^^
+    |
+help: try using a fully qualified path to specify the expected types
+    |
+303 -     if offset.branch.id() != t.as_ref().id() {
+303 +     if offset.branch.id() != <XmlTextRef as AsRef<T>>::as_ref(&t).id() {
+    |
+
+For more information about this error, try `rustc --explain E0282`.
+error: could not compile `editac-core` (test "split_join_probe") due to 2 previous errors

@@ -1,0 +1,20 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: unused imports: `Out` and `updates::encoder::Encode`
+  --> crates/editac-core/tests/schema_interop.rs:13:27
+   |
+13 |     Any, Assoc, Doc, Map, Out, ReadTxn, Text, Transact, XmlOut, XmlTextPrelim,
+   |                           ^^^
+14 |     updates::encoder::Encode,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "schema_interop") generated 1 warning (run `cargo fix --test "schema_interop" -p editac-core` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.99s
+     Running tests/schema_interop.rs (target/debug/deps/schema_interop-fb55396706c2c349)
+
+running 1 test
+error: test failed, to rerun pass `-p editac-core --test schema_interop`
+
+Caused by:
+  process didn't exit successfully: `/Users/bpstr/Github/edit-ac/core/target/debug/deps/schema_interop-fb55396706c2c349` (signal: 15, SIGTERM: termination signal)
