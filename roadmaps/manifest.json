@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "roadmaps": [
+    {
+      "file": "01-foundation.md",
+      "prefix": "FND",
+      "upstream": [],
+      "workspace": "core"
+    },
+    {
+      "file": "02-engine.md",
+      "prefix": "ENG",
+      "upstream": [
+        "01-foundation.md"
+      ],
+      "workspace": "core"
+    },
+    {
+      "file": "03-local-storage.md",
+      "prefix": "LOC",
+      "upstream": [
+        "02-engine.md"
+      ],
+      "workspace": "core"
+    },
+    {
+      "file": "04-browser-input.md",
+      "prefix": "WEB",
+      "upstream": [
+        "02-engine.md",
+        "03-local-storage.md"
+      ],
+      "workspace": "core"
+    },
+    {
+      "file": "05-markdown-content.md",
+      "prefix": "FMT",
+      "upstream": [
+        "02-engine.md",
+        "04-browser-input.md"
+      ],
+      "workspace": "core"
+    },
+    {
+      "file": "06-synchronization.md",
+      "prefix": "SYN",
+      "upstream": [
+        "02-engine.md",
+        "03-local-storage.md"
+      ],
+      "workspace": "core"
+    },
+    {
+      "file": "07-extension-modules.md",
+      "prefix": "MOD",
+      "upstream": [
+        "05-markdown-content.md",
+        "06-synchronization.md"
+      ],
+      "workspace": "core"
+    },
+    {
+      "file": "08-sdk-integration.md",
+      "prefix": "SDK",
+      "upstream": [
+        "04-browser-input.md",
+        "05-markdown-content.md",
+        "06-synchronization.md",
+        "07-extension-modules.md"
+      ],
+      "workspace": "core"
+    },
+    {
+      "file": "09-native-preparation.md",
+      "prefix": "NAT",
+      "upstream": [
+        "02-engine.md"
+      ],
+      "workspace": "core"
+    },
+    {
+      "file": "10-web-qualification.md",
+      "prefix": "REL",
+      "upstream": [
+        "08-sdk-integration.md"
+      ],
+      "workspace": "core"
+    },
+    {
+      "file": "11-offline-cli.md",
+      "prefix": "CLI",
+      "upstream": [
+        "02-engine.md",
+        "05-markdown-content.md"
+      ],
+      "workspace": "cli"
+    }
+  ]
+}
