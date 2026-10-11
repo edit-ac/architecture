@@ -1,6 +1,6 @@
 # Storage and synchronization contract
 
-The engine emits immutable update bytes and document/epoch/schema/origin metadata. Browser storage and transport adapters consume these independently. Baseline versions and wire layout are frozen by the foundation protocol task, using the [engine contract](engine.md).
+The engine emits immutable update bytes and document/epoch/schema/origin metadata. Browser and native CLI storage/transport adapters consume these independently. Baseline versions and wire layout are frozen by the foundation protocol task, using the [engine contract](engine.md). The [CLI contract](cli.md) defines filesystem durability, Markdown working buffers and hosted target resolution; browser-specific storage mechanisms are not native filesystem guarantees.
 
 ## Local durability
 
@@ -31,3 +31,7 @@ The local reference service is integration infrastructure: loopback by default, 
 Remote schema/epoch mismatch returns an explicit incompatibility state. Migrations use a declared new epoch and session transition; old offline updates cannot be silently applied after a rewrite. Checkpoint compaction retains reconnect identity according to the pinned protocol.
 
 Sources: [IndexedDB durability](https://w3c.github.io/IndexedDB/), [Yjs updates](https://docs.yjs.dev/api/document-updates), [Yrs sync protocol](https://docs.rs/yrs/0.28.0/yrs/sync/protocol/trait.Protocol.html).
+
+## Additional clients and protected profiles
+
+[Client contracts](client-contracts.md) extend these ports to native/CLI sessions and explicit cross-tab/process delivery; sharing storage alone is not live synchronization. [Security profiles](security-encryption.md) can wrap local storage and transport while preserving acknowledgment identity. Ciphertext receipts certify stored bytes, not plaintext schema validation or endpoint authorization. Agent requests add durable request/result deduplication in the host/session boundary.

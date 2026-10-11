@@ -1,8 +1,8 @@
 # Import, export and Markdown contract
 
 Status: development contract; parser conformance and schema qualification are implementation gates.
-Scope: semantic interchange and clipboard behavior for the initial web editor.
-The Rust implementation must remain reusable by future native adapters.
+Scope: semantic interchange, browser clipboard behavior and the [CLI's Markdown editing representation](cli.md).
+The Rust implementation must remain reusable by CLI and future native adapters.
 
 ## Supported profile
 
@@ -93,6 +93,8 @@ Do not claim a fallback exports an editable table, native math rendering or full
 Versioned JSON export preserves semantic types/data without pretending to be collaborative history.
 HTML export emits only the declared safe semantic vocabulary with escaped text/attributes.
 Export requires an explicit request and never runs on each keystroke or save notification.
+
+CLI source editing retains an exact source baseline and prepares semantic changes through the shared engine. Unchanged source must not be normalized or rewritten. Hosted document edits preserve unchanged semantic identities, anchors and unsupported data; replacing the document with a fresh Markdown import is not an editing/synchronization strategy. See the [CLI contract](cli.md) for source preservation, concurrent edit conflicts and literal-text mode. This does not change the deterministic semantic export contract or make Markdown a CRDT checkpoint.
 
 ## CRDT persistence and migration
 

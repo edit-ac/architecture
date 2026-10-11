@@ -257,3 +257,25 @@ Validation:
 Evidence: Progress entry `FMT-1.11` with changed paths, exact command/result, source and implementation revisions, fixture/artifact hashes, and any preserved failure log. Durable milestone summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, changed symbols/files, exact failing fixture or missing fact, and next bounded action for `FMT-1.11`.
 Blocked behavior: Leave `FMT-1.11` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with reason, owner/unblock condition and retry trigger. Select another dependency-ready task in this track; if none exists, report the gate and stop instead of polling.
+
+### Task FMT-1.12 — Qualify portable Markdown source reconciliation
+
+- [ ] FMT-1.12 Qualify portable Markdown source reconciliation.
+
+Purpose: Deliver a shared source-to-semantic editing boundary for CLI and future text-based hosts.
+Context: `crates/editac-markdown/src/reconcile.rs`; `crates/editac-markdown/tests/reconcile.rs`; `crates/editac-core/src/commands/`; `../architecture/specs/formats.md`; `../architecture/specs/cli.md`; `../architecture/specs/engine.md`.
+Dependencies: FMT-1.11.
+Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue. Propose a controller split before implementation if identity mapping or concurrent revalidation needs a separate boundary.
+Acceptance: An exact source baseline, opening semantic identities/anchors and edited source produce validated prepared commands without whole-document replacement. No-op retains source bytes and identities; supported disjoint edits preserve unchanged nodes/marks; ambiguous, overlapping, deleted-target and unsupported-content changes produce recoverable diagnostics without partial mutation. Literal-text mode never interprets Markdown. Concurrent structured updates are not reparsed as source.
+
+Implementation:
+
+- [ ] FMT-1.12-I1 Define the portable source-reconciliation API with the shared parser/command boundary. Preserve baseline source spelling, unchanged semantic identities and unknown module data; revalidate current anchors before commit. Return explicit conflicts rather than treating stale source replacement as a CRDT merge. Pin fixtures for Unicode, lists/fences/reference links, no-op, unsupported atoms and prepared second-replica changes.
+
+Validation:
+
+- [ ] FMT-1.12-V1 cargo test -p editac-markdown --test reconcile --locked; cargo test -p editac-core --locked. Assert all acceptance cases and record nonzero executed/passed/failed/skipped counts, seeds/hashes, unchanged-state rejection evidence and preserved failures.
+
+Evidence: Progress entry `FMT-1.12` with changed paths, exact command/result, source and implementation revisions, fixture/artifact hashes, and any preserved failure log. Durable milestone summaries belong in `../architecture/evidence/`.
+Handoff: Record the last completed substep, changed symbols/files, exact failing fixture or missing fact, and next bounded action for `FMT-1.12`.
+Blocked behavior: Leave `FMT-1.12` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with reason, owner/unblock condition and retry trigger. Select another dependency-ready task in this track; if none exists, report the gate and stop instead of polling.
