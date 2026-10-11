@@ -17,15 +17,19 @@ Use Node 24.19.0/npm 11.17.0 for the core scaffold; select it explicitly with th
 Replace `/path/to/edit-ac` with the parent directory containing `core`, `architecture`, `cli` and `docs`. Ensure upstream tracks are COMPLETE at the current source revision with reproducible passing evidence. Native/CLI are independent branches; they do not gate web release.
 
 ```sh
-roadmap-runner start /path/to/edit-ac/architecture/roadmaps/01-foundation.md \
+roadmap-runner /path/to/edit-ac/architecture/roadmaps/01-foundation.md \
   --workspace /path/to/edit-ac/core \
   --progress-file /path/to/edit-ac/architecture/progress/01-foundation.md \
-  --client codex --timeout 45m --json
+  --client codex --timeout 45m
 ```
 
 For CLI use `--workspace /path/to/edit-ac/cli`; for public documentation use `--workspace /path/to/edit-ac/docs`. Sources and progress use distinct absolute paths. One runner per workspace/progress file; isolated worktrees require an explicitly coordinated integration plan. The model must be one actually available in the selected client; specify `--model` only after choosing it. A smaller model should read the task context and complete one parent, not expand the entire product in one iteration.
 
 `--timeout 45m` bounds an individual worker, not total runtime or total inference cost. Runner execution uses the selected client's configured model access; this planning task did not authorize unattended runs. The prohibition on paid synthetic AI testing still applies to all implementation validation.
+
+Runner 0.8.0 rejects managed `start` when source/progress paths are outside the authorized workspace, as they are in this sibling-directory layout. The foreground command above supports those paths and still registers a run ID for `status`/`stop`. Keep its terminal open, or use an owned detached launcher with redirected output and verify readiness through `status`.
+
+Select the verified executable explicitly after changing Node PATH. On this Mac `/opt/homebrew/bin/roadmap-runner` is 0.8.0, while the Node 24 bin directory also contains 0.7.0. The foundation run used `--model gpt-6.1-sol --effort medium`. Completion lives in progress at the recorded source revision; preserved source checkboxes are not the completion record.
 
 ## Control and handoff
 
