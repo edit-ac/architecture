@@ -129,3 +129,7 @@ All tests remain local or use deterministic transports; no paid inference belong
 - [Yrs selective history](https://docs.rs/yrs/latest/yrs/undo/struct.UndoManager.html)
 - [Yjs update contract](https://docs.yjs.dev/api/document-updates)
 - [IndexedDB durability](https://w3c.github.io/IndexedDB/)
+
+## Full-client compatibility contract
+
+Follow-up [client contracts](client-contracts.md) build on these primitives for every native/terminal/host-agent client. Stable identities, prepared commands, anchors and update ports must remain usable without DOM, MCP or a particular store. Revision validation must account for deletions; a state vector alone is not an exact content token. Companion revision/history/security modules remain optional boundaries. The existing foundation roadmap is unchanged; new follow-up entry gates verify the frozen implementation before claiming compatibility.

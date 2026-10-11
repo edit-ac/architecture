@@ -32,3 +32,7 @@ Build Swift and Kotlin headless fixtures using the same seed/snapshot corpus. Th
 Full native editor work remains a later separately scoped project: marked/composing text, autocorrect/dictation, OS keyboard, undo gestures, clipboard, accessibility, attachments, storage, lifecycle reconnect, packaging and real-device matrix. Binding generation alone proves none of these. Missing Xcode/SDK/device access has an explicit unblock condition and does not gate independent web tasks.
 
 Sources: [UniFFI](https://mozilla.github.io/uniffi-rs/latest/), [UIKit TextKit](https://developer.apple.com/documentation/uikit/textkit), [Android InputConnection](https://developer.android.com/reference/android/view/inputmethod/InputConnection).
+
+## Full native and library follow-ups
+
+The preparation-only scope above applies to roadmap 09. Full requested SDK parity is delivered by [native-sdk-parity](native-sdk-parity.md) and roadmaps 16/17/18/22/23 for iOS, Android, macOS, Windows and Linux. [Extension-library](extension-library.md) and roadmap 21 supply portable public contracts and presenter conformance. Browser release remains independent, but the full-client milestone requires genuine mandatory native editing capabilities.

@@ -10,7 +10,7 @@ The user's current request takes precedence over the attached proposal. The firs
 
 - `edit-ac/core`: one Cargo workspace and npm workspace for the authoritative document engine, WASM bridge, browser adapter, optional integrations, native proofs, and deterministic fixtures. Co-change engine and web contracts in one review.
 - `edit-ac/architecture`: authoritative specs, evidence, roadmap sources, dependency decisions, and operational guidance. Clone beside core; no duplicate authoritative specs in core.
-- `edit-ac/cli`: bounded offline tools for versioned interchange/fixtures. It consumes a released Rust API or an explicitly pinned engine revision. It is not an editor host, sync daemon, or release prerequisite.
+- `edit-ac/cli`: a local-first editor client for local Markdown/literal text and online hosted documents, using Markdown as the editable representation. It consumes a released Rust API or an explicitly pinned engine revision and shares core semantics. Hosting attaches optional persistence/transport adapters; CLI delivery is an independent branch, not a browser release prerequisite. See the [CLI contract](../specs/cli.md).
 
 Do not create separate repositories per npm module or platform. The existing core and cli histories/remotes are preserved. The parent directory is a multi-repository workspace, not a fourth Git repository or a Git superproject.
 
@@ -32,6 +32,8 @@ Browser release: paragraph/heading/text/marks/link/break/separator; nested lists
 
 Native preparation: portable ABI, headless Swift and Kotlin round-trip hosts, one native text-control patch/composition experiment per platform, limits and follow-up plan. Missing iOS or Android tooling does not block independent browser work. Native SDK support is not advertised from a binding smoke test.
 
+CLI direction updated by the user on 2026-10-11: local document editing is the primary workflow, with hosted document editing through the same client. The first interaction uses a configured text editor; a terminal UI can follow separately. Markdown buffers are editable projections over shared semantics. Local files remain usable without hosting, and hosted saves preserve identity/history through source reconciliation rather than full-document replacement.
+
 ## Conflicts resolved
 
 1. Original native parity gate is moved out of browser MVP; native preparation remains a separate branch.
@@ -43,3 +45,7 @@ Native preparation: portable ABI, headless Swift and Kotlin round-trip hosts, on
 7. Cross-roadmap dependencies use checked entry gates, because roadmap-runner only validates dependencies inside one source file.
 
 No calendar promise is made. A 15–45 minute task is a desired session boundary; if evidence shows it is too large, the controller splits it into stable child tasks before resuming. Do not silently weaken acceptance to fit a model context or timer.
+
+## Full-delivery extension
+
+[Decision 002](002-full-delivery.md) adds committed follow-up scope for a TUI, host-app MCP, precise diffs, full iOS/Android/macOS/Windows/Linux SDKs and optional encryption. First browser release and native feasibility remain distinct earlier gates; their narrower scope is not the final product limit.

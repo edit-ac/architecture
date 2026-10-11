@@ -6,7 +6,7 @@
 |---|---|---|
 | `edit-ac/core` | Rust crates, WASM, browser SDK, React integration, fixtures and native probes | npm SDKs; Rust crates later if useful |
 | `edit-ac/architecture` | Contracts, roadmaps and evidence | Documentation; private npm tooling package only |
-| `edit-ac/cli` | Offline interchange/fixture tools | Native CLI artifacts, separately qualified |
+| `edit-ac/cli` | Local-first Markdown/text editor client with optional hosted document sync | Native CLI artifacts, separately qualified |
 
 Cargo names in the current scaffold use `editac-*` (Rust imports `editac_*`). npm names use `@edit-ac/*`. Preserve these established names. The draft's `@editac` imports are superseded.
 
@@ -34,6 +34,10 @@ Current setup verifies organization ownership but publishes no package. Do not r
 
 ## CLI
 
-The CLI is an offline consumer of a reviewed immutable engine revision or released crate. A distributed manifest cannot depend on `../core` or an uncommitted worktree. Preserve format version and error/diagnostic semantics; atomic outputs avoid corrupting files, and overwrite requires an explicit flag. CLI release is independent of browser release and native platform SDK support.
+The CLI is a local-first editor client consuming a reviewed immutable engine revision or released crate. A distributed manifest cannot depend on `../core` or an uncommitted worktree. The [CLI contract](cli.md) defines local Markdown/literal-text editing, hosted document targets, source reconciliation, recovery and durability states. Use the shared Markdown parser and semantic commands; Markdown is the editing representation, while hosted CRDT identity/history remains intact. Local editing requires no account/network; hosted transport is optional and uses the qualified sync contract. Preserve format version and error/diagnostic semantics. Save the opened target atomically with stale-file checks; overwriting a different export destination requires an explicit option. CLI release is independent of browser release and native platform SDK support.
 
 Sources: [Cargo workspaces](https://doc.rust-lang.org/cargo/reference/workspaces.html), [npm trusted publishers](https://docs.npmjs.com/trusted-publishers/), [npm package files](https://docs.npmjs.com/cli/v11/configuring-npm/package-json/).
+
+## Full-client packaging
+
+Follow-ups keep the existing three repositories. Shared session/diff/optional security crates and native SDK artifacts live in core; CLI/TUI distributions remain in cli. Portable module entrypoints and host-app MCP helpers are optional surfaces qualified before publication. Roadmap 20 qualifies the full base client matrix; roadmap 24 qualifies encrypted profiles separately. No new monolithic cloud product or mandatory standalone MCP daemon is introduced.
