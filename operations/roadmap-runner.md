@@ -14,7 +14,7 @@ Use Node 24.19.0/npm 11.17.0 for the core scaffold; select it explicitly with th
 
 ## Start one track
 
-Replace `/path/to/edit-ac` with the parent directory containing `core`, `architecture`, `cli`. Ensure upstream tracks are COMPLETE at the current source revision with reproducible passing evidence. Native/CLI are independent branches; they do not gate web release.
+Replace `/path/to/edit-ac` with the parent directory containing `core`, `architecture`, `cli` and `docs`. Ensure upstream tracks are COMPLETE at the current source revision with reproducible passing evidence. Native/CLI are independent branches; they do not gate web release.
 
 ```sh
 roadmap-runner start /path/to/edit-ac/architecture/roadmaps/01-foundation.md \
@@ -23,7 +23,7 @@ roadmap-runner start /path/to/edit-ac/architecture/roadmaps/01-foundation.md \
   --client codex --timeout 45m --json
 ```
 
-For CLI use `--workspace /path/to/edit-ac/cli`. Sources and progress use distinct absolute paths. One runner per workspace/progress file; isolated worktrees require an explicitly coordinated integration plan. The model must be one actually available in the selected client; specify `--model` only after choosing it. A smaller model should read the task context and complete one parent, not expand the entire product in one iteration.
+For CLI use `--workspace /path/to/edit-ac/cli`; for public documentation use `--workspace /path/to/edit-ac/docs`. Sources and progress use distinct absolute paths. One runner per workspace/progress file; isolated worktrees require an explicitly coordinated integration plan. The model must be one actually available in the selected client; specify `--model` only after choosing it. A smaller model should read the task context and complete one parent, not expand the entire product in one iteration.
 
 `--timeout 45m` bounds an individual worker, not total runtime or total inference cost. Runner execution uses the selected client's configured model access; this planning task did not authorize unattended runs. The prohibition on paid synthetic AI testing still applies to all implementation validation.
 

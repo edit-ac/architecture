@@ -6,7 +6,7 @@ Status: IN_PROGRESS
 
 Workspace: `core`; paths below are core-relative unless prefixed `../architecture/`. Follow `../architecture/specs/security-encryption.md` and the active task context. This is planned follow-up delivery, not implemented capability.
 
-Required upstream tracks: `19-security-encryption.md`, `20-product-scenarios.md` complete at reviewed source/implementation revisions with passing evidence. Check these gates before launching; source dependencies below are local to this file.
+Required upstream tracks: `19-security-encryption.md`, `20-product-scenarios.md`, `25-rich-content-extensions.md`, `26-link-resolution.md`, `27-document-conversion.md`, `28-cloud-document-store.md`, `31-ios-extension-integration.md`, `32-android-extension-integration.md`, `33-macos-extension-integration.md`, `34-windows-extension-integration.md`, `35-linux-extension-integration.md`, `36-terminal-extension-integration.md` complete at reviewed revisions with passing evidence. The optional protected profile includes the newly requested assets, conversion and link services; core web/base delivery remains independent. Check these gates before launching; task dependencies below are local.
 
 ## Execution rules
 
@@ -242,7 +242,7 @@ Blocked behavior: Leave `ENC-1.3` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 
 Purpose: Resolve independent security review and release profile as one bounded reusable delivery boundary.
 Context: `../architecture/evidence/security-review.md`; `docs/security-profiles.md`; `../architecture/specs/security-encryption.md`; `../architecture/specs/verification.md`.
-Dependencies: ENC-1.3.
+Dependencies: ENC-1.13.
 Session scope: One named implementation/qualification boundary, 15–45 minutes plus focused checks; controller splits before exceeding scope.
 Acceptance: Review scope and unresolved findings are explicit; production encrypted support is blocked until required findings close and claimed platform evidence passes. No compliance certification is inferred.
 
@@ -257,3 +257,47 @@ Validation:
 Evidence: Separate progress entry `ENC-1.4` with changed files, source/implementation revisions, commands, fixture IDs and durable artifact links; preserve failed evidence.
 Handoff: Last completed substep, current symbol/file, exact failing case or missing decision, and next bounded action for `ENC-1.4`.
 Blocked behavior: Leave `ENC-1.4` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, owner/unblock condition and bounded retry trigger. Select another dependency-ready local task; if none exists stop and report rather than repeatedly polling.
+
+### Task ENC-1.12 — Protect rich asset and conversion workflows
+
+- [ ] ENC-1.12 Protect rich asset and conversion workflows.
+
+Purpose: Protect rich asset and conversion workflows using the already-qualified portable services.
+Context: `tests/scenarios/encrypted-conversion/`; `tests/scenarios/encrypted-assets/`; `../architecture/specs/security-encryption.md`; `../architecture/specs/document-conversion.md`; `../architecture/specs/link-resolution.md`.
+Dependencies: ENC-1.3.
+Session scope: One integration/qualification boundary,15–45 minutes plus focused checks; controller splits by provider/client before an oversized implementation.
+Acceptance: Encrypted documents never silently upload plaintext assets or conversion inputs; approved local jobs protect temporary/recovery artifacts, logs and caches. Explicit user-authorized plaintext exports are labeled, not misrepresented as encrypted PDF.
+
+Implementation:
+
+- [ ] ENC-1.12-I1 Integrate the existing security profile with25/27 blob and conversion lifecycles across the actual31–36 clients. Exercise cancel/crash/locked/lost-key cases, authorized export destinations and post-job cleanup without destroying requested exports. PDF input remains export-only.
+
+Validation:
+
+- [ ] ENC-1.12-V1 Extend the existing scenario dispatcher then run `node tests/scenarios/run.mjs encrypted-assets; node tests/scenarios/run.mjs encrypted-conversion`. Reject unknown/zero suites; record exact command/exits, nonzero case counts, failures/skips and immutable platform/profile evidence. Unavailable hosts do not pass.
+
+Evidence: Separate progress entry `ENC-1.12` includes changed files, fixture IDs, profile revisions and artifacts; preserve failed evidence.
+Handoff: Last completed substep, current file/symbol, exact missing evidence and next bounded action.
+Blocked behavior: Leave `ENC-1.12` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, owner, unblock condition and bounded retry trigger. Continue only independent dependency-ready work.
+
+### Task ENC-1.13 — Qualify private metadata and ciphertext cloud integration
+
+- [ ] ENC-1.13 Qualify private metadata and ciphertext cloud integration.
+
+Purpose: Qualify private metadata and ciphertext cloud integration using the already-qualified portable services.
+Context: `tests/scenarios/encrypted-resolvers/`; `tests/scenarios/encrypted-cloud/`; `../architecture/specs/security-encryption.md`; `../architecture/specs/document-conversion.md`; `../architecture/specs/link-resolution.md`.
+Dependencies: ENC-1.12.
+Session scope: One integration/qualification boundary,15–45 minutes plus focused checks; controller splits by provider/client before an oversized implementation.
+Acceptance: Opaque cloud storage receives no plaintext document/source/title/key data beyond declared metadata; private resolver authorization and cache isolation survive rotation/revocation and offline recovery.
+
+Implementation:
+
+- [ ] ENC-1.13-I1 Integrate26/28 with the qualified key providers and host-agent boundary. Test actual native/web/terminal service adapters, deny server-side plaintext features for opaque relays, and record the remaining disclosed metadata and authorized decrypting endpoints.
+
+Validation:
+
+- [ ] ENC-1.13-V1 Extend the existing scenario dispatcher then run `node tests/scenarios/run.mjs encrypted-resolvers; node tests/scenarios/run.mjs encrypted-cloud`. Reject unknown/zero suites; record exact command/exits, nonzero case counts, failures/skips and immutable platform/profile evidence. Unavailable hosts do not pass.
+
+Evidence: Separate progress entry `ENC-1.13` includes changed files, fixture IDs, profile revisions and artifacts; preserve failed evidence.
+Handoff: Last completed substep, current file/symbol, exact missing evidence and next bounded action.
+Blocked behavior: Leave `ENC-1.13` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, owner, unblock condition and bounded retry trigger. Continue only independent dependency-ready work.
