@@ -128,3 +128,7 @@ Record failures, skips and diagnostics. Fixtures establish the supported profile
 - [GFM 0.29-gfm](https://github.github.com/gfm/)
 - [pulldown-cmark event parser](https://docs.rs/pulldown-cmark/latest/pulldown_cmark/)
 - [pulldown-cmark option semantics](https://docs.rs/pulldown-cmark/0.13.4/pulldown_cmark/struct.Options.html)
+
+## Optional broad-format services
+
+[Document conversion](document-conversion.md) defines independent DOCX/ODT/RTF/EPUB/CSV/TSV import and export profiles alongside the baseline formats. PDF is **export-only** by explicit user decision; reject PDF imports, and do not add PDF-reader/OCR dependencies. Converters return bounded prepared edits or output artifacts with fidelity reports; they do not replace source reconciliation or CRDT storage.

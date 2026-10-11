@@ -110,3 +110,7 @@ consumer artifacts, not merely copied implementation snippets.
 Build/pack/consumer qualification belongs here; publication follows the release
 policy. No marketplace, downloaded plugin execution, remote service deployment
 or provider inference is required to demonstrate the library.
+
+## Rich ecosystem delivery
+
+Baseline07/21 contracts remain the foundation. [Rich content](rich-content-extensions.md) adds portable code highlighting, table formatting, assets/embeds and interaction upgrades. [Link resolution](link-resolution.md) separates public metadata from principal-scoped internal references; [conversion](document-conversion.md) provides optional document formats with PDF export only. Roadmaps31–36 integrate actual clients and37 qualifies the expanded profile. Heavy providers remain optional and permission checks stay host-owned.

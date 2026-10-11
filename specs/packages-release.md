@@ -6,6 +6,7 @@
 |---|---|---|
 | `edit-ac/core` | Rust crates, WASM, browser SDK, React integration, fixtures and native probes | npm SDKs; Rust crates later if useful |
 | `edit-ac/architecture` | Contracts, roadmaps and evidence | Documentation; private npm tooling package only |
+| `edit-ac/docs` | Public guides, generated references and release-backed demo consumers | Static documentation/demo site; no editor implementation |
 | `edit-ac/cli` | Local-first Markdown/text editor client with optional hosted document sync | Native CLI artifacts, separately qualified |
 
 Cargo names in the current scaffold use `editac-*` (Rust imports `editac_*`). npm names use `@edit-ac/*`. Preserve these established names. The draft's `@editac` imports are superseded.
@@ -40,4 +41,8 @@ Sources: [Cargo workspaces](https://doc.rust-lang.org/cargo/reference/workspaces
 
 ## Full-client packaging
 
-Follow-ups keep the existing three repositories. Shared session/diff/optional security crates and native SDK artifacts live in core; CLI/TUI distributions remain in cli. Portable module entrypoints and host-app MCP helpers are optional surfaces qualified before publication. Roadmap 20 qualifies the full base client matrix; roadmap 24 qualifies encrypted profiles separately. No new monolithic cloud product or mandatory standalone MCP daemon is introduced.
+Decision003 adds the requested public docs repository alongside core, architecture and cli. Shared session/diff/optional security crates and native SDK artifacts live in core; CLI/TUI distributions remain in cli. Portable module entrypoints and host-app MCP helpers are optional surfaces qualified before publication. Roadmap 20 qualifies the full base client matrix; roadmap 24 qualifies encrypted profiles separately. No new monolithic cloud product or mandatory standalone MCP daemon is introduced.
+
+## Expanded extension delivery
+
+Optional highlighting and conversion dependencies use justified companion modules/crates and documented SDK entry points; no heavy runtime enters minimum loading merely by installing core. Roadmaps25–28 define shared services,31–36 wire actual native/terminal clients, and37 qualifies the expanded release. The protected profile24 additionally qualifies private assets, conversion, resolver and cloud behavior. Public docs/demo publication belongs to29; architecture fitness and capability compatibility belong to30. PDF is export-only.

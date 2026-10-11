@@ -50,7 +50,7 @@ async function main() {
     if (typeof entry.prefix !== 'string' || !/^[A-Z][A-Z0-9]*$/.test(entry.prefix)) fail(`${entry.file}: invalid task prefix`);
     if (prefixes.has(entry.prefix)) fail(`${entry.file}: duplicate task prefix ${entry.prefix}`);
     prefixes.add(entry.prefix);
-    if (!['core', 'cli'].includes(entry.workspace)) fail(`${entry.file}: workspace must be core or cli`);
+    if (!['core', 'cli', 'docs'].includes(entry.workspace)) fail(`${entry.file}: workspace must be core, cli or docs`);
     if (!Array.isArray(entry.upstream) || entry.upstream.some((file) => typeof file !== 'string')) fail(`${entry.file}: upstream must be an array of filenames`);
   }
   for (const file of files) if (!entries.has(file)) fail(`${file}: missing manifest entry`);

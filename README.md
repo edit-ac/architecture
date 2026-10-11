@@ -1,12 +1,12 @@
 # edit.ac architecture and development roadmaps
 
-This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 24 roadmap files and 292 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
+This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 37 roadmap files and 443 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
 
-The user selected public repositories and Apache-2.0. [Decision 001](decisions/001-web-first.md) resolves scope, ownership, naming and release conflicts. The [original proposal](sources/initial-roadmap.md) is archived unchanged as reference material; current specs and task acceptance supersede it. [Decision 002](decisions/002-full-delivery.md) extends delivery beyond the initial browser release; the [requirement review](requirements.md) maps each requested capability to concrete tasks.
+The user selected public repositories and Apache-2.0. [Decision 001](decisions/001-web-first.md) resolves scope, ownership, naming and release conflicts. [Decision003](decisions/003-extension-ecosystem.md) adds the requested extension, format, cloud and public-documentation delivery. The [original proposal](sources/initial-roadmap.md) is archived unchanged as reference material; current specs and task acceptance supersede it. [Decision 002](decisions/002-full-delivery.md) extends delivery beyond the initial browser release; the [requirement review](requirements.md) maps each requested capability to concrete tasks.
 
 ## Start here
 
-Clone [core](https://github.com/edit-ac/core), this repository as `architecture`, and optional [cli](https://github.com/edit-ac/cli) into one parent directory. The parent itself is not a Git repository. Read the active task's named context rather than every document.
+Clone [core](https://github.com/edit-ac/core), this repository as `architecture`, optional [cli](https://github.com/edit-ac/cli), and [public docs](https://github.com/edit-ac/docs) into one parent directory. The parent itself is not a Git repository. Read the active task's named context rather than every document.
 
 1. Check [setup evidence](evidence/setup.md), [dependency verification](evidence/dependencies.md) and the [full-delivery review](evidence/requirements-review.md).
 2. Read [runner operation](operations/roadmap-runner.md), then the selected roadmap's entry gate.
@@ -65,7 +65,27 @@ The initial browser milestone remains independently deliverable. These tracks co
 | [21 First-class extension library](roadmaps/21-extension-library.md) | 11 | 05,07,12 | Portable descriptors, presenters, conformance and package consumers |
 | [22 Native Windows SDK](roadmaps/22-windows-native.md) | 21 | 07,12,13,21 | Windows native editor and packaged consumer |
 | [23 Native Linux SDK](roadmaps/23-linux-native.md) | 21 | 07,12,13,21 | GTK native editor and packaged consumer |
-| [24 Encrypted profile qualification](roadmaps/24-encrypted-profile-qualification.md) | 11 | 19,20 | Real key providers, protected scenarios and independent review |
+| [24 Encrypted profile qualification](roadmaps/24-encrypted-profile-qualification.md) | 13 | 19,20,25–28,31–36 | Real key providers, protected scenarios and independent review |
+
+## Extension and public ecosystem delivery
+
+[Review and corrections](evidence/extension-ecosystem-review.md) distinguish existing baseline modules from the new work. Each platform integration is independent. Documentation bootstrap has no SDK gate; runnable examples and the public demo require their task-specific qualified artifacts.
+
+| Track | Parent tasks | Whole-track prerequisites | Exit artifact |
+|---|---:|---|---|
+| [25 Rich content](roadmaps/25-rich-content-extensions.md) | 20 | 05, 07, 12, 13, 21 | Code highlighting, table formatting, assets/embeds and interaction upgrades |
+| [26 Public and internal links](roadmaps/26-link-resolution.md) | 12 | 12, 21 | Automatic metadata, permission-scoped references and safe activation |
+| [27 Document formats](roadmaps/27-document-conversion.md) | 18 | 05, 12, 21, 25 | Direction/fidelity profiles; PDF export only |
+| [28 Cloud-store readiness](roadmaps/28-cloud-document-store.md) | 21 | 06, 12, 25 | Durable reference service, tenant isolation, assets and recovery |
+| [29 Public docs and demo](roadmaps/29-public-docs-demo.md) | 14 | None; task-specific gates | Versioned guides, generated references and an actual deployed editor |
+| [30 Architecture fitness](roadmaps/30-architecture-fitness.md) | 9 | 08, 12, 21 | Layer/capability/compatibility/loading/privacy checks |
+| [31 iOS extensions](roadmaps/31-ios-extension-integration.md) | 8 | 16, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
+| [32 Android extensions](roadmaps/32-android-extension-integration.md) | 8 | 17, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
+| [33 macOS extensions](roadmaps/33-macos-extension-integration.md) | 8 | 18, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
+| [34 Windows extensions](roadmaps/34-windows-extension-integration.md) | 8 | 22, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
+| [35 Linux extensions](roadmaps/35-linux-extension-integration.md) | 8 | 23, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
+| [36 CLI/TUI extensions](roadmaps/36-terminal-extension-integration.md) | 6 | 15, 25, 26, 27, 30 | Terminal code/table/assets/links and format actions |
+| [37 Expanded qualification](roadmaps/37-ecosystem-qualification.md) | 9 | 20, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36 | Actual cross-client scenarios, docs/demo and release evidence |
 
 The machine-readable dependency graph is [manifest.json](roadmaps/manifest.json). Its edges are whole-track entry conditions, not a multi-runner scheduler. Roadmaps 16 and 17 require only their platform-specific NAT preparation tasks, not all of 09. Roadmap 11 additionally gates hosted tasks on track 06; its local editing tasks can proceed without hosted readiness. Launching parallel workers in one checkout is unsupported; use isolated worktrees and explicit integration ownership if later concurrency is needed.
 
@@ -80,6 +100,8 @@ The machine-readable dependency graph is [manifest.json](roadmaps/manifest.json)
 - [Shared clients](specs/client-contracts.md), [change review](specs/change-diffs.md) and [host agents](specs/agent-editing.md): portable services and safe concurrent edits.
 - [Native parity](specs/native-sdk-parity.md), [TUI](specs/tui-client.md) and [extension library](specs/extension-library.md): client-specific delivery without duplicating the semantic core.
 - [Security profiles](specs/security-encryption.md) and [delivery scenarios](specs/delivery-scenarios.md): optional encryption and concrete cross-platform acceptance.
+- [Rich content](specs/rich-content-extensions.md), [link resolution](specs/link-resolution.md) and [document conversion](specs/document-conversion.md): optional first-party services.
+- [Cloud store](specs/cloud-document-store.md), [public docs/demo](specs/public-docs-demo.md) and [maintainability](specs/ecosystem-maintainability.md): ecosystem ownership and qualification.
 - [Packages/release](specs/packages-release.md): package ownership, artifacts, publishing and CLI.
 - [Verification](specs/verification.md): evidence, supported envelope and provisional budgets.
 

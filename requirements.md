@@ -30,3 +30,25 @@ Reviewed against the current docs on 2026-10-11. “Covered” below means plann
 One portable authoritative replica, stable node identities/anchors, validated commands, origin-aware history, incremental patches and shared format reconciliation are the right prerequisites. New companion modules provide session/identity, revision/diff and optional security functions; presenters and MCP remain adapters. This is architectural compatibility by design, not proof that the future implementation meets every requirement.
 
 The follow-up entry gates check the implemented schema/ABI and require a migration/compatibility decision if evidence contradicts the plan. The active foundation source/IDs remain untouched. Existing CLI amendments are preserved. See [decision 002](decisions/002-full-delivery.md), [scenario contract](specs/delivery-scenarios.md) and [primary-source implementation research](evidence/followup-research.md).
+
+## Extension and ecosystem review — 2026-10-11
+
+The user clarified that PDF is **export-only**. PDF import, OCR and PDF-reader dependencies are outside this plan. New format directions have explicit fidelity tiers; no “all document formats are lossless” promise is made.
+
+| Requested addition | Existing baseline | Added delivery |
+|---|---|---|
+| Code blocks with fast syntax highlighting | Literal code/Markdown fences; no highlighting implementation track |25 portable optional highlighter/worker and performance fixtures;31–36 actual client wiring |
+| Fast table formatting | Bounded rectangular table module |25 stable structural editing, cached layout, explicit Markdown formatter and stress/interactive envelopes |
+| Images, attachments and embeds | Image metadata/host upload hook |25 staged blob lifecycle, bounded media, safe embed presenters;28 host asset service |
+| Broad document interchange | Markdown, safe HTML and semantic JSON |27 DOCX/ODT/RTF/EPUB/CSV/TSV directions plus PDF export;31–36 client actions |
+| Slash menu |07 local accessible menu |25 query lifecycle/large command catalog and no remote-open behavior; client integration gates |
+| Drag/drop block editing |07 shared semantic move, keyboard/optional handle |25 pointer/touch/autoscroll/cancel and non-drag pointer alternative; native wiring |
+| Customizable references |07/21 resolver and descriptor contract |26 typed host API, stable identity, caching, permission/cancellation, UI customization and documentation |
+| Automatic URL title/favicon display | URL validation only |26 policy-enabled local-paste pipeline, safe metadata fetching and per-viewer display |
+| Private/internal links | Host authority principle |26 principal-scoped API/cache, activation authorization, indistinguishable denial and no public-fetch fallback |
+| Professional public docs repository | Architecture/internal specs plus planned API docs |Created public docs source repository;29 site generation, executable guides, versioning/search/accessibility and publication |
+| Public demo | SDK consumer fixtures only |29 actual packaged-editor playground, local-first/multi-view scenarios, deployed URL verification and rollback |
+| Cloud document-store readiness |06 test relay and12 store/transport ports |28 durable reference host with reusable storage adapters, tenant auth, asset finalization, recovery and deployment evidence |
+| Maintainable ecosystem | Thin core and portable module model |30 executable layer, compatibility, capability, optional-loading, dependency and diagnostics gates;37 expanded qualification |
+
+The baseline browser profile remains independently deliverable. Roadmaps31–35 preserve independent native implementation. Roadmap36 covers terminal representations without claiming graphical embed parity. Optional encrypted profile24 is extended to protect the new assets, converters, resolvers and cloud integration. Documentation site/demo publication and production cloud-provider qualification remain future tasks; a clean source repository is not evidence of a live editor deployment.

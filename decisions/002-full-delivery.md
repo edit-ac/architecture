@@ -6,7 +6,7 @@ Accepted planning scope: 2026-10-11. This decision extends 001; it does not turn
 
 Deliver an embeddable PM-ticket editor, collaborative documents and agent-mediated edits on one semantic engine. Local editing and recovery are first-class. Additional clients include a Markdown/literal-text CLI, a built-in TUI, native iOS/Android and native macOS/Windows/Linux adapters. The user explicitly confirmed native desktop controls, as well as desktop browsers. No WebView may be represented as an OS-native editor.
 
-The first browser release remains independently deliverable through roadmap 10. Roadmaps 12–21 are committed follow-up scope for shared client contracts, precise diffs, host-owned MCP, TUI, full native SDKs, optional encryption, portable extensions and scenario qualification. Roadmap 09 proves feasibility only; it does not satisfy native parity. Roadmap 11's existing external-editor/local/hosted work remains the base for the TUI.
+The first browser release remains independently deliverable through roadmap 10. Roadmaps 12–24 are committed follow-up scope for shared client contracts, precise diffs, host-owned MCP, TUI, full native SDKs, optional encryption, portable extensions and scenario qualification. Roadmap 09 proves feasibility only; it does not satisfy native parity. Roadmap 11's existing external-editor/local/hosted work remains the base for the TUI.
 
 ## Capability, not marketing adjectives
 
