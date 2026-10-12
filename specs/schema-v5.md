@@ -1,0 +1,35 @@
+# Stable retained-structure presentation v5
+
+Status: controller-authored correction for ENG-1.9-F1; qualification ENG-1.22 and production integration ENG-1.23 are pending. Preserve schema-v4, its descriptor/mappers and historical passing/failing evidence unchanged. This document does not assert compatibility or feature acceptance.
+
+## Profile and version boundary
+
+Schema `editac.registry.editor.v5`, profile `editac.yrs-yjs.editor.v5`; protocol version 1, update encoding 1, UTF-16 and the same pinned Yrs/Yjs/toolchain pair as [schema-v4.md](schema-v4.md). Retain v4's exact ten roots, value shapes, namespaces, bounds, containers, presentation/check/control metadata and immutable original-source identities, except the split/join tuples and replay rule explicitly changed below. The tuple change requires a new profile; no implicit v4 mutation, automatic migration, reseeding restore or mixed-epoch update. V4 readers reject the v5 envelope before live mutation. Legacy v4 presentation guards remain until an explicit separately authorized migration, which retains the old checkpoint and uses a new epoch.
+
+## Immutable preparation witnesses
+
+V5 ownership-operation values are:
+
+- Split: `["split", leftOwner, leftVersion, spanIndex, sourceId, binaryRelativeCut, leftPresentation]`.
+- Join: `["join", leftOwner, leftVersion, rightOwner, rightVersion, leftPresentation, rightPresentation]`.
+- Place: the unchanged seven-field v4 tuple.
+
+Presentation witnesses are complete immutable `Any::Array` / plain JavaScript array snapshots of the effective presentation observed by validated preparation: `["paragraph"]`, `["heading", level]` or `["code", language]`, with v4's exact known-value bounds. Separator, unknown/opaque or malformed witnesses reject; code join witnesses must both be code with identical language, otherwise both must be paragraph/heading. No independently merged witness fields, pointers to mutable metadata, or reconstruction from final presentation values. Operation records/witnesses remain immutable and consume the existing binary/JSON resource limits.
+
+Local split/join preparation resolves current owner identities, versions, relative cuts, effective presentation and the whole command batch before mutation. It captures these witnesses and rejects separator/opaque/nonvisible/deleted/stale targets; newly incompatible code joins reject the whole batch. Preparation against current code presentation still obeys literal insertion and formatting rules. A later metadata-only command must never rewrite earlier witnesses or consume a structural version merely to preserve an existing operation.
+
+Admission validates tuple arity, ID/version/cut shapes, witness values and witness compatibility, along with the existing root/graph/binary/resource constraints. It does not compare historical witnesses to current mutable block tuples: a checkpoint or reordered update can legitimately contain presentation changes authored after or concurrently with the operation. A witness is the operation's authored preparation declaration, not a cryptographic provenance proof. Transport/authorization cannot infer a historical local command snapshot from final CRDT metadata.
+
+## Presentation-independent structural replay
+
+Replay retains v4's deterministic operation ranking, dependency/version eligibility, enabled controls, tombstone policy, same-parent adjacency, container roles, source-relative cuts, hierarchy and span/recovery rules. Split/join editability and code compatibility are evaluated from the immutable witnesses, not current `registry-block-attributes` or inherited live tuples. Place eligibility uses structural identity/hierarchy, not presentation style. Malformed current metadata can still reject admission or require recovery; valid presentation changes do not retroactively change ownership.
+
+An eligible join stays applied when its surviving owner changes code language, becomes paragraph/heading or acquires valid opaque presentation later. The absorbed owner's original text, dormant metadata and marks remain retained; it does not reappear merely because left's presentation differs. An applied split likewise survives later presentation changes on either owner, including empty-owner separator conversion when v4's command safeguard passes. Current presentation still controls rendering and future command admission. Controls, tombstones, structural version conflicts, newly arriving earlier-ranked structural intentions and unresolved/changed source cuts retain their qualified structural effects; this correction does not promise immutability against actual structural changes.
+
+Converting a joined code owner to paragraph exposes its retained marks across all original sources without changing spans, parent, owner version, source identities or anchor routing. A code-language change is metadata-only. A mixed batch containing literal cross-source replacement/deletion and valid presentation conversion commits once after full staged validation. Newly incompatible split/join preparation or invalid metadata in that same batch rejects atomically. Do not satisfy positive conversion/language acceptance by returning PresentationConflict, skipping the joined-owner test or splitting/reseeding its text.
+
+## Qualification and integration
+
+ENG-1.22 creates `core/fixtures/schema-v5/` and `core/crates/editac-core/tests/retained_presentation_profile.rs`. Start from the preserved ENG-1.9-F1 production/Yjs reproducers. Prove both paragraph conversion and language change of joined multi-source code owners; dormant marks, literal LFs, cross-source replacement/deletion, parent/version/span/identity/anchor invariance; later presentation changes on split/derived/empty owners; unknown presentation retention; fresh mismatched-language/code-versus-ordinary/separator/opaque join rejection; malformed/forged-incompatible witness rejection; actual pinned bidirectional Rust/Yjs exchange, metadata-before/after/duplicate/reordered delivery, concurrent join/metadata, checkpoint restore and entity-control undo/redo. Preserve old v4 results as historical bounded behavior; neither rewrite its mapper nor label the old safety guard as positive acceptance.
+
+ENG-1.23 integrates the exact qualified v5 envelope/tuple/admission/replay into production creation/restore and prepared editor commands. It reruns the original positive ENG-1.9-F1 test and complete blocks acceptance, plus qualification, editor profile, list/move/text/format/anchor/structural/history-primitive and legacy profile regressions. Scope the existing PresentationConflict regression explicitly to legacy v4; v5 must accept the qualified metadata-only cases while retaining whole-batch rejection for genuinely invalid/stale targets. Original ENG-1.9 remains unchecked until its full canonical suite and receipt pass in a subsequent bounded acceptance session. No new profile is advertised supported before exact source/descriptor hashes and zero-failure/zero-skip production evidence exist.

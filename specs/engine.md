@@ -41,6 +41,37 @@ for supplied-URL and local packed native ESM consumers, with SSR-safe import.
 It uses the earlier XML/text fixture, not production registry commands.
 Production commands, admission ports and persistence remain subsequent gates.
 
+### Controller-qualified schema evolution
+
+The frozen foundation supplies bounded interoperability, not every engine primitive.
+[Versioned block metadata](schema-v2.md) defines the ENG-1.16 qualification mapping
+for paragraph/heading state, including empty blocks and split owners. ENG-1.6 may
+use it only after the exact profile/admission and Rust/Yjs evidence pass. Keep the
+foundation contract, fixtures and historical receipts unchanged; new schemas are
+explicit profile/epoch boundaries, not extra roots silently added to v1.
+
+[Ownership evolution](schema-evolution.md) defines ENG-1.17's representation proof
+and ENG-1.18's production integration for arbitrary, repeatable split/join. Existing
+ENG-1.7 evidence remains the fixed-pair baseline. Downstream structural commands
+depend on the new integration gate. Missing representation evidence must stay
+unchecked; controller-authorized qualification work resolves the mapping, rather
+than polling for an unspecified external decision or reducing acceptance.
+
+[Nested structural profile v4](schema-v4.md) supplies the controller contract for
+list/quote containers, numbering/check state, code/separator presentation,
+versioned placement and reversible structural history controls. ENG-1.19 and
+ENG-1.20 qualify the exact representation and code policy separately; ENG-1.21
+integrates it before ENG-1.8/1.9. Preserve existing v3 receipts and recognize their
+ordinary-block scope. The new profile is explicit qualification work, not an
+external schema wait or permission to weaken the remaining parents.
+
+[Stable presentation v5](schema-v5.md) resolves ENG-1.9-F1: split/join command
+eligibility captures immutable preparation witnesses, so later valid formatting
+does not replay an established join as losing or resurrect its absorbed owner.
+ENG-1.22 qualifies that separately versioned rule; ENG-1.23 integrates it before
+full ENG-1.9 acceptance. Preserve v4's mapping and historical guard/failure
+evidence; do not call a presentation-conflict rejection positive conversion proof.
+
 ## Positions and anchors
 
 - Public text offsets are UTF-16 code units with documented start/end affinity.
