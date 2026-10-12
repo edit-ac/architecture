@@ -1,0 +1,442 @@
+✖ native Rust checkpoint restores in compiled WASM without defaults or writer reuse (6674.732ms)
+✖ native journal replay, duplicates and dependent reordered restore match Rust snapshot (1.002958ms)
+✖ state-vector differential exchange and duplicate remote updates have exact patches (0.096125ms)
+✖ three disconnected compiled replicas converge across all six duplicate delivery permutations (0.079959ms)
+✖ pinned Yjs reads production WASM bytes and edits original rich text for WASM replay (0.21375ms)
+✖ delete-set replay works even when clocks did not change (0.142209ms)
+✖ remote replay preserves local history and undo/redo produces usable sync bytes (0.107ms)
+✖ wrong epoch update rejects before content, history or patch mutation (0.147208ms)
+✖ wrong document update rejects before content, history or patch mutation (0.1095ms)
+✖ wrong profile update rejects before content, history or patch mutation (0.100708ms)
+✖ wrong schema update rejects before content, history or patch mutation (0.073625ms)
+✖ wrong encoding update rejects before content, history or patch mutation (0.045ms)
+✖ malformed update and state-vector bytes reject atomically (0.060791ms)
+✖ invalid root and mutated immutable rows reject through real staged admission (0.097666ms)
+✖ restore rejects missing initialization, wrong journal identity and malformed tails (0.060542ms)
+✖ byte inputs enforce types, data envelopes and resource limits without getter execution (0.067084ms)
+✖ checkpoint, vector, update and event bytes remain owned after mutation and disposal (0.059166ms)
+✖ scoped batches report exact changed node/range and ignore unrelated listeners (0.068167ms)
+✖ post-transaction reentrant commit dispatches FIFO and subscriptions start with future batches (0.053625ms)
+✖ observer throws and mutations cannot corrupt commits or other observers (0.051916ms)
+✖ unsubscribe/dispose are idempotent and pending callbacks are removed (0.057125ms)
+✖ subscription validation and bounded table preserve normal operations (0.0575ms)
+✖ built WASM structural/format/history checkpoint and update replay agrees with native Rust (0.055917ms)
+✖ actual Chromium IndexedDB checkpoint/tail restore and peer sync use owned production bytes (0.051458ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 0
+ℹ fail 24
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6941.091917
+
+✖ failing tests:
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ native Rust checkpoint restores in compiled WASM without defaults or writer reuse (6674.732ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ native journal replay, duplicates and dependent reordered restore match Rust snapshot (1.002958ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ state-vector differential exchange and duplicate remote updates have exact patches (0.096125ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ three disconnected compiled replicas converge across all six duplicate delivery permutations (0.079959ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ pinned Yjs reads production WASM bytes and edits original rich text for WASM replay (0.21375ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ delete-set replay works even when clocks did not change (0.142209ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ remote replay preserves local history and undo/redo produces usable sync bytes (0.107ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong epoch update rejects before content, history or patch mutation (0.147208ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong document update rejects before content, history or patch mutation (0.1095ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong profile update rejects before content, history or patch mutation (0.100708ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong schema update rejects before content, history or patch mutation (0.073625ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong encoding update rejects before content, history or patch mutation (0.045ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ malformed update and state-vector bytes reject atomically (0.060791ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ invalid root and mutated immutable rows reject through real staged admission (0.097666ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ restore rejects missing initialization, wrong journal identity and malformed tails (0.060542ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ byte inputs enforce types, data envelopes and resource limits without getter execution (0.067084ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ checkpoint, vector, update and event bytes remain owned after mutation and disposal (0.059166ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ scoped batches report exact changed node/range and ignore unrelated listeners (0.068167ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ post-transaction reentrant commit dispatches FIFO and subscriptions start with future batches (0.053625ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ observer throws and mutations cannot corrupt commits or other observers (0.051916ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ unsubscribe/dispose are idempotent and pending callbacks are removed (0.057125ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ subscription validation and bounded table preserve normal operations (0.0575ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ built WASM structural/format/history checkpoint and update replay agrees with native Rust (0.055917ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ actual Chromium IndexedDB checkpoint/tail restore and peer sync use owned production bytes (0.051458ms)
+  AssertionError [ERR_ASSERTION]: Rust check failed: native-updates.log
+  
+  101 !== 0
+  
+      at runRust (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:21:72)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:30:18)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 101,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

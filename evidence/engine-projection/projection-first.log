@@ -1,0 +1,16 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.41s
+     Running tests/projection.rs (target/debug/deps/projection-7d6019fff65c6bb4)
+
+running 15 tests
+test hierarchy_fallback_cycles_and_late_parent_are_read_only ... ok
+test empty_and_hidden_source_spans_keep_recovery_identity_and_visible_children ... ok
+test disposing_an_index_leaves_other_indexes_and_document_available ... ok
+test malformed_and_fractional_placements_use_frozen_root_fallback ... ok
+test fixed_seed_snapshot_preserves_rich_text_and_integrated_identities ... ok
+test formatting_and_deletion_report_utf16_transaction_ranges ... ok
+test joined_source_edit_updates_its_owner_without_changing_source_identity ... ok
+error: test failed, to rerun pass `-p editac-core --test projection`
+
+Caused by:
+  process didn't exit successfully: `/Users/bpstr/Github/edit-ac/core/target/debug/deps/projection-7d6019fff65c6bb4` (signal: 11, SIGSEGV: invalid memory reference)

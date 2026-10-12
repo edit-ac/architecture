@@ -1,0 +1,83 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0308]: mismatched types
+   --> crates/editac-core/tests/block_kinds_profile.rs:168:48
+    |
+168 |         vec![Any::from("heading"), Any::Number(1.5)],
+    |                                    ----------- ^^^ expected `Number`, found floating-point number
+    |                                    |
+    |                                    arguments to this enum variant are incorrect
+    |
+note: tuple variant defined here
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:21:5
+    |
+ 21 |     Number(Number),
+    |     ^^^^^^
+help: try wrapping the expression in `yrs::Number::Float`
+    |
+168 |         vec![Any::from("heading"), Any::Number(yrs::Number::Float(1.5))],
+    |                                                +++++++++++++++++++   +
+
+error[E0061]: this method takes 2 arguments but 1 argument was supplied
+   --> crates/editac-core/tests/block_kinds_profile.rs:327:14
+    |
+327 |               .observe_update_v1(move |_, _| {
+    |  ______________^^^^^^^^^^^^^^^^^-
+328 | |                 copy.fetch_add(1, Ordering::SeqCst);
+329 | |             })
+    | |______________- argument #2 is missing
+    |
+note: method defined here
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/doc.rs:302:9
+    |
+302 |         observe_update_v1, unobserve_update_v1,
+    |         ^^^^^^^^^^^^^^^^^
+help: provide the argument
+    |
+327 |             .observe_update_v1(move |_, _| {
+328 |                 copy.fetch_add(1, Ordering::SeqCst);
+329 ~             }, /* f */)
+    |
+
+error[E0277]: the trait bound `Origin: From<{closure@crates/editac-core/tests/block_kinds_profile.rs:327:32: 327:43}>` is not satisfied
+   --> crates/editac-core/tests/block_kinds_profile.rs:327:32
+    |
+327 |               .observe_update_v1(move |_, _| {
+    |  ______________-----------------_^
+    | |              |
+    | |              required by a bound introduced by this call
+328 | |                 copy.fetch_add(1, Ordering::SeqCst);
+329 | |             })
+    | |_____________^ the trait `From<{closure@crates/editac-core/tests/block_kinds_profile.rs:327:32: 327:43}>` is not implemented for `Origin`
+    |
+    = help: `Origin` implements trait `From<T>`:
+              From<&[u8]>
+              From<&str>
+              From<ClientID>
+              From<Pin<&T>>
+              From<i128>
+              From<i16>
+              From<i32>
+              From<i64>
+            and 9 others
+    = note: required for `{closure@crates/editac-core/tests/block_kinds_profile.rs:327:32: 327:43}` to implement `Into<Origin>`
+note: required by a bound in `yrs::Doc::observe_update_v1`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/doc.rs:95:16
+    |
+ 95 |               K: Into<Origin>,
+    |                  ^^^^^^^^^^^^ required by this bound in `Doc::observe_update_v1`
+...
+297 | /     define_doc_observer!(
+298 | |         /// Subscribe callback function for any changes performed within transaction scope. These
+299 | |         /// changes are encoded using lib0 v1 encoding and can be decoded using [Update::decode_v1]
+300 | |         /// if necessary or passed to remote peers right away. This callback is triggered on
+301 | |         /// function commit.
+302 | |         observe_update_v1, unobserve_update_v1,
+    | |         ----------------- required by a bound in this associated function
+303 | |         update_v1_events, FnMut(&TransactionMut, &UpdateEvent)
+304 | |     );
+    | |_____- in this macro invocation
+    = note: this error originates in the macro `define_doc_observer` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+Some errors have detailed explanations: E0061, E0277, E0308.
+For more information about an error, try `rustc --explain E0061`.
+error: could not compile `editac-core` (test "block_kinds_profile") due to 3 previous errors

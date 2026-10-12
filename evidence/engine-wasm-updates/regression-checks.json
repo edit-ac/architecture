@@ -1,0 +1,142 @@
+[
+  {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-wasm",
+      "--lib",
+      "--locked",
+      "--offline"
+    ],
+    "env": {
+      "EDITAC_WASM_COMMAND_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-wasm-updates/commands"
+    },
+    "exit": 0,
+    "log": "bridge-regression.log",
+    "bytes": 1627,
+    "executed": 28,
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--lib",
+      "--test",
+      "initialization",
+      "--test",
+      "patches",
+      "--test",
+      "history",
+      "--test",
+      "interop",
+      "--locked",
+      "--offline"
+    ],
+    "env": {},
+    "exit": 101,
+    "log": "kernel-regression.log",
+    "bytes": 5003,
+    "executed": 42,
+    "passed": 41,
+    "failed": 1,
+    "skipped": 0,
+    "filtered": 0
+  },
+  {
+    "command": [
+      "node",
+      "--test",
+      "tests/wasm-commands.test.mjs"
+    ],
+    "env": {
+      "EDITAC_WASM_COMMAND_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-wasm-updates/commands"
+    },
+    "exit": 0,
+    "log": "commands-regression.log",
+    "bytes": 1966,
+    "executed": 25,
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  {
+    "command": [
+      "node",
+      "--test",
+      "tests/wasm-load.test.mjs"
+    ],
+    "env": {
+      "EDITAC_WASM_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-wasm-updates/loader"
+    },
+    "exit": 0,
+    "log": "loader-regression.log",
+    "bytes": 836,
+    "executed": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  {
+    "command": [
+      "node_modules/.bin/tsc",
+      "--noEmit",
+      "--strict",
+      "--exactOptionalPropertyTypes",
+      "--target",
+      "ES2022",
+      "--module",
+      "NodeNext",
+      "--moduleResolution",
+      "NodeNext",
+      "tests/wasm-command-types.ts",
+      "tests/wasm-update-types.ts"
+    ],
+    "env": {},
+    "exit": 0,
+    "log": "consumer-types.log",
+    "bytes": 0
+  },
+  {
+    "command": [
+      "node",
+      "scripts/check-package-exports.mjs"
+    ],
+    "env": {},
+    "exit": 0,
+    "log": "exports.log",
+    "bytes": 126
+  },
+  {
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "env": {},
+    "exit": 0,
+    "log": "format-check.log",
+    "bytes": 0
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "env": {},
+    "exit": 0,
+    "log": "diff-check.log",
+    "bytes": 0
+  }
+]

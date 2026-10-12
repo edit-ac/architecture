@@ -1,0 +1,88 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: constant `L` is never used
+  --> crates/editac-core/tests/replica_properties.rs:22:7
+   |
+22 | const L: &str = "c:11:1";
+   |       ^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "replica_properties") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.52s
+     Running tests/replica_properties.rs (target/debug/deps/replica_properties-20ccd6f9b7279ff4)
+
+running 8 tests
+test seed_99991_blocks ... FAILED
+test seed_73_blocks ... FAILED
+test seed_65003_lists ... FAILED
+test seed_41_lists ... FAILED
+test seed_9127_structure ... FAILED
+test seed_17_structure ... FAILED
+test seed_101_moves ... FAILED
+test seed_4294967291_moves ... FAILED
+
+failures:
+
+---- seed_99991_blocks stdout ----
+
+thread 'seed_99991_blocks' (153608569) panicked at crates/editac-core/tests/replica_properties.rs:215:33:
+code: InvalidCommand
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- seed_73_blocks stdout ----
+
+thread 'seed_73_blocks' (153608567) panicked at crates/editac-core/tests/replica_properties.rs:215:33:
+code: InvalidCommand
+
+---- seed_65003_lists stdout ----
+
+thread 'seed_65003_lists' (153608566) panicked at crates/editac-core/tests/replica_properties.rs:215:33:
+style-checklist: UnsupportedTarget
+
+---- seed_41_lists stdout ----
+
+thread 'seed_41_lists' (153608564) panicked at crates/editac-core/tests/replica_properties.rs:215:33:
+style-checklist: UnsupportedTarget
+
+---- seed_9127_structure stdout ----
+
+thread 'seed_9127_structure' (153608568) panicked at crates/editac-core/tests/replica_properties.rs:293:13:
+assertion `left == right` failed: acknowledged source n:11:1
+  left: "<bold><ext:future retained=\"true\">a😀b</ext:future></bold>"
+ right: "a😀b"
+
+---- seed_17_structure stdout ----
+
+thread 'seed_17_structure' (153608563) panicked at crates/editac-core/tests/replica_properties.rs:293:13:
+assertion `left == right` failed: acknowledged source n:11:1
+  left: "<bold><ext:future retained=\"true\">a😀b</ext:future></bold>"
+ right: "a😀b"
+
+---- seed_101_moves stdout ----
+
+thread 'seed_101_moves' (153608562) panicked at crates/editac-core/tests/replica_properties.rs:293:13:
+assertion `left == right` failed: acknowledged source n:11:1
+  left: "<bold><ext:future retained=\"true\">a😀b</ext:future></bold>"
+ right: "a😀b"
+
+---- seed_4294967291_moves stdout ----
+
+thread 'seed_4294967291_moves' (153608565) panicked at crates/editac-core/tests/replica_properties.rs:293:13:
+assertion `left == right` failed: acknowledged source n:11:1
+  left: "<bold><ext:future retained=\"true\">a😀b</ext:future></bold>"
+ right: "a😀b"
+
+
+failures:
+    seed_101_moves
+    seed_17_structure
+    seed_41_lists
+    seed_4294967291_moves
+    seed_65003_lists
+    seed_73_blocks
+    seed_9127_structure
+    seed_99991_blocks
+
+test result: FAILED. 0 passed; 8 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
+
+error: test failed, to rerun pass `-p editac-core --test replica_properties`

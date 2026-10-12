@@ -1,0 +1,22 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.42s
+     Running unittests src/lib.rs (target/debug/deps/editac_core-71703fee5fc240eb)
+
+running 14 tests
+test commands::format::tests::complete_batch_has_one_origin_transaction_and_no_preparation_observers ... ok
+test commands::format::remote_tests::deletion_only_remote_update_invalidates_exact_state_even_without_revision_change ... ok
+test commands::structure::tests::deletion_only_remote_state_invalidates_plan_and_anchor_repreparation_is_safe ... ok
+test commands::editor::transaction_tests::v4_whole_batch_preparation_is_silent_commit_is_one_origin_and_only_local_writer ... ok
+test commands::format::block_transaction_tests::mixed_mark_and_empty_block_batch_has_one_origin_transaction_and_read_only_rejection ... ok
+test commands::structure::tests::preparation_is_read_only_and_commit_has_one_explicit_origin_transaction ... ok
+test commands::structure::tests::revision_exhaustion_rejects_before_ownership_mutation ... ok
+test commands::text::tests::delete_only_remote_update_invalidates_plan_even_with_unchanged_state_vector ... ok
+test commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks ... ok
+test commands::r#move::tests::move_preparation_is_silent_and_commit_has_one_local_origin_and_writer ... ok
+test commands::editor::transaction_tests::v4_block_text_batch_is_silent_and_commits_once_with_only_local_writer ... ok
+test commands::structure::general_transaction_tests::v3_preparation_and_rejection_are_silent_and_each_commit_has_one_explicit_origin ... ok
+test commands::editor::transaction_tests::v5_witnessed_cross_source_literal_conversion_is_silent_then_commits_once ... ok
+test commands::lists::transaction_tests::list_expansion_is_silent_and_compound_commit_emits_one_transaction_with_origin ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+

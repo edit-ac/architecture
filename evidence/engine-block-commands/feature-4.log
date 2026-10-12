@@ -1,0 +1,37 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.08s
+     Running tests/blocks.rs (target/debug/deps/blocks-edd343b7e7d18ed3)
+
+running 16 tests
+test hard_break_in_rich_text_keeps_owner_and_newline_is_not_a_split ... ok
+test deleting_only_separator_prepares_neighbor_and_retains_recovery_identity ... ok
+test incompatible_join_and_rich_format_on_code_reject_without_mutation ... ok
+test joined_original_code_replacement_and_deletion_preserve_literal_policy_and_anchors ... FAILED
+test separator_conversion_reserves_accessible_empty_paragraph_atomically ... ok
+test presentation_changes_that_invalidate_retained_joins_reject_whole_local_batch ... ok
+test code_language_bounds_and_mixed_invalid_batches_are_atomic ... ok
+test separator_rejects_text_split_join_nonempty_and_wrong_navigation_targets ... ok
+test code_literal_whitespace_blank_lines_dormant_marks_and_empty_restore ... ok
+test v3_profile_and_wrong_epoch_anchors_do_not_acquire_v4_roots_or_mutate ... ok
+test stale_wrong_replica_deleted_anchor_and_resource_rejection_are_atomic ... ok
+test separators_insert_both_sides_preserve_nested_identity_and_navigate ... ok
+test code_split_endpoints_and_matching_join_preserve_original_sources ... ok
+test production_blocks_bidirectional_pinned_yjs_exchange_and_restore ... ok
+test three_writer_code_metadata_literal_edit_and_separator_races_replay_restore ... ok
+test last_editable_separator_reservation_resource_failure_leaves_live_state_exact ... ok
+
+failures:
+
+---- joined_original_code_replacement_and_deletion_preserve_literal_policy_and_anchors stdout ----
+
+thread 'joined_original_code_replacement_and_deletion_preserve_literal_policy_and_anchors' (152660477) panicked at crates/editac-core/tests/blocks.rs:71:32:
+called `Result::unwrap()` on an `Err` value: PresentationConflict
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    joined_original_code_replacement_and_deletion_preserve_literal_policy_and_anchors
+
+test result: FAILED. 15 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 37.96s
+
+error: test failed, to rerun pass `-p editac-core --test blocks`

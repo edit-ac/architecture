@@ -1,0 +1,44 @@
+{
+  "local selective origin exclusion": [
+    "local_undo_after_remote_insertion_keeps_remote_unicode_and_anchor",
+    "remote_replay_restore_and_selection_do_not_enter_history_or_clear_redo",
+    "distinct_typing_origins_and_composition_sessions_never_merge"
+  ],
+  "explicit command boundaries and deterministic typing/composition": [
+    "explicit_edits_are_separate_inside_capture_interval_and_clear_redo",
+    "deterministic_typing_capture_timeout_origin_and_reset_boundaries",
+    "composition_group_is_explicit_and_paste_format_move_break_coalescing",
+    "one_mixed_prepared_operation_undoes_text_metadata_and_move_as_one_group"
+  ],
+  "scoped rich text and metadata history": [
+    "deletion_replacement_unicode_undo_restores_original_identity_and_marks",
+    "rich_format_command_is_one_group_and_remote_text_survives",
+    "text_and_metadata_history_can_repeat_undo_redo_without_losing_deleted_payloads",
+    "literal_code_history_keeps_dormant_marks_and_exact_whitespace"
+  ],
+  "immutable creation/operation rows and original text identity": [
+    "initial_creation_rows_text_and_required_metadata_survive_undo_redo",
+    "newly_created_text_enters_scope_for_later_typing_but_creation_content_is_retained",
+    "structural_move_undo_retains_operation_and_remote_descendant_edits",
+    "split_join_history_keeps_multisource_ownership_marks_and_anchors",
+    "metadata_history_does_not_rewrite_established_v5_join_witnesses"
+  ],
+  "permanent tombstones, remote bytes and dependent recovery/anchors": [
+    "permanent_remote_tombstone_wins_over_structural_redo_and_keeps_recovery_bytes",
+    "dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone",
+    "container_control_undo_does_not_swallow_live_children",
+    "remote_text_and_presentation_on_local_creation_survive_control_undo_redo"
+  ],
+  "bounded capture, redo policy and nonmutating failures": [
+    "group_count_payload_and_commit_caps_evict_old_history_without_content_writes",
+    "clear_and_invalid_configuration_are_nonmutating",
+    "rejected_and_stale_preparation_preserve_history_state_and_redo",
+    "staged_history_resource_rejection_is_atomic_and_retry_requires_changed_remote_state",
+    "concurrent_separator_presentation_blocks_incompatible_undo_before_live_mutation"
+  ],
+  "ordinary update replay, supported profiles and pinned bidirectional interop": [
+    "history_updates_converge_under_six_three_writer_duplicate_reorder_schedules",
+    "v4_profile_uses_same_selective_controls_without_mutating_frozen_mapping",
+    "pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation"
+  ]
+}

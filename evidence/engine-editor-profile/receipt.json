@@ -1,0 +1,445 @@
+{
+  "task": "ENG-1.21",
+  "state": "implemented and locally verified production v4 integration; no deployment/publication/release/performance claim",
+  "date": "2026-10-11",
+  "prompt_revision": "7eaa063f3629",
+  "source_snapshot": "progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+  "source_revision": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "source_snapshot_sha256": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "core_base_revision": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "architecture_base_revision": "26d3502585fea4c8a21bc15fb949a562b93905ea",
+  "working_tree": "uncommitted; exact tested source hashes supplied; preexisting Cargo.lock/Cargo.toml and other unrelated changes preserved",
+  "descriptor": {
+    "profile": "editac.yrs-yjs.editor.v4",
+    "schema": "editac.registry.editor.v4",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "yrs": "0.28.0",
+    "yjs": "13.6.33",
+    "yProtocols": "1.0.7",
+    "roots": [
+      "registry-parents",
+      "registry-texts",
+      "registry-placements",
+      "delete-probe-tombstones",
+      "registry-block-attributes",
+      "registry-ownership-ops",
+      "registry-owner-origins",
+      "registry-container-attributes",
+      "registry-list-item-attributes",
+      "registry-entity-controls"
+    ],
+    "bounds": {
+      "bytes": 16777216,
+      "sources": 4096,
+      "operations": 4096,
+      "spans": 8192,
+      "textBytes": 1048576,
+      "sourceUtf16": 262144,
+      "depth": 128,
+      "jsonDepth": 32,
+      "cutBytes": 256,
+      "controls": 8192,
+      "hierarchyDepth": 128,
+      "registrations": 4096,
+      "edgeVisits": 16777216,
+      "idBytes": 96,
+      "anyValues": 262144,
+      "structs": 262144,
+      "containerEntries": 8192,
+      "allocationClock": 2097152
+    }
+  },
+  "descriptor_sha256": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+  "same_descriptor_as_ENG_1_19_and_ENG_1_20": true,
+  "qualification_receipts": {
+    "engine-structural-profile": "f873ea48d9426a1c4f3966b2450c7c994098558a2c3b8ad27ec2f4b8f40981a1",
+    "engine-block-kinds": "083ec76bf20d82217d527a384f259e0f79bc21aceee355ec63696d4fe99a2ddf"
+  },
+  "integration": "Document holds one authoritative Yrs replica. Production explicitly admits v4 identities and calls the unchanged qualified replay mapper; fixed fixture seed/envelope/admission helpers are not production entry points. Whole prepared editor batches stage on an isolated replica with the actual writer, validate hierarchy/immutability/resources, then apply one exact delta under an explicit local origin. Existing text/format/structure APIs consume v4 projection/anchors; no copied text or repair writes.",
+  "changed_paths": [
+    "crates/editac-core/src/lib.rs",
+    "crates/editac-core/src/projection.rs",
+    "crates/editac-core/src/document.rs",
+    "crates/editac-core/src/commands/format.rs",
+    "crates/editac-core/src/commands/mod.rs",
+    "crates/editac-core/src/commands/text.rs",
+    "crates/editac-core/src/commands/structure.rs",
+    "crates/editac-core/src/editor.rs",
+    "crates/editac-core/src/commands/editor.rs",
+    "crates/editac-core/tests/editor_profile.rs",
+    "crates/editac-core/tests/structural_profile.rs",
+    "crates/editac-core/tests/format_commands.rs",
+    "crates/editac-core/tests/split_join.rs",
+    "fixtures/schema-v4/editor-exchange.mjs"
+  ],
+  "source_hashes": "tested-source-hashes.json",
+  "criterion_to_case_matrix": {
+    "Exact v4 creation, restore, admission; no migration/reseeding": [
+      "production_create_uses_exact_ten_roots_and_restored_empty_is_not_reseeded",
+      "malformed_immutable_root_source_tuple_and_resource_updates_are_atomic",
+      "stale_and_cross_replica_plans_and_profile_epoch_fail_atomically"
+    ],
+    "Hierarchical read-only snapshots, container/check/number tuples and unknown recovery": [
+      "production_projection_matches_qualified_hierarchy_metadata_and_read_only_bytes",
+      "metadata_only_changes_rebuild_check_number_and_revision_and_stale_all_plans",
+      "opaque_immutable_source_and_container_admit_read_only_and_keep_children",
+      "entity_controls_keep_immutable_rows_recovery_descendants_and_reactivate"
+    ],
+    "Prepared placement/creation and reversible controls preserve subtree/source/mark/anchor identities": [
+      "prepared_nested_place_preserves_subtree_sources_marks_and_anchors",
+      "create_container_and_original_atomically_then_place_and_check",
+      "disabling_place_operation_replays_retained_intent_and_restores",
+      "real_production_three_replica_move_move_edit_six_orders_and_duplicate_restore",
+      "v4_whole_batch_preparation_is_silent_commit_is_one_origin_and_only_local_writer"
+    ],
+    "Shared text/format and nested split/join, endpoint/empty/repeat/multiple originals": [
+      "nested_split_join_retains_checked_default_unicode_marks_and_original_identity",
+      "production_nested_endpoint_empty_and_repeated_split_after_multi_source_join",
+      "shared_formatting_crosses_nested_containers_and_empty_block_tuples_are_atomic"
+    ],
+    "Code literal insertion/dormant marks and noneditable separators; atomic neighbor reservation": [
+      "explicit_code_split_join_and_literal_newlines_preserve_dormant_marks",
+      "separator_is_noneditable_and_last_editable_owner_reserves_adjacent_paragraph",
+      "rich_format_mixed_code_and_unknown_targets_reject_without_mark_changes",
+      "inaccessible_separator_neighbor_identity_overflow_and_nonempty_creation_are_atomic"
+    ],
+    "Complete invalid/mixed/stale/profile/epoch/resource rejection before any live write": [
+      "mixed_invalid_block_metadata_and_nonempty_separator_never_partially_write",
+      "cycles_illegal_parents_and_incompatible_joins_reject_before_commit",
+      "malformed_immutable_root_source_tuple_and_resource_updates_are_atomic",
+      "stale_and_cross_replica_plans_and_profile_epoch_fail_atomically",
+      "depth_128_text_is_editable_and_whole_subtree_depth_overflow_rejects_atomically"
+    ],
+    "Actual production Rust/Yjs bytes, pinned tools, replay/checkpoint/unknown recovery": [
+      "production_bidirectional_pinned_yjs_exchange_and_remote_unknown_recovery",
+      "real_production_three_replica_move_move_edit_six_orders_and_duplicate_restore"
+    ],
+    "Legacy contracts, qualification receipts and hierarchy prerequisite preserved": [
+      "regressions-2.log: all 16 nonzero Rust suites; v4 qualification mapper/descriptor unchanged; isolated exchange families; legacy parsers and bounds retained"
+    ]
+  },
+  "checks": {
+    "feature": {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH CARGO_TARGET_DIR=target/engine-editor-profile EDITAC_EDITOR_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-editor-profile/exchange-final cargo test -p editac-core --test editor_profile --locked",
+      "log": "feature-final.log",
+      "exit_code": 0,
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0
+    },
+    "regressions": {
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--locked",
+        "--lib",
+        "--test",
+        "structural_profile",
+        "--test",
+        "block_kinds_profile",
+        "--test",
+        "ownership_profile",
+        "--test",
+        "block_profile",
+        "--test",
+        "initialization",
+        "--test",
+        "projection",
+        "--test",
+        "anchors",
+        "--test",
+        "text_commands",
+        "--test",
+        "format_commands",
+        "--test",
+        "split_join",
+        "--test",
+        "lists",
+        "--test",
+        "interop",
+        "--test",
+        "schema_interop",
+        "--test",
+        "schema_profile",
+        "--test",
+        "hierarchy_probe",
+        "--no-fail-fast"
+      ],
+      "environment": "checks.json",
+      "log": "regressions-2.log",
+      "exit_code": 0,
+      "rust_suites": [
+        {
+          "suite": "unittests src/lib.rs",
+          "executed": 10,
+          "passed": 10,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/anchors.rs",
+          "executed": 24,
+          "passed": 24,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/block_kinds_profile.rs",
+          "executed": 15,
+          "passed": 15,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/block_profile.rs",
+          "executed": 21,
+          "passed": 21,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/format_commands.rs",
+          "executed": 41,
+          "passed": 41,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/hierarchy_probe.rs",
+          "executed": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/initialization.rs",
+          "executed": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/interop.rs",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/lists.rs",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/ownership_profile.rs",
+          "executed": 26,
+          "passed": 26,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/projection.rs",
+          "executed": 16,
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/schema_interop.rs",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/schema_profile.rs",
+          "executed": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/split_join.rs",
+          "executed": 51,
+          "passed": 51,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/structural_profile.rs",
+          "executed": 30,
+          "passed": 30,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/text_commands.rs",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ],
+      "tested_source_hashes": "regressions-2-source-hashes.json",
+      "passing_evidence_reuse": "Final edit adds explicit UnsupportedTarget only within v4 structural preparation; final 22-case production feature suite revalidates this branch. The unchanged legacy branches retain all passing regression evidence."
+    },
+    "node_tests": [
+      {
+        "log": "regressions/v2-format/node.log",
+        "executed": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "log": "regressions/v3-production/node.log",
+        "executed": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "log": "regressions/v3-ownership/node.log",
+        "executed": 16,
+        "passed": 16,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "log": "regressions/v4-structure/node.log",
+        "executed": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "log": "regressions/v2-blocks/node.log",
+        "executed": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "log": "regressions/v4-blocks/node.log",
+        "executed": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "log": "exchange-final/node.log",
+        "executed": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      }
+    ],
+    "format": {
+      "command": "cargo fmt --all -- --check",
+      "exit_code": 0,
+      "log": "format-check.log"
+    },
+    "diff": {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "log": "diff-check.log"
+    }
+  },
+  "final_distinct_counts": {
+    "rust": 331,
+    "node_tests": 70,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0
+  },
+  "permutation_coverage": "Actual production three independent writers, six orders, duplicate each delivery and checkpoint restore; unchanged qualification suites add complete v4 replay/control/code and legacy schedules.",
+  "preserved_failures": [
+    {
+      "log": "compile-1.log",
+      "failure": "missing BlockAttributes import",
+      "repair": "imported enum before next feature build"
+    },
+    {
+      "log": "feature-1.log",
+      "failure": "test matched struct Deleted variant as tuple",
+      "repair": "corrected fixture variant before execution"
+    },
+    {
+      "log": "feature-2.log",
+      "executed": 16,
+      "passed": 13,
+      "failed": 3,
+      "skipped": 0,
+      "repair": "corrected canonical deleted-node key and added nonempty separator preparation guard"
+    },
+    {
+      "log": "feature-4.log",
+      "executed": 22,
+      "passed": 21,
+      "failed": 1,
+      "skipped": 0,
+      "repair": "opaque-container fixture supplied required independent metadata; feature-5-opaque-repair.log executed/passed 1 with 21 intentional filtered cases; final full suite supersedes it"
+    },
+    {
+      "log": "regressions-1.log",
+      "executed": 70,
+      "passed": 69,
+      "failed": 1,
+      "skipped": 0,
+      "not_executed_suites": 12,
+      "failure": "ambient Node 26.4.0 failed exact Node 24.19.0 pin; extracted child failure in regressions-1-node-pin-failure.txt (raw child log replaced on retry)",
+      "repair": "configured existing pinned Node PATH, added runtime/dependency pin check to new exchange and requalified required suites"
+    }
+  ],
+  "frozen_v4_files_preserved": {
+    "fixtures/schema-v4/policy.rs": "4f0c71162a05e24c199a6b1e2594aa9890bdcb12db523ce3b8e0081a17640dd0",
+    "fixtures/schema-v4/mapping.mjs": "5183d3090b15f379c8fe6fc11b4e8cda594b882162a0896c081ea0508ff05c9a",
+    "fixtures/schema-v4/block-kinds-exchange.mjs": "f370fc68147c0d1cb1191af6ffeba23cc0abcadf9218c0df0edae2949ca515c6",
+    "fixtures/schema-v4/exchange.mjs": "e7e08490a6eb9ac02df8d54789bd98b4c62a8aee449285eecfc04561002a9e21",
+    "fixtures/schema-v4/bounded_decoder.rs": "5679118322620c056a3bc84109327c8b4e8e332393681351affe90f8fe2e07d8",
+    "fixtures/schema-v4/policy.mjs": "4df1be1808804248cc687c4fcf5d150fc4b170d60345e0d86c8f8ab39a174153",
+    "fixtures/schema-v4/mapping.rs": "e0c5e0d7e78113baff5d6061e870ec0810071f2537139cf0620d9efc1052f595",
+    "fixtures/schema-v4/profile.json": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+    "fixtures/schema-v4/seed.json": "39aac7215b7e28b056bab5f008ab9a5594b15d9e53e692926fe87cd68f808705"
+  },
+  "hygiene": "hygiene.json",
+  "artifact_manifest": "artifacts.json",
+  "artifact_manifest_sha256": "a6297676f1b9b68cd819f12779e5669a59b81b020b09498ed5a314ba4b2b4cbe",
+  "remaining_original_parents": [
+    "ENG-1.8",
+    "ENG-1.9",
+    "ENG-1.10",
+    "ENG-1.11",
+    "ENG-1.12",
+    "ENG-1.13",
+    "ENG-1.14",
+    "ENG-1.15"
+  ],
+  "next_ready": "ENG-1.8",
+  "no_paid_inference_or_credentials_loading": true,
+  "no_deployment_or_publication": true
+}

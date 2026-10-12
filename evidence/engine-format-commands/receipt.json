@@ -1,0 +1,125 @@
+{
+  "gate": "ENG-1.6",
+  "state": "partial parent: mark portion implemented and locally verified; block attributes pending controller mapping; not deployed",
+  "children": {
+    "ENG-1.6-I1-MARKS": "complete",
+    "ENG-1.6-I1-BLOCKS": "needs mapping",
+    "ENG-1.6-I1": "incomplete",
+    "ENG-1.6-V1": "incomplete: full block-attribute acceptance not covered"
+  },
+  "source": {
+    "snapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+    "revision": "0c9ea1747d09797b35ad7d3923f79d61bae3725236a6c5b1bf13845d7e68c600",
+    "prompt_revision": "7eaa063f3629",
+    "iteration": 6
+  },
+  "implementation": {
+    "base_revision": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+    "delivery": "uncommitted changes; prior implementation and unrelated work preserved",
+    "baseline": "baseline.json",
+    "files": {
+      "Cargo.lock": "52476d26e42c8ed8943b0c924fb31491d1e6eaa70d5146ccb31deda46fe71be9",
+      "crates/editac-core/Cargo.toml": "2e24079747593490f72d75e98edb9807ab0a632e55cd057e4a8c82b9c0daa88f",
+      "crates/editac-core/src/commands/mod.rs": "fd72fc4fab975e628ae7219b2be68fc7a795d00551eb62926022cf747efedbc3",
+      "crates/editac-core/src/commands/text.rs": "87b74654acc07d8db1eb41b7fddb1ab9cc5ff277ff2b4f5aa17998042c0f564c",
+      "crates/editac-core/src/commands/format.rs": "dd1df540efb256246379d8856c015017df27cc83713cc29c15be388206224f8b",
+      "crates/editac-core/tests/format_commands.rs": "efb1dc4793858ea0c26b392870078d3657a18ee1b3a4426682c88cf00490cf86",
+      "fixtures/schema-v1/format-exchange.mjs": "feaa79049cf720d8d85491eaeecc3b11a47f78499a8a4e02204ca5f75b5f19ba"
+    }
+  },
+  "fixtures": {
+    "schema_sha256": "9c9dcdb3e9edad74d841c55ec11a99962f3e002b823758e88e531291b6d82d23",
+    "formats_sha256": "f33820c733113c18dfc03ef9ebb313c2dd59891689fb5363f536f8daae2a6713",
+    "protocol_sha256": "dd8c7aa6c73a03a35ec41de83822314dfc5bf7d575f3ac19566421b6393eeb3b",
+    "source_writer": 11,
+    "replica_schedule": "real v1 replay to writers 21/22/23; duplicate/reordered mark delivery, anchors before remote insertion; ordinary/original/join/split ownership",
+    "interop": "actual pinned Yjs 13.6.33 reads all six Rust marks and emits formatting restored by Rust; retained unknown attributes and source identity asserted",
+    "interop_artifacts": {
+      "interop/rust.bin": "60986fa3a3c04baa40190846e9d23f42742fcc6c8e9a5bd158215fda31459a07",
+      "interop/js.bin": "125a8bb2fe7e315727a69939f9157f65ffed6f67c9188399c4809a0e7617f46b",
+      "interop/bridge.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test format_commands --locked",
+      "exit": 0,
+      "executed": 26,
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0,
+      "measured": 0,
+      "filtered": 0,
+      "suites": 1,
+      "log": "format-commands.log",
+      "sha256": "28e3af87d97a969e5181e4f174fffe4df1fa9dd5589538007a9af43dce070414"
+    },
+    {
+      "command": "cargo test -p editac-core --lib commands::format:: --locked",
+      "exit": 0,
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "measured": 0,
+      "filtered": 2,
+      "suites": 1,
+      "log": "transaction-proofs.log",
+      "sha256": "f4a9be243547cce9ac957b3521dec5404a7067942aa0a528a98ea58ab51fc474"
+    },
+    {
+      "command": "cargo test -p editac-core --test text_commands --test anchors --test initialization --test projection --test schema_profile --test interop --test hierarchy_probe --test split_join_probe --test structure_conflicts --test schema_interop --locked",
+      "exit": 0,
+      "executed": 123,
+      "passed": 123,
+      "failed": 0,
+      "skipped": 0,
+      "measured": 0,
+      "filtered": 0,
+      "suites": 10,
+      "log": "integration.log",
+      "sha256": "b56dc3c26989de58715c5c7e0a9c3594faf37e2c50c160abc7ad014d70a07648"
+    }
+  ],
+  "total": {
+    "executed": 151,
+    "passed": 151,
+    "failed": 0,
+    "skipped": 0
+  },
+  "other_checks": [
+    {
+      "command": "rustfmt --check --edition 2024 crates/editac-core/src/commands/format.rs crates/editac-core/tests/format_commands.rs",
+      "exit": 0,
+      "log": "rustfmt.log"
+    },
+    {
+      "command": "cargo generate-lockfile --offline",
+      "exit": 0,
+      "log": "lockfile.log",
+      "scope": "add URL parser 2.5.8 and transitive dependencies; retain preexisting entries"
+    }
+  ],
+  "failures": [
+    {
+      "log": "format-commands-compile-failure.log",
+      "exit": 101,
+      "executed": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "build_failures": 1,
+      "reason": "six references to nonexistent Document::apply_remote in new harness; repaired with existing real restore/replay harness and private same-replica deletion unit proof",
+      "sha256": "e893f8aa2c9e5b8bca8062c8572e8f5141c11fa40240d1e2d34f27522a06ea40"
+    }
+  ],
+  "warnings": "integration retains seven existing dead-code warnings in structure_conflicts support; final format/transaction suites warning-free",
+  "remaining": {
+    "criterion": "paragraph/heading attributes in original ENG-1.6-I1; full parent ENG-1.6-V1 proof",
+    "evidence": "schema-v1 Exact roots and values: immutable string kinds; list/item known; nested character attributes; no block metadata or split-owner/empty-block mapping. ProjectedNode only kind/placement/spans/runs. No schema changes authorized.",
+    "unblock": "controller supplies qualified storage/projection/admission mapping for paragraph/heading level (including empty nodes and split owner), or a qualified schema revision; then implement attributes and atomic mixed mark/block proof",
+    "next_ready_parent": "ENG-1.7; ENG-1.5 dependency complete; ENG-1.8/1.9 depend on 1.7, 1.10 on 1.8, 1.11 on 1.6/1.8/1.9/1.10, remainder sequential"
+  },
+  "cleanup": "cleanup.json",
+  "timing": "about 12 minutes elapsed: 3 discovery, 7 implementation, 2 verification/receipt; exited after coherent mark batch, external block mapping remains"
+}

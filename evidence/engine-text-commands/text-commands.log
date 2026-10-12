@@ -1,0 +1,31 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.83s
+     Running tests/text_commands.rs (target/debug/deps/text_commands-1d9431b6dc3c3d76)
+
+running 23 tests
+test empty_insert_delete_and_replace_are_noops ... ok
+test byte_limits_and_origin_validation_are_nonmutating ... ok
+test foreign_epoch_and_replaced_source_reject_without_mutation ... ok
+test cross_node_range_rejects_the_entire_replacement ... ok
+test insert_delete_and_backward_replace_use_the_same_prepared_boundary ... ok
+test deleted_source_and_deleted_split_owner_reject_stable_targets ... ok
+test joined_replacement_crosses_original_sources_without_cloning_texts ... ok
+test preparation_and_applicability_do_not_consume_pending_changes ... ok
+test joined_seam_insertion_respects_original_source_affinity ... ok
+test prepared_plan_cannot_commit_on_a_different_live_replica ... ok
+test malformed_public_offsets_fail_before_any_mutation ... ok
+test remote_deleted_selection_collapses_without_redirecting_to_document_end ... ok
+test replacement_commits_one_revision_update_and_exact_utf16_range ... ok
+test retained_marks_and_shared_text_identity_survive_a_nearby_edit ... ok
+test remote_insert_before_prepare_rebases_stable_selection_and_replay_converges ... ok
+test split_cut_insertion_follows_frozen_left_affinity_ownership ... ok
+test stale_plan_rejects_after_an_intervening_edit ... ok
+test split_suffix_replacement_maps_to_original_utf16_source ... ok
+test unknown_kind_retains_content_but_rejects_semantic_edits ... ok
+test unicode_fixture_replacements_have_fixed_content_and_ranges ... ok
+test depth_limit_rejects_one_level_over_and_accepts_the_boundary ... ok
+test exact_edit_byte_limit_is_accepted ... ok
+test resulting_text_byte_limit_rejects_growth_but_allows_a_bounded_replacement ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.17s
+

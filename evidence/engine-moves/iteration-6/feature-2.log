@@ -1,0 +1,40 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.91s
+     Running tests/moves.rs (target/debug/deps/moves-14c61dd1e83b3747)
+
+running 32 tests
+test absorbed_target_has_explicit_result ... ok
+test captured_structural_versions_survive_text_edits_and_selection_affinity ... ok
+test code_and_separator_moves_are_structural_and_do_not_modify_presentation_or_marks ... ok
+test container_move_retains_subtree_order_check_state_and_cross_subtree_selection ... ok
+test deleted_destination_rejects_preparation_and_retains_target_content ... ok
+test deleted_target_has_explicit_result ... ok
+test derived_multi_source_owner_moves_and_anchors_follow_the_same_sources ... ok
+test disabled_before_has_explicit_result ... ok
+test disabled_destination_rejects_without_silently_moving_to_root ... ok
+test empty_owner_moves_without_replacing_its_empty_source ... ok
+test foreign_or_deleted_selection_rejects_before_mutation ... ok
+test leaf_reordering_before_sibling_and_append_preserve_sources ... ok
+test legacy_profile_never_acquires_v4_move_roots ... ok
+test malformed_root_version_rejects ... ok
+test missing_targets_and_noncontainer_destination_are_rejected ... ok
+test mixed_batch_cycle_and_stale_version_reject_every_staged_move ... ok
+test nested_leaf_move_preserves_unicode_marks_and_original_text_identity ... ok
+test opaque_target_and_destination_never_gain_a_guessed_structural_role ... ok
+test prepared_move_rejects_intervening_text_or_deletion_and_wrong_replica ... ok
+test concurrent_disjoint_nested_moves_and_descendant_edit_coexist_in_six_orders ... ok
+test self_and_descendant_cycles_reject_before_live_mutation ... ok
+test stale_before_version_rejects_even_when_sibling_stays_under_parent ... ok
+test stale_parent_version_rejects_even_when_destination_stays_visible ... ok
+test stale_target_version_rejects_without_retargeting ... ok
+test wrong_parent_and_self_before_are_rejected ... ok
+test concurrent_move_and_destination_disable_project_moved_leaf_at_root ... ok
+test concurrent_same_target_move_move_and_edit_have_ranked_winner_in_six_orders ... ok
+test concurrent_parent_version_change_makes_later_move_recoverable_in_six_orders ... ok
+test concurrent_before_version_change_makes_later_move_recoverable_in_six_orders ... ok
+test concurrent_container_cycle_keeps_losing_intention_and_all_content_in_six_orders ... ok
+test depth_limit_accounts_for_every_descendant_and_rejects_whole_batch ... ok
+test production_moves_exchange_with_pinned_yjs_and_restore_concurrent_schedules ... ok
+
+test result: ok. 32 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.65s
+

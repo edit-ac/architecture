@@ -1,0 +1,181 @@
+{
+  "gate": "ENG-1.3",
+  "date": "2026-10-11",
+  "state": "implemented and locally verified; not deployed",
+  "source_snapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+  "source_revision": "0c9ea1747d09797b35ad7d3923f79d61bae3725236a6c5b1bf13845d7e68c600",
+  "prompt_revision": "7eaa063f3629",
+  "iteration": 3,
+  "implementation_base": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "implementation_file_sha256": {
+    "crates/editac-core/src/projection.rs": "d20b4e7fd797333ce10d7eb5e204f6340e45c1e18749f7c363d4bde6510b5593",
+    "crates/editac-core/src/document.rs": "c1eb8c188841799c8c6f125307cd12b0ba4d9bd0d9c28a589e1eee0b93b76577",
+    "crates/editac-core/src/lib.rs": "c738556a65767cf43931c6877165d30ec3906313a2902a077f1fc500387a7a48",
+    "crates/editac-core/tests/projection.rs": "d8cf520de9a2ad8bd9fcc3433c5c2d01a5cbfcc6499a008fc9a930e842abf66c"
+  },
+  "fixtures": {
+    "fixed_seed": "frozen profile writer 11, block-1 a😀b bold[1,3), block-2 cאבd code[1,3)",
+    "incremental": "128 ordinary nodes; insertion at UTF-16 3 reads 1 source, changes 1 owner, retains 127 Arc node objects",
+    "composed_cases": 12,
+    "update_schedules": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        1
+      ]
+    ],
+    "writers": [
+      21,
+      22,
+      23
+    ]
+  },
+  "commands": [
+    {
+      "command": "cargo test -p editac-core --test projection --locked",
+      "log": "projection-final.log",
+      "exit": 0,
+      "executed": 16,
+      "passed": 16,
+      "failed": 0,
+      "ignored": 0,
+      "filtered": 0
+    },
+    {
+      "command": "cargo test -p editac-core --test projection --test initialization --test schema_profile --test schema_interop --test structure_conflicts --test hierarchy_probe --test split_join_probe --test interop --locked",
+      "log": "integration.log",
+      "exit": 0,
+      "executed": 76,
+      "passed": 76,
+      "failed": 0,
+      "ignored": 0,
+      "filtered": 0,
+      "suites": [
+        {
+          "suite": "hierarchy_probe",
+          "passed": 7,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "initialization",
+          "passed": 17,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "interop",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "projection",
+          "passed": 16,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "schema_interop",
+          "passed": 1,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "schema_profile",
+          "passed": 3,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "split_join_probe",
+          "passed": 5,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "structure_conflicts",
+          "passed": 26,
+          "failed": 0,
+          "ignored": 0,
+          "measured": 0,
+          "filtered": 0
+        }
+      ]
+    },
+    {
+      "command": "rustfmt --edition 2024 --check crates/editac-core/src/projection.rs crates/editac-core/src/document.rs crates/editac-core/src/lib.rs crates/editac-core/tests/projection.rs",
+      "exit": 0,
+      "log": "format.log"
+    },
+    {
+      "command": "git diff --check -- crates/editac-core/src/lib.rs; explicit trailing-whitespace scan of all four changed files",
+      "exit": 0,
+      "log": "whitespace.log"
+    }
+  ],
+  "preserved_failures": [
+    {
+      "log": "check.log",
+      "result": "compile failed: root argument and pinned Number API; 0 tests"
+    },
+    {
+      "log": "check-repaired.log",
+      "result": "compile failed: map key inference; 0 tests"
+    },
+    {
+      "log": "projection-first.log",
+      "result": "15 announced; 7 explicitly reported passed before SIGSEGV; remaining execution undetermined; no final test summary",
+      "repair": "Keep same-replica Doc handle alive in ProjectionIndex; bind reads to that replica; lifetime regression added"
+    },
+    {
+      "log": "projection-lifetime-repair.log",
+      "result": "16 executed, 15 passed, 1 failed, 0 ignored/filtered",
+      "repair": "Use text-registry MapEvent keys to invalidate replacements without comparing a collected old Yrs branch"
+    }
+  ],
+  "cleanup": "cleanup.json",
+  "limitations": [
+    "Frozen v1 ordinary nodes and sole qualified ownership pair only",
+    "Snapshot ranges are transaction-local UTF-16 positions, not async anchors",
+    "Public semantic commands/patch subscriptions remain later gates"
+  ],
+  "fixture_file_sha256": {
+    "crates/editac-core/tests/support/structure_conflicts.rs": "2ed376ddbd4cc65a91695263f02924dd8ef36f687304818f880d723e5550bac4",
+    "crates/editac-core/tests/support/hierarchy.rs": "3e0cd05d5e642960542d0ef23710d612d6efec8d9f37e9febf259d82726b74b8",
+    "crates/editac-core/tests/support/split_join.rs": "e40f40a3a9ed5a75df7de7332f74017308c94a394aa334be9958b727e7e63ed4",
+    "crates/editac-core/tests/support/structure_registry.rs": "4c24dbd1d4c6ffb2661cecb573060819e57b5bc0cfdc6996afaea3eded06031c",
+    "fixtures/schema-v1/mapping.mjs": "db149fb331841733dc2fd1139c8ccb70c21bc9d7c734975d8da176d75c6f2527"
+  },
+  "artifact_sha256": {
+    "whitespace.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "test-counts.json": "a61445c7e58cebd38028fb3ede10a128e472d2b9f1d17315f952e4f03a93333c",
+    "projection-lifetime-repair.log": "434fdb036fbdb8d8fa6b6c20939e5e5d418e318b0e171728b5d894369b11fc03",
+    "format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "projection-final.log": "e5462d41a59285013d8da7490360032bc82ffef39ca62f16383da699a84a4d3c",
+    "integration.log": "b0fb12e8bfa36d3fcbad013dc70ac1ac8438418b371d640b7ffb0926e012a6a1",
+    "cleanup.json": "6f879f8bc768f1749fbfad9260e0d7602d121a2859093743f826e8e4f2df8f15",
+    "projection-first.log": "34f9c335058c2cfea20b5666eb3223bc0ee67e467448b26816a5ec0a1ba68b88",
+    "check.log": "a60c45d64b6d11c2d6e2c11b4d4eb4471f0adaf7d4cb7aa25186808f8faec0d8",
+    "check-repaired.log": "aa322f6f4b503889e4894df3ac283076d5c69825cbeed04ac0587950a23e988e"
+  }
+}

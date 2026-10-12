@@ -1,0 +1,95 @@
+{
+  "gate": "ENG-1.12",
+  "children": [
+    "ENG-1.12-I1",
+    "ENG-1.12-V1"
+  ],
+  "state": "implemented and locally verified",
+  "utc": "2026-10-11T23:42:41.206485+00:00",
+  "source_revision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+  "source_snapshot": "progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+  "prompt_revision": "7eaa063f3629",
+  "core_head": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "working_tree_dirty": true,
+  "changed_paths": [
+    "crates/editac-core/src/patches.rs",
+    "crates/editac-core/tests/patches.rs",
+    "crates/editac-core/src/lib.rs",
+    "crates/editac-core/src/document.rs",
+    "crates/editac-core/src/history.rs",
+    "crates/editac-core/src/commands/text.rs",
+    "crates/editac-core/src/commands/format.rs",
+    "crates/editac-core/src/commands/structure.rs",
+    "crates/editac-core/src/commands/editor.rs"
+  ],
+  "rust": {
+    "feature": 23,
+    "regression": 474,
+    "distinct_executed": 497,
+    "passed": 497,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0,
+    "results": "rust-results.json"
+  },
+  "node": {
+    "executed": 120,
+    "passed": 120,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "results": "node-results.json"
+  },
+  "coverage": "criterion-map.json",
+  "tested_source_hashes": "tested-source-hashes.json",
+  "tested_source_count": 110,
+  "frozen_profiles": {
+    "preserved-v4-hashes.json": {
+      "matched": 15,
+      "mismatches": 0
+    },
+    "preserved-v5-qualification-hashes.json": {
+      "matched": 10,
+      "mismatches": 0
+    }
+  },
+  "behavior": {
+    "patch_version": 1,
+    "observation_tokens": "local sequence and content revision; not CRDT time",
+    "selection": "local stable anchors plus explicit current resolution; no content history/update",
+    "delivery": "post-transaction and post-lock, ordered queued reentrant commits, subscription sequence boundary",
+    "scopes": [
+      "all",
+      "nodes",
+      "sources",
+      "selection",
+      "updates"
+    ],
+    "disposal": "idempotent; callback captures released immediately except while executing; drop unsubscribes",
+    "errors": "returned callback errors and native unwinding panics disable the faulting observer and record bounded diagnostics; committed state and other callbacks survive",
+    "panic_scope": "unwinding builds; no claim to catch aborting process/WASM traps",
+    "limits": {
+      "subscriptions": 1024,
+      "failure_records": 64,
+      "error_message_chars": 1024
+    },
+    "retained_projection": "immutable derived node deltas; no second writable replica",
+    "scope": "Rust production patches only; no JS subscription or WASM binding acceptance"
+  },
+  "preserved_failures": [
+    "patches-1.log",
+    "patches-2.log",
+    "patches-3.log",
+    "failure-notes.json"
+  ],
+  "hygiene": "hygiene.json",
+  "upstream": "ENG-1.11 history 28/28 revalidated in current combined suite; foundation interop/schema_interop pass",
+  "permissions": {
+    "paid_inference": false,
+    "publication": false,
+    "deployment": false,
+    "source_roadmap_edited": false,
+    "second_parent_processed": false
+  }
+}

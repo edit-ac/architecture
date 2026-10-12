@@ -1,0 +1,125 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: unused import: `BTreeSet`
+ --> crates/editac-core/tests/../../../fixtures/schema-v3/mapping.rs:2:34
+  |
+2 | use std::collections::{BTreeMap, BTreeSet, HashMap};
+  |                                  ^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `StateVector`
+  --> crates/editac-core/tests/ownership_profile.rs:11:54
+   |
+11 | use yrs::{Any, Assoc, IndexedSequence, Map, ReadTxn, StateVector, Text, Transact};
+   |                                                      ^^^^^^^^^^^
+
+error[E0599]: no method named `is_finite` found for reference `&yrs::Number` in the current scope
+   --> crates/editac-core/tests/../../../fixtures/schema-v3/mapping.rs:137:14
+    |
+137 |         if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 {
+    |              ^^^^^^^^^ method not found in `&yrs::Number`
+
+error[E0369]: binary operation `>=` cannot be applied to type `yrs::Number`
+   --> crates/editac-core/tests/../../../fixtures/schema-v3/mapping.rs:137:32
+    |
+137 |         if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 {
+    |                             -- ^^ --- {float}
+    |                             |
+    |                             yrs::Number
+    |
+note: `yrs::Number` does not implement `PartialOrd<{float}>`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:280:1
+    |
+280 | pub enum Number {
+    | ^^^^^^^^^^^^^^^ `yrs::Number` is defined in another crate
+
+error[E0369]: binary operation `<=` cannot be applied to type `yrs::Number`
+   --> crates/editac-core/tests/../../../fixtures/schema-v3/mapping.rs:137:45
+    |
+137 |         if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 {
+    |                                          -- ^^ --------------- f64
+    |                                          |
+    |                                          yrs::Number
+    |
+note: `yrs::Number` does not implement `PartialOrd<f64>`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:280:1
+    |
+280 | pub enum Number {
+    | ^^^^^^^^^^^^^^^ `yrs::Number` is defined in another crate
+
+error[E0599]: no method named `fract` found for reference `&yrs::Number` in the current scope
+   --> crates/editac-core/tests/../../../fixtures/schema-v3/mapping.rs:137:69
+    |
+137 |         if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 {
+    |                                                                     ^^^^^ method not found in `&yrs::Number`
+
+error[E0605]: non-primitive cast: `yrs::Number` as `u32`
+   --> crates/editac-core/tests/../../../fixtures/schema-v3/mapping.rs:138:23
+    |
+138 |             return Ok(*n as u32);
+    |                       ^^^^^^^^^ an `as` expression can be used to convert enum types to numeric types only if the enum type is unit-only or field-less
+    |
+    = note: see https://doc.rust-lang.org/reference/items/enumerations.html#casting for more information
+
+error[E0599]: no method named `is_finite` found for reference `&yrs::Number` in the current scope
+   --> crates/editac-core/tests/../../../fixtures/schema-v3/mapping.rs:166:29
+    |
+166 |         Any::Number(n) => n.is_finite(),
+    |                             ^^^^^^^^^ method not found in `&yrs::Number`
+
+error[E0599]: no method named `get_string` found for struct `XmlTextRef` in the current scope
+   --> crates/editac-core/tests/../../../fixtures/schema-v3/mapping.rs:370:23
+    |
+370 |         let plain = x.get_string(&t);
+    |                       ^^^^^^^^^^ method not found in `XmlTextRef`
+    |
+   ::: /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/types/mod.rs:344:8
+    |
+344 |     fn get_string<T: ReadTxn>(&self, txn: &T) -> String;
+    |        ---------- the method is available for `XmlTextRef` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: trait `GetString` which provides `get_string` is implemented but not in scope; perhaps you want to import it
+    |
+  2 + use yrs::GetString;
+    |
+
+error[E0599]: no method named `get_string` found for struct `XmlTextRef` in the current scope
+   --> crates/editac-core/tests/../../../fixtures/schema-v3/mapping.rs:665:65
+    |
+665 |     if offset < span.start || offset > span.end || !boundary(&x.get_string(&d.transact()), offset) {
+    |                                                                 ^^^^^^^^^^ method not found in `XmlTextRef`
+    |
+   ::: /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/types/mod.rs:344:8
+    |
+344 |     fn get_string<T: ReadTxn>(&self, txn: &T) -> String;
+    |        ---------- the method is available for `XmlTextRef` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: trait `GetString` which provides `get_string` is implemented but not in scope; perhaps you want to import it
+    |
+  2 + use yrs::GetString;
+    |
+
+error[E0308]: mismatched types
+   --> crates/editac-core/tests/ownership_profile.rs:341:52
+    |
+341 |         arr(vec![Any::from("heading"), Any::Number(1.5)]),
+    |                                        ----------- ^^^ expected `Number`, found floating-point number
+    |                                        |
+    |                                        arguments to this enum variant are incorrect
+    |
+note: tuple variant defined here
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:21:5
+    |
+ 21 |     Number(Number),
+    |     ^^^^^^
+help: try wrapping the expression in `yrs::Number::Float`
+    |
+341 |         arr(vec![Any::from("heading"), Any::Number(yrs::Number::Float(1.5))]),
+    |                                                    +++++++++++++++++++   +
+
+Some errors have detailed explanations: E0308, E0369, E0599, E0605.
+For more information about an error, try `rustc --explain E0308`.
+warning: `editac-core` (test "ownership_profile") generated 2 warnings
+error: could not compile `editac-core` (test "ownership_profile") due to 9 previous errors; 2 warnings emitted

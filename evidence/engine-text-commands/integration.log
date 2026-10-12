@@ -1,0 +1,204 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: function `fixture` is never used
+ --> crates/editac-core/tests/support/hierarchy.rs:9:15
+  |
+9 | pub(crate) fn fixture() -> Doc {
+  |               ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `relative` is never used
+  --> crates/editac-core/tests/support/split_join.rs:86:4
+   |
+86 | fn relative<T: yrs::ReadTxn>(
+   |    ^^^^^^^^
+
+warning: method `len` is never used
+   --> crates/editac-core/tests/support/split_join.rs:179:19
+    |
+175 | impl Block {
+    | ---------- method in this implementation
+...
+179 |     pub(crate) fn len(&self) -> u32 {
+    |                   ^^^
+
+warning: function `project` is never used
+   --> crates/editac-core/tests/support/split_join.rs:234:15
+    |
+234 | pub(crate) fn project(doc: &Doc) -> Vec<Block> {
+    |               ^^^^^^^
+
+warning: struct `Anchor` is never constructed
+   --> crates/editac-core/tests/support/split_join.rs:320:19
+    |
+320 | pub(crate) struct Anchor {
+    |                   ^^^^^^
+
+warning: function `anchor` is never used
+   --> crates/editac-core/tests/support/split_join.rs:325:15
+    |
+325 | pub(crate) fn anchor(doc: &Doc, key: &str, index: u32, assoc: Assoc) -> Anchor {
+    |               ^^^^^^
+
+warning: function `resolve` is never used
+   --> crates/editac-core/tests/support/split_join.rs:337:15
+    |
+337 | pub(crate) fn resolve(doc: &Doc, anchor: &Anchor) -> Option<(String, u32)> {
+    |               ^^^^^^^
+
+warning: `editac-core` (test "structure_conflicts") generated 7 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.61s
+     Running tests/anchors.rs (target/debug/deps/anchors-784c5550dcb03f06)
+
+running 24 tests
+test deleted_characters_collapse_to_surviving_boundary ... ok
+test backward_selection_keeps_independent_endpoint_bias ... ok
+test deleted_target_is_explicit_and_cannot_be_captured_again ... ok
+test combining_fixed_offsets_and_delete ... ok
+test empty_source_endpoints_keep_bias_after_remote_insert ... ok
+test emoji_fixed_offsets_and_delete ... ok
+test biased_positions_survive_insertion_at_start_middle_and_end ... ok
+test cross_node_selection_resolves_deleted_endpoint_independently ... ok
+test flag_fixed_offsets_and_delete ... ok
+test fully_deleted_text_keeps_explicit_empty_position ... ok
+test grapheme_movement_and_deletion_are_extended_and_logical ... ok
+test placement_change_does_not_change_text_anchor ... ok
+test hidden_join_span_never_redirects_and_visible_offsets_exclude_hidden_text ... ok
+test reserved_split_owner_remains_invalid_as_a_registered_source ... ok
+test replaced_shared_text_and_not_yet_received_position_are_unresolvable ... ok
+test malformed_offsets_and_selection_leave_state_and_updates_unchanged ... ok
+test joined_sources_preserve_identity_and_boundary_affinity ... ok
+test split_source_deletion_hides_both_owners_without_resurrection ... ok
+test three_replicas_reordered_duplicate_updates_preserve_anchors ... ok
+test split_cut_and_deleted_derived_owner_obey_bias ... ok
+test rtl_fixed_logical_offsets_and_delete ... ok
+test wrong_document_and_epoch_never_resolve ... ok
+test zero_and_end_split_keep_endpoint_owners ... ok
+test zwj_fixed_offsets_and_delete ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/hierarchy_probe.rs (target/debug/deps/hierarchy_probe-5287467681916bd1)
+
+running 7 tests
+test invalid_local_moves_reject_before_mutation_and_order_ties_use_stable_ids ... ok
+test self_cycle_orphans_invalid_parent_and_missing_placement_preserve_content ... ok
+test late_parent_arrival_resolves_orphan_without_persisting_a_repair ... ok
+test concurrent_valid_moves_create_cycle_cut_without_repair_writes ... ok
+test duplicate_placements_choose_one_atomic_tuple_with_both_writer_assignments ... ok
+test nested_list_moves_retain_subtree_and_concurrent_marked_edit ... ok
+test deep_remote_hierarchy_is_iterative_and_bounded ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.36s
+
+     Running tests/initialization.rs (target/debug/deps/initialization-348ff4fb25fd450b)
+
+running 17 tests
+test a_sequence_under_a_map_root_is_not_silently_projected_as_empty ... ok
+test empty_but_existing_remains_initialized_without_default_import ... ok
+test creates_exact_five_roots_and_one_copy_of_defaults ... ok
+test malformed_and_partial_replay_remain_explicit_recovery ... ok
+test creation_authority_is_one_shot_even_after_initializer_is_dropped ... ok
+test invalid_creation_releases_uncommitted_authority ... ok
+test missing_initializer_authority_cannot_be_guessed_from_content ... ok
+test complete_profile_and_document_identity_are_required ... ok
+test emptied_existing_text_does_not_trigger_reinitialization ... ok
+test restored_lineage_revokes_creation_authority_including_pending_permits ... ok
+test unsupported_roots_are_rejected_without_repair ... ok
+test wrong_checkpoint_epoch_is_typed_and_preserves_live_state ... ok
+test wrong_journal_epoch_rejects_whole_restore_before_publication ... ok
+test restores_frozen_reserved_pair_with_marks_without_reconstruction ... ok
+test restore_never_reimports_defaults_even_across_repeated_open ... ok
+test independent_live_replicas_never_reactivate_checkpoint_writer ... ok
+test duplicate_and_all_reordered_initialization_deliveries_converge ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/interop.rs (target/debug/deps/interop-0246ea1eca98b573)
+
+running 1 test
+test binary_v1_xml_exchange_in_both_directions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.36s
+
+     Running tests/projection.rs (target/debug/deps/projection-2a0c129da15666c0)
+
+running 16 tests
+test formatting_and_deletion_report_utf16_transaction_ranges ... ok
+test index_keeps_the_same_replica_alive_after_external_handle_drop ... ok
+test fixed_seed_snapshot_preserves_rich_text_and_integrated_identities ... ok
+test disposing_an_index_leaves_other_indexes_and_document_available ... ok
+test joined_source_edit_updates_its_owner_without_changing_source_identity ... ok
+test malformed_and_fractional_placements_use_frozen_root_fallback ... ok
+test empty_and_hidden_source_spans_keep_recovery_identity_and_visible_children ... ok
+test hierarchy_fallback_cycles_and_late_parent_are_read_only ... ok
+test multiple_commits_accumulate_ranges_without_rereading_unrelated_text ... ok
+test malformed_ownership_returns_recovery_error_without_writes_and_can_retry_after_repair ... ok
+test owned_document_snapshot_is_the_same_projection_after_checkpoint_restore ... ok
+test replacing_registry_text_is_detected_as_identity_change ... ok
+test split_cut_tracks_remote_text_and_only_changed_owners_are_reported ... ok
+test reordered_duplicate_real_updates_converge_in_incremental_snapshots ... ok
+test one_unicode_edit_reads_only_one_source_and_preserves_untouched_nodes ... ok
+test composed_ownership_deletion_and_hierarchy_match_frozen_fixtures ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/schema_interop.rs (target/debug/deps/schema_interop-fd18c2ec7ea59f1c)
+
+running 1 test
+test frozen_schema_exchange_moves_deletes_edits_ownership_and_anchors_in_both_directions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.04s
+
+     Running tests/schema_profile.rs (target/debug/deps/schema_profile-1b22f02da7ba2069)
+
+running 3 tests
+test frozen_unknown_kind_and_mark_remain_retained_without_projection_writes ... ok
+test frozen_rust_construction_matches_selected_semantics_and_typed_roots ... ok
+test frozen_atomic_split_descriptor_preserves_original_identities_on_restore ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/split_join_probe.rs (target/debug/deps/split_join_probe-7f755ad8368fb983)
+
+running 5 tests
+test invalid_split_and_repeated_transform_reject_before_mutation_and_edge_splits_keep_identity ... ok
+test split_survives_concurrent_deletion_of_boundary_and_preserves_replacement_marks ... ok
+test concurrent_join_edit_keeps_both_texts_and_routes_original_selections_to_joined_owner ... ok
+test concurrent_split_edit_partitions_original_text_and_selection_with_fixed_affinity ... ok
+test disconnected_join_edit_and_dependent_delta_replay_keep_stable_target_ownership ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+     Running tests/structure_conflicts.rs (target/debug/deps/structure_conflicts-1e8a8daa8544b91c)
+
+running 26 tests
+test delete_edit::known_tombstone_rejects_local_edit_and_recovery_reads_never_resurrect ... ok
+test delete_edit::deletion_after_observed_edit_preserves_the_same_recovery_content ... ok
+test concurrent_split_and_maximum_order_move_preserve_explicit_recovery ... ok
+test delete_edit::concurrent_delete_edit_retains_rich_content_independent_of_writer_order ... ok
+test hierarchy::concurrent_valid_moves_create_cycle_cut_without_repair_writes ... ok
+test delete_edit::disconnected_edits_and_dependent_deltas_merge_into_hidden_recovery ... ok
+test concurrent_split_join_selects_complete_join_descriptor ... ok
+test hierarchy::invalid_local_moves_reject_before_mutation_and_order_ties_use_stable_ids ... ok
+test deleted_parent_promotes_visible_child_without_repair_writes ... ok
+test deleting_absorbed_source_hides_only_its_span ... ok
+test concurrent_cycle_and_delete_preserve_one_visible_root_and_recovery ... ok
+test hierarchy::late_parent_arrival_resolves_orphan_without_persisting_a_repair ... ok
+test maximum_order_local_split_rejects_without_mutation ... ok
+test deleting_join_owner_hides_all_owned_sources_without_losing_identity ... ok
+test split_join::concurrent_join_edit_keeps_both_texts_and_routes_original_selections_to_joined_owner ... ok
+test hierarchy::self_cycle_orphans_invalid_parent_and_missing_placement_preserve_content ... ok
+test split_join::concurrent_split_edit_partitions_original_text_and_selection_with_fixed_affinity ... ok
+test split_join::invalid_split_and_repeated_transform_reject_before_mutation_and_edge_splits_keep_identity ... ok
+test split_join::split_survives_concurrent_deletion_of_boundary_and_preserves_replacement_marks ... ok
+test deletion_masks_both_split_owners_but_retains_concurrent_marked_content ... ok
+test hierarchy::duplicate_placements_choose_one_atomic_tuple_with_both_writer_assignments ... ok
+test joined_owner_with_absorbed_parent_is_projected_at_root ... ok
+test reversed_writer_assignment_selects_complete_split_descriptor ... ok
+test split_join::disconnected_join_edit_and_dependent_delta_replay_keep_stable_target_ownership ... ok
+test hierarchy::nested_list_moves_retain_subtree_and_concurrent_marked_edit ... ok
+test hierarchy::deep_remote_hierarchy_is_iterative_and_bounded ... ok
+
+test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.26s
+

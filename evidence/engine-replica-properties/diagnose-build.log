@@ -1,0 +1,13 @@
+error[E0514]: found crate `yrs` compiled by an incompatible version of rustc
+ --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/bounded_decoder.rs:3:5
+  |
+3 | use yrs::encoding::read::{Error, Read};
+  |     ^^^
+  |
+  = note: the following crate versions were found:
+          crate `yrs` compiled by rustc 1.97.1 (8bab26f4f 2026-07-14): /Users/bpstr/Github/edit-ac/core/target/debug/deps/libyrs-5c2e3c5f0b21b344.rlib
+  = help: please recompile that crate using this compiler (rustc 1.97.1 (8bab26f4f 2026-07-14) (Homebrew)) (consider running `cargo clean` first)
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0514`.

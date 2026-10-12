@@ -1,0 +1,69 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: constant `D` is never used
+  --> crates/editac-core/tests/history.rs:21:7
+   |
+21 | const D: &str = "n:11:4";
+   |       ^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "history") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.05s
+     Running tests/history.rs (target/debug/deps/history-e951d579ef1ff375)
+
+running 21 tests
+test clear_and_invalid_configuration_are_nonmutating ... ok
+test container_control_undo_does_not_swallow_live_children ... ok
+test explicit_edits_are_separate_inside_capture_interval_and_clear_redo ... ok
+test dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone ... FAILED
+test deletion_replacement_unicode_undo_restores_original_identity_and_marks ... ok
+test deterministic_typing_capture_timeout_origin_and_reset_boundaries ... ok
+test group_count_payload_and_commit_caps_evict_old_history_without_content_writes ... ok
+test composition_group_is_explicit_and_paste_format_move_break_coalescing ... ok
+test history_updates_converge_under_six_three_writer_duplicate_reorder_schedules ... FAILED
+test local_undo_after_remote_insertion_keeps_remote_unicode_and_anchor ... ok
+test initial_creation_rows_text_and_required_metadata_survive_undo_redo ... ok
+test metadata_history_does_not_rewrite_established_v5_join_witnesses ... ok
+test newly_created_text_enters_scope_for_later_typing_but_creation_content_is_retained ... ok
+test permanent_remote_tombstone_wins_over_structural_redo_and_keeps_recovery_bytes ... ok
+test split_join_history_keeps_multisource_ownership_marks_and_anchors ... FAILED
+test rejected_and_stale_preparation_preserve_history_state_and_redo ... ok
+test v4_profile_uses_same_selective_controls_without_mutating_frozen_mapping ... ok
+test rich_format_command_is_one_group_and_remote_text_survives ... ok
+test structural_move_undo_retains_operation_and_remote_descendant_edits ... ok
+test remote_replay_restore_and_selection_do_not_enter_history_or_clear_redo ... ok
+test pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation ... FAILED
+
+failures:
+
+---- dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone stdout ----
+
+thread 'dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone' (153280336) panicked at crates/editac-core/tests/history.rs:486:50:
+called `Result::unwrap()` on an `Err` value: Boundary(SurrogateInterior)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- history_updates_converge_under_six_three_writer_duplicate_reorder_schedules stdout ----
+
+thread 'history_updates_converge_under_six_three_writer_duplicate_reorder_schedules' (153280340) panicked at crates/editac-core/tests/history.rs:707:38:
+called `Result::unwrap()` on an `Err` value: IncompleteRestore
+
+---- split_join_history_keeps_multisource_ownership_marks_and_anchors stdout ----
+
+thread 'split_join_history_keeps_multisource_ownership_marks_and_anchors' (153280350) panicked at crates/editac-core/tests/history.rs:440:50:
+called `Result::unwrap()` on an `Err` value: Boundary(SurrogateInterior)
+
+---- pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation stdout ----
+
+thread 'pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation' (153280346) panicked at crates/editac-core/tests/history.rs:793:9:
+pinned Node setup failed; see evidence log
+
+
+failures:
+    dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone
+    history_updates_converge_under_six_three_writer_duplicate_reorder_schedules
+    pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation
+    split_join_history_keeps_multisource_ownership_marks_and_anchors
+
+test result: FAILED. 17 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+
+error: test failed, to rerun pass `-p editac-core --test history`

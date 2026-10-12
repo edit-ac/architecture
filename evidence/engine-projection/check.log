@@ -1,0 +1,98 @@
+    Checking pin-project-lite v0.2.17
+    Checking smallvec v1.16.3
+    Checking parking v2.2.1
+    Checking libc v0.2.190
+    Checking serde_core v1.0.229
+    Checking scopeguard v1.2.0
+    Checking cfg-if v1.0.5
+    Checking zmij v1.0.23
+    Checking lock_api v0.4.14
+    Checking event-listener v5.4.2
+    Checking crossbeam-utils v0.8.23
+    Checking once_cell v1.21.4
+    Checking hashbrown v0.14.5
+    Checking event-listener-strategy v0.5.4
+    Checking itoa v1.0.18
+    Checking memchr v2.8.3
+    Checking smallstr v0.3.1
+    Checking async-lock v3.4.2
+    Checking arc-swap v1.9.2
+    Checking parking_lot_core v0.9.12
+    Checking thiserror v2.0.21
+    Checking fastrand v2.5.0
+    Checking dashmap v6.2.1
+    Checking serde_json v1.0.152
+    Checking serde v1.0.229
+    Checking yrs v0.28.0
+    Checking editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0277]: the trait bound `Arc<str>: From<&&str>` is not satisfied
+   --> crates/editac-core/src/projection.rs:105:72
+    |
+105 |         let roots: Vec<_> = ROOTS.iter().filter_map(|name| txn.get_map(name)).collect();
+    |                                                                ------- ^^^^ the trait `From<&&str>` is not implemented for `Arc<str>`
+    |                                                                |
+    |                                                                required by a bound introduced by this call
+    |
+    = help: consider casting the `&&str` value to `&str`
+    = note: required for `&&str` to implement `Into<Arc<str>>`
+note: required by a bound in `get_map`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/transaction.rs:225:19
+    |
+225 |     fn get_map<N: Into<Arc<str>>>(&self, name: N) -> Option<MapRef> {
+    |                   ^^^^^^^^^^^^^^ required by this bound in `ReadTxn::get_map`
+help: consider dereferencing here
+    |
+105 |         let roots: Vec<_> = ROOTS.iter().filter_map(|name| txn.get_map(*name)).collect();
+    |                                                                        +
+
+error[E0599]: no method named `is_finite` found for reference `&yrs::Number` in the current scope
+   --> crates/editac-core/src/projection.rs:271:54
+    |
+271 | ...   [Any::String(p),Any::Number(n)] if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 => Some((p.to_stri...
+    |                                            ^^^^^^^^^ method not found in `&yrs::Number`
+
+error[E0369]: binary operation `>=` cannot be applied to type `yrs::Number`
+   --> crates/editac-core/src/projection.rs:271:72
+    |
+271 | ...   [Any::String(p),Any::Number(n)] if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 => Some((p.to_stri...
+    |                                                           -- ^^ --- {float}
+    |                                                           |
+    |                                                           yrs::Number
+    |
+note: `yrs::Number` does not implement `PartialOrd<{float}>`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:280:1
+    |
+280 | pub enum Number {
+    | ^^^^^^^^^^^^^^^ `yrs::Number` is defined in another crate
+
+error[E0369]: binary operation `<=` cannot be applied to type `yrs::Number`
+   --> crates/editac-core/src/projection.rs:271:85
+    |
+271 | ...   [Any::String(p),Any::Number(n)] if n.is_finite() && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 => Some((p.to_stri...
+    |                                                                        -- ^^ --------------- f64
+    |                                                                        |
+    |                                                                        yrs::Number
+    |
+note: `yrs::Number` does not implement `PartialOrd<f64>`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:280:1
+    |
+280 | pub enum Number {
+    | ^^^^^^^^^^^^^^^ `yrs::Number` is defined in another crate
+
+error[E0599]: no method named `fract` found for reference `&yrs::Number` in the current scope
+   --> crates/editac-core/src/projection.rs:271:109
+    |
+271 | ... && *n >= 0.0 && *n <= u32::MAX as f64 && n.fract() == 0.0 => Some((p.to_string(),*n as u32)),
+    |                                                ^^^^^ method not found in `&yrs::Number`
+
+error[E0605]: non-primitive cast: `yrs::Number` as `u32`
+   --> crates/editac-core/src/projection.rs:271:147
+    |
+271 | ...f64 && n.fract() == 0.0 => Some((p.to_string(),*n as u32)),
+    |                                                   ^^^^^^^^^ an `as` expression can be used to convert enum types to numeric types only if the enum type is unit-only or field-less
+    |
+    = note: see https://doc.rust-lang.org/reference/items/enumerations.html#casting for more information
+
+Some errors have detailed explanations: E0277, E0369, E0599, E0605.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `editac-core` (lib) due to 6 previous errors

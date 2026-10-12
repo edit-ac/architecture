@@ -1,0 +1,34 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0277]: `?` couldn't convert the error to `commands::editor::EditorError`
+   --> crates/editac-core/src/commands/editor.rs:520:72
+    |
+520 |         let patch_before = self.patch_before().map_err(TextError::from)?;
+    |                                 -------------- ------------------------^ the trait `From<TextError>` is not implemented for `commands::editor::EditorError`
+    |                                 |              |
+    |                                 |              this can't be annotated with `?` because it has type `Result<_, TextError>`
+    |                                 this has type `Result<_, ProjectionError>`
+    |
+note: `commands::editor::EditorError` needs to implement `From<TextError>`
+   --> crates/editac-core/src/commands/editor.rs:55:1
+    |
+ 55 | pub enum EditorError {
+    | ^^^^^^^^^^^^^^^^^^^^
+    = note: the question mark operation (`?`) implicitly performs a conversion on the error value using the `From` trait
+
+error[E0282]: type annotations needed
+   --> crates/editac-core/src/patches.rs:250:21
+    |
+250 |                 let changed = old
+    |                     ^^^^^^^
+...
+287 |         let node_patches = changed_nodes
+    |                            ------------- type must be known at this point
+    |
+help: consider giving `changed` an explicit type
+    |
+250 |                 let changed: Vec<_> = old
+    |                            ++++++++
+
+Some errors have detailed explanations: E0277, E0282.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `editac-core` (lib) due to 2 previous errors

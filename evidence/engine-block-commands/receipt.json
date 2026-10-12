@@ -1,0 +1,359 @@
+{
+  "task": "ENG-1.9",
+  "state": "IN_PROGRESS; implementation advanced, original acceptance fails",
+  "date": "2026-10-11",
+  "iteration": 5,
+  "prompt_revision": "7eaa063f3629",
+  "source_snapshot": "source-f6218bddbd75.md",
+  "source_revision": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "source_snapshot_sha256": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "core_base_revision": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "architecture_base_revision": "26d3502585fea4c8a21bc15fb949a562b93905ea",
+  "changed_paths": [
+    "crates/editac-core/src/commands/blocks.rs",
+    "crates/editac-core/src/commands/mod.rs",
+    "crates/editac-core/src/commands/editor.rs",
+    "crates/editac-core/src/commands/text.rs",
+    "crates/editac-core/tests/blocks.rs",
+    "fixtures/schema-v4/blocks-exchange.mjs",
+    "fixtures/schema-v4/blocks-contract-probe.mjs"
+  ],
+  "source_hashes": {
+    "crates/editac-core/src/commands/blocks.rs": "6d66072b974b372ffd158023da62637722e67fcf64d13827f30b2ef8c8d07860",
+    "crates/editac-core/src/commands/mod.rs": "227f04f30e8c970c364cee196d76799ec61076a7aad0e7ac36f8138965e0b3ba",
+    "crates/editac-core/src/commands/editor.rs": "68952fdad1d22ffcd27ff7af4f08e9479f60e390a74f14bf9a21dc50bdb554ff",
+    "crates/editac-core/src/commands/text.rs": "a18b4e4f57c61e88db1fe2a7234bdb6f71d1a27578222232d032cae300c0c814",
+    "crates/editac-core/tests/blocks.rs": "727b8b516476d38990b3de71e7059fc94e3efac1285a6855e7cf2f858d63f1e5",
+    "fixtures/schema-v4/blocks-exchange.mjs": "2cc1ea569fbfc8a1760db4e1ed958e9c004c9f112ce53d61fdd80183396bd81c",
+    "fixtures/schema-v4/blocks-contract-probe.mjs": "3d2fcdc61bcbb18811cf887386ee858a68f25bfb993b1537072caaa341ae2207"
+  },
+  "unchanged_contract_hashes": {
+    "fixtures/schema-v4/mapping.rs": "e0c5e0d7e78113baff5d6061e870ec0810071f2537139cf0620d9efc1052f595",
+    "fixtures/schema-v4/mapping.mjs": "5183d3090b15f379c8fe6fc11b4e8cda594b882162a0896c081ea0508ff05c9a",
+    "fixtures/schema-v4/profile.json": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+    "fixtures/schema-v4/seed.json": "39aac7215b7e28b056bab5f008ab9a5594b15d9e53e692926fe87cd68f808705"
+  },
+  "implementation": "Block commands expand on disposable v4 state. Text preparation reused read-only; edits rebound to stage sources to preserve one local writer. One explicit-origin commit. SetCode/paragraph, literal text/hard break, explicit split/join, nested separator conversion/insertion/deletion, paragraph reservation and typed directional editable anchors. Atomic PresentationConflict guard rejects metadata changes that invalidate retained joins.",
+  "criterion_matrix": {
+    "literal whitespace/blank lines/dormant marks/unknown labels/empty restore": "code_literal_whitespace_blank_lines_dormant_marks_and_empty_restore; production_blocks_bidirectional_pinned_yjs_exchange_and_restore",
+    "language bounds/atomic invalid batches": "code_language_bounds_and_mixed_invalid_batches_are_atomic",
+    "split endpoints/empty/matching and incompatible joins": "code_split_endpoints_and_matching_join_preserve_original_sources; incompatible_join_and_rich_format_on_code_reject_without_mutation",
+    "hard break insertion without implicit split": "hard_break_in_rich_text_keeps_owner_and_newline_is_not_a_split",
+    "separator nested insertion/navigation/paragraph typing/deletion": "separators_insert_both_sides_preserve_nested_identity_and_navigate; separator_conversion_reserves_accessible_empty_paragraph_atomically; deleting_only_separator_prepares_neighbor_and_retains_recovery_identity",
+    "nonempty/noneditable separator rejection": "separator_rejects_text_split_join_nonempty_and_wrong_navigation_targets",
+    "stale/replica/profile/epoch/anchor/resource no partial writes": "stale_wrong_replica_deleted_anchor_and_resource_rejection_are_atomic; v3_profile_and_wrong_epoch_anchors_do_not_acquire_v4_roots_or_mutate; last_editable_separator_reservation_resource_failure_leaves_live_state_exact",
+    "three-writer reorder/duplicate/recovery/original identity": "three_writer_code_metadata_literal_edit_and_separator_races_replay_restore (3 families \u00d7 6 schedules, every update duplicated)",
+    "silent preparation/single-origin/only local CRDT writer": "lib::commands::editor::transaction_tests::v4_block_text_batch_is_silent_and_commits_once_with_only_local_writer",
+    "UNFINISHED joined-owner metadata-only conversion/language updates": "joined_original_code_replacement_and_deletion_preserve_literal_policy_and_anchors FAILS PresentationConflict; guarded safety passes separately; contract-gap.md"
+  },
+  "feature": {
+    "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_BLOCK_COMMAND_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/exchange-final CARGO_INCREMENTAL=0 cargo test -p editac-core --test blocks --locked",
+    "log": "feature-4.log",
+    "exit": 101,
+    "executed": 16,
+    "passed": 15,
+    "failed": 1,
+    "skipped": 0,
+    "filtered": 0
+  },
+  "regressions": {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--locked",
+      "--lib",
+      "--test",
+      "editor_profile",
+      "--test",
+      "structural_profile",
+      "--test",
+      "block_kinds_profile",
+      "--test",
+      "ownership_profile",
+      "--test",
+      "block_profile",
+      "--test",
+      "initialization",
+      "--test",
+      "projection",
+      "--test",
+      "anchors",
+      "--test",
+      "text_commands",
+      "--test",
+      "format_commands",
+      "--test",
+      "split_join",
+      "--test",
+      "lists",
+      "--test",
+      "interop",
+      "--test",
+      "schema_interop",
+      "--no-fail-fast"
+    ],
+    "environment": {
+      "PATH": "/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.codex/packages/standalone/releases/0.160.0-aarch64-apple-darwin/codex-path:/Users/bpstr/.resend/bin:/Users/bpstr/.grok/bin:/Users/bpstr/.kimi-code/bin:/Users/bpstr/.local/bin:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home/bin:/Users/bpstr/Library/Python/3.9/bin:/opt/homebrew/opt/postgresql@18/bin:/Users/bpstr/Library/Android/sdk/emulator:/Users/bpstr/Library/Android/sdk/tools:/Users/bpstr/Library/Android/sdk/tools/bin:/Users/bpstr/Library/Android/sdk/platform-tools:/usr/local/bin/docker:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/opt/python@3.10/libexec/bin:/opt/homebrew/opt/php@8.4/bin:/Users/bpstr/.composer/vendor/bin:/usr/local/sbin:/bin:/usr/bin:/usr/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Users/bpstr/.codex/tmp/arg0/codex-arg09oworB:/Users/bpstr/.codex/packages/standalone/releases/0.160.0-aarch64-apple-darwin/codex-path:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/bpstr/.resend/bin:/Users/bpstr/.grok/bin:/Users/bpstr/.kimi-code/bin:/Users/bpstr/.local/bin:/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home/bin:/Users/bpstr/Library/Python/3.9/bin:/opt/homebrew/opt/postgresql@18/bin:/Users/bpstr/Library/Android/sdk/emulator:/Users/bpstr/Library/Android/sdk/tools:/Users/bpstr/Library/Android/sdk/tools/bin:/Users/bpstr/Library/Android/sdk/platform-tools:/usr/local/bin/docker:/opt/homebrew/opt/python@3.10/libexec/bin:/opt/homebrew/opt/php@8.4/bin:/Users/bpstr/.composer/vendor/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/bpstr/.codex/tmp/arg0/codex-arg0xIsA76:/Users/bpstr/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/bpstr/.cargo/bin:~/Tools/flutter/bin:/Users/bpstr/Library/Python/3.10/bin/pip:/Users/bpstr/.config/composer/vendor/bin:/Applications/PhpStorm.app/Contents/MacOS:/Applications/Docker.app/Contents/Resources/bin/:/Users/bpstr/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS:~/Tools/flutter/bin:/Users/bpstr/Library/Python/3.10/bin/pip:/Users/bpstr/.config/composer/vendor/bin:/Applications/PhpStorm.app/Contents/MacOS:/Applications/Docker.app/Contents/Resources/bin/",
+      "CARGO_INCREMENTAL": "0",
+      "EDITAC_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/editor-exchange",
+      "EDITAC_STRUCTURAL_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/structural-exchange",
+      "EDITAC_BLOCK_KINDS_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/block-kinds-exchange",
+      "EDITAC_OWNERSHIP_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/ownership-exchange",
+      "EDITAC_BLOCK_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/block-exchange",
+      "EDITAC_SPLIT_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/split-join-exchange",
+      "EDITAC_LIST_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/list-exchange",
+      "EDITAC_INTEROP_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/interop",
+      "EDITAC_SCHEMA_INTEROP_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/schema-interop"
+    },
+    "exit": 0,
+    "suites": [
+      {
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 24,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 15,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 21,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 22,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 41,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 46,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 26,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 16,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 51,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      },
+      {
+        "passed": 23,
+        "failed": 0,
+        "skipped": 0,
+        "measured": 0,
+        "filtered": 0
+      }
+    ],
+    "totals": {
+      "passed": 346,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0
+    },
+    "log": "regressions-1.log"
+  },
+  "node_checks": [
+    {
+      "log": "contract-probe.log",
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "kind": "diagnostic-only"
+    },
+    {
+      "log": "structural-exchange/node.log",
+      "executed": 19,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "kind": "pinned binary interoperability"
+    },
+    {
+      "log": "editor-exchange/node.log",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "kind": "pinned binary interoperability"
+    },
+    {
+      "log": "list-exchange/node.log",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "kind": "pinned binary interoperability"
+    },
+    {
+      "log": "exchange-final/node.log",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "kind": "pinned binary interoperability"
+    },
+    {
+      "log": "ownership-exchange/node.log",
+      "executed": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "kind": "pinned binary interoperability"
+    },
+    {
+      "log": "block-exchange/node.log",
+      "executed": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "kind": "pinned binary interoperability"
+    },
+    {
+      "log": "block-kinds-exchange/node.log",
+      "executed": 19,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "kind": "pinned binary interoperability"
+    }
+  ],
+  "final_distinct_rust_counts": {
+    "executed": 362,
+    "passed": 361,
+    "failed": 1,
+    "skipped": 0,
+    "filtered": 0
+  },
+  "final_node_counts": {
+    "functional_executed": 69,
+    "functional_passed": 69,
+    "functional_failed": 0,
+    "functional_skipped": 0,
+    "diagnostic_executed": 2,
+    "diagnostic_passed": 2
+  },
+  "non_test_checks": {
+    "cargo fmt --all --check": 0,
+    "git diff --check": 0
+  },
+  "preserved_failures": [
+    "feature-1.log (compile imports/types)",
+    "feature-2.log (compile fixture keys/Arc moves)",
+    "feature-3.log (13 pass/2 fail; plain-text Yjs oracle repaired; original joined presentation split observed)",
+    "exchange/node-feature-3-failure.log",
+    "feature-4.log (15 pass/1 fail; atomic guard prevents silent split)"
+  ],
+  "prerequisite_evidence": "Existing qualified matrices and passing receipts retained; no prior receipt claimed this newly discovered joined-owner presentation composition. Current regression results do not close ENG-1.9 or resolve its missing positive proof.",
+  "controller_handoff": "contract-gap.md: specify and qualify retained-join eligibility under metadata-only presentation before production integration/positive test. No descriptor/replay-schema modification was inferred.",
+  "next_ready_parent": "ENG-1.10 (ENG-1.8 named dependency remains verified; no implementation begun this iteration)",
+  "paid_inference_calls": 0,
+  "secrets_loaded": false,
+  "publication": false,
+  "deployment": false,
+  "hygiene": {
+    "removed": [
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/deps/blocks-edd343b7e7d18ed3.blocks.8c47fc0b4bed10f2-cgu.2.rcgu.o",
+        "bytes": 565504,
+        "sha256": "8dd791693e5a99175b08b0c25bdc7e964f21b1d6c985236524a7cb17a5a5b08e"
+      },
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/deps/blocks-edd343b7e7d18ed3.blocks.8c47fc0b4bed10f2-cgu.0.rcgu.o",
+        "bytes": 414104,
+        "sha256": "7a791ab784927fae17b27f9d3ac440b7e26d4a27d2d559b4b228fea4b46d0af3"
+      },
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/deps/blocks-edd343b7e7d18ed3.d",
+        "bytes": 1134,
+        "sha256": "a32b16829188fb8fc0142bc93fae9818a287fbbb28213255fd3f6e7ad4dcf1a1"
+      },
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/deps/blocks-edd343b7e7d18ed3.blocks.8c47fc0b4bed10f2-cgu.1.rcgu.o",
+        "bytes": 671952,
+        "sha256": "1d2be19b1f56b2895f27e13916dd210c5fcb8b80631b237eefccf1f27b994d90"
+      },
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/deps/blocks-edd343b7e7d18ed3",
+        "bytes": 12104040,
+        "sha256": "83e93736129a12a2579d201f2607b02cd5b9216a09d0c66a42b1259da40c5f5e"
+      }
+    ],
+    "reclaimed_bytes": 13756734,
+    "free_data_volume_bytes": 10579787776,
+    "no_task_browser_or_server_started": true,
+    "processes_stopped": [],
+    "preserved": "Other tasks including active Assign browser/tests, supervised servers, existing shared target outputs, source, credentials and all qualification evidence. CARGO_INCREMENTAL=0; no new incremental cache."
+  }
+}

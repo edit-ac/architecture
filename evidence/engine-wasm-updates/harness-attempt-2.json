@@ -1,0 +1,179 @@
+{
+  "cases": [
+    {
+      "name": "native Rust checkpoint restores in compiled WASM without defaults or writer reuse",
+      "passed": true
+    },
+    {
+      "name": "native journal replay, duplicates and dependent reordered restore match Rust snapshot",
+      "passed": true
+    },
+    {
+      "name": "state-vector differential exchange and duplicate remote updates have exact patches",
+      "passed": true
+    },
+    {
+      "name": "three disconnected compiled replicas converge across all six duplicate delivery permutations",
+      "passed": true
+    },
+    {
+      "name": "pinned Yjs reads production WASM bytes and edits original rich text for WASM replay",
+      "passed": true
+    },
+    {
+      "name": "delete-set replay works even when clocks did not change",
+      "passed": true
+    },
+    {
+      "name": "remote replay preserves local history and undo/redo produces usable sync bytes",
+      "passed": true
+    },
+    {
+      "name": "wrong epoch update rejects before content, history or patch mutation",
+      "passed": false
+    },
+    {
+      "name": "wrong document update rejects before content, history or patch mutation",
+      "passed": false
+    },
+    {
+      "name": "wrong profile update rejects before content, history or patch mutation",
+      "passed": false
+    },
+    {
+      "name": "wrong schema update rejects before content, history or patch mutation",
+      "passed": false
+    },
+    {
+      "name": "wrong encoding update rejects before content, history or patch mutation",
+      "passed": false
+    },
+    {
+      "name": "malformed update and state-vector bytes reject atomically",
+      "passed": false
+    },
+    {
+      "name": "invalid root and mutated immutable rows reject through real staged admission",
+      "passed": false
+    },
+    {
+      "name": "restore rejects missing initialization, wrong journal identity and malformed tails",
+      "passed": true
+    },
+    {
+      "name": "byte inputs enforce types, data envelopes and resource limits without getter execution",
+      "passed": false
+    },
+    {
+      "name": "checkpoint, vector, update and event bytes remain owned after mutation and disposal",
+      "passed": true
+    },
+    {
+      "name": "scoped batches report exact changed node/range and ignore unrelated listeners",
+      "passed": false
+    },
+    {
+      "name": "post-transaction reentrant commit dispatches FIFO and subscriptions start with future batches",
+      "passed": true
+    },
+    {
+      "name": "observer throws and mutations cannot corrupt commits or other observers",
+      "passed": true
+    },
+    {
+      "name": "unsubscribe/dispose are idempotent and pending callbacks are removed",
+      "passed": false
+    },
+    {
+      "name": "subscription validation and bounded table preserve normal operations",
+      "passed": true
+    },
+    {
+      "name": "built WASM structural/format/history checkpoint and update replay agrees with native Rust",
+      "passed": true
+    },
+    {
+      "name": "actual Chromium IndexedDB checkpoint/tail restore and peer sync use owned production bytes",
+      "passed": true
+    }
+  ],
+  "processes": [
+    {
+      "pid": 50474,
+      "launcher": "node --test tests/wasm-updates.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core/",
+      "port": 65157,
+      "purpose": "qualification assets",
+      "log": "wasm-updates.log"
+    },
+    {
+      "pid": 50514,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core/",
+      "purpose": "IndexedDB and peer-byte WASM qualification",
+      "log": "wasm-updates.log"
+    }
+  ],
+  "native": {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-wasm",
+      "--lib",
+      "updates::",
+      "--locked",
+      "--offline"
+    ],
+    "log": "native-updates.log",
+    "counts": [
+      {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "filtered": 23
+      }
+    ]
+  },
+  "reverse": {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-wasm",
+      "--lib",
+      "updates::native_updates_reverse_replay",
+      "--locked",
+      "--offline"
+    ],
+    "log": "reverse-native.log",
+    "counts": [
+      {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "filtered": 27
+      }
+    ]
+  },
+  "browser": {
+    "version": "156.0.8078.4",
+    "playwright": "1.64.0"
+  },
+  "storage": {
+    "storedTypes": [
+      true,
+      true
+    ],
+    "restored": "a😀BCb",
+    "peer": "a😀BCb",
+    "events": 1,
+    "distinctWriters": true,
+    "inactive": true
+  },
+  "teardown": {
+    "serverClosed": true,
+    "browserClosed": true,
+    "browserProcessExited": true
+  }
+}

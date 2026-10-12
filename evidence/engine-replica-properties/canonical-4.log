@@ -1,0 +1,59 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.40s
+     Running tests/replica_properties.rs (target/debug/deps/replica_properties-20ccd6f9b7279ff4)
+
+running 8 tests
+test seed_4294967291_moves ... FAILED
+test seed_101_moves ... FAILED
+test seed_73_blocks ... FAILED
+test seed_99991_blocks ... FAILED
+test seed_65003_lists ... FAILED
+test seed_41_lists ... FAILED
+test seed_9127_structure ... ok
+test seed_17_structure ... ok
+
+failures:
+
+---- seed_4294967291_moves stdout ----
+
+thread 'seed_4294967291_moves' (153620403) panicked at crates/editac-core/tests/replica_properties.rs:51:6:
+called `Result::unwrap()` on an `Err` value: IncompleteRestore
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- seed_101_moves stdout ----
+
+thread 'seed_101_moves' (153620400) panicked at crates/editac-core/tests/replica_properties.rs:51:6:
+called `Result::unwrap()` on an `Err` value: IncompleteRestore
+
+---- seed_73_blocks stdout ----
+
+thread 'seed_73_blocks' (153620405) panicked at crates/editac-core/tests/replica_properties.rs:51:6:
+called `Result::unwrap()` on an `Err` value: IncompleteRestore
+
+---- seed_99991_blocks stdout ----
+
+thread 'seed_99991_blocks' (153620407) panicked at crates/editac-core/tests/replica_properties.rs:51:6:
+called `Result::unwrap()` on an `Err` value: IncompleteRestore
+
+---- seed_65003_lists stdout ----
+
+thread 'seed_65003_lists' (153620404) panicked at crates/editac-core/tests/replica_properties.rs:51:6:
+called `Result::unwrap()` on an `Err` value: IncompleteRestore
+
+---- seed_41_lists stdout ----
+
+thread 'seed_41_lists' (153620402) panicked at crates/editac-core/tests/replica_properties.rs:51:6:
+called `Result::unwrap()` on an `Err` value: IncompleteRestore
+
+
+failures:
+    seed_101_moves
+    seed_41_lists
+    seed_4294967291_moves
+    seed_65003_lists
+    seed_73_blocks
+    seed_99991_blocks
+
+test result: FAILED. 2 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.35s
+
+error: test failed, to rerun pass `-p editac-core --test replica_properties`

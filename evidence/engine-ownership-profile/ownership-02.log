@@ -1,0 +1,45 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.26s
+     Running tests/ownership_profile.rs (target/debug/deps/ownership_profile-28dd32ae9233a397)
+
+running 18 tests
+test delete_original_and_derived_keep_content_metadata_and_losing_intentions ... ok
+test both_sides_cut_concurrent_edits_and_mark_writes_route_without_copy ... ok
+test binary_anchor_routes_original_identity_across_repeat_join_split_and_empty_ties ... FAILED
+test deletion_of_cut_characters_collapses_without_losing_remaining_coverage ... ok
+test exact_profile_document_epoch_encoding_and_missing_metadata_before_decode ... ok
+test machine_seed_exact_seven_roots_and_nonreserved_ids ... ok
+test invalid_operation_graph_cycle_and_immutable_replacement_are_recovery ... ok
+test marks_empty_heading_live_inheritance_override_and_absorbed_retention ... ok
+test begin_middle_end_empty_and_unicode_cuts_preserve_identity ... ok
+test conflicting_branches_dependency_descendants_and_disjoint_operations_reorder ... ok
+test checkpoint_restore_duplicate_updates_and_projection_are_read_only ... ok
+test missing_graph_dependencies_dormant_then_activate_without_reseed ... ok
+test cut_wrong_source_affinity_surrogate_and_bad_binary_reject_before_live_write ... ok
+test unknown_metadata_and_character_attributes_retained_opaquely ... ok
+test repeated_transforms_two_disjoint_pairs_and_multisource_split_after_join ... ok
+test invalid_tuple_target_shared_type_and_atomic_text_rejection ... ok
+test bounds_depth_sources_operations_wire_text_and_json_do_not_silently_omit ... ok
+test pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations ... FAILED
+
+failures:
+
+---- binary_anchor_routes_original_identity_across_repeat_join_split_and_empty_ties stdout ----
+
+thread 'binary_anchor_routes_original_identity_across_repeat_join_split_and_empty_ties' (150927493) panicked at crates/editac-core/tests/ownership_profile.rs:179:10:
+called `Option::unwrap()` on a `None` value
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations stdout ----
+
+thread 'pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations' (150927508) panicked at crates/editac-core/tests/ownership_profile.rs:562:5:
+Yjs exchange failed: inspect node.log
+
+
+failures:
+    binary_anchor_routes_original_identity_across_repeat_join_split_and_empty_ties
+    pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations
+
+test result: FAILED. 16 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.39s
+
+error: test failed, to rerun pass `-p editac-core --test ownership_profile`

@@ -1,0 +1,69 @@
+[
+  {
+    "log": "build-wasm-failed-1.log",
+    "exit": 1,
+    "cause": "lifted node helper required Arc dereference closures",
+    "repair": "map(|n| node(n)); rebuilt actual WASM"
+  },
+  {
+    "log": "native-updates-failed-1.log",
+    "counts": {
+      "executed": 5,
+      "passed": 1,
+      "failed": 4,
+      "skipped": 0,
+      "filtered": 23
+    },
+    "cause": "native tests reused one creation lineage; AlreadyInitialized",
+    "repair": "stable distinct UUID per test; no creation-policy weakening"
+  },
+  {
+    "log": "wasm-updates-failed-1.log",
+    "counts": {
+      "executed": 24,
+      "passed": 0,
+      "failed": 24,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "cause": "before-hook native fixture failure; feature bodies did not execute"
+  },
+  {
+    "log": "wasm-updates-attempt-2.log",
+    "counts": {
+      "executed": 24,
+      "passed": 14,
+      "failed": 10,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "cause": "oracle compared read-consumed dirty summaries; origin omitted native prefix; helper released anchor after callback disposal",
+    "repair": "prime derived read summaries; assert established origin; only cleanup tolerates already-Disposed"
+  },
+  {
+    "log": "wasm-updates-attempt-3.log",
+    "counts": {
+      "executed": 24,
+      "passed": 22,
+      "failed": 2,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "cause": "restore API trusted checkpoint identity as expected identity",
+    "repair": "separate host expected identity passed through Rust staged admission; relabeling rejected"
+  },
+  {
+    "log": "kernel-regression.log",
+    "exit": 101,
+    "counts": {
+      "executed": 42,
+      "passed": 41,
+      "failed": 1,
+      "skipped": 0,
+      "filtered": 0
+    },
+    "cause": "history exchange requires isolated EDITAC_HISTORY_EXCHANGE directory",
+    "repair": "changed test environment; reran only failed history case, preserving 27 passing cases; executed remaining suites once",
+    "resolvedBy": "history-repair.log"
+  }
+]

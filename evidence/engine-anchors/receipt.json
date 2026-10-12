@@ -1,0 +1,126 @@
+{
+  "gate": "ENG-1.4",
+  "children": [
+    "ENG-1.4-I1",
+    "ENG-1.4-V1"
+  ],
+  "state": "implemented and locally verified; not deployed",
+  "date": "2026-10-11T16:10:19.373860+00:00",
+  "source": {
+    "path": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+    "revision": "0c9ea1747d09797b35ad7d3923f79d61bae3725236a6c5b1bf13845d7e68c600",
+    "prompt_revision": "7eaa063f3629",
+    "iteration": 4
+  },
+  "implementation": {
+    "base_commit": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+    "uncommitted": true,
+    "file_sha256": {
+      "crates/editac-core/src/anchors.rs": "d8ab715b6476d257109909c4736cc042df4fa04280c0e7af66c99b8e44cfc562",
+      "crates/editac-core/tests/anchors.rs": "8a49e04721fe5fd11f1fda67298a5330404c5ce23f001c46523dc53431346a5d",
+      "crates/editac-core/src/document.rs": "14b6b3f449f3fd69f505cd7110ddf4cf9d38fe0a6c261423f1dd6e1109a42ab0",
+      "crates/editac-core/src/lib.rs": "263089ad019a483b6538adfd9b960f6cbd23b166d6e1d60bcd28c181a70c9d3d",
+      "crates/editac-core/Cargo.toml": "1232c0fdeccf2290c3fb93a1aa0abd0e437d1b482893ae7acfcb1bda5da582b4",
+      "Cargo.lock": "849ea06b7a5008033b6989a6084a73584f36619b7ae75a4760477dbd817485a1"
+    }
+  },
+  "fixtures": {
+    "path": "crates/editac-core/tests/anchors.rs",
+    "sha256": "8a49e04721fe5fd11f1fda67298a5330404c5ce23f001c46523dc53431346a5d",
+    "seed_client": 11,
+    "remote_clients": [
+      21,
+      22
+    ],
+    "schedules": [
+      [
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "strings": [
+      "a😀b",
+      "a👩‍💻b",
+      "aéb",
+      "aאבb",
+      "a🇭🇺b",
+      "a\r\nb",
+      "empty text"
+    ],
+    "boundaries": "fixed UTF-16 positions, exact expected deletions and anchor resolutions in test source",
+    "transport": "real Yrs v1 update bytes, checkpoint and journal replay; no providers"
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test anchors --locked",
+      "exit": 0,
+      "executed": 24,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "suites": 1,
+      "log": "anchors-final.log",
+      "sha256": "aabb7a022185d4307944f445441197b8dcaa54770f87981ef51014c11dec1db2"
+    },
+    {
+      "command": "cargo test -p editac-core --test initialization --test projection --test schema_profile --test interop --test hierarchy_probe --test split_join_probe --test structure_conflicts --test schema_interop --locked",
+      "exit": 0,
+      "executed": 76,
+      "passed": 76,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "suites": 8,
+      "log": "integration.log",
+      "sha256": "03005a1d11211410acbdd1cf3ed91b11c22084397fe92d105e7f1a5ec8c7087e"
+    }
+  ],
+  "failures": [
+    {
+      "log": "anchors-first.log",
+      "exit": 101,
+      "executed": 0,
+      "reason": "test attempted crate-private Document::read; repaired test to compare immutable checkpoints"
+    },
+    {
+      "log": "anchors-second.log",
+      "exit": 101,
+      "executed": 20,
+      "passed": 19,
+      "failed": 1,
+      "skipped": 0,
+      "reason": "derived owner tombstone rejected by restore; repaired frozen schema tombstone admission"
+    },
+    {
+      "log": "format-first.log",
+      "exit": 1,
+      "reason": "new module ordering; repaired"
+    }
+  ],
+  "format": {
+    "command": "rustfmt --edition 2024 --check --config skip_children=true crates/editac-core/src/anchors.rs crates/editac-core/src/document.rs crates/editac-core/src/lib.rs crates/editac-core/tests/anchors.rs",
+    "exit": 0,
+    "log": "format.log"
+  },
+  "whitespace": {
+    "command": "git diff --check",
+    "exit": 0,
+    "log": "whitespace.log"
+  },
+  "scope": "one original parent; anchors plus directly required module/dependency glue and reserved-owner tombstone admission repair",
+  "limits": "frozen ordinary nodes and fixed ownership pair; grapheme movement is logical, not visual bidi; no generalized commands, history, persistence or WASM claimed",
+  "cleanup": "cleanup.json",
+  "documentation": [
+    "pinned local yrs-0.28.0/src/sticky_index.rs",
+    "https://docs.rs/unicode-segmentation/1.12.0/unicode_segmentation/trait.UnicodeSegmentation.html"
+  ]
+}

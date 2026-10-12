@@ -1,0 +1,100 @@
+    Checking editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: unused import: `StateVector`
+ --> crates/editac-core/src/history.rs:5:40
+  |
+5 | use yrs::{Any, Doc, Map, Out, ReadTxn, StateVector, Transact, UndoManager};
+  |                                        ^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0277]: `History` doesn't implement `Debug`
+   --> crates/editac-core/src/document.rs:351:5
+    |
+342 | #[derive(Debug)]
+    |          ----- in this derive macro expansion
+...
+351 |     pub(crate) history: Option<crate::history::History>,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unsatisfied trait bound
+    |
+help: the trait `Debug` is not implemented for `History`
+   --> crates/editac-core/src/history.rs:47:1
+    |
+ 47 | pub(crate) struct History {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: add `#[derive(Debug)]` to `History` or manually `impl Debug for History`
+help: the trait `Debug` is implemented for `Option<T>`
+   --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/option.rs:591:16
+    |
+591 | #[derive(Copy, Debug, Hash)]
+    |                ^^^^^
+
+error[E0277]: the trait bound `Arc<str>: From<&&str>` is not satisfied
+   --> crates/editac-core/src/history.rs:61:51
+    |
+ 61 |     IMMUTABLE_ROOTS.iter().flat_map(|r| t.get_map(r).map(|m| m.keys(&t).map(str::to_owned).collect::<Vec<_>>()).unwrap_or_default()...
+    |                                           ------- ^ the trait `From<&&str>` is not implemented for `Arc<str>`
+    |                                           |
+    |                                           required by a bound introduced by this call
+    |
+    = help: consider casting the `&&str` value to `&str`
+    = note: required for `&&str` to implement `Into<Arc<str>>`
+note: required by a bound in `get_map`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/transaction.rs:225:19
+    |
+225 |     fn get_map<N: Into<Arc<str>>>(&self, name: N) -> Option<MapRef> {
+    |                   ^^^^^^^^^^^^^^ required by this bound in `ReadTxn::get_map`
+help: consider dereferencing here
+    |
+ 61 |     IMMUTABLE_ROOTS.iter().flat_map(|r| t.get_map(*r).map(|m| m.keys(&t).map(str::to_owned).collect::<Vec<_>>()).unwrap_or_default()).collect()
+    |                                                   +
+
+error[E0277]: the trait bound `Arc<str>: From<&std::string::String>` is not satisfied
+    --> crates/editac-core/src/history.rs:82:27
+     |
+  82 |         let m = t.get_map(root).expect("qualified root");
+     |                   ------- ^^^^ the trait `From<&std::string::String>` is not implemented for `Arc<str>`
+     |                   |
+     |                   required by a bound introduced by this call
+     |
+     = help: consider casting the `&std::string::String` value to `&str`
+help: `Arc<str>` implements trait `From<T>`
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/alloc/src/sync.rs:3956:1
+     |
+3956 | impl From<&str> for Arc<str> {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `From<&str>`
+...
+3975 | impl From<&mut str> for Arc<str> {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `From<&mut str>`
+...
+3995 | impl From<String> for Arc<str> {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `From<std::string::String>`
+     = note: required for `&std::string::String` to implement `Into<Arc<str>>`
+note: required by a bound in `get_map`
+    --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/transaction.rs:225:19
+     |
+ 225 |     fn get_map<N: Into<Arc<str>>>(&self, name: N) -> Option<MapRef> {
+     |                   ^^^^^^^^^^^^^^ required by this bound in `ReadTxn::get_map`
+
+error[E0277]: the trait bound `Arc<str>: From<&&str>` is not satisfied
+   --> crates/editac-core/src/history.rs:114:31
+    |
+114 |             let m = t.get_map(root).expect("qualified root");
+    |                       ------- ^^^^ the trait `From<&&str>` is not implemented for `Arc<str>`
+    |                       |
+    |                       required by a bound introduced by this call
+    |
+    = help: consider casting the `&&str` value to `&str`
+    = note: required for `&&str` to implement `Into<Arc<str>>`
+note: required by a bound in `get_map`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/transaction.rs:225:19
+    |
+225 |     fn get_map<N: Into<Arc<str>>>(&self, name: N) -> Option<MapRef> {
+    |                   ^^^^^^^^^^^^^^ required by this bound in `ReadTxn::get_map`
+help: consider dereferencing here
+    |
+114 |             let m = t.get_map(*root).expect("qualified root");
+    |                               +
+
+For more information about this error, try `rustc --explain E0277`.
+warning: `editac-core` (lib) generated 1 warning
+error: could not compile `editac-core` (lib) due to 4 previous errors; 1 warning emitted

@@ -1,0 +1,49 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.16s
+     Running tests/editor_profile.rs (target/engine-editor-profile/debug/deps/editor_profile-6b187ec387ed6dc7)
+
+running 16 tests
+test entity_controls_keep_immutable_rows_recovery_descendants_and_reactivate ... FAILED
+test mixed_invalid_block_metadata_and_nonempty_separator_never_partially_write ... FAILED
+test malformed_immutable_root_source_tuple_and_resource_updates_are_atomic ... ok
+test nested_split_join_retains_checked_default_unicode_marks_and_original_identity ... ok
+test disabling_place_operation_replays_retained_intent_and_restores ... ok
+test production_create_uses_exact_ten_roots_and_restored_empty_is_not_reseeded ... ok
+test production_projection_matches_qualified_hierarchy_metadata_and_read_only_bytes ... ok
+test prepared_nested_place_preserves_subtree_sources_marks_and_anchors ... ok
+test create_container_and_original_atomically_then_place_and_check ... ok
+test cycles_illegal_parents_and_incompatible_joins_reject_before_commit ... ok
+test separator_is_noneditable_and_last_editable_owner_reserves_adjacent_paragraph ... ok
+test explicit_code_split_join_and_literal_newlines_preserve_dormant_marks ... ok
+test rich_format_mixed_code_and_unknown_targets_reject_without_mark_changes ... ok
+test stale_and_cross_replica_plans_and_profile_epoch_fail_atomically ... ok
+test real_production_three_replica_move_move_edit_six_orders_and_duplicate_restore ... ok
+test production_bidirectional_pinned_yjs_exchange_and_remote_unknown_recovery ... FAILED
+
+failures:
+
+---- entity_controls_keep_immutable_rows_recovery_descendants_and_reactivate stdout ----
+
+thread 'entity_controls_keep_immutable_rows_recovery_descendants_and_reactivate' (152348912) panicked at crates/editac-core/src/projection.rs:422:45:
+no entry found for key
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- mixed_invalid_block_metadata_and_nonempty_separator_never_partially_write stdout ----
+
+thread 'mixed_invalid_block_metadata_and_nonempty_separator_never_partially_write' (152348915) panicked at crates/editac-core/tests/editor_profile.rs:143:5:
+assertion failed: f()
+
+---- production_bidirectional_pinned_yjs_exchange_and_remote_unknown_recovery stdout ----
+
+thread 'production_bidirectional_pinned_yjs_exchange_and_remote_unknown_recovery' (152348918) panicked at crates/editac-core/src/projection.rs:422:45:
+no entry found for key
+
+
+failures:
+    entity_controls_keep_immutable_rows_recovery_descendants_and_reactivate
+    mixed_invalid_block_metadata_and_nonempty_separator_never_partially_write
+    production_bidirectional_pinned_yjs_exchange_and_remote_unknown_recovery
+
+test result: FAILED. 13 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.46s
+
+error: test failed, to rerun pass `-p editac-core --test editor_profile`

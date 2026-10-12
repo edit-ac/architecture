@@ -1,0 +1,72 @@
+{
+  "iteration": 7,
+  "date_utc": "2026-10-11T22:14:39.726493+00:00",
+  "prompt_revision": "7eaa063f3629",
+  "source_revision": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "source_snapshot_sha256": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "schema_v4_sha256": "9a2140303a4cf0eb6fdb12177264d03dbf03701949f4c5572f3037b9bd91d4c0",
+  "status": "BLOCKED",
+  "active": "ENG-1.9-F1",
+  "readiness_scan": {
+    "ENG-1.9": "Exact retained-join replay/presentation contradiction remains; safety guard is not positive acceptance. Existing contract-gap.md includes reproducer and controller split.",
+    "ENG-1.11": "Requires ENG-1.9; other prerequisites checked.",
+    "ENG-1.12": "Requires ENG-1.11.",
+    "ENG-1.13": "Requires ENG-1.12.",
+    "ENG-1.14": "Requires ENG-1.13.",
+    "ENG-1.15": "Requires ENG-1.14.",
+    "all_other_parents": "Checked; no unfinished independent material prerequisite identified."
+  },
+  "current_hashes": {
+    "fixtures/schema-v4/mapping.rs": "e0c5e0d7e78113baff5d6061e870ec0810071f2537139cf0620d9efc1052f595",
+    "fixtures/schema-v4/mapping.mjs": "5183d3090b15f379c8fe6fc11b4e8cda594b882162a0896c081ea0508ff05c9a",
+    "fixtures/schema-v4/profile.json": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+    "fixtures/schema-v4/seed.json": "39aac7215b7e28b056bab5f008ab9a5594b15d9e53e692926fe87cd68f808705",
+    "crates/editac-core/tests/blocks.rs": "727b8b516476d38990b3de71e7059fc94e3efac1285a6855e7cf2f858d63f1e5",
+    "crates/editac-core/src/commands/blocks.rs": "6d66072b974b372ffd158023da62637722e67fcf64d13827f30b2ef8c8d07860",
+    "crates/editac-core/src/commands/editor.rs": "df96f77b79f49a97b9bfedd5b327245847eb441c7e70ec0a98dc702bff40f7c9",
+    "crates/editac-core/src/commands/mod.rs": "4eeb5722c4d4c6771cd63f35f023d70b0379297c2e0d522a8fea6fe4717b19d7"
+  },
+  "matched_preserved_evidence": {
+    "fixtures/schema-v4/mapping.rs": true,
+    "fixtures/schema-v4/mapping.mjs": true,
+    "fixtures/schema-v4/profile.json": true,
+    "fixtures/schema-v4/seed.json": true,
+    "crates/editac-core/tests/blocks.rs": true,
+    "crates/editac-core/src/commands/blocks.rs": true,
+    "crates/editac-core/src/commands/editor.rs": true,
+    "crates/editac-core/src/commands/mod.rs": true
+  },
+  "preserved_tests": {
+    "blocks": {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_BLOCK_COMMAND_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-commands/exchange-final CARGO_INCREMENTAL=0 cargo test -p editac-core --test blocks --locked",
+      "log": "feature-4.log",
+      "exit": 101,
+      "executed": 16,
+      "passed": 15,
+      "failed": 1,
+      "skipped": 0,
+      "filtered": 0
+    },
+    "moves": "engine-moves/receipt.json; feature-3.log 35/35, integration 346/346, Node 11+73; zero failures/skips"
+  },
+  "tests_this_iteration": {
+    "executed": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "reason": "No relevant implementation/contract change; unchanged failed feature rerun prohibited. No new acceptance claimed."
+  },
+  "controller_action": "Specify exact deterministic retained-join eligibility under later presentation changes, including new incompatible joins/concurrent metadata; authorize version/descriptor boundary if required, then qualify Rust/Yjs replay/restore and integrate under ENG-1.9. Adopt revised roadmap snapshot next run.",
+  "supervisor_target": "ENG-1.10 expectation already met; passing feature log and current move source hashes corroborated, no retest.",
+  "implementation_changes": [],
+  "hygiene": {
+    "task_owned_processes_started": 0,
+    "processes_stopped": 0,
+    "inventory": "process-inventory.txt",
+    "other_workspace_services": "Preserved; ownership/activity not established for cleanup.",
+    "free_data_volume_kib": 9974656,
+    "removed_paths": [],
+    "new_build_artifacts": 0
+  },
+  "paid_calls": 0
+}

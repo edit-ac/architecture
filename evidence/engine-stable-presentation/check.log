@@ -1,0 +1,48 @@
+    Checking stable_deref_trait v1.2.1
+    Checking litemap v0.8.3
+    Checking writeable v0.6.4
+    Checking utf8_iter v1.0.4
+    Checking icu_normalizer_data v2.3.0
+    Checking icu_properties_data v2.3.0
+    Checking zerofrom v0.1.8
+    Checking percent-encoding v2.3.2
+    Checking thiserror v2.0.21
+    Checking serde v1.0.229
+    Checking yoke v0.8.3
+    Checking unicode-segmentation v1.12.0
+    Checking form_urlencoded v1.2.2
+    Checking zerovec v0.11.8
+    Checking zerotrie v0.2.5
+    Checking yrs v0.28.0
+    Checking tinystr v0.8.4
+    Checking potential_utf v0.1.6
+    Checking icu_collections v2.3.0
+    Checking icu_locale_core v2.3.0
+    Checking icu_provider v2.3.1
+    Checking icu_normalizer v2.3.0
+    Checking icu_properties v2.3.0
+    Checking idna_adapter v1.2.2
+    Checking idna v1.1.0
+    Checking url v2.5.8
+    Checking editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0061]: this function takes 3 arguments but 2 arguments were supplied
+   --> crates/editac-core/src/commands/editor.rs:492:9
+    |
+492 |         crate::document::validate_immutable_structure(&self.doc, &stage)
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^------------------- argument #3 of type `bool` is missing
+    |
+note: function defined here
+   --> crates/editac-core/src/document.rs:806:15
+    |
+806 | pub(crate) fn validate_immutable_structure(
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+809 |     stable: bool,
+    |     ------------
+help: provide the argument
+    |
+492 |         crate::document::validate_immutable_structure(&self.doc, &stage, /* bool */)
+    |                                                                        ++++++++++++
+
+For more information about this error, try `rustc --explain E0061`.
+error: could not compile `editac-core` (lib) due to 1 previous error

@@ -1,0 +1,236 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: enum `Command` is never used
+ --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:4:10
+  |
+4 | pub enum Command {
+  |          ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `Neighbor` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:32:12
+   |
+32 | pub struct Neighbor {
+   |            ^^^^^^^^
+
+warning: struct `Prepared` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:36:12
+   |
+36 | pub struct Prepared {
+   |            ^^^^^^^^
+
+warning: function `target` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:40:4
+   |
+40 | fn target(d: &Doc, key: &str) -> Result<Owner> {
+   |    ^^^^^^
+
+warning: function `register` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:55:4
+   |
+55 | fn register(d: &Doc, key: &str, parent: &str, tuple: Any) -> Result<()> {
+   |    ^^^^^^^^
+
+warning: function `execute` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:74:4
+   |
+74 | fn execute(d: &Doc, c: &Command) -> Result<String> {
+   |    ^^^^^^^
+
+warning: function `prepare` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:170:8
+    |
+170 | pub fn prepare(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<Prepared> {
+    |        ^^^^^^^
+
+warning: function `commit` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:211:8
+    |
+211 | pub fn commit(d: &Doc, p: Prepared) -> Result<()> {
+    |        ^^^^^^
+
+warning: function `batch` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:220:8
+    |
+220 | pub fn batch(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<()> {
+    |        ^^^^^
+
+warning: function `rendered_runs` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:224:8
+    |
+224 | pub fn rendered_runs(d: &Doc, key: &str) -> Result<Any> {
+    |        ^^^^^^^^^^^^^
+
+warning: `editac-core` (test "structural_profile") generated 10 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.49s
+     Running tests/block_profile.rs (target/debug/deps/block_profile-728e44a876ec5cbf)
+
+running 21 tests
+test block_profile_does_not_reinterpret_list_and_item_kinds ... ok
+test absent_tuple_defaults_without_repair_writes ... ok
+test exact_profile_schema_epoch_document_and_encoding_rejection ... ok
+test absorbed_and_deleted_metadata_retained_without_resurrection ... ok
+test identical_replay_does_not_mutate_revision_projection_or_checkpoint ... ok
+test bounded_admission_invalid_bytes_and_missing_dependencies_preserve_live_state ... ok
+test malformed_binary_ownership_or_surrogate_cut_rejected_atomically ... ok
+test concurrent_whole_tuple_conflicts_and_independent_writes_converge ... ok
+test heading_levels_one_through_six_and_paragraph_switching ... ok
+test metadata_only_changes_are_observable_without_text_reads_or_identity_changes ... ok
+test unknown_json_tuple_and_marks_retained_with_safe_opaque_projection ... ok
+test unsupported_tuple_shared_types_and_targets_rejected ... ok
+test unknown_non_json_or_excessively_deep_tuples_rejected ... ok
+test dormant_override_and_losing_join_branch_do_not_synthesize_owners ... ok
+test v2_creation_empty_restore_once_and_fresh_writers ... ok
+test v2_empty_document_restore_never_seeds ... ok
+test concurrent_deleted_split_owner_retains_metadata_and_stable_deleted_anchor ... ok
+test causal_override_split_reorder_duplicates_restore_and_stable_anchors ... ok
+test invalid_tuple_matrix_rejects_without_partial_content_or_vector_change ... ok
+test live_split_inheritance_override_and_empty_sides ... ok
+test pinned_yjs_exchange_both_directions_with_atomic_conflicts_and_replay ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.32s
+
+     Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)
+
+running 41 tests
+test backward_cross_node_toggle_uses_one_global_state_and_utf16_ranges ... ok
+test blocks::absent_default_and_already_applied_ordinary_metadata_do_not_emit_updates ... ok
+test applicability_does_not_consume_pending_projection_changes ... ok
+test blocks::inherited_toggle_observes_prior_planned_first_owner_change ... ok
+test blocks::invalid_last_block_rejects_all_marks_and_blocks_without_mutation ... ok
+test blocks::intervening_block_only_local_or_remote_change_rejects_mixed_and_text_plans ... ok
+test blocks::invalid_marks_code_and_urls_reject_valid_blocks_atomically ... ok
+test blocks::empty_blocks_keep_every_heading_level_and_paragraph_through_restore ... ok
+test blocks::metadata_only_projection_is_observable_without_text_reads_and_can_is_nonconsuming ... ok
+test blocks::joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable ... ok
+test blocks::mixed_batch_resource_bounds_and_wrong_replica_are_nonmutating ... ok
+test blocks::mixed_block_toggle_is_global_deduplicated_and_sequential ... ok
+test blocks::mixed_marks_blocks_and_unicode_preserve_sources_unknown_marks_and_anchors ... ok
+test blocks::legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject ... ok
+test collapsed_empty_and_already_applied_commands_do_not_emit_updates ... ok
+test code_clears_known_rich_marks_but_retains_unknown_attributes ... ok
+test deleted_target_and_unknown_kind_reject_entire_batch ... ok
+test cross_node_apply_and_remove_preserve_unselected_suffixes ... ok
+test invalid_attribute_shapes_and_url_length_reject_without_mutation ... ok
+test blocks::beginning_middle_end_and_empty_production_splits_inherit_then_override ... ok
+test invalid_link_as_last_command_cannot_partially_apply_first_command ... ok
+test mixed_selection_toggle_applies_globally_then_removes_globally ... ok
+test mailto_links_and_ordinary_query_ampersands_are_allowed ... ok
+test joined_owner_formats_both_original_shared_texts ... ok
+test normalized_url_admission_and_mixed_link_toggle ... ok
+test overlapping_batch_ranges_preserve_different_marks ... ok
+test ordinary_nodes_and_intermediate_empty_nodes_are_supported ... ok
+test remove_code_then_apply_rich_is_valid_in_one_batch ... ok
+test remote_insert_before_preparation_rebases_selection_and_preserves_text ... ok
+test sequential_batch_toggles_observe_prior_planned_marks ... ok
+test rich_mark_over_code_rejects_entire_batch_before_mutation ... ok
+test split_owner_and_original_share_source_without_formatting_other_owners ... ok
+test unsafe_malformed_relative_and_obfuscated_urls_are_rejected ... ok
+test three_real_replicas_converge_under_duplicate_reordered_format_delivery ... ok
+test unicode_graphemes_and_rtl_format_with_utf16_source_ranges ... ok
+test six_marks_apply_and_remove_without_changing_text_or_source_identity ... ok
+test wrong_replica_and_intervening_local_change_reject_plans ... ok
+test blocks::prepared_mixed_conflicts_converge_with_actual_reordered_duplicate_updates ... ok
+test pinned_yjs_reads_all_six_marks_and_rust_restores_js_formatting ... ok
+test blocks::pinned_yjs_exchanges_real_prepared_mixed_mark_block_commands_both_directions ... ok
+test command_and_fragment_limits_reject_before_mutation ... ok
+
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 7.37s
+
+     Running tests/lists.rs (target/debug/deps/lists-b4480d587f429db4)
+
+running 23 tests
+test deleted_parent_does_not_resurrect_or_redirect_content ... ok
+test duplicate_snapshot_ids_are_explicitly_invalid ... ok
+test duplicate_target_is_rejected_even_for_identical_changes ... ok
+test deleted_target_is_distinct_from_missing ... ok
+test empty_batch_retains_opaque_content ... ok
+test excessive_change_batch_is_bounded_before_graph_work ... ok
+test individually_valid_changes_can_jointly_cycle ... ok
+test final_graph_allows_atomic_break_and_reparent ... ok
+test item_cannot_be_a_parent ... ok
+test excessive_snapshot_is_bounded_before_graph_work ... ok
+test missing_parent_is_not_repaired_to_root ... ok
+test missing_target_is_not_redirected ... ok
+test root_outdent_is_valid ... ok
+test already_excessive_hierarchy_rejects_without_recursion ... ok
+test ordinary_v3_blocks_do_not_gain_list_semantics ... ok
+test self_parent_is_a_cycle ... ok
+test unknown_kind_cannot_be_a_command_target ... ok
+test parent_under_descendant_is_a_cycle ... ok
+test unknown_kind_cannot_be_a_parent ... ok
+test nested_batch_accepts_known_list_parents_without_mutation ... ok
+test visible_recovery_overlap_is_explicitly_invalid ... ok
+test exact_editing_depth_limit_is_accepted ... ok
+test unchanged_descendant_depth_is_checked_after_reparenting ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/ownership_profile.rs (target/debug/deps/ownership_profile-28dd32ae9233a397)
+
+running 26 tests
+test both_sides_cut_concurrent_edits_and_mark_writes_route_without_copy ... ok
+test binary_anchor_routes_original_identity_across_repeat_join_split_and_empty_ties ... ok
+test checkpoint_restore_duplicate_updates_and_projection_are_read_only ... ok
+test complete_known_graph_cycles_and_dormant_depth_remain_bounded ... ok
+test bounded_decode_rejects_nested_any_and_allocation_amplification ... ok
+test delete_original_and_derived_keep_content_metadata_and_losing_intentions ... ok
+test deletion_of_cut_characters_collapses_without_losing_remaining_coverage ... ok
+test exact_profile_document_epoch_encoding_and_missing_metadata_before_decode ... ok
+test begin_middle_end_empty_and_unicode_cuts_preserve_identity ... ok
+test incomplete_binary_dependencies_reject_staged_then_activate_after_prerequisite ... ok
+test conflicting_branches_dependency_descendants_and_disjoint_operations_reorder ... ok
+test invalid_operation_graph_cycle_and_immutable_replacement_are_recovery ... ok
+test cut_wrong_source_affinity_surrogate_and_bad_binary_reject_before_live_write ... ok
+test machine_seed_exact_seven_roots_and_nonreserved_ids ... ok
+test initialized_empty_restore_never_seeds_and_uses_independent_writer ... ok
+test marks_empty_heading_live_inheritance_override_and_absorbed_retention ... ok
+test missing_graph_dependencies_dormant_then_activate_without_reseed ... ok
+test next_visible_join_crosses_tombstone_without_absorbing_recovery_content ... ok
+test unknown_metadata_and_character_attributes_retained_opaquely ... ok
+test repeated_transforms_two_disjoint_pairs_and_multisource_split_after_join ... ok
+test staged_admission_retains_text_identity_and_monotonic_deletion ... ok
+test invalid_tuple_target_shared_type_and_atomic_text_rejection ... ok
+test bounds_depth_sources_operations_wire_text_and_json_do_not_silently_omit ... ok
+test source_operation_container_limits_and_unknown_source_anchor_are_explicit ... ok
+test aggregate_text_and_cut_byte_bounds_reject_staged_without_partial_mutation ... ok
+test pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations ... ok
+
+test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.32s
+
+     Running tests/structural_profile.rs (target/debug/deps/structural_profile-6584b35a78f4cad2)
+
+running 30 tests
+test atomic_modes_starts_checks_and_dormant_outside_checklist ... ok
+test checked_split_defaults_unchecked_with_live_block_inheritance_override_and_absorption ... ok
+test dependency_cycles_and_dormant_graph_depth_are_bounded ... ok
+test concurrent_controls_use_atomic_map_conflict_and_restore_remote_edits ... ok
+test deleted_and_disabled_move_destinations_retain_losing_intentions_and_dormant_checks ... ok
+test concurrent_operation_controls_and_edits_restore_without_destroying_rows ... ok
+test editor_hierarchy_validator_accepts_quote_block_and_checks_whole_descendant_depth_batch ... ok
+test dormant_operation_activates_after_missing_version_without_reseeding ... ok
+test concurrent_move_move_edit_all_six_duplicate_orders_restore_and_ranked_loser ... ok
+test concurrent_potential_cycle_choices_are_deterministic_without_repair ... ok
+test exact_ten_root_seed_nested_numbering_check_and_source_identities ... ok
+test exact_profile_epoch_document_initialized_and_binary_dependency_admission ... ok
+test hidden_parent_tombstone_and_disable_keep_descendants_and_edited_recovery ... ok
+test initial_cycle_detaches_smallest_canonical_id_without_repair_writes ... ok
+test local_cycle_invalid_before_illegal_parent_and_reused_id_are_atomic ... ok
+test invalid_unicode_cuts_versions_place_shapes_and_origin_namespaces_are_atomic ... ok
+test missing_unknown_noncontainer_parents_project_root_raw_intent_retained ... ok
+test operation_controls_disable_dependents_reenable_and_permanent_tombstones_win ... ok
+test endpoints_empty_join_split_after_join_across_sources_and_stable_marks_anchors ... ok
+test immutable_kinds_initial_placement_operations_origins_text_and_tombstones_are_not_replaceable ... ok
+test place_before_append_container_subtree_and_versions_preserve_original_text ... ok
+test stale_parent_before_target_and_missing_versions_keep_intentions_dormant_or_losing ... ok
+test roots_types_container_text_origin_membership_and_id_shapes_reject ... ok
+test unknown_tuples_marks_kinds_and_dormant_controls_are_retained_not_executed ... ok
+test malformed_container_check_control_and_block_tuples_reject_without_partial_mutation ... ok
+test split_move_join_races_and_remote_cut_edits_preserve_nested_original_ownership ... ok
+test aggregate_source_text_and_ids_membership_and_unknown_target_metadata_are_bounded ... ok
+test hierarchy_depth_128_passes_129_and_descendant_move_exhaustion_reject_atomically ... ok
+test controls_nodes_operations_text_bytes_and_bounded_binary_values_reject_atomically ... ok
+test pinned_bidirectional_structural_exchange_replay_restore_and_anchors ... ok
+
+test result: ok. 30 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.82s
+

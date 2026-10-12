@@ -1,0 +1,453 @@
+✔ shared production engine fixture: unicode-replace (51.370875ms)
+✔ shared production engine fixture: text-insert-delete (3.701667ms)
+✔ shared production engine fixture: rich-marks (10.196167ms)
+✔ shared production engine fixture: heading-levels (4.21925ms)
+✖ shared production engine fixture: split-start (9.499291ms)
+✖ shared production engine fixture: split-middle (8.964167ms)
+✖ shared production engine fixture: split-end (5.320042ms)
+✖ shared production engine fixture: split-empty (4.302667ms)
+✔ shared production engine fixture: retained-join (7.07125ms)
+✔ shared production engine fixture: literal-code (3.078959ms)
+✔ shared production engine fixture: list-quote-nesting (19.12875ms)
+✖ shared production engine fixture: list-enter-backspace (4.160583ms)
+✔ shared production engine fixture: empty-item-exit (2.118125ms)
+✔ shared production engine fixture: separator-access (3.811834ms)
+✔ shared production engine fixture: separator-insert (2.424458ms)
+✔ shared production engine fixture: semantic-move (3.557584ms)
+✔ shared production engine fixture: history-grouping (2.144916ms)
+✔ malformed JS shapes, unsafe numeric input and unknown fields reject before mutation (4.722334ms)
+✔ mixed valid and invalid command/format batches reject atomically (1.540125ms)
+✔ plans and anchors are scoped, single-use, explicitly releasable and stale-safe (2.535542ms)
+✔ can validates silently and disposal is explicit/idempotent for all operations (1.008875ms)
+✔ raw built-WASM JSON errors are structured, byte bounded, and disposal rejects use (6.468958ms)
+✔ bounded anchor and plan tables reclaim released capacity (101.849917ms)
+✔ parity normalization preserves literal content and opaque attributes (0.116625ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 19
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 327.574416
+
+✖ failing tests:
+
+test at tests/wasm-commands.test.mjs:56:37
+✖ shared production engine fixture: split-start (9.499291ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+                2,
+  +             244,
+  +             201,
+  +             181,
+  +             131,
+  +             12,
+  -             164,
+  -             184,
+  -             190,
+  -             168,
+  -             15,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                2,
+  +             244,
+  +             201,
+  +             181,
+  +             131,
+  +             12,
+  -             164,
+  -             184,
+  -             190,
+  -             168,
+  -             15,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                2,
+  +             244,
+  +             201,
+  +             181,
+  +             131,
+  +             12,
+  -             164,
+  -             184,
+  -             190,
+  -             168,
+  -             15,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                2,
+  +             244,
+  +             201,
+  +             181,
+  +             131,
+  +             12,
+  -             164,
+  -             184,
+  -             190,
+  -             168,
+  -             15,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:86:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:56:37
+✖ shared production engine fixture: split-middle (8.964167ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+                0,
+  +             254,
+  +             164,
+  +             216,
+  +             225,
+  +             10,
+  -             223,
+  -             241,
+  -             213,
+  -             197,
+  -             14,
+                5,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                0,
+  +             254,
+  +             164,
+  +             216,
+  +             225,
+  +             10,
+  -             223,
+  -             241,
+  -             213,
+  -             197,
+  -             14,
+                5,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                0,
+  +             254,
+  +             164,
+  +             216,
+  +             225,
+  +             10,
+  -             223,
+  -             241,
+  -             213,
+  -             197,
+  -             14,
+                5,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                0,
+  +             254,
+  +             164,
+  +             216,
+  +             225,
+  +             10,
+  -             223,
+  -             241,
+  -             213,
+  -             197,
+  -             14,
+                5,
+                65
+              ],
+              [
+                'paragraph'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:86:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:56:37
+✖ shared production engine fixture: split-end (5.320042ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+                0,
+  +             234,
+  +             255,
+  +             186,
+  +             247,
+  +             1,
+  -             183,
+  -             248,
+  -             238,
+  -             218,
+  -             15,
+                4,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                0,
+  +             234,
+  +             255,
+  +             186,
+  +             247,
+  +             1,
+  -             183,
+  -             248,
+  -             238,
+  -             218,
+  -             15,
+                4,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                0,
+  +             234,
+  +             255,
+  +             186,
+  +             247,
+  +             1,
+  -             183,
+  -             248,
+  -             238,
+  -             218,
+  -             15,
+                4,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                0,
+  +             234,
+  +             255,
+  +             186,
+  +             247,
+  +             1,
+  -             183,
+  -             248,
+  -             238,
+  -             218,
+  -             15,
+                4,
+                65
+              ],
+              [
+                'paragraph'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:86:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:56:37
+✖ shared production engine fixture: split-empty (4.302667ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+                2,
+  +             153,
+  +             138,
+  +             132,
+  +             143,
+  +             3,
+  -             196,
+  -             228,
+  -             197,
+  -             182,
+  -             7,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                2,
+  +             153,
+  +             138,
+  +             132,
+  +             143,
+  +             3,
+  -             196,
+  -             228,
+  -             197,
+  -             182,
+  -             7,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                2,
+  +             153,
+  +             138,
+  +             132,
+  +             143,
+  +             3,
+  -             196,
+  -             228,
+  -             197,
+  -             182,
+  -             7,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                2,
+  +             153,
+  +             138,
+  +             132,
+  +             143,
+  +             3,
+  -             196,
+  -             228,
+  -             197,
+  -             182,
+  -             7,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:86:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:56:37
+✖ shared production engine fixture: list-enter-backspace (4.160583ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+                0,
+  -             174,
+  -             185,
+  -             209,
+                132,
+  +             149,
+  +             143,
+  +             234,
+  +             2,
+  -             8,
+                3,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+                0,
+  -             174,
+  -             185,
+  -             209,
+                132,
+  +             149,
+  +             143,
+  +             234,
+  +             2,
+  -             8,
+                3,
+                65
+              ],
+              [
+                'paragraph'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:86:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

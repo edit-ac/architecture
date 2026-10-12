@@ -1,0 +1,71 @@
+{
+  "gate": "ENG-1.13",
+  "children": [
+    "ENG-1.13-I1",
+    "ENG-1.13-V1"
+  ],
+  "state": "implemented and locally verified",
+  "utc": "2026-10-12T00:05:38.626108+00:00",
+  "source_revision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+  "prompt_revision": "7eaa063f3629",
+  "core_head": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "working_tree_dirty": true,
+  "changed_paths": [
+    "crates/editac-core/src/document.rs",
+    "crates/editac-core/tests/replica_properties.rs",
+    "fixtures/replica-seeds/"
+  ],
+  "implementation": "Document::restore integrates the bounded decoded checkpoint/journal as one merged Yrs update, then retains every existing schema/immutable/pending-state check. Test transport holds rejected deltas without acknowledgment, corruption or data loss. No public API/schema/history policy change.",
+  "canonical_command": {
+    "command": [
+      "/Users/bpstr/.cargo/bin/rustup",
+      "run",
+      "1.97.1",
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--test",
+      "replica_properties",
+      "--locked"
+    ],
+    "log": "canonical-6.log",
+    "environment": {
+      "PATH_prefix": "/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.cargo/bin",
+      "RUSTC": "/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc",
+      "RUSTDOC": "/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc",
+      "CARGO_INCREMENTAL": "0",
+      "EDITAC_REPLICA_EVIDENCE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-replica-properties/run-6"
+    }
+  },
+  "rust": {
+    "canonical": 10,
+    "related": 497,
+    "executed": 507,
+    "passed": 507,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0,
+    "results": "rust-results.json"
+  },
+  "node": {
+    "executed": 120,
+    "passed": 120,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "results": "node-results.json"
+  },
+  "regressions": "regression-command.json; regressions.log; regression-result.json",
+  "coverage": "coverage.json",
+  "criterion_map": "criterion-map.json",
+  "tested_source_count": 161,
+  "tested_source_hashes": "tested-source-hashes.json",
+  "tested_sources_unchanged": true,
+  "frozen_profile_audit": "profile-audit.json (25/25 matched; snapshot hash matched)",
+  "failure_evidence": "failure-notes.json",
+  "cleanup": "cleanup.json; exact removed paths in cleanup-plan.json",
+  "qualification_scope": "bounded local prepared schedules over production engine; real pinned Yjs interop regressions; not deployed/published; no paid inference",
+  "exit_reason": "full declared parent batch passed; ENG-1.14 next, outside this one-parent iteration"
+}

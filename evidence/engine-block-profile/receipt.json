@@ -1,0 +1,569 @@
+{
+  "gate": "ENG-1.16",
+  "state": "implemented and locally verified; not deployed/published",
+  "date": "2026-10-11",
+  "iteration": 8,
+  "prompt_revision": "7eaa063f3629",
+  "source": {
+    "snapshot": "../architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+    "revision": "6af2cefc37184d9851b1896783ab9abf3c0527606485cf1a2928c4274cea8b6b",
+    "roadmap_mode": "PRESERVE_ROADMAP",
+    "reconciliation": "Preserved ENG-1.1\u20131.5 and fixed-pair ENG-1.7 evidence; added original ENG-1.16/17/18 gates; replaced stale mapping information wait; source priority ENG-1.16 then unfinished ENG-1.6."
+  },
+  "base_revisions": {
+    "core": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+    "architecture": "26d3502585fea4c8a21bc15fb949a562b93905ea"
+  },
+  "envelope": {
+    "profile": "editac.yrs-yjs.blocks.v2",
+    "schema": "editac.registry.blocks.v2",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "documentId": "33333333-3333-4333-8333-333333333333",
+    "epoch": "44444444-4444-4444-8444-444444444444"
+  },
+  "profile_descriptor": "core/fixtures/schema-v2/profile.json",
+  "environment": {
+    "node": "v24.19.0 (scoped subprocess PATH; default shell v26.4.0 preserved)",
+    "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14) (Homebrew)",
+    "yrs": "0.28.0 small-client UTF-16",
+    "yjs": "13.6.33",
+    "y-protocols": "1.0.7"
+  },
+  "implementation": {
+    "paths": [
+      "crates/editac-core/src/document.rs",
+      "crates/editac-core/src/projection.rs",
+      "crates/editac-core/src/commands/format.rs",
+      "crates/editac-core/tests/block_profile.rs",
+      "fixtures/schema-v2/mapping.mjs",
+      "fixtures/schema-v2/exchange.mjs",
+      "fixtures/schema-v2/profile.json",
+      "fixtures/schema-v2/seed.json"
+    ],
+    "test_only_legacy_glue": "Give two formatting unit fixtures distinct document UUIDs; no marks behavior changed.",
+    "delivery": "explicit profile creation/restore/admission, immutable owner tuple parsing, inherited/override read projection and observed metadata-only changes",
+    "scope": "One parent only. Production block commands remain ENG-1.6; arbitrary/repeated ownership remains ENG-1.17/18; no migration."
+  },
+  "checks": {
+    "feature": {
+      "command": "cargo test -p editac-core --test block_profile --locked",
+      "environment": "Scope PATH to /Users/bpstr/.nvm/versions/node/v24.19.0/bin before cargo; assert node --version v24.19.0. Do not change the user/global Node setup.",
+      "exit_code": 0,
+      "log": "feature-qualified.log",
+      "suites": [
+        {
+          "suite": "Running tests/block_profile.rs (target/debug/deps/block_profile-728e44a876ec5cbf)",
+          "state": "ok",
+          "executed": 21,
+          "passed": 21,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ]
+    },
+    "node": {
+      "command": "node --test fixtures/schema-v2/exchange.mjs, invoked by Rust feature with retained EDITAC_BLOCK_EXCHANGE directory",
+      "exit_code": 0,
+      "log": "exchange/node.log",
+      "executed": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    "regression": {
+      "command": "cargo test -p editac-core --lib --test initialization --test projection --test anchors --test text_commands --test format_commands --test interop --test schema_profile --test schema_interop --test protocol_toolchain --test split_join --test split_join_probe --test structure_conflicts --test structure_registry --test hierarchy_probe --test delete_edit_probe --locked",
+      "log": "integration-final.log",
+      "exit_code": 0,
+      "suites": [
+        {
+          "suite": "Running unittests src/lib.rs (target/debug/deps/editac_core-1a758e03712644e2)",
+          "state": "ok",
+          "executed": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/anchors.rs (target/debug/deps/anchors-d5450a36718b715f)",
+          "state": "ok",
+          "executed": 24,
+          "passed": 24,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/delete_edit_probe.rs (target/debug/deps/delete_edit_probe-84ff9cbc5e76c27b)",
+          "state": "ok",
+          "executed": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)",
+          "state": "ok",
+          "executed": 26,
+          "passed": 26,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/hierarchy_probe.rs (target/debug/deps/hierarchy_probe-8e3c31acbe2e6b71)",
+          "state": "ok",
+          "executed": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/initialization.rs (target/debug/deps/initialization-fe4e3ed9317cecf3)",
+          "state": "ok",
+          "executed": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/interop.rs (target/debug/deps/interop-75042c965d27e90c)",
+          "state": "ok",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/projection.rs (target/debug/deps/projection-5477001ba3cb7bf5)",
+          "state": "ok",
+          "executed": 16,
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/protocol_toolchain.rs (target/debug/deps/protocol_toolchain-7214ddc54791236c)",
+          "state": "ok",
+          "executed": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/schema_interop.rs (target/debug/deps/schema_interop-12832a0f59f1e0bb)",
+          "state": "ok",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/schema_profile.rs (target/debug/deps/schema_profile-e5552febab826b74)",
+          "state": "ok",
+          "executed": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/split_join.rs (target/debug/deps/split_join-7369b08ffe8047c7)",
+          "state": "ok",
+          "executed": 27,
+          "passed": 27,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/split_join_probe.rs (target/debug/deps/split_join_probe-88e42668b1c22ec3)",
+          "state": "ok",
+          "executed": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/structure_conflicts.rs (target/debug/deps/structure_conflicts-1397af96cf7ccc8c)",
+          "state": "ok",
+          "executed": 26,
+          "passed": 26,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/structure_registry.rs (target/debug/deps/structure_registry-3435cd80fa7639a6)",
+          "state": "ok",
+          "executed": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/text_commands.rs (target/debug/deps/text_commands-136420da2b17741a)",
+          "state": "ok",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ],
+      "passed": 194,
+      "failed": 0,
+      "skipped": 0,
+      "runtime_qualification": "139 Rust-only tests reuse this passing log; the four Node-using suites below supersede their earlier Node26 run."
+    },
+    "affected_legacy": {
+      "command": "cargo test -p editac-core --test format_commands --test interop --test schema_interop --test split_join --locked",
+      "environment": "Scope PATH to /Users/bpstr/.nvm/versions/node/v24.19.0/bin before cargo; assert node --version v24.19.0. Do not change the user/global Node setup.",
+      "log": "legacy-pinned.log",
+      "exit_code": 0,
+      "suites": [
+        {
+          "suite": "Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)",
+          "state": "ok",
+          "executed": 26,
+          "passed": 26,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/interop.rs (target/debug/deps/interop-75042c965d27e90c)",
+          "state": "ok",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/schema_interop.rs (target/debug/deps/schema_interop-12832a0f59f1e0bb)",
+          "state": "ok",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/split_join.rs (target/debug/deps/split_join-7369b08ffe8047c7)",
+          "state": "ok",
+          "executed": 27,
+          "passed": 27,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ],
+      "passed": 55,
+      "failed": 0,
+      "skipped": 0
+    },
+    "format": {
+      "command": "cargo fmt --all --check",
+      "exit_code": 0,
+      "log": "format-check.log"
+    }
+  },
+  "criteria": {
+    "empty_metadata_and_restore": "creation/empty-existing/default/heading switching tests, including zero-length fixed-pair split and fresh writers",
+    "tuple_policy": "levels 1\u20136; invalid 0/7/fraction/string/arity/type/nonfinite/shared/depth shapes; unknown JSON retained with safe paragraph presentation",
+    "ownership": "live first-owner inheritance, explicit override, dormant override, concurrent losing descriptor, absorbed tuple/text retention and tombstoned source/derived-owner recovery",
+    "convergence": "whole-tuple same-owner conflicts, different-owner writes, six three-replica delete/edit/metadata permutations plus duplicates, causal predecessor reorder, exact recovery/restore snapshots and binary anchors",
+    "mixed_atomic_rejection": "real inbound update with valid text/mark/second-owner changes plus invalid first-owner tuple rejects unchanged checkpoint (including vector/delete state), revision and projection; production prepared mixed formatting remains ENG-1.6",
+    "profile_admission": "exact metadata/document/epoch/schema/profile/version/codec/offset and root/tuple/ownership validation on disposable replica; no automatic upgrade; rejected borrowed bytes remain caller-owned",
+    "interop": "sole source initializer; Rust\u2192Yjs root/tuple/mark/relative-anchor assertions, Yjs\u2192Rust real split/join/conflict/invalid updates, duplicate/reordered replay and stable source identities",
+    "v1_retention": "foundation-integrity.json; immutable v1 contracts/seed/mapping/pins retained and canonical legacy exchange revalidated"
+  },
+  "source_hashes": {
+    "crates/editac-core/src/document.rs": {
+      "bytes": 22381,
+      "sha256": "9748a4c0559b1d33454d09c406461290b062df5d3de48005490fb97d1d7586a8"
+    },
+    "crates/editac-core/src/projection.rs": {
+      "bytes": 23580,
+      "sha256": "b221fa206969047df160cacaadcc534a328e4a3577eee4fdc23e639fd779fde4"
+    },
+    "crates/editac-core/src/commands/format.rs": {
+      "bytes": 22977,
+      "sha256": "505b45653f0398726034e79d900fea1bb2dfc5795cbf5ca50d486f4c1c74971c"
+    },
+    "crates/editac-core/tests/block_profile.rs": {
+      "bytes": 30353,
+      "sha256": "c4e662af4fdc8518e4fdc7cfc61087f884f4fdb2c3e51b5d8aaa455edf66eb7b"
+    },
+    "Cargo.toml": {
+      "bytes": 406,
+      "sha256": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7"
+    },
+    "Cargo.lock": {
+      "bytes": 17615,
+      "sha256": "52476d26e42c8ed8943b0c924fb31491d1e6eaa70d5146ccb31deda46fe71be9"
+    },
+    "crates/editac-core/Cargo.toml": {
+      "bytes": 393,
+      "sha256": "2e24079747593490f72d75e98edb9807ab0a632e55cd057e4a8c82b9c0daa88f"
+    },
+    "package.json": {
+      "bytes": 1464,
+      "sha256": "b202ce374867278a59f9b1f6396458206921e0e66fcbc32c379172ba595f4005"
+    },
+    "package-lock.json": {
+      "bytes": 16713,
+      "sha256": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+    },
+    "rust-toolchain.toml": {
+      "bytes": 113,
+      "sha256": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b"
+    },
+    "../architecture/specs/schema-v2.md": {
+      "bytes": 6481,
+      "sha256": "770d525f7dc0796f165b46870a07e6e37798e716bc43ed6d75db54d6876763c9"
+    },
+    "../architecture/specs/schema-v1.md": {
+      "bytes": 9434,
+      "sha256": "9c9dcdb3e9edad74d841c55ec11a99962f3e002b823758e88e531291b6d82d23"
+    },
+    "../architecture/specs/protocol-v1.md": {
+      "bytes": 6958,
+      "sha256": "dd8c7aa6c73a03a35ec41de83822314dfc5bf7d575f3ac19566421b6393eeb3b"
+    },
+    "../architecture/specs/engine.md": {
+      "bytes": 11191,
+      "sha256": "8de39e63780468a53c07efdb0030e618adafe73f386ed6ec050d0034228159d8"
+    },
+    "../architecture/specs/verification.md": {
+      "bytes": 3731,
+      "sha256": "e7a0fc0c2d0f2407766bbafbee8151b4284f75078cb4de394e52eea5e11ffe66"
+    },
+    "fixtures/schema-v2/mapping.mjs": {
+      "bytes": 2763,
+      "sha256": "940798a80e356319b0495479c013e3102603c151548c95e50161ab921fdedf1e"
+    },
+    "fixtures/schema-v2/exchange.mjs": {
+      "bytes": 6089,
+      "sha256": "34bd5201272682d301c6d80f5b2a57c2b3a70f5cd78ae1d3d32641c706bd6f27"
+    },
+    "fixtures/schema-v2/profile.json": {
+      "bytes": 898,
+      "sha256": "7e713ff506be130a2ddee0f58bb66bc80226fa59c1c51281ddace0a078043ad3"
+    },
+    "fixtures/schema-v2/seed.json": {
+      "bytes": 501,
+      "sha256": "78f3d6a59eedd9cb8ffedad9c0595f01d921a9861dfee0e76692d65f499e2074"
+    }
+  },
+  "preserved_failures": [
+    {
+      "log": "feature-1.log",
+      "executed": 0,
+      "reason": "compile: pinned Yrs Number enum; repaired exact numeric conversions"
+    },
+    {
+      "log": "feature-2.log",
+      "executed": 17,
+      "passed": 16,
+      "failed": 1,
+      "skipped": 0,
+      "reason": "exchange fixture indexed block-split by position; repaired stable-ID lookup"
+    },
+    {
+      "log": "feature-3.log",
+      "started": 19,
+      "passed": 18,
+      "failed": 0,
+      "interrupted": 1,
+      "reason": "fixture acquired a read inside its mutable transaction; confirmed task executable terminated and read moved before write"
+    },
+    {
+      "log": "integration.log",
+      "executed": 7,
+      "passed": 5,
+      "failed": 2,
+      "skipped": 0,
+      "remaining_suites": "not executed after library failure",
+      "reason": "two unit fixtures collided with text test document/epoch; repaired only fixture UUIDs"
+    },
+    {
+      "log": "foundation-integrity.json",
+      "reason": "9/11 historical fingerprint comparisons matched; 2 differences already committed in current foundation baseline; exact current fingerprints retained and current interop requalified"
+    }
+  ],
+  "unqualified_runtime_evidence": [
+    "feature-final.log",
+    "integration-final.log (Node-using cases superseded by legacy-pinned.log)",
+    "exchange/node-unqualified-26.log"
+  ],
+  "cleanup": "cleanup.json; session-created block_profile outputs only, no browsers/servers started, protected services preserved",
+  "paid_inference_calls": 0,
+  "publication": false,
+  "next_parent": "ENG-1.6 remaining block attributes and mixed prepared formatting",
+  "artifact_hashes": {
+    "exchange-final.log": {
+      "bytes": 441,
+      "sha256": "88e178a2ab4b254d3f49b796d2c262fa8a806baf2b7a9b1aaa35eb2c4252dcb0"
+    },
+    "processes-final.log": {
+      "bytes": 209013,
+      "sha256": "411ea5a0e9b1dd4bbf278565fb2dc0000fc436bbef471e2f54c541dbeb99978e"
+    },
+    "legacy-pinned.log": {
+      "bytes": 4600,
+      "sha256": "0142ccf24704eae679a7488c09e2583808a92b1a2ce9baa19a13cef526ef8371"
+    },
+    "foundation-integrity.json": {
+      "bytes": 3200,
+      "sha256": "bb00f8bc9549ceccaa5125fa0631d83e98435a1fe18707185153e9cf227ab3f3"
+    },
+    "format-check.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "feature-qualified.log": {
+      "bytes": 1887,
+      "sha256": "a114597ab969243d697fe9dbaaf2af13a30641433356eae9a42e2be80329581f"
+    },
+    "feature-1.log": {
+      "bytes": 3888,
+      "sha256": "e58c41633ef1e2478cd73ff996f79b974c223ef04efb479f6a2b8eeffa4830fe"
+    },
+    "feature-3.log": {
+      "bytes": 1795,
+      "sha256": "15b6b4aec12197687128f8d31bf2d37fa50f812cc0eeb0e911710ffd555eaa80"
+    },
+    "feature-final.log": {
+      "bytes": 1887,
+      "sha256": "3cf3d1b31e4fab79433049a68dcdf06b7472d9a6e4a9025b18800c02e248292b"
+    },
+    "feature-2.log": {
+      "bytes": 2126,
+      "sha256": "a0fa53843c0295adee4834e5a682a0affb8b4be17b6156d15be09edf019da1e7"
+    },
+    "feature-pinned.log": {
+      "bytes": 1887,
+      "sha256": "1468535a35f8a3e2b9ccbc17c62f99e89c5a5c2d795d2f9a6946508d1c7a40e9"
+    },
+    "rustfmt.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "integration.log": {
+      "bytes": 4100,
+      "sha256": "fba4695602fe256ac34f39b30dd3d46fc930b58d232225bb03577df2e9a886e7"
+    },
+    "feature-4.log": {
+      "bytes": 1732,
+      "sha256": "5aebf230beeda94bfc768d2f2e2d95fec20e2ea16baea592d315e4c15c8c9341"
+    },
+    "checks.json": {
+      "bytes": 968,
+      "sha256": "4c0679d5d52d05fd76f645b1bdec2eee2e0ff0c318ca7d8b2bf77b0826b6cf6e"
+    },
+    "README.md": {
+      "bytes": 2660,
+      "sha256": "62498d683a51ae5611f1a2638f9d7fae0cdc888828ff7a3d8d5a29deb104f93f"
+    },
+    "cleanup.json": {
+      "bytes": 66913,
+      "sha256": "9fa47ca0598ea7d4b3f84d68139dde4e70b72ca4da4cb8d97dc26b76fb1f1ea2"
+    },
+    "run-pinned-checks.py": {
+      "bytes": 1243,
+      "sha256": "ec10cc03c7ecebfeeb7a4b203839e545846eaf661fae10154b243a5ed12b273c"
+    },
+    "cleanup-candidates.json": {
+      "bytes": 36784,
+      "sha256": "6b463eef9f3496969bac8f5f4bae20c8e322f4b87a88672bbc3c87bc5762643c"
+    },
+    "node-final.log": {
+      "bytes": 661,
+      "sha256": "d84ccb3b0bf270418d0b5486b7d4333a9e6276da248888c489a4e3ad0b7708a0"
+    },
+    "listeners-final.log": {
+      "bytes": 4228,
+      "sha256": "dee5ac51694661cb5c215817013800129c41accdffe665a38f734ce4490f084b"
+    },
+    "pinned-check-results.json": {
+      "bytes": 583,
+      "sha256": "42ecf887b6b8d2232d17344ddb5c69613e2b5059563a5c89d804f74b555966e2"
+    },
+    "integration-final.log": {
+      "bytes": 19565,
+      "sha256": "7ee4121b508d74b5b1173eff3bdbcf9142f290a94240341fa3a3d8dbaf270d00"
+    },
+    "exchange/node-unqualified-26.log": {
+      "bytes": 779,
+      "sha256": "edb9e58d474746a5d6c9ad337c3f3102e483e5bb238151153532715b9638f74b"
+    },
+    "exchange/js-seed.bin": {
+      "bytes": 430,
+      "sha256": "2cbaa40dc5b628faa991b630fcf6e5d0e2eaebef484556dd426ea95e358e9d92"
+    },
+    "exchange/js-split.bin": {
+      "bytes": 498,
+      "sha256": "a3b8cc96eab93b58a5d4725563e09abc43c7bbaf484b0fb10846a47788f05cdb"
+    },
+    "exchange/node.log": {
+      "bytes": 657,
+      "sha256": "83a1a732ca6f05a23560a48cb7f01f0a797776e6044f8a7df470ef346269385d"
+    },
+    "exchange/js-invalid-root.bin": {
+      "bytes": 45,
+      "sha256": "4691f97aa781302c832c90d612dfa7bdad40fe55e0d74a31f610cb06e8e77cda"
+    },
+    "exchange/rust-split.bin": {
+      "bytes": 495,
+      "sha256": "274e8d4b309fb847bf32e7648c828aaedadaaa4ec8d09c9348f25c49b0718769"
+    },
+    "exchange/rust-seed.bin": {
+      "bytes": 430,
+      "sha256": "2cbaa40dc5b628faa991b630fcf6e5d0e2eaebef484556dd426ea95e358e9d92"
+    },
+    "exchange/js-conflict-b.bin": {
+      "bytes": 26,
+      "sha256": "482c0a8f9e37dbf6d2d293270d2236d364834bb46cbbea348c54458ae369ac76"
+    },
+    "exchange/js-conflict-a.bin": {
+      "bytes": 45,
+      "sha256": "1255bacc131f08cf37e26fff1f083bbfd88d2f88d63fba19452f88d98ed7cd70"
+    },
+    "exchange/js-join.bin": {
+      "bytes": 499,
+      "sha256": "0df6ad27bc90ec8efc7cf670f335708496e9a408540f67570af3a326b583fe03"
+    },
+    "exchange/js-invalid-shared-tuple.bin": {
+      "bytes": 444,
+      "sha256": "ea760ab739e1a110c2e3afa2e422ef1d2b13279a0b607de25f09700a3cdb10fc"
+    },
+    "exchange/js-invalid-tuple.bin": {
+      "bytes": 462,
+      "sha256": "31af1a2caf768bb44686663a8e624ad6911e8cd76d09df979541dd3cbda74ab7"
+    },
+    "exchange/js-anchor.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "exchange/rust-anchor.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    }
+  }
+}

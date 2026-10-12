@@ -1,0 +1,66 @@
+✔ native Rust checkpoint restores in compiled WASM without defaults or writer reuse (380.650166ms)
+✔ native journal replay, duplicates and dependent reordered restore match Rust snapshot (2.061042ms)
+✔ state-vector differential exchange and duplicate remote updates have exact patches (9.94075ms)
+✔ three disconnected compiled replicas converge across all six duplicate delivery permutations (21.555791ms)
+✔ pinned Yjs reads production WASM bytes and edits original rich text for WASM replay (4.846292ms)
+✔ delete-set replay works even when clocks did not change (2.46475ms)
+✔ remote replay preserves local history and undo/redo produces usable sync bytes (5.910584ms)
+✖ wrong epoch update rejects before content, history or patch mutation (1.752333ms)
+✖ wrong document update rejects before content, history or patch mutation (1.012958ms)
+✔ wrong profile update rejects before content, history or patch mutation (0.733083ms)
+✔ wrong schema update rejects before content, history or patch mutation (1.044375ms)
+✔ wrong encoding update rejects before content, history or patch mutation (0.778625ms)
+✔ malformed update and state-vector bytes reject atomically (3.0375ms)
+✔ invalid root and mutated immutable rows reject through real staged admission (2.210917ms)
+✔ restore rejects missing initialization, wrong journal identity and malformed tails (0.634041ms)
+✔ byte inputs enforce types, data envelopes and resource limits without getter execution (2.199333ms)
+✔ checkpoint, vector, update and event bytes remain owned after mutation and disposal (1.439708ms)
+✔ scoped batches report exact changed node/range and ignore unrelated listeners (1.054416ms)
+✔ post-transaction reentrant commit dispatches FIFO and subscriptions start with future batches (1.699416ms)
+✔ observer throws and mutations cannot corrupt commits or other observers (1.654125ms)
+✔ unsubscribe/dispose are idempotent and pending callbacks are removed (1.446292ms)
+✔ subscription validation and bounded table preserve normal operations (2.457292ms)
+✔ built WASM structural/format/history checkpoint and update replay agrees with native Rust (87.926792ms)
+✔ actual Chromium IndexedDB checkpoint/tail restore and peer sync use owned production bytes (1138.75625ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 22
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2005.413
+
+✖ failing tests:
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong epoch update rejects before content, history or patch mutation (1.752333ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception (EngineError).
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:100:300
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong document update rejects before content, history or patch mutation (1.012958ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception (EngineError).
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:100:300
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

@@ -1,0 +1,311 @@
+[
+  {
+    "command": "npm run build:wasm",
+    "exit": 0,
+    "log": "build-wasm.log",
+    "kind": "build",
+    "logSha256": "f98474e66740620c90a448c412d80250bf7da9d04c8046d675947d966ce4d88e"
+  },
+  {
+    "command": "npm run build",
+    "exit": 0,
+    "log": "build-packages.log",
+    "kind": "build",
+    "logSha256": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b"
+  },
+  {
+    "command": "EDITAC_WASM_UPDATE_OUTPUT=<evidence> node --test tests/wasm-updates.test.mjs",
+    "exit": 0,
+    "log": "wasm-updates.log",
+    "kind": "actual built WASM + native replay + Chromium IndexedDB",
+    "counts": {
+      "executed": 24,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "logSha256": "b3fd0ad9528f6ed50e004d46ee44b63343cc1fc43f0d091c07203b83e851ede1"
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-wasm",
+      "--lib",
+      "--locked",
+      "--offline"
+    ],
+    "env": {
+      "EDITAC_WASM_COMMAND_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-wasm-updates/commands"
+    },
+    "exit": 0,
+    "log": "bridge-regression.log",
+    "bytes": 1627,
+    "executed": 28,
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0,
+    "logSha256": "313992fa6417bfc07382b52678342b9e53444a008a7d4c84ee1959e011c894bf"
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--lib",
+      "--test",
+      "initialization",
+      "--test",
+      "patches",
+      "--test",
+      "history",
+      "--test",
+      "interop",
+      "--locked",
+      "--offline"
+    ],
+    "env": {},
+    "exit": 101,
+    "log": "kernel-regression.log",
+    "bytes": 5003,
+    "executed": 42,
+    "passed": 41,
+    "failed": 1,
+    "skipped": 0,
+    "filtered": 0,
+    "logSha256": "3d9cbd7a6da5b1853fc490f677c9f9b8ed11ebea100551646f4d5a6891d52924"
+  },
+  {
+    "command": [
+      "node",
+      "--test",
+      "tests/wasm-commands.test.mjs"
+    ],
+    "env": {
+      "EDITAC_WASM_COMMAND_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-wasm-updates/commands"
+    },
+    "exit": 0,
+    "log": "commands-regression.log",
+    "bytes": 1966,
+    "executed": 25,
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "logSha256": "0073014c387a666b45c92d5e9eeb7c52b395a55514267ac9eb98382645cf2834"
+  },
+  {
+    "command": [
+      "node",
+      "--test",
+      "tests/wasm-load.test.mjs"
+    ],
+    "env": {
+      "EDITAC_WASM_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-wasm-updates/loader"
+    },
+    "exit": 0,
+    "log": "loader-regression.log",
+    "bytes": 836,
+    "executed": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "logSha256": "5ef6cca9df8d6650aa8864f7165a92cab37c8924c84f2af7f4c06532c76f1360"
+  },
+  {
+    "command": [
+      "node_modules/.bin/tsc",
+      "--noEmit",
+      "--strict",
+      "--exactOptionalPropertyTypes",
+      "--target",
+      "ES2022",
+      "--module",
+      "NodeNext",
+      "--moduleResolution",
+      "NodeNext",
+      "tests/wasm-command-types.ts",
+      "tests/wasm-update-types.ts"
+    ],
+    "env": {},
+    "exit": 0,
+    "log": "consumer-types.log",
+    "bytes": 0,
+    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/check-package-exports.mjs"
+    ],
+    "env": {},
+    "exit": 0,
+    "log": "exports.log",
+    "bytes": 126,
+    "logSha256": "d145a3cb31a62bfd027cf6e79856b4d04f80f0c630978706316025a03d35b4e1"
+  },
+  {
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "env": {},
+    "exit": 0,
+    "log": "format-check.log",
+    "bytes": 0,
+    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "env": {},
+    "exit": 0,
+    "log": "diff-check.log",
+    "bytes": 0,
+    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--test",
+      "history",
+      "pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation",
+      "--locked",
+      "--offline"
+    ],
+    "env": {
+      "EDITAC_HISTORY_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-wasm-updates/history-exchange"
+    },
+    "exit": 0,
+    "log": "history-repair.log",
+    "bytes": 344,
+    "executed": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 27,
+    "logSha256": "c12e4af043406756d4fbf13e36597876c57277aa912186446ab90d7fbdbc9cf1"
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--test",
+      "initialization",
+      "--test",
+      "patches",
+      "--test",
+      "interop",
+      "--locked",
+      "--offline"
+    ],
+    "env": {
+      "EDITAC_INTEROP_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-wasm-updates/interop"
+    },
+    "exit": 0,
+    "log": "kernel-remaining.log",
+    "bytes": 3738,
+    "executed": 41,
+    "passed": 41,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0,
+    "logSha256": "bd668cc02f9fa179a3551875196b6f604c06bad2955db8cff13a5454e4d734d6"
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-wasm",
+      "--lib",
+      "updates::",
+      "--locked",
+      "--offline"
+    ],
+    "env": {
+      "EDITAC_WASM_UPDATE_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-wasm-updates"
+    },
+    "exit": 0,
+    "log": "native-updates.log",
+    "counts": {
+      "executed": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 23
+    },
+    "kind": "native production prerequisite",
+    "logSha256": "75fd3687ff268352556297d409500c0e8a5b29f712620ed6a555cb21543ca0ef"
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-wasm",
+      "--lib",
+      "updates::native_updates_reverse_replay",
+      "--locked",
+      "--offline"
+    ],
+    "env": {
+      "EDITAC_WASM_REPLAY_INPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-wasm-updates/wasm-replay-input.json"
+    },
+    "exit": 0,
+    "log": "reverse-native.log",
+    "counts": {
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 27
+    },
+    "kind": "actual compiled WASM to native Rust replay",
+    "logSha256": "133e1883cd5c89a7a4ab5a3f2fc142e134aaf9f083f17aa908ae2e36a863b998"
+  },
+  {
+    "command": "node --test tests/history-exchange.mjs (nested Rust check; HISTORY_PHASE=setup)",
+    "exit": 0,
+    "log": "history-exchange/node-setup.log",
+    "counts": {
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "kind": "pinned Yjs history exchange",
+    "logSha256": "f75156ea80a07f15c90546a9595ac51c5ef9512f18c9fb695acab09bece78d19"
+  },
+  {
+    "command": "node --test tests/history-exchange.mjs (nested Rust check; HISTORY_PHASE=final)",
+    "exit": 0,
+    "log": "history-exchange/node-final.log",
+    "counts": {
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "kind": "pinned Yjs history exchange",
+    "logSha256": "491648f2eb2f68e760224f21c5e179eb6a2b3c82bb77641c899de0d2978f7727"
+  }
+]

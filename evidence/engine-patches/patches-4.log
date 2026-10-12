@@ -1,0 +1,31 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.73s
+     Running tests/patches.rs (target/debug/deps/patches-7cb06236470c922b)
+
+running 23 tests
+test document_drop_invalidates_outstanding_subscription_and_owned_patch_survives ... ok
+test direct_structure_commit_has_one_batch_with_derived_owner_nodes ... ok
+test legacy_profile_text_format_and_structure_commits_also_publish_once ... ok
+test dispose_during_callback_suppresses_later_listener_in_same_batch ... ok
+test block_only_batch_has_changed_node_without_text_range ... ok
+test irrelevant_node_source_selection_listeners_are_silent ... ok
+test deleted_selection_endpoint_is_explicit_and_node_scopes_see_recovery ... ok
+test disposal_is_idempotent_releases_capture_and_drop_unsubscribes ... ok
+test each_commit_excludes_older_pending_ranges_without_consuming_snapshot_evidence ... ok
+test production_mixed_editor_batch_emits_once_with_all_touched_families ... ok
+test preparation_applicability_invalid_stale_and_noop_do_not_emit ... ok
+test new_listener_excludes_batches_already_queued_before_subscription ... ok
+test rich_and_block_format_are_single_batches_with_fixed_ranges ... ok
+test nested_commit_callbacks_can_read_prepare_commit_and_preserve_delivery_order ... ok
+test self_disposal_is_safe_and_subscription_after_commit_does_not_receive_old_batch ... ok
+test selection_events_have_no_content_update_or_history_and_commit_resolves_anchor ... ok
+test returned_errors_and_unwinding_panics_do_not_corrupt_commit_or_other_observers ... ok
+test replay_is_one_remote_batch_and_duplicate_rejected_input_are_silent ... ok
+test text_batch_has_exact_version_origin_bytes_node_and_utf16_range ... ok
+test split_join_batches_preserve_source_identity_and_report_visibility_changes ... ok
+test structural_history_multitransaction_work_is_one_batch_per_undo_redo ... ok
+test undo_redo_emit_one_semantic_batch_and_preserve_remote_edits ... ok
+test reordered_duplicate_three_replica_batches_converge_with_fixed_distinct_counts ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+

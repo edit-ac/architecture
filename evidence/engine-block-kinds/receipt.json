@@ -1,0 +1,384 @@
+{
+  "task": "ENG-1.20",
+  "state": "implemented and locally qualified disposable fixture only; not production/deployed/published",
+  "date": "2026-10-11",
+  "prompt_revision": "7eaa063f3629",
+  "source_snapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+  "source_revision": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "core_base_revision": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "architecture_base_revision": "26d3502585fea4c8a21bc15fb949a562b93905ea",
+  "descriptor": {
+    "profile": "editac.yrs-yjs.editor.v4",
+    "schema": "editac.registry.editor.v4",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "yrs": "0.28.0",
+    "yjs": "13.6.33",
+    "yProtocols": "1.0.7",
+    "roots": [
+      "registry-parents",
+      "registry-texts",
+      "registry-placements",
+      "delete-probe-tombstones",
+      "registry-block-attributes",
+      "registry-ownership-ops",
+      "registry-owner-origins",
+      "registry-container-attributes",
+      "registry-list-item-attributes",
+      "registry-entity-controls"
+    ],
+    "bounds": {
+      "bytes": 16777216,
+      "sources": 4096,
+      "operations": 4096,
+      "spans": 8192,
+      "textBytes": 1048576,
+      "sourceUtf16": 262144,
+      "depth": 128,
+      "jsonDepth": 32,
+      "cutBytes": 256,
+      "controls": 8192,
+      "hierarchyDepth": 128,
+      "registrations": 4096,
+      "edgeVisits": 16777216,
+      "idBytes": 96,
+      "anyValues": 262144,
+      "structs": 262144,
+      "containerEntries": 8192,
+      "allocationClock": 2097152
+    }
+  },
+  "descriptor_sha256": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+  "same_descriptor_as_ENG_1_19": true,
+  "structural_receipt_sha256": "f873ea48d9426a1c4f3966b2450c7c994098558a2c3b8ad27ec2f4b8f40981a1",
+  "envelope": {
+    "profile": "editac.yrs-yjs.editor.v4",
+    "schema": "editac.registry.editor.v4",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "documentId": "77777777-7777-4777-8777-777777777777",
+    "epoch": "88888888-8888-4888-8888-888888888888"
+  },
+  "checks": [
+    {
+      "id": "ENG-1.20-V1",
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_BLOCK_KINDS_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-kinds/exchange-qualified cargo test -p editac-core --test block_kinds_profile --locked",
+      "log": "qualified.log",
+      "exit": 0,
+      "executed": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "breakdown": [
+        {
+          "suite": "block_kinds_profile.rs",
+          "executed": 15,
+          "passed": 15,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ]
+    },
+    {
+      "id": "pinned-block-kinds-yjs",
+      "command": "node --test fixtures/schema-v4/block-kinds-exchange.mjs (spawned by ENG-1.20-V1, Node 24.19.0)",
+      "log": "exchange-qualified/node.log",
+      "exit": 0,
+      "executed": 19,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "writer_collision_warnings": 0
+    },
+    {
+      "id": "current-structural-regression",
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_BLOCK_KINDS_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-kinds/exchange-final EDITAC_STRUCTURAL_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-kinds/structural-exchange-final cargo test -p editac-core --test block_kinds_profile --test structural_profile --locked",
+      "log": "final.log",
+      "exit": 0,
+      "executed": 30,
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "breakdown": [
+        {
+          "suite": "structural_profile.rs",
+          "executed": 30,
+          "passed": 30,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ]
+    },
+    {
+      "id": "pinned-structural-yjs",
+      "command": "node --test fixtures/schema-v4/exchange.mjs (spawned by structural_profile)",
+      "log": "structural-exchange-final/node.log",
+      "exit": 0,
+      "executed": 19,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "writer_collision_warnings": 0
+    },
+    {
+      "id": "unchanged-format-ownership-hierarchy-regressions",
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_STRUCTURAL_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-kinds/structural-exchange EDITAC_OWNERSHIP_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-kinds/ownership-exchange EDITAC_BLOCK_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-kinds/block-exchange EDITAC_FORMAT_BLOCK_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-kinds/format-exchange cargo test -p editac-core --test structural_profile --test ownership_profile --test block_profile --test format_commands --test lists --locked",
+      "log": "regressions.log",
+      "exit": 0,
+      "executed": 111,
+      "passed": 111,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "breakdown": [
+        {
+          "suite": "block_profile.rs",
+          "executed": 21,
+          "passed": 21,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "format_commands.rs",
+          "executed": 41,
+          "passed": 41,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "lists.rs",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "ownership_profile.rs",
+          "executed": 26,
+          "passed": 26,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ]
+    },
+    {
+      "id": "pinned-ownership-yjs",
+      "command": "node --test fixtures/schema-v3/exchange.mjs (spawned by corresponding Rust suite)",
+      "log": "ownership-exchange/node.log",
+      "exit": 0,
+      "executed": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "writer_collision_warnings": 0
+    },
+    {
+      "id": "pinned-block-yjs",
+      "command": "node --test fixtures/schema-v2/exchange.mjs (spawned by corresponding Rust suite)",
+      "log": "block-exchange/node.log",
+      "exit": 0,
+      "executed": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "writer_collision_warnings": 0
+    },
+    {
+      "id": "pinned-format-yjs",
+      "command": "node --test fixtures/schema-v2/format-exchange.mjs (spawned by corresponding Rust suite)",
+      "log": "format-exchange/node.log",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "writer_collision_warnings": 0
+    },
+    {
+      "id": "format",
+      "command": "cargo fmt --all -- --check",
+      "log": "format.log",
+      "exit": 0
+    },
+    {
+      "id": "diff-check",
+      "command": "git diff --check",
+      "log": "diff-check.log",
+      "exit": 0
+    }
+  ],
+  "criterion_to_case_matrix": [
+    {
+      "criterion": "atomic paragraph/heading/code/separator tuples and language bounds",
+      "rust": "atomic_tuple_language_level_matrix_and_unknown_retention",
+      "yjs": "all accepted atomic tuples empty and 64 byte languages levels 1 through 6 preserve source runs"
+    },
+    {
+      "criterion": "malformed known tuples and atomic mixed preparation/admission rejection",
+      "rust": "malformed_known_tuples_reject_admission_and_whole_preparation",
+      "yjs": "malformed language heading separator and paragraph reject remote admission and mixed preparation atomically"
+    },
+    {
+      "criterion": "literal unmarked newline/tab/whitespace edits, dormant original/unknown marks, conversion back, mixed rich-format rejection",
+      "rust": "literal_newlines_whitespace_dormant_marks_and_paragraph_restoration",
+      "yjs": "literal blank lines tabs whitespace insert unmarked amid retained dormant unknown rich marks"
+    },
+    {
+      "criterion": "empty code and blank-line checkpoint restoration without reseeding",
+      "rust": "empty_code_and_blank_lines_restore_without_reseeding",
+      "yjs": "empty code blank lines restore without extra owners or source replacement"
+    },
+    {
+      "criterion": "beginning/middle/end/empty/multisource explicit matching-language split/join, tuple inheritance and retained source identities",
+      "rust": "code_explicit_split_join_endpoints_empty_and_multisource_identity",
+      "yjs": "code endpoint middle empty and multisource explicit split join preserve tuples and source runs"
+    },
+    {
+      "criterion": "incompatible code languages and code/rich joins reject; separator joins return typed unsupported-target including nonadjacent/left endpoints",
+      "rust": "mismatched_language_code_rich_and_separator_joins_fail_without_mutation",
+      "yjs": "mismatched language rich code and separator joins are rejected without writes"
+    },
+    {
+      "criterion": "nonempty separator conversion rejects and text/mark/split separator targets are unsupported",
+      "rust": "separator_nonempty_conversion_and_text_mark_split_join_targets_reject",
+      "yjs": "nonempty separator conversion and text mark split separator targets reject completely"
+    },
+    {
+      "criterion": "last-editable convert/delete/insert atomically reserve adjacent accessible empty paragraph in one explicit local live transaction",
+      "rust": "last_editable_convert_delete_insert_reserve_accessible_adjacent_paragraph_atomically",
+      "yjs": "last editable convert delete and insert reserve adjacent paragraph in one live transaction"
+    },
+    {
+      "criterion": "empty headings and code are editable and avoid unnecessary neighbor allocation",
+      "rust": "empty_heading_and_code_count_as_editable_no_unnecessary_neighbor",
+      "yjs": "empty heading and code count as editable without an unnecessary reservation"
+    },
+    {
+      "criterion": "neighbor registration identity and placement-ID failures/resource ceiling have zero live writes",
+      "rust": "neighbor_identity_operation_and_resource_failures_leave_no_partial_separator",
+      "yjs": "neighbor invalid reused identity placement and resource limits leave no partial separator"
+    },
+    {
+      "criterion": "stale preparation, malformed UTF-16 and source limit reject complete batches",
+      "rust": "stale_preparation_utf16_and_oversized_literal_batch_are_atomic",
+      "yjs": "stale preparation malformed UTF16 cut and oversized literal batch reject atomically"
+    },
+    {
+      "criterion": "duplicate/reordered three-writer concurrent language/literal/remote-mark replay and checkpoints preserve exact content, metadata and source identity",
+      "rust": "three_replica_duplicate_reordered_metadata_literal_and_remote_mark_races",
+      "yjs": "Rust three-writer concurrent metadata literal and rich mark updates converge under all duplicate reorder schedules; JS three-writer concurrent metadata literal and remote rich mark updates export real replay fixtures to Rust"
+    },
+    {
+      "criterion": "bidirectional actual pinned Yjs/Rust bytes, independent JS initialization, original stable anchor and checkpoints",
+      "rust": "pinned_bidirectional_block_kinds_exchange_complete_policies_races_and_restore",
+      "yjs": "exact frozen descriptor and independently constructed JS seed; Rust seed and full code conversion literal split join restoration chain retain identities and anchors; JS full production-independent policy chain exports actual bytes to Rust"
+    },
+    {
+      "criterion": "nested last-owner adjacent neighbor preserves same-parent original identities",
+      "rust": "nested_last_owner_neighbor_keeps_parent_adjacent_and_original_identity",
+      "yjs": "nested last owner reserves same-parent adjacent paragraph preserving original source"
+    },
+    {
+      "criterion": "empty derived separator retains original empty source span and rejects editing",
+      "rust": "empty_derived_separator_retains_original_span_and_typed_target_policy",
+      "yjs": "empty derived separator retains original span and typed target policy"
+    },
+    {
+      "criterion": "opaque tuples remain retained safe fallbacks and cannot be semantic command targets",
+      "rust": "atomic_tuple_language_level_matrix_and_unknown_retention",
+      "yjs": "unknown opaque metadata remains safe dormant and rejects semantic targeting"
+    }
+  ],
+  "replay_schedules": {
+    "Rust": 18,
+    "Yjs": 12,
+    "orders_per_matrix": 6,
+    "deliveries_per_update_per_receiver": 2,
+    "checkpoint_comparison": true
+  },
+  "changed_paths": [
+    "fixtures/schema-v4/mapping.rs",
+    "fixtures/schema-v4/mapping.mjs",
+    "fixtures/schema-v4/policy.rs",
+    "fixtures/schema-v4/policy.mjs",
+    "fixtures/schema-v4/block-kinds-exchange.mjs",
+    "crates/editac-core/tests/block_kinds_profile.rs"
+  ],
+  "source_hashes": {
+    "fixtures/schema-v4/profile.json": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+    "fixtures/schema-v4/seed.json": "39aac7215b7e28b056bab5f008ab9a5594b15d9e53e692926fe87cd68f808705",
+    "fixtures/schema-v4/mapping.rs": "e0c5e0d7e78113baff5d6061e870ec0810071f2537139cf0620d9efc1052f595",
+    "fixtures/schema-v4/mapping.mjs": "5183d3090b15f379c8fe6fc11b4e8cda594b882162a0896c081ea0508ff05c9a",
+    "fixtures/schema-v4/bounded_decoder.rs": "5679118322620c056a3bc84109327c8b4e8e332393681351affe90f8fe2e07d8",
+    "fixtures/schema-v4/policy.rs": "4f0c71162a05e24c199a6b1e2594aa9890bdcb12db523ce3b8e0081a17640dd0",
+    "fixtures/schema-v4/policy.mjs": "4df1be1808804248cc687c4fcf5d150fc4b170d60345e0d86c8f8ab39a174153",
+    "fixtures/schema-v4/block-kinds-exchange.mjs": "f370fc68147c0d1cb1191af6ffeba23cc0abcadf9218c0df0edae2949ca515c6",
+    "fixtures/schema-v4/exchange.mjs": "e7e08490a6eb9ac02df8d54789bd98b4c62a8aee449285eecfc04561002a9e21",
+    "crates/editac-core/tests/block_kinds_profile.rs": "a781780a8028f081bbee7faca9b35714995601bcf0edd06182f6a80b39b6fbea",
+    "crates/editac-core/tests/structural_profile.rs": "5b971b5f85a54f5f9e274a55b42f9844c5b54f99d19e5b3848acdbed4da6cafd",
+    "Cargo.toml": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7",
+    "Cargo.lock": "52476d26e42c8ed8943b0c924fb31491d1e6eaa70d5146ccb31deda46fe71be9",
+    "crates/editac-core/Cargo.toml": "2e24079747593490f72d75e98edb9807ab0a632e55cd057e4a8c82b9c0daa88f",
+    "package.json": "b202ce374867278a59f9b1f6396458206921e0e66fcbc32c379172ba595f4005",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+    "architecture/specs/schema-v4.md": "9a2140303a4cf0eb6fdb12177264d03dbf03701949f4c5572f3037b9bd91d4c0",
+    "architecture/specs/schema-v3.md": "3467da1488a864abba3e153bebb834d835dbe39ba05c4c1cc43adc6d8b0f31ff",
+    "architecture/specs/engine.md": "c4267ab1b50154ca3d219e52709ed5ba261cea5f59eb81faea7ad6d667fb90e7",
+    "architecture/specs/verification.md": "56a82adc7f23df2d75c1827cea12e123652b010a31375e455e461516db748dc0"
+  },
+  "preserved_failures": [
+    {
+      "log": "feature-1.log",
+      "executed": 0,
+      "exit": 101,
+      "reason": "test glue used numeric variant/observer API incorrectly; repaired before execution"
+    },
+    {
+      "log": "feature-2.log",
+      "exit": 101,
+      "executed": 14,
+      "passed": 12,
+      "failed": 2,
+      "skipped": 0,
+      "yjs_log": "exchange-2/node.log",
+      "yjs_executed": 18,
+      "yjs_passed": 14,
+      "yjs_failed": 4,
+      "reason": "JS tuple-validation ordering and invalid fixture schedules repaired: tombstoning the split source invalidates its derived target; changing only left code metadata can deactivate a matching-language join. Nested original-last-owner and separate empty-derived proofs replace the unreachable fixture. Code joins retain matching tuples in the exchanged chain."
+    },
+    {
+      "log": "writer-final.log",
+      "exit": 101,
+      "executed": 15,
+      "passed": 14,
+      "failed": 1,
+      "skipped": 0,
+      "yjs_log": "exchange-final-writer/node.log",
+      "yjs_executed": 19,
+      "yjs_passed": 18,
+      "yjs_failed": 1,
+      "reason": "Explicit writer assertions exposed remote transaction classification of prepared local bytes; corrected stage identity assignment and local transaction classification. Final exchange has zero writer-collision warnings."
+    }
+  ],
+  "superseded_passes": [
+    "feature-3.log",
+    "final.log (block-kinds portion only; structural result remains current)"
+  ],
+  "limitations": [
+    "This is exact v4 disposable policy qualification, not production commands. ENG-1.21 and original code/list/history gates remain open.",
+    "Current schema-v4 replay evaluates code join eligibility against effective tuples. Later incompatible language changes may make a prior join intention losing while retaining original content. No operation-tuple/schema change is made by this fixture.",
+    "No paid inference, provider recording, publication, migration or supported-profile claim."
+  ],
+  "artifact_manifest": "artifacts.json",
+  "hygiene": "hygiene.json"
+}

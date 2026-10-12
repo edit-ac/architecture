@@ -1,0 +1,46 @@
+   Compiling unicode-segmentation v1.12.0
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: unused import: `ProjectedNode`
+ --> crates/editac-core/src/anchors.rs:5:25
+  |
+5 | use crate::projection::{ProjectedNode, ProjectionError, Snapshot};
+  |                         ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (lib) generated 1 warning (run `cargo fix --lib -p editac-core` to apply 1 suggestion)
+error[E0624]: method `read` is private
+   --> crates/editac-core/tests/anchors.rs:217:18
+    |
+217 |     let sv = doc.read().state_vector();
+    |                  ^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:355:5
+    |
+355 |     pub(crate) fn read(&self) -> Transaction<'_> {
+    |     -------------------------------------------- private method defined here
+
+error[E0624]: method `read` is private
+   --> crates/editac-core/tests/anchors.rs:250:20
+    |
+250 |     assert_eq!(doc.read().state_vector(), sv);
+    |                    ^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:355:5
+    |
+355 |     pub(crate) fn read(&self) -> Transaction<'_> {
+    |     -------------------------------------------- private method defined here
+
+error[E0624]: method `read` is private
+   --> crates/editac-core/tests/anchors.rs:251:17
+    |
+251 |     assert!(doc.read().encode_state_as_update_v1(&sv).len() <= 2);
+    |                 ^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:355:5
+    |
+355 |     pub(crate) fn read(&self) -> Transaction<'_> {
+    |     -------------------------------------------- private method defined here
+
+For more information about this error, try `rustc --explain E0624`.
+error: could not compile `editac-core` (test "anchors") due to 3 previous errors

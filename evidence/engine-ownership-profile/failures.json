@@ -1,0 +1,45 @@
+{
+  "compile": {
+    "log": "ownership-01.log",
+    "exit": 101,
+    "executed": 0,
+    "errors": 9,
+    "repair": "use pinned Number representation and plain attributed-text extraction"
+  },
+  "firstFeatureCheck": {
+    "log": "ownership-02.log",
+    "exit": 101,
+    "executed": 18,
+    "passed": 16,
+    "failed": 2,
+    "skipped": 0,
+    "reasons": [
+      "empty After endpoint requires StickyIndex::from_type",
+      "scoped Homebrew node resolved v26.4.0; required v24.19.0"
+    ],
+    "nestedNodeObservation": {
+      "executed": 11,
+      "passed": 10,
+      "failed": 1,
+      "skipped": 0,
+      "actual": "v26.4.0",
+      "required": "v24.19.0",
+      "rawLog": "exchange/node.log overwritten by repair; selected observation and original Rust failure log retained"
+    },
+    "repairEvidence": [
+      "anchor-repair.log",
+      "exchange-repair-01.log",
+      "node-exchange-repair-01.log"
+    ]
+  },
+  "dependencyFixtureCheck": {
+    "log": "ownership-03.log",
+    "exit": 101,
+    "executed": 24,
+    "passed": 23,
+    "failed": 1,
+    "skipped": 0,
+    "reason": "independent map records do not necessarily require binary predecessors; changed fixture to causally dependent text insertions",
+    "repair": "binary-dependency-repair-01.log"
+  }
+}

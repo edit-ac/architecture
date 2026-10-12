@@ -1,0 +1,36 @@
+[
+  {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--test",
+      "block_profile",
+      "--locked"
+    ],
+    "log": "feature-pinned.log",
+    "exit_code": 0,
+    "node_runtime": "v24.19.0"
+  },
+  {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--test",
+      "format_commands",
+      "--test",
+      "interop",
+      "--test",
+      "schema_interop",
+      "--test",
+      "split_join",
+      "--locked"
+    ],
+    "log": "legacy-pinned.log",
+    "exit_code": 0,
+    "node_runtime": "v24.19.0"
+  }
+]

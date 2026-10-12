@@ -1,0 +1,261 @@
+{
+  "gate": "ENG-1.1",
+  "state": "foundation entry implemented and locally verified; no production engine or deployment claim",
+  "date": "2026-10-11T15:30:50.600652+00:00",
+  "source_revision": "0c9ea1747d09797b35ad7d3923f79d61bae3725236a6c5b1bf13845d7e68c600",
+  "upstream_source_revision": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "prompt_revision": "7eaa063f3629",
+  "iteration": 1,
+  "core_base_revision": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "architecture_base_revision": "d182226517938592ea97af059e724b9ab53b7020",
+  "implementation_state": "uncommitted working tree; existing changes preserved; exact files hashed",
+  "profile": {
+    "profile": "editac.yrs-yjs.v1",
+    "schema": "editac.registry.v1",
+    "update_encoding": 1,
+    "offsets": "utf16",
+    "scope": "ordinary retained nodes plus exact fixed ownership pair; Rust/JS structural proof separate from XML/text compiled loader"
+  },
+  "checks": [
+    {
+      "command": "python3 ../architecture/evidence/engine-entry/check-entry.py",
+      "exit": 0,
+      "executed": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "report": "integrity.json"
+    },
+    {
+      "command": "cargo test -p editac-core --test interop --locked",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "interop.log"
+    },
+    {
+      "command": "node --test tests/interop.test.mjs",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "log": "node-interop.log",
+      "setup": "additional real Rust interop 1/1 asserted in before hook; temporary output removed by after hook"
+    }
+  ],
+  "source_hashes": {
+    "Cargo.toml": {
+      "bytes": 406,
+      "sha256": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7"
+    },
+    "Cargo.lock": {
+      "bytes": 10692,
+      "sha256": "4ecf973972bc8634029a51875e176cefcdd04ee72e5bd712daad60f4062cd4d7"
+    },
+    "rust-toolchain.toml": {
+      "bytes": 113,
+      "sha256": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b"
+    },
+    "package.json": {
+      "bytes": 1345,
+      "sha256": "b451b34b7e9ed3bb30dd805f1259c4f9db03fe46f73e0638fcf14d8b1fb42982"
+    },
+    "package-lock.json": {
+      "bytes": 16713,
+      "sha256": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+    },
+    "crates/editac-core/src/lib.rs": {
+      "bytes": 1107,
+      "sha256": "cb28b4065b2cc6a305d6d09a8478601c146a7c318be84b46fe87859aaa63b0b5"
+    },
+    "crates/editac-core/tests/interop.rs": {
+      "bytes": 7188,
+      "sha256": "80712a38c7efbaa070d00d7caf8cb05cdb8df37207302bff1adf7ff063e5f75a"
+    },
+    "tests/interop.test.mjs": {
+      "bytes": 2311,
+      "sha256": "2db18fb4ab6e8a4c03c0e01fcc4a76e8086392bba2f7f41e3ad8e517157857dd"
+    },
+    "fixtures/interop/bridge.mjs": {
+      "bytes": 3431,
+      "sha256": "2d0c60fc33a3b6eb5e2d8084d90107bc3574d3a3c02c00e511436f9f8885d17a"
+    },
+    "fixtures/schema-v1/seed.json": {
+      "bytes": 926,
+      "sha256": "2f62ebe2bd82ccf110604b35b8d765b8abe44462e94534b002a4cb1c82910760"
+    },
+    "fixtures/schema-v1/mapping.mjs": {
+      "bytes": 2514,
+      "sha256": "db149fb331841733dc2fd1139c8ccb70c21bc9d7c734975d8da176d75c6f2527"
+    },
+    "fixtures/schema-v1/exchange.mjs": {
+      "bytes": 13862,
+      "sha256": "d86abbb68378f145a77efe0e7cdd12077ccc222726e7c0ece99ec2532fbd21aa"
+    },
+    "../architecture/specs/schema-v1.md": {
+      "bytes": 9434,
+      "sha256": "9c9dcdb3e9edad74d841c55ec11a99962f3e002b823758e88e531291b6d82d23"
+    },
+    "../architecture/specs/protocol-v1.md": {
+      "bytes": 6958,
+      "sha256": "dd8c7aa6c73a03a35ec41de83822314dfc5bf7d575f3ac19566421b6393eeb3b"
+    },
+    "../architecture/specs/engine.md": {
+      "bytes": 10176,
+      "sha256": "02b0cc93e395f66da52e516e29998ad1a98401ee59514a25919e29b495c94d1a"
+    },
+    "../architecture/specs/verification.md": {
+      "bytes": 3731,
+      "sha256": "e7a0fc0c2d0f2407766bbafbee8151b4284f75078cb4de394e52eea5e11ffe66"
+    },
+    "../architecture/evidence/foundation.md": {
+      "bytes": 8670,
+      "sha256": "3eb908ffbd6f1dc233120264e99184b27dac1408d8e7da15adffbf878497a947"
+    },
+    "../architecture/evidence/foundation-approval/receipt.json": {
+      "bytes": 234542,
+      "sha256": "05703802de093748f98a7de96cc425b8e0e6b0f80ec1ac806240da57e25489f0"
+    },
+    "../architecture/evidence/engine-entry/check-entry.py": {
+      "bytes": 3839,
+      "sha256": "6f4dd7f48993eab370a19dda8a9f4f3106266811a4a1cbfc7713fb0cb7f51d6f"
+    }
+  },
+  "artifact_hashes": {
+    "architecture-diff-check.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "architecture-diff-check.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "core-diff-check.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "core-diff-check.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "integrity.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "integrity.json": {
+      "bytes": 1277,
+      "sha256": "1eecfa832866cb4f1adc4b1162cabf921405a79f6f4160aa2b71fda1c74f098a"
+    },
+    "integrity.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "interop-artifacts/js-0.bin": {
+      "bytes": 122,
+      "sha256": "a81dd584362024d63957337c6865e2a7bfbfc011f9cb161e0699beb512fe662f"
+    },
+    "interop-artifacts/js-1.bin": {
+      "bytes": 46,
+      "sha256": "dc3a74413e11fb7762765d93332934634e7c5e5be87f02d3c3a40d238e1d2a80"
+    },
+    "interop-artifacts/js-2.bin": {
+      "bytes": 28,
+      "sha256": "4b32457230f02755f029d847271f4b23122140f0a582dccdee1ba49761ac1145"
+    },
+    "interop-artifacts/js-for-rust-sv.bin": {
+      "bytes": 7,
+      "sha256": "4b8cc6261208db78b2c33d1a2bc6cc2d04175754a3a1256f563768a1530e6daa"
+    },
+    "interop-artifacts/js-for-rust.bin": {
+      "bytes": 59,
+      "sha256": "3f74735fdd50c10c4c881549a4c8afb832093217c9727f097c2e3c3a6ba48e1b"
+    },
+    "interop-artifacts/js-full.bin": {
+      "bytes": 189,
+      "sha256": "283340f86c2db20da9d54677ebeeb3bfcd7ab84bb617a8f51153a68470d1d48b"
+    },
+    "interop-artifacts/js-sv-0.bin": {
+      "bytes": 3,
+      "sha256": "9fefc65ae3d2443eeb04e8b092f96ab6ebaba12a07450500585f3847bc61b392"
+    },
+    "interop-artifacts/js-sv-1.bin": {
+      "bytes": 3,
+      "sha256": "d195c30580b6cbcc3942798d25379716f33e7756c08097a9731a16c21f2da2b8"
+    },
+    "interop-artifacts/js-sv-2.bin": {
+      "bytes": 3,
+      "sha256": "14bff0290fc4d3180b03d410bf85b53eba425667b67d60683af9e776753bba6e"
+    },
+    "interop-artifacts/rust-0.bin": {
+      "bytes": 132,
+      "sha256": "9db2cc07a73514f4c21feb4a79aa0b3a0536515c03c9375a0461a4c9eeeb6505"
+    },
+    "interop-artifacts/rust-1.bin": {
+      "bytes": 53,
+      "sha256": "c0c0f00345fdc0bb120a69c79b0da7b2f15f138be00ccd66f1ba4ea5412e2502"
+    },
+    "interop-artifacts/rust-2.bin": {
+      "bytes": 31,
+      "sha256": "e4505af3501c36faf5d418900953d0204794b8f2f65b2133f0fe5ab9a5b59822"
+    },
+    "interop-artifacts/rust-for-js.bin": {
+      "bytes": 69,
+      "sha256": "776e6ee129a7e8fd1ea5bbcc0ffa9feafc864e93c76acbcef1d1b7b23e57e0c3"
+    },
+    "interop-artifacts/rust-sv-0.bin": {
+      "bytes": 4,
+      "sha256": "04cef3cc2ae6f00503c0fb20a94624c148ca0f0e884ab36d5e670b9ab911f25a"
+    },
+    "interop.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "interop.log": {
+      "bytes": 314,
+      "sha256": "22c59b8f9ccd17c48a20857087eb41df805763e1857766f6b6e94624b720423b"
+    },
+    "node-interop.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "node-interop.log": {
+      "bytes": 418,
+      "sha256": "5798d9443f775dec7fc5c2e3b513a3450e426bbab36a0f010a50914e1bb4c2d0"
+    },
+    "README.md": {
+      "bytes": 1639,
+      "sha256": "ee64f877936869734a40de563c10cb56ec2c179d5604e2dbd98f8ab4d9f0a711"
+    }
+  },
+  "environment": {
+    "PATH_prefix": [
+      "/Users/bpstr/.cargo/bin",
+      "/Users/bpstr/.nvm/versions/node/v24.19.0/bin"
+    ],
+    "RUSTDOC": "/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustdoc"
+  },
+  "hygiene": {
+    "created_servers_browsers": 0,
+    "temporary_node_fixture": "removed by suite teardown",
+    "free_bytes": 17953247232,
+    "removed_paths": [],
+    "process_check": "No automated browser candidates found; no task-owned servers/browsers started. Existing Assign Vite/Astro preserved. Only disposable process inventories removed; qualification evidence retained."
+  },
+  "scope": "Only ENG-1.1; reuse actual pinned local CRDT transport. No inference, credentials, publication, background runner or source roadmap edit.",
+  "non_test_checks": [
+    {
+      "command": "git diff --check",
+      "exit": 0
+    },
+    {
+      "command": "git -C ../architecture diff --check",
+      "exit": 0
+    }
+  ]
+}

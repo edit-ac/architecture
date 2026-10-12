@@ -1,0 +1,457 @@
+{
+  "task": "ENG-1.10",
+  "state": "implemented and locally verified; not deployed/published",
+  "date_utc": "2026-10-11",
+  "iteration": 6,
+  "prompt_revision": "7eaa063f3629",
+  "source_snapshot": "source-f6218bddbd75.md",
+  "source_revision": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "source_roadmap_preserved": true,
+  "source_snapshot_sha256": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "core_base_revision": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "architecture_base_revision": "26d3502585fea4c8a21bc15fb949a562b93905ea",
+  "implementation_revision": "uncommitted working tree; exact final sources in tested-source-hashes.json",
+  "changed_paths": [
+    "crates/editac-core/src/commands/move.rs",
+    "crates/editac-core/src/commands/mod.rs",
+    "crates/editac-core/src/commands/editor.rs",
+    "crates/editac-core/tests/moves.rs",
+    "fixtures/schema-v4/moves-exchange.mjs"
+  ],
+  "changed_symbols": [
+    "MoveTarget",
+    "MoveCommand",
+    "MoveRejection",
+    "MoveError",
+    "PreparedMove",
+    "MoveCommit",
+    "Document::{move_command,can_move,prepare_move,commit_move}",
+    "EditorCommand::Move",
+    "EditorError::Move",
+    "move::expand"
+  ],
+  "profile_descriptor": "core/fixtures/schema-v4/profile.json",
+  "descriptor_sha256": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+  "frozen_qualified_mapping_preserved": "preserved-profile-hashes.json",
+  "semantics": {
+    "version_preconditions": "capture target/parent/before versions; stage validation compares all; text-only edits preserve applicability",
+    "deleted_destination": "local typed DestinationGone; remote place loses when destination hidden/tombstoned; existing child owners project at root",
+    "identity": "immutable place intentions only; no text/registry cloning, deletion, replacement or repair writes",
+    "selection": "validate supplied live source-relative endpoints before preparation; return same anchors for subsequent resolution, no fallible conversion after commit",
+    "atomicity": "shared disposable full-batch preparation, exact baseline/identity/writer guard and one explicit-origin live commit",
+    "legacy": "v4 explicit profile; v1 unsupported, original contracts/receipts unchanged"
+  },
+  "criterion_to_cases": {
+    "leaf/container nested moves, before-sibling order, retained subtree/check state": [
+      "leaf_reordering_before_sibling_and_append_preserve_sources",
+      "nested_leaf_move_preserves_unicode_marks_and_original_text_identity",
+      "container_move_retains_subtree_order_check_state_and_cross_subtree_selection",
+      "empty_owner_moves_without_replacing_its_empty_source",
+      "code_and_separator_moves_are_structural_and_do_not_modify_presentation_or_marks",
+      "multiple_versioned_moves_commit_as_one_prepared_batch"
+    ],
+    "text/mark/original identity and selection anchoring": [
+      "derived_multi_source_owner_moves_and_anchors_follow_the_same_sources",
+      "captured_structural_versions_survive_text_edits_and_selection_affinity",
+      "container_move_retains_subtree_order_check_state_and_cross_subtree_selection"
+    ],
+    "explicit target/destination/before deletion, hidden/absorbed and unsupported results": [
+      "deleted_destination_rejects_preparation_and_retains_target_content",
+      "disabled_destination_rejects_without_silently_moving_to_root",
+      "deleted_target_has_explicit_result",
+      "absorbed_target_has_explicit_result",
+      "disabled_before_has_explicit_result",
+      "tombstoned_before_sibling_rejects_without_falling_back_to_append",
+      "missing_targets_and_noncontainer_destination_are_rejected",
+      "opaque_target_and_destination_never_gain_a_guessed_structural_role"
+    ],
+    "version, cyclic/depth/mixed batch preparation guards and exact stale commit": [
+      "stale_target_version_rejects_without_retargeting",
+      "stale_parent_version_rejects_even_when_destination_stays_visible",
+      "stale_before_version_rejects_even_when_sibling_stays_under_parent",
+      "self_and_descendant_cycles_reject_before_live_mutation",
+      "depth_limit_accounts_for_every_descendant_and_rejects_whole_batch",
+      "mixed_batch_cycle_and_stale_version_reject_every_staged_move",
+      "prepared_move_rejects_intervening_text_or_deletion_and_wrong_replica",
+      "foreign_or_deleted_selection_rejects_before_mutation",
+      "malformed_root_version_rejects",
+      "wrong_parent_and_self_before_are_rejected"
+    ],
+    "move/move, move/edit, cycle, parent/before conflicts and deleted destinations convergence": [
+      "concurrent_same_target_move_move_and_edit_have_ranked_winner_in_six_orders",
+      "concurrent_disjoint_nested_moves_and_descendant_edit_coexist_in_six_orders",
+      "concurrent_container_cycle_keeps_losing_intention_and_all_content_in_six_orders",
+      "concurrent_parent_version_change_makes_later_move_recoverable_in_six_orders",
+      "concurrent_before_version_change_makes_later_move_recoverable_in_six_orders",
+      "concurrent_move_and_destination_disable_keep_losing_move_and_recover_children_at_root",
+      "concurrent_move_and_destination_tombstone_retain_all_live_sources_at_explicit_parents"
+    ],
+    "actual production Rust/Yjs bidirectional exchange, duplicate/reorder and checkpoint restore": [
+      "production_moves_exchange_with_pinned_yjs_and_restore_concurrent_schedules"
+    ],
+    "legacy v1 remains unchanged": [
+      "legacy_profile_never_acquires_v4_move_roots"
+    ]
+  },
+  "transaction_origin_case": "commands::r#move::tests::move_preparation_is_silent_and_commit_has_one_local_origin_and_writer (13-test lib integration suite)",
+  "checks": [
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_MOVE_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/move-exchange-3 cargo test -p editac-core --test moves --locked",
+      "exit": 0,
+      "log": "iteration-6/feature-3.log",
+      "suites": [
+        {
+          "suite": "tests/moves.rs (target/debug/deps/moves-14c61dd1e83b3747)",
+          "state": "ok",
+          "executed": 35,
+          "passed": 35,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        }
+      ]
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--locked",
+        "--lib",
+        "--test",
+        "editor_profile",
+        "--test",
+        "structural_profile",
+        "--test",
+        "block_kinds_profile",
+        "--test",
+        "split_join",
+        "--test",
+        "text_commands",
+        "--test",
+        "format_commands",
+        "--test",
+        "anchors",
+        "--test",
+        "projection",
+        "--test",
+        "initialization",
+        "--test",
+        "ownership_profile",
+        "--test",
+        "block_profile",
+        "--test",
+        "interop",
+        "--test",
+        "lists"
+      ],
+      "environment": {
+        "PATH": "/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.codex/packages/standalone/releases/0.160.0-aarch64-apple-darwin/codex-path:/Users/bpstr/.resend/bin:/Users/bpstr/.grok/bin:/Users/bpstr/.kimi-code/bin:/Users/bpstr/.local/bin:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home/bin:/Users/bpstr/Library/Python/3.9/bin:/opt/homebrew/opt/postgresql@18/bin:/Users/bpstr/Library/Android/sdk/emulator:/Users/bpstr/Library/Android/sdk/tools:/Users/bpstr/Library/Android/sdk/tools/bin:/Users/bpstr/Library/Android/sdk/platform-tools:/usr/local/bin/docker:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/opt/python@3.10/libexec/bin:/opt/homebrew/opt/php@8.4/bin:/Users/bpstr/.composer/vendor/bin:/usr/local/sbin:/bin:/usr/bin:/usr/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Users/bpstr/.codex/tmp/arg0/codex-arg0DdkR5a:/Users/bpstr/.codex/packages/standalone/releases/0.160.0-aarch64-apple-darwin/codex-path:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/bpstr/.resend/bin:/Users/bpstr/.grok/bin:/Users/bpstr/.kimi-code/bin:/Users/bpstr/.local/bin:/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home/bin:/Users/bpstr/Library/Python/3.9/bin:/opt/homebrew/opt/postgresql@18/bin:/Users/bpstr/Library/Android/sdk/emulator:/Users/bpstr/Library/Android/sdk/tools:/Users/bpstr/Library/Android/sdk/tools/bin:/Users/bpstr/Library/Android/sdk/platform-tools:/usr/local/bin/docker:/opt/homebrew/opt/python@3.10/libexec/bin:/opt/homebrew/opt/php@8.4/bin:/Users/bpstr/.composer/vendor/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/bpstr/.codex/tmp/arg0/codex-arg0xIsA76:/Users/bpstr/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/bpstr/.cargo/bin:~/Tools/flutter/bin:/Users/bpstr/Library/Python/3.10/bin/pip:/Users/bpstr/.config/composer/vendor/bin:/Applications/PhpStorm.app/Contents/MacOS:/Applications/Docker.app/Contents/Resources/bin/:/Users/bpstr/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS:~/Tools/flutter/bin:/Users/bpstr/Library/Python/3.10/bin/pip:/Users/bpstr/.config/composer/vendor/bin:/Applications/PhpStorm.app/Contents/MacOS:/Applications/Docker.app/Contents/Resources/bin/",
+        "EDITAC_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/editor-exchange",
+        "EDITAC_STRUCTURAL_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/structural-exchange",
+        "EDITAC_BLOCK_KINDS_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/kinds-exchange",
+        "EDITAC_GENERAL_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/general-exchange",
+        "EDITAC_SPLIT_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/split-join-exchange",
+        "EDITAC_FORMAT_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/format-exchange",
+        "EDITAC_FORMAT_BLOCK_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/format-block-exchange",
+        "EDITAC_BLOCK_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/block-exchange",
+        "EDITAC_OWNERSHIP_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/ownership-exchange",
+        "EDITAC_INTEROP_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/interop",
+        "EDITAC_LIST_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-moves/iteration-6/regressions/list-exchange"
+      },
+      "exit": 0,
+      "log": "iteration-6/regressions-2.log",
+      "suites": [
+        {
+          "suite": "unittests src/lib.rs (target/debug/deps/editac_core-1a758e03712644e2)",
+          "state": "ok",
+          "executed": 13,
+          "passed": 13,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/anchors.rs (target/debug/deps/anchors-d5450a36718b715f)",
+          "state": "ok",
+          "executed": 24,
+          "passed": 24,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/block_kinds_profile.rs (target/debug/deps/block_kinds_profile-cae9cc3a48881c2d)",
+          "state": "ok",
+          "executed": 15,
+          "passed": 15,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/block_profile.rs (target/debug/deps/block_profile-728e44a876ec5cbf)",
+          "state": "ok",
+          "executed": 21,
+          "passed": 21,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/editor_profile.rs (target/debug/deps/editor_profile-6b187ec387ed6dc7)",
+          "state": "ok",
+          "executed": 22,
+          "passed": 22,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)",
+          "state": "ok",
+          "executed": 41,
+          "passed": 41,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/initialization.rs (target/debug/deps/initialization-fe4e3ed9317cecf3)",
+          "state": "ok",
+          "executed": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/interop.rs (target/debug/deps/interop-75042c965d27e90c)",
+          "state": "ok",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/lists.rs (target/debug/deps/lists-b4480d587f429db4)",
+          "state": "ok",
+          "executed": 46,
+          "passed": 46,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/ownership_profile.rs (target/debug/deps/ownership_profile-28dd32ae9233a397)",
+          "state": "ok",
+          "executed": 26,
+          "passed": 26,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/projection.rs (target/debug/deps/projection-5477001ba3cb7bf5)",
+          "state": "ok",
+          "executed": 16,
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/split_join.rs (target/debug/deps/split_join-7369b08ffe8047c7)",
+          "state": "ok",
+          "executed": 51,
+          "passed": 51,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/structural_profile.rs (target/debug/deps/structural_profile-6584b35a78f4cad2)",
+          "state": "ok",
+          "executed": 30,
+          "passed": 30,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/text_commands.rs (target/debug/deps/text_commands-136420da2b17741a)",
+          "state": "ok",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        }
+      ]
+    }
+  ],
+  "node_checks": [
+    {
+      "log": "iteration-6/move-exchange-3/node.log",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "log": "iteration-6/regressions/structural-exchange/node.log",
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "log": "iteration-6/regressions/general-exchange/node.log",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "log": "iteration-6/regressions/editor-exchange/node.log",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "log": "iteration-6/regressions/list-exchange/node.log",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "log": "iteration-6/regressions/kinds-exchange/node.log",
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "log": "iteration-6/regressions/ownership-exchange/node.log",
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "log": "iteration-6/regressions/block-exchange/node.log",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "log": "iteration-6/regressions/format-block-exchange/node.log",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    }
+  ],
+  "final_counts": {
+    "feature_rust": 35,
+    "regression_rust": 346,
+    "feature_node": 11,
+    "regression_node": 73,
+    "distinct_rust": 381,
+    "distinct_node": 84,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0
+  },
+  "concurrency": {
+    "three_writer_race_families": 7,
+    "rust_orders_per_family": 6,
+    "rust_to_yjs_orders": 42,
+    "independent_yjs_to_rust_orders": 6,
+    "checkpoint_restore": "every completed schedule; retained intentions/recovery, metadata and original sources compared",
+    "deliveries_per_update": 2,
+    "duplicate_replays_per_update": 1
+  },
+  "preserved_failures": [
+    {
+      "log": "iteration-6/feature-1.log",
+      "exit": 101,
+      "executed": 0,
+      "reason": "test glue used nonexistent permit constructor and moved fields from Arc; repaired fixture/helper code before feature-2"
+    },
+    {
+      "log": "iteration-6/regressions-1.log",
+      "exit": 101,
+      "suites": [
+        {
+          "suite": "unittests src/lib.rs (target/debug/deps/editac_core-1a758e03712644e2)",
+          "state": "FAILED",
+          "executed": 13,
+          "passed": 12,
+          "failed": 1,
+          "skipped": 0,
+          "measured": 0,
+          "filtered": 0
+        }
+      ],
+      "reason": "new move unit fixture reused text test document/epoch; repaired only move unit fixture to unique identity before regressions-2; Cargo stopped before integration tests"
+    }
+  ],
+  "passing_feature_evidence_reused": {
+    "feature": "iteration-6/feature-3.log",
+    "hash_manifest": "feature-source-hashes.json",
+    "later_change": "cfg(test)-only move unit fixture UUID pair changed; integration recompiled/passed. Production move implementation, canonical move tests and peer script unchanged; feature evidence remains applicable."
+  },
+  "formatting": {
+    "command": "rustfmt --edition 2024 --config skip_children=true --check [four changed Rust files]",
+    "exit": 0,
+    "log": "iteration-6/fmt-final.log"
+  },
+  "hygiene": "hygiene.json",
+  "paid_inference_calls": 0,
+  "credentials_loaded": false,
+  "deployment": false,
+  "publication": false,
+  "remaining_original_ENG_1_10_criteria": [],
+  "supervisor_expectation": "roadmap-runner-review-17vaAo:5 full ENG-1.10 canonical/integration/pinned replay/restore target satisfied",
+  "next_ready": "none at immutable source; ENG-1.9-F1 controller contract resolution unlocks ENG-1.9, then ENG-1.11\u20131.15",
+  "instruction_resolution": "Explicit ENG-1.10 Acceptance requires qualified v4 versioned placement; retained I1 schema-v1 wording is legacy context, not permission to change v1 roots. Legacy v1 remains explicitly unsupported and regression-qualified."
+}

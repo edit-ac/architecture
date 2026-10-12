@@ -1,0 +1,32 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.06s
+     Running unittests src/lib.rs (target/debug/deps/editac_core-1a758e03712644e2)
+
+running 9 tests
+test commands::text::tests::delete_only_remote_update_invalidates_plan_even_with_unchanged_state_vector ... ok
+test commands::format::remote_tests::deletion_only_remote_update_invalidates_exact_state_even_without_revision_change ... ok
+test commands::structure::tests::revision_exhaustion_rejects_before_ownership_mutation ... ok
+test commands::format::tests::complete_batch_has_one_origin_transaction_and_no_preparation_observers ... ok
+test commands::format::block_transaction_tests::mixed_mark_and_empty_block_batch_has_one_origin_transaction_and_read_only_rejection ... ok
+test commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks ... ok
+test commands::structure::tests::deletion_only_remote_state_invalidates_plan_and_anchor_repreparation_is_safe ... ok
+test commands::structure::tests::preparation_is_read_only_and_commit_has_one_explicit_origin_transaction ... ok
+test commands::structure::general_transaction_tests::v3_preparation_and_rejection_are_silent_and_each_commit_has_one_explicit_origin ... FAILED
+
+failures:
+
+---- commands::structure::general_transaction_tests::v3_preparation_and_rejection_are_silent_and_each_commit_has_one_explicit_origin stdout ----
+
+thread 'commands::structure::general_transaction_tests::v3_preparation_and_rejection_are_silent_and_each_commit_has_one_explicit_origin' (151214645) panicked at crates/editac-core/src/commands/structure.rs:443:17:
+assertion `left == right` failed
+  left: 1
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    commands::structure::general_transaction_tests::v3_preparation_and_rejection_are_silent_and_each_commit_has_one_explicit_origin
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p editac-core --lib`

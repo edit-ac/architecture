@@ -1,0 +1,25 @@
+{
+  "parent": "ENG-1.17",
+  "sourceRevision": "6af2cefc37184d9851b1896783ab9abf3c0527606485cf1a2928c4274cea8b6b",
+  "prompt": "7eaa063f3629",
+  "checks": [
+    {
+      "id": "ownership-profile",
+      "command": "cargo test -p editac-core --test ownership_profile --locked",
+      "covers": "exact v3 roots/seed, arbitrary IDs/disjoint pairs, repeated multisource transformations, empty/Unicode, identities/binary anchors, marks/metadata, conflicts/dependencies, deleted/recovery, restore, admission/resource limits, actual pinned Rust/Yjs exchange"
+    },
+    {
+      "id": "block-profile-regression",
+      "command": "cargo test -p editac-core --test block_profile --locked"
+    },
+    {
+      "id": "legacy-structure-regression",
+      "command": "cargo test -p editac-core --test split_join --test interop --locked"
+    },
+    {
+      "id": "frozen-structural-interop-regression",
+      "command": "cargo test -p editac-core --test schema_interop --locked",
+      "covers": "13 original frozen schema scenarios, six delivery permutations, binary anchors both languages"
+    }
+  ]
+}

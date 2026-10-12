@@ -1,0 +1,55 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0599]: no associated function or constant named `new` found for struct `CreationPermit` in the current scope
+   --> crates/editac-core/tests/moves.rs:560:25
+    |
+560 |         CreationPermit::new(identity),
+    |                         ^^^ associated function or constant not found in `CreationPermit`
+    |
+note: if you're trying to build a new `CreationPermit`, consider using `CreationPermit::authorize_new` which returns `std::result::Result<CreationPermit, DocumentError>`
+   --> crates/editac-core/src/document.rs:250:5
+    |
+250 |     pub fn authorize_new(identity: DocumentIdentity) -> Result<Self, DocumentError> {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0507]: cannot move out of an `Arc`
+  --> crates/editac-core/tests/moves.rs:81:18
+   |
+81 |         .map(|n| n.id)
+   |                  ^^^^ move occurs because value has type `std::string::String`, which does not implement the `Copy` trait
+   |
+help: consider cloning the value if the performance cost is acceptable
+   |
+81 |         .map(|n| n.id.clone())
+   |                      ++++++++
+
+error[E0507]: cannot move out of an `Arc`
+   --> crates/editac-core/tests/moves.rs:85:5
+    |
+ 85 | /     d.snapshot()
+ 86 | |         .unwrap()
+ 87 | |         .visible
+ 88 | |         .into_iter()
+ 89 | |         .find(|n| n.id == id)
+ 90 | |         .unwrap()
+ 91 | |         .runs
+    | |_____________^ move occurs because value has type `Vec<AttributedRun>`, which does not implement the `Copy` trait
+ 92 |           .into_iter()
+    |            ----------- value moved due to this method call
+    |
+note: `std::iter::IntoIterator::into_iter` takes ownership of the receiver `self`, which moves value
+   --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/iter/traits/collect.rs:312:18
+    |
+312 |     fn into_iter(self) -> Self::IntoIter;
+    |                  ^^^^
+help: you can `clone` the value and consume it, but this might not be your desired behavior
+    |
+ 85 ~     <Vec<AttributedRun> as Clone>::clone(&d.snapshot()
+ 86 |         .unwrap()
+...
+ 90 |         .unwrap()
+ 91 ~         .runs)
+    |
+
+Some errors have detailed explanations: E0507, E0599.
+For more information about an error, try `rustc --explain E0507`.
+error: could not compile `editac-core` (test "moves") due to 3 previous errors

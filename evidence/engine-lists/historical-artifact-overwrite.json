@@ -1,0 +1,41 @@
+{
+  "reason": "Iteration 12 regression mistakenly used default historical exchange destination. Historical receipt/logs and tested sources retained, but seven referenced generated artifacts were overwritten. Failed replacements preserved separately; fresh pinned regression will use iteration-specific destinations. No exact historical artifact restoration available.",
+  "affected": [
+    {
+      "path": "exchange/js-deleted-gap.bin",
+      "historicalSha256": "844e76b560e3f9fc39c707276897e6c050340de4d866343a45be3fc86dd19761",
+      "currentSha256": "9e9aba4f06d101862ad3a20e204f7c2e88db72cf53e4c1e1929fccd1478427d2"
+    },
+    {
+      "path": "exchange/js-deleted-gap.json",
+      "historicalSha256": "0069617b80168e5825d2e70234ba6772e08444209b74ba9aee0cd54b29c2090f",
+      "currentSha256": "82d1cd392b9be74561ea77f0da0eac6850d446b921d3542e8358ea7ed6251a52"
+    },
+    {
+      "path": "exchange/js-production.bin",
+      "historicalSha256": "f25036231c4d66cec95866609d333cad1b08957fb2c535f8a0f12afcb0144018",
+      "currentSha256": "e210c094a7212b8445f73828cd9e003b50c5f99f7b14176934cdf99f1873d97a"
+    },
+    {
+      "path": "exchange/js-production.json",
+      "historicalSha256": "4ab23f9b1f8e5e30b333526b21ab41c9ec6520ee7b363ac39f1a7e3c10c8b4b5",
+      "currentSha256": "c7e2083cb6d56ef1f4da5830f9194b33a5a610abacfd8a795b111954c715399f"
+    },
+    {
+      "path": "exchange/node.log",
+      "historicalSha256": "fad644458efe61195766146c99903bf6d796ce6618a54878f028669ffa548c6a",
+      "currentSha256": "c9d6c60446fc843e045ce69c233b7f072bf1b0ecf1580441f5f770e8eb38b669"
+    },
+    {
+      "path": "exchange/rust-production.bin",
+      "historicalSha256": "51f4b90b693ff4dfab35417866772ff77ae1180f537f09ffdf28d09122c7c6f6",
+      "currentSha256": "848502d9378078c748f31914fd00447c8b8629b3f0afe9eacc46d992467a5622"
+    },
+    {
+      "path": "exchange/rust-production.json",
+      "historicalSha256": "67dac326b665350158302a6f2c387484fc3ad567722664ad0b583353a068bc37",
+      "currentSha256": "3747349c9faf677cb0d9d13a0197102dda7d23859a9c91b38bc5c2dc5e6be91f"
+    }
+  ],
+  "failureArtifactDirectory": "../architecture/evidence/engine-lists/failed-regression-exchange"
+}

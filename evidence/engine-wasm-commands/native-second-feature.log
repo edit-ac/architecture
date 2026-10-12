@@ -1,0 +1,42 @@
+   Compiling editac-wasm v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-wasm)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.86s
+     Running unittests src/lib.rs (target/debug/deps/editac_wasm-f76f8271ae3805e6)
+
+running 21 tests
+test cases::invalid_requests_preserve_exact_bytes_revision_and_history ... ok
+test cases::malformed_creation_does_not_reserve_document_identity ... ok
+test cases::history_grouping ... ok
+test cases::empty_item_exit ... ok
+test cases::literal_code ... ok
+test cases::heading_levels ... ok
+test cases::plans_are_scoped_single_use_and_stale_commits_are_atomic ... ok
+test cases::list_enter_backspace ... ok
+test cases::separator_insert ... ok
+test cases::semantic_move ... ok
+test cases::separator_access ... ok
+test cases::rich_marks ... ok
+test cases::retained_join ... FAILED
+test cases::split_empty ... ok
+test cases::text_insert_delete ... ok
+test cases::split_end ... ok
+test cases::split_start ... ok
+test cases::split_middle ... ok
+test cases::unicode_replace ... ok
+test cases::list_quote_nesting ... ok
+test cases::handle_tables_have_enforced_limits_and_reusable_capacity ... ok
+
+failures:
+
+---- cases::retained_join stdout ----
+
+thread 'cases::retained_join' (153775073) panicked at crates/editac-wasm/src/cases.rs:146:62:
+called `Result::unwrap()` on an `Err` value: Error { code: "EngineRejected", operation: "prepare", message: "InvalidCommand" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    cases::retained_join
+
+test result: FAILED. 20 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.64s
+
+error: test failed, to rerun pass `-p editac-wasm --lib`

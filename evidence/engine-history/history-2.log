@@ -1,0 +1,171 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: constant `D` is never used
+  --> crates/editac-core/tests/history.rs:21:7
+   |
+21 | const D: &str = "n:11:4";
+   |       ^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "history") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.17s
+     Running tests/history.rs (target/debug/deps/history-e951d579ef1ff375)
+
+running 21 tests
+test deterministic_typing_capture_timeout_origin_and_reset_boundaries ... FAILED
+test composition_group_is_explicit_and_paste_format_move_break_coalescing ... FAILED
+test group_count_payload_and_commit_caps_evict_old_history_without_content_writes ... FAILED
+test container_control_undo_does_not_swallow_live_children ... FAILED
+test clear_and_invalid_configuration_are_nonmutating ... FAILED
+test deletion_replacement_unicode_undo_restores_original_identity_and_marks ... FAILED
+test explicit_edits_are_separate_inside_capture_interval_and_clear_redo ... FAILED
+test dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone ... FAILED
+test newly_created_text_enters_scope_for_later_typing_but_creation_content_is_retained ... FAILED
+test permanent_remote_tombstone_wins_over_structural_redo_and_keeps_recovery_bytes ... FAILED
+test local_undo_after_remote_insertion_keeps_remote_unicode_and_anchor ... FAILED
+test initial_creation_rows_text_and_required_metadata_survive_undo_redo ... FAILED
+test metadata_history_does_not_rewrite_established_v5_join_witnesses ... FAILED
+test rejected_and_stale_preparation_preserve_history_state_and_redo ... FAILED
+test pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation ... FAILED
+test history_updates_converge_under_six_three_writer_duplicate_reorder_schedules ... FAILED
+test rich_format_command_is_one_group_and_remote_text_survives ... FAILED
+test v4_profile_uses_same_selective_controls_without_mutating_frozen_mapping ... FAILED
+test structural_move_undo_retains_operation_and_remote_descendant_edits ... FAILED
+test remote_replay_restore_and_selection_do_not_enter_history_or_clear_redo ... FAILED
+test split_join_history_keeps_multisource_ownership_marks_and_anchors ... FAILED
+
+failures:
+
+---- deterministic_typing_capture_timeout_origin_and_reset_boundaries stdout ----
+
+thread 'deterministic_typing_capture_timeout_origin_and_reset_boundaries' (153276008) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- composition_group_is_explicit_and_paste_format_move_break_coalescing stdout ----
+
+thread 'composition_group_is_explicit_and_paste_format_move_break_coalescing' (153276004) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- group_count_payload_and_commit_caps_evict_old_history_without_content_writes stdout ----
+
+thread 'group_count_payload_and_commit_caps_evict_old_history_without_content_writes' (153276010) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- container_control_undo_does_not_swallow_live_children stdout ----
+
+thread 'container_control_undo_does_not_swallow_live_children' (153276005) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- clear_and_invalid_configuration_are_nonmutating stdout ----
+
+thread 'clear_and_invalid_configuration_are_nonmutating' (153276003) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- deletion_replacement_unicode_undo_restores_original_identity_and_marks stdout ----
+
+thread 'deletion_replacement_unicode_undo_restores_original_identity_and_marks' (153276006) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- explicit_edits_are_separate_inside_capture_interval_and_clear_redo stdout ----
+
+thread 'explicit_edits_are_separate_inside_capture_interval_and_clear_redo' (153276009) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone stdout ----
+
+thread 'dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone' (153276007) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- newly_created_text_enters_scope_for_later_typing_but_creation_content_is_retained stdout ----
+
+thread 'newly_created_text_enters_scope_for_later_typing_but_creation_content_is_retained' (153276015) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- permanent_remote_tombstone_wins_over_structural_redo_and_keeps_recovery_bytes stdout ----
+
+thread 'permanent_remote_tombstone_wins_over_structural_redo_and_keeps_recovery_bytes' (153276016) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- local_undo_after_remote_insertion_keeps_remote_unicode_and_anchor stdout ----
+
+thread 'local_undo_after_remote_insertion_keeps_remote_unicode_and_anchor' (153276013) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- initial_creation_rows_text_and_required_metadata_survive_undo_redo stdout ----
+
+thread 'initial_creation_rows_text_and_required_metadata_survive_undo_redo' (153276012) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- metadata_history_does_not_rewrite_established_v5_join_witnesses stdout ----
+
+thread 'metadata_history_does_not_rewrite_established_v5_join_witnesses' (153276014) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- rejected_and_stale_preparation_preserve_history_state_and_redo stdout ----
+
+thread 'rejected_and_stale_preparation_preserve_history_state_and_redo' (153276018) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation stdout ----
+
+thread 'pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation' (153276017) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- history_updates_converge_under_six_three_writer_duplicate_reorder_schedules stdout ----
+
+thread 'history_updates_converge_under_six_three_writer_duplicate_reorder_schedules' (153276011) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- rich_format_command_is_one_group_and_remote_text_survives stdout ----
+
+thread 'rich_format_command_is_one_group_and_remote_text_survives' (153276020) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- v4_profile_uses_same_selective_controls_without_mutating_frozen_mapping stdout ----
+
+thread 'v4_profile_uses_same_selective_controls_without_mutating_frozen_mapping' (153276023) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- structural_move_undo_retains_operation_and_remote_descendant_edits stdout ----
+
+thread 'structural_move_undo_retains_operation_and_remote_descendant_edits' (153276022) panicked at crates/editac-core/tests/history.rs:403:40:
+called `Result::unwrap()` on an `Err` value: Move(Cycle)
+
+---- remote_replay_restore_and_selection_do_not_enter_history_or_clear_redo stdout ----
+
+thread 'remote_replay_restore_and_selection_do_not_enter_history_or_clear_redo' (153276019) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+---- split_join_history_keeps_multisource_ownership_marks_and_anchors stdout ----
+
+thread 'split_join_history_keeps_multisource_ownership_marks_and_anchors' (153276021) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/undo.rs:169:14:
+called `Result::unwrap()` on an `Err` value: ExclusiveAcqFailed
+
+
+failures:
+    clear_and_invalid_configuration_are_nonmutating
+    composition_group_is_explicit_and_paste_format_move_break_coalescing
+    container_control_undo_does_not_swallow_live_children
+    deletion_replacement_unicode_undo_restores_original_identity_and_marks
+    dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone
+    deterministic_typing_capture_timeout_origin_and_reset_boundaries
+    explicit_edits_are_separate_inside_capture_interval_and_clear_redo
+    group_count_payload_and_commit_caps_evict_old_history_without_content_writes
+    history_updates_converge_under_six_three_writer_duplicate_reorder_schedules
+    initial_creation_rows_text_and_required_metadata_survive_undo_redo
+    local_undo_after_remote_insertion_keeps_remote_unicode_and_anchor
+    metadata_history_does_not_rewrite_established_v5_join_witnesses
+    newly_created_text_enters_scope_for_later_typing_but_creation_content_is_retained
+    permanent_remote_tombstone_wins_over_structural_redo_and_keeps_recovery_bytes
+    pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation
+    rejected_and_stale_preparation_preserve_history_state_and_redo
+    remote_replay_restore_and_selection_do_not_enter_history_or_clear_redo
+    rich_format_command_is_one_group_and_remote_text_survives
+    split_join_history_keeps_multisource_ownership_marks_and_anchors
+    structural_move_undo_retains_operation_and_remote_descendant_edits
+    v4_profile_uses_same_selective_controls_without_mutating_frozen_mapping
+
+test result: FAILED. 0 passed; 21 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+error: test failed, to rerun pass `-p editac-core --test history`

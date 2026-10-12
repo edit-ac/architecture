@@ -1,0 +1,118 @@
+{
+  "processes": [
+    {
+      "pid": 58220,
+      "launcher": "node --test tests/wasm-load.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core/",
+      "port": 49448,
+      "purpose": "task-owned fixture assets",
+      "log": "wasm-load.log"
+    },
+    {
+      "pid": 58309,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core/",
+      "purpose": "task-owned Chromium WASM checks",
+      "log": "wasm-load.log"
+    }
+  ],
+  "cases": [
+    {
+      "mode": "built",
+      "asset": "/assets/supplied.wasm",
+      "before": 0,
+      "after": 1,
+      "utf16Length": 18,
+      "updateBytes": 162
+    },
+    {
+      "mode": "packed",
+      "asset": "/packed/wasm/editac_wasm_bg.wasm",
+      "before": 0,
+      "after": 1,
+      "utf16Length": 18,
+      "updateBytes": 152
+    },
+    {
+      "mode": "built",
+      "semanticEngine": true,
+      "command": "unicode replacement/undo/redo/disposal"
+    },
+    {
+      "mode": "packed",
+      "semanticEngine": true,
+      "command": "unicode replacement/undo/redo/disposal"
+    }
+  ],
+  "pack": {
+    "filename": "edit-ac-core-0.0.0.tgz",
+    "integrity": "sha512-IVQhvRvczvocPrYBXWR5Tsmu9V55RlR4JF9cvjR7Qp8Jc0NgTuNJp1kWKVxNkEzHFL8b6kEXtvo2wnCZDJScDw==",
+    "files": [
+      "LICENSE",
+      "README.md",
+      "dist/engine.d.ts",
+      "dist/engine.js",
+      "dist/index.d.ts",
+      "dist/index.js",
+      "dist/wasm/editac_wasm_bg.wasm",
+      "dist/wasm/editac_wasm_bg.wasm.d.ts",
+      "dist/wasm/editac_wasm.d.ts",
+      "dist/wasm/editac_wasm.js",
+      "package.json"
+    ],
+    "bytes": 748138
+  },
+  "temp": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-wasm-load-bem3Rq",
+  "browser": {
+    "version": "156.0.8078.4",
+    "playwright": "1.64.0"
+  },
+  "artifacts": [
+    {
+      "name": "editac_wasm_bg.wasm",
+      "bytes": 3028373
+    },
+    {
+      "name": "editac_wasm.js",
+      "bytes": 20507
+    }
+  ],
+  "requests": [
+    "/",
+    "/built/index.js",
+    "/built/engine.js",
+    "/built/wasm/editac_wasm.js",
+    "/assets/supplied.wasm",
+    "/",
+    "/packed/index.js",
+    "/packed/engine.js",
+    "/packed/wasm/editac_wasm.js",
+    "/packed/wasm/editac_wasm_bg.wasm",
+    "/",
+    "/built/index.js",
+    "/built/engine.js",
+    "/built/wasm/editac_wasm.js",
+    "/missing.wasm",
+    "/assets/supplied.wasm",
+    "/",
+    "/built/index.js",
+    "/built/engine.js",
+    "/built/wasm/editac_wasm.js",
+    "/assets/supplied.wasm",
+    "/",
+    "/built/index.js",
+    "/built/engine.js",
+    "/built/wasm/editac_wasm.js",
+    "/assets/supplied.wasm",
+    "/",
+    "/packed/index.js",
+    "/packed/engine.js",
+    "/packed/wasm/editac_wasm.js",
+    "/assets/supplied.wasm"
+  ],
+  "teardown": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "browserProcessExited": true
+  }
+}

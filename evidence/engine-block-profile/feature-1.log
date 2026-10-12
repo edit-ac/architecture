@@ -1,0 +1,70 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0599]: no method named `is_finite` found for reference `&yrs::Number` in the current scope
+  --> crates/editac-core/src/document.rs:48:29
+   |
+48 |         Any::Number(n) => n.is_finite(),
+   |                             ^^^^^^^^^ method not found in `&yrs::Number`
+
+error[E0599]: no method named `fract` found for reference `&yrs::Number` in the current scope
+  --> crates/editac-core/src/document.rs:61:47
+   |
+61 |             if tag.as_ref() == "heading" && n.fract() == 0.0 && (1.0..=6.0).contains(n) =>
+   |                                               ^^^^^ method not found in `&yrs::Number`
+
+error[E0277]: can't compare `{float}` with `yrs::Number`
+   --> crates/editac-core/src/document.rs:61:86
+    |
+ 61 |             if tag.as_ref() == "heading" && n.fract() == 0.0 && (1.0..=6.0).contains(n) =>
+    |                                                                             -------- ^ no implementation for `{float} < yrs::Number` and `{float} > yrs::Number`
+    |                                                                             |
+    |                                                                             required by a bound introduced by this call
+    |
+    = help: the trait `PartialOrd<yrs::Number>` is not implemented for `{float}`
+    = help: the following other types implement trait `PartialOrd<Rhs>`:
+              f128
+              f16
+              f32
+              f64
+              i128
+              i16
+              i32
+              i64
+            and 8 others
+note: required by a bound in `std::ops::RangeInclusive::<Idx>::contains`
+   --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/ops/range.rs:524:14
+    |
+522 |     pub const fn contains<U>(&self, item: &U) -> bool
+    |                  -------- required by a bound in this associated function
+523 |     where
+524 |         Idx: [const] PartialOrd<U>,
+    |              ^^^^^^^^^^^^^^^^^^^^^ required by this bound in `RangeInclusive::<Idx>::contains`
+
+error[E0277]: can't compare `yrs::Number` with `{float}`
+   --> crates/editac-core/src/document.rs:61:86
+    |
+ 61 |             if tag.as_ref() == "heading" && n.fract() == 0.0 && (1.0..=6.0).contains(n) =>
+    |                                                                             -------- ^ no implementation for `yrs::Number < {float}` and `yrs::Number > {float}`
+    |                                                                             |
+    |                                                                             required by a bound introduced by this call
+    |
+    = help: the trait `PartialOrd<{float}>` is not implemented for `yrs::Number`
+note: required by a bound in `std::ops::RangeInclusive::<Idx>::contains`
+   --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/ops/range.rs:525:21
+    |
+522 |     pub const fn contains<U>(&self, item: &U) -> bool
+    |                  -------- required by a bound in this associated function
+...
+525 |         U: ?Sized + [const] PartialOrd<Idx>,
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `RangeInclusive::<Idx>::contains`
+
+error[E0605]: non-primitive cast: `yrs::Number` as `u8`
+  --> crates/editac-core/src/document.rs:63:41
+   |
+63 |             Ok(BlockAttributes::Heading(*n as u8))
+   |                                         ^^^^^^^^ an `as` expression can be used to convert enum types to numeric types only if the enum type is unit-only or field-less
+   |
+   = note: see https://doc.rust-lang.org/reference/items/enumerations.html#casting for more information
+
+Some errors have detailed explanations: E0277, E0599, E0605.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `editac-core` (lib) due to 5 previous errors

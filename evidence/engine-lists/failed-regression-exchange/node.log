@@ -1,0 +1,38 @@
+(node:61007) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ pinned Yjs reconstructs production repeated multisource commands and exact recovery (0.917458ms)
+✔ Yjs duplicate reordered production checkpoint preserves original identities and retained intentions (4.678125ms)
+✔ Yjs returns actual further joins splits source edits heading override and checkpoint to production Rust (3.990833ms)
+✔ Yjs next visible adjacency crosses a tombstoned owner and preserves recovery content (1.38375ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 88.050292
+
+✖ failing tests:
+
+test at ../../fixtures/schema-v3/production-exchange.mjs:12:1
+✖ pinned Yjs reconstructs production repeated multisource commands and exact recovery (0.917458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'v26.4.0'
+  - 'v24.19.0'
+       ^
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/fixtures/schema-v3/production-exchange.mjs:13:54)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'v26.4.0',
+    expected: 'v24.19.0',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

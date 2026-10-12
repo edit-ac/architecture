@@ -1,0 +1,52 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: unused import: `Text`
+  --> crates/editac-core/tests/editor_profile.rs:15:30
+   |
+15 | use yrs::{Any, Map, ReadTxn, Text, Transact, XmlTextPrelim};
+   |                              ^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "editor_profile") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.42s
+     Running tests/editor_profile.rs (target/engine-editor-profile/debug/deps/editor_profile-6b187ec387ed6dc7)
+
+running 22 tests
+test inaccessible_separator_neighbor_identity_overflow_and_nonempty_creation_are_atomic ... ok
+test malformed_immutable_root_source_tuple_and_resource_updates_are_atomic ... ok
+test cycles_illegal_parents_and_incompatible_joins_reject_before_commit ... ok
+test mixed_invalid_block_metadata_and_nonempty_separator_never_partially_write ... ok
+test entity_controls_keep_immutable_rows_recovery_descendants_and_reactivate ... ok
+test disabling_place_operation_replays_retained_intent_and_restores ... ok
+test metadata_only_changes_rebuild_check_number_and_revision_and_stale_all_plans ... ok
+test create_container_and_original_atomically_then_place_and_check ... ok
+test explicit_code_split_join_and_literal_newlines_preserve_dormant_marks ... ok
+test production_create_uses_exact_ten_roots_and_restored_empty_is_not_reseeded ... ok
+test opaque_immutable_source_and_container_admit_read_only_and_keep_children ... FAILED
+test production_projection_matches_qualified_hierarchy_metadata_and_read_only_bytes ... ok
+test separator_is_noneditable_and_last_editable_owner_reserves_adjacent_paragraph ... ok
+test nested_split_join_retains_checked_default_unicode_marks_and_original_identity ... ok
+test shared_formatting_crosses_nested_containers_and_empty_block_tuples_are_atomic ... ok
+test prepared_nested_place_preserves_subtree_sources_marks_and_anchors ... ok
+test rich_format_mixed_code_and_unknown_targets_reject_without_mark_changes ... ok
+test stale_and_cross_replica_plans_and_profile_epoch_fail_atomically ... ok
+test production_nested_endpoint_empty_and_repeated_split_after_multi_source_join ... ok
+test real_production_three_replica_move_move_edit_six_orders_and_duplicate_restore ... ok
+test production_bidirectional_pinned_yjs_exchange_and_remote_unknown_recovery ... ok
+test depth_128_text_is_editable_and_whole_subtree_depth_overflow_rejects_atomically ... ok
+
+failures:
+
+---- opaque_immutable_source_and_container_admit_read_only_and_keep_children stdout ----
+
+thread 'opaque_immutable_source_and_container_admit_read_only_and_keep_children' (152371687) panicked at crates/editac-core/tests/editor_profile.rs:913:23:
+called `Result::unwrap()` on an `Err` value: UnsupportedSchema
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    opaque_immutable_source_and_container_admit_read_only_and_keep_children
+
+test result: FAILED. 21 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.07s
+
+error: test failed, to rerun pass `-p editac-core --test editor_profile`

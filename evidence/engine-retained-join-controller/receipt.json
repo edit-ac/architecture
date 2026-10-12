@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-11T22:21:13.147197+00:00",
+  "state": "controller contract supplied; engine correction qualification/integration pending",
+  "blocker": "ENG-1.9-F1 mutable presentation retroactively invalidates retained joins",
+  "resolution": "new v5 profile captures immutable split/join preparation witnesses; no v4 mutation/migration",
+  "new_parents": [
+    "ENG-1.22",
+    "ENG-1.23"
+  ],
+  "ready_parent": "ENG-1.22",
+  "source_hashes": {
+    "specs/schema-v5.md": "c4d7ac0e108335bb24b592dff4b7fcea18121fd4c6525061735f9b824e41ab84",
+    "specs/engine.md": "4e8eb70eac72415254ba2fb8e10cad5488cebf719256d265c07e05909a70a93a",
+    "roadmaps/02-engine.md": "b9d80e5b06afcdadfdb04cb286cb79d75beba622aac8abaa30fa6a70283f32a0",
+    "README.md": "d911fd7e58d1fd716ef4199b86869a70d79cd1729ed464b1de6c0643b7ac6feb"
+  },
+  "preserved_frozen_hashes": {
+    "architecture/specs/schema-v4.md": "9a2140303a4cf0eb6fdb12177264d03dbf03701949f4c5572f3037b9bd91d4c0",
+    "core/fixtures/schema-v4/mapping.rs": "e0c5e0d7e78113baff5d6061e870ec0810071f2537139cf0620d9efc1052f595",
+    "core/fixtures/schema-v4/mapping.mjs": "5183d3090b15f379c8fe6fc11b4e8cda594b882162a0896c081ea0508ff05c9a",
+    "core/fixtures/schema-v4/profile.json": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+    "core/fixtures/schema-v4/seed.json": "39aac7215b7e28b056bab5f008ab9a5594b15d9e53e692926fe87cd68f808705"
+  },
+  "validation": {
+    "command": "npm run check (Node 24.19.0)",
+    "exit": 0,
+    "files": 42,
+    "parents": 503,
+    "checkboxes": 1509,
+    "roadmap_errors": 0,
+    "contract_tests": {
+      "executed": 14,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    "diff_check_exit": 0,
+    "log": "architecture-check.log"
+  },
+  "process": {
+    "launcher_pid": 71025,
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "Resume authorized engine development after precise retained-join contract resolution",
+    "port": null,
+    "log": "/tmp/edit-ac-engine-v5-launch/launcher.log",
+    "command": [
+      "/opt/homebrew/bin/roadmap-runner",
+      "/Users/bpstr/Github/edit-ac/architecture/roadmaps/02-engine.md",
+      "--workspace",
+      "/Users/bpstr/Github/edit-ac/core",
+      "--progress-file",
+      "/Users/bpstr/Github/edit-ac/architecture/progress/02-engine.md",
+      "--client",
+      "codex",
+      "--model",
+      "gpt-6.1-sol",
+      "--effort",
+      "medium",
+      "--timeout",
+      "45m",
+      "--idempotency-key",
+      "edit-ac-engine-retained-join-20261012"
+    ],
+    "started_at": "2026-10-11T22:21:13.143990+00:00",
+    "previous_run_id": "d7dbe4bce60dc0fbf8bd453a",
+    "run_id": "f18a4dcc3644be2ce6974dbb",
+    "artifacts": {
+      "progress": "/Users/bpstr/Github/edit-ac/architecture/progress/02-engine.md",
+      "history": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/history",
+      "output": "/Users/bpstr/Library/Application Support/roadmap-runner/runs/f18a4dcc3644be2ce6974dbb/output.log",
+      "events": "/Users/bpstr/Library/Application Support/roadmap-runner/runs/f18a4dcc3644be2ce6974dbb/events.jsonl",
+      "notifications": "/Users/bpstr/Library/Application Support/roadmap-runner/runs/f18a4dcc3644be2ce6974dbb/notifications.json"
+    }
+  },
+  "preservation": "15 completed parents, all old failed/guard evidence and worker-owned progress preserved",
+  "paid_provider_test_calls": 0,
+  "resumed_run_id": "f18a4dcc3644be2ce6974dbb",
+  "verified_runner": {
+    "processState": "running",
+    "iteration": 1,
+    "sourceRevision": "b9d80e5b06afcdadfdb04cb286cb79d75beba622aac8abaa30fa6a70283f32a0",
+    "heartbeat": "2026-10-11T22:22:01.353Z"
+  },
+  "frozen_mapping_audit": {
+    "checked": 4,
+    "mismatches": []
+  }
+}

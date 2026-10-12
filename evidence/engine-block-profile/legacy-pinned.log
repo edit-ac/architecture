@@ -1,0 +1,80 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.29s
+     Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)
+
+running 26 tests
+test applicability_does_not_consume_pending_projection_changes ... ok
+test collapsed_empty_and_already_applied_commands_do_not_emit_updates ... ok
+test backward_cross_node_toggle_uses_one_global_state_and_utf16_ranges ... ok
+test cross_node_apply_and_remove_preserve_unselected_suffixes ... ok
+test invalid_attribute_shapes_and_url_length_reject_without_mutation ... ok
+test code_clears_known_rich_marks_but_retains_unknown_attributes ... ok
+test deleted_target_and_unknown_kind_reject_entire_batch ... ok
+test joined_owner_formats_both_original_shared_texts ... ok
+test invalid_link_as_last_command_cannot_partially_apply_first_command ... ok
+test mixed_selection_toggle_applies_globally_then_removes_globally ... ok
+test overlapping_batch_ranges_preserve_different_marks ... ok
+test mailto_links_and_ordinary_query_ampersands_are_allowed ... ok
+test normalized_url_admission_and_mixed_link_toggle ... ok
+test ordinary_nodes_and_intermediate_empty_nodes_are_supported ... ok
+test remote_insert_before_preparation_rebases_selection_and_preserves_text ... ok
+test remove_code_then_apply_rich_is_valid_in_one_batch ... ok
+test sequential_batch_toggles_observe_prior_planned_marks ... ok
+test rich_mark_over_code_rejects_entire_batch_before_mutation ... ok
+test split_owner_and_original_share_source_without_formatting_other_owners ... ok
+test wrong_replica_and_intervening_local_change_reject_plans ... ok
+test unsafe_malformed_relative_and_obfuscated_urls_are_rejected ... ok
+test six_marks_apply_and_remove_without_changing_text_or_source_identity ... ok
+test three_real_replicas_converge_under_duplicate_reordered_format_delivery ... ok
+test unicode_graphemes_and_rtl_format_with_utf16_source_ranges ... ok
+test pinned_yjs_reads_all_six_marks_and_rust_restores_js_formatting ... ok
+test command_and_fragment_limits_reject_before_mutation ... ok
+
+test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.55s
+
+     Running tests/interop.rs (target/debug/deps/interop-75042c965d27e90c)
+
+running 1 test
+test binary_v1_xml_exchange_in_both_directions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.19s
+
+     Running tests/schema_interop.rs (target/debug/deps/schema_interop-12832a0f59f1e0bb)
+
+running 1 test
+test frozen_schema_exchange_moves_deletes_edits_ownership_and_anchors_in_both_directions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.35s
+
+     Running tests/split_join.rs (target/debug/deps/split_join-7369b08ffe8047c7)
+
+running 27 tests
+test join_both_empty ... ok
+test join_empty_first ... ok
+test deleted_characters_move_the_cut_without_absolute_offset_drift ... ok
+test join_nonempty_marked_sources ... ok
+test join_empty_second ... ok
+test join_targets_may_be_stable_beginning_middle_or_end_positions ... ok
+test remote_insert_before_preparation_resolves_the_original_anchor ... ok
+test repeated_transformations_are_rejected_instead_of_rebinding_or_cloning ... ok
+test known_deleted_targets_and_deleted_split_output_reject_before_mutation ... ok
+test reversed_or_wrong_source_targets_are_explicitly_unsupported ... ok
+test source_selections_resolve_after_split_and_join ... ok
+test mixed_attributed_runs_created_by_format_commands_survive_split_and_join ... ok
+test split_at_beginning ... ok
+test split_at_end ... ok
+test split_at_maximum_order_is_rejected_before_descriptor_write ... ok
+test split_cut_always_has_left_affinity_even_with_right_biased_command ... ok
+test split_at_middle ... ok
+test split_empty_text_retains_both_empty_owner_identities ... ok
+test split_inherits_resolved_parent_and_order_without_rewriting_raw_placement ... ok
+test surrogate_interior_and_out_of_bounds_fail_without_mutation ... ok
+test wrong_replica_and_intervening_local_edit_invalidate_plans ... ok
+test unsupported_pair_and_unknown_target_kinds_fail_atomically ... ok
+test unicode_split_uses_utf16_without_normalizing_graphemes_or_rtl ... ok
+test concurrent_deletion_retains_marked_source_recovery_without_resurrecting_targets ... ok
+test split_and_join_each_preserve_acknowledged_remote_edits_on_three_replicas ... ok
+test pinned_yjs_resolves_rust_cut_and_rust_restores_js_join_and_raced_edits ... ok
+test concurrent_split_join_and_text_edits_converge_for_both_writer_priorities ... ok
+
+test result: ok. 27 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.53s
+

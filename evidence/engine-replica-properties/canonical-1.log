@@ -1,0 +1,55 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0282]: type annotations needed
+  --> crates/editac-core/tests/replica_properties.rs:71:44
+   |
+71 |                 (text.get_string(&t), text.as_ref().id().to_string()),
+   |                                            ^^^^^^
+   |
+help: try using a fully qualified path to specify the expected types
+   |
+71 -                 (text.get_string(&t), text.as_ref().id().to_string()),
+71 +                 (text.get_string(&t), <XmlTextRef as AsRef<T>>::as_ref(&text).id().to_string()),
+   |
+
+error[E0609]: no field `writer_id` on type `ReplayUpdate`
+   --> crates/editac-core/tests/replica_properties.rs:197:15
+    |
+197 |             u.writer_id, u.sequence
+    |               ^^^^^^^^^ unknown field
+    |
+    = note: available fields are: `identity`, `bytes`
+
+error[E0609]: no field `sequence` on type `ReplayUpdate`
+   --> crates/editac-core/tests/replica_properties.rs:197:28
+    |
+197 |             u.writer_id, u.sequence
+    |                            ^^^^^^^^ unknown field
+    |
+    = note: available fields are: `identity`, `bytes`
+
+error[E0308]: mismatched types
+   --> crates/editac-core/tests/replica_properties.rs:209:38
+    |
+209 |         let origin = TextOrigin::new(format!("replica:{name}")).unwrap();
+    |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^ expected `&str`, found `String`
+
+error[E0605]: non-primitive cast: `yrs::Number` as `u64`
+   --> crates/editac-core/tests/replica_properties.rs:350:16
+    |
+350 |     let seed = seed as u64;
+    |                ^^^^^^^^^^^ an `as` expression can be used to convert enum types to numeric types only if the enum type is unit-only or field-less
+    |
+    = note: see https://doc.rust-lang.org/reference/items/enumerations.html#casting for more information
+
+warning: unused import: `Text`
+  --> crates/editac-core/tests/replica_properties.rs:17:46
+   |
+17 | use yrs::{Any, GetString, Map, Out, ReadTxn, Text, Transact};
+   |                                              ^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+Some errors have detailed explanations: E0282, E0308, E0605, E0609.
+For more information about an error, try `rustc --explain E0282`.
+warning: `editac-core` (test "replica_properties") generated 1 warning
+error: could not compile `editac-core` (test "replica_properties") due to 5 previous errors; 1 warning emitted

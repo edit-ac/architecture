@@ -1,0 +1,23 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.29s
+     Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)
+
+running 1 test
+test blocks::joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable ... FAILED
+
+failures:
+
+---- blocks::joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable stdout ----
+
+thread 'blocks::joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable' (150799632) panicked at crates/editac-core/tests/format_commands.rs:1227:9:
+assertion `left == right` failed
+  left: "<italic>c</italic>d"
+ right: "cd"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    blocks::joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 40 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p editac-core --test format_commands`

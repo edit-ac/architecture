@@ -1,0 +1,35 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0559]: variant `BlockAttributes::Code` has no field named `language`
+   --> crates/editac-core/tests/blocks.rs:787:70
+    |
+787 |         assert_eq!(node(&d,A).block_attributes,BlockAttributes::Code{language:"js".into()});
+    |                                                                      ^^^^^^^^ field does not exist
+    |
+   ::: crates/editac-core/src/document.rs:28:5
+    |
+ 28 |     Code(String),
+    |     ---- `BlockAttributes::Code` defined here
+    |
+help: `BlockAttributes::Code` is a tuple variant, use the appropriate syntax
+    |
+787 -         assert_eq!(node(&d,A).block_attributes,BlockAttributes::Code{language:"js".into()});
+787 +         assert_eq!(node(&d,A).block_attributes,BlockAttributes::Code(/* std::string::String */));
+    |
+
+error[E0308]: mismatched types
+   --> crates/editac-core/tests/blocks.rs:787:48
+    |
+787 |         assert_eq!(node(&d,A).block_attributes,BlockAttributes::Code{language:"js".into()});
+    |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `Option<BlockAttributes>`, found `BlockAttributes`
+    |
+    = note: expected enum `Option<BlockAttributes>`
+               found enum `BlockAttributes`
+help: try wrapping the expression in `Some`
+    |
+787 |         assert_eq!(node(&d,A).block_attributes,Some(BlockAttributes::Code{language:"js".into()}));
+    |                                                +++++                                           +
+
+Some errors have detailed explanations: E0308, E0559.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `editac-core` (test "blocks") due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

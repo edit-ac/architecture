@@ -1,0 +1,17 @@
+{
+  "child_log_retention": "Early history Node child logs reused the same filenames. These inspected diagnostic excerpts retain the observed failures; full parent Rust failure logs remain unchanged. Final child logs are current passing evidence.",
+  "excerpts": [
+    {
+      "parent": "history-3.log",
+      "child": "exchange/node-setup.log (subsequently overwritten)",
+      "diagnostic": "Could not find 'tests/history-exchange.mjs'",
+      "repair": "Set child working directory to repository root."
+    },
+    {
+      "parent": "history-4.log",
+      "child": "exchange/node-final.log (subsequently overwritten)",
+      "diagnostic": "Expected plain text a\ud83d\ude00bYJS\ud83d\ude00; actual Y.XmlText.toString included <bold><ext:future retained=\"true\"> markup.",
+      "repair": "Assert plain text from attributed delta inserts; full semantic snapshots also compared."
+    }
+  ]
+}

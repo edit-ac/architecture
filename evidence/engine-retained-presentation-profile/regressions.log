@@ -1,0 +1,286 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: function `resolve` is never used
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1038:8
+     |
+1038 | pub fn resolve(d: &Doc, source: &str, encoded: &[u8]) -> Result<(String, u32, bool)> {
+     |        ^^^^^^^
+     |
+     = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: enum `Command` is never used
+ --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:4:10
+  |
+4 | pub enum Command {
+  |          ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `Neighbor` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:32:12
+   |
+32 | pub struct Neighbor {
+   |            ^^^^^^^^
+
+warning: struct `Prepared` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:36:12
+   |
+36 | pub struct Prepared {
+   |            ^^^^^^^^
+
+warning: function `target` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:40:4
+   |
+40 | fn target(d: &Doc, key: &str) -> Result<Owner> {
+   |    ^^^^^^
+
+warning: function `register` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:55:4
+   |
+55 | fn register(d: &Doc, key: &str, parent: &str, tuple: Any) -> Result<()> {
+   |    ^^^^^^^^
+
+warning: function `execute` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:74:4
+   |
+74 | fn execute(d: &Doc, c: &Command) -> Result<String> {
+   |    ^^^^^^^
+
+warning: function `prepare` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:170:8
+    |
+170 | pub fn prepare(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<Prepared> {
+    |        ^^^^^^^
+
+warning: function `commit` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:211:8
+    |
+211 | pub fn commit(d: &Doc, p: Prepared) -> Result<()> {
+    |        ^^^^^^
+
+warning: function `batch` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:220:8
+    |
+220 | pub fn batch(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<()> {
+    |        ^^^^^
+
+warning: function `rendered_runs` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:224:8
+    |
+224 | pub fn rendered_runs(d: &Doc, key: &str) -> Result<Any> {
+    |        ^^^^^^^^^^^^^
+
+warning: `editac-core` (test "structural_profile") generated 10 warnings
+warning: `editac-core` (test "block_kinds_profile") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.19s
+     Running tests/block_kinds_profile.rs (target/debug/deps/block_kinds_profile-cae9cc3a48881c2d)
+
+running 15 tests
+test empty_code_and_blank_lines_restore_without_reseeding ... ok
+test empty_derived_separator_retains_original_span_and_typed_target_policy ... ok
+test empty_heading_and_code_count_as_editable_no_unnecessary_neighbor ... ok
+test literal_newlines_whitespace_dormant_marks_and_paragraph_restoration ... ok
+test last_editable_convert_delete_insert_reserve_accessible_adjacent_paragraph_atomically ... ok
+test mismatched_language_code_rich_and_separator_joins_fail_without_mutation ... ok
+test nested_last_owner_neighbor_keeps_parent_adjacent_and_original_identity ... ok
+test separator_nonempty_conversion_and_text_mark_split_join_targets_reject ... ok
+test atomic_tuple_language_level_matrix_and_unknown_retention ... ok
+test code_explicit_split_join_endpoints_empty_and_multisource_identity ... ok
+test malformed_known_tuples_reject_admission_and_whole_preparation ... ok
+test stale_preparation_utf16_and_oversized_literal_batch_are_atomic ... ok
+test three_replica_duplicate_reordered_metadata_literal_and_remote_mark_races ... ok
+test neighbor_identity_operation_and_resource_failures_leave_no_partial_separator ... ok
+test pinned_bidirectional_block_kinds_exchange_complete_policies_races_and_restore ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.95s
+
+     Running tests/interop.rs (target/debug/deps/interop-75042c965d27e90c)
+
+running 1 test
+test binary_v1_xml_exchange_in_both_directions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.20s
+
+     Running tests/ownership_profile.rs (target/debug/deps/ownership_profile-28dd32ae9233a397)
+
+running 26 tests
+test bounded_decode_rejects_nested_any_and_allocation_amplification ... ok
+test both_sides_cut_concurrent_edits_and_mark_writes_route_without_copy ... ok
+test binary_anchor_routes_original_identity_across_repeat_join_split_and_empty_ties ... ok
+test delete_original_and_derived_keep_content_metadata_and_losing_intentions ... ok
+test deletion_of_cut_characters_collapses_without_losing_remaining_coverage ... ok
+test begin_middle_end_empty_and_unicode_cuts_preserve_identity ... ok
+test checkpoint_restore_duplicate_updates_and_projection_are_read_only ... ok
+test exact_profile_document_epoch_encoding_and_missing_metadata_before_decode ... ok
+test complete_known_graph_cycles_and_dormant_depth_remain_bounded ... ok
+test conflicting_branches_dependency_descendants_and_disjoint_operations_reorder ... ok
+test cut_wrong_source_affinity_surrogate_and_bad_binary_reject_before_live_write ... ok
+test initialized_empty_restore_never_seeds_and_uses_independent_writer ... ok
+test incomplete_binary_dependencies_reject_staged_then_activate_after_prerequisite ... ok
+test machine_seed_exact_seven_roots_and_nonreserved_ids ... ok
+test invalid_operation_graph_cycle_and_immutable_replacement_are_recovery ... ok
+test missing_graph_dependencies_dormant_then_activate_without_reseed ... ok
+test marks_empty_heading_live_inheritance_override_and_absorbed_retention ... ok
+test next_visible_join_crosses_tombstone_without_absorbing_recovery_content ... ok
+test staged_admission_retains_text_identity_and_monotonic_deletion ... ok
+test unknown_metadata_and_character_attributes_retained_opaquely ... ok
+test repeated_transforms_two_disjoint_pairs_and_multisource_split_after_join ... ok
+test invalid_tuple_target_shared_type_and_atomic_text_rejection ... ok
+test bounds_depth_sources_operations_wire_text_and_json_do_not_silently_omit ... ok
+test source_operation_container_limits_and_unknown_source_anchor_are_explicit ... ok
+test aggregate_text_and_cut_byte_bounds_reject_staged_without_partial_mutation ... ok
+test pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations ... FAILED
+
+failures:
+
+---- pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations stdout ----
+
+thread 'pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations' (153004681) panicked at crates/editac-core/tests/ownership_profile.rs:559:5:
+Yjs exchange failed: inspect node.log
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations
+
+test result: FAILED. 25 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+error: test failed, to rerun pass `-p editac-core --test ownership_profile`
+     Running tests/schema_interop.rs (target/debug/deps/schema_interop-12832a0f59f1e0bb)
+
+running 1 test
+test frozen_schema_exchange_moves_deletes_edits_ownership_and_anchors_in_both_directions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.99s
+
+     Running tests/schema_profile.rs (target/debug/deps/schema_profile-e5552febab826b74)
+
+running 3 tests
+test frozen_unknown_kind_and_mark_remain_retained_without_projection_writes ... ok
+test frozen_rust_construction_matches_selected_semantics_and_typed_roots ... ok
+test frozen_atomic_split_descriptor_preserves_original_identities_on_restore ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/split_join.rs (target/debug/deps/split_join-7369b08ffe8047c7)
+
+running 51 tests
+test deleted_characters_move_the_cut_without_absolute_offset_drift ... ok
+test general::v3_production_creation_exact_roots_and_restore_never_reseeds ... ok
+test general::v3_production_block_only_change_stales_all_prepared_commands_and_preserves_metadata ... ok
+test general::v3_production_binary_dependencies_atomic_rejection_then_restore_reordered_journal ... ok
+test general::v3_production_empty_boundary_ties_and_explicit_targets_preserve_cursor_policy ... ok
+test general::v3_production_deleted_original_and_derived_targets_keep_recovery ... ok
+test general::v3_production_heading_inheritance_override_toggle_and_parent_batch_order ... ok
+test general::v3_production_immutable_operation_text_origin_and_tombstone_rejection ... ok
+test general::v3_production_invalid_order_stale_replica_epoch_and_profile_are_atomic ... ok
+test general::v3_production_join_across_deleted_owner_keeps_every_recovery_span ... ok
+test general::v3_production_invalid_creation_empty_restore_and_legacy_root_admission_are_typed ... ok
+test concurrent_deletion_retains_marked_source_recovery_without_resurrecting_targets ... ok
+test general::v3_production_missing_dependencies_and_losing_overrides_remain_recoverable ... ok
+test general::v3_production_join_remote_insert_race_and_duplicate_reordered_updates ... ok
+test general::v3_production_mark_retention_and_mixed_block_batch_atomic_rejection ... ok
+test general::v3_production_multispan_same_source_replace_preserves_offsets_and_identity ... ok
+test general::v3_production_join_beginning_end_empty_and_two_disjoint_pairs ... ok
+test general::v3_production_beginning_middle_end_empty_splits_repeat_without_reseeding ... ok
+test general::v3_production_unknown_tuple_and_marks_retained_without_local_extension_execution ... ok
+test general::v3_production_split_after_join_across_original_sources_and_stable_anchors ... ok
+test join_both_empty ... ok
+test join_empty_first ... ok
+test join_empty_second ... ok
+test join_nonempty_marked_sources ... ok
+test general::v3_production_remote_insert_at_and_both_sides_of_cut_converges ... ok
+test join_targets_may_be_stable_beginning_middle_or_end_positions ... ok
+test known_deleted_targets_and_deleted_split_output_reject_before_mutation ... ok
+test mixed_attributed_runs_created_by_format_commands_survive_split_and_join ... ok
+test remote_insert_before_preparation_resolves_the_original_anchor ... ok
+test general::v3_production_utf16_zwj_combining_rtl_and_surrogate_rejection ... ok
+test reversed_or_wrong_source_targets_are_explicitly_unsupported ... ok
+test repeated_transformations_are_rejected_instead_of_rebinding_or_cloning ... ok
+test source_selections_resolve_after_split_and_join ... ok
+test general::v3_production_resource_and_malformed_graph_rejection_leave_state_unchanged ... ok
+test split_at_beginning ... ok
+test split_at_maximum_order_is_rejected_before_descriptor_write ... ok
+test split_at_end ... ok
+test split_at_middle ... ok
+test split_empty_text_retains_both_empty_owner_identities ... ok
+test split_cut_always_has_left_affinity_even_with_right_biased_command ... ok
+test surrogate_interior_and_out_of_bounds_fail_without_mutation ... ok
+test split_inherits_resolved_parent_and_order_without_rewriting_raw_placement ... ok
+test unsupported_pair_and_unknown_target_kinds_fail_atomically ... ok
+test wrong_replica_and_intervening_local_edit_invalidate_plans ... ok
+test unicode_split_uses_utf16_without_normalizing_graphemes_or_rtl ... ok
+test general::v3_production_concurrent_overlap_descendants_disjoint_pairs_all_permutations ... ok
+test split_and_join_each_preserve_acknowledged_remote_edits_on_three_replicas ... ok
+test pinned_yjs_resolves_rust_cut_and_rust_restores_js_join_and_raced_edits ... ok
+test general::v3_production_real_pinned_yjs_exchange_both_directions_and_checkpoint ... FAILED
+test concurrent_split_join_and_text_edits_converge_for_both_writer_priorities ... ok
+test general::v3_production_operation_capacity_caps_preparation_before_any_live_write ... ok
+
+failures:
+
+---- general::v3_production_real_pinned_yjs_exchange_both_directions_and_checkpoint stdout ----
+
+thread 'general::v3_production_real_pinned_yjs_exchange_both_directions_and_checkpoint' (153004877) panicked at crates/editac-core/tests/support/general_structure.rs:765:5:
+production Yjs exchange: inspect node.log
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    general::v3_production_real_pinned_yjs_exchange_both_directions_and_checkpoint
+
+test result: FAILED. 50 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.71s
+
+error: test failed, to rerun pass `-p editac-core --test split_join`
+     Running tests/structural_profile.rs (target/debug/deps/structural_profile-6584b35a78f4cad2)
+
+running 30 tests
+test atomic_modes_starts_checks_and_dormant_outside_checklist ... ok
+test checked_split_defaults_unchecked_with_live_block_inheritance_override_and_absorption ... ok
+test dependency_cycles_and_dormant_graph_depth_are_bounded ... ok
+test dormant_operation_activates_after_missing_version_without_reseeding ... ok
+test deleted_and_disabled_move_destinations_retain_losing_intentions_and_dormant_checks ... ok
+test editor_hierarchy_validator_accepts_quote_block_and_checks_whole_descendant_depth_batch ... ok
+test concurrent_controls_use_atomic_map_conflict_and_restore_remote_edits ... ok
+test concurrent_move_move_edit_all_six_duplicate_orders_restore_and_ranked_loser ... ok
+test concurrent_potential_cycle_choices_are_deterministic_without_repair ... ok
+test exact_profile_epoch_document_initialized_and_binary_dependency_admission ... ok
+test exact_ten_root_seed_nested_numbering_check_and_source_identities ... ok
+test concurrent_operation_controls_and_edits_restore_without_destroying_rows ... ok
+test initial_cycle_detaches_smallest_canonical_id_without_repair_writes ... ok
+test hidden_parent_tombstone_and_disable_keep_descendants_and_edited_recovery ... ok
+test local_cycle_invalid_before_illegal_parent_and_reused_id_are_atomic ... ok
+test invalid_unicode_cuts_versions_place_shapes_and_origin_namespaces_are_atomic ... ok
+test missing_unknown_noncontainer_parents_project_root_raw_intent_retained ... ok
+test operation_controls_disable_dependents_reenable_and_permanent_tombstones_win ... ok
+test endpoints_empty_join_split_after_join_across_sources_and_stable_marks_anchors ... ok
+test place_before_append_container_subtree_and_versions_preserve_original_text ... ok
+test immutable_kinds_initial_placement_operations_origins_text_and_tombstones_are_not_replaceable ... ok
+test roots_types_container_text_origin_membership_and_id_shapes_reject ... ok
+test stale_parent_before_target_and_missing_versions_keep_intentions_dormant_or_losing ... ok
+test unknown_tuples_marks_kinds_and_dormant_controls_are_retained_not_executed ... ok
+test malformed_container_check_control_and_block_tuples_reject_without_partial_mutation ... ok
+test split_move_join_races_and_remote_cut_edits_preserve_nested_original_ownership ... ok
+test aggregate_source_text_and_ids_membership_and_unknown_target_metadata_are_bounded ... ok
+test hierarchy_depth_128_passes_129_and_descendant_move_exhaustion_reject_atomically ... ok
+test controls_nodes_operations_text_bytes_and_bounded_binary_values_reject_atomically ... ok
+test pinned_bidirectional_structural_exchange_replay_restore_and_anchors ... FAILED
+
+failures:
+
+---- pinned_bidirectional_structural_exchange_replay_restore_and_anchors stdout ----
+
+thread 'pinned_bidirectional_structural_exchange_replay_restore_and_anchors' (153004998) panicked at crates/editac-core/tests/structural_profile.rs:848:5:
+pinned Yjs exchange failed; inspect /Users/bpstr/Github/edit-ac/architecture/evidence/engine-retained-presentation-profile/regressions/v4-structural/node.log
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    pinned_bidirectional_structural_exchange_replay_restore_and_anchors
+
+test result: FAILED. 29 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.53s
+
+error: test failed, to rerun pass `-p editac-core --test structural_profile`
+error: 3 targets failed:
+    `-p editac-core --test ownership_profile`
+    `-p editac-core --test split_join`
+    `-p editac-core --test structural_profile`

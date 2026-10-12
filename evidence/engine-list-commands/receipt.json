@@ -1,0 +1,333 @@
+{
+  "task": "ENG-1.8",
+  "state": "implemented and locally verified; no deployment/publication/release/performance claim",
+  "date_utc": "2026-10-11T21:31:34.269930+00:00",
+  "iteration": 4,
+  "prompt_revision": "7eaa063f3629",
+  "source_snapshot": "../architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+  "source_revision": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "source_roadmap_preserved": true,
+  "core_base_revision": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "architecture_base_revision": "26d3502585fea4c8a21bc15fb949a562b93905ea",
+  "implementation_revision": "uncommitted working tree; exact tested source hashes in iteration-4/tested-source-hashes.json",
+  "changed_paths": [
+    "crates/editac-core/src/commands/editor.rs",
+    "crates/editac-core/src/commands/lists.rs",
+    "crates/editac-core/tests/lists.rs",
+    "crates/editac-core/tests/lists/production.rs",
+    "fixtures/schema-v4/lists-exchange.mjs"
+  ],
+  "profile_descriptor": "core/fixtures/schema-v4/profile.json",
+  "descriptor_sha256": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+  "profile_contract": "Qualified ten-root v4 unchanged; ENG-1.7/1.18/1.21 and ENG-1.8-P1 prerequisites retained",
+  "semantics": [
+    "All higher-level actions expand on the disposable prepared replica; whole batch checks and one explicit-origin live transaction",
+    "Contiguous sibling wrapping retains descendants, marks and original text identities; no copied text or new roots",
+    "Indent reuses an adjacent matching container or creates a nested one; outdent preserves tail reading order and exact inherited container tuple",
+    "First-item exit reuses the original tail container; empty structural containers remain visible/registered, avoiding invalidation of historical version dependencies",
+    "Rich enter splits at stable source-relative UTF-16 cut; empty enter exits one level; checked left retains state and right defaults unchecked",
+    "Start backspace joins an adjacent direct rich sibling or exits one level; rich list actions reject code/separator/unknown/deleted targets",
+    "Atomic mode/start/check tuples; numbered direct editable siblings only; nested containers do not consume ordinals"
+  ],
+  "criterion_to_cases": {
+    "ordered/unordered/checklist/quote nesting and metadata": [
+      "all_modes_wrap_contiguous_siblings_and_number_without_projection_writes",
+      "nested_list_quote_wrapping_preserves_descendant_marks_and_anchor_identity",
+      "ordered_mode_start_and_dormant_checks_are_atomic",
+      "nested_containers_do_not_increment_ordered_ordinals"
+    ],
+    "nested enter/backspace/indent/outdent semantic snapshots": [
+      "nested_enter_backspace_outdent_transitions_cover_every_container_style",
+      "indent_reuses_matching_nested_container_and_outdent_retains_tail_order",
+      "middle_outdent_splits_container_without_reordering_trailing_items",
+      "first_backspace_exits_but_adjacent_backspace_joins_original_sources"
+    ],
+    "empty exit and checked split defaults": [
+      "empty_enter_exits_one_level_and_keeps_check_metadata_dormant",
+      "empty_middle_item_exit_keeps_trailing_items_and_numbering_in_tail",
+      "enter_endpoints_and_unicode_preserve_marks_checked_left_and_unchecked_right"
+    ],
+    "UTF16, marks, identity, multi-source sequences": [
+      "enter_combining_and_rtl_cuts_are_fixed_utf16_results",
+      "repeated_enter_after_multi_source_backspace_join_preserves_original_spans",
+      "anchor_interior_nonzero_backspace_deleted_and_code_targets_reject"
+    ],
+    "atomic invalid/stale/hierarchy/resource/profile rejection": [
+      "invalid_wrap_modes_parent_targets_and_first_indent_are_silent",
+      "mixed_batch_failure_after_wrapping_and_split_never_reserves_or_writes",
+      "stale_and_cross_replica_plans_reject_without_mutation",
+      "depth_128_accepts_exit_and_rejects_wrapping_whole_descendant_batch",
+      "prepared_expansion_bound_and_opaque_container_reject_atomically",
+      "unchanged ENG-1.8-P1 hierarchy family (23 cases) and production editor_profile rejection matrix"
+    ],
+    "silent preparation and one-origin transaction": [
+      "commands::lists::transaction_tests::list_expansion_is_silent_and_compound_commit_emits_one_transaction_with_origin"
+    ],
+    "actual replica admission and checkpoint restore": [
+      "concurrent_indent_outdent_and_text_edit_converge_in_six_duplicate_orders",
+      "concurrent_enter_check_mode_and_text_edit_preserve_acknowledged_content",
+      "concurrent_split_split_and_join_edit_keep_all_original_content",
+      "real_list_commands_exchange_with_pinned_yjs_and_restore"
+    ]
+  },
+  "checks": [
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_LIST_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/list-exchange-complete cargo test -p editac-core --test lists --locked",
+      "exit": 0,
+      "log": "iteration-4/feature-complete.log",
+      "suites": [
+        {
+          "suite": "Running tests/lists.rs (target/debug/deps/lists-b4480d587f429db4)",
+          "state": "ok",
+          "executed": 46,
+          "passed": 46,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ]
+    },
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_EDITOR_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/editor-exchange EDITAC_STRUCTURAL_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/structural-exchange EDITAC_BLOCK_KINDS_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/kinds-exchange EDITAC_GENERAL_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/general-exchange EDITAC_SPLIT_JOIN_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/split-join-exchange EDITAC_FORMAT_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/format-exchange EDITAC_FORMAT_BLOCK_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/format-block-exchange EDITAC_BLOCK_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/block-exchange EDITAC_OWNERSHIP_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/ownership-exchange EDITAC_INTEROP_OUTPUT=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/interop cargo test -p editac-core --locked --lib --test editor_profile --test structural_profile --test block_kinds_profile --test split_join --test text_commands --test format_commands --test anchors --test projection --test initialization --test ownership_profile --test block_profile --test interop",
+      "exit": 0,
+      "log": "iteration-4/integration.log",
+      "suites": [
+        {
+          "suite": "Running unittests src/lib.rs (target/debug/deps/editac_core-1a758e03712644e2)",
+          "state": "ok",
+          "executed": 11,
+          "passed": 11,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/anchors.rs (target/debug/deps/anchors-d5450a36718b715f)",
+          "state": "ok",
+          "executed": 24,
+          "passed": 24,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/block_kinds_profile.rs (target/debug/deps/block_kinds_profile-cae9cc3a48881c2d)",
+          "state": "ok",
+          "executed": 15,
+          "passed": 15,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/block_profile.rs (target/debug/deps/block_profile-728e44a876ec5cbf)",
+          "state": "ok",
+          "executed": 21,
+          "passed": 21,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/editor_profile.rs (target/debug/deps/editor_profile-6b187ec387ed6dc7)",
+          "state": "ok",
+          "executed": 22,
+          "passed": 22,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)",
+          "state": "ok",
+          "executed": 41,
+          "passed": 41,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/initialization.rs (target/debug/deps/initialization-fe4e3ed9317cecf3)",
+          "state": "ok",
+          "executed": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/interop.rs (target/debug/deps/interop-75042c965d27e90c)",
+          "state": "ok",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/ownership_profile.rs (target/debug/deps/ownership_profile-28dd32ae9233a397)",
+          "state": "ok",
+          "executed": 26,
+          "passed": 26,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/projection.rs (target/debug/deps/projection-5477001ba3cb7bf5)",
+          "state": "ok",
+          "executed": 16,
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/split_join.rs (target/debug/deps/split_join-7369b08ffe8047c7)",
+          "state": "ok",
+          "executed": 51,
+          "passed": 51,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/structural_profile.rs (target/debug/deps/structural_profile-6584b35a78f4cad2)",
+          "state": "ok",
+          "executed": 30,
+          "passed": 30,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/text_commands.rs (target/debug/deps/text_commands-136420da2b17741a)",
+          "state": "ok",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ]
+    },
+    {
+      "command": "cargo fmt --all --check",
+      "exit": 0,
+      "log": "iteration-4/format-check.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "iteration-4/diff-check.log"
+    }
+  ],
+  "node_runner_checks": [
+    {
+      "log": "iteration-4/list-exchange-complete/node.log",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "log": "iteration-4/editor-exchange/node.log",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "log": "iteration-4/structural-exchange/node.log",
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "log": "iteration-4/kinds-exchange/node.log",
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "log": "iteration-4/general-exchange/node.log",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "log": "iteration-4/ownership-exchange/node.log",
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "log": "iteration-4/block-exchange/node.log",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "log": "iteration-4/format-block-exchange/node.log",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0
+    }
+  ],
+  "node_transport": "Actual pinned Rust/Yjs binary bytes, duplicate delivery and checkpoint restore; Node v24.19.0, Yjs 13.6.33 and y-protocols 1.0.7. Legacy scripts without runner counts are successful subprocess proofs inside counted Rust tests, not extra Node test counts.",
+  "final_distinct_counts": {
+    "rust": 344,
+    "rust_passed": 344,
+    "node": 73,
+    "node_passed": 73,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0
+  },
+  "feature_counts": {
+    "rust": 46,
+    "production_list_tests": 23,
+    "preserved_hierarchy_tests": 23,
+    "node": 3
+  },
+  "concurrency": "Four 3-writer scenarios \u00d7 six receiver permutations; duplicate delivery at every step, independently expected acknowledged character multisets and full semantic/recovery checkpoint comparisons.",
+  "preserved_failures": [
+    {
+      "log": "iteration-4/feature.log",
+      "rust": {
+        "passed": 42,
+        "failed": 2,
+        "skipped": 0
+      },
+      "prior_unit_proofs": {
+        "passed": 11,
+        "failed": 0
+      },
+      "failures": [
+        "First-item outdent incorrectly disabled its versioned parent and invalidated historical dependent placements",
+        "Pinned exchange failed: misleading Homebrew Node path resolved to v26.4.0; XmlText.toString included XML markup"
+      ],
+      "node_log": "iteration-4/list-exchange/node.log",
+      "node": {
+        "passed": 1,
+        "failed": 2,
+        "skipped": 0
+      },
+      "repair": "Retain/reuse versioned tail containers; use installed nvm Node v24.19.0; compare plain delta character content. Changed implementation/fixture before rerun."
+    }
+  ],
+  "unchanged_prerequisite_source_manifest": "../engine-editor-profile/tested-source-hashes.json; only editor.rs/lists.rs changed among those tested paths",
+  "hygiene": "iteration-4/cleanup.json; no task-owned server/browser started; exact new inactive incremental caches removed after lsof/process checks",
+  "paid_inference_calls": 0,
+  "credentials_loaded": false,
+  "deployment": false,
+  "publication": false,
+  "remaining_original_ENG_1_8_criteria": [],
+  "next_ready": "ENG-1.9"
+}

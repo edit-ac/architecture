@@ -1,0 +1,140 @@
+{
+  "state": "PASS",
+  "checks": {
+    "tested-source-hashes.json": {
+      "checked": 105,
+      "mismatches": []
+    },
+    "preserved-v4-hashes.json": {
+      "checked": 15,
+      "mismatches": []
+    },
+    "preserved-v5-qualification-hashes.json": {
+      "checked": 10,
+      "mismatches": []
+    }
+  },
+  "criterion_matrix": {
+    "literal whitespace/blank lines/dormant marks/unknown labels/empty restore": {
+      "suite": "blocks",
+      "tests": [
+        "code_literal_whitespace_blank_lines_dormant_marks_and_empty_restore",
+        "production_blocks_bidirectional_pinned_yjs_exchange_and_restore"
+      ]
+    },
+    "language bounds/atomic invalid batches": {
+      "suite": "blocks",
+      "tests": [
+        "code_language_bounds_and_mixed_invalid_batches_are_atomic"
+      ]
+    },
+    "split endpoints/empty/matching and incompatible joins": {
+      "suite": "blocks",
+      "tests": [
+        "incompatible_join_and_rich_format_on_code_reject_without_mutation",
+        "code_split_endpoints_and_matching_join_preserve_original_sources"
+      ]
+    },
+    "hard break insertion without implicit split": {
+      "suite": "blocks",
+      "tests": [
+        "hard_break_in_rich_text_keeps_owner_and_newline_is_not_a_split"
+      ]
+    },
+    "separator nested insertion/navigation/paragraph typing/deletion": {
+      "suite": "blocks",
+      "tests": [
+        "deleting_only_separator_prepares_neighbor_and_retains_recovery_identity",
+        "separator_conversion_reserves_accessible_empty_paragraph_atomically",
+        "separators_insert_both_sides_preserve_nested_identity_and_navigate"
+      ]
+    },
+    "nonempty/noneditable separator rejection": {
+      "suite": "blocks",
+      "tests": [
+        "separator_rejects_text_split_join_nonempty_and_wrong_navigation_targets"
+      ]
+    },
+    "stale/replica/profile/epoch/anchor/resource no partial writes": {
+      "suite": "blocks",
+      "tests": [
+        "stale_wrong_replica_deleted_anchor_and_resource_rejection_are_atomic",
+        "v3_profile_and_wrong_epoch_anchors_do_not_acquire_v4_roots_or_mutate",
+        "last_editable_separator_reservation_resource_failure_leaves_live_state_exact"
+      ]
+    },
+    "three-writer reorder/duplicate/recovery/original identity": {
+      "suite": "blocks",
+      "tests": [
+        "three_writer_code_metadata_literal_edit_and_separator_races_replay_restore"
+      ]
+    },
+    "silent preparation/single-origin/only local CRDT writer": {
+      "suite": "lib",
+      "tests": [
+        "v5_witnessed_cross_source_literal_conversion_is_silent_then_commits_once"
+      ]
+    },
+    "ENG-1.9-F1 positive witnessed retained-ownership acceptance": {
+      "suite": "blocks",
+      "tests": [
+        "joined_original_code_replacement_and_deletion_preserve_literal_policy_and_anchors",
+        "v5_joined_language_paragraph_heading_and_opaque_changes_keep_witnesses_ownership_marks_and_anchors",
+        "v5_concurrent_join_presentation_and_text_preserve_absorbed_owner_in_all_six_duplicate_orders",
+        "production_v5_joined_presentation_bidirectional_pinned_yjs_checkpoints",
+        "v5_public_structural_witnesses_survive_split_presentation_and_reject_fresh_invalid_batches"
+      ]
+    }
+  },
+  "original_rust": {
+    "suites": 19,
+    "executed": 446,
+    "passed": 446,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0
+  },
+  "original_blocks": {
+    "executed": 22,
+    "passed": 22,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0
+  },
+  "original_node": {
+    "tests": 115,
+    "pass": 115,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "foundation_source_revision": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+  "profile_sha256": "d0a68db300d2953de29ff8208a4d1208d6ec13cba0544cbf7302ee24acd6b5f9",
+  "evidence_hashes": {
+    "evidence/engine-stable-presentation/receipt.json": "ec59ea22a015ae4edc6535e5aa09a4c9dbc24612f97a48da2ca4625cbc6768ad",
+    "evidence/engine-stable-presentation/rustup-result.json": "452d274629c5c9efcd4f9e23986111e404617165bbd9b96282d15e481bd6b566",
+    "evidence/engine-stable-presentation/rustup-command.json": "59bab39f41ea2e22f32368b449e8d4d0d6b7b061bb626ac44caf799feefb2b8f",
+    "evidence/engine-stable-presentation/rustup-qualified.log": "035d5a3a2198a3992d29700acfec1145ee42c8e4767bdb2003c3fedfe4bd6268",
+    "evidence/engine-stable-presentation/rustup-toolchain.txt": "590cf78b222cb853d369c27506a476ea6b6da776c67c73189d18d3aaf5b5892f",
+    "evidence/engine-stable-presentation/node-results.json": "d897c2578a97efa9f050119ab46b497557700092b3d8a1a0789341468005b16c",
+    "evidence/engine-stable-presentation/tested-source-hashes.json": "bb6c961540aea07e02349755d1f435d4c83ea9281a0eea99408c2c2620b215f1",
+    "evidence/engine-stable-presentation/preserved-v4-hashes.json": "1997a50f12a306d9f3048ced8ace1f6b77c69785c7a8bf50a197d47bbe16fefa",
+    "evidence/engine-stable-presentation/preserved-v5-qualification-hashes.json": "b9d3b2f9b0efb526d1899dc67ce1c02e83dbfba9878e479ccd04aebfdf52b3a9",
+    "evidence/engine-stable-presentation/rustup-exchange/block/node.log": "c15f1b5de474622a1695c6c5ff49514f873697780440ceacb4d9d6902d63581f",
+    "evidence/engine-stable-presentation/rustup-exchange/block_command/node.log": "c4bb96c9a6341e6905442dbfbf2d13286557de919e60d6f6236da7eef20dcdfb",
+    "evidence/engine-stable-presentation/rustup-exchange/block_kinds/node.log": "1904a31b0ea15981ab0f23b22b19f50e9265f8ce3e480a4f2b5371d66b920776",
+    "evidence/engine-stable-presentation/rustup-exchange/editor/node.log": "d0055510a7269325d2ed29a35d4fed45ac37fe551f09ef75f15b85dfb496579a",
+    "evidence/engine-stable-presentation/rustup-exchange/format_block/node.log": "245f0a897c3603e0020b46b42c87dc51097437ce34a30c5b7ab8121119877c98",
+    "evidence/engine-stable-presentation/rustup-exchange/general/node.log": "ef5bda670062c6e3b3efae93c85012eac0808d57cc1870ae37d9fa67b5d4804e",
+    "evidence/engine-stable-presentation/rustup-exchange/list/node.log": "0c2a23f3a5fd84534df16120ea542d639d4f9b22cf6f229ae17e8fcc08c2ab81",
+    "evidence/engine-stable-presentation/rustup-exchange/move/node.log": "9c15d0839c45148ecef05358804c51a2737269440d150be2bd033bdddbf0e40c",
+    "evidence/engine-stable-presentation/rustup-exchange/ownership/node.log": "2d702cd326674744d66d915d835ba46ec726f56e060be5adf3b4e5ae529cc690",
+    "evidence/engine-stable-presentation/rustup-exchange/retained/node.log": "7768196245222397926b1f4b791f8cf7949f9fb2d0054db9cbf28c97abc3520a",
+    "evidence/engine-stable-presentation/rustup-exchange/stable_editor/node.log": "ca96a97ceb42b8af792bb0ac2b8801b2fd63816f93b6d17f2d0c535cd1604ea1",
+    "evidence/engine-stable-presentation/rustup-exchange/stable_join/node.log": "0dc9bdd7d62406211b3a9eba0669b34cf80cbc866e227728bb11c092d2a371c0",
+    "evidence/engine-stable-presentation/rustup-exchange/structural/node.log": "3554fa1d882a5b9927536802b0cb165a49b384dd641bdb98a72ca421c7b4214a"
+  },
+  "feature_suites_rerun": false,
+  "paid_inference_calls": 0
+}

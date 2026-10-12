@@ -1,0 +1,8 @@
+{
+  "feature": "cargo test -p editac-core --test block_profile --locked",
+  "integration": "cargo test -p editac-core --lib --test initialization --test projection --test anchors --test text_commands --test format_commands --test interop --test schema_profile --test schema_interop --test protocol_toolchain --test split_join --test split_join_probe --test structure_conflicts --test structure_registry --test hierarchy_probe --test delete_edit_probe --locked",
+  "format": "cargo fmt --all --check",
+  "node": "node --test fixtures/schema-v2/exchange.mjs (invoked by block_profile, EDITAC_BLOCK_EXCHANGE points to retained exchange artifacts)",
+  "qualified_environment": "Scope PATH to /Users/bpstr/.nvm/versions/node/v24.19.0/bin before cargo; assert node --version v24.19.0. Do not change the user/global Node setup.",
+  "affected_legacy_pinned": "cargo test -p editac-core --test format_commands --test interop --test schema_interop --test split_join --locked"
+}

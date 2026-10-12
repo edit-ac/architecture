@@ -1,0 +1,149 @@
+{
+  "gate": "ENG-1.5",
+  "children": [
+    "ENG-1.5-I1",
+    "ENG-1.5-V1"
+  ],
+  "state": "implemented and locally verified; not deployed",
+  "date": "2026-10-11",
+  "source": {
+    "snapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+    "sha256": "0c9ea1747d09797b35ad7d3923f79d61bae3725236a6c5b1bf13845d7e68c600",
+    "revision": "0c9ea1747d09797b35ad7d3923f79d61bae3725236a6c5b1bf13845d7e68c600",
+    "prompt_revision": "7eaa063f3629",
+    "iteration": 5
+  },
+  "implementation": {
+    "base_revision": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+    "delivery": "uncommitted changes on preserved prior implementation",
+    "changed_files": {
+      "crates/editac-core/src/commands/mod.rs": "ac4a887c2f259cf01ecda9f580f9531dbb99da2f14f57b9216ca0e8d4327e6f5",
+      "crates/editac-core/src/commands/text.rs": "ee92178e9b9cd999bc449168e003609460100f79f828b7fcceb7ecf07f6c8c5c",
+      "crates/editac-core/tests/text_commands.rs": "c4f33e3372faf97177b111dbcaaa42498a19705754ffc0eea081f520b5006271",
+      "crates/editac-core/src/document.rs": "5236f3d00633440145f6efbd310c7615c4e6ca3be433d8da4e5008ea45687723",
+      "crates/editac-core/src/projection.rs": "af062fd04b099820149d045e99b0e4ab3118b78f92e5475c7f8f9de6ba1bb524",
+      "crates/editac-core/src/anchors.rs": "98c7882872238b540838d196ccbf392f4964cc38c0811efba0bc45acec966064",
+      "crates/editac-core/src/lib.rs": "7d6da51b9544305ae2677bc4a577c19195f1fcc368b5005884e0e018b1b7ec22"
+    },
+    "baseline": "baseline.json",
+    "manifest_and_lock_unchanged": true
+  },
+  "fixtures": {
+    "seed_writer": 11,
+    "remote_writers": [
+      21,
+      22
+    ],
+    "format": "real frozen registry schema; UTF-16; v1 encoded update replay",
+    "command_test_sha256": "c4f33e3372faf97177b111dbcaaa42498a19705754ffc0eea081f520b5006271",
+    "schema_sha256": "9c9dcdb3e9edad74d841c55ec11a99962f3e002b823758e88e531291b6d82d23",
+    "protocol_sha256": "dd8c7aa6c73a03a35ec41de83822314dfc5bf7d575f3ac19566421b6393eeb3b",
+    "schedules": "remote insert/delete before preparation; local intervening commit; deletion-only update after preparation; duplicate/reordered delivery to three replicas",
+    "unicode": "emoji, ZWJ, combining, flags, RTL",
+    "ownership": "ordinary, original, joined spanning two original sources, split suffix and cut affinity",
+    "limits": {
+      "max_edit_bytes": 1048576,
+      "max_text_bytes": 5242880,
+      "max_projected_depth": 64,
+      "max_origin_tag_bytes": 128,
+      "max_state_plus_insert_bytes": 16777216
+    }
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test text_commands --locked",
+      "exit": 0,
+      "executed": 23,
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "measured": 0,
+      "filtered": 0,
+      "suites": 1,
+      "log": "text-commands.log",
+      "sha256": "ff4c855fd9d54a31e8dabb88f955f231392694eb38a66b54b907d6d7e051be60"
+    },
+    {
+      "command": "cargo test -p editac-core --lib commands::text::tests --locked",
+      "exit": 0,
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "measured": 0,
+      "filtered": 0,
+      "suites": 1,
+      "log": "transaction-proofs.log",
+      "sha256": "47b9792588ef9380961cf827e6e3b9ae5f8ddd4b3aee4e6dec2000dd2e8fe527"
+    },
+    {
+      "command": "cargo test -p editac-core --test anchors --test initialization --test projection --test schema_profile --test interop --test hierarchy_probe --test split_join_probe --test structure_conflicts --test schema_interop --locked",
+      "exit": 0,
+      "executed": 100,
+      "passed": 100,
+      "failed": 0,
+      "skipped": 0,
+      "measured": 0,
+      "filtered": 0,
+      "suites": 9,
+      "log": "integration.log",
+      "sha256": "51cb6c5ec9c79ea43f82de5c4a8edcf64704a69162ea3803e27fa2d632403fe1"
+    }
+  ],
+  "total": {
+    "executed": 125,
+    "passed": 125,
+    "failed": 0,
+    "skipped": 0
+  },
+  "failures": [
+    {
+      "log": "text-commands-compile-failure.log",
+      "exit": 101,
+      "executed": 0,
+      "reason": "missing GetString trait import; repaired"
+    },
+    {
+      "log": "transaction-proofs-compile-failure.log",
+      "exit": 101,
+      "executed": 0,
+      "reason": "test used reserve instead of authorize_new; repaired"
+    },
+    {
+      "log": "transaction-proofs-setup-failure.log",
+      "exit": 101,
+      "executed": 2,
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "reason": "observer registration itself opens a Yrs setup transaction; counter reset after setup, before measured applicability/commit"
+    }
+  ],
+  "tool_diagnostic": "Integration output-summary script referenced an undefined Python variable after cargo completed successfully. Full saved log and checks.json independently confirm all 9 suites/100 tests; no redundant feature rerun.",
+  "format": {
+    "command": "cargo fmt --all --check",
+    "exit": 0,
+    "log": "format-check.log"
+  },
+  "whitespace": {
+    "command": "git diff --check plus explicit untracked-file scan",
+    "exit": 0,
+    "log": "whitespace-check.log",
+    "untracked": "untracked-whitespace.json"
+  },
+  "scope": "One parent only. Added commands plus directly required document revision/write access, non-consuming projection inspection and read-only anchor inspection. No frozen schema, wire, history, persistence or WASM contract change.",
+  "limits": "Single visible-node text ranges only, including the frozen pair source spans; cross-node ranges and unknown extension semantics reject. Exact-state comparison and non-consuming derived-cache cloning are correctness prerequisites, not performance qualification. History/journal/subscription services remain later gates; no claims of persistence or deployed behavior.",
+  "cleanup": "cleanup.json",
+  "process_evidence": [
+    "processes.txt",
+    "listeners.txt"
+  ],
+  "disk": {
+    "initial_free_bytes": 15744942080,
+    "logical_removed_bytes": 235516812,
+    "cleanup_free_before": 13602234368,
+    "cleanup_free_after": 13717000192,
+    "net_cleanup_free_delta": 114765824,
+    "remaining_candidates": "Existing shared debug dependencies, release/WASM outputs and pre-session incremental caches preserved; expanding cleanup scope requires separate authorization."
+  }
+}

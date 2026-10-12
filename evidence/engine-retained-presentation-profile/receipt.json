@@ -1,0 +1,349 @@
+{
+  "task": "ENG-1.22",
+  "state": "implemented_and_locally_qualified_fixture_only",
+  "production_support": false,
+  "deployed": false,
+  "source_revision": "b9d80e5b06afcdadfdb04cb286cb79d75beba622aac8abaa30fa6a70283f32a0",
+  "loaded_prompt_revision": "7eaa063f3629",
+  "core_head": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "architecture_head": "26d3502585fea4c8a21bc15fb949a562b93905ea",
+  "profile": {
+    "profile": "editac.yrs-yjs.editor.v5",
+    "schema": "editac.registry.editor.v5",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "yrs": "0.28.0",
+    "yjs": "13.6.33",
+    "yProtocols": "1.0.7",
+    "roots": [
+      "registry-parents",
+      "registry-texts",
+      "registry-placements",
+      "delete-probe-tombstones",
+      "registry-block-attributes",
+      "registry-ownership-ops",
+      "registry-owner-origins",
+      "registry-container-attributes",
+      "registry-list-item-attributes",
+      "registry-entity-controls"
+    ],
+    "bounds": {
+      "bytes": 16777216,
+      "sources": 4096,
+      "operations": 4096,
+      "spans": 8192,
+      "textBytes": 1048576,
+      "sourceUtf16": 262144,
+      "depth": 128,
+      "jsonDepth": 32,
+      "cutBytes": 256,
+      "controls": 8192,
+      "hierarchyDepth": 128,
+      "registrations": 4096,
+      "edgeVisits": 16777216,
+      "idBytes": 96,
+      "anyValues": 262144,
+      "structs": 262144,
+      "containerEntries": 8192,
+      "allocationClock": 2097152
+    }
+  },
+  "envelope": {
+    "profile": "editac.yrs-yjs.editor.v5",
+    "schema": "editac.registry.editor.v5",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "documentId": "77777777-7777-4777-8777-777777777777",
+    "epoch": "88888888-8888-4888-8888-888888888888"
+  },
+  "profile_sha256": "d0a68db300d2953de29ff8208a4d1208d6ec13cba0544cbf7302ee24acd6b5f9",
+  "seed_sha256": "5248ce5b2ab27b8ae5b281933eb6a5882e3fb8e865489282450d1be19d31bf4d",
+  "changed_paths": [
+    "fixtures/schema-v5/README.md",
+    "fixtures/schema-v5/bounded_decoder.rs",
+    "fixtures/schema-v5/exchange.mjs",
+    "fixtures/schema-v5/mapping.mjs",
+    "fixtures/schema-v5/mapping.rs",
+    "fixtures/schema-v5/policy.mjs",
+    "fixtures/schema-v5/policy.rs",
+    "fixtures/schema-v5/profile.json",
+    "fixtures/schema-v5/seed.json",
+    "crates/editac-core/tests/retained_presentation_profile.rs",
+    "../architecture/progress/02-engine.md"
+  ],
+  "canonical": {
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--test",
+      "retained_presentation_profile",
+      "--locked"
+    ],
+    "environment": {
+      "EDITAC_RETAINED_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-retained-presentation-profile/exchange-qualified",
+      "PATH": "/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Users/bpstr/.codex/packages/standalone/releases/0.160.0-aarch64-apple-darwin/codex-path:/Users/bpstr/.codex/tmp/arg0/codex-arg0EngNSh:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/bpstr/.resend/bin:/Users/bpstr/.grok/bin:/Users/bpstr/.kimi-code/bin:/Users/bpstr/.local/bin:/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home/bin:/Users/bpstr/Library/Python/3.9/bin:/opt/homebrew/opt/postgresql@18/bin:/Users/bpstr/Library/Android/sdk/emulator:/Users/bpstr/Library/Android/sdk/tools:/Users/bpstr/Library/Android/sdk/tools/bin:/Users/bpstr/Library/Android/sdk/platform-tools:/usr/local/bin/docker:/opt/homebrew/opt/python@3.10/libexec/bin:/opt/homebrew/opt/php@8.4/bin:/Users/bpstr/.composer/vendor/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/bpstr/.codex/tmp/arg0/codex-arg0xIsA76:/Users/bpstr/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/bpstr/.cargo/bin:~/Tools/flutter/bin:/Users/bpstr/Library/Python/3.10/bin/pip:/Users/bpstr/.config/composer/vendor/bin:/Applications/PhpStorm.app/Contents/MacOS:/Applications/Docker.app/Contents/Resources/bin/:/Users/bpstr/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS"
+    },
+    "log": "feature-qualified.log",
+    "repair": "Yjs captures distinct plain-array snapshots, never aliases to mutable presentation values; exact seed/profile tuple semantics unchanged.",
+    "exit": 0,
+    "suites": [
+      {
+        "suite": "tests/retained_presentation_profile.rs",
+        "executed": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0,
+        "filtered": 0
+      }
+    ],
+    "node": {
+      "log": "exchange-qualified/node.log",
+      "executed": 21,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    }
+  },
+  "regressions": {
+    "reason": "Inherited shell Node 26.4.0 violated legacy exact 24.19.0 pin; select installed pinned runtime. Requalify affected exchange families; pure Rust and schema/interop passing evidence retained.",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--locked",
+      "--test",
+      "structural_profile",
+      "--test",
+      "block_kinds_profile",
+      "--test",
+      "ownership_profile",
+      "--test",
+      "split_join",
+      "--no-fail-fast"
+    ],
+    "environment": {
+      "EDITAC_STRUCTURAL_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-retained-presentation-profile/regressions-pinned/v4-structural",
+      "EDITAC_BLOCK_KINDS_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-retained-presentation-profile/regressions-pinned/v4-block-kinds",
+      "EDITAC_OWNERSHIP_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-retained-presentation-profile/regressions-pinned/v3-ownership",
+      "EDITAC_SPLIT_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-retained-presentation-profile/regressions-pinned/v1-split-join",
+      "EDITAC_INTEROP_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-retained-presentation-profile/regressions/v1-interop",
+      "EDITAC_SCHEMA_INTEROP_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-retained-presentation-profile/regressions/v1-schema",
+      "EDITAC_GENERAL_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-retained-presentation-profile/regressions-pinned/v3-production",
+      "PATH": "/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Users/bpstr/.codex/packages/standalone/releases/0.160.0-aarch64-apple-darwin/codex-path:/Users/bpstr/.codex/tmp/arg0/codex-arg0EngNSh:/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/bpstr/.resend/bin:/Users/bpstr/.grok/bin:/Users/bpstr/.kimi-code/bin:/Users/bpstr/.local/bin:/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home/bin:/Users/bpstr/Library/Python/3.9/bin:/opt/homebrew/opt/postgresql@18/bin:/Users/bpstr/Library/Android/sdk/emulator:/Users/bpstr/Library/Android/sdk/tools:/Users/bpstr/Library/Android/sdk/tools/bin:/Users/bpstr/Library/Android/sdk/platform-tools:/usr/local/bin/docker:/opt/homebrew/opt/python@3.10/libexec/bin:/opt/homebrew/opt/php@8.4/bin:/Users/bpstr/.composer/vendor/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/bpstr/.codex/tmp/arg0/codex-arg0xIsA76:/Users/bpstr/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/bpstr/.cargo/bin:~/Tools/flutter/bin:/Users/bpstr/Library/Python/3.10/bin/pip:/Users/bpstr/.config/composer/vendor/bin:/Applications/PhpStorm.app/Contents/MacOS:/Applications/Docker.app/Contents/Resources/bin/:/Users/bpstr/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS"
+    },
+    "log": "regressions-pinned.log",
+    "exit": 0,
+    "suites": [
+      {
+        "suite": "tests/block_kinds_profile.rs",
+        "executed": 15,
+        "passed": 15,
+        "failed": 0,
+        "skipped": 0,
+        "filtered": 0
+      },
+      {
+        "suite": "tests/ownership_profile.rs",
+        "executed": 26,
+        "passed": 26,
+        "failed": 0,
+        "skipped": 0,
+        "filtered": 0
+      },
+      {
+        "suite": "tests/split_join.rs",
+        "executed": 51,
+        "passed": 51,
+        "failed": 0,
+        "skipped": 0,
+        "filtered": 0
+      },
+      {
+        "suite": "tests/structural_profile.rs",
+        "executed": 30,
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "filtered": 0
+      }
+    ],
+    "reused_unchanged": {
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--locked",
+        "--test",
+        "structural_profile",
+        "--test",
+        "block_kinds_profile",
+        "--test",
+        "ownership_profile",
+        "--test",
+        "split_join",
+        "--test",
+        "interop",
+        "--test",
+        "schema_interop",
+        "--test",
+        "schema_profile",
+        "--no-fail-fast"
+      ],
+      "log": "regressions.log",
+      "suites": [
+        {
+          "suite": "tests/interop.rs",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/schema_interop.rs",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "tests/schema_profile.rs",
+          "executed": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ],
+      "reason": "Passing pure schema/interop tests unaffected by witness or pinned exchange harness repair; retain original execution evidence."
+    },
+    "accepted_rust_executed": 127,
+    "accepted_rust_passed": 127,
+    "node": [
+      {
+        "log": "regressions-pinned/v3-ownership/node.log",
+        "executed": 16,
+        "passed": 16,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      {
+        "log": "regressions-pinned/v3-production/node.log",
+        "executed": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      {
+        "log": "regressions-pinned/v4-block-kinds/node.log",
+        "executed": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      {
+        "log": "regressions-pinned/v4-structural/node.log",
+        "executed": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      }
+    ]
+  },
+  "criterion_map": {
+    "exact_profile_ten_roots_witness_shapes_pins": "exact_v5_descriptor_envelope_ten_roots_and_witness_shapes",
+    "joined_paragraph_heading_language_opaque_invariance": "established_join_survives_paragraph_heading_language_and_opaque_metadata",
+    "original_ENG-1.9-F1_cross_source_literal_marks_anchors_one_commit": "original_positive_cross_source_literal_replace_delete_and_paragraph_conversion_commit_once",
+    "split_derived_empty_separator_inherited_state": "split_derived_empty_and_inherited_owners_survive_later_presentation_changes",
+    "multiple_original_sources_repeat_split_after_join": "three_source_join_split_after_join_and_later_metadata_preserve_all_sources",
+    "fresh_incompatible_separator_opaque_nonvisible_commands": "fresh_mismatched_code_ordinary_separator_opaque_and_container_commands_reject_atomically",
+    "known_witness_values_language_boundaries": "paragraph_heading_witness_pairs_and_code_language_bounds_pass",
+    "malformed_arity_witnesses_cuts_incompatibility_atomic_admission": "malformed_arity_witness_values_and_forged_incompatible_witnesses_reject_admission",
+    "witness_not_inferred_from_final_metadata_or_provenance": "admission_does_not_compare_authored_witnesses_with_current_presentation",
+    "mixed_invalid_stale_unicode_resource_rejection": "invalid_mixed_batches_stale_preparation_unicode_and_resources_never_partially_apply",
+    "immutable_rows_profile_epoch_initialization_byte_bounds": "immutable_witness_replacement_profile_epoch_root_and_checkpoint_limits_reject_atomically",
+    "history_controls_remote_content_hidden_parent_tombstones": "reversible_controls_tombstones_remote_bytes_and_dependent_intentions_retain_identities",
+    "structural_conflicts_remain_effective": "version_conflicts_earlier_ranked_intentions_and_deleted_targets_still_have_structural_effects",
+    "place_presentation_independence_nontrapping_neighbor": "established_place_survives_opaque_presentation_and_split_separator_conversion_is_nontrapping",
+    "concurrent_join_split_metadata_control_six_duplicate_orders": "three_writer_metadata_structural_and_control_races_converge_in_all_duplicate_orders",
+    "actual_bidirectional_binary_exchange_checkpoint_anchors": "pinned_bidirectional_witness_exchange_metadata_reordering_checkpoint_controls_and_anchors",
+    "whole_batch_preparation_witness_capture_atomicity": "staged_structural_and_presentation_batch_captures_each_preparation_witness_and_rejects_invalid_tail",
+    "json_cut_id_version_operation_count_resource_bounds": "new_witnesses_share_exact_json_depth_binary_cut_id_and_operation_count_limits",
+    "literal_insert_separator_creation_original_identities": "literal_insert_and_separator_insertion_keep_exact_source_identities_and_accessible_neighbors"
+  },
+  "schedule_coverage": {
+    "seed": "fixtures/schema-v5/seed.json",
+    "families": [
+      "concurrent_join_metadata",
+      "split_metadata",
+      "operation_controls_metadata_remote_text"
+    ],
+    "writers_per_family": 3,
+    "orders_per_family": 6,
+    "duplicate_deliveries_per_update": 2,
+    "generated_and_verified_in_both_languages": true,
+    "restore_after_each_order": true
+  },
+  "preserved_failures": [
+    {
+      "log": "feature-1.log",
+      "executed": 0,
+      "reason": "Compile failed: missing ToJson trait import and observer key. Fixed before executable qualification."
+    },
+    {
+      "log": "feature-2.log",
+      "executed": 16,
+      "passed": 15,
+      "failed": 1,
+      "skipped": 0,
+      "reason": "End-of-text After anchor helper unsupported; use explicit Before boundary fallback; final original positive test passes."
+    },
+    {
+      "log": "regressions.log",
+      "executed": 127,
+      "passed": 124,
+      "failed": 3,
+      "skipped": 0,
+      "reason": "Inherited shell selected Node 26.4.0 instead of installed pinned 24.19.0; affected checks repaired by pinned PATH, original logs retained."
+    }
+  ],
+  "integrity": "precondition-integrity.json",
+  "tested_sources": "tested-source-hashes.json",
+  "frozen_v4": "preserved-v4-hashes.json",
+  "artifacts": "artifacts.json",
+  "hygiene": "hygiene.json",
+  "format_check": {
+    "command": "rustfmt --edition 2024 --check crates/editac-core/tests/retained_presentation_profile.rs fixtures/schema-v5/mapping.rs fixtures/schema-v5/policy.rs",
+    "log": "format-check.log",
+    "exit": 0
+  },
+  "diff_check": {
+    "command": "git diff --check",
+    "log": "diff-check.log",
+    "exit": 0
+  },
+  "next_gate": "ENG-1.23 Integrate stable presentation commands",
+  "limits": "Functional schema qualification only; production v5, original ENG-1.9 and selective history remain unchecked. No automatic migration, provider calls or publication.",
+  "architecture_diff_check": {
+    "command": "git -C ../architecture diff --check",
+    "log": "architecture-diff-check.log",
+    "exit": 0
+  }
+}

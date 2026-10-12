@@ -1,0 +1,675 @@
+{
+  "gate": "ENG-1.6",
+  "state": "implemented and locally verified; not deployed or published",
+  "date": "2026-10-11",
+  "iteration": 9,
+  "prompt_revision": "7eaa063f3629",
+  "source": {
+    "snapshot": "../architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+    "revision": "6af2cefc37184d9851b1896783ab9abf3c0527606485cf1a2928c4274cea8b6b",
+    "fingerprint": {
+      "sha256": "6af2cefc37184d9851b1896783ab9abf3c0527606485cf1a2928c4274cea8b6b",
+      "bytes": 37451
+    },
+    "mode": "PRESERVE_ROADMAP"
+  },
+  "base_revisions": {
+    ".": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+    "../architecture": "26d3502585fea4c8a21bc15fb949a562b93905ea"
+  },
+  "dependencies": {
+    "ENG-1.5": "../../engine-text-commands/receipt.json",
+    "ENG-1.16": "../../engine-block-profile/receipt.json",
+    "qualified_profile": "editac.yrs-yjs.blocks.v2 / editac.registry.blocks.v2",
+    "legacy_marks_receipt": "../receipt.json"
+  },
+  "implementation": {
+    "paths": [
+      "crates/editac-core/src/commands/format.rs",
+      "crates/editac-core/src/commands/text.rs",
+      "crates/editac-core/src/commands/structure.rs",
+      "crates/editac-core/tests/format_commands.rs",
+      "crates/editac-core/tests/block_profile.rs",
+      "fixtures/schema-v2/format-exchange.mjs"
+    ],
+    "delivery": "Read-only staged mark/owner preparation, whole-tuple paragraph/heading apply/remove/toggle, one mixed origin transaction, exact-state staleness and typed profile/target rejection. Qualified v2 block kind accepted by existing fixed-pair text/structure commands. Projection uses qualified observer/inheritance mapping without new storage. Block profile test accepts a scoped output directory so historical artifacts stay unchanged.",
+    "API": [
+      "BlockFormatCommand",
+      "Document::prepare_format_batch",
+      "Document::can_format_batch",
+      "Document::commit_format (existing marks-only entrypoints retained)"
+    ],
+    "block_semantics": "Remove resets to paragraph. Toggle resets all selected owners when all match, otherwise applies to all. Mark actions then block actions each run in input order; staged blocks observe prior first-owner changes. Duplicate owner IDs count once for semantics; empty block selections need no text anchors. Explicit split-owner formatting ends inheritance even when equal to the inherited value; absent ordinary paragraph defaults remain read-only."
+  },
+  "acceptance": {
+    "mixed_toggle_apply_remove": "Original six-mark feature cases plus blocks::mixed_block_toggle_is_global_deduplicated_and_sequential and inherited_toggle_observes_prior_planned_first_owner_change.",
+    "code_and_URL": "All prior code/link policy cases retained and passing; mixed valid-block rejection cases ensure no partial content changes.",
+    "empty_levels_restore": "empty_blocks_keep_every_heading_level_and_paragraph_through_restore covers levels 1 through 6 and paragraph/reset with two empty owners.",
+    "split_inheritance_override": "Production beginning/middle/end/empty fixed-pair split, live inheritance, explicit matching override, reset first-owner and restore; staged inherited toggle.",
+    "absorbed_deleted_opaque": "Joined two-source mark projection, retained original text/absorbed tuple in real checkpoint; typed absorbed/deleted/dormant/unsupported/unknown tuple rejection. No metadata resurrection.",
+    "atomic_invalid_stale": "Invalid final heading/unknown/missing target, code/link and combined resource/replica rejection leave checkpoint/revision/projection unchanged; intervening local and remote block-only updates stale both mixed and text plans.",
+    "block_only_observation": "Metadata-only commits increment revision and emit actual updates; projection changed_nodes includes the empty owner with zero text reads, empty touched ranges and nonconsuming can.",
+    "single_commit": "commands::format::block_transaction_tests::mixed_mark_and_empty_block_batch_has_one_origin_transaction_and_read_only_rejection; actual update and after-transaction observers each fire once with exact explicit origin, preparation/rejection zero.",
+    "legacy": "Explicit UnsupportedBlockProfile for v1 without new roots; unchanged six-mark feature and relevant v1 interop regression proof.",
+    "canonical_integration": "Real Yrs document/prepare/commit/projection/replay and sole-initializer actual binary exchange with pinned Yjs; Node reads production marks/tuples, returns one mixed update, Rust admits/restores it; reordered/duplicate Rust base/update and three-replica mixed conflicts."
+  },
+  "checks": {
+    "runtime": "Node 24.19.0 scoped PATH; Yrs 0.28.0 small-client; Yjs 13.6.33/y-protocols 1.0.7",
+    "provider": "none; real deterministic local Yrs/Yjs only",
+    "checks": [
+      {
+        "id": "ENG-1.6-V1",
+        "command": [
+          "cargo",
+          "test",
+          "-p",
+          "editac-core",
+          "--test",
+          "format_commands",
+          "--locked"
+        ],
+        "log": "feature.log"
+      },
+      {
+        "id": "ENG-1.6-TRANSACTIONS",
+        "command": [
+          "cargo",
+          "test",
+          "-p",
+          "editac-core",
+          "--lib",
+          "commands::format",
+          "--locked"
+        ],
+        "log": "transactions.log"
+      },
+      {
+        "id": "ENG-1.6-INTEGRATION",
+        "command": [
+          "cargo",
+          "test",
+          "-p",
+          "editac-core",
+          "--lib",
+          "--test",
+          "block_profile",
+          "--test",
+          "initialization",
+          "--test",
+          "projection",
+          "--test",
+          "anchors",
+          "--test",
+          "text_commands",
+          "--test",
+          "interop",
+          "--test",
+          "schema_profile",
+          "--test",
+          "schema_interop",
+          "--test",
+          "protocol_toolchain",
+          "--test",
+          "split_join",
+          "--test",
+          "split_join_probe",
+          "--test",
+          "structure_conflicts",
+          "--test",
+          "structure_registry",
+          "--test",
+          "hierarchy_probe",
+          "--test",
+          "delete_edit_probe",
+          "--locked"
+        ],
+        "log": "integration.log"
+      }
+    ],
+    "repairs": [
+      {
+        "id": "ENG-1.6-REPAIR-legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject",
+        "command": [
+          "cargo",
+          "test",
+          "-p",
+          "editac-core",
+          "--test",
+          "format_commands",
+          "--locked",
+          "blocks::legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject",
+          "--",
+          "--exact"
+        ],
+        "log": "repair-legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject.log"
+      },
+      {
+        "id": "ENG-1.6-REPAIR-joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable",
+        "command": [
+          "cargo",
+          "test",
+          "-p",
+          "editac-core",
+          "--test",
+          "format_commands",
+          "--locked",
+          "blocks::joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable",
+          "--",
+          "--exact"
+        ],
+        "log": "repair-joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable.log"
+      }
+    ]
+  },
+  "results": {
+    "rust": {
+      "feature.log": [
+        {
+          "suite": "Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)",
+          "state": "FAILED",
+          "executed": 41,
+          "passed": 39,
+          "failed": 2,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ],
+      "repair-legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject.log": [
+        {
+          "suite": "Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)",
+          "state": "ok",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 40
+        }
+      ],
+      "repair-joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable.log": [
+        {
+          "suite": "Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)",
+          "state": "ok",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 40
+        }
+      ],
+      "transactions.log": [
+        {
+          "suite": "Running unittests src/lib.rs (target/debug/deps/editac_core-1a758e03712644e2)",
+          "state": "ok",
+          "executed": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 5
+        }
+      ],
+      "integration.log": [
+        {
+          "suite": "Running unittests src/lib.rs (target/debug/deps/editac_core-1a758e03712644e2)",
+          "state": "ok",
+          "executed": 8,
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/anchors.rs (target/debug/deps/anchors-d5450a36718b715f)",
+          "state": "ok",
+          "executed": 24,
+          "passed": 24,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/block_profile.rs (target/debug/deps/block_profile-728e44a876ec5cbf)",
+          "state": "ok",
+          "executed": 21,
+          "passed": 21,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/delete_edit_probe.rs (target/debug/deps/delete_edit_probe-84ff9cbc5e76c27b)",
+          "state": "ok",
+          "executed": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/hierarchy_probe.rs (target/debug/deps/hierarchy_probe-8e3c31acbe2e6b71)",
+          "state": "ok",
+          "executed": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/initialization.rs (target/debug/deps/initialization-fe4e3ed9317cecf3)",
+          "state": "ok",
+          "executed": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/interop.rs (target/debug/deps/interop-75042c965d27e90c)",
+          "state": "ok",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/projection.rs (target/debug/deps/projection-5477001ba3cb7bf5)",
+          "state": "ok",
+          "executed": 16,
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/protocol_toolchain.rs (target/debug/deps/protocol_toolchain-7214ddc54791236c)",
+          "state": "ok",
+          "executed": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/schema_interop.rs (target/debug/deps/schema_interop-12832a0f59f1e0bb)",
+          "state": "ok",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/schema_profile.rs (target/debug/deps/schema_profile-e5552febab826b74)",
+          "state": "ok",
+          "executed": 3,
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/split_join.rs (target/debug/deps/split_join-7369b08ffe8047c7)",
+          "state": "ok",
+          "executed": 27,
+          "passed": 27,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/split_join_probe.rs (target/debug/deps/split_join_probe-88e42668b1c22ec3)",
+          "state": "ok",
+          "executed": 5,
+          "passed": 5,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/structure_conflicts.rs (target/debug/deps/structure_conflicts-1397af96cf7ccc8c)",
+          "state": "ok",
+          "executed": 26,
+          "passed": 26,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/structure_registry.rs (target/debug/deps/structure_registry-3435cd80fa7639a6)",
+          "state": "ok",
+          "executed": 4,
+          "passed": 4,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        },
+        {
+          "suite": "Running tests/text_commands.rs (target/debug/deps/text_commands-136420da2b17741a)",
+          "state": "ok",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "filtered": 0
+        }
+      ]
+    },
+    "node": {
+      "exchange/node.log": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "block-profile-exchange/node.log": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      }
+    },
+    "feature_final_coverage": {
+      "executed_distinct": 41,
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0,
+      "method": "39 unchanged passes from original V1 + 2 exact failed-case repairs; no redundant full feature rerun"
+    }
+  },
+  "feature_evidence_method": "Original required command executed 41 cases: 39 passed, 2 fixture failures. Repair those fixtures and execute only the two exact failed cases (1/1 each). Reuse 39 unchanged passes, including actual 3/3 Yjs exchange; final distinct acceptance coverage 41/41. No claim that the original full-suite invocation exited zero. Final integration 190/190 (16 nonzero suites) includes 21/21 block profile and all 8 library tests; filtered transaction/repair cases are not skips.",
+  "preserved_failures": [
+    {
+      "log": "feature-compile-failed.log",
+      "executed": 0,
+      "cause": "New test harness called apply_update instead of existing apply_replay. Corrected test API calls."
+    },
+    {
+      "log": "feature-fixture-failed.log",
+      "executed": 41,
+      "passed": 39,
+      "failed": 2,
+      "skipped": 0,
+      "cause": "Structural-kind target fixture violated qualified pair admission; absorbed owner was incorrectly expected in tombstone recovery projection. Corrected fixtures to retain original criteria."
+    },
+    {
+      "log": "repair-compile-failed.log",
+      "executed": 0,
+      "cause": "Retained source assertion initially lacked GetString trait import; replaced with plain attributed-text diff assertion."
+    },
+    {
+      "log": "repair-markup-fixture-failed.log",
+      "executed": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "cause": "XmlText get_string includes formatting tags. Assert actual plain diff content and original source spans instead."
+    }
+  ],
+  "scope": "One parent ENG-1.6 only. No general ownership/repeated transformations, later structure/history/WASM implementation, migration, publication, remote services or paid inference. Existing unrelated changes preserved; no commit made.",
+  "next": "ENG-1.17-I1 under ENG-1.17: select/qualify exact v3 arbitrary repeatable ownership. ENG-1.18 remains gated on its receipt.",
+  "source_hashes": {
+    "crates/editac-core/src/commands/format.rs": {
+      "sha256": "710952d7c2b1c7a367b2bf328e55640c745cb5fe602ccd44e8cba5516f4c4988",
+      "bytes": 32945
+    },
+    "crates/editac-core/src/commands/text.rs": {
+      "sha256": "65c346438f846fab27bfa82f84c59e3cb288153ebd36b81b492c10753c8e3273",
+      "bytes": 15174
+    },
+    "crates/editac-core/src/commands/structure.rs": {
+      "sha256": "afbd48de381c35626042e01dc6e3917245e16fe4ec836ad60f1bb99930e54fd3",
+      "bytes": 14492
+    },
+    "crates/editac-core/tests/format_commands.rs": {
+      "sha256": "64d0c5a077bc543afe33e1058411dd6edd4992c65b34d98d072326cf8f6520fd",
+      "bytes": 49592
+    },
+    "crates/editac-core/tests/block_profile.rs": {
+      "sha256": "70d6936edd184b5063a5be14510ba1f96e6d3a91024722e8b79e9556ce7c8d43",
+      "bytes": 30462
+    },
+    "fixtures/schema-v2/format-exchange.mjs": {
+      "sha256": "ccbfe939773322fe73b4c82b1e67731f0210ea12e1f489e1090b9d7cc3b3ba8a",
+      "bytes": 2928
+    }
+  },
+  "contract_hashes": {
+    "../architecture/specs/schema-v1.md": {
+      "sha256": "9c9dcdb3e9edad74d841c55ec11a99962f3e002b823758e88e531291b6d82d23",
+      "bytes": 9434
+    },
+    "../architecture/specs/schema-v2.md": {
+      "sha256": "770d525f7dc0796f165b46870a07e6e37798e716bc43ed6d75db54d6876763c9",
+      "bytes": 6481
+    },
+    "../architecture/specs/engine.md": {
+      "sha256": "8de39e63780468a53c07efdb0030e618adafe73f386ed6ec050d0034228159d8",
+      "bytes": 11191
+    },
+    "../architecture/specs/formats.md": {
+      "sha256": "2fda64cffd3cb3874ae43a7673d517275eaada8d49b45d846c99715140e9c0cf",
+      "bytes": 10492
+    },
+    "../architecture/specs/verification.md": {
+      "sha256": "1c9343fbad1d4f9313d0771d01f7f70c64cda5a78aac9f74c05e52c03bf49319",
+      "bytes": 4419
+    },
+    "../architecture/specs/protocol-v1.md": {
+      "sha256": "dd8c7aa6c73a03a35ec41de83822314dfc5bf7d575f3ac19566421b6393eeb3b",
+      "bytes": 6958
+    },
+    "fixtures/schema-v2/profile.json": {
+      "sha256": "7e713ff506be130a2ddee0f58bb66bc80226fa59c1c51281ddace0a078043ad3",
+      "bytes": 898
+    },
+    "fixtures/schema-v2/seed.json": {
+      "sha256": "78f3d6a59eedd9cb8ffedad9c0595f01d921a9861dfee0e76692d65f499e2074",
+      "bytes": 501
+    },
+    "fixtures/schema-v2/mapping.mjs": {
+      "sha256": "940798a80e356319b0495479c013e3102603c151548c95e50161ab921fdedf1e",
+      "bytes": 2763
+    },
+    "Cargo.lock": {
+      "sha256": "52476d26e42c8ed8943b0c924fb31491d1e6eaa70d5146ccb31deda46fe71be9",
+      "bytes": 17615
+    },
+    "package-lock.json": {
+      "sha256": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+      "bytes": 16713
+    }
+  },
+  "artifact_hashes": {
+    "processes.log": {
+      "sha256": "03eff72da1f5e323fec0fcc351b9c0f3a320dbae81e9925ef0b4fc8c73a62bba",
+      "bytes": 181894
+    },
+    "architecture-status.log": {
+      "sha256": "2ee957beaea6e97014dc9a11b631437e80a2f721d012f79c19b82346126299fe",
+      "bytes": 1064
+    },
+    "rustfmt-result.json": {
+      "sha256": "8fad0b0cf38c9f9f5610dce7f656928f167b874f9f212bb3821dc891b28605de",
+      "bytes": 301
+    },
+    "repair-compile-failed.log": {
+      "sha256": "6a1af4ab66e8ff161d5bdb078c6ca522c39e50cb95c068207d8c44e1fcfd17d2",
+      "bytes": 1060
+    },
+    "repair-joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable.log": {
+      "sha256": "8f68665ef74d745ecc997de4c1e57f42f5433576fda8359858378c6e79f6b77e",
+      "bytes": 454
+    },
+    "verified-counts.json": {
+      "sha256": "5f5ccb8a897002534b6fa8353fa1d1ce30070d11954b171d8e6ec7b1db28d793",
+      "bytes": 5921
+    },
+    "join-transaction-results.json": {
+      "sha256": "80afa53e42908765ecdcf21fa750a3d14ebeaa3a6647019d4e176a8a743cc9ed",
+      "bytes": 768
+    },
+    "feature-fixture-failed-result.json": {
+      "sha256": "efde53478bc0da36f74436e9878724987f87ec24cf94f797c9f1c30d65bc1233",
+      "bytes": 130
+    },
+    "rustfmt.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "feature-fixture-failed.log": {
+      "sha256": "d2fe18dc92e0aec8bab62c4f4681aea599ca92b59d19d34886e237093a22d2b7",
+      "bytes": 4538
+    },
+    "integration.log": {
+      "sha256": "6d329316e1165ad4efcc09f7bcac1bdb7bd2063fceea3c96168d42d532ebb966",
+      "bytes": 19380
+    },
+    "feature-compile-failed-result.json": {
+      "sha256": "a331d86a6e4dfbcb7f5e21033b62238502f0f740aeaa81cd21021bc16c46e338",
+      "bytes": 130
+    },
+    "checks.json": {
+      "sha256": "3c741659ffb3181c8db9613c40a026a7211a0eb9c00ac7d306f6f82db88615c7",
+      "bytes": 2532
+    },
+    "cleanup.json": {
+      "sha256": "93237e669ee9eb42cbc38e607a746a0047eb2725eb4c9397bc4a14d24431bd65",
+      "bytes": 6357
+    },
+    "repair-transaction-results.json": {
+      "sha256": "c704407109cebd621e60f5e0f5a4db613de78a5c473e90bb9b1aa539db658feb",
+      "bytes": 1020
+    },
+    "feature-result.json": {
+      "sha256": "efde53478bc0da36f74436e9878724987f87ec24cf94f797c9f1c30d65bc1233",
+      "bytes": 130
+    },
+    "disk-before.json": {
+      "sha256": "2b6d64ee71117ae86292ceaaa09d916e7e1dcc1e73f9aeef85657bbb8c93e538",
+      "bytes": 56
+    },
+    "repair-legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject.log": {
+      "sha256": "1ed4d6a3e430ed5711404795e91ea1e5bda0878f92196a86ee596c65f0bb9d22",
+      "bytes": 455
+    },
+    "transactions.log": {
+      "sha256": "c2ed73c981a7507ac51b779db5cbdf0f0473acd1928aefa4dc23441a9d225b57",
+      "bytes": 727
+    },
+    "repair-markup-fixture-failed.log": {
+      "sha256": "a383616f1f838171e03ec2b3c575324877a834cbccff42683c16d304ed4e0085",
+      "bytes": 972
+    },
+    "repair-compile-failed-result.json": {
+      "sha256": "39e6d3f12197183a1f3003a5216aac5bec496ade86028b3f6bcff68aa5bf8aa3",
+      "bytes": 515
+    },
+    "listeners.log": {
+      "sha256": "601db24e034a0ce8608453d86b11692608c61ce7e4fa712e73f93003b121de11",
+      "bytes": 3216
+    },
+    "feature.log": {
+      "sha256": "d2fe18dc92e0aec8bab62c4f4681aea599ca92b59d19d34886e237093a22d2b7",
+      "bytes": 4538
+    },
+    "feature-compile-failed.log": {
+      "sha256": "540037c648cca41bdfd45523d9786be0cb9028adb8e26177ccee78199aaa2431",
+      "bytes": 2177
+    },
+    "integration-result.json": {
+      "sha256": "bde79c3a85bc8c953dc25bac4e94a55538544c27ebfe4128f538fb393a2ca11c",
+      "bytes": 524
+    },
+    "exchange/js-update.bin": {
+      "sha256": "5607b3a4320f3547409f72896d00c16585baa68aceb7db94e2f6831151ffe70c",
+      "bytes": 141
+    },
+    "exchange/js.bin": {
+      "sha256": "36fc37ce8df8941e66d76414823094e419351213b12699a678eaaef2e1480b49",
+      "bytes": 570
+    },
+    "exchange/rust-update.bin": {
+      "sha256": "4220f22eed08ed1fffb599128d517066a7bd927a74b767a4614edfaf7d1d6c18",
+      "bytes": 165
+    },
+    "exchange/node.log": {
+      "sha256": "c6ed28a8dca02b0bf523314c9e61b8a7f16f98b30a08776ddc35d075f9de9535",
+      "bytes": 365
+    },
+    "exchange/base.bin": {
+      "sha256": "0dfea342dc5598606bd0ebc5105df78f381f83b7a48bc0c8a11b7c33de6666d3",
+      "bytes": 310
+    },
+    "block-profile-exchange/js-seed.bin": {
+      "sha256": "385b0d2ad85e2a26ba279a094da615f2bb3b6a6f5e6fbec4e7f5d8aeeb95c4fa",
+      "bytes": 430
+    },
+    "block-profile-exchange/js-split.bin": {
+      "sha256": "6362f4f2c617144d1a750374259e6c3d0d9879874f23e076ac4aa3df1080fa12",
+      "bytes": 498
+    },
+    "block-profile-exchange/node.log": {
+      "sha256": "f880a37ab65d477a317af3acdc90c750cfd929e70a98e5c7e4bd496c137ba75f",
+      "bytes": 657
+    },
+    "block-profile-exchange/js-invalid-root.bin": {
+      "sha256": "4691f97aa781302c832c90d612dfa7bdad40fe55e0d74a31f610cb06e8e77cda",
+      "bytes": 45
+    },
+    "block-profile-exchange/rust-split.bin": {
+      "sha256": "7b637bdbe83ec81b4db43874e1a3223b1a9bf60929b71fed3eacacd239590ca8",
+      "bytes": 495
+    },
+    "block-profile-exchange/rust-seed.bin": {
+      "sha256": "385b0d2ad85e2a26ba279a094da615f2bb3b6a6f5e6fbec4e7f5d8aeeb95c4fa",
+      "bytes": 430
+    },
+    "block-profile-exchange/js-conflict-b.bin": {
+      "sha256": "482c0a8f9e37dbf6d2d293270d2236d364834bb46cbbea348c54458ae369ac76",
+      "bytes": 26
+    },
+    "block-profile-exchange/js-conflict-a.bin": {
+      "sha256": "1255bacc131f08cf37e26fff1f083bbfd88d2f88d63fba19452f88d98ed7cd70",
+      "bytes": 45
+    },
+    "block-profile-exchange/js-join.bin": {
+      "sha256": "9eee18cab48814f9a7de33ec6be575f324fb906ca8d0f5c4ae5d1766881153e6",
+      "bytes": 499
+    },
+    "block-profile-exchange/js-invalid-shared-tuple.bin": {
+      "sha256": "1eec675d74d68e650a9e78d22ec6463152cf9f7d71e0cfeb8039e0798c2ea343",
+      "bytes": 444
+    },
+    "block-profile-exchange/js-invalid-tuple.bin": {
+      "sha256": "3fc929668374a35789e12d26ec59d6550196226de1316e7d437797b179ffc776",
+      "bytes": 462
+    },
+    "block-profile-exchange/js-anchor.bin": {
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e",
+      "bytes": 4
+    },
+    "block-profile-exchange/rust-anchor.bin": {
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e",
+      "bytes": 4
+    }
+  },
+  "hygiene": {
+    "receipt": "cleanup.json",
+    "processes_stopped": 0,
+    "task_browsers_servers_started": 0,
+    "task_tests_remaining": 0,
+    "reclaimed_allocated_bytes": 110678016,
+    "data_volume_free_bytes": 16261349376,
+    "remaining_caches": {
+      "/Users/bpstr/Github/edit-ac/core/target/debug/deps": 2062783247,
+      "/Users/bpstr/Github/edit-ac/core/target/debug/incremental": 757836742,
+      "/Users/bpstr/Github/edit-ac/core/target/debug/build": 28761123
+    },
+    "broader_cleanup": "Not performed; preexisting/shared cache scope remains protected."
+  },
+  "timing": "Approximately 3 minutes discovery, 7 minutes implementation/fixture repairs, 4 minutes checks/evidence/hygiene; stop because selected parent closed."
+}

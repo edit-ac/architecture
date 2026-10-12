@@ -1,0 +1,3914 @@
+✖ shared production engine fixture: unicode-replace (57.629375ms)
+✖ shared production engine fixture: text-insert-delete (5.16425ms)
+✖ shared production engine fixture: rich-marks (10.22225ms)
+✖ shared production engine fixture: heading-levels (4.77025ms)
+✖ shared production engine fixture: split-start (9.600709ms)
+✖ shared production engine fixture: split-middle (6.26725ms)
+✖ shared production engine fixture: split-end (4.518ms)
+✖ shared production engine fixture: split-empty (4.179459ms)
+✖ shared production engine fixture: retained-join (7.736667ms)
+✖ shared production engine fixture: literal-code (3.584333ms)
+✖ shared production engine fixture: list-quote-nesting (21.517375ms)
+✖ shared production engine fixture: list-enter-backspace (4.718667ms)
+✖ shared production engine fixture: empty-item-exit (2.163708ms)
+✖ shared production engine fixture: separator-access (4.260584ms)
+✖ shared production engine fixture: separator-insert (3.048208ms)
+✖ shared production engine fixture: semantic-move (4.26075ms)
+✖ shared production engine fixture: history-grouping (3.11375ms)
+✔ malformed JS shapes, unsafe numeric input and unknown fields reject before mutation (5.197209ms)
+✔ mixed valid and invalid command/format batches reject atomically (1.615792ms)
+✔ plans and anchors are scoped, single-use, explicitly releasable and stale-safe (2.496541ms)
+✔ can validates silently and disposal is explicit/idempotent for all operations (0.971125ms)
+✔ raw built-WASM JSON errors are structured, byte bounded, and disposal rejects use (7.255459ms)
+✔ bounded anchor and plan tables reclaim released capacity (104.161375ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 6
+ℹ fail 17
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 344.90025
+
+✖ failing tests:
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: unicode-replace (57.629375ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:1355236539:1': [
+  -         'n:3859303135:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1355236539:1': {
+  -         'n:3859303135:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a😀b é👩‍💻🇭🇺אב'
+  ...
+          retained: {
+  +         'n:1355236539:1': [
+  -         'n:3859303135:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1355236539:1': {
+  -         'n:3859303135:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a🦀b é👩‍💻🇭🇺אב'
+  ...
+          retained: {
+  +         'n:1355236539:1': [
+  -         'n:3859303135:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1355236539:1': {
+  -         'n:3859303135:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a😀b é👩‍💻🇭🇺אב'
+  ...
+          retained: {
+  +         'n:1355236539:1': [
+  -         'n:3859303135:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1355236539:1': {
+  -         'n:3859303135:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a🦀b é👩‍💻🇭🇺אב'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [Array], visible: [Array] }, { bias: 'left', node: 'n:WRITER:1', offset: 1, source: 'n:WRITER:1', sourceOffset: 1, type: 'position' }, { bias: 'right', node: 'n:WRITER:1', offset: 3, source: 'n:WRITER:1', sourceOffset: 3, type: 'position' }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [Array], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [Array], visible: [Array] }, { bias: 'left', node: 'n:WRITER:1', offset: 1, source: 'n:WRITER:1', sourceOffset: 1, type: 'position' }, { bias: 'right', node: 'n:WRITER:1', offset: 3, source: 'n:WRITER:1', sourceOffset: 3, type: 'position' }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [Array], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: text-insert-delete (5.16425ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:1234444035:1': [
+  -         'n:1195851615:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1234444035:1': {
+  -         'n:1195851615:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'abcd'
+  ...
+          retained: {
+  +         'n:1234444035:1': [
+  -         'n:1195851615:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1234444035:1': {
+  -         'n:1195851615:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ad'
+  ...
+          retained: {
+  +         'n:1234444035:1': [
+  -         'n:1195851615:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1234444035:1': {
+  -         'n:1195851615:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'aXd'
+  ...
+          retained: {
+  +         'n:1234444035:1': [
+  -         'n:1195851615:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1234444035:1': {
+  -         'n:1195851615:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ad'
+  ...
+          retained: {
+  +         'n:1234444035:1': [
+  -         'n:1195851615:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1234444035:1': {
+  -         'n:1195851615:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'abcd'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [Array], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [Array], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: rich-marks (10.22225ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:346256354:1': [
+  -         'n:627407750:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:346256354:1': {
+  -         'n:627407750:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'abc'
+  ...
+          retained: {
+  +         'n:346256354:1': [
+  -         'n:627407750:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:346256354:1': {
+  -         'n:627407750:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true
+  ...
+          retained: {
+  +         'n:346256354:1': [
+  -         'n:627407750:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:346256354:1': {
+  -         'n:627407750:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true,
+  ...
+          retained: {
+  +         'n:346256354:1': [
+  -         'n:627407750:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:346256354:1': {
+  -         'n:627407750:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true,
+  ...
+          retained: {
+  +         'n:346256354:1': [
+  -         'n:627407750:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:346256354:1': {
+  -         'n:627407750:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true,
+  ...
+          retained: {
+  +         'n:346256354:1': [
+  -         'n:627407750:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:346256354:1': {
+  -         'n:627407750:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true,
+  ...
+          retained: {
+  +         'n:346256354:1': [
+  -         'n:627407750:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:346256354:1': {
+  -         'n:627407750:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    italic: true,
+  ...
+          retained: {
+  +         'n:346256354:1': [
+  -         'n:627407750:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:346256354:1': {
+  -         'n:627407750:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    italic: true,
+  ...
+          retained: {
+  +         'n:346256354:1': [
+  -         'n:627407750:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:346256354:1': {
+  -         'n:627407750:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    code: true
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 5, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 6, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 7, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 8, touchedRanges: [Array], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 5, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 6, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 7, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 8, touchedRanges: [Array], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: heading-levels (4.77025ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:2183977933:1': [
+  -         'n:1063037812:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2183977933:1': {
+  -         'n:1063037812:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          retained: {
+  +         'n:2183977933:1': [
+  -         'n:1063037812:1': [
+              'heading',
+              1
+            ]
+          },
+          sources: {
+  +         'n:2183977933:1': {
+  -         'n:1063037812:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          retained: {
+  +         'n:2183977933:1': [
+  -         'n:1063037812:1': [
+              'heading',
+              2
+            ]
+          },
+          sources: {
+  +         'n:2183977933:1': {
+  -         'n:1063037812:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          retained: {
+  +         'n:2183977933:1': [
+  -         'n:1063037812:1': [
+              'heading',
+              3
+            ]
+          },
+          sources: {
+  +         'n:2183977933:1': {
+  -         'n:1063037812:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          retained: {
+  +         'n:2183977933:1': [
+  -         'n:1063037812:1': [
+              'heading',
+              4
+            ]
+          },
+          sources: {
+  +         'n:2183977933:1': {
+  -         'n:1063037812:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          retained: {
+  +         'n:2183977933:1': [
+  -         'n:1063037812:1': [
+              'heading',
+              5
+            ]
+          },
+          sources: {
+  +         'n:2183977933:1': {
+  -         'n:1063037812:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          retained: {
+  +         'n:2183977933:1': [
+  -         'n:1063037812:1': [
+              'heading',
+              6
+            ]
+          },
+          sources: {
+  +         'n:2183977933:1': {
+  -         'n:1063037812:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          retained: {
+  +         'n:2183977933:1': [
+  -         'n:1063037812:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2183977933:1': {
+  -         'n:1063037812:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 5, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 6, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 7, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 5, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 6, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 7, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: split-start (9.600709ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:2288536198:1': [
+  -         'n:1425922318:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2288536198:1': {
+  -         'n:1425922318:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          intentions: {
+  +         'o:2288536198:1': [
+  -         'o:1425922318:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                2,
+  +             134,
+  +             149,
+  +             161,
+  +             195,
+  +             8,
+  -             142,
+  -             178,
+  -             247,
+  -             167,
+  -             5,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+          outcomes: {
+  +         'o:2288536198:1': 'applied'
+  -         'o:1425922318:1': 'applied'
+          },
+          retained: {
+  +         'n:2288536198:1': [
+  -         'n:1425922318:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2288536198:1': {
+  -         'n:1425922318:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          intentions: {
+  +         'o:2288536198:1': [
+  -         'o:1425922318:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                2,
+  +             134,
+  +             149,
+  +             161,
+  +             195,
+  +             8,
+  -             142,
+  -             178,
+  -             247,
+  -             167,
+  -             5,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:2288536198:2': [
+  -         'o:1425922318:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:2288536198:1': 'applied',
+  +         'o:2288536198:2': 'applied'
+  -         'o:1425922318:1': 'applied',
+  -         'o:1425922318:2': 'applied'
+          },
+          retained: {
+  +         'n:2288536198:1': [
+  -         'n:1425922318:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2288536198:1': {
+  -         'n:1425922318:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          controls: {
+  +         'o:2288536198:2': [
+  -         'o:1425922318:2': [
+              'enabled',
+              false
+            ]
+          },
+          deleted: [],
+          intentions: {
+  +         'o:2288536198:1': [
+  -         'o:1425922318:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                2,
+  +             134,
+  +             149,
+  +             161,
+  +             195,
+  +             8,
+  -             142,
+  -             178,
+  -             247,
+  -             167,
+  -             5,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:2288536198:2': [
+  -         'o:1425922318:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:2288536198:1': 'applied',
+  +         'o:2288536198:2': 'disabled'
+  -         'o:1425922318:1': 'applied',
+  -         'o:1425922318:2': 'disabled'
+          },
+          retained: {
+  +         'n:2288536198:1': [
+  -         'n:1425922318:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2288536198:1': {
+  -         'n:1425922318:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          controls: {
+  +         'o:2288536198:2': [
+  -         'o:1425922318:2': [
+              'enabled',
+              true
+            ]
+          },
+          deleted: [],
+          intentions: {
+  +         'o:2288536198:1': [
+  -         'o:1425922318:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                2,
+  +             134,
+  +             149,
+  +             161,
+  +             195,
+  +             8,
+  -             142,
+  -             178,
+  -             247,
+  -             167,
+  -             5,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:2288536198:2': [
+  -         'o:1425922318:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:2288536198:1': 'applied',
+  +         'o:2288536198:2': 'applied'
+  -         'o:1425922318:1': 'applied',
+  -         'o:1425922318:2': 'applied'
+          },
+          retained: {
+  +         'n:2288536198:1': [
+  -         'n:1425922318:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2288536198:1': {
+  -         'n:1425922318:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: split-middle (6.26725ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:2780041483:1': [
+  -         'n:3494616778:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2780041483:1': {
+  -         'n:3494616778:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a😀b'
+  ...
+          intentions: {
+  +         'o:2780041483:1': [
+  -         'o:3494616778:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                0,
+  +             139,
+  +             162,
+  +             208,
+  +             173,
+  +             10,
+  -             202,
+  -             189,
+  -             174,
+  -             130,
+  -             13,
+                5,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+          outcomes: {
+  +         'o:2780041483:1': 'applied'
+  -         'o:3494616778:1': 'applied'
+          },
+          retained: {
+  +         'n:2780041483:1': [
+  -         'n:3494616778:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2780041483:1': {
+  -         'n:3494616778:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a😀b'
+  ...
+          intentions: {
+  +         'o:2780041483:1': [
+  -         'o:3494616778:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                0,
+  +             139,
+  +             162,
+  +             208,
+  +             173,
+  +             10,
+  -             202,
+  -             189,
+  -             174,
+  -             130,
+  -             13,
+                5,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:2780041483:2': [
+  -         'o:3494616778:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:2780041483:1': 'applied',
+  +         'o:2780041483:2': 'applied'
+  -         'o:3494616778:1': 'applied',
+  -         'o:3494616778:2': 'applied'
+          },
+          retained: {
+  +         'n:2780041483:1': [
+  -         'n:3494616778:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2780041483:1': {
+  -         'n:3494616778:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a😀b'
+  ...
+          controls: {
+  +         'o:2780041483:2': [
+  -         'o:3494616778:2': [
+              'enabled',
+              false
+            ]
+          },
+          deleted: [],
+          intentions: {
+  +         'o:2780041483:1': [
+  -         'o:3494616778:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                0,
+  +             139,
+  +             162,
+  +             208,
+  +             173,
+  +             10,
+  -             202,
+  -             189,
+  -             174,
+  -             130,
+  -             13,
+                5,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:2780041483:2': [
+  -         'o:3494616778:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:2780041483:1': 'applied',
+  +         'o:2780041483:2': 'disabled'
+  -         'o:3494616778:1': 'applied',
+  -         'o:3494616778:2': 'disabled'
+          },
+          retained: {
+  +         'n:2780041483:1': [
+  -         'n:3494616778:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2780041483:1': {
+  -         'n:3494616778:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a😀b'
+  ...
+          controls: {
+  +         'o:2780041483:2': [
+  -         'o:3494616778:2': [
+              'enabled',
+              true
+            ]
+          },
+          deleted: [],
+          intentions: {
+  +         'o:2780041483:1': [
+  -         'o:3494616778:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                0,
+  +             139,
+  +             162,
+  +             208,
+  +             173,
+  +             10,
+  -             202,
+  -             189,
+  -             174,
+  -             130,
+  -             13,
+                5,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:2780041483:2': [
+  -         'o:3494616778:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:2780041483:1': 'applied',
+  +         'o:2780041483:2': 'applied'
+  -         'o:3494616778:1': 'applied',
+  -         'o:3494616778:2': 'applied'
+          },
+          retained: {
+  +         'n:2780041483:1': [
+  -         'n:3494616778:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2780041483:1': {
+  -         'n:3494616778:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a😀b'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: split-end (4.518ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:4274595437:1': [
+  -         'n:2410766130:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:4274595437:1': {
+  -         'n:2410766130:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          intentions: {
+  +         'o:4274595437:1': [
+  -         'o:2410766130:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                0,
+  +             237,
+  +             204,
+  +             164,
+  +             246,
+  +             15,
+  -             178,
+  -             190,
+  -             197,
+  -             253,
+  -             8,
+                4,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+          outcomes: {
+  +         'o:4274595437:1': 'applied'
+  -         'o:2410766130:1': 'applied'
+          },
+          retained: {
+  +         'n:4274595437:1': [
+  -         'n:2410766130:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:4274595437:1': {
+  -         'n:2410766130:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          intentions: {
+  +         'o:4274595437:1': [
+  -         'o:2410766130:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                0,
+  +             237,
+  +             204,
+  +             164,
+  +             246,
+  +             15,
+  -             178,
+  -             190,
+  -             197,
+  -             253,
+  -             8,
+                4,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:4274595437:2': [
+  -         'o:2410766130:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:4274595437:1': 'applied',
+  +         'o:4274595437:2': 'applied'
+  -         'o:2410766130:1': 'applied',
+  -         'o:2410766130:2': 'applied'
+          },
+          retained: {
+  +         'n:4274595437:1': [
+  -         'n:2410766130:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:4274595437:1': {
+  -         'n:2410766130:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          controls: {
+  +         'o:4274595437:2': [
+  -         'o:2410766130:2': [
+              'enabled',
+              false
+            ]
+          },
+          deleted: [],
+          intentions: {
+  +         'o:4274595437:1': [
+  -         'o:2410766130:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                0,
+  +             237,
+  +             204,
+  +             164,
+  +             246,
+  +             15,
+  -             178,
+  -             190,
+  -             197,
+  -             253,
+  -             8,
+                4,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:4274595437:2': [
+  -         'o:2410766130:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:4274595437:1': 'applied',
+  +         'o:4274595437:2': 'disabled'
+  -         'o:2410766130:1': 'applied',
+  -         'o:2410766130:2': 'disabled'
+          },
+          retained: {
+  +         'n:4274595437:1': [
+  -         'n:2410766130:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:4274595437:1': {
+  -         'n:2410766130:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          controls: {
+  +         'o:4274595437:2': [
+  -         'o:2410766130:2': [
+              'enabled',
+              true
+            ]
+          },
+          deleted: [],
+          intentions: {
+  +         'o:4274595437:1': [
+  -         'o:2410766130:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                0,
+  +             237,
+  +             204,
+  +             164,
+  +             246,
+  +             15,
+  -             178,
+  -             190,
+  -             197,
+  -             253,
+  -             8,
+                4,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:4274595437:2': [
+  -         'o:2410766130:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:4274595437:1': 'applied',
+  +         'o:4274595437:2': 'applied'
+  -         'o:2410766130:1': 'applied',
+  -         'o:2410766130:2': 'applied'
+          },
+          retained: {
+  +         'n:4274595437:1': [
+  -         'n:2410766130:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:4274595437:1': {
+  -         'n:2410766130:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: split-empty (4.179459ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:133214469:1': [
+  -         'n:4256096828:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:133214469:1': {
+  -         'n:4256096828:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          intentions: {
+  +         'o:133214469:1': [
+  -         'o:4256096828:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                2,
+  +             133,
+  +             226,
+  +             194,
+  +             63,
+  -             188,
+  -             196,
+  -             187,
+  -             237,
+  -             15,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+  ...
+          outcomes: {
+  +         'o:133214469:1': 'applied'
+  -         'o:4256096828:1': 'applied'
+          },
+          retained: {
+  +         'n:133214469:1': [
+  -         'n:4256096828:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:133214469:1': {
+  -         'n:4256096828:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          intentions: {
+  +         'o:133214469:1': [
+  -         'o:4256096828:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                2,
+  +             133,
+  +             226,
+  +             194,
+  +             63,
+  -             188,
+  -             196,
+  -             187,
+  -             237,
+  -             15,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:133214469:2': [
+  -         'o:4256096828:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:133214469:1': 'applied',
+  +         'o:133214469:2': 'applied'
+  -         'o:4256096828:1': 'applied',
+  -         'o:4256096828:2': 'applied'
+          },
+          retained: {
+  +         'n:133214469:1': [
+  -         'n:4256096828:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:133214469:1': {
+  -         'n:4256096828:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          controls: {
+  +         'o:133214469:2': [
+  -         'o:4256096828:2': [
+              'enabled',
+              false
+            ]
+          },
+          deleted: [],
+          intentions: {
+  +         'o:133214469:1': [
+  -         'o:4256096828:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                2,
+  +             133,
+  +             226,
+  +             194,
+  +             63,
+  -             188,
+  -             196,
+  -             187,
+  -             237,
+  -             15,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:133214469:2': [
+  -         'o:4256096828:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:133214469:1': 'applied',
+  +         'o:133214469:2': 'disabled'
+  -         'o:4256096828:1': 'applied',
+  -         'o:4256096828:2': 'disabled'
+          },
+          retained: {
+  +         'n:133214469:1': [
+  -         'n:4256096828:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:133214469:1': {
+  -         'n:4256096828:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          controls: {
+  +         'o:133214469:2': [
+  -         'o:4256096828:2': [
+              'enabled',
+              true
+            ]
+          },
+          deleted: [],
+          intentions: {
+  +         'o:133214469:1': [
+  -         'o:4256096828:1': [
+              'split',
+              'n:WRITER:1',
+              'base',
+              0,
+              'n:WRITER:1',
+              [
+                2,
+  +             133,
+  +             226,
+  +             194,
+  +             63,
+  -             188,
+  -             196,
+  -             187,
+  -             237,
+  -             15,
+                2,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:133214469:2': [
+  -         'o:4256096828:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:133214469:1': 'applied',
+  +         'o:133214469:2': 'applied'
+  -         'o:4256096828:1': 'applied',
+  -         'o:4256096828:2': 'applied'
+          },
+          retained: {
+  +         'n:133214469:1': [
+  -         'n:4256096828:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:133214469:1': {
+  -         'n:4256096828:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: retained-join (7.736667ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1',
+          'n:WRITER:2',
+  ...
+          retained: {
+  +         'n:3484486039:1': [
+  -         'n:540025035:1': [
+              'paragraph'
+            ],
+  +         'n:3484486039:2': [
+  -         'n:540025035:2': [
+              'paragraph'
+            ],
+  +         'n:3484486039:3': [
+  -         'n:540025035:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:3484486039:1': {
+  -         'n:540025035:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a'
+  ...
+            },
+  +         'n:3484486039:2': {
+  -         'n:540025035:2': {
+              identity: 'WRITER:8',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  ...
+            },
+  +         'n:3484486039:3': {
+  -         'n:540025035:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'c'
+  ...
+          intentions: {
+  +         'o:3484486039:1': [
+  -         'o:540025035:1': [
+              'join',
+              'n:WRITER:1',
+              'base',
+              'n:WRITER:2',
+              'base',
+  ...
+          outcomes: {
+  +         'o:3484486039:1': 'applied'
+  -         'o:540025035:1': 'applied'
+          },
+          retained: {
+  +         'n:3484486039:1': [
+  -         'n:540025035:1': [
+              'paragraph'
+            ],
+  +         'n:3484486039:2': [
+  -         'n:540025035:2': [
+              'paragraph'
+            ],
+  +         'n:3484486039:3': [
+  -         'n:540025035:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:3484486039:1': {
+  -         'n:540025035:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true
+  ...
+            },
+  +         'n:3484486039:2': {
+  -         'n:540025035:2': {
+              identity: 'WRITER:8',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  ...
+            },
+  +         'n:3484486039:3': {
+  -         'n:540025035:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'c'
+  ...
+          intentions: {
+  +         'o:3484486039:1': [
+  -         'o:540025035:1': [
+              'join',
+              'n:WRITER:1',
+              'base',
+              'n:WRITER:2',
+              'base',
+  ...
+            ],
+  +         'o:3484486039:2': [
+  -         'o:540025035:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'n:WRITER:3',
+              'base',
+  ...
+          outcomes: {
+  +         'o:3484486039:1': 'applied',
+  +         'o:3484486039:2': 'applied'
+  -         'o:540025035:1': 'applied',
+  -         'o:540025035:2': 'applied'
+          },
+          retained: {
+  +         'n:3484486039:1': [
+  -         'n:540025035:1': [
+              'paragraph'
+            ],
+  +         'n:3484486039:2': [
+  -         'n:540025035:2': [
+              'paragraph'
+            ],
+  +         'n:3484486039:3': [
+  -         'n:540025035:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:3484486039:1': {
+  -         'n:540025035:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true
+  ...
+            },
+  +         'n:3484486039:2': {
+  -         'n:540025035:2': {
+              identity: 'WRITER:8',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  ...
+            },
+  +         'n:3484486039:3': {
+  -         'n:540025035:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'c'
+  ...
+          intentions: {
+  +         'o:3484486039:1': [
+  -         'o:540025035:1': [
+              'join',
+              'n:WRITER:1',
+              'base',
+              'n:WRITER:2',
+              'base',
+  ...
+            ],
+  +         'o:3484486039:2': [
+  -         'o:540025035:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'n:WRITER:3',
+              'base',
+  ...
+          outcomes: {
+  +         'o:3484486039:1': 'applied',
+  +         'o:3484486039:2': 'applied'
+  -         'o:540025035:1': 'applied',
+  -         'o:540025035:2': 'applied'
+          },
+          retained: {
+  +         'n:3484486039:1': [
+  -         'n:540025035:1': [
+              'code',
+              'Rust'
+            ],
+  +         'n:3484486039:2': [
+  -         'n:540025035:2': [
+              'paragraph'
+            ],
+  +         'n:3484486039:3': [
+  -         'n:540025035:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:3484486039:1': {
+  -         'n:540025035:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true
+  ...
+            },
+  +         'n:3484486039:2': {
+  -         'n:540025035:2': {
+              identity: 'WRITER:8',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  ...
+            },
+  +         'n:3484486039:3': {
+  -         'n:540025035:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'c'
+  ...
+          intentions: {
+  +         'o:3484486039:1': [
+  -         'o:540025035:1': [
+              'join',
+              'n:WRITER:1',
+              'base',
+              'n:WRITER:2',
+              'base',
+  ...
+            ],
+  +         'o:3484486039:2': [
+  -         'o:540025035:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'n:WRITER:3',
+              'base',
+  ...
+          outcomes: {
+  +         'o:3484486039:1': 'applied',
+  +         'o:3484486039:2': 'applied'
+  -         'o:540025035:1': 'applied',
+  -         'o:540025035:2': 'applied'
+          },
+          retained: {
+  +         'n:3484486039:1': [
+  -         'n:540025035:1': [
+              'code',
+              'custom-lang'
+            ],
+  +         'n:3484486039:2': [
+  -         'n:540025035:2': [
+              'paragraph'
+            ],
+  +         'n:3484486039:3': [
+  -         'n:540025035:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:3484486039:1': {
+  -         'n:540025035:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true
+  ...
+            },
+  +         'n:3484486039:2': {
+  -         'n:540025035:2': {
+              identity: 'WRITER:8',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  ...
+            },
+  +         'n:3484486039:3': {
+  -         'n:540025035:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'c'
+  ...
+          intentions: {
+  +         'o:3484486039:1': [
+  -         'o:540025035:1': [
+              'join',
+              'n:WRITER:1',
+              'base',
+              'n:WRITER:2',
+              'base',
+  ...
+            ],
+  +         'o:3484486039:2': [
+  -         'o:540025035:2': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:1',
+              'n:WRITER:3',
+              'base',
+  ...
+          outcomes: {
+  +         'o:3484486039:1': 'applied',
+  +         'o:3484486039:2': 'applied'
+  -         'o:540025035:1': 'applied',
+  -         'o:540025035:2': 'applied'
+          },
+          retained: {
+  +         'n:3484486039:1': [
+  -         'n:540025035:1': [
+              'paragraph'
+            ],
+  +         'n:3484486039:2': [
+  -         'n:540025035:2': [
+              'paragraph'
+            ],
+  +         'n:3484486039:3': [
+  -         'n:540025035:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:3484486039:1': {
+  -         'n:540025035:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true
+  ...
+            },
+  +         'n:3484486039:2': {
+  -         'n:540025035:2': {
+              identity: 'WRITER:8',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  ...
+            },
+  +         'n:3484486039:3': {
+  -         'n:540025035:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'c'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 5, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 6, touchedRanges: [], visible: [Array] }, { bias: 'right', node: 'n:WRITER:1', offset: 1, source: 'n:WRITER:1', sourceOffset: 1, type: 'position' } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 5, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 6, touchedRanges: [], visible: [Array] }, { bias: 'right', node: 'n:WRITER:1', offset: 1, source: 'n:WRITER:1', sourceOffset: 1, type: 'position' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: literal-code (3.584333ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:1932763165:1': [
+  -         'n:1737777812:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1932763165:1': {
+  -         'n:1737777812:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: '  a\n\n b\t'
+  ...
+          retained: {
+  +         'n:1932763165:1': [
+  -         'n:1737777812:1': [
+              'code',
+              'mystery'
+            ]
+          },
+          sources: {
+  +         'n:1932763165:1': {
+  -         'n:1737777812:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true
+  ...
+          retained: {
+  +         'n:1932763165:1': [
+  -         'n:1737777812:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1932763165:1': {
+  -         'n:1737777812:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {
+                    bold: true
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: list-quote-nesting (21.517375ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1',
+          'n:WRITER:2',
+  ...
+          retained: {
+  +         'n:595117529:1': [
+  -         'n:639238329:1': [
+              'paragraph'
+            ],
+  +         'n:595117529:2': [
+  -         'n:639238329:2': [
+              'paragraph'
+            ],
+  +         'n:595117529:3': [
+  -         'n:639238329:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:595117529:1': {
+  -         'n:639238329:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'one'
+  ...
+            },
+  +         'n:595117529:2': {
+  -         'n:639238329:2': {
+              identity: 'WRITER:10',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'two'
+  ...
+            },
+  +         'n:595117529:3': {
+  -         'n:639238329:3': {
+              identity: 'WRITER:18',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'three'
+  ...
+          containers: {
+  +         'c:595117529:1': [
+  -         'c:639238329:1': [
+              'ordered',
+              4
+            ]
+          },
+          controls: {},
+          deleted: [],
+          intentions: {
+  +         'o:595117529:1': [
+  -         'o:639238329:1': [
+              'place',
+              'c:WRITER:1',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:595117529:2': [
+  -         'o:639238329:2': [
+              'place',
+              'n:WRITER:1',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:3': [
+  -         'o:639238329:3': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:4': [
+  -         'o:639238329:4': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:595117529:1': 'applied',
+  +         'o:595117529:2': 'applied',
+  +         'o:595117529:3': 'applied',
+  +         'o:595117529:4': 'applied'
+  -         'o:639238329:1': 'applied',
+  -         'o:639238329:2': 'applied',
+  -         'o:639238329:3': 'applied',
+  -         'o:639238329:4': 'applied'
+          },
+          retained: {
+  +         'n:595117529:1': [
+  -         'n:639238329:1': [
+              'paragraph'
+            ],
+  +         'n:595117529:2': [
+  -         'n:639238329:2': [
+              'paragraph'
+            ],
+  +         'n:595117529:3': [
+  -         'n:639238329:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:595117529:1': {
+  -         'n:639238329:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'one'
+  ...
+            },
+  +         'n:595117529:2': {
+  -         'n:639238329:2': {
+              identity: 'WRITER:10',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'two'
+  ...
+            },
+  +         'n:595117529:3': {
+  -         'n:639238329:3': {
+              identity: 'WRITER:18',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'three'
+  ...
+          containers: {
+  +         'c:595117529:1': [
+  -         'c:639238329:1': [
+              'ordered',
+              4
+            ],
+  +         'c:595117529:2': [
+  -         'c:639238329:2': [
+              'ordered',
+              4
+            ]
+          },
+          controls: {},
+          deleted: [],
+          intentions: {
+  +         'o:595117529:1': [
+  -         'o:639238329:1': [
+              'place',
+              'c:WRITER:1',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:595117529:2': [
+  -         'o:639238329:2': [
+              'place',
+              'n:WRITER:1',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:3': [
+  -         'o:639238329:3': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:4': [
+  -         'o:639238329:4': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:5': [
+  -         'o:639238329:5': [
+              'place',
+              'c:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:6': [
+  -         'o:639238329:6': [
+              'place',
+              'n:WRITER:2',
+              'o:WRITER:3',
+              'c:WRITER:2',
+              'o:WRITER:5',
+  ...
+          outcomes: {
+  +         'o:595117529:1': 'applied',
+  +         'o:595117529:2': 'applied',
+  +         'o:595117529:3': 'applied',
+  +         'o:595117529:4': 'applied',
+  +         'o:595117529:5': 'applied',
+  +         'o:595117529:6': 'applied'
+  -         'o:639238329:1': 'applied',
+  -         'o:639238329:2': 'applied',
+  -         'o:639238329:3': 'applied',
+  -         'o:639238329:4': 'applied',
+  -         'o:639238329:5': 'applied',
+  -         'o:639238329:6': 'applied'
+          },
+          retained: {
+  +         'n:595117529:1': [
+  -         'n:639238329:1': [
+              'paragraph'
+            ],
+  +         'n:595117529:2': [
+  -         'n:639238329:2': [
+              'paragraph'
+            ],
+  +         'n:595117529:3': [
+  -         'n:639238329:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:595117529:1': {
+  -         'n:639238329:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'one'
+  ...
+            },
+  +         'n:595117529:2': {
+  -         'n:639238329:2': {
+              identity: 'WRITER:10',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'two'
+  ...
+            },
+  +         'n:595117529:3': {
+  -         'n:639238329:3': {
+              identity: 'WRITER:18',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'three'
+  ...
+          containers: {
+  +         'c:595117529:1': [
+  -         'c:639238329:1': [
+              'ordered',
+              4
+            ],
+  +         'c:595117529:2': [
+  -         'c:639238329:2': [
+              'ordered',
+              4
+            ]
+          },
+          controls: {},
+          deleted: [],
+          intentions: {
+  +         'o:595117529:1': [
+  -         'o:639238329:1': [
+              'place',
+              'c:WRITER:1',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:595117529:2': [
+  -         'o:639238329:2': [
+              'place',
+              'n:WRITER:1',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:3': [
+  -         'o:639238329:3': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:4': [
+  -         'o:639238329:4': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:5': [
+  -         'o:639238329:5': [
+              'place',
+              'c:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:6': [
+  -         'o:639238329:6': [
+              'place',
+              'n:WRITER:2',
+              'o:WRITER:3',
+              'c:WRITER:2',
+              'o:WRITER:5',
+  ...
+            ],
+  +         'o:595117529:7': [
+  -         'o:639238329:7': [
+              'place',
+              'n:WRITER:2',
+              'o:WRITER:6',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:595117529:1': 'applied',
+  +         'o:595117529:2': 'applied',
+  +         'o:595117529:3': 'applied',
+  +         'o:595117529:4': 'applied',
+  +         'o:595117529:5': 'applied',
+  +         'o:595117529:6': 'applied',
+  +         'o:595117529:7': 'applied'
+  -         'o:639238329:1': 'applied',
+  -         'o:639238329:2': 'applied',
+  -         'o:639238329:3': 'applied',
+  -         'o:639238329:4': 'applied',
+  -         'o:639238329:5': 'applied',
+  -         'o:639238329:6': 'applied',
+  -         'o:639238329:7': 'applied'
+          },
+          retained: {
+  +         'n:595117529:1': [
+  -         'n:639238329:1': [
+              'paragraph'
+            ],
+  +         'n:595117529:2': [
+  -         'n:639238329:2': [
+              'paragraph'
+            ],
+  +         'n:595117529:3': [
+  -         'n:639238329:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:595117529:1': {
+  -         'n:639238329:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'one'
+  ...
+            },
+  +         'n:595117529:2': {
+  -         'n:639238329:2': {
+              identity: 'WRITER:10',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'two'
+  ...
+            },
+  +         'n:595117529:3': {
+  -         'n:639238329:3': {
+              identity: 'WRITER:18',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'three'
+  ...
+          checks: {
+  +         'n:595117529:1': [
+  -         'n:639238329:1': [
+              'check',
+              true
+            ]
+          },
+          containers: {
+  +         'c:595117529:1': [
+  -         'c:639238329:1': [
+              'checklist'
+            ],
+  +         'c:595117529:2': [
+  -         'c:639238329:2': [
+              'ordered',
+              4
+            ]
+          },
+          controls: {},
+          deleted: [],
+          intentions: {
+  +         'o:595117529:1': [
+  -         'o:639238329:1': [
+              'place',
+              'c:WRITER:1',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:595117529:2': [
+  -         'o:639238329:2': [
+              'place',
+              'n:WRITER:1',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:3': [
+  -         'o:639238329:3': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:4': [
+  -         'o:639238329:4': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:5': [
+  -         'o:639238329:5': [
+              'place',
+              'c:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:6': [
+  -         'o:639238329:6': [
+              'place',
+              'n:WRITER:2',
+              'o:WRITER:3',
+              'c:WRITER:2',
+              'o:WRITER:5',
+  ...
+            ],
+  +         'o:595117529:7': [
+  -         'o:639238329:7': [
+              'place',
+              'n:WRITER:2',
+              'o:WRITER:6',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+          outcomes: {
+  +         'o:595117529:1': 'applied',
+  +         'o:595117529:2': 'applied',
+  +         'o:595117529:3': 'applied',
+  +         'o:595117529:4': 'applied',
+  +         'o:595117529:5': 'applied',
+  +         'o:595117529:6': 'applied',
+  +         'o:595117529:7': 'applied'
+  -         'o:639238329:1': 'applied',
+  -         'o:639238329:2': 'applied',
+  -         'o:639238329:3': 'applied',
+  -         'o:639238329:4': 'applied',
+  -         'o:639238329:5': 'applied',
+  -         'o:639238329:6': 'applied',
+  -         'o:639238329:7': 'applied'
+          },
+          retained: {
+  +         'n:595117529:1': [
+  -         'n:639238329:1': [
+              'paragraph'
+            ],
+  +         'n:595117529:2': [
+  -         'n:639238329:2': [
+              'paragraph'
+            ],
+  +         'n:595117529:3': [
+  -         'n:639238329:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:595117529:1': {
+  -         'n:639238329:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'one'
+  ...
+            },
+  +         'n:595117529:2': {
+  -         'n:639238329:2': {
+              identity: 'WRITER:10',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'two'
+  ...
+            },
+  +         'n:595117529:3': {
+  -         'n:639238329:3': {
+              identity: 'WRITER:18',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'three'
+  ...
+          checks: {
+  +         'n:595117529:1': [
+  -         'n:639238329:1': [
+              'check',
+              true
+            ]
+          },
+          containers: {
+  +         'c:595117529:1': [
+  -         'c:639238329:1': [
+              'checklist'
+            ],
+  +         'c:595117529:2': [
+  -         'c:639238329:2': [
+              'ordered',
+              4
+            ],
+  +         'c:595117529:3': [
+  -         'c:639238329:3': [
+              'quote'
+            ]
+          },
+          controls: {},
+          deleted: [],
+          intentions: {
+  +         'o:595117529:1': [
+  -         'o:639238329:1': [
+              'place',
+              'c:WRITER:1',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:595117529:2': [
+  -         'o:639238329:2': [
+              'place',
+              'n:WRITER:1',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:3': [
+  -         'o:639238329:3': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:4': [
+  -         'o:639238329:4': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:5': [
+  -         'o:639238329:5': [
+              'place',
+              'c:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:6': [
+  -         'o:639238329:6': [
+              'place',
+              'n:WRITER:2',
+              'o:WRITER:3',
+              'c:WRITER:2',
+              'o:WRITER:5',
+  ...
+            ],
+  +         'o:595117529:7': [
+  -         'o:639238329:7': [
+              'place',
+              'n:WRITER:2',
+              'o:WRITER:6',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:8': [
+  -         'o:639238329:8': [
+              'place',
+              'c:WRITER:3',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:595117529:9': [
+  -         'o:639238329:9': [
+              'place',
+              'c:WRITER:1',
+              'o:WRITER:1',
+              'c:WRITER:3',
+              'o:WRITER:8',
+  ...
+          outcomes: {
+  +         'o:595117529:1': 'applied',
+  +         'o:595117529:2': 'applied',
+  +         'o:595117529:3': 'applied',
+  +         'o:595117529:4': 'applied',
+  +         'o:595117529:5': 'applied',
+  +         'o:595117529:6': 'applied',
+  +         'o:595117529:7': 'losing',
+  +         'o:595117529:8': 'applied',
+  +         'o:595117529:9': 'applied'
+  -         'o:639238329:1': 'applied',
+  -         'o:639238329:2': 'applied',
+  -         'o:639238329:3': 'applied',
+  -         'o:639238329:4': 'applied',
+  -         'o:639238329:5': 'applied',
+  -         'o:639238329:6': 'applied',
+  -         'o:639238329:7': 'losing',
+  -         'o:639238329:8': 'applied',
+  -         'o:639238329:9': 'applied'
+          },
+          retained: {
+  +         'n:595117529:1': [
+  -         'n:639238329:1': [
+              'paragraph'
+            ],
+  +         'n:595117529:2': [
+  -         'n:639238329:2': [
+              'paragraph'
+            ],
+  +         'n:595117529:3': [
+  -         'n:639238329:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:595117529:1': {
+  -         'n:639238329:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'one'
+  ...
+            },
+  +         'n:595117529:2': {
+  -         'n:639238329:2': {
+              identity: 'WRITER:10',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'two'
+  ...
+            },
+  +         'n:595117529:3': {
+  -         'n:639238329:3': {
+              identity: 'WRITER:18',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'three'
+  ...
+          checks: {
+  +         'n:595117529:1': [
+  -         'n:639238329:1': [
+              'check',
+              true
+            ]
+          },
+          containers: {
+  +         'c:595117529:1': [
+  -         'c:639238329:1': [
+              'checklist'
+            ],
+  +         'c:595117529:2': [
+  -         'c:639238329:2': [
+              'ordered',
+              4
+            ],
+  +         'c:595117529:3': [
+  -         'c:639238329:3': [
+              'quote'
+            ]
+          },
+          controls: {
+  +         'c:595117529:3': [
+  -         'c:639238329:3': [
+              'enabled',
+              false
+            ],
+  +         'o:595117529:8': [
+  -         'o:639238329:8': [
+              'enabled',
+              false
+            ],
+  +         'o:595117529:9': [
+  -         'o:639238329:9': [
+              'enabled',
+              false
+            ]
+          },
+          deleted: [
+  ...
+          intentions: {
+  +         'o:595117529:1': [
+  -         'o:639238329:1': [
+              'place',
+              'c:WRITER:1',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:595117529:2': [
+  -         'o:639238329:2': [
+              'place',
+              'n:WRITER:1',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:3': [
+  -         'o:639238329:3': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:4': [
+  -         'o:639238329:4': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:5': [
+  -         'o:639238329:5': [
+              'place',
+              'c:WRITER:2',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:6': [
+  -         'o:639238329:6': [
+              'place',
+              'n:WRITER:2',
+              'o:WRITER:3',
+              'c:WRITER:2',
+              'o:WRITER:5',
+  ...
+            ],
+  +         'o:595117529:7': [
+  -         'o:639238329:7': [
+              'place',
+              'n:WRITER:2',
+              'o:WRITER:6',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:595117529:8': [
+  -         'o:639238329:8': [
+              'place',
+              'c:WRITER:3',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:595117529:9': [
+  -         'o:639238329:9': [
+              'place',
+              'c:WRITER:1',
+              'o:WRITER:1',
+              'c:WRITER:3',
+              'o:WRITER:8',
+  ...
+          outcomes: {
+  +         'o:595117529:1': 'applied',
+  +         'o:595117529:2': 'applied',
+  +         'o:595117529:3': 'applied',
+  +         'o:595117529:4': 'applied',
+  +         'o:595117529:5': 'applied',
+  +         'o:595117529:6': 'applied',
+  +         'o:595117529:7': 'applied',
+  +         'o:595117529:8': 'disabled',
+  +         'o:595117529:9': 'disabled'
+  -         'o:639238329:1': 'applied',
+  -         'o:639238329:2': 'applied',
+  -         'o:639238329:3': 'applied',
+  -         'o:639238329:4': 'applied',
+  -         'o:639238329:5': 'applied',
+  -         'o:639238329:6': 'applied',
+  -         'o:639238329:7': 'applied',
+  -         'o:639238329:8': 'disabled',
+  -         'o:639238329:9': 'disabled'
+          },
+          retained: {
+  +         'n:595117529:1': [
+  -         'n:639238329:1': [
+              'paragraph'
+            ],
+  +         'n:595117529:2': [
+  -         'n:639238329:2': [
+              'paragraph'
+            ],
+  +         'n:595117529:3': [
+  -         'n:639238329:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:595117529:1': {
+  -         'n:639238329:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'one'
+  ...
+            },
+  +         'n:595117529:2': {
+  -         'n:639238329:2': {
+              identity: 'WRITER:10',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'two'
+  ...
+            },
+  +         'n:595117529:3': {
+  -         'n:639238329:3': {
+              identity: 'WRITER:18',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'three'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 5, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 6, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [Array], retainedStructure: [Object], revision: 7, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 5, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 6, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [Array], retainedStructure: [Object], revision: 7, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: list-enter-backspace (4.718667ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:1004349598:1': [
+  -         'n:767422655:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1004349598:1': {
+  -         'n:767422655:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          containers: {
+  +         'c:1004349598:1': [
+  -         'c:767422655:1': [
+              'unordered'
+            ]
+          },
+          controls: {},
+          deleted: [],
+          intentions: {
+  +         'o:1004349598:1': [
+  -         'o:767422655:1': [
+              'place',
+              'c:WRITER:1',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:1004349598:2': [
+  -         'o:767422655:2': [
+              'place',
+              'n:WRITER:1',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:1004349598:3': [
+  -         'o:767422655:3': [
+              'split',
+              'n:WRITER:1',
+              'o:WRITER:2',
+              0,
+              'n:WRITER:1',
+              [
+                0,
+  +             158,
+  +             209,
+  +             244,
+  +             222,
+  -             191,
+  -             225,
+  -             247,
+  -             237,
+  -             2,
+                3,
+  +             3,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+  ...
+          outcomes: {
+  +         'o:1004349598:1': 'applied',
+  +         'o:1004349598:2': 'applied',
+  +         'o:1004349598:3': 'applied'
+  -         'o:767422655:1': 'applied',
+  -         'o:767422655:2': 'applied',
+  -         'o:767422655:3': 'applied'
+          },
+          retained: {
+  +         'n:1004349598:1': [
+  -         'n:767422655:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1004349598:1': {
+  -         'n:767422655:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          containers: {
+  +         'c:1004349598:1': [
+  -         'c:767422655:1': [
+              'unordered'
+            ]
+          },
+          controls: {},
+          deleted: [],
+          intentions: {
+  +         'o:1004349598:1': [
+  -         'o:767422655:1': [
+              'place',
+              'c:WRITER:1',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:1004349598:2': [
+  -         'o:767422655:2': [
+              'place',
+              'n:WRITER:1',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:1004349598:3': [
+  -         'o:767422655:3': [
+              'split',
+              'n:WRITER:1',
+              'o:WRITER:2',
+              0,
+              'n:WRITER:1',
+              [
+                0,
+  +             158,
+  +             209,
+  +             244,
+  +             222,
+  -             191,
+  -             225,
+  -             247,
+  -             237,
+  -             2,
+                3,
+  +             3,
+                65
+              ],
+              [
+                'paragraph'
+              ]
+            ],
+  +         'o:1004349598:4': [
+  -         'o:767422655:4': [
+              'join',
+              'n:WRITER:1',
+              'o:WRITER:3',
+              'o:WRITER:3',
+              'o:WRITER:3',
+  ...
+          outcomes: {
+  +         'o:1004349598:1': 'applied',
+  +         'o:1004349598:2': 'applied',
+  +         'o:1004349598:3': 'applied',
+  +         'o:1004349598:4': 'applied'
+  -         'o:767422655:1': 'applied',
+  -         'o:767422655:2': 'applied',
+  -         'o:767422655:3': 'applied',
+  -         'o:767422655:4': 'applied'
+          },
+          retained: {
+  +         'n:1004349598:1': [
+  -         'n:767422655:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1004349598:1': {
+  -         'n:767422655:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: empty-item-exit (2.163708ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:3775528487:1': [
+  -         'n:1648138688:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:3775528487:1': {
+  -         'n:1648138688:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          containers: {
+  +         'c:3775528487:1': [
+  -         'c:1648138688:1': [
+              'checklist'
+            ]
+          },
+          controls: {},
+          deleted: [],
+          intentions: {
+  +         'o:3775528487:1': [
+  -         'o:1648138688:1': [
+              'place',
+              'c:WRITER:1',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:3775528487:2': [
+  -         'o:1648138688:2': [
+              'place',
+              'n:WRITER:1',
+              'base',
+              'c:WRITER:1',
+              'o:WRITER:1',
+  ...
+            ],
+  +         'o:3775528487:3': [
+  -         'o:1648138688:3': [
+              'place',
+              'n:WRITER:1',
+              'o:WRITER:2',
+              '@root',
+              'base',
+  ...
+          outcomes: {
+  +         'o:3775528487:1': 'applied',
+  +         'o:3775528487:2': 'applied',
+  +         'o:3775528487:3': 'applied'
+  -         'o:1648138688:1': 'applied',
+  -         'o:1648138688:2': 'applied',
+  -         'o:1648138688:3': 'applied'
+          },
+          retained: {
+  +         'n:3775528487:1': [
+  -         'n:1648138688:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:3775528487:1': {
+  -         'n:1648138688:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: separator-access (4.260584ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:2467703779:1': [
+  -         'n:2813779175:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2467703779:1': {
+  -         'n:2813779175:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          intentions: {
+  +         'o:2467703779:1': [
+  -         'o:2813779175:1': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              '@root',
+              'base',
+  ...
+          outcomes: {
+  +         'o:2467703779:1': 'applied'
+  -         'o:2813779175:1': 'applied'
+          },
+          retained: {
+  +         'n:2467703779:1': [
+  -         'n:2813779175:1': [
+              'separator'
+            ],
+  +         'n:2467703779:2': [
+  -         'n:2813779175:2': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2467703779:1': {
+  -         'n:2813779175:1': {
+              identity: 'WRITER:2',
+              runs: []
+            },
+  +         'n:2467703779:2': {
+  -         'n:2813779175:2': {
+              identity: 'WRITER:8',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          intentions: {
+  +         'o:2467703779:1': [
+  -         'o:2813779175:1': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:2467703779:2': [
+  -         'o:2813779175:2': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              '@root',
+              'base',
+  ...
+          outcomes: {
+  +         'o:2467703779:1': 'applied',
+  +         'o:2467703779:2': 'applied'
+  -         'o:2813779175:1': 'applied',
+  -         'o:2813779175:2': 'applied'
+          },
+          retained: {
+  +         'n:2467703779:1': [
+  -         'n:2813779175:1': [
+              'separator'
+            ],
+  +         'n:2467703779:2': [
+  -         'n:2813779175:2': [
+              'paragraph'
+            ],
+  +         'n:2467703779:3': [
+  -         'n:2813779175:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2467703779:1': {
+  -         'n:2813779175:1': {
+              identity: 'WRITER:2',
+              runs: []
+            },
+  +         'n:2467703779:2': {
+  -         'n:2813779175:2': {
+              identity: 'WRITER:8',
+              runs: []
+            },
+  +         'n:2467703779:3': {
+  -         'n:2813779175:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'new'
+  ...
+          controls: {
+  +         'n:2467703779:1': [
+  -         'n:2813779175:1': [
+              'enabled',
+              false
+            ]
+          },
+          deleted: [
+  ...
+          intentions: {
+  +         'o:2467703779:1': [
+  -         'o:2813779175:1': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:2467703779:2': [
+  -         'o:2813779175:2': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              '@root',
+              'base',
+  ...
+          outcomes: {
+  +         'o:2467703779:1': 'applied',
+  +         'o:2467703779:2': 'applied'
+  -         'o:2813779175:1': 'applied',
+  -         'o:2813779175:2': 'applied'
+          },
+          retained: {
+  +         'n:2467703779:1': [
+  -         'n:2813779175:1': [
+              'separator'
+            ],
+  +         'n:2467703779:2': [
+  -         'n:2813779175:2': [
+              'paragraph'
+            ],
+  +         'n:2467703779:3': [
+  -         'n:2813779175:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:2467703779:1': {
+  -         'n:2813779175:1': {
+              identity: 'WRITER:2',
+              runs: []
+            },
+  +         'n:2467703779:2': {
+  -         'n:2813779175:2': {
+              identity: 'WRITER:8',
+              runs: []
+            },
+  +         'n:2467703779:3': {
+  -         'n:2813779175:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'new'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [Array], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [Array], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: separator-insert (3.048208ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:748209752:1': [
+  -         'n:1119918198:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:748209752:1': {
+  -         'n:1119918198:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a'
+  ...
+          intentions: {
+  +         'o:748209752:1': [
+  -         'o:1119918198:1': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              '@root',
+              'base',
+  ...
+          outcomes: {
+  +         'o:748209752:1': 'applied'
+  -         'o:1119918198:1': 'applied'
+          },
+          retained: {
+  +         'n:748209752:1': [
+  -         'n:1119918198:1': [
+              'paragraph'
+            ],
+  +         'n:748209752:2': [
+  -         'n:1119918198:2': [
+              'separator'
+            ]
+          },
+          sources: {
+  +         'n:748209752:1': {
+  -         'n:1119918198:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a'
+  ...
+            },
+  +         'n:748209752:2': {
+  -         'n:1119918198:2': {
+              identity: 'WRITER:8',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          intentions: {
+  +         'o:748209752:1': [
+  -         'o:1119918198:1': [
+              'place',
+              'n:WRITER:2',
+              'base',
+              '@root',
+              'base',
+  ...
+            ],
+  +         'o:748209752:2': [
+  -         'o:1119918198:2': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              '@root',
+              'base',
+  ...
+          outcomes: {
+  +         'o:748209752:1': 'applied',
+  +         'o:748209752:2': 'applied'
+  -         'o:1119918198:1': 'applied',
+  -         'o:1119918198:2': 'applied'
+          },
+          retained: {
+  +         'n:748209752:1': [
+  -         'n:1119918198:1': [
+              'paragraph'
+            ],
+  +         'n:748209752:2': [
+  -         'n:1119918198:2': [
+              'separator'
+            ],
+  +         'n:748209752:3': [
+  -         'n:1119918198:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:748209752:1': {
+  -         'n:1119918198:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a'
+  ...
+            },
+  +         'n:748209752:2': {
+  -         'n:1119918198:2': {
+              identity: 'WRITER:8',
+              runs: []
+            },
+  +         'n:748209752:3': {
+  -         'n:1119918198:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: semantic-move (4.26075ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1',
+          'n:WRITER:2',
+  ...
+          retained: {
+  +         'n:1529049405:1': [
+  -         'n:3314639328:1': [
+              'paragraph'
+            ],
+  +         'n:1529049405:2': [
+  -         'n:3314639328:2': [
+              'paragraph'
+            ],
+  +         'n:1529049405:3': [
+  -         'n:3314639328:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1529049405:1': {
+  -         'n:3314639328:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a'
+  ...
+            },
+  +         'n:1529049405:2': {
+  -         'n:3314639328:2': {
+              identity: 'WRITER:8',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  ...
+            },
+  +         'n:1529049405:3': {
+  -         'n:3314639328:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'c'
+  ...
+          intentions: {
+  +         'o:1529049405:1': [
+  -         'o:3314639328:1': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              '@root',
+              'base',
+  ...
+          outcomes: {
+  +         'o:1529049405:1': 'applied'
+  -         'o:3314639328:1': 'applied'
+          },
+          retained: {
+  +         'n:1529049405:1': [
+  -         'n:3314639328:1': [
+              'paragraph'
+            ],
+  +         'n:1529049405:2': [
+  -         'n:3314639328:2': [
+              'paragraph'
+            ],
+  +         'n:1529049405:3': [
+  -         'n:3314639328:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1529049405:1': {
+  -         'n:3314639328:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a'
+  ...
+            },
+  +         'n:1529049405:2': {
+  -         'n:3314639328:2': {
+              identity: 'WRITER:8',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  ...
+            },
+  +         'n:1529049405:3': {
+  -         'n:3314639328:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'c'
+  ...
+          controls: {
+  +         'o:1529049405:1': [
+  -         'o:3314639328:1': [
+              'enabled',
+              false
+            ]
+          },
+          deleted: [],
+          intentions: {
+  +         'o:1529049405:1': [
+  -         'o:3314639328:1': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              '@root',
+              'base',
+  ...
+          outcomes: {
+  +         'o:1529049405:1': 'disabled'
+  -         'o:3314639328:1': 'disabled'
+          },
+          retained: {
+  +         'n:1529049405:1': [
+  -         'n:3314639328:1': [
+              'paragraph'
+            ],
+  +         'n:1529049405:2': [
+  -         'n:3314639328:2': [
+              'paragraph'
+            ],
+  +         'n:1529049405:3': [
+  -         'n:3314639328:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1529049405:1': {
+  -         'n:3314639328:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a'
+  ...
+            },
+  +         'n:1529049405:2': {
+  -         'n:3314639328:2': {
+              identity: 'WRITER:8',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  ...
+            },
+  +         'n:1529049405:3': {
+  -         'n:3314639328:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'c'
+  ...
+          controls: {
+  +         'o:1529049405:1': [
+  -         'o:3314639328:1': [
+              'enabled',
+              true
+            ]
+          },
+          deleted: [],
+          intentions: {
+  +         'o:1529049405:1': [
+  -         'o:3314639328:1': [
+              'place',
+              'n:WRITER:3',
+              'base',
+              '@root',
+              'base',
+  ...
+          outcomes: {
+  +         'o:1529049405:1': 'applied'
+  -         'o:3314639328:1': 'applied'
+          },
+          retained: {
+  +         'n:1529049405:1': [
+  -         'n:3314639328:1': [
+              'paragraph'
+            ],
+  +         'n:1529049405:2': [
+  -         'n:3314639328:2': [
+              'paragraph'
+            ],
+  +         'n:1529049405:3': [
+  -         'n:3314639328:3': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1529049405:1': {
+  -         'n:3314639328:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'a'
+  ...
+            },
+  +         'n:1529049405:2': {
+  -         'n:3314639328:2': {
+              identity: 'WRITER:8',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'b'
+  ...
+            },
+  +         'n:1529049405:3': {
+  -         'n:3314639328:3': {
+              identity: 'WRITER:14',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'c'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 1, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-commands.test.mjs:53:37
+✖ shared production engine fixture: history-grouping (3.11375ms)
+  AssertionError [ERR_ASSERTION]: native/WASM full snapshot parity
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        changedNodes: [
+          'n:WRITER:1'
+        ],
+  ...
+          retained: {
+  +         'n:1650922919:1': [
+  -         'n:1479166655:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1650922919:1': {
+  -         'n:1479166655:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          retained: {
+  +         'n:1650922919:1': [
+  -         'n:1479166655:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1650922919:1': {
+  -         'n:1479166655:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          retained: {
+  +         'n:1650922919:1': [
+  -         'n:1479166655:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1650922919:1': {
+  -         'n:1479166655:1': {
+              identity: 'WRITER:2',
+              runs: []
+            }
+          },
+          visible: [
+  ...
+          retained: {
+  +         'n:1650922919:1': [
+  -         'n:1479166655:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1650922919:1': {
+  -         'n:1479166655:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  ...
+          retained: {
+  +         'n:1650922919:1': [
+  -         'n:1479166655:1': [
+              'paragraph'
+            ]
+          },
+          sources: {
+  +         'n:1650922919:1': {
+  -         'n:1479166655:1': {
+              identity: 'WRITER:2',
+              runs: [
+                {
+                  attributes: {},
+                  insert: 'ab'
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:82:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [Array], visible: [Array] }, { changedNodes: [], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    expected: [ { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 0, touchedRanges: [], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 2, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 3, touchedRanges: [Array], visible: [Array] }, { changedNodes: [Array], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [Array], visible: [Array] }, { changedNodes: [], identity: [Object], recovery: [], retainedStructure: [Object], revision: 4, touchedRanges: [], visible: [Array] } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

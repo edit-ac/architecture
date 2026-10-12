@@ -1,0 +1,112 @@
+   Compiling unicode-ident v1.0.26
+   Compiling proc-macro2 v1.0.107
+   Compiling wasm-bindgen-shared v0.2.129
+   Compiling quote v1.0.47
+   Compiling syn v3.0.7
+   Compiling synstructure v0.14.0
+   Compiling wasm-bindgen-macro-support v0.2.129
+   Compiling zerovec-derive v0.11.6
+   Compiling displaydoc v0.2.7
+   Compiling thiserror-impl v2.0.21
+   Compiling serde_derive v1.0.229
+   Compiling async-trait v0.1.92
+   Compiling zerofrom-derive v0.1.8
+   Compiling yoke-derive v0.8.3
+   Compiling zerofrom v0.1.8
+   Compiling thiserror v2.0.21
+   Compiling serde v1.0.229
+   Compiling wasm-bindgen-macro v0.2.129
+   Compiling yoke v0.8.3
+   Compiling wasm-bindgen v0.2.129
+   Compiling yrs v0.28.0
+   Compiling zerovec v0.11.8
+   Compiling zerotrie v0.2.5
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+   Compiling icu_collections v2.3.0
+   Compiling icu_locale_core v2.3.0
+   Compiling icu_provider v2.3.1
+   Compiling icu_normalizer v2.3.0
+   Compiling icu_properties v2.3.0
+   Compiling idna_adapter v1.2.2
+   Compiling idna v1.1.0
+   Compiling url v2.5.8
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+   Compiling editac-wasm v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-wasm)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 24.35s
+     Running unittests src/lib.rs (target/debug/deps/editac_wasm-f76f8271ae3805e6)
+
+running 21 tests
+test cases::invalid_requests_preserve_exact_bytes_revision_and_history ... FAILED
+test cases::heading_levels ... FAILED
+test cases::malformed_creation_does_not_reserve_document_identity ... ok
+test cases::literal_code ... FAILED
+test cases::history_grouping ... FAILED
+test cases::plans_are_scoped_single_use_and_stale_commits_are_atomic ... ok
+test cases::empty_item_exit ... ok
+test cases::list_enter_backspace ... ok
+test cases::separator_access ... FAILED
+test cases::separator_insert ... ok
+test cases::semantic_move ... ok
+test cases::split_empty ... ok
+test cases::rich_marks ... ok
+test cases::retained_join ... FAILED
+test cases::split_start ... ok
+test cases::split_middle ... ok
+test cases::text_insert_delete ... ok
+test cases::unicode_replace ... ok
+test cases::split_end ... ok
+test cases::list_quote_nesting ... ok
+test cases::handle_tables_have_enforced_limits_and_reusable_capacity ... ok
+
+failures:
+
+---- cases::invalid_requests_preserve_exact_bytes_revision_and_history stdout ----
+
+thread 'cases::invalid_requests_preserve_exact_bytes_revision_and_history' (153761406) panicked at crates/editac-wasm/src/cases.rs:256:5:
+assertion failed: b.history("{\"type\":\"clear\",\"extra\":1}").is_err()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- cases::heading_levels stdout ----
+
+thread 'cases::heading_levels' (153761404) panicked at crates/editac-wasm/src/cases.rs:51:9:
+assertion `left == right` failed
+  left: Array [String("heading"), Number(1.0)]
+ right: Array [String("heading"), Number(1)]
+
+---- cases::literal_code stdout ----
+
+thread 'cases::literal_code' (153761409) panicked at crates/editac-wasm/src/cases.rs:64:9:
+unexpected "bold"
+
+---- cases::history_grouping stdout ----
+
+thread 'cases::history_grouping' (153761405) panicked at crates/editac-wasm/src/cases.rs:46:5:
+assertion `left == right` failed
+  left: Array [String("a")]
+ right: Array [String("")]
+
+---- cases::separator_access stdout ----
+
+thread 'cases::separator_access' (153761423) panicked at crates/editac-wasm/src/cases.rs:46:5:
+assertion `left == right` failed
+  left: Array [String("new"), String("")]
+ right: Array [String(""), String("new")]
+
+---- cases::retained_join stdout ----
+
+thread 'cases::retained_join' (153761420) panicked at crates/editac-wasm/src/cases.rs:64:9:
+unexpected "bold"
+
+
+failures:
+    cases::heading_levels
+    cases::history_grouping
+    cases::invalid_requests_preserve_exact_bytes_revision_and_history
+    cases::literal_code
+    cases::retained_join
+    cases::separator_access
+
+test result: FAILED. 15 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.76s
+
+error: test failed, to rerun pass `-p editac-wasm --lib`

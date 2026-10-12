@@ -1,0 +1,97 @@
+diff --git a/crates/editac-wasm/Cargo.toml b/crates/editac-wasm/Cargo.toml
+index a6bdeaa..c15e50b 100644
+--- a/crates/editac-wasm/Cargo.toml
++++ b/crates/editac-wasm/Cargo.toml
+@@ -1,6 +1,6 @@
+ [package]
+ name = "editac-wasm"
+-description = "Minimal edit.ac foundation WASM fixture bridge"
++description = "edit.ac semantic engine WASM bridge"
+ version.workspace = true
+ edition.workspace = true
+ rust-version.workspace = true
+@@ -15,6 +15,8 @@ crate-type = ["cdylib", "rlib"]
+ editac-core = { path = "../editac-core" }
+ wasm-bindgen.workspace = true
+ yrs.workspace = true
++serde = { version = "=1.0.229", features = ["derive"] }
++serde_json = "=1.0.152"
+ 
+ [lints]
+ workspace = true
+diff --git a/crates/editac-wasm/src/lib.rs b/crates/editac-wasm/src/lib.rs
+index c39f65e..e944d69 100644
+--- a/crates/editac-wasm/src/lib.rs
++++ b/crates/editac-wasm/src/lib.rs
+@@ -1,4 +1,8 @@
+-//! Disposable foundation fixture bridge, not a production editor API.
++//! Semantic engine handles and the preserved foundation fixture bridge.
++mod bridge;
++#[cfg(test)]
++mod cases;
++mod engine;
+ use std::{cell::Cell, collections::HashMap};
+ use wasm_bindgen::prelude::*;
+ use yrs::{
+diff --git a/packages/core/package.json b/packages/core/package.json
+index 5e49800..76c1aef 100644
+--- a/packages/core/package.json
++++ b/packages/core/package.json
+@@ -2,7 +2,7 @@
+   "name": "@edit-ac/core",
+   "version": "0.0.0",
+   "private": true,
+-  "description": "Private foundation WASM fixture loading boundary",
++  "description": "Private semantic engine WASM loading boundary",
+   "license": "Apache-2.0",
+   "type": "module",
+   "repository": {
+diff --git a/packages/core/src/index.ts b/packages/core/src/index.ts
+index e4d950b..c27dec6 100644
+--- a/packages/core/src/index.ts
++++ b/packages/core/src/index.ts
+@@ -1,3 +1,7 @@
++import { createHandle, type CreateOptions, type EngineHandle, type RawEngine } from "./engine.js";
++export type { CreateOptions, EngineHandle, AnchorToken, PlanToken, Bias, StableRange, ContainerStyle, MoveTarget, EditorCommand, TextCommand, FormatAction, MarkCommand, BlockFormatCommand, PrepareRequest, Json, ProjectedNode, Snapshot, AnchorResolution, HistoryRequest, HistoryState } from "./engine.js";
++export { EngineError } from "./engine.js";
++
+ /** Disposable foundation fixture; callers must release its WASM allocation. */
+ export interface Fixture {
+   text(): string;
+@@ -7,7 +11,11 @@ export interface Fixture {
+   free(): void;
+ }
+ 
+-export interface FixtureRuntime {
++export interface EngineRuntime {
++  createEngine(options: CreateOptions): EngineHandle;
++}
++
++export interface FixtureRuntime extends EngineRuntime {
+   createFixture(): Fixture;
+   createdDocumentCount(): number;
+ }
+@@ -15,13 +23,14 @@ export interface FixtureRuntime {
+ interface Bindings {
+   default(options: { module_or_path: string }): Promise<unknown>;
+   Fixture: new () => Fixture;
++  Engine: new (input: string) => RawEngine;
+   created_document_count(): number;
+ }
+ 
+ let loading: { assetUrl: string; promise: Promise<FixtureRuntime> } | undefined;
+ 
+ /**
+- * Load the compiled fixture runtime explicitly. Import alone performs no I/O,
++ * Load the compiled semantic engine and preserved fixture runtime explicitly. Import alone performs no I/O,
+  * touches no browser globals and creates no document. One URL per module instance;
+  * concurrent calls share initialization and failed initialization can be retried.
+  */
+@@ -40,6 +49,7 @@ export function init(assetUrl: string): Promise<FixtureRuntime> {
+     const bindings = await import(gluePath) as Bindings;
+     await bindings.default({ module_or_path: assetUrl });
+     return Object.freeze({
++      createEngine: (options: CreateOptions) => createHandle(input => new bindings.Engine(input), options),
+       createFixture: () => new bindings.Fixture(),
+       createdDocumentCount: () => bindings.created_document_count(),
+     });

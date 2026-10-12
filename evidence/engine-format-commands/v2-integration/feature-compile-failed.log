@@ -1,0 +1,39 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0599]: no method named `apply_update` found for struct `editac_core::document::Document` in the current scope
+    --> crates/editac-core/tests/format_commands.rs:1409:11
+     |
+1409 |         d.apply_update(&editac_core::document::ReplayUpdate {
+     |         --^^^^^^^^^^^^ method not found in `editac_core::document::Document`
+
+error[E0599]: no method named `apply_update` found for struct `editac_core::document::Document` in the current scope
+    --> crates/editac-core/tests/format_commands.rs:1492:11
+     |
+1492 |         a.apply_update(&ub).unwrap();
+     |           ^^^^^^^^^^^^ method not found in `editac_core::document::Document`
+
+error[E0599]: no method named `apply_update` found for struct `editac_core::document::Document` in the current scope
+    --> crates/editac-core/tests/format_commands.rs:1493:11
+     |
+1493 |         b.apply_update(&ua).unwrap();
+     |           ^^^^^^^^^^^^ method not found in `editac_core::document::Document`
+
+error[E0599]: no method named `apply_update` found for struct `editac_core::document::Document` in the current scope
+    --> crates/editac-core/tests/format_commands.rs:1498:19
+     |
+1498 |                 r.apply_update([&ua, &ub][i]).unwrap();
+     |                   ^^^^^^^^^^^^ method not found in `editac_core::document::Document`
+
+error[E0599]: no method named `apply_update` found for struct `editac_core::document::Document` in the current scope
+    --> crates/editac-core/tests/format_commands.rs:1568:11
+     |
+1568 |         d.apply_update(&js).unwrap();
+     |           ^^^^^^^^^^^^ method not found in `editac_core::document::Document`
+
+error[E0599]: no method named `apply_update` found for struct `editac_core::document::Document` in the current scope
+    --> crates/editac-core/tests/format_commands.rs:1569:11
+     |
+1569 |         d.apply_update(&js).unwrap();
+     |           ^^^^^^^^^^^^ method not found in `editac_core::document::Document`
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `editac-core` (test "format_commands") due to 6 previous errors

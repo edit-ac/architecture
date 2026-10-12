@@ -1,0 +1,25 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 24.39s
+     Running unittests src/lib.rs (target/debug/deps/editac_core-17a9f05521d95bc3)
+
+running 2 tests
+test commands::text::tests::delete_only_remote_update_invalidates_plan_even_with_unchanged_state_vector ... ok
+test commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks ... FAILED
+
+failures:
+
+---- commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks stdout ----
+
+thread 'commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks' (150089997) panicked at crates/editac-core/src/commands/text.rs:333:9:
+assertion `left == right` failed
+  left: 1
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p editac-core --lib`

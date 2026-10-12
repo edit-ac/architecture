@@ -1,0 +1,29 @@
+{
+  "source_checkbox_count": 69,
+  "unchanged_original_text": true,
+  "source_sha256": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+  "new_parent_checked": "ENG-1.9",
+  "next_parent_unchecked": "ENG-1.11",
+  "checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "log": "core-diff-check.log"
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        "../architecture",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "log": "architecture-diff-check.log"
+    }
+  ]
+}

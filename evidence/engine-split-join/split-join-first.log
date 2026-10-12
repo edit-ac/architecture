@@ -1,0 +1,36 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: unused import: `encoder::Encode`
+  --> crates/editac-core/tests/split_join.rs:10:37
+   |
+10 | use yrs::updates::{decoder::Decode, encoder::Encode};
+   |                                     ^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused imports: `Assoc` and `IndexedSequence`
+  --> crates/editac-core/tests/split_join.rs:12:10
+   |
+12 |     Any, Assoc, ClientID, Doc, IndexedSequence, Map, OffsetKind, Options, Out, ReadTxn,
+   |          ^^^^^                 ^^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+   --> crates/editac-core/tests/split_join.rs:447:57
+    |
+447 |         Any::Array(vec![Any::from("@root"), Any::Number(u32::MAX as f64)].into()),
+    |                                             ----------- ^^^^^^^^^^^^^^^ expected `Number`, found `f64`
+    |                                             |
+    |                                             arguments to this enum variant are incorrect
+    |
+note: tuple variant defined here
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:21:5
+    |
+ 21 |     Number(Number),
+    |     ^^^^^^
+help: try wrapping the expression in `yrs::Number::Float`
+    |
+447 |         Any::Array(vec![Any::from("@root"), Any::Number(yrs::Number::Float(u32::MAX as f64))].into()),
+    |                                                         +++++++++++++++++++               +
+
+For more information about this error, try `rustc --explain E0308`.
+warning: `editac-core` (test "split_join") generated 2 warnings
+error: could not compile `editac-core` (test "split_join") due to 1 previous error; 2 warnings emitted

@@ -1,0 +1,63 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.98s
+     Running tests/lists.rs (target/debug/deps/lists-b4480d587f429db4)
+
+running 23 tests
+test duplicate_snapshot_ids_are_explicitly_invalid ... ok
+test deleted_parent_does_not_resurrect_or_redirect_content ... ok
+test empty_batch_retains_opaque_content ... ok
+test deleted_target_is_distinct_from_missing ... ok
+test duplicate_target_is_rejected_even_for_identical_changes ... ok
+test excessive_change_batch_is_bounded_before_graph_work ... ok
+test excessive_snapshot_is_bounded_before_graph_work ... ok
+test item_cannot_be_a_parent ... ok
+test individually_valid_changes_can_jointly_cycle ... ok
+test missing_parent_is_not_repaired_to_root ... ok
+test final_graph_allows_atomic_break_and_reparent ... ok
+test ordinary_v3_blocks_do_not_gain_list_semantics ... ok
+test nested_batch_accepts_known_list_parents_without_mutation ... ok
+test missing_target_is_not_redirected ... ok
+test parent_under_descendant_is_a_cycle ... ok
+test self_parent_is_a_cycle ... ok
+test root_outdent_is_valid ... ok
+test unknown_kind_cannot_be_a_command_target ... ok
+test unknown_kind_cannot_be_a_parent ... ok
+test visible_recovery_overlap_is_explicitly_invalid ... ok
+test exact_editing_depth_limit_is_accepted ... ok
+test already_excessive_hierarchy_rejects_without_recursion ... ok
+test unchanged_descendant_depth_is_checked_after_reparenting ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/ownership_profile.rs (target/debug/deps/ownership_profile-28dd32ae9233a397)
+
+running 26 tests
+test both_sides_cut_concurrent_edits_and_mark_writes_route_without_copy ... ok
+test bounded_decode_rejects_nested_any_and_allocation_amplification ... ok
+test binary_anchor_routes_original_identity_across_repeat_join_split_and_empty_ties ... ok
+test delete_original_and_derived_keep_content_metadata_and_losing_intentions ... ok
+test begin_middle_end_empty_and_unicode_cuts_preserve_identity ... ok
+test deletion_of_cut_characters_collapses_without_losing_remaining_coverage ... ok
+test checkpoint_restore_duplicate_updates_and_projection_are_read_only ... ok
+test complete_known_graph_cycles_and_dormant_depth_remain_bounded ... ok
+test cut_wrong_source_affinity_surrogate_and_bad_binary_reject_before_live_write ... ok
+test incomplete_binary_dependencies_reject_staged_then_activate_after_prerequisite ... ok
+test conflicting_branches_dependency_descendants_and_disjoint_operations_reorder ... ok
+test initialized_empty_restore_never_seeds_and_uses_independent_writer ... ok
+test exact_profile_document_epoch_encoding_and_missing_metadata_before_decode ... ok
+test invalid_operation_graph_cycle_and_immutable_replacement_are_recovery ... ok
+test marks_empty_heading_live_inheritance_override_and_absorbed_retention ... ok
+test machine_seed_exact_seven_roots_and_nonreserved_ids ... ok
+test missing_graph_dependencies_dormant_then_activate_without_reseed ... ok
+test next_visible_join_crosses_tombstone_without_absorbing_recovery_content ... ok
+test repeated_transforms_two_disjoint_pairs_and_multisource_split_after_join ... ok
+test unknown_metadata_and_character_attributes_retained_opaquely ... ok
+test staged_admission_retains_text_identity_and_monotonic_deletion ... ok
+test invalid_tuple_target_shared_type_and_atomic_text_rejection ... ok
+test bounds_depth_sources_operations_wire_text_and_json_do_not_silently_omit ... ok
+test source_operation_container_limits_and_unknown_source_anchor_are_explicit ... ok
+test aggregate_text_and_cut_byte_bounds_reject_staged_without_partial_mutation ... ok
+test pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations ... ok
+
+test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s
+

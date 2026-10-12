@@ -1,0 +1,283 @@
+{
+  "task": "ENG-1.19",
+  "state": "implemented and locally verified structural qualification only",
+  "date": "2026-10-11",
+  "source_revision": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30",
+  "implementation_base": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "architecture_base": "26d3502585fea4c8a21bc15fb949a562b93905ea",
+  "working_tree": "uncommitted; exact tested source hashes below",
+  "descriptor": {
+    "profile": "editac.yrs-yjs.editor.v4",
+    "schema": "editac.registry.editor.v4",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "yrs": "0.28.0",
+    "yjs": "13.6.33",
+    "yProtocols": "1.0.7",
+    "roots": [
+      "registry-parents",
+      "registry-texts",
+      "registry-placements",
+      "delete-probe-tombstones",
+      "registry-block-attributes",
+      "registry-ownership-ops",
+      "registry-owner-origins",
+      "registry-container-attributes",
+      "registry-list-item-attributes",
+      "registry-entity-controls"
+    ],
+    "bounds": {
+      "bytes": 16777216,
+      "sources": 4096,
+      "operations": 4096,
+      "spans": 8192,
+      "textBytes": 1048576,
+      "sourceUtf16": 262144,
+      "depth": 128,
+      "jsonDepth": 32,
+      "cutBytes": 256,
+      "controls": 8192,
+      "hierarchyDepth": 128,
+      "registrations": 4096,
+      "edgeVisits": 16777216,
+      "idBytes": 96,
+      "anyValues": 262144,
+      "structs": 262144,
+      "containerEntries": 8192,
+      "allocationClock": 2097152
+    }
+  },
+  "descriptor_sha256": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+  "envelope": {
+    "profile": "editac.yrs-yjs.editor.v4",
+    "schema": "editac.registry.editor.v4",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "documentId": "77777777-7777-4777-8777-777777777777",
+    "epoch": "88888888-8888-4888-8888-888888888888"
+  },
+  "profile_supported": false,
+  "remaining_profile_gates": [
+    "ENG-1.20 code/separator command policy qualification",
+    "ENG-1.21 actual production profile integration"
+  ],
+  "production_list_code_move_history_parents_completed": false,
+  "checks": [
+    {
+      "id": "ENG-1.19-V1",
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_STRUCTURAL_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-structural-profile/exchange-final cargo test -p editac-core --test structural_profile --locked",
+      "log": "structural-3.log",
+      "exit": 0,
+      "executed": 30,
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0
+    },
+    {
+      "id": "pinned-v4-yjs",
+      "command": "node --test fixtures/schema-v4/exchange.mjs (spawned by structural_profile with Node 24.19.0)",
+      "log": "exchange-final/node.log",
+      "exit": 0,
+      "executed": 19,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "id": "required-regressions",
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_OWNERSHIP_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-structural-profile/legacy-ownership-exchange cargo test -p editac-core --test ownership_profile --test lists --locked",
+      "log": "regressions.log",
+      "exit": 0,
+      "executed": 49,
+      "passed": 49,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "breakdown": {
+        "lists": 23,
+        "ownership_profile": 26
+      }
+    },
+    {
+      "id": "pinned-v3-yjs",
+      "command": "node --test fixtures/schema-v3/exchange.mjs (spawned by ownership_profile)",
+      "log": "legacy-ownership-exchange/node.log",
+      "exit": 0,
+      "executed": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "id": "format",
+      "command": "cargo fmt --all -- --check",
+      "log": "format.log",
+      "exit": 0
+    },
+    {
+      "id": "diff-check",
+      "command": "git diff --check",
+      "log": "diff-check.log",
+      "exit": 0
+    }
+  ],
+  "final_counts": {
+    "rust": {
+      "executed": 79,
+      "passed": 79,
+      "failed": 0,
+      "skipped": 0
+    },
+    "yjs": {
+      "executed": 35,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "criterion_to_cases": {
+    "exact-ten-root construction, schema/profile/epoch/document and initialized restore": [
+      "exact_ten_root_seed_nested_numbering_check_and_source_identities",
+      "exact_profile_epoch_document_initialized_and_binary_dependency_admission",
+      "pins exact descriptor ten roots and nested seed with numbering/check/identity"
+    ],
+    "list/quote containers, atomic mode/start/check, direct-child numbering and dormant check state": [
+      "atomic_modes_starts_checks_and_dormant_outside_checklist",
+      "checked_split_defaults_unchecked_with_live_block_inheritance_override_and_absorption",
+      "atomic ordered mode/start tuples conflict checks remain dormant outside context"
+    ],
+    "empty and derived owners, retained multisource split/join inheritance/override/absorbed state": [
+      "endpoints_empty_join_split_after_join_across_sources_and_stable_marks_anchors",
+      "checked_split_defaults_unchecked_with_live_block_inheritance_override_and_absorption",
+      "check split defaults inheritance overrides retained absorbed state empty endpoints"
+    ],
+    "versioned place before/append and subtree identity/order; stale parent/target/before versions": [
+      "place_before_append_container_subtree_and_versions_preserve_original_text",
+      "stale_parent_before_target_and_missing_versions_keep_intentions_dormant_or_losing",
+      "local_cycle_invalid_before_illegal_parent_and_reused_id_are_atomic"
+    ],
+    "move/move/edit and potential-cycle deterministic choices under duplicate/reordered replay": [
+      "concurrent_move_move_edit_all_six_duplicate_orders_restore_and_ranked_loser",
+      "concurrent_potential_cycle_choices_are_deterministic_without_repair",
+      "Yjs concurrent move/move/edit control and potential cycle updates all six orders for Rust"
+    ],
+    "nested split/move/join and remote cut edit races": [
+      "split_move_join_races_and_remote_cut_edits_preserve_nested_original_ownership",
+      "split/move cut edit races and concurrent operation controls keep original nested content"
+    ],
+    "initial cycle canonical detachment, orphan/noncontainer/unknown parents, no repair writes": [
+      "initial_cycle_detaches_smallest_canonical_id_without_repair_writes",
+      "missing_unknown_noncontainer_parents_project_root_raw_intent_retained",
+      "base cycle canonical detachment orphans hidden parent and opaque retention do not write repairs"
+    ],
+    "hidden/disabled/tombstoned parent recovery without cascading source loss": [
+      "hidden_parent_tombstone_and_disable_keep_descendants_and_edited_recovery",
+      "deleted_and_disabled_move_destinations_retain_losing_intentions_and_dormant_checks"
+    ],
+    "reversible original/container/operation controls, dependencies, concurrent controls and retained remote bytes": [
+      "operation_controls_disable_dependents_reenable_and_permanent_tombstones_win",
+      "concurrent_controls_use_atomic_map_conflict_and_restore_remote_edits",
+      "concurrent_operation_controls_and_edits_restore_without_destroying_rows",
+      "dormant_operation_activates_after_missing_version_without_reseeding"
+    ],
+    "unknown JSON tuples/kinds/marks and unknown valid dormant control IDs retained safely": [
+      "unknown_tuples_marks_kinds_and_dormant_controls_are_retained_not_executed",
+      "missing_unknown_noncontainer_parents_project_root_raw_intent_retained"
+    ],
+    "immutable kind/initial placement/origin/operation/text identity/tombstone and root/shared-type admission": [
+      "immutable_kinds_initial_placement_operations_origins_text_and_tombstones_are_not_replaceable",
+      "roots_types_container_text_origin_membership_and_id_shapes_reject"
+    ],
+    "malformed known tuples/IDs/cuts/operation versions and binary-dependency atomic rejection": [
+      "malformed_container_check_control_and_block_tuples_reject_without_partial_mutation",
+      "invalid_unicode_cuts_versions_place_shapes_and_origin_namespaces_are_atomic",
+      "exact_profile_epoch_document_initialized_and_binary_dependency_admission"
+    ],
+    "functional bounds: registrations/controls/operations/text/update/JSON/decode/dependency/hierarchy and moved descendants": [
+      "controls_nodes_operations_text_bytes_and_bounded_binary_values_reject_atomically",
+      "aggregate_source_text_and_ids_membership_and_unknown_target_metadata_are_bounded",
+      "dependency_cycles_and_dormant_graph_depth_are_bounded",
+      "hierarchy_depth_128_passes_129_and_descendant_move_exhaustion_reject_atomically",
+      "required unchanged v3 bounded decoder ownership regression"
+    ],
+    "ENG-1.8-P1 reuse; v4 read-only block/list/quote and depth-128 validator; legacy behavior unchanged": [
+      "editor_hierarchy_validator_accepts_quote_block_and_checks_whole_descendant_depth_batch",
+      "23 unchanged lists hierarchy prerequisite tests"
+    ],
+    "actual bidirectional Rust/Yjs binary exchange, checkpoint restore, original source/mark/anchor identities": [
+      "pinned_bidirectional_structural_exchange_replay_restore_and_anchors",
+      "Rust seed and repeated multisource chain reconstruct metadata recovery marks anchors",
+      "Yjs chain control disable reenable remote edit and original anchor roundtrip for Rust"
+    ]
+  },
+  "permutation_coverage": {
+    "seed": "schema-v4/seed.json writer 11; 4 original text sources, 4 retained containers",
+    "independent_writers": [
+      21,
+      22,
+      23
+    ],
+    "rust_receiver_schedules": 60,
+    "yjs_receiver_schedules": 42,
+    "orders_per_three_update_family": 6,
+    "delivery_per_schedule": "all three updates, then duplicate all three in the same permutation",
+    "checkpoint_comparisons_per_schedule": 1,
+    "snapshot_comparison": "visible preorder, parents/versions, runs/marks/spans/source identity, recovery, retained metadata/controls/intentions/outcomes; projection is read-only"
+  },
+  "admission_limitations": "Missing Yrs/Yjs binary dependencies reject live staged admission atomically; permutation fixtures retain raw bytes on disposable replicas until dependencies arrive. No claim of production sync buffering. Independently initialized seed histories are restored separately, never merged. Unknown immutable kinds are initial retained data, not mutable kind transitions.",
+  "preserved_failures": [
+    {
+      "log": "structural-1.log",
+      "exit": 101,
+      "executed": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "reason": "compile errors: inferred unsized vector, u64 Any conversion and temporary borrow",
+      "repair": "explicit Vec<String>, bounded u32 numbering and parent binding"
+    },
+    {
+      "log": "structural-2.log",
+      "exit": 101,
+      "executed": 24,
+      "passed": 21,
+      "failed": 3,
+      "skipped": 0,
+      "reason": "v4 hierarchy used legacy depth 64, empty invented root not encoded, mixed independent initialization histories",
+      "repair": "explicit v4 depth 128 edges, transported unexpected-root fixture, separated independent and exchange initializer histories"
+    }
+  ],
+  "tested_sources": {
+    "core/fixtures/schema-v4/bounded_decoder.rs": "5679118322620c056a3bc84109327c8b4e8e332393681351affe90f8fe2e07d8",
+    "core/fixtures/schema-v4/exchange.mjs": "e7e08490a6eb9ac02df8d54789bd98b4c62a8aee449285eecfc04561002a9e21",
+    "core/fixtures/schema-v4/mapping.mjs": "21adefbde5ee1ec62811b6216fc9ec6c37fb1b4235744c26c6842d1a040df920",
+    "core/fixtures/schema-v4/mapping.rs": "ba991d1b3e2a378af6e262d4789242684d78eef22dfe7ff6d302e13ff91619f4",
+    "core/fixtures/schema-v4/profile.json": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+    "core/fixtures/schema-v4/seed.json": "39aac7215b7e28b056bab5f008ab9a5594b15d9e53e692926fe87cd68f808705",
+    "core/crates/editac-core/tests/structural_profile.rs": "5b971b5f85a54f5f9e274a55b42f9844c5b54f99d19e5b3848acdbed4da6cafd",
+    "core/crates/editac-core/src/commands/lists.rs": "2403a27c1d5bb57cd1bc65c232e5db7a74783440540fb10f31256cc8918d61a7",
+    "core/Cargo.lock": "52476d26e42c8ed8943b0c924fb31491d1e6eaa70d5146ccb31deda46fe71be9",
+    "core/package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+    "core/rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b",
+    "architecture/specs/schema-v4.md": "9a2140303a4cf0eb6fdb12177264d03dbf03701949f4c5572f3037b9bd91d4c0",
+    "architecture/specs/schema-v3.md": "3467da1488a864abba3e153bebb834d835dbe39ba05c4c1cc43adc6d8b0f31ff",
+    "architecture/specs/engine.md": "c4267ab1b50154ca3d219e52709ed5ba261cea5f59eb81faea7ad6d667fb90e7",
+    "architecture/specs/verification.md": "56a82adc7f23df2d75c1827cea12e123652b010a31375e455e461516db748dc0",
+    "architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md": "8569ff462b210eb9478fb409f9cd179506cb1f3efab3247bf3d678257353aa30"
+  },
+  "legacy_preservation": {
+    "foundation_source_sha256": "38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897",
+    "schema_v1_sha256": "9c9dcdb3e9edad74d841c55ec11a99962f3e002b823758e88e531291b6d82d23",
+    "protocol_v1_sha256": "dd8c7aa6c73a03a35ec41de83822314dfc5bf7d575f3ac19566421b6393eeb3b",
+    "frozen_schema_v3_and_decoder_unchanged": true,
+    "previous_artifact_incident": "../engine-lists/historical-artifact-overwrite.json preserved; new outputs use dedicated directories"
+  },
+  "artifact_manifest": "artifacts.json",
+  "artifact_manifest_sha256": "2f1da4f7e2dcbd5456ee43080298ff1a94bef25a03c27d779eb47c26fe72c215",
+  "hygiene": "hygiene.json",
+  "no_paid_inference_or_provider_transports": true,
+  "no_deployment_or_publication": true
+}

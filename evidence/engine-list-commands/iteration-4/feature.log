@@ -1,0 +1,90 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.57s
+     Running unittests src/lib.rs (target/debug/deps/editac_core-1a758e03712644e2)
+
+running 11 tests
+test commands::format::tests::complete_batch_has_one_origin_transaction_and_no_preparation_observers ... ok
+test commands::format::block_transaction_tests::mixed_mark_and_empty_block_batch_has_one_origin_transaction_and_read_only_rejection ... ok
+test commands::format::remote_tests::deletion_only_remote_update_invalidates_exact_state_even_without_revision_change ... ok
+test commands::structure::tests::deletion_only_remote_state_invalidates_plan_and_anchor_repreparation_is_safe ... ok
+test commands::structure::tests::revision_exhaustion_rejects_before_ownership_mutation ... ok
+test commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks ... ok
+test commands::text::tests::delete_only_remote_update_invalidates_plan_even_with_unchanged_state_vector ... ok
+test commands::structure::tests::preparation_is_read_only_and_commit_has_one_explicit_origin_transaction ... ok
+test commands::editor::transaction_tests::v4_whole_batch_preparation_is_silent_commit_is_one_origin_and_only_local_writer ... ok
+test commands::structure::general_transaction_tests::v3_preparation_and_rejection_are_silent_and_each_commit_has_one_explicit_origin ... ok
+test commands::lists::transaction_tests::list_expansion_is_silent_and_compound_commit_emits_one_transaction_with_origin ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/lists.rs (target/debug/deps/lists-b4480d587f429db4)
+
+running 44 tests
+test duplicate_snapshot_ids_are_explicitly_invalid ... ok
+test duplicate_target_is_rejected_even_for_identical_changes ... ok
+test deleted_parent_does_not_resurrect_or_redirect_content ... ok
+test deleted_target_is_distinct_from_missing ... ok
+test empty_batch_retains_opaque_content ... ok
+test excessive_change_batch_is_bounded_before_graph_work ... ok
+test item_cannot_be_a_parent ... ok
+test missing_parent_is_not_repaired_to_root ... ok
+test excessive_snapshot_is_bounded_before_graph_work ... ok
+test individually_valid_changes_can_jointly_cycle ... ok
+test final_graph_allows_atomic_break_and_reparent ... ok
+test ordinary_v3_blocks_do_not_gain_list_semantics ... ok
+test nested_batch_accepts_known_list_parents_without_mutation ... ok
+test missing_target_is_not_redirected ... ok
+test parent_under_descendant_is_a_cycle ... ok
+test already_excessive_hierarchy_rejects_without_recursion ... ok
+test exact_editing_depth_limit_is_accepted ... ok
+test production::anchor_interior_nonzero_backspace_deleted_and_code_targets_reject ... ok
+test production::enter_combining_and_rtl_cuts_are_fixed_utf16_results ... ok
+test production::empty_enter_exits_one_level_and_keeps_check_metadata_dormant ... ok
+test production::first_backspace_exits_but_adjacent_backspace_joins_original_sources ... ok
+test production::invalid_wrap_modes_parent_targets_and_first_indent_are_silent ... ok
+test production::all_modes_wrap_contiguous_siblings_and_number_without_projection_writes ... ok
+test production::mixed_batch_failure_after_wrapping_and_split_never_reserves_or_writes ... ok
+test production::indent_reuses_matching_nested_container_and_outdent_retains_tail_order ... FAILED
+test production::nested_containers_do_not_increment_ordered_ordinals ... ok
+test production::nested_list_quote_wrapping_preserves_descendant_marks_and_anchor_identity ... ok
+test production::ordered_mode_start_and_dormant_checks_are_atomic ... ok
+test production::prepared_expansion_bound_and_opaque_container_reject_atomically ... ok
+test production::middle_outdent_splits_container_without_reordering_trailing_items ... ok
+test production::stale_and_cross_replica_plans_reject_without_mutation ... ok
+test root_outdent_is_valid ... ok
+test self_parent_is_a_cycle ... ok
+test unchanged_descendant_depth_is_checked_after_reparenting ... ok
+test unknown_kind_cannot_be_a_command_target ... ok
+test unknown_kind_cannot_be_a_parent ... ok
+test visible_recovery_overlap_is_explicitly_invalid ... ok
+test production::concurrent_enter_check_mode_and_text_edit_preserve_acknowledged_content ... ok
+test production::repeated_enter_after_multi_source_backspace_join_preserves_original_spans ... ok
+test production::enter_endpoints_and_unicode_preserve_marks_checked_left_and_unchecked_right ... ok
+test production::concurrent_indent_outdent_and_text_edit_converge_in_six_duplicate_orders ... ok
+test production::real_list_commands_exchange_with_pinned_yjs_and_restore ... FAILED
+test production::concurrent_split_split_and_join_edit_keep_all_original_content ... ok
+test production::depth_128_accepts_exit_and_rejects_wrapping_whole_descendant_batch ... ok
+
+failures:
+
+---- production::indent_reuses_matching_nested_container_and_outdent_retains_tail_order stdout ----
+
+thread 'production::indent_reuses_matching_nested_container_and_outdent_retains_tail_order' (152529503) panicked at crates/editac-core/tests/lists/production.rs:372:5:
+assertion `left == right` failed
+  left: ["n:11:1", "n:11:2", "n:11:3", "c:3346389105:3"]
+ right: ["n:11:1", "n:11:2", "c:3346389105:1"]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- production::real_list_commands_exchange_with_pinned_yjs_and_restore stdout ----
+
+thread 'production::real_list_commands_exchange_with_pinned_yjs_and_restore' (152529514) panicked at crates/editac-core/tests/lists/production.rs:658:5:
+pinned Yjs failed; see /Users/bpstr/Github/edit-ac/architecture/evidence/engine-list-commands/iteration-4/list-exchange/node.log
+
+
+failures:
+    production::indent_reuses_matching_nested_container_and_outdent_retains_tail_order
+    production::real_list_commands_exchange_with_pinned_yjs_and_restore
+
+test result: FAILED. 42 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.75s
+
+error: test failed, to rerun pass `-p editac-core --test lists`

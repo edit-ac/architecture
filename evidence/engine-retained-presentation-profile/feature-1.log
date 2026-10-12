@@ -1,0 +1,96 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0599]: no method named `to_json` found for enum `Out` in the current scope
+    --> crates/editac-core/tests/retained_presentation_profile.rs:133:10
+     |
+ 128 | /     d.transact()
+ 129 | |         .get_map(ROOTS[5])
+ 130 | |         .unwrap()
+ 131 | |         .get(&d.transact(), id)
+ 132 | |         .unwrap()
+ 133 | |         .to_json(&d.transact())
+     | |         -^^^^^^^ method not found in `Out`
+     | |_________|
+     |
+     |
+    ::: /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/types/mod.rs:1056:8
+     |
+1056 |       fn to_json<T: ReadTxn>(&self, txn: &T) -> Any;
+     |          ------- the method is available for `Out` here
+     |
+note: the method `to_json` exists on the type `yrs::Any`
+    --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:208:5
+     |
+ 208 |     pub fn to_json(&self, buf: &mut String) {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: items from traits can only be used if the trait is in scope
+help: trait `ToJson` which provides `to_json` is implemented but not in scope; perhaps you want to import it
+     |
+   2 + use yrs::types::ToJson;
+     |
+
+error[E0061]: this method takes 2 arguments but 1 argument was supplied
+   --> crates/editac-core/tests/retained_presentation_profile.rs:204:10
+    |
+204 |           .observe_update_v1(move |_, _| {
+    |  __________^^^^^^^^^^^^^^^^^-
+205 | |             n.fetch_add(1, Ordering::SeqCst);
+206 | |         })
+    | |__________- argument #2 is missing
+    |
+note: method defined here
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/doc.rs:302:9
+    |
+302 |         observe_update_v1, unobserve_update_v1,
+    |         ^^^^^^^^^^^^^^^^^
+help: provide the argument
+    |
+204 |         .observe_update_v1(move |_, _| {
+205 |             n.fetch_add(1, Ordering::SeqCst);
+206 ~         }, /* f */)
+    |
+
+error[E0277]: the trait bound `Origin: From<{closure@retained_presentation_profile.rs:204:28}>` is not satisfied
+   --> crates/editac-core/tests/retained_presentation_profile.rs:204:28
+    |
+204 |           .observe_update_v1(move |_, _| {
+    |  __________-----------------_^
+    | |          |
+    | |          required by a bound introduced by this call
+205 | |             n.fetch_add(1, Ordering::SeqCst);
+206 | |         })
+    | |_________^ the trait `From<{closure@crates/editac-core/tests/retained_presentation_profile.rs:204:28: 204:39}>` is not implemented for `Origin`
+    |
+    = help: `Origin` implements trait `From<T>`:
+              From<&[u8]>
+              From<&str>
+              From<ClientID>
+              From<Pin<&T>>
+              From<i128>
+              From<i16>
+              From<i32>
+              From<i64>
+            and 9 others
+    = note: required for `{closure@crates/editac-core/tests/retained_presentation_profile.rs:204:28: 204:39}` to implement `Into<Origin>`
+note: required by a bound in `yrs::Doc::observe_update_v1`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/doc.rs:95:16
+    |
+ 95 |               K: Into<Origin>,
+    |                  ^^^^^^^^^^^^ required by this bound in `Doc::observe_update_v1`
+...
+297 | /     define_doc_observer!(
+298 | |         /// Subscribe callback function for any changes performed within transaction scope. These
+299 | |         /// changes are encoded using lib0 v1 encoding and can be decoded using [Update::decode_v1]
+300 | |         /// if necessary or passed to remote peers right away. This callback is triggered on
+301 | |         /// function commit.
+302 | |         observe_update_v1, unobserve_update_v1,
+    | |         ----------------- required by a bound in this associated function
+303 | |         update_v1_events, FnMut(&TransactionMut, &UpdateEvent)
+304 | |     );
+    | |_____- in this macro invocation
+    = note: the full name for the type has been written to '/Users/bpstr/Github/edit-ac/core/target/debug/deps/retained_presentation_profile-4e9007e38752fc86.long-type-14484106813524891347.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+    = note: this error originates in the macro `define_doc_observer` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+Some errors have detailed explanations: E0061, E0277, E0599.
+For more information about an error, try `rustc --explain E0061`.
+error: could not compile `editac-core` (test "retained_presentation_profile") due to 3 previous errors

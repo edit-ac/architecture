@@ -1,0 +1,791 @@
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:11:
+ pub const SCHEMA: &str = "editac.registry.v1";
+ pub const PROFILE: &str = "editac.yrs-yjs.v1";
+ pub const ROOTS: [&str; 5] = [
+-    "registry-parents", "registry-texts", "registry-placements",
+-    "delete-probe-tombstones", "probe-split-join",
++    "registry-parents",
++    "registry-texts",
++    "registry-placements",
++    "delete-probe-tombstones",
++    "probe-split-join",
+ ];
+ /// Bound the encoded input before decoding. Broader resource qualification is a
+ /// separate gate; this initialization API is not an untrusted transport port.
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:30:
+ }
+ impl DocumentIdentity {
+     /// IDs are independently assigned canonical lowercase UUIDs by the host.
+-    pub fn v1(document_id: impl Into<String>, epoch: impl Into<String>) -> Result<Self, DocumentError> {
++    pub fn v1(
++        document_id: impl Into<String>,
++        epoch: impl Into<String>,
++    ) -> Result<Self, DocumentError> {
+         let identity = Self {
+-            profile: PROFILE.into(), schema: SCHEMA.into(), protocol_version: 1,
+-            update_encoding: 1, offsets: "utf16".into(),
+-            document_id: document_id.into(), epoch: epoch.into(),
++            profile: PROFILE.into(),
++            schema: SCHEMA.into(),
++            protocol_version: 1,
++            update_encoding: 1,
++            offsets: "utf16".into(),
++            document_id: document_id.into(),
++            epoch: epoch.into(),
+         };
+         identity.validate()?;
+         Ok(identity)
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:43:
+         if !canonical_uuid(&self.document_id) || !canonical_uuid(&self.epoch) {
+             return Err(DocumentError::InvalidMetadata);
+         }
+-        if self.profile != PROFILE || self.schema != SCHEMA || self.protocol_version != 1
+-            || self.update_encoding != 1 || self.offsets != "utf16" {
++        if self.profile != PROFILE
++            || self.schema != SCHEMA
++            || self.protocol_version != 1
++            || self.update_encoding != 1
++            || self.offsets != "utf16"
++        {
+             return Err(DocumentError::UnsupportedProfile);
+         }
+         Ok(())
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:52:
+     fn admit(&self, incoming: &Self) -> Result<(), DocumentError> {
+         self.validate()?;
+         incoming.validate()?;
+-        if self.document_id != incoming.document_id { return Err(DocumentError::WrongDocument); }
+-        if self.epoch != incoming.epoch { return Err(DocumentError::WrongEpoch); }
++        if self.document_id != incoming.document_id {
++            return Err(DocumentError::WrongDocument);
++        }
++        if self.epoch != incoming.epoch {
++            return Err(DocumentError::WrongEpoch);
++        }
+         Ok(())
+     }
+ }
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:60:
+ fn canonical_uuid(value: &str) -> bool {
+-    value.len() == 36 && value.bytes().enumerate().all(|(i, b)| {
+-        if [8, 13, 18, 23].contains(&i) { b == b'-' }
+-        else { b.is_ascii_digit() || (b'a'..=b'f').contains(&b) }
+-    })
++    value.len() == 36
++        && value.bytes().enumerate().all(|(i, b)| {
++            if [8, 13, 18, 23].contains(&i) {
++                b == b'-'
++            } else {
++                b.is_ascii_digit() || (b'a'..=b'f').contains(&b)
++            }
++        })
+ }
+ 
+ #[derive(Clone, Debug, PartialEq, Eq)]
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:68:
+ pub enum DocumentError {
+-    InvalidMetadata, UnsupportedProfile, WrongDocument, WrongEpoch,
+-    MissingInitialization, AlreadyInitialized, InvalidInitialContent,
+-    InvalidUpdate, IncompleteRestore, UnsupportedSchema, ResourceLimit,
++    InvalidMetadata,
++    UnsupportedProfile,
++    WrongDocument,
++    WrongEpoch,
++    MissingInitialization,
++    AlreadyInitialized,
++    InvalidInitialContent,
++    InvalidUpdate,
++    IncompleteRestore,
++    UnsupportedSchema,
++    ResourceLimit,
+     WriterUnavailable,
+ }
+ impl std::fmt::Display for DocumentError {
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:75:
+-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result { write!(f, "{self:?}") }
++    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
++        write!(f, "{self:?}")
++    }
+ }
+ impl std::error::Error for DocumentError {}
+ 
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:79:
+ /// Non-cloneable authority for the one initializer. The host must also enforce
+ /// this across processes/durable storage. This process rejects repeat grants.
+ #[derive(Debug)]
+-pub struct CreationPermit { identity: DocumentIdentity }
++pub struct CreationPermit {
++    identity: DocumentIdentity,
++}
+ static CREATED: OnceLock<Mutex<HashSet<(String, String)>>> = OnceLock::new();
+ impl CreationPermit {
+     pub fn authorize_new(identity: DocumentIdentity) -> Result<Self, DocumentError> {
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:86:
+         identity.validate()?;
+-        let mut created = CREATED.get_or_init(Default::default).lock()
++        let mut created = CREATED
++            .get_or_init(Default::default)
++            .lock()
+             .map_err(|_| DocumentError::WriterUnavailable)?;
+         if !created.insert((identity.document_id.clone(), identity.epoch.clone())) {
+             return Err(DocumentError::AlreadyInitialized);
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:96:
+ /// Ordinary initial nodes use the schema's writer-local ID allocation. Pair
+ /// fixtures are restored from the qualified initializer, never independently seeded.
+ #[derive(Clone, Debug)]
+-pub struct InitialNode { pub kind: String, pub text: String }
++pub struct InitialNode {
++    pub kind: String,
++    pub text: String,
++}
+ #[derive(Clone, Debug)]
+-pub struct ReplayUpdate { pub identity: DocumentIdentity, pub bytes: Vec<u8> }
++pub struct ReplayUpdate {
++    pub identity: DocumentIdentity,
++    pub bytes: Vec<u8>,
++}
+ /// Store this envelope even when `bytes` encodes an empty document. Initialization
+ /// cannot be inferred from bytes. Writer identity is provenance, never restored.
+ #[derive(Clone, Debug)]
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:114:
+ struct WriterLease(u32);
+ impl WriterLease {
+     fn acquire(id: u32) -> Result<Option<Self>, DocumentError> {
+-        let mut live = LIVE_WRITERS.get_or_init(Default::default).lock()
++        let mut live = LIVE_WRITERS
++            .get_or_init(Default::default)
++            .lock()
+             .map_err(|_| DocumentError::WriterUnavailable)?;
+         Ok(live.insert(id).then_some(Self(id)))
+     }
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:121:
+ }
+ impl Drop for WriterLease {
+     fn drop(&mut self) {
+-        if let Ok(mut live) = LIVE_WRITERS.get_or_init(Default::default).lock() { live.remove(&self.0); }
++        if let Ok(mut live) = LIVE_WRITERS.get_or_init(Default::default).lock() {
++            live.remove(&self.0);
++        }
+     }
+ }
+ 
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:135:
+ }
+ impl Document {
+     pub fn create(permit: CreationPermit, nodes: &[InitialNode]) -> Result<Self, DocumentError> {
+-        let size = nodes.iter().try_fold(0usize, |n, node| {
+-            n.checked_add(node.text.len()).and_then(|n| n.checked_add(node.kind.len()))
+-        }).ok_or(DocumentError::ResourceLimit)?;
+-        if size > MAX_RESTORE_BYTES || nodes.len() > 100_000 { return Err(DocumentError::ResourceLimit); }
+-        if nodes.iter().any(|n| n.kind.is_empty()) { return Err(DocumentError::InvalidInitialContent); }
++        let size = nodes
++            .iter()
++            .try_fold(0usize, |n, node| {
++                n.checked_add(node.text.len())
++                    .and_then(|n| n.checked_add(node.kind.len()))
++            })
++            .ok_or(DocumentError::ResourceLimit)?;
++        if size > MAX_RESTORE_BYTES || nodes.len() > 100_000 {
++            return Err(DocumentError::ResourceLimit);
++        }
++        if nodes.iter().any(|n| n.kind.is_empty()) {
++            return Err(DocumentError::InvalidInitialContent);
++        }
+         let (doc, writer) = fresh_replica(&HashSet::new())?;
+         {
+             let kinds = doc.get_or_insert_map(ROOTS[0]);
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:150:
+                 let id = format!("n-{:x}-{:x}", u64::from(doc.client_id()), counter);
+                 kinds.insert(&mut txn, id.clone(), node.kind.as_str());
+                 texts.insert(&mut txn, id.clone(), XmlTextPrelim::new(node.text.as_str()));
+-                placements.insert(&mut txn, id, Any::Array(vec![Any::from("@root"), Any::from(counter as u32)].into()));
++                placements.insert(
++                    &mut txn,
++                    id,
++                    Any::Array(vec![Any::from("@root"), Any::from(counter as u32)].into()),
++                );
+             }
+         }
+-        Ok(Self { doc, identity: permit.identity, _writer: writer, next_node_counter: nodes.len() as u64 })
++        Ok(Self {
++            doc,
++            identity: permit.identity,
++            _writer: writer,
++            next_node_counter: nodes.len() as u64,
++        })
+     }
+ 
+     /// Replay on a disposable replica; publish a live document only after all
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:160:
+     /// identity checks, decoding, dependency integration and root checks succeed.
+     /// Failure leaves the borrowed checkpoint/journal available for recovery.
+-    pub fn restore(expected: &DocumentIdentity, checkpoint: &InitializedCheckpoint, journal: &[ReplayUpdate]) -> Result<Self, DocumentError> {
++    pub fn restore(
++        expected: &DocumentIdentity,
++        checkpoint: &InitializedCheckpoint,
++        journal: &[ReplayUpdate],
++    ) -> Result<Self, DocumentError> {
+         expected.admit(&checkpoint.identity)?;
+-        if !checkpoint.initialized { return Err(DocumentError::MissingInitialization); }
++        if !checkpoint.initialized {
++            return Err(DocumentError::MissingInitialization);
++        }
+         let mut total = checkpoint.bytes.len();
+         for update in journal {
+             expected.admit(&update.identity)?;
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:168:
+-            total = total.checked_add(update.bytes.len()).ok_or(DocumentError::ResourceLimit)?;
++            total = total
++                .checked_add(update.bytes.len())
++                .ok_or(DocumentError::ResourceLimit)?;
+         }
+-        if total > MAX_RESTORE_BYTES { return Err(DocumentError::ResourceLimit); }
++        if total > MAX_RESTORE_BYTES {
++            return Err(DocumentError::ResourceLimit);
++        }
+         let mut decoded = Vec::with_capacity(journal.len() + 1);
+         for bytes in std::iter::once(&checkpoint.bytes).chain(journal.iter().map(|u| &u.bytes)) {
+             decoded.push(Update::decode_v1(bytes).map_err(|_| DocumentError::InvalidUpdate)?);
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:177:
+         register_roots(&staging);
+         {
+             let mut txn = staging.transact_mut_with("restore");
+-            for update in decoded { txn.apply_update(update).map_err(|_| DocumentError::InvalidUpdate)?; }
++            for update in decoded {
++                txn.apply_update(update)
++                    .map_err(|_| DocumentError::InvalidUpdate)?;
++            }
+         }
+         let txn = staging.transact();
+         if txn.store().pending_update().is_some() || txn.store().pending_ds().is_some() {
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:184:
+             return Err(DocumentError::IncompleteRestore);
+         }
+         validate_roots(&txn)?;
+-        let mut excluded: HashSet<u32> = txn.state_vector().iter().map(|(id, _)| u64::from(*id) as u32).collect();
++        let mut excluded: HashSet<u32> = txn
++            .state_vector()
++            .iter()
++            .map(|(id, _)| u64::from(*id) as u32)
++            .collect();
+         excluded.insert(checkpoint.writer_id);
+         let bytes = txn.encode_state_as_update_v1(&StateVector::default());
+         drop(txn);
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:191:
+         let (doc, writer) = fresh_replica(&excluded)?;
+-        doc.transact_mut_with("restore").apply_update(Update::decode_v1(&bytes).map_err(|_| DocumentError::InvalidUpdate)?)
++        doc.transact_mut_with("restore")
++            .apply_update(Update::decode_v1(&bytes).map_err(|_| DocumentError::InvalidUpdate)?)
+             .map_err(|_| DocumentError::InvalidUpdate)?;
+-        Ok(Self { doc, identity: expected.clone(), _writer: writer, next_node_counter: 0 })
++        Ok(Self {
++            doc,
++            identity: expected.clone(),
++            _writer: writer,
++            next_node_counter: 0,
++        })
+     }
+-    pub fn identity(&self) -> &DocumentIdentity { &self.identity }
+-    pub fn is_initialized(&self) -> bool { true }
+-    pub fn writer_id(&self) -> u32 { self._writer.0 }
+-    pub fn next_node_counter(&self) -> u64 { self.next_node_counter }
++    pub fn identity(&self) -> &DocumentIdentity {
++        &self.identity
++    }
++    pub fn is_initialized(&self) -> bool {
++        true
++    }
++    pub fn writer_id(&self) -> u32 {
++        self._writer.0
++    }
++    pub fn next_node_counter(&self) -> u64 {
++        self.next_node_counter
++    }
+     /// Read-only view for subsequent engine projection; callers cannot write roots.
+-    pub(crate) fn read(&self) -> Transaction<'_> { self.doc.transact() }
++    pub(crate) fn read(&self) -> Transaction<'_> {
++        self.doc.transact()
++    }
+     pub fn checkpoint(&self) -> InitializedCheckpoint {
+-        InitializedCheckpoint { identity: self.identity.clone(), initialized: true,
+-            writer_id: self.writer_id(), bytes: self.read().encode_state_as_update_v1(&StateVector::default()) }
++        InitializedCheckpoint {
++            identity: self.identity.clone(),
++            initialized: true,
++            writer_id: self.writer_id(),
++            bytes: self
++                .read()
++                .encode_state_as_update_v1(&StateVector::default()),
++        }
+     }
+ }
+-fn register_roots(doc: &Doc) { for root in ROOTS { doc.get_or_insert_map(root); } }
++fn register_roots(doc: &Doc) {
++    for root in ROOTS {
++        doc.get_or_insert_map(root);
++    }
++}
+ fn fresh_replica(excluded: &HashSet<u32>) -> Result<(Doc, WriterLease), DocumentError> {
+     for _ in 0..128 {
+         let doc = crate::new_document();
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:211:
+         let id = u64::from(doc.client_id()) as u32;
+-        if excluded.contains(&id) { continue; }
++        if excluded.contains(&id) {
++            continue;
++        }
+         if let Some(lease) = WriterLease::acquire(id)? {
+             register_roots(&doc);
+             return Ok((doc, lease));
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:219:
+ }
+ fn validate_roots(txn: &Transaction<'_>) -> Result<(), DocumentError> {
+     for (name, value) in txn.root_refs() {
+-        if !ROOTS.contains(&name) || !matches!(value, Out::YMap(_)) { return Err(DocumentError::UnsupportedSchema); }
++        if !ROOTS.contains(&name) || !matches!(value, Out::YMap(_)) {
++            return Err(DocumentError::UnsupportedSchema);
++        }
+     }
+-    let kinds = txn.get_map(ROOTS[0]).ok_or(DocumentError::UnsupportedSchema)?;
+-    let texts = txn.get_map(ROOTS[1]).ok_or(DocumentError::UnsupportedSchema)?;
++    let kinds = txn
++        .get_map(ROOTS[0])
++        .ok_or(DocumentError::UnsupportedSchema)?;
++    let texts = txn
++        .get_map(ROOTS[1])
++        .ok_or(DocumentError::UnsupportedSchema)?;
+     for (id, kind) in kinds.iter(txn) {
+-        if !valid_node_id(id) || !matches!(kind, Out::Any(Any::String(_)))
+-            || !matches!(texts.get(txn, id), Some(Out::YXmlText(_))) {
++        if !valid_node_id(id)
++            || !matches!(kind, Out::Any(Any::String(_)))
++            || !matches!(texts.get(txn, id), Some(Out::YXmlText(_)))
++        {
+             return Err(DocumentError::UnsupportedSchema);
+         }
+     }
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:232:
+-    if texts.iter(txn).any(|(id, _)| !kinds.contains_key(txn, id)) { return Err(DocumentError::UnsupportedSchema); }
+-    let tombstones = txn.get_map(ROOTS[3]).ok_or(DocumentError::UnsupportedSchema)?;
+-    if tombstones.iter(txn).any(|(id, v)| !valid_node_id(id) || !matches!(v, Out::Any(Any::Bool(true)))) {
++    if texts.iter(txn).any(|(id, _)| !kinds.contains_key(txn, id)) {
+         return Err(DocumentError::UnsupportedSchema);
+     }
++    let tombstones = txn
++        .get_map(ROOTS[3])
++        .ok_or(DocumentError::UnsupportedSchema)?;
++    if tombstones
++        .iter(txn)
++        .any(|(id, v)| !valid_node_id(id) || !matches!(v, Out::Any(Any::Bool(true))))
++    {
++        return Err(DocumentError::UnsupportedSchema);
++    }
+     // Placements deliberately retain malformed values for the frozen read fallback.
+-    let layout = txn.get_map(ROOTS[4]).ok_or(DocumentError::UnsupportedSchema)?;
++    let layout = txn
++        .get_map(ROOTS[4])
++        .ok_or(DocumentError::UnsupportedSchema)?;
+     for (key, value) in layout.iter(txn) {
+         let valid = if let Out::Any(Any::Array(values)) = value {
+             matches!(values.as_ref(), [Any::String(mode)] if mode.as_ref() == "original" || mode.as_ref() == "join")
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:242:
+                 || matches!(values.as_ref(), [Any::String(mode), Any::Buffer(_)] if mode.as_ref() == "split")
+-        } else { false };
+-        if key != "pair" || !valid || !kinds.contains_key(txn, "block-1") || !kinds.contains_key(txn, "block-2") {
++        } else {
++            false
++        };
++        if key != "pair"
++            || !valid
++            || !kinds.contains_key(txn, "block-1")
++            || !kinds.contains_key(txn, "block-2")
++        {
+             return Err(DocumentError::UnsupportedSchema);
+         }
+     }
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/src/document.rs:248:
+     Ok(())
+ }
+ fn valid_node_id(id: &str) -> bool {
+-    id != "block-split" && (1..=64).contains(&id.len())
++    id != "block-split"
++        && (1..=64).contains(&id.len())
+         && id.as_bytes()[0].is_ascii_lowercase()
+-        && id.bytes().all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b == b'-')
++        && id
++            .bytes()
++            .all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b == b'-')
+ }
+ 
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:1:
+ //! ENG-1.2: real pinned Yrs initialization and checkpoint/journal replay.
+-use editac_core::document::{CreationPermit, Document, DocumentError, DocumentIdentity,
+-    InitialNode, InitializedCheckpoint, ReplayUpdate, ROOTS};
++use editac_core::document::{
++    CreationPermit, Document, DocumentError, DocumentIdentity, InitialNode, InitializedCheckpoint,
++    ROOTS, ReplayUpdate,
++};
+ use yrs::updates::decoder::Decode;
+-use yrs::{Any, Doc, GetString, Map, OffsetKind, Options, Out, ReadTxn, StateVector,
+-    Text, Transact, Update, XmlTextPrelim};
++use yrs::{
++    Any, Doc, GetString, Map, OffsetKind, Options, Out, ReadTxn, StateVector, Text, Transact,
++    Update, XmlTextPrelim,
++};
+ 
+ fn identity(n: u32) -> DocumentIdentity {
+-    DocumentIdentity::v1(format!("00000000-0000-4000-8000-{n:012x}"),
+-        format!("10000000-0000-4000-8000-{n:012x}")).unwrap()
++    DocumentIdentity::v1(
++        format!("00000000-0000-4000-8000-{n:012x}"),
++        format!("10000000-0000-4000-8000-{n:012x}"),
++    )
++    .unwrap()
+ }
+ fn create(n: u32, nodes: &[InitialNode]) -> Document {
+     Document::create(CreationPermit::authorize_new(identity(n)).unwrap(), nodes).unwrap()
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:14:
+ }
+-fn node(text: &str) -> InitialNode { InitialNode { kind: "list".into(), text: text.into() } }
++fn node(text: &str) -> InitialNode {
++    InitialNode {
++        kind: "list".into(),
++        text: text.into(),
++    }
++}
+ fn fixture_replica(id: u64) -> Doc {
+-    let doc = Doc::with_options(Options { client_id: id.into(), offset_kind: OffsetKind::Utf16, ..Options::default() });
+-    for root in ROOTS { doc.get_or_insert_map(root); }
++    let doc = Doc::with_options(Options {
++        client_id: id.into(),
++        offset_kind: OffsetKind::Utf16,
++        ..Options::default()
++    });
++    for root in ROOTS {
++        doc.get_or_insert_map(root);
++    }
+     doc
+ }
+ fn read_checkpoint(checkpoint: &InitializedCheckpoint) -> Doc {
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:22:
+     let doc = fixture_replica(901);
+-    doc.transact_mut().apply_update(Update::decode_v1(&checkpoint.bytes).unwrap()).unwrap();
++    doc.transact_mut()
++        .apply_update(Update::decode_v1(&checkpoint.bytes).unwrap())
++        .unwrap();
+     doc
+ }
+ fn snapshot(document: &Document) -> Vec<(String, String, String)> {
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:28:
+     let txn = doc.transact();
+     let kinds = txn.get_map(ROOTS[0]).unwrap();
+     let texts = txn.get_map(ROOTS[1]).unwrap();
+-    let mut result: Vec<_> = kinds.iter(&txn).map(|(id, kind)| {
+-        let Out::Any(Any::String(kind)) = kind else { panic!("invalid kind") };
+-        let Some(Out::YXmlText(text)) = texts.get(&txn, id) else { panic!("invalid text") };
+-        (id.to_owned(), kind.to_string(), text.get_string(&txn))
+-    }).collect();
++    let mut result: Vec<_> = kinds
++        .iter(&txn)
++        .map(|(id, kind)| {
++            let Out::Any(Any::String(kind)) = kind else {
++                panic!("invalid kind")
++            };
++            let Some(Out::YXmlText(text)) = texts.get(&txn, id) else {
++                panic!("invalid text")
++            };
++            (id.to_owned(), kind.to_string(), text.get_string(&txn))
++        })
++        .collect();
+     result.sort();
+     result
+ }
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:48:
+         let mut txn = doc.transact_mut_with("initialize");
+         kinds.insert(&mut txn, "n-b-0", "list");
+         text = texts.insert(&mut txn, "n-b-0", XmlTextPrelim::new("a😀b"));
+-        placements.insert(&mut txn, "n-b-0", Any::Array(vec![Any::from("@root"), Any::from(0u32)].into()));
++        placements.insert(
++            &mut txn,
++            "n-b-0",
++            Any::Array(vec![Any::from("@root"), Any::from(0u32)].into()),
++        );
+     }
+-    let checkpoint = InitializedCheckpoint { identity: identity(n), initialized: true, writer_id: 11,
+-        bytes: doc.transact().encode_state_as_update_v1(&StateVector::default()) };
++    let checkpoint = InitializedCheckpoint {
++        identity: identity(n),
++        initialized: true,
++        writer_id: 11,
++        bytes: doc
++            .transact()
++            .encode_state_as_update_v1(&StateVector::default()),
++    };
+     let mut updates = Vec::new();
+     for input in ["אב", "e\u{301}"] {
+         let before = doc.transact().state_vector();
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:58:
+-        { let mut txn = doc.transact_mut_with("fixture-edit"); let end = text.len(&txn); text.insert(&mut txn, end, input); }
+-        updates.push(ReplayUpdate { identity: identity(n), bytes: doc.transact().encode_state_as_update_v1(&before) });
++        {
++            let mut txn = doc.transact_mut_with("fixture-edit");
++            let end = text.len(&txn);
++            text.insert(&mut txn, end, input);
++        }
++        updates.push(ReplayUpdate {
++            identity: identity(n),
++            bytes: doc.transact().encode_state_as_update_v1(&before),
++        });
+     }
+     (checkpoint, updates)
+ }
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:69:
+     let rows = snapshot(&doc);
+     assert_eq!(rows.len(), 2);
+     assert!(rows.iter().any(|(_, _, text)| text == "a😀b"));
+-    assert!(rows.iter().all(|(id, _, _)| id.starts_with(&format!("n-{:x}-", doc.writer_id()))));
++    assert!(
++        rows.iter()
++            .all(|(id, _, _)| id.starts_with(&format!("n-{:x}-", doc.writer_id())))
++    );
+     let raw = read_checkpoint(&doc.checkpoint());
+     let txn = raw.transact();
+-    let mut roots: Vec<_> = txn.root_refs().map(|(name, v)| { assert!(matches!(v, Out::YMap(_))); name.to_owned() }).collect();
++    let mut roots: Vec<_> = txn
++        .root_refs()
++        .map(|(name, v)| {
++            assert!(matches!(v, Out::YMap(_)));
++            name.to_owned()
++        })
++        .collect();
+     roots.sort();
+-    let mut expected = ROOTS.map(str::to_owned); expected.sort();
++    let mut expected = ROOTS.map(str::to_owned);
++    expected.sort();
+     assert_eq!(roots, expected);
+-    let text = match txn.get_map(ROOTS[1]).unwrap().get(&txn, &rows.iter().find(|r| r.2 == "a😀b").unwrap().0) {
+-        Some(Out::YXmlText(t)) => t, _ => panic!("missing text"),
++    let text = match txn
++        .get_map(ROOTS[1])
++        .unwrap()
++        .get(&txn, &rows.iter().find(|r| r.2 == "a😀b").unwrap().0)
++    {
++        Some(Out::YXmlText(t)) => t,
++        _ => panic!("missing text"),
+     };
+     assert_eq!(text.len(&txn), 4, "public offsets are UTF-16");
+ }
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:113:
+     let expected = vec![("n-b-0".into(), "list".into(), "a😀bאבe\u{301}".into())];
+     // All six permutations of initializer checkpoint + two incremental updates,
+     // each duplicated, after an explicitly initialized empty baseline.
+-    for order in [[0,1,2], [0,2,1], [1,0,2], [1,2,0], [2,0,1], [2,1,0]] {
+-        let deliveries = [ReplayUpdate { identity: identity(4), bytes: checkpoint.bytes.clone() }, updates[0].clone(), updates[1].clone()];
+-        let empty = InitializedCheckpoint { bytes: vec![0,0], ..checkpoint.clone() };
+-        let journal: Vec<_> = order.into_iter().flat_map(|i| [deliveries[i].clone(), deliveries[i].clone()]).collect();
++    for order in [
++        [0, 1, 2],
++        [0, 2, 1],
++        [1, 0, 2],
++        [1, 2, 0],
++        [2, 0, 1],
++        [2, 1, 0],
++    ] {
++        let deliveries = [
++            ReplayUpdate {
++                identity: identity(4),
++                bytes: checkpoint.bytes.clone(),
++            },
++            updates[0].clone(),
++            updates[1].clone(),
++        ];
++        let empty = InitializedCheckpoint {
++            bytes: vec![0, 0],
++            ..checkpoint.clone()
++        };
++        let journal: Vec<_> = order
++            .into_iter()
++            .flat_map(|i| [deliveries[i].clone(), deliveries[i].clone()])
++            .collect();
+         let a = Document::restore(&identity(4), &empty, &journal).unwrap();
+         let b = Document::restore(&identity(4), &a.checkpoint(), &journal).unwrap();
+         let c = Document::restore(&identity(4), &checkpoint, &updates).unwrap();
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:132:
+ fn wrong_checkpoint_epoch_is_typed_and_preserves_live_state() {
+     let live = create(5, &[node("keep")]);
+     let before = live.checkpoint();
+-    let mut wrong = before.clone(); wrong.identity.epoch = identity(6).epoch;
+-    assert_eq!(Document::restore(live.identity(), &wrong, &[]).unwrap_err(), DocumentError::WrongEpoch);
++    let mut wrong = before.clone();
++    wrong.identity.epoch = identity(6).epoch;
++    assert_eq!(
++        Document::restore(live.identity(), &wrong, &[]).unwrap_err(),
++        DocumentError::WrongEpoch
++    );
+     assert_eq!(live.checkpoint().bytes, before.bytes);
+-    assert_eq!(wrong.bytes, before.bytes, "rejected bytes remain owned by caller");
++    assert_eq!(
++        wrong.bytes, before.bytes,
++        "rejected bytes remain owned by caller"
++    );
+ }
+ #[test]
+ fn wrong_journal_epoch_rejects_whole_restore_before_publication() {
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:142:
+     let (checkpoint, mut updates) = replay_fixture(7);
+     updates[1].identity.epoch = identity(8).epoch;
+     let bytes = updates[1].bytes.clone();
+-    assert_eq!(Document::restore(&identity(7), &checkpoint, &updates).unwrap_err(), DocumentError::WrongEpoch);
++    assert_eq!(
++        Document::restore(&identity(7), &checkpoint, &updates).unwrap_err(),
++        DocumentError::WrongEpoch
++    );
+     assert_eq!(updates[1].bytes, bytes);
+ }
+ #[test]
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:149:
+ fn complete_profile_and_document_identity_are_required() {
+-    let doc = create(9, &[]); let checkpoint = doc.checkpoint();
++    let doc = create(9, &[]);
++    let checkpoint = doc.checkpoint();
+     for field in 0..7 {
+         let mut wrong = checkpoint.clone();
+         let expected = match field {
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:154:
+-            0 => { wrong.identity.profile = "other".into(); DocumentError::UnsupportedProfile },
+-            1 => { wrong.identity.schema = "other".into(); DocumentError::UnsupportedProfile },
+-            2 => { wrong.identity.protocol_version = 2; DocumentError::UnsupportedProfile },
+-            3 => { wrong.identity.update_encoding = 2; DocumentError::UnsupportedProfile },
+-            4 => { wrong.identity.offsets = "bytes".into(); DocumentError::UnsupportedProfile },
+-            5 => { wrong.identity.document_id = identity(10).document_id; DocumentError::WrongDocument },
+-            _ => { wrong.identity.epoch = "not-a-uuid".into(); DocumentError::InvalidMetadata },
++            0 => {
++                wrong.identity.profile = "other".into();
++                DocumentError::UnsupportedProfile
++            }
++            1 => {
++                wrong.identity.schema = "other".into();
++                DocumentError::UnsupportedProfile
++            }
++            2 => {
++                wrong.identity.protocol_version = 2;
++                DocumentError::UnsupportedProfile
++            }
++            3 => {
++                wrong.identity.update_encoding = 2;
++                DocumentError::UnsupportedProfile
++            }
++            4 => {
++                wrong.identity.offsets = "bytes".into();
++                DocumentError::UnsupportedProfile
++            }
++            5 => {
++                wrong.identity.document_id = identity(10).document_id;
++                DocumentError::WrongDocument
++            }
++            _ => {
++                wrong.identity.epoch = "not-a-uuid".into();
++                DocumentError::InvalidMetadata
++            }
+         };
+-        assert_eq!(Document::restore(doc.identity(), &wrong, &[]).unwrap_err(), expected);
++        assert_eq!(
++            Document::restore(doc.identity(), &wrong, &[]).unwrap_err(),
++            expected
++        );
+     }
+ }
+ #[test]
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:166:
+ fn missing_initializer_authority_cannot_be_guessed_from_content() {
+     let (mut checkpoint, updates) = replay_fixture(11);
+     checkpoint.initialized = false;
+-    assert_eq!(Document::restore(&identity(11), &checkpoint, &updates).unwrap_err(), DocumentError::MissingInitialization);
++    assert_eq!(
++        Document::restore(&identity(11), &checkpoint, &updates).unwrap_err(),
++        DocumentError::MissingInitialization
++    );
+ }
+ #[test]
+ fn independent_live_replicas_never_reactivate_checkpoint_writer() {
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:173:
+     let (checkpoint, updates) = replay_fixture(12);
+-    let docs: Vec<_> = (0..32).map(|_| Document::restore(&identity(12), &checkpoint, &updates).unwrap()).collect();
++    let docs: Vec<_> = (0..32)
++        .map(|_| Document::restore(&identity(12), &checkpoint, &updates).unwrap())
++        .collect();
+     let ids: std::collections::HashSet<_> = docs.iter().map(Document::writer_id).collect();
+-    assert_eq!(ids.len(), docs.len()); assert!(!ids.contains(&11));
++    assert_eq!(ids.len(), docs.len());
++    assert!(!ids.contains(&11));
+     assert!(docs.iter().all(|d| d.next_node_counter() == 0));
+ }
+ #[test]
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:180:
+ fn creation_authority_is_one_shot_even_after_initializer_is_dropped() {
+-    let doc = create(13, &[]); let checkpoint = doc.checkpoint(); drop(doc);
+-    assert_eq!(CreationPermit::authorize_new(identity(13)).unwrap_err(), DocumentError::AlreadyInitialized);
+-    assert!(Document::restore(&identity(13), &checkpoint, &[]).unwrap().is_initialized());
++    let doc = create(13, &[]);
++    let checkpoint = doc.checkpoint();
++    drop(doc);
++    assert_eq!(
++        CreationPermit::authorize_new(identity(13)).unwrap_err(),
++        DocumentError::AlreadyInitialized
++    );
++    assert!(
++        Document::restore(&identity(13), &checkpoint, &[])
++            .unwrap()
++            .is_initialized()
++    );
+ }
+ #[test]
+ fn malformed_and_partial_replay_remain_explicit_recovery() {
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:187:
+     let (checkpoint, updates) = replay_fixture(14);
+-    let bad = ReplayUpdate { identity: identity(14), bytes: vec![255] };
+-    assert_eq!(Document::restore(&identity(14), &checkpoint, &[updates[0].clone(), bad]).unwrap_err(), DocumentError::InvalidUpdate);
+-    let empty = InitializedCheckpoint { bytes: vec![0,0], ..checkpoint };
+-    assert_eq!(Document::restore(&identity(14), &empty, &[updates[1].clone()]).unwrap_err(), DocumentError::IncompleteRestore);
++    let bad = ReplayUpdate {
++        identity: identity(14),
++        bytes: vec![255],
++    };
++    assert_eq!(
++        Document::restore(&identity(14), &checkpoint, &[updates[0].clone(), bad]).unwrap_err(),
++        DocumentError::InvalidUpdate
++    );
++    let empty = InitializedCheckpoint {
++        bytes: vec![0, 0],
++        ..checkpoint
++    };
++    assert_eq!(
++        Document::restore(&identity(14), &empty, &[updates[1].clone()]).unwrap_err(),
++        DocumentError::IncompleteRestore
++    );
+ }
+ #[test]
+ fn unsupported_roots_are_rejected_without_repair() {
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/initialization.rs:195:
+-    let doc = fixture_replica(15); let text = doc.get_or_insert_text("foreign-root");
++    let doc = fixture_replica(15);
++    let text = doc.get_or_insert_text("foreign-root");
+     text.insert(&mut doc.transact_mut(), 0, "preserve me");
+-    let checkpoint = InitializedCheckpoint { identity: identity(15), initialized: true, writer_id: 15,
+-        bytes: doc.transact().encode_state_as_update_v1(&StateVector::default()) };
+-    assert_eq!(Document::restore(&identity(15), &checkpoint, &[]).unwrap_err(), DocumentError::UnsupportedSchema);
++    let checkpoint = InitializedCheckpoint {
++        identity: identity(15),
++        initialized: true,
++        writer_id: 15,
++        bytes: doc
++            .transact()
++            .encode_state_as_update_v1(&StateVector::default()),
++    };
++    assert_eq!(
++        Document::restore(&identity(15), &checkpoint, &[]).unwrap_err(),
++        DocumentError::UnsupportedSchema
++    );
+     assert_eq!(text.get_string(&doc.transact()), "preserve me");
+ }
+ 

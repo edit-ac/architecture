@@ -1,0 +1,54 @@
+
+> @edit-ac/architecture@0.0.0 check
+> npm run validate:roadmaps && npm run validate:editing-suite && npm run test:editing-suite-contract
+
+
+> @edit-ac/architecture@0.0.0 validate:roadmaps
+> node scripts/validate-roadmaps.mjs
+
+{
+  "runnerVersion": "0.8.0",
+  "files": 42,
+  "tasks": 503,
+  "checkboxes": 1509,
+  "contextLinks": 84,
+  "errors": []
+}
+
+> @edit-ac/architecture@0.0.0 validate:editing-suite
+> node scripts/validate-editing-suite.mjs
+
+{
+  "kind": "planning-validation",
+  "cases": 195,
+  "recipes": 12,
+  "steps": 37,
+  "guards": 14,
+  "errors": []
+}
+
+> @edit-ac/architecture@0.0.0 test:editing-suite-contract
+> node --test tests/editing-suite-contract.test.mjs
+
+✔ valid file corpus reports planning counts without runtime results (4.828333ms)
+✔ duplicate catalog, recipe, step, guard and coverage IDs are rejected (5.333416ms)
+✔ unknown catalog owners, guard owners and coverage references fail (2.252917ms)
+✔ catalog counts cannot hide missing or zero matching cases (2.093959ms)
+✔ catalog rows need a parent-task owner heading (1.728917ms)
+✔ absolute, traversing and symlink paths cannot leave the architecture root (2.91675ms)
+✔ missing and malformed recipe files are validation errors (1.883417ms)
+✔ execution claims and fabricated pass fields are forbidden at every recipe level (1.921ms)
+✔ unknown actions fail while intentional invalid arguments require a rejected result (0.211583ms)
+✔ surrogate-interior selections, unknown blocks and malformed Unicode fail (0.139667ms)
+✔ marks and hard breaks must describe valid UTF-16 ranges and literal LF positions (0.420291ms)
+✔ coherent no-op, selection-only and staged outcomes forbid document commits (0.420291ms)
+✔ derived, suppressed and explicit pending marks stay distinct without mutating snapshots (0.284875ms)
+✔ every expected snapshot is checked, including a corrupt final step (0.114167ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 79.383792

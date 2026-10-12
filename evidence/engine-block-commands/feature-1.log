@@ -1,0 +1,51 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0599]: no method named `get_map` found for struct `Transaction<'doc>` in the current scope
+   --> crates/editac-core/src/commands/blocks.rs:147:10
+    |
+146 |       let max = t
+    |  _______________-
+147 | |         .get_map(m::ROOTS[0])
+    | |         -^^^^^^^ method not found in `Transaction<'_>`
+    | |_________|
+    |
+    |
+   ::: /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/transaction.rs:225:8
+    |
+225 |       fn get_map<N: Into<Arc<str>>>(&self, name: N) -> Option<MapRef> {
+    |          ------- the method is available for `Transaction<'_>` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: trait `ReadTxn` which provides `get_map` is implemented but not in scope; perhaps you want to import it
+    |
+  4 + use yrs::ReadTxn;
+    |
+
+error[E0631]: type mismatch in function arguments
+    --> crates/editac-core/src/commands/blocks.rs:249:38
+     |
+ 132 | fn editable(n: &ProjectedNode) -> bool {
+     | -------------------------------------- found signature defined here
+...
+ 249 |             if !s.visible.iter().any(editable) {
+     |                                  --- ^^^^^^^^ expected due to this
+     |                                  |
+     |                                  required by a bound introduced by this call
+     |
+     = note: expected function signature `fn(&Arc<ProjectedNode>) -> _`
+                found function signature `fn(&ProjectedNode) -> _`
+note: required by a bound in `any`
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/iter/traits/iterator.rs:2888:12
+     |
+2885 |     fn any<F>(&mut self, f: F) -> bool
+     |        --- required by a bound in this associated function
+...
+2888 |         F: FnMut(Self::Item) -> bool,
+     |            ^^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `Iterator::any`
+help: consider wrapping the function in a closure
+     |
+ 249 |             if !s.visible.iter().any(|arg0: &Arc<ProjectedNode>| editable(/* &ProjectedNode */)) {
+     |                                      +++++++++++++++++++++++++++         ++++++++++++++++++++++
+
+Some errors have detailed explanations: E0599, E0631.
+For more information about an error, try `rustc --explain E0599`.
+error: could not compile `editac-core` (lib) due to 2 previous errors

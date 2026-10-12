@@ -1,0 +1,45 @@
+
+running 5 tests
+test updates::native_updates_vectors_diffs_and_delete_sets ... FAILED
+test updates::native_updates_patch_drain_is_once_per_commit ... FAILED
+test updates::native_updates_checkpoint_and_replay ... FAILED
+test updates::native_updates_rejections_are_atomic ... FAILED
+test updates::native_updates_reverse_replay ... ok
+
+failures:
+
+---- updates::native_updates_vectors_diffs_and_delete_sets stdout ----
+
+thread 'updates::native_updates_vectors_diffs_and_delete_sets' (153975851) panicked at crates/editac-wasm/src/updates.rs:6:202:
+called `Result::unwrap()` on an `Err` value: Error { code: "EngineRejected", operation: "create", message: "AlreadyInitialized" }
+
+---- updates::native_updates_patch_drain_is_once_per_commit stdout ----
+
+thread 'updates::native_updates_patch_drain_is_once_per_commit' (153975848) panicked at crates/editac-wasm/src/updates.rs:6:202:
+called `Result::unwrap()` on an `Err` value: Error { code: "EngineRejected", operation: "create", message: "AlreadyInitialized" }
+
+---- updates::native_updates_checkpoint_and_replay stdout ----
+
+thread 'updates::native_updates_checkpoint_and_replay' (153975847) panicked at crates/editac-wasm/src/updates.rs:6:202:
+called `Result::unwrap()` on an `Err` value: Error { code: "EngineRejected", operation: "create", message: "AlreadyInitialized" }
+
+---- updates::native_updates_rejections_are_atomic stdout ----
+
+thread 'updates::native_updates_rejections_are_atomic' (153975849) panicked at crates/editac-wasm/src/updates.rs:6:202:
+called `Result::unwrap()` on an `Err` value: Error { code: "EngineRejected", operation: "create", message: "AlreadyInitialized" }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    updates::native_updates_checkpoint_and_replay
+    updates::native_updates_patch_drain_is_once_per_commit
+    updates::native_updates_rejections_are_atomic
+    updates::native_updates_vectors_diffs_and_delete_sets
+
+test result: FAILED. 1 passed; 4 failed; 0 ignored; 0 measured; 23 filtered out; finished in 0.01s
+
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+   Compiling editac-wasm v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-wasm)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.87s
+     Running unittests src/lib.rs (target/debug/deps/editac_wasm-67479aeb3dd00d95)
+error: test failed, to rerun pass `-p editac-wasm --lib`

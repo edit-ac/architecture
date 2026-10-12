@@ -1,6 +1,6 @@
 # edit.ac architecture and development roadmaps
 
-This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 37 roadmap files and 443 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
+This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 37 roadmap files and 451 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
 
 The user selected public repositories and Apache-2.0. [Decision 001](decisions/001-web-first.md) resolves scope, ownership, naming and release conflicts. [Decision003](decisions/003-extension-ecosystem.md) adds the requested extension, format, cloud and public-documentation delivery. The [original proposal](sources/initial-roadmap.md) is archived unchanged as reference material; current specs and task acceptance supersede it. [Decision 002](decisions/002-full-delivery.md) extends delivery beyond the initial browser release; the [requirement review](requirements.md) maps each requested capability to concrete tasks.
 
@@ -18,7 +18,7 @@ Clone [core](https://github.com/edit-ac/core), this repository as `architecture`
 | Track | Parent tasks | Required upstream tracks | Exit artifact |
 |---|---:|---|---|
 | [01 Foundation](roadmaps/01-foundation.md) | 14 | Project scaffold | Pinned interop/offset/schema and compiled WASM proof |
-| [02 Engine](roadmaps/02-engine.md) | 15 | 01 | Deterministic semantic commands, anchors, history and patches |
+| [02 Engine](roadmaps/02-engine.md) | 23 | 01 | Qualified block/ownership/structural profiles, deterministic semantic commands, anchors, history and patches |
 | [03 Local storage](roadmaps/03-local-storage.md) | 7 | 02 | Crash-tested journal/checkpoint/outbox recovery |
 | [04 Browser input](roadmaps/04-browser-input.md) | 12 | 02, 03 | Continuous accessible editing and composition lifecycle |
 | [05 Markdown/content](roadmaps/05-markdown-content.md) | 12 | 02, 04 | Tested dialect, safe paste, round trips and source reconciliation |

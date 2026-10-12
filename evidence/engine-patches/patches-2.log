@@ -1,0 +1,60 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: field `after_sequence` is never read
+   --> crates/editac-core/src/patches.rs:127:5
+    |
+125 | struct Listener {
+    |        -------- field in this struct
+126 |     id: u64,
+127 |     after_sequence: u64,
+    |     ^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (lib) generated 1 warning
+warning: unused import: `structure::*`
+ --> crates/editac-core/tests/patches.rs:8:38
+  |
+8 |     commands::{editor::*, format::*, structure::*, text::*},
+  |                                      ^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+error[E0308]: mismatched types
+   --> crates/editac-core/tests/patches.rs:387:66
+    |
+387 |             tuple: m::arr(vec![Any::from("heading"), Any::Number(3.)]),
+    |                                                      ----------- ^^ expected `Number`, found floating-point number
+    |                                                      |
+    |                                                      arguments to this enum variant are incorrect
+    |
+note: tuple variant defined here
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:21:5
+    |
+ 21 |     Number(Number),
+    |     ^^^^^^
+help: try wrapping the expression in `yrs::Number::Float`
+    |
+387 |             tuple: m::arr(vec![Any::from("heading"), Any::Number(yrs::Number::Float(3.))]),
+    |                                                                  +++++++++++++++++++  +
+
+error[E0308]: mismatched types
+   --> crates/editac-core/tests/patches.rs:409:70
+    |
+409 |                 tuple: m::arr(vec![Any::from("heading"), Any::Number(2.)]),
+    |                                                          ----------- ^^ expected `Number`, found floating-point number
+    |                                                          |
+    |                                                          arguments to this enum variant are incorrect
+    |
+note: tuple variant defined here
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:21:5
+    |
+ 21 |     Number(Number),
+    |     ^^^^^^
+help: try wrapping the expression in `yrs::Number::Float`
+    |
+409 |                 tuple: m::arr(vec![Any::from("heading"), Any::Number(yrs::Number::Float(2.))]),
+    |                                                                      +++++++++++++++++++  +
+
+For more information about this error, try `rustc --explain E0308`.
+warning: `editac-core` (test "patches") generated 1 warning
+error: could not compile `editac-core` (test "patches") due to 2 previous errors; 1 warning emitted

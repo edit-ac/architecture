@@ -1,0 +1,106 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.20s
+     Running unittests src/lib.rs (target/debug/deps/editac_core-1a758e03712644e2)
+
+running 9 tests
+test commands::text::tests::delete_only_remote_update_invalidates_plan_even_with_unchanged_state_vector ... ok
+test commands::format::tests::complete_batch_has_one_origin_transaction_and_no_preparation_observers ... ok
+test commands::format::block_transaction_tests::mixed_mark_and_empty_block_batch_has_one_origin_transaction_and_read_only_rejection ... ok
+test commands::structure::tests::revision_exhaustion_rejects_before_ownership_mutation ... ok
+test commands::format::remote_tests::deletion_only_remote_update_invalidates_exact_state_even_without_revision_change ... ok
+test commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks ... ok
+test commands::structure::tests::deletion_only_remote_state_invalidates_plan_and_anchor_repreparation_is_safe ... ok
+test commands::structure::tests::preparation_is_read_only_and_commit_has_one_explicit_origin_transaction ... ok
+test commands::structure::general_transaction_tests::v3_preparation_and_rejection_are_silent_and_each_commit_has_one_explicit_origin ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/ownership_profile.rs (target/debug/deps/ownership_profile-28dd32ae9233a397)
+
+running 26 tests
+test bounded_decode_rejects_nested_any_and_allocation_amplification ... ok
+test binary_anchor_routes_original_identity_across_repeat_join_split_and_empty_ties ... ok
+test both_sides_cut_concurrent_edits_and_mark_writes_route_without_copy ... ok
+test delete_original_and_derived_keep_content_metadata_and_losing_intentions ... ok
+test complete_known_graph_cycles_and_dormant_depth_remain_bounded ... ok
+test begin_middle_end_empty_and_unicode_cuts_preserve_identity ... ok
+test checkpoint_restore_duplicate_updates_and_projection_are_read_only ... ok
+test exact_profile_document_epoch_encoding_and_missing_metadata_before_decode ... ok
+test deletion_of_cut_characters_collapses_without_losing_remaining_coverage ... ok
+test initialized_empty_restore_never_seeds_and_uses_independent_writer ... ok
+test invalid_operation_graph_cycle_and_immutable_replacement_are_recovery ... ok
+test conflicting_branches_dependency_descendants_and_disjoint_operations_reorder ... ok
+test incomplete_binary_dependencies_reject_staged_then_activate_after_prerequisite ... ok
+test machine_seed_exact_seven_roots_and_nonreserved_ids ... ok
+test cut_wrong_source_affinity_surrogate_and_bad_binary_reject_before_live_write ... ok
+test marks_empty_heading_live_inheritance_override_and_absorbed_retention ... ok
+test missing_graph_dependencies_dormant_then_activate_without_reseed ... ok
+test next_visible_join_crosses_tombstone_without_absorbing_recovery_content ... ok
+test unknown_metadata_and_character_attributes_retained_opaquely ... ok
+test staged_admission_retains_text_identity_and_monotonic_deletion ... ok
+test repeated_transforms_two_disjoint_pairs_and_multisource_split_after_join ... ok
+test invalid_tuple_target_shared_type_and_atomic_text_rejection ... ok
+test bounds_depth_sources_operations_wire_text_and_json_do_not_silently_omit ... ok
+test source_operation_container_limits_and_unknown_source_anchor_are_explicit ... ok
+test aggregate_text_and_cut_byte_bounds_reject_staged_without_partial_mutation ... ok
+test pinned_rust_yjs_exchange_complete_matrix_and_all_three_update_permutations ... ok
+
+test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.38s
+
+     Running tests/split_join.rs (target/debug/deps/split_join-7369b08ffe8047c7)
+
+running 51 tests
+test general::v3_production_creation_exact_roots_and_restore_never_reseeds ... ok
+test deleted_characters_move_the_cut_without_absolute_offset_drift ... ok
+test general::v3_production_block_only_change_stales_all_prepared_commands_and_preserves_metadata ... ok
+test general::v3_production_binary_dependencies_atomic_rejection_then_restore_reordered_journal ... ok
+test general::v3_production_heading_inheritance_override_toggle_and_parent_batch_order ... ok
+test general::v3_production_empty_boundary_ties_and_explicit_targets_preserve_cursor_policy ... ok
+test general::v3_production_deleted_original_and_derived_targets_keep_recovery ... ok
+test general::v3_production_invalid_creation_empty_restore_and_legacy_root_admission_are_typed ... ok
+test general::v3_production_immutable_operation_text_origin_and_tombstone_rejection ... ok
+test general::v3_production_invalid_order_stale_replica_epoch_and_profile_are_atomic ... ok
+test general::v3_production_join_remote_insert_race_and_duplicate_reordered_updates ... ok
+test general::v3_production_join_across_deleted_owner_keeps_every_recovery_span ... ok
+test general::v3_production_missing_dependencies_and_losing_overrides_remain_recoverable ... ok
+test general::v3_production_mark_retention_and_mixed_block_batch_atomic_rejection ... ok
+test concurrent_deletion_retains_marked_source_recovery_without_resurrecting_targets ... ok
+test general::v3_production_join_beginning_end_empty_and_two_disjoint_pairs ... ok
+test general::v3_production_multispan_same_source_replace_preserves_offsets_and_identity ... ok
+test general::v3_production_beginning_middle_end_empty_splits_repeat_without_reseeding ... ok
+test general::v3_production_split_after_join_across_original_sources_and_stable_anchors ... ok
+test general::v3_production_unknown_tuple_and_marks_retained_without_local_extension_execution ... ok
+test general::v3_production_remote_insert_at_and_both_sides_of_cut_converges ... ok
+test join_both_empty ... ok
+test join_empty_first ... ok
+test join_empty_second ... ok
+test join_nonempty_marked_sources ... ok
+test known_deleted_targets_and_deleted_split_output_reject_before_mutation ... ok
+test join_targets_may_be_stable_beginning_middle_or_end_positions ... ok
+test mixed_attributed_runs_created_by_format_commands_survive_split_and_join ... ok
+test general::v3_production_utf16_zwj_combining_rtl_and_surrogate_rejection ... ok
+test remote_insert_before_preparation_resolves_the_original_anchor ... ok
+test general::v3_production_resource_and_malformed_graph_rejection_leave_state_unchanged ... ok
+test reversed_or_wrong_source_targets_are_explicitly_unsupported ... ok
+test repeated_transformations_are_rejected_instead_of_rebinding_or_cloning ... ok
+test source_selections_resolve_after_split_and_join ... ok
+test split_at_beginning ... ok
+test split_at_maximum_order_is_rejected_before_descriptor_write ... ok
+test split_at_end ... ok
+test split_cut_always_has_left_affinity_even_with_right_biased_command ... ok
+test split_at_middle ... ok
+test split_empty_text_retains_both_empty_owner_identities ... ok
+test surrogate_interior_and_out_of_bounds_fail_without_mutation ... ok
+test split_inherits_resolved_parent_and_order_without_rewriting_raw_placement ... ok
+test unsupported_pair_and_unknown_target_kinds_fail_atomically ... ok
+test unicode_split_uses_utf16_without_normalizing_graphemes_or_rtl ... ok
+test wrong_replica_and_intervening_local_edit_invalidate_plans ... ok
+test general::v3_production_concurrent_overlap_descendants_disjoint_pairs_all_permutations ... ok
+test split_and_join_each_preserve_acknowledged_remote_edits_on_three_replicas ... ok
+test pinned_yjs_resolves_rust_cut_and_rust_restores_js_join_and_raced_edits ... ok
+test general::v3_production_real_pinned_yjs_exchange_both_directions_and_checkpoint ... ok
+test concurrent_split_join_and_text_edits_converge_for_both_writer_priorities ... ok
+test general::v3_production_operation_capacity_caps_preparation_before_any_live_write ... ok
+
+test result: ok. 51 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.73s
+

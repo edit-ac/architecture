@@ -1,0 +1,69 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.18s
+     Running unittests src/lib.rs (target/debug/deps/editac_core-71703fee5fc240eb)
+
+running 14 tests
+test commands::format::remote_tests::deletion_only_remote_update_invalidates_exact_state_even_without_revision_change ... ok
+test commands::format::tests::complete_batch_has_one_origin_transaction_and_no_preparation_observers ... ok
+test commands::format::block_transaction_tests::mixed_mark_and_empty_block_batch_has_one_origin_transaction_and_read_only_rejection ... ok
+test commands::editor::transaction_tests::v4_whole_batch_preparation_is_silent_commit_is_one_origin_and_only_local_writer ... ok
+test commands::structure::tests::deletion_only_remote_state_invalidates_plan_and_anchor_repreparation_is_safe ... ok
+test commands::text::tests::delete_only_remote_update_invalidates_plan_even_with_unchanged_state_vector ... ok
+test commands::structure::tests::revision_exhaustion_rejects_before_ownership_mutation ... ok
+test commands::structure::tests::preparation_is_read_only_and_commit_has_one_explicit_origin_transaction ... ok
+test commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks ... ok
+test commands::r#move::tests::move_preparation_is_silent_and_commit_has_one_local_origin_and_writer ... ok
+test commands::editor::transaction_tests::v4_block_text_batch_is_silent_and_commits_once_with_only_local_writer ... ok
+test commands::structure::general_transaction_tests::v3_preparation_and_rejection_are_silent_and_each_commit_has_one_explicit_origin ... ok
+test commands::editor::transaction_tests::v5_witnessed_cross_source_literal_conversion_is_silent_then_commits_once ... ok
+test commands::lists::transaction_tests::list_expansion_is_silent_and_compound_commit_emits_one_transaction_with_origin ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/history.rs (target/debug/deps/history-26c7d78aa6f76957)
+
+running 28 tests
+test clear_and_invalid_configuration_are_nonmutating ... ok
+test container_control_undo_does_not_swallow_live_children ... ok
+test distinct_typing_origins_and_composition_sessions_never_merge ... ok
+test deletion_replacement_unicode_undo_restores_original_identity_and_marks ... ok
+test deterministic_typing_capture_timeout_origin_and_reset_boundaries ... ok
+test explicit_edits_are_separate_inside_capture_interval_and_clear_redo ... ok
+test concurrent_separator_presentation_blocks_incompatible_undo_before_live_mutation ... ok
+test composition_group_is_explicit_and_paste_format_move_break_coalescing ... ok
+test dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone ... ok
+test initial_creation_rows_text_and_required_metadata_survive_undo_redo ... ok
+test local_undo_after_remote_insertion_keeps_remote_unicode_and_anchor ... ok
+test pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation ... FAILED
+test literal_code_history_keeps_dormant_marks_and_exact_whitespace ... ok
+test group_count_payload_and_commit_caps_evict_old_history_without_content_writes ... ok
+test one_mixed_prepared_operation_undoes_text_metadata_and_move_as_one_group ... ok
+test metadata_history_does_not_rewrite_established_v5_join_witnesses ... ok
+test rejected_and_stale_preparation_preserve_history_state_and_redo ... ok
+test newly_created_text_enters_scope_for_later_typing_but_creation_content_is_retained ... ok
+test permanent_remote_tombstone_wins_over_structural_redo_and_keeps_recovery_bytes ... ok
+test rich_format_command_is_one_group_and_remote_text_survives ... ok
+test remote_replay_restore_and_selection_do_not_enter_history_or_clear_redo ... ok
+test v4_profile_uses_same_selective_controls_without_mutating_frozen_mapping ... ok
+test remote_text_and_presentation_on_local_creation_survive_control_undo_redo ... ok
+test split_join_history_keeps_multisource_ownership_marks_and_anchors ... ok
+test structural_move_undo_retains_operation_and_remote_descendant_edits ... ok
+test text_and_metadata_history_can_repeat_undo_redo_without_losing_deleted_payloads ... ok
+test history_updates_converge_under_six_three_writer_duplicate_reorder_schedules ... ok
+test staged_history_resource_rejection_is_atomic_and_retry_requires_changed_remote_state ... ok
+
+failures:
+
+---- pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation stdout ----
+
+thread 'pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation' (154003824) panicked at crates/editac-core/tests/history.rs:765:14:
+isolated exchange evidence path required
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation
+
+test result: FAILED. 27 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.58s
+
+error: test failed, to rerun pass `-p editac-core --test history`

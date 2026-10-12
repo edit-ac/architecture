@@ -1,0 +1,106 @@
+[
+  {
+    "parent": "ENG-1.15",
+    "requirement": "Browser storage and sync can use real update bytes",
+    "implementation": [
+      "Document::state_vector_v1/update_v1",
+      "Bridge::{checkpoint_metadata,checkpoint_bytes,state_vector,update,apply,restore}",
+      "EngineRuntime.restoreEngine(expected,checkpoint,journal)",
+      "EngineHandle.{checkpoint,stateVector,encodeUpdate,applyUpdate}"
+    ],
+    "cases": [
+      "native Rust checkpoint restores in compiled WASM without defaults or writer reuse",
+      "native journal replay, duplicates and dependent reordered restore match Rust snapshot",
+      "state-vector differential exchange and duplicate remote updates have exact patches",
+      "three disconnected compiled replicas converge across all six duplicate delivery permutations",
+      "pinned Yjs reads production WASM bytes and edits original rich text for WASM replay",
+      "delete-set replay works even when clocks did not change",
+      "restore rejects missing initialization, wrong journal identity and malformed tails",
+      "checkpoint, vector, update and event bytes remain owned after mutation and disposal",
+      "built WASM structural/format/history checkpoint and update replay agrees with native Rust",
+      "actual Chromium IndexedDB checkpoint/tail restore and peer sync use owned production bytes"
+    ],
+    "evidence": [
+      "native-fixture.json",
+      "wasm-replay-input.json",
+      "built-wasm-replay.json",
+      "harness.json"
+    ]
+  },
+  {
+    "parent": "ENG-1.15",
+    "requirement": "JS and Rust semantic snapshots agree after replay",
+    "implementation": [
+      "same production Document restore/admission; merged causal journal; fresh writer/history",
+      "separate host expected identity; owned Uint8Array input/output copies"
+    ],
+    "cases": [
+      "native Rust checkpoint restores in compiled WASM without defaults or writer reuse",
+      "native journal replay, duplicates and dependent reordered restore match Rust snapshot",
+      "wrong epoch update rejects before content, history or patch mutation",
+      "wrong document update rejects before content, history or patch mutation",
+      "wrong profile update rejects before content, history or patch mutation",
+      "wrong schema update rejects before content, history or patch mutation",
+      "wrong encoding update rejects before content, history or patch mutation",
+      "malformed update and state-vector bytes reject atomically",
+      "invalid root and mutated immutable rows reject through real staged admission",
+      "restore rejects missing initialization, wrong journal identity and malformed tails",
+      "byte inputs enforce types, data envelopes and resource limits without getter execution",
+      "checkpoint, vector, update and event bytes remain owned after mutation and disposal",
+      "built WASM structural/format/history checkpoint and update replay agrees with native Rust",
+      "actual Chromium IndexedDB checkpoint/tail restore and peer sync use owned production bytes"
+    ],
+    "evidence": [
+      "native-fixture.json",
+      "built-wasm-replay.json",
+      "native-updates.log",
+      "reverse-native.log",
+      "wasm-updates.log"
+    ]
+  },
+  {
+    "parent": "ENG-1.15-I1",
+    "requirement": "Batched patch subscriptions and owned bytes with post-transaction scheduling",
+    "implementation": [
+      "Bridge::take_patch exposes the kernel commit batch once",
+      "JS mutate drains after raw call returns; listener snapshots and FIFO nested dispatch",
+      "detached projection/bytes per observer; bounded subscription/diagnostic tables"
+    ],
+    "cases": [
+      "state-vector differential exchange and duplicate remote updates have exact patches",
+      "wrong epoch update rejects before content, history or patch mutation",
+      "wrong document update rejects before content, history or patch mutation",
+      "wrong profile update rejects before content, history or patch mutation",
+      "wrong schema update rejects before content, history or patch mutation",
+      "wrong encoding update rejects before content, history or patch mutation",
+      "scoped batches report exact changed node/range and ignore unrelated listeners",
+      "post-transaction reentrant commit dispatches FIFO and subscriptions start with future batches",
+      "observer throws and mutations cannot corrupt commits or other observers",
+      "subscription validation and bounded table preserve normal operations"
+    ],
+    "evidence": [
+      "wasm-updates.log",
+      "crates/editac-wasm/src/updates.rs",
+      "kernel-remaining.log"
+    ]
+  },
+  {
+    "parent": "ENG-1.15",
+    "requirement": "Disposed handles/subscriptions cannot be used",
+    "implementation": [
+      "Engine.dispose drops its replica; wrapper frees once",
+      "subscription active/dispose; engine disposal clears listeners/queued captures"
+    ],
+    "cases": [
+      "checkpoint, vector, update and event bytes remain owned after mutation and disposal",
+      "unsubscribe/dispose are idempotent and pending callbacks are removed",
+      "actual Chromium IndexedDB checkpoint/tail restore and peer sync use owned production bytes"
+    ],
+    "evidence": [
+      "wasm-updates.log",
+      "commands-regression.log",
+      "loader-regression.log",
+      "process-cleanup.json"
+    ]
+  }
+]

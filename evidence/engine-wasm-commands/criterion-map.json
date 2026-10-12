@@ -1,0 +1,72 @@
+{
+  "ENG-1.14-I1: opaque production create/read": {
+    "implementation": [
+      "crates/editac-wasm/src/{bridge,engine}.rs",
+      "packages/core/src/{engine,index}.ts"
+    ],
+    "proof": [
+      "all 17 shared v5 scenarios",
+      "explicit empty creation",
+      "detached snapshots",
+      "typed consumer negative controls"
+    ]
+  },
+  "ENG-1.14-I1: prepared semantic commands": {
+    "proof": [
+      "unicode insert/delete/replace",
+      "six marks and levels 1–6",
+      "start/middle/end/empty split and joined multi-source presentation",
+      "list/quote/check/number/enter/backspace/indent/outdent",
+      "code/hard break/dormant marks/separator accessible neighbor",
+      "versioned move",
+      "explicit and typing history, undo/redo/clear"
+    ],
+    "fixtures": [
+      "unicode-replace",
+      "text-insert-delete",
+      "rich-marks",
+      "heading-levels",
+      "split-start",
+      "split-middle",
+      "split-end",
+      "split-empty",
+      "retained-join",
+      "literal-code",
+      "list-quote-nesting",
+      "list-enter-backspace",
+      "empty-item-exit",
+      "separator-access",
+      "separator-insert",
+      "semantic-move",
+      "history-grouping"
+    ]
+  },
+  "ENG-1.14-I1/V1: JS validation and atomic rejection": {
+    "proof": [
+      "native exact checkpoint bytes/revision/history preservation",
+      "JS snapshot/revision/history preservation",
+      "invalid surrogate/offset/type/unknown fields/origins/URLs/levels/mixed batches",
+      "byte/anchor/plan caps",
+      "cross-handle/released/consumed/stale plans"
+    ],
+    "source": [
+      "crates/editac-wasm/src/cases.rs",
+      "tests/wasm-commands.test.mjs"
+    ]
+  },
+  "ENG-1.14-V1: actual built WASM shared fixtures": {
+    "proof": "17 native/WASM full semantic snapshots match after writer normalization; Yrs/Yjs decode and exact re-encode retained relative anchors, including target/clock/association. Literal text and opaque attribute guard prevents comparator normalization hiding content changes. Raw snapshots retained.",
+    "artifact": "native-*.json / wasm-*.json / *-raw-*.json"
+  },
+  "ENG-1.14-V1: explicit/idempotent disposal": {
+    "proof": [
+      "raw Engine Option disposal drops all replica-owned resources and rejects later calls",
+      "package wrapper dispose/free once with repeated dispose safe",
+      "built and packed browser real replacement/undo/redo/anchor/disposal"
+    ],
+    "artifact": [
+      "harness.json",
+      "loader-final/harness.json"
+    ]
+  }
+}

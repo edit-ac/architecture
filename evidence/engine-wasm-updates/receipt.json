@@ -1,0 +1,112 @@
+{
+  "gate": "ENG-1.15",
+  "children": [
+    "ENG-1.15-I1",
+    "ENG-1.15-V1"
+  ],
+  "state": "implemented and locally verified",
+  "iteration": 8,
+  "promptRevision": "7eaa063f3629",
+  "sourceSnapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+  "sourceRevision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+  "coreBaseCommit": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "architectureBaseCommit": "26d3502585fea4c8a21bc15fb949a562b93905ea",
+  "uncommittedWorkPreserved": true,
+  "node": "24.19.0",
+  "rustToolchain": "1.97.1-aarch64-apple-darwin",
+  "pins": {
+    "yrs": "0.28.0",
+    "yjs": "13.6.33",
+    "wasm-bindgen": "0.2.129",
+    "playwright": {
+      "version": "156.0.8078.4",
+      "playwright": "1.64.0"
+    }
+  },
+  "canonical": {
+    "wasm": {
+      "executed": 24,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "nativePrerequisite": {
+      "executed": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 23
+    },
+    "actualWasmToNative": {
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 27
+    }
+  },
+  "regressions": {
+    "rust": {
+      "executed": 111,
+      "passed": 111,
+      "failed": 0,
+      "skipped": 0,
+      "composition": "28 bridge + 14 kernel lib + 28 history (27 reused passing + 1 repaired environment) + 41 initialization/interop/patches"
+    },
+    "node": {
+      "executed": 37,
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0,
+      "composition": "25 commands + 7 packed/browser loader + 5 nested pinned Yjs history"
+    },
+    "nonmatchingRustFilters": "23 native setup; 27 reverse replay; 27 repaired history; never counted as skips/passes or acceptance coverage"
+  },
+  "sources": {
+    "file": "tested-source-hashes.json",
+    "count": 59,
+    "predecessorDelta": "predecessor-source-delta.json"
+  },
+  "artifacts": "artifacts.json",
+  "checks": "checks.json",
+  "criterionMap": "criterion-map.json",
+  "preservedFailures": "preserved-failures.json",
+  "cleanup": {
+    "file": "cleanup.json",
+    "removedFiles": 2997,
+    "removedBytes": 661753236,
+    "freeAfterBytes": 7580311552,
+    "processAudit": "process-cleanup.json",
+    "finalFreeBytes": 6502793216,
+    "largestRemainingCandidate": "target/debug: 5,178,800 KiB of pre-existing/shared native artifacts; preserve until ownership/continued use and cleanup scope are confirmed"
+  },
+  "scope": {
+    "actualIntegration": [
+      "compiled production WASM",
+      "native Rust semantic replay",
+      "pinned real Yjs binary exchange",
+      "Chromium IndexedDB transaction/read/restore",
+      "local peer immutable update-byte port"
+    ],
+    "notClaimed": [
+      "deployment/publication",
+      "external service durable receipts",
+      "performance envelope",
+      "provider quality or paid inference",
+      "automatic profile migration"
+    ],
+    "transportBounds": "v5 only; 16 MiB checkpoint/update bytes; JSON request max 2 MiB/100000 values/depth 32; 4096 journal entries; 1024 subscriptions; 64 observer diagnostics; incomplete causal chunks reject atomically and require complete replay corpus",
+    "identityAuthority": "host supplies expected document/epoch/profile separately from persisted checkpoint; checkpoint writer provenance is never reused",
+    "callbacks": "synchronous after the WASM call returns, nested commits delivered FIFO; observer errors are diagnostics, not failed commits"
+  },
+  "allOriginalGateTextsPreserved": true,
+  "verifiedAtUtc": "2026-10-12T00:55:58.025772+00:00",
+  "checklist": {
+    "source": 69,
+    "tracking": 76,
+    "checked": 76,
+    "drift": 0,
+    "status": "COMPLETE"
+  }
+}

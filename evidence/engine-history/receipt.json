@@ -1,0 +1,103 @@
+{
+  "gate": "ENG-1.11",
+  "children": [
+    "ENG-1.11-I1",
+    "ENG-1.11-V1"
+  ],
+  "state": "implemented and locally verified",
+  "utc": "2026-10-11T23:28:35.639593+00:00",
+  "source_revision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+  "source_snapshot": "progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+  "prompt_revision": "7eaa063f3629",
+  "core_head": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "working_tree_dirty": true,
+  "tested_source_hashes": "tested-source-hashes.json",
+  "tested_source_count": 108,
+  "changed_paths": [
+    "crates/editac-core/src/history.rs",
+    "crates/editac-core/src/lib.rs",
+    "crates/editac-core/src/document.rs",
+    "crates/editac-core/src/commands/text.rs",
+    "crates/editac-core/src/commands/format.rs",
+    "crates/editac-core/src/commands/structure.rs",
+    "crates/editac-core/src/commands/editor.rs",
+    "crates/editac-core/tests/history.rs",
+    "tests/history-exchange.mjs"
+  ],
+  "rust": {
+    "feature": 28,
+    "regression": 446,
+    "executed": 474,
+    "passed": 474,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0,
+    "suites": 20,
+    "log": "regressions.log",
+    "results": "rust-results.json"
+  },
+  "node": {
+    "feature": 5,
+    "regression": 115,
+    "executed": 120,
+    "passed": 120,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "results": "node-results.json"
+  },
+  "coverage": "criterion-map.json",
+  "bounded_schedule_coverage": {
+    "writers": 3,
+    "arrival_permutations": 6,
+    "accepted_deliveries": 54,
+    "atomic_incomplete_dependency_rejections": 6,
+    "duplicate_undo_redo_replay": true
+  },
+  "policy": {
+    "supported_history_profiles": [
+      "v4",
+      "v5"
+    ],
+    "opt_in": "enable_history",
+    "legacy_profiles": "explicit UnsupportedProfile; no migration",
+    "default_max_groups": 100,
+    "default_update_budget_bytes": 8388608,
+    "default_max_group_commits": 256,
+    "default_typing_timeout_ms": 500,
+    "capture_clock": "fixed internal clock; caller-supplied monotonic typing time",
+    "selection_only_history": false,
+    "clear_history_mutates_content": false,
+    "cross_restart_stack_restore": false
+  },
+  "preserved_failures": [
+    "check-1.log",
+    "history-1.log",
+    "history-2.log",
+    "history-3.log",
+    "history-4.log",
+    "history-5.log",
+    "wasm-check.log",
+    "failure-notes.json"
+  ],
+  "frozen_profiles": {
+    "preserved-v4-hashes.json": {
+      "matched": 15,
+      "mismatches": 0
+    },
+    "preserved-v5-qualification-hashes.json": {
+      "matched": 10,
+      "mismatches": 0
+    }
+  },
+  "hygiene": "hygiene.json",
+  "upstream": "01-foundation COMPLETE revision 38b5b9d96921dc419471bdce3a85537df40e7bc3255ebbdc4a20c0ace71d0897; interop/schema_interop remain passing in this integration execution",
+  "permissions": {
+    "paid_inference": false,
+    "publication": false,
+    "deployment": false,
+    "source_roadmap_edited": false,
+    "second_parent_processed": false
+  }
+}

@@ -1,0 +1,22 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.86s
+     Running tests/replica_properties.rs (target/debug/deps/replica_properties-20ccd6f9b7279ff4)
+
+running 1 test
+test frozen_list_incremental_arrival ... FAILED
+
+failures:
+
+---- frozen_list_incremental_arrival stdout ----
+
+thread 'frozen_list_incremental_arrival' (153635929) panicked at crates/editac-core/tests/replica_properties.rs:401:27:
+frozen list update 6: UnsupportedSchema
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    frozen_list_incremental_arrival
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.05s
+
+error: test failed, to rerun pass `-p editac-core --test replica_properties`

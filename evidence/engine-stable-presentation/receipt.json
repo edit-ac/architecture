@@ -1,0 +1,263 @@
+{
+  "task": "ENG-1.23",
+  "state": "implemented and locally verified",
+  "production_support": "explicit v5 envelope, exact rustup/Node qualification passed; original ENG-1.9 closure remains a separate parent",
+  "deployed": false,
+  "published": false,
+  "source_revision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+  "source_snapshot": "../architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md",
+  "loaded_prompt_revision": "7eaa063f3629",
+  "date_utc": "2026-10-11",
+  "core_head": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "architecture_head": "26d3502585fea4c8a21bc15fb949a562b93905ea",
+  "worktree": "Prior uncommitted implementation preserved; no commit created",
+  "profile": {
+    "profile": "editac.yrs-yjs.editor.v5",
+    "schema": "editac.registry.editor.v5",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "yrs": "0.28.0",
+    "yjs": "13.6.33",
+    "yProtocols": "1.0.7",
+    "roots": [
+      "registry-parents",
+      "registry-texts",
+      "registry-placements",
+      "delete-probe-tombstones",
+      "registry-block-attributes",
+      "registry-ownership-ops",
+      "registry-owner-origins",
+      "registry-container-attributes",
+      "registry-list-item-attributes",
+      "registry-entity-controls"
+    ],
+    "bounds": {
+      "bytes": 16777216,
+      "sources": 4096,
+      "operations": 4096,
+      "spans": 8192,
+      "textBytes": 1048576,
+      "sourceUtf16": 262144,
+      "depth": 128,
+      "jsonDepth": 32,
+      "cutBytes": 256,
+      "controls": 8192,
+      "hierarchyDepth": 128,
+      "registrations": 4096,
+      "edgeVisits": 16777216,
+      "idBytes": 96,
+      "anyValues": 262144,
+      "structs": 262144,
+      "containerEntries": 8192,
+      "allocationClock": 2097152
+    }
+  },
+  "envelope": {
+    "profile": "editac.yrs-yjs.editor.v5",
+    "schema": "editac.registry.editor.v5",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "documentId": "77777777-7777-4777-8777-777777777777",
+    "epoch": "88888888-8888-4888-8888-888888888888"
+  },
+  "profile_sha256": "d0a68db300d2953de29ff8208a4d1208d6ec13cba0544cbf7302ee24acd6b5f9",
+  "changed_paths": [
+    "crates/editac-core/src/commands/blocks.rs",
+    "crates/editac-core/src/commands/editor.rs",
+    "crates/editac-core/src/commands/lists.rs",
+    "crates/editac-core/src/commands/move.rs",
+    "crates/editac-core/src/commands/structure.rs",
+    "crates/editac-core/src/document.rs",
+    "crates/editac-core/src/editor.rs",
+    "crates/editac-core/src/lib.rs",
+    "crates/editac-core/src/projection.rs",
+    "crates/editac-core/tests/blocks.rs",
+    "crates/editac-core/tests/editor_profile.rs",
+    "crates/editac-core/tests/stable_editor_profile.rs",
+    "crates/editac-core/tests/support/editor_cases.rs",
+    "fixtures/schema-v5/blocks-exchange.mjs",
+    "fixtures/schema-v5/editor-exchange.mjs",
+    "fixtures/schema-v5/joined-exchange.mjs"
+  ],
+  "implementation": [
+    "Admitted identity dispatches exact v4/v5 replay; identical roots never determine version",
+    "Creation, restore, staged admission, immutable-row checking and hierarchical projection use the selected profile",
+    "Both editor and public structural preparation capture immutable full presentation witnesses",
+    "Established joins retain original spans, version, parent, dormant marks and anchors after valid presentation changes; fresh targets remain strictly validated",
+    "One explicit origin commits the entire witnessed join/literal cross-source replacement/paragraph conversion once",
+    "Shared editor acceptance harness exercises both profiles; preserved v4 guard remains explicitly legacy"
+  ],
+  "canonical": {
+    "command_artifact": "rustup-command.json",
+    "result_artifact": "rustup-result.json",
+    "log": "rustup-qualified.log",
+    "blocks": {
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0
+    },
+    "v5_editor": {
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0
+    },
+    "exact_command": [
+      "/Users/bpstr/.cargo/bin/rustup",
+      "run",
+      "1.97.1",
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--locked",
+      "--lib",
+      "--test",
+      "blocks",
+      "--test",
+      "stable_editor_profile",
+      "--test",
+      "retained_presentation_profile",
+      "--test",
+      "editor_profile",
+      "--test",
+      "lists",
+      "--test",
+      "moves",
+      "--test",
+      "text_commands",
+      "--test",
+      "format_commands",
+      "--test",
+      "anchors",
+      "--test",
+      "split_join",
+      "--test",
+      "structural_profile",
+      "--test",
+      "block_kinds_profile",
+      "--test",
+      "ownership_profile",
+      "--test",
+      "block_profile",
+      "--test",
+      "initialization",
+      "--test",
+      "projection",
+      "--test",
+      "interop",
+      "--test",
+      "schema_interop",
+      "--no-fail-fast"
+    ]
+  },
+  "regressions": {
+    "command_artifact": "rustup-command.json",
+    "result_artifact": "rustup-result.json",
+    "log": "rustup-qualified.log",
+    "distinct_executed": 402,
+    "distinct_passed": 402,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0,
+    "reuse": "None in final qualification: all 19 canonical/integration/unit suites ran together against unchanged final source hashes under rustup run 1.97.1 and Node 24.19.0"
+  },
+  "final_distinct_rust": {
+    "executed": 446,
+    "passed": 446,
+    "failed": 0,
+    "skipped": 0,
+    "filtered": 0
+  },
+  "final_distinct_node": {
+    "executed": 115,
+    "passed": 115,
+    "failed": 0,
+    "skipped": 0,
+    "results": "node-results.json"
+  },
+  "non_test_probes": "Pinned format, split/join, v1 interop and schema binary bridge probes execute under their passing Rust cases; bridge programs do not expose Node test-runner counts and are not counted as invented Node tests.",
+  "criterion_map": {
+    "explicit_creation_restore_admission": "stable_editor_profile::cases v4 envelope/malformed-root/stale guards + blocks::v5_profile_and_malformed_witness_admission_reject_before_live_mutation; no migration",
+    "original_ENG-1.9-F1_literal_replace_delete_paragraph": "blocks::joined_original_code_replacement_and_deletion_preserve_literal_policy_and_anchors",
+    "language_paragraph_heading_opaque_ownership_invariance": "blocks::v5_joined_language_paragraph_heading_and_opaque_changes_keep_witnesses_ownership_marks_and_anchors; opaque arrives by admission and remains read-only",
+    "preparation_witnesses_both_command_paths": "blocks::v5_public_structural_witnesses_survive_split_presentation_and_reject_fresh_invalid_batches; stable_editor_profile::cases::production_nested_endpoint_empty_and_repeated_split_after_multi_source_join",
+    "single_validated_commit_no_partial_mixed_failure": "commands::editor::tests::v5_witnessed_cross_source_literal_conversion_is_silent_then_commits_once plus blocks and shared editor invalid/stale/resource cases",
+    "fresh_incompatible_separator_opaque_targets": "canonical blocks incompatible/noneditable cases, stable_editor_profile fresh target guards, full 19/19 retained_presentation_profile qualification",
+    "concurrent_and_checkpoint_exchange": "blocks::v5_concurrent_join_presentation_and_text_preserve_absorbed_owner_in_all_six_duplicate_orders; production_v5_joined_presentation_bidirectional_pinned_yjs_checkpoints; dedicated joined-exchange plus shared editor exchange",
+    "list_move_format_text_anchor_control_legacy": "blocks::v5_list_move_format_control_and_anchor_commands_consume_witnessed_ownership + v5 shared editor cases + 402/402 regressions",
+    "legacy_safety_frozen_mapping": "blocks::legacy_v4_presentation_changes_that_invalidate_retained_joins_reject_whole_local_batch; preserved-v4-hashes.json all 15 files unchanged; v4 shared editor and qualification passes"
+  },
+  "preserved_failures": [
+    {
+      "log": "check.log",
+      "reason": "Missing newly required profile-dispatch call-site argument; repaired"
+    },
+    {
+      "log": "compile.log",
+      "reason": "New test used wrong BlockAttributes variant/Option shape; repaired"
+    },
+    {
+      "log": "feature-1.log",
+      "rust_passed": 19,
+      "rust_failed": 3,
+      "reason": "New test oracles inspected mutable retained attributes instead of immutable op rows and used wrong source insertion offset; repaired"
+    },
+    {
+      "log": "blocks-final.log",
+      "rust_passed": 21,
+      "rust_failed": 1,
+      "reason": "New test tried authoring an opaque semantic target; corrected to actual admission and read-only policy"
+    },
+    {
+      "log": "unit-final.log",
+      "rust_passed": 13,
+      "rust_failed": 1,
+      "reason": "New unit case reused a list fixture UUID in parallel; assigned distinct document/epoch"
+    }
+  ],
+  "frozen_v4": "preserved-v4-hashes.json",
+  "qualified_v5_unchanged": "preserved-v5-qualification-hashes.json",
+  "tested_sources": "tested-source-hashes.json",
+  "preconditions": "precondition-integrity.json",
+  "hygiene": "cleanup-receipt.json",
+  "checks": {
+    "format": {
+      "command": "/Users/bpstr/.cargo/bin/rustup run 1.97.1 cargo fmt --all -- --check",
+      "exit": 0,
+      "log": "rustup-format-check.log"
+    },
+    "core_diff": {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "core-diff-check.log"
+    },
+    "architecture_diff": {
+      "command": "git -C ../architecture diff --check",
+      "exit": 0,
+      "log": "architecture-diff-check.log"
+    }
+  },
+  "limits": {
+    "paid_inference_calls": 0,
+    "secrets_loaded": false,
+    "task_owned_browsers_or_servers": 0,
+    "release_qualification": false
+  },
+  "next_gate": "ENG-1.9 original acceptance closure in a separate iteration; reuse exact canonical receipt only with matching hashes",
+  "toolchain": "rustup-toolchain.txt",
+  "toolchain_repair": {
+    "reason": "Homebrew cargo/rustc 1.97.1 shadowed rustup, despite matching compiler commit",
+    "unblock": "run-rustup-qualified.py passes all required cases under rustup run 1.97.1 and explicit Node 24.19.0",
+    "earlier_logs": "preserved precursor evidence",
+    "final_command": "rustup-command.json",
+    "state": "resolved: all required suites re-executed under explicit rustup launcher",
+    "prior_launchers": "Homebrew 1.97.1 matching versions are preserved precursor evidence; final acceptance exclusively uses rustup-qualified.log",
+    "retry_basis": "Concrete environment change discovered in final diagnostic; this is an allowed verification-only repair, not an unchanged failed-feature retry"
+  }
+}

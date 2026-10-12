@@ -1,0 +1,54 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.72s
+     Running tests/lists.rs (target/debug/deps/lists-b4480d587f429db4)
+
+running 46 tests
+test deleted_parent_does_not_resurrect_or_redirect_content ... ok
+test duplicate_target_is_rejected_even_for_identical_changes ... ok
+test empty_batch_retains_opaque_content ... ok
+test deleted_target_is_distinct_from_missing ... ok
+test duplicate_snapshot_ids_are_explicitly_invalid ... ok
+test excessive_change_batch_is_bounded_before_graph_work ... ok
+test excessive_snapshot_is_bounded_before_graph_work ... ok
+test item_cannot_be_a_parent ... ok
+test missing_parent_is_not_repaired_to_root ... ok
+test final_graph_allows_atomic_break_and_reparent ... ok
+test individually_valid_changes_can_jointly_cycle ... ok
+test ordinary_v3_blocks_do_not_gain_list_semantics ... ok
+test nested_batch_accepts_known_list_parents_without_mutation ... ok
+test parent_under_descendant_is_a_cycle ... ok
+test missing_target_is_not_redirected ... ok
+test exact_editing_depth_limit_is_accepted ... ok
+test already_excessive_hierarchy_rejects_without_recursion ... ok
+test production::anchor_interior_nonzero_backspace_deleted_and_code_targets_reject ... ok
+test production::enter_combining_and_rtl_cuts_are_fixed_utf16_results ... ok
+test production::empty_middle_item_exit_keeps_trailing_items_and_numbering_in_tail ... ok
+test production::empty_enter_exits_one_level_and_keeps_check_metadata_dormant ... ok
+test production::all_modes_wrap_contiguous_siblings_and_number_without_projection_writes ... ok
+test production::first_backspace_exits_but_adjacent_backspace_joins_original_sources ... ok
+test production::invalid_wrap_modes_parent_targets_and_first_indent_are_silent ... ok
+test production::mixed_batch_failure_after_wrapping_and_split_never_reserves_or_writes ... ok
+test production::indent_reuses_matching_nested_container_and_outdent_retains_tail_order ... ok
+test production::nested_containers_do_not_increment_ordered_ordinals ... ok
+test production::nested_list_quote_wrapping_preserves_descendant_marks_and_anchor_identity ... ok
+test production::enter_endpoints_and_unicode_preserve_marks_checked_left_and_unchecked_right ... ok
+test production::concurrent_enter_check_mode_and_text_edit_preserve_acknowledged_content ... ok
+test production::middle_outdent_splits_container_without_reordering_trailing_items ... ok
+test production::ordered_mode_start_and_dormant_checks_are_atomic ... ok
+test production::prepared_expansion_bound_and_opaque_container_reject_atomically ... ok
+test root_outdent_is_valid ... ok
+test self_parent_is_a_cycle ... ok
+test unchanged_descendant_depth_is_checked_after_reparenting ... ok
+test unknown_kind_cannot_be_a_command_target ... ok
+test unknown_kind_cannot_be_a_parent ... ok
+test visible_recovery_overlap_is_explicitly_invalid ... ok
+test production::concurrent_indent_outdent_and_text_edit_converge_in_six_duplicate_orders ... ok
+test production::stale_and_cross_replica_plans_reject_without_mutation ... ok
+test production::repeated_enter_after_multi_source_backspace_join_preserves_original_spans ... ok
+test production::concurrent_split_split_and_join_edit_keep_all_original_content ... ok
+test production::nested_enter_backspace_outdent_transitions_cover_every_container_style ... ok
+test production::real_list_commands_exchange_with_pinned_yjs_and_restore ... ok
+test production::depth_128_accepts_exit_and_rejects_wrapping_whole_descendant_batch ... ok
+
+test result: ok. 46 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.39s
+

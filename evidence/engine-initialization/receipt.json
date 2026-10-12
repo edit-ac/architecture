@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-11",
+  "gate": "ENG-1.2",
+  "state": "implemented and locally verified; not deployed",
+  "source_revision": "0c9ea1747d09797b35ad7d3923f79d61bae3725236a6c5b1bf13845d7e68c600",
+  "prompt_revision": "7eaa063f3629",
+  "implementation_base": "f3d4d35182ee4a96ec99bc5b30832cee22c9bb14",
+  "architecture_base": "d182226517938592ea97af059e724b9ab53b7020",
+  "fixture": "Fixed writer 11; case identities 1..20; all six initializer/tail permutations duplicated; 32 simultaneous restored replicas",
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test initialization --locked",
+      "exit": 0,
+      "executed": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "log": "initialization.log"
+    },
+    {
+      "command": "cargo test -p editac-core --test interop --test schema_profile --test schema_interop --test protocol_toolchain --locked",
+      "exit": 0,
+      "executed": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "log": "integration.log",
+      "note": "Passing integration reused after a creation-authority-only repair; fixture factory/schema behavior unchanged."
+    },
+    {
+      "command": "rustfmt --edition 2024 --check crates/editac-core/src/document.rs crates/editac-core/src/lib.rs crates/editac-core/tests/initialization.rs",
+      "exit": 0,
+      "log": "changed-format.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "core-diff-check.log"
+    }
+  ],
+  "preserved_failures": [
+    {
+      "log": "initialization-first.log",
+      "exit": 101,
+      "executed": 0,
+      "reason": "ClientID wrapper conversion build failure; repaired with get()/new()."
+    },
+    {
+      "log": "initialization-schema-first.log",
+      "exit": 101,
+      "executed": 16,
+      "passed": 15,
+      "failed": 1,
+      "skipped": 0,
+      "reason": "Formatted XmlText expectation omitted mark tags; corrected test, exact checkpoint bytes remain equal."
+    },
+    {
+      "log": "format.log",
+      "exit": 1,
+      "reason": "Pre-existing formatting in tests/structure_conflicts.rs; left unchanged and out of gate scope."
+    }
+  ],
+  "limitations": [
+    "The host must authorize creation once across processes and persist identity/initialized checkpoint atomically; process-local guards do not replace durable authority.",
+    "Initialization restoration is not a general untrusted update transport or persistence implementation."
+  ],
+  "sha256": {
+    "crates/editac-core/src/document.rs": "f9e06181b6b1443d322fcde98a791bbc153705ac7b68c7863fa74082012f0dac",
+    "crates/editac-core/src/lib.rs": "6fd8a877bf0697b073e1009cfc22d1facd9edde3a08917efbc5ffe0c92b565c9",
+    "crates/editac-core/tests/initialization.rs": "cd374bde5a14072c4040324af311d03814a326eb5878757b7850875fedb86059",
+    "../architecture/specs/schema-v1.md": "9c9dcdb3e9edad74d841c55ec11a99962f3e002b823758e88e531291b6d82d23",
+    "../architecture/specs/protocol-v1.md": "dd8c7aa6c73a03a35ec41de83822314dfc5bf7d575f3ac19566421b6393eeb3b",
+    "initialization.log": "49f3bbbffd70d04992efb1c079f43b384439ac6298234d5e5c899bfffd191989",
+    "integration.log": "71dac272080f13aa1ead1a420d4570d1c8ee7cd579055f56a93f5d59ff70245d",
+    "initialization-first.log": "00141f7a6beb2003228bb21f05fdeb533c3756429859d0af493dbda10ab59c35",
+    "initialization-schema-first.log": "7ceda8b4c3cfa48afb197cf80211536a10b5ffbc988a5e37e75ef69131d4f49c",
+    "changed-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "format.log": "0da953e7b64fa1f7a4bb2120f4f0abe322efc1dd78a659b760c5db0e155f91d7",
+    "validated_test_binary": "5a87232664ffb34c8da70419a4d88d00e5a2eafd5a23fffc4f71061c85427468",
+    "immutable_source_snapshot": "0c9ea1747d09797b35ad7d3923f79d61bae3725236a6c5b1bf13845d7e68c600"
+  },
+  "hygiene": {
+    "cleanup": "cleanup.json",
+    "reclaimed_bytes": 35872482,
+    "remaining_free_gib": 14.94,
+    "task_servers_browsers": 0,
+    "protected": "Existing Assign Vite; shared/release/WASM caches; unrelated source and qualification evidence"
+  }
+}

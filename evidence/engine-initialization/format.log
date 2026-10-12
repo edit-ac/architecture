@@ -1,0 +1,12 @@
+Diff in /Users/bpstr/Github/edit-ac/core/crates/editac-core/tests/structure_conflicts.rs:16:
+     layout::split(&doc, 3).unwrap();
+     policy::hierarchy::raw_place(&doc, layout::FIRST, policy::hierarchy::ROOT, u32::MAX);
+     let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| read(&doc)));
+-    assert!(outcome.is_ok(), "valid concurrent placement must require recovery without overflowing");
++    assert!(
++        outcome.is_ok(),
++        "valid concurrent placement must require recovery without overflowing"
++    );
+ }
+ 
+ fn writer(id: u64, base: &[u8]) -> Doc {

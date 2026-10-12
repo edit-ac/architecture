@@ -1,0 +1,13 @@
+# Versioned block-profile qualification
+
+ENG-1.16 is implemented and locally verified against runner source revision `6af2cefc37184d9851b1896783ab9abf3c0527606485cf1a2928c4274cea8b6b`. See `receipt.json` for source/artifact hashes, exact commands, counts, preserved failures and cleanup.
+
+The v2 envelope is explicit. It adds one typed map with whole immutable paragraph/heading tuples while retaining v1 roots and persistent text identities. Creation and restore are separate; admission stages the combined checkpoint/update, validates root/tuple/ownership semantics and rejects before a live transaction. Identical replay is a no-op. Projection observes block-only changes without rereading text and exposes unknown JSON tuples with an explicit paragraph presentation fallback.
+
+The complete `block_profile` check passed 21/21 Rust tests with 6/6 pinned Node/Yjs checks. It covers empty creation/restoration, levels 1–6, missing defaults, malformed/unsupported tuples and shared types, opaque retention, split inheritance/override including completely empty ranges, dormant/losing branches, absorbed/deleted recovery, concurrent whole-tuple conflicts, three-replica delete/edit/metadata permutations, stable binary anchors, and mixed mark/text/block invalid-update rejection. Both exchange directions reuse the sole Rust initializer; Yjs re-encodes it and emits real structural/metadata updates. No receiver reseeds or copies text.
+
+The relevant regression batch passed 194 Rust tests across 16 suites. Its four Node-using suites (55 Rust tests) were revalidated under Node 24.19.0; 139 unaffected Rust tests reuse the passing combined log. Node 26.4.0 logs are preserved as unqualified runtime evidence. Current exchange assertions enforce Node 24.19.0, Yjs 13.6.33 and y-protocols 1.0.7; Yrs remains 0.28.0 with small-client and UTF-16.
+
+This qualifies the storage/admission/projection mapping and mixed-payload rejection. ENG-1.6 still integrates prepared production paragraph/heading and mixed mark/block commands, including local absorbed/deleted/opaque-target rejection. No general/repeated ownership, automatic v1 migration, deployment, publishing or live inference claim follows.
+
+Frozen v1 schema/protocol/seed/mapping and dependency pins are unchanged. Two old ENG-1.1 fingerprints (package.json and the legacy exchange script) differ from the current committed foundation baseline; both already match HEAD and were preserved. The current canonical exchange passed under the required runtime. `foundation-integrity.json` retains both historical and current fingerprints rather than treating the historical comparison as a successful exact match.

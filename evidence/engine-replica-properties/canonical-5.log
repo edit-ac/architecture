@@ -1,0 +1,36 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.10s
+     Running tests/replica_properties.rs (target/debug/deps/replica_properties-20ccd6f9b7279ff4)
+
+running 9 tests
+test frozen_complete_reordered_history_journal ... ok
+test seed_65003_lists ... FAILED
+test seed_41_lists ... FAILED
+test seed_9127_structure ... ok
+test seed_17_structure ... ok
+test seed_101_moves ... ok
+test seed_4294967291_moves ... ok
+test seed_73_blocks ... ok
+test seed_99991_blocks ... ok
+
+failures:
+
+---- seed_65003_lists stdout ----
+
+thread 'seed_65003_lists' (153631002) panicked at crates/editac-core/tests/replica_properties.rs:401:27:
+schedule=9 arrival=8 update 5: UnsupportedSchema
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- seed_41_lists stdout ----
+
+thread 'seed_41_lists' (153631000) panicked at crates/editac-core/tests/replica_properties.rs:401:27:
+schedule=9 arrival=3 update 6: UnsupportedSchema
+
+
+failures:
+    seed_41_lists
+    seed_65003_lists
+
+test result: FAILED. 7 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 7.65s
+
+error: test failed, to rerun pass `-p editac-core --test replica_properties`

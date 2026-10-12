@@ -1,0 +1,68 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: function `effective` is never used
+    --> crates/editac-core/tests/../../../fixtures/schema-v5/mapping.rs:1307:4
+     |
+1307 | fn effective(
+     |    ^^^^^^^^^
+     |
+     = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `supported_leaf` is never used
+    --> crates/editac-core/tests/../../../fixtures/schema-v5/mapping.rs:1428:4
+     |
+1428 | fn supported_leaf(
+     |    ^^^^^^^^^^^^^^
+
+warning: variants `Split`, `Insert`, and `Separator` are never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v5/policy.rs:5:5
+   |
+ 4 | pub enum Command {
+   |          ------- variants in this enum
+ 5 |     Split {
+   |     ^^^^^
+...
+26 |     Insert {
+   |     ^^^^^^
+...
+41 |     Separator {
+   |     ^^^^^^^^^
+   |
+   = note: `Command` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+
+warning: `editac-core` (test "retained_presentation_profile") generated 3 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.36s
+     Running tests/retained_presentation_profile.rs (target/debug/deps/retained_presentation_profile-4e9007e38752fc86)
+
+running 16 tests
+test exact_v5_descriptor_envelope_ten_roots_and_witness_shapes ... ok
+test admission_does_not_compare_authored_witnesses_with_current_presentation ... ok
+test original_positive_cross_source_literal_replace_delete_and_paragraph_conversion_commit_once ... FAILED
+test fresh_mismatched_code_ordinary_separator_opaque_and_container_commands_reject_atomically ... ok
+test immutable_witness_replacement_profile_epoch_root_and_checkpoint_limits_reject_atomically ... ok
+test established_place_survives_opaque_presentation_and_split_separator_conversion_is_nontrapping ... ok
+test reversible_controls_tombstones_remote_bytes_and_dependent_intentions_retain_identities ... ok
+test invalid_mixed_batches_stale_preparation_unicode_and_resources_never_partially_apply ... ok
+test three_source_join_split_after_join_and_later_metadata_preserve_all_sources ... ok
+test paragraph_heading_witness_pairs_and_code_language_bounds_pass ... ok
+test version_conflicts_earlier_ranked_intentions_and_deleted_targets_still_have_structural_effects ... ok
+test established_join_survives_paragraph_heading_language_and_opaque_metadata ... ok
+test split_derived_empty_and_inherited_owners_survive_later_presentation_changes ... ok
+test malformed_arity_witness_values_and_forged_incompatible_witnesses_reject_admission ... ok
+test three_writer_metadata_structural_and_control_races_converge_in_all_duplicate_orders ... ok
+test pinned_bidirectional_witness_exchange_metadata_reordering_checkpoint_controls_and_anchors ... ok
+
+failures:
+
+---- original_positive_cross_source_literal_replace_delete_and_paragraph_conversion_commit_once stdout ----
+
+thread 'original_positive_cross_source_literal_replace_delete_and_paragraph_conversion_commit_once' (152985752) panicked at crates/editac-core/tests/retained_presentation_profile.rs:98:10:
+called `Option::unwrap()` on a `None` value
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    original_positive_cross_source_literal_replace_delete_and_paragraph_conversion_commit_once
+
+test result: FAILED. 15 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.04s
+
+error: test failed, to rerun pass `-p editac-core --test retained_presentation_profile`

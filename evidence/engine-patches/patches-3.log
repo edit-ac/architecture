@@ -1,0 +1,80 @@
+warning: field `after_sequence` is never read
+   --> crates/editac-core/src/patches.rs:127:5
+    |
+125 | struct Listener {
+    |        -------- field in this struct
+126 |     id: u64,
+127 |     after_sequence: u64,
+    |     ^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (lib) generated 1 warning
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.78s
+     Running tests/patches.rs (target/debug/deps/patches-7cb06236470c922b)
+
+running 23 tests
+test direct_structure_commit_has_one_batch_with_derived_owner_nodes ... FAILED
+test legacy_profile_text_format_and_structure_commits_also_publish_once ... ok
+test document_drop_invalidates_outstanding_subscription_and_owned_patch_survives ... ok
+test irrelevant_node_source_selection_listeners_are_silent ... ok
+test block_only_batch_has_changed_node_without_text_range ... ok
+test disposal_is_idempotent_releases_capture_and_drop_unsubscribes ... ok
+test dispose_during_callback_suppresses_later_listener_in_same_batch ... ok
+test each_commit_excludes_older_pending_ranges_without_consuming_snapshot_evidence ... ok
+test deleted_selection_endpoint_is_explicit_and_node_scopes_see_recovery ... ok
+test new_listener_excludes_batches_already_queued_before_subscription ... FAILED
+test rich_and_block_format_are_single_batches_with_fixed_ranges ... FAILED
+test preparation_applicability_invalid_stale_and_noop_do_not_emit ... ok
+test production_mixed_editor_batch_emits_once_with_all_touched_families ... ok
+test nested_commit_callbacks_can_read_prepare_commit_and_preserve_delivery_order ... ok
+test structural_history_multitransaction_work_is_one_batch_per_undo_redo ... FAILED
+test text_batch_has_exact_version_origin_bytes_node_and_utf16_range ... ok
+test replay_is_one_remote_batch_and_duplicate_rejected_input_are_silent ... ok
+test self_disposal_is_safe_and_subscription_after_commit_does_not_receive_old_batch ... ok
+test split_join_batches_preserve_source_identity_and_report_visibility_changes ... FAILED
+test selection_events_have_no_content_update_or_history_and_commit_resolves_anchor ... ok
+test returned_errors_and_unwinding_panics_do_not_corrupt_commit_or_other_observers ... ok
+test undo_redo_emit_one_semantic_batch_and_preserve_remote_edits ... ok
+test reordered_duplicate_three_replica_batches_converge_with_fixed_distinct_counts ... ok
+
+failures:
+
+---- direct_structure_commit_has_one_batch_with_derived_owner_nodes stdout ----
+
+thread 'direct_structure_commit_has_one_batch_with_derived_owner_nodes' (153490184) panicked at crates/editac-core/tests/patches.rs:570:45:
+called `Result::unwrap()` on an `Err` value: Boundary(SurrogateInterior)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- new_listener_excludes_batches_already_queued_before_subscription stdout ----
+
+thread 'new_listener_excludes_batches_already_queued_before_subscription' (153490192) panicked at crates/editac-core/tests/patches.rs:633:5:
+assertion failed: seen.borrow().is_empty()
+
+---- rich_and_block_format_are_single_batches_with_fixed_ranges stdout ----
+
+thread 'rich_and_block_format_are_single_batches_with_fixed_ranges' (153490198) panicked at crates/editac-core/tests/patches.rs:350:14:
+called `Result::unwrap()` on an `Err` value: Boundary(SurrogateInterior)
+
+---- structural_history_multitransaction_work_is_one_batch_per_undo_redo stdout ----
+
+thread 'structural_history_multitransaction_work_is_one_batch_per_undo_redo' (153490202) panicked at crates/editac-core/tests/patches.rs:57:51:
+called `Result::unwrap()` on an `Err` value: InvalidCommand
+
+---- split_join_batches_preserve_source_identity_and_report_visibility_changes stdout ----
+
+thread 'split_join_batches_preserve_source_identity_and_report_visibility_changes' (153490201) panicked at crates/editac-core/tests/patches.rs:438:45:
+called `Result::unwrap()` on an `Err` value: Boundary(SurrogateInterior)
+
+
+failures:
+    direct_structure_commit_has_one_batch_with_derived_owner_nodes
+    new_listener_excludes_batches_already_queued_before_subscription
+    rich_and_block_format_are_single_batches_with_fixed_ranges
+    split_join_batches_preserve_source_identity_and_report_visibility_changes
+    structural_history_multitransaction_work_is_one_batch_per_undo_redo
+
+test result: FAILED. 18 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+error: test failed, to rerun pass `-p editac-core --test patches`

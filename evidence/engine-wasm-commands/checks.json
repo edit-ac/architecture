@@ -1,0 +1,88 @@
+[
+  {
+    "command": "EDITAC_WASM_COMMAND_OUTPUT=<evidence> cargo test -p editac-wasm --lib --locked --offline",
+    "runner": "rust",
+    "exit": 0,
+    "executed": 23,
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "log": "native-acceptance.log",
+    "sha256": "9679cfcc138ddd91c1657abbc45c9ef3467e813f13e0ab468295a86bb793da28"
+  },
+  {
+    "command": "cargo test -p editac-core --lib --locked --offline",
+    "runner": "rust",
+    "exit": 0,
+    "executed": 14,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "log": "kernel-regression.log",
+    "sha256": "954f4804e70a6e98dececee6e2a55fe15ee9032c24638d5aba062c72c2e89c35"
+  },
+  {
+    "command": "node --test tests/wasm-commands.test.mjs",
+    "runner": "node",
+    "exit": 0,
+    "executed": 25,
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "log": "wasm-commands-standalone.log",
+    "sha256": "b83f70940db1fe99b298cb162e77289880024689a765fadc0e22f7ae3f8a4db0"
+  },
+  {
+    "command": "EDITAC_WASM_OUTPUT=<evidence>/loader-final node --test tests/wasm-load.test.mjs",
+    "runner": "node",
+    "exit": 0,
+    "executed": 7,
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "log": "loader-acceptance.log",
+    "sha256": "a811554c332d7d622936bb431475fc60abd9bf014fb3e825e4b148ac00c2014f"
+  },
+  {
+    "command": "npm run build:wasm",
+    "exit": 0,
+    "log": "build-wasm-acceptance.log",
+    "sha256": "fc0fe09c015259e258001c2d70ab01c4335c443d517306978268d1ebe03916fc",
+    "scope": "build/static check; not counted as executed tests"
+  },
+  {
+    "command": "npm run build",
+    "exit": 0,
+    "log": "build-packages-acceptance.log",
+    "sha256": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "scope": "build/static check; not counted as executed tests"
+  },
+  {
+    "command": "node_modules/.bin/tsc --noEmit --strict --exactOptionalPropertyTypes --target ES2022 --module NodeNext --moduleResolution NodeNext tests/wasm-command-types.ts",
+    "exit": 0,
+    "log": "consumer-types-final.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scope": "build/static check; not counted as executed tests"
+  },
+  {
+    "command": "cargo fmt --all -- --check",
+    "exit": 0,
+    "log": "format-check.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scope": "build/static check; not counted as executed tests"
+  },
+  {
+    "command": "node scripts/check-package-exports.mjs",
+    "exit": 0,
+    "log": "package-exports.log",
+    "sha256": "d145a3cb31a62bfd027cf6e79856b4d04f80f0c630978706316025a03d35b4e1",
+    "scope": "build/static check; not counted as executed tests"
+  },
+  {
+    "command": "git diff --check",
+    "exit": 0,
+    "log": "diff-check.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scope": "build/static check; not counted as executed tests"
+  }
+]

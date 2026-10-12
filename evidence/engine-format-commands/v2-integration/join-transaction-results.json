@@ -1,0 +1,35 @@
+[
+  {
+    "id": "ENG-1.6-REPAIR-joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--test",
+      "format_commands",
+      "--locked",
+      "blocks::joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable",
+      "--",
+      "--exact"
+    ],
+    "log": "repair-joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable.log",
+    "exit_code": 0,
+    "log_bytes": 454
+  },
+  {
+    "id": "ENG-1.6-TRANSACTIONS",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--lib",
+      "commands::format",
+      "--locked"
+    ],
+    "log": "transactions.log",
+    "exit_code": 0,
+    "log_bytes": 727
+  }
+]

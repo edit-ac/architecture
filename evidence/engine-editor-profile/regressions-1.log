@@ -1,0 +1,181 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: function `resolve` is never used
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1038:8
+     |
+1038 | pub fn resolve(d: &Doc, source: &str, encoded: &[u8]) -> Result<(String, u32, bool)> {
+     |        ^^^^^^^
+     |
+     = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "block_kinds_profile") generated 1 warning
+warning: enum `Command` is never used
+ --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:4:10
+  |
+4 | pub enum Command {
+  |          ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `Neighbor` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:32:12
+   |
+32 | pub struct Neighbor {
+   |            ^^^^^^^^
+
+warning: struct `Prepared` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:36:12
+   |
+36 | pub struct Prepared {
+   |            ^^^^^^^^
+
+warning: function `target` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:40:4
+   |
+40 | fn target(d: &Doc, key: &str) -> Result<Owner> {
+   |    ^^^^^^
+
+warning: function `register` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:55:4
+   |
+55 | fn register(d: &Doc, key: &str, parent: &str, tuple: Any) -> Result<()> {
+   |    ^^^^^^^^
+
+warning: function `execute` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:74:4
+   |
+74 | fn execute(d: &Doc, c: &Command) -> Result<String> {
+   |    ^^^^^^^
+
+warning: function `prepare` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:170:8
+    |
+170 | pub fn prepare(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<Prepared> {
+    |        ^^^^^^^
+
+warning: function `commit` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:211:8
+    |
+211 | pub fn commit(d: &Doc, p: Prepared) -> Result<()> {
+    |        ^^^^^^
+
+warning: function `batch` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:220:8
+    |
+220 | pub fn batch(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<()> {
+    |        ^^^^^
+
+warning: function `rendered_runs` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:224:8
+    |
+224 | pub fn rendered_runs(d: &Doc, key: &str) -> Result<Any> {
+    |        ^^^^^^^^^^^^^
+
+warning: `editac-core` (test "structural_profile") generated 10 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 12.52s
+     Running unittests src/lib.rs (target/engine-editor-profile/debug/deps/editac_core-1a758e03712644e2)
+
+running 10 tests
+test commands::format::remote_tests::deletion_only_remote_update_invalidates_exact_state_even_without_revision_change ... ok
+test commands::structure::tests::deletion_only_remote_state_invalidates_plan_and_anchor_repreparation_is_safe ... ok
+test commands::structure::tests::revision_exhaustion_rejects_before_ownership_mutation ... ok
+test commands::format::block_transaction_tests::mixed_mark_and_empty_block_batch_has_one_origin_transaction_and_read_only_rejection ... ok
+test commands::format::tests::complete_batch_has_one_origin_transaction_and_no_preparation_observers ... ok
+test commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks ... ok
+test commands::text::tests::delete_only_remote_update_invalidates_plan_even_with_unchanged_state_vector ... ok
+test commands::structure::tests::preparation_is_read_only_and_commit_has_one_explicit_origin_transaction ... ok
+test commands::editor::transaction_tests::v4_whole_batch_preparation_is_silent_commit_is_one_origin_and_only_local_writer ... ok
+test commands::structure::general_transaction_tests::v3_preparation_and_rejection_are_silent_and_each_commit_has_one_explicit_origin ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/anchors.rs (target/engine-editor-profile/debug/deps/anchors-d5450a36718b715f)
+
+running 24 tests
+test cross_node_selection_resolves_deleted_endpoint_independently ... ok
+test deleted_target_is_explicit_and_cannot_be_captured_again ... ok
+test empty_source_endpoints_keep_bias_after_remote_insert ... ok
+test deleted_characters_collapse_to_surviving_boundary ... ok
+test backward_selection_keeps_independent_endpoint_bias ... ok
+test grapheme_movement_and_deletion_are_extended_and_logical ... ok
+test combining_fixed_offsets_and_delete ... ok
+test biased_positions_survive_insertion_at_start_middle_and_end ... ok
+test fully_deleted_text_keeps_explicit_empty_position ... ok
+test emoji_fixed_offsets_and_delete ... ok
+test malformed_offsets_and_selection_leave_state_and_updates_unchanged ... ok
+test reserved_split_owner_remains_invalid_as_a_registered_source ... ok
+test replaced_shared_text_and_not_yet_received_position_are_unresolvable ... ok
+test hidden_join_span_never_redirects_and_visible_offsets_exclude_hidden_text ... ok
+test joined_sources_preserve_identity_and_boundary_affinity ... ok
+test placement_change_does_not_change_text_anchor ... ok
+test split_source_deletion_hides_both_owners_without_resurrection ... ok
+test flag_fixed_offsets_and_delete ... ok
+test rtl_fixed_logical_offsets_and_delete ... ok
+test three_replicas_reordered_duplicate_updates_preserve_anchors ... ok
+test split_cut_and_deleted_derived_owner_obey_bias ... ok
+test wrong_document_and_epoch_never_resolve ... ok
+test zero_and_end_split_keep_endpoint_owners ... ok
+test zwj_fixed_offsets_and_delete ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/block_kinds_profile.rs (target/engine-editor-profile/debug/deps/block_kinds_profile-cae9cc3a48881c2d)
+
+running 15 tests
+test empty_code_and_blank_lines_restore_without_reseeding ... ok
+test empty_heading_and_code_count_as_editable_no_unnecessary_neighbor ... ok
+test empty_derived_separator_retains_original_span_and_typed_target_policy ... ok
+test literal_newlines_whitespace_dormant_marks_and_paragraph_restoration ... ok
+test last_editable_convert_delete_insert_reserve_accessible_adjacent_paragraph_atomically ... ok
+test mismatched_language_code_rich_and_separator_joins_fail_without_mutation ... ok
+test nested_last_owner_neighbor_keeps_parent_adjacent_and_original_identity ... ok
+test separator_nonempty_conversion_and_text_mark_split_join_targets_reject ... ok
+test malformed_known_tuples_reject_admission_and_whole_preparation ... ok
+test stale_preparation_utf16_and_oversized_literal_batch_are_atomic ... ok
+test code_explicit_split_join_endpoints_empty_and_multisource_identity ... ok
+test atomic_tuple_language_level_matrix_and_unknown_retention ... ok
+test three_replica_duplicate_reordered_metadata_literal_and_remote_mark_races ... ok
+test neighbor_identity_operation_and_resource_failures_leave_no_partial_separator ... ok
+test pinned_bidirectional_block_kinds_exchange_complete_policies_races_and_restore ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.42s
+
+     Running tests/block_profile.rs (target/engine-editor-profile/debug/deps/block_profile-728e44a876ec5cbf)
+
+running 21 tests
+test block_profile_does_not_reinterpret_list_and_item_kinds ... ok
+test absent_tuple_defaults_without_repair_writes ... ok
+test concurrent_whole_tuple_conflicts_and_independent_writes_converge ... ok
+test exact_profile_schema_epoch_document_and_encoding_rejection ... ok
+test bounded_admission_invalid_bytes_and_missing_dependencies_preserve_live_state ... ok
+test absorbed_and_deleted_metadata_retained_without_resurrection ... ok
+test identical_replay_does_not_mutate_revision_projection_or_checkpoint ... ok
+test dormant_override_and_losing_join_branch_do_not_synthesize_owners ... ok
+test malformed_binary_ownership_or_surrogate_cut_rejected_atomically ... ok
+test metadata_only_changes_are_observable_without_text_reads_or_identity_changes ... ok
+test unknown_non_json_or_excessively_deep_tuples_rejected ... ok
+test unknown_json_tuple_and_marks_retained_with_safe_opaque_projection ... ok
+test unsupported_tuple_shared_types_and_targets_rejected ... ok
+test v2_empty_document_restore_never_seeds ... ok
+test v2_creation_empty_restore_once_and_fresh_writers ... ok
+test causal_override_split_reorder_duplicates_restore_and_stable_anchors ... ok
+test heading_levels_one_through_six_and_paragraph_switching ... ok
+test concurrent_deleted_split_owner_retains_metadata_and_stable_deleted_anchor ... ok
+test live_split_inheritance_override_and_empty_sides ... ok
+test invalid_tuple_matrix_rejects_without_partial_content_or_vector_change ... ok
+test pinned_yjs_exchange_both_directions_with_atomic_conflicts_and_replay ... FAILED
+
+failures:
+
+---- pinned_yjs_exchange_both_directions_with_atomic_conflicts_and_replay stdout ----
+
+thread 'pinned_yjs_exchange_both_directions_with_atomic_conflicts_and_replay' (152395640) panicked at crates/editac-core/tests/block_profile.rs:705:5:
+pinned Node exchange failed; inspect exchange/node.log
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    pinned_yjs_exchange_both_directions_with_atomic_conflicts_and_replay
+
+test result: FAILED. 20 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+error: test failed, to rerun pass `-p editac-core --test block_profile`

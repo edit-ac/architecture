@@ -1,0 +1,180 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: function `json` is never used
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:34:8
+   |
+34 | pub fn json(v: &Any) -> String {
+   |        ^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `envelope` is never used
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:39:8
+   |
+39 | pub fn envelope() -> Any {
+   |        ^^^^^^^^
+
+warning: function `bytes` is never used
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:56:8
+   |
+56 | pub fn bytes(d: &Doc) -> Vec<u8> {
+   |        ^^^^^
+
+warning: function `fork` is never used
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:65:8
+   |
+65 | pub fn fork(d: &Doc, client: u64) -> Doc {
+   |        ^^^^
+
+warning: function `text` is never used
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:70:8
+   |
+70 | pub fn text(d: &Doc, id: &str) -> XmlTextRef {
+   |        ^^^^
+
+warning: function `set` is never used
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:77:8
+   |
+77 | pub fn set(d: &Doc, root: usize, id: &str, v: Any) {
+   |        ^^^
+
+warning: function `seed` is never used
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:81:8
+   |
+81 | pub fn seed() -> Doc {
+   |        ^^^^
+
+warning: function `presentation` is never used
+   --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:823:4
+    |
+823 | fn presentation(value: &Any) -> Any {
+    |    ^^^^^^^^^^^^
+
+warning: function `snapshot` is never used
+   --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:833:8
+    |
+833 | pub fn snapshot(d: &Doc) -> Result<Any> {
+    |        ^^^^^^^^
+
+warning: function `split` is never used
+   --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:966:8
+    |
+966 | pub fn split(d: &Doc, op: &str, left: &str, index: usize, offset: u32) -> Result<()> {
+    |        ^^^^^
+
+warning: function `join` is never used
+    --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:1004:8
+     |
+1004 | pub fn join(d: &Doc, op: &str, left: &str, right: &str) -> Result<()> {
+     |        ^^^^
+
+warning: function `resolve` is never used
+    --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:1049:8
+     |
+1049 | pub fn resolve(d: &Doc, source: &str, encoded: &[u8]) -> Result<(String, u32, bool)> {
+     |        ^^^^^^^
+
+warning: function `admit` is never used
+    --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:1088:8
+     |
+1088 | pub fn admit(d: &Doc, offered: &Any, b: &[u8]) -> Result<()> {
+     |        ^^^^^
+
+warning: function `restore_checkpoint` is never used
+    --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:1139:8
+     |
+1139 | pub fn restore_checkpoint(
+     |        ^^^^^^^^^^^^^^^^^^
+
+warning: function `commit_record` is never used
+    --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:1323:4
+     |
+1323 | fn commit_record(d: &Doc, op: &str, record: Any) -> Result<()> {
+     |    ^^^^^^^^^^^^^
+
+warning: function `place` is never used
+    --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:1332:8
+     |
+1332 | pub fn place(d: &Doc, op: &str, target: &str, parent: &str, before: Option<&str>) -> Result<()> {
+     |        ^^^^^
+
+warning: function `is_numbered` is never used
+    --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/mapping.rs:1411:4
+     |
+1411 | fn is_numbered(o: &Owner) -> bool {
+     |    ^^^^^^^^^^^
+
+warning: enum `Command` is never used
+ --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/policy.rs:4:10
+  |
+4 | pub enum Command {
+  |          ^^^^^^^
+
+warning: struct `Neighbor` is never constructed
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/policy.rs:49:12
+   |
+49 | pub struct Neighbor {
+   |            ^^^^^^^^
+
+warning: struct `Prepared` is never constructed
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/policy.rs:53:12
+   |
+53 | pub struct Prepared {
+   |            ^^^^^^^^
+
+warning: function `target` is never used
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/policy.rs:57:4
+   |
+57 | fn target(d: &Doc, key: &str) -> Result<Owner> {
+   |    ^^^^^^
+
+warning: function `register` is never used
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/policy.rs:72:4
+   |
+72 | fn register(d: &Doc, key: &str, parent: &str, tuple: Any) -> Result<()> {
+   |    ^^^^^^^^
+
+warning: function `execute` is never used
+  --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/policy.rs:91:4
+   |
+91 | fn execute(d: &Doc, c: &Command) -> Result<String> {
+   |    ^^^^^^^
+
+warning: function `prepare` is never used
+   --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/policy.rs:257:8
+    |
+257 | pub fn prepare(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<Prepared> {
+    |        ^^^^^^^
+
+warning: function `commit` is never used
+   --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/policy.rs:298:8
+    |
+298 | pub fn commit(d: &Doc, p: Prepared) -> Result<()> {
+    |        ^^^^^^
+
+warning: function `batch` is never used
+   --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/policy.rs:307:8
+    |
+307 | pub fn batch(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<()> {
+    |        ^^^^^
+
+warning: function `rendered_runs` is never used
+   --> /Users/bpstr/Github/edit-ac/core/fixtures/schema-v5/policy.rs:311:8
+    |
+311 | pub fn rendered_runs(d: &Doc, key: &str) -> Result<Any> {
+    |        ^^^^^^^^^^^^^
+
+warning: `editac-core` (example "replica_diagnostic") generated 27 warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.25s
+     Running `target/debug/examples/replica_diagnostic`
+arrival=3 pending=6 error=UnsupportedSchema
+project-old=None project-after=Some("invalid-container")
+node n:11:3 kind=Any(String("block")) container=None
+node n:11:1 kind=Any(String("block")) container=None
+node n:11:4 kind=Any(String("block")) container=None
+node c:11:4 kind=Any(String("list")) container=Some(Any(Array([String("unordered")])))
+node c:11:2 kind=Any(String("quote")) container=Some(Any(Array([String("quote")])))
+node c:11:1 kind=Any(String("list")) container=Some(Any(Array([String("ordered"), Number(Int(7))])))
+node c:11:3 kind=Any(String("list")) container=Some(Any(Array([String("checklist")])))
+node c:2080091877:2 kind=Any(String("list")) container=None
+node n:11:2 kind=Any(String("block")) container=None
+pending-after=false 

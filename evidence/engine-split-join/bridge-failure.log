@@ -1,0 +1,23 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '<bold><ext:v1 retained="true">a😀b</ext:v1></bold>'
+- 'a😀b'
+
+    at file:///Users/bpstr/Github/edit-ac/core/fixtures/schema-v1/split-join-exchange.mjs:24:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:447:25)
+    at async node:internal/modules/esm/loader:646:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '<bold><ext:v1 retained="true">a😀b</ext:v1></bold>',
+  expected: 'a😀b',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.4.0

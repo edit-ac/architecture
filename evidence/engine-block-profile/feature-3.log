@@ -1,0 +1,27 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.74s
+     Running tests/block_profile.rs (target/debug/deps/block_profile-728e44a876ec5cbf)
+
+running 19 tests
+test absent_tuple_defaults_without_repair_writes ... ok
+test block_profile_does_not_reinterpret_list_and_item_kinds ... ok
+test absorbed_and_deleted_metadata_retained_without_resurrection ... ok
+test exact_profile_schema_epoch_document_and_encoding_rejection ... ok
+test bounded_admission_invalid_bytes_and_missing_dependencies_preserve_live_state ... ok
+test dormant_override_and_losing_join_branch_do_not_synthesize_owners ... ok
+test concurrent_whole_tuple_conflicts_and_independent_writes_converge ... ok
+test metadata_only_changes_are_observable_without_text_reads_or_identity_changes ... ok
+test unknown_json_tuple_and_marks_retained_with_safe_opaque_projection ... ok
+test unknown_non_json_or_excessively_deep_tuples_rejected ... ok
+test causal_override_split_reorder_duplicates_restore_and_stable_anchors ... ok
+test v2_empty_document_restore_never_seeds ... ok
+test unsupported_tuple_shared_types_and_targets_rejected ... ok
+test v2_creation_empty_restore_once_and_fresh_writers ... ok
+test live_split_inheritance_override_and_empty_sides ... ok
+test heading_levels_one_through_six_and_paragraph_switching ... ok
+test invalid_tuple_matrix_rejects_without_partial_content_or_vector_change ... ok
+test pinned_yjs_exchange_both_directions_with_atomic_conflicts_and_replay ... ok
+error: test failed, to rerun pass `-p editac-core --test block_profile`
+
+Caused by:
+  process didn't exit successfully: `/Users/bpstr/Github/edit-ac/core/target/debug/deps/block_profile-728e44a876ec5cbf` (signal: 15, SIGTERM: termination signal)

@@ -1,0 +1,108 @@
+{
+  "runtime": "Node 24.19.0 scoped PATH; Yrs 0.28.0 small-client; Yjs 13.6.33/y-protocols 1.0.7",
+  "provider": "none; real deterministic local Yrs/Yjs only",
+  "checks": [
+    {
+      "id": "ENG-1.6-V1",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "format_commands",
+        "--locked"
+      ],
+      "log": "feature.log"
+    },
+    {
+      "id": "ENG-1.6-TRANSACTIONS",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--lib",
+        "commands::format",
+        "--locked"
+      ],
+      "log": "transactions.log"
+    },
+    {
+      "id": "ENG-1.6-INTEGRATION",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--lib",
+        "--test",
+        "block_profile",
+        "--test",
+        "initialization",
+        "--test",
+        "projection",
+        "--test",
+        "anchors",
+        "--test",
+        "text_commands",
+        "--test",
+        "interop",
+        "--test",
+        "schema_profile",
+        "--test",
+        "schema_interop",
+        "--test",
+        "protocol_toolchain",
+        "--test",
+        "split_join",
+        "--test",
+        "split_join_probe",
+        "--test",
+        "structure_conflicts",
+        "--test",
+        "structure_registry",
+        "--test",
+        "hierarchy_probe",
+        "--test",
+        "delete_edit_probe",
+        "--locked"
+      ],
+      "log": "integration.log"
+    }
+  ],
+  "repairs": [
+    {
+      "id": "ENG-1.6-REPAIR-legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "format_commands",
+        "--locked",
+        "blocks::legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject",
+        "--",
+        "--exact"
+      ],
+      "log": "repair-legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject.log"
+    },
+    {
+      "id": "ENG-1.6-REPAIR-joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "format_commands",
+        "--locked",
+        "blocks::joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable",
+        "--",
+        "--exact"
+      ],
+      "log": "repair-joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable.log"
+    }
+  ]
+}

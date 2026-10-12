@@ -1,0 +1,32 @@
+✔ native Rust checkpoint restores in compiled WASM without defaults or writer reuse (6686.271417ms)
+✔ native journal replay, duplicates and dependent reordered restore match Rust snapshot (3.993417ms)
+✔ state-vector differential exchange and duplicate remote updates have exact patches (20.235792ms)
+✔ three disconnected compiled replicas converge across all six duplicate delivery permutations (35.645959ms)
+✔ pinned Yjs reads production WASM bytes and edits original rich text for WASM replay (7.052167ms)
+✔ delete-set replay works even when clocks did not change (3.343042ms)
+✔ remote replay preserves local history and undo/redo produces usable sync bytes (7.322792ms)
+✔ wrong epoch update rejects before content, history or patch mutation (1.976458ms)
+✔ wrong document update rejects before content, history or patch mutation (2.017458ms)
+✔ wrong profile update rejects before content, history or patch mutation (1.952583ms)
+✔ wrong schema update rejects before content, history or patch mutation (0.950708ms)
+✔ wrong encoding update rejects before content, history or patch mutation (1.132166ms)
+✔ malformed update and state-vector bytes reject atomically (4.397958ms)
+✔ invalid root and mutated immutable rows reject through real staged admission (3.2845ms)
+✔ restore rejects missing initialization, wrong journal identity and malformed tails (0.879167ms)
+✔ byte inputs enforce types, data envelopes and resource limits without getter execution (3.025542ms)
+✔ checkpoint, vector, update and event bytes remain owned after mutation and disposal (2.840875ms)
+✔ scoped batches report exact changed node/range and ignore unrelated listeners (2.150542ms)
+✔ post-transaction reentrant commit dispatches FIFO and subscriptions start with future batches (3.41675ms)
+✔ observer throws and mutations cannot corrupt commits or other observers (3.639833ms)
+✔ unsubscribe/dispose are idempotent and pending callbacks are removed (3.97825ms)
+✔ subscription validation and bounded table preserve normal operations (8.261083ms)
+✔ built WASM structural/format/history checkpoint and update replay agrees with native Rust (406.689792ms)
+✔ actual Chromium IndexedDB checkpoint/tail restore and peer sync use owned production bytes (1146.728125ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8745.1795

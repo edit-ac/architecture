@@ -1,0 +1,1923 @@
+{
+  "gate": "ENG-1.17",
+  "state": "implemented and locally qualified disposable representation; not production integrated or deployed",
+  "date": "2026-10-11",
+  "iteration": 10,
+  "promptRevision": "7eaa063f3629",
+  "source": {
+    "snapshot": "source-f6218bddbd75.md",
+    "revision": "6af2cefc37184d9851b1896783ab9abf3c0527606485cf1a2928c4274cea8b6b"
+  },
+  "baseRevisions": {
+    "core": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+    "architecture": "26d3502585fea4c8a21bc15fb949a562b93905ea"
+  },
+  "envelope": {
+    "profile": "editac.yrs-yjs.structure.v3",
+    "schema": "editac.registry.structure.v3",
+    "protocolVersion": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "documentId": "55555555-5555-4555-8555-555555555555",
+    "epoch": "66666666-6666-4666-8666-666666666666"
+  },
+  "profileDescriptor": {
+    "bytes": 520,
+    "sha256": "a6175c9a8d58477e5dd8b4cc27f2ef513a9c3f3087f443d66756fd8616d8743e"
+  },
+  "normativeSchema": {
+    "bytes": 8230,
+    "sha256": "3467da1488a864abba3e153bebb834d835dbe39ba05c4c1cc43adc6d8b0f31ff"
+  },
+  "mapping": "seven Y.Map roots; retained original XmlText identities; immutable atomic operation records; dependency-depth/numeric-ID ordering; relative multi-source cuts; explicit losing/dormant/deleted recovery",
+  "resourceEnvelope": {
+    "bytes": 16777216,
+    "sources": 4096,
+    "operations": 4096,
+    "spans": 8192,
+    "textBytes": 1048576,
+    "sourceUtf16": 262144,
+    "depth": 128,
+    "jsonDepth": 32,
+    "cutBytes": 256,
+    "binaryAnyDepth": 32,
+    "binaryContainerEntries": 8192,
+    "decodedValues": 262144,
+    "decodedStructs": 262144,
+    "unsignedAllocationAndClockFields": 2097152,
+    "dependencyVisits": 16777216,
+    "idBytes": 96
+  },
+  "checks": [
+    {
+      "id": "ENG-1.17-V1",
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH cargo test -p editac-core --test ownership_profile --locked",
+      "exit": 0,
+      "executed": 25,
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "ownership-05.log",
+      "suites": 1,
+      "nestedYjs": {
+        "exit": 0,
+        "executed": 16,
+        "passed": 16,
+        "failed": 0,
+        "skipped": 0,
+        "log": "node-ownership-05.log"
+      }
+    },
+    {
+      "id": "required-block-and-legacy-command-regression",
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_BLOCK_EXCHANGE=../architecture/evidence/engine-ownership-profile/block-regression-exchange EDITAC_INTEROP_OUTPUT=../architecture/evidence/engine-ownership-profile/legacy-interop-exchange cargo test -p editac-core --test block_profile --test split_join --test interop --locked",
+      "exit": 0,
+      "executed": 49,
+      "passed": 49,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "regression-01.log",
+      "suites": 3,
+      "breakdown": {
+        "block_profile": 21,
+        "split_join": 27,
+        "interop": 1
+      },
+      "nestedYjs": {
+        "exit": 0,
+        "executed": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "log": "block-regression-exchange/node.log"
+      }
+    },
+    {
+      "id": "required-frozen-structural-interop-regression",
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_SCHEMA_INTEROP_OUTPUT=../architecture/evidence/engine-ownership-profile/frozen-schema-exchange cargo test -p editac-core --test schema_interop --locked",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "schema-regression-01.log",
+      "suites": 1,
+      "scenarioCoverage": {
+        "originalNamedScenarios": 13,
+        "deliveryPermutations": 6,
+        "binaryAnchorsBothDirections": true
+      }
+    }
+  ],
+  "totals": {
+    "rust": {
+      "executed": 75,
+      "passed": 75,
+      "failed": 0,
+      "skipped": 0
+    },
+    "nodeTestCases": {
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0
+    },
+    "nonTestChecks": {
+      "rustfmt": 0,
+      "coreDiff": 0,
+      "architectureDiff": 0
+    }
+  },
+  "matrix": "matrix.json",
+  "alternatives": "selection.json",
+  "preservedFailures": "failures.json",
+  "legacyIntegrity": "legacy-hashes.json",
+  "implementation": {
+    "changedPaths": [
+      "crates/editac-core/tests/ownership_profile.rs",
+      "fixtures/schema-v3/README.md",
+      "fixtures/schema-v3/bounded_decoder.rs",
+      "fixtures/schema-v3/exchange.mjs",
+      "fixtures/schema-v3/mapping.mjs",
+      "fixtures/schema-v3/mapping.rs",
+      "fixtures/schema-v3/profile.json",
+      "fixtures/schema-v3/seed.json",
+      "../architecture/specs/schema-v3.md"
+    ],
+    "productionSourcesChanged": false,
+    "sourceHashes": {
+      "../architecture/specs/engine.md": {
+        "bytes": 11191,
+        "sha256": "8de39e63780468a53c07efdb0030e618adafe73f386ed6ec050d0034228159d8"
+      },
+      "../architecture/specs/protocol-v1.md": {
+        "bytes": 6958,
+        "sha256": "dd8c7aa6c73a03a35ec41de83822314dfc5bf7d575f3ac19566421b6393eeb3b"
+      },
+      "../architecture/specs/schema-evolution.md": {
+        "bytes": 5025,
+        "sha256": "373111d0ca4a762ca7ab7efa8f86f92a7543cf3bc811b328f337d09baf9106f2"
+      },
+      "../architecture/specs/schema-v1.md": {
+        "bytes": 9434,
+        "sha256": "9c9dcdb3e9edad74d841c55ec11a99962f3e002b823758e88e531291b6d82d23"
+      },
+      "../architecture/specs/schema-v2.md": {
+        "bytes": 6481,
+        "sha256": "770d525f7dc0796f165b46870a07e6e37798e716bc43ed6d75db54d6876763c9"
+      },
+      "../architecture/specs/schema-v3.md": {
+        "bytes": 8230,
+        "sha256": "3467da1488a864abba3e153bebb834d835dbe39ba05c4c1cc43adc6d8b0f31ff"
+      },
+      "../architecture/specs/verification.md": {
+        "bytes": 6013,
+        "sha256": "56a82adc7f23df2d75c1827cea12e123652b010a31375e455e461516db748dc0"
+      },
+      "Cargo.lock": {
+        "bytes": 17615,
+        "sha256": "52476d26e42c8ed8943b0c924fb31491d1e6eaa70d5146ccb31deda46fe71be9"
+      },
+      "Cargo.toml": {
+        "bytes": 406,
+        "sha256": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7"
+      },
+      "crates/editac-core/Cargo.toml": {
+        "bytes": 393,
+        "sha256": "2e24079747593490f72d75e98edb9807ab0a632e55cd057e4a8c82b9c0daa88f"
+      },
+      "crates/editac-core/src/anchors.rs": {
+        "bytes": 11750,
+        "sha256": "98c7882872238b540838d196ccbf392f4964cc38c0811efba0bc45acec966064"
+      },
+      "crates/editac-core/src/commands/format.rs": {
+        "bytes": 32945,
+        "sha256": "710952d7c2b1c7a367b2bf328e55640c745cb5fe602ccd44e8cba5516f4c4988"
+      },
+      "crates/editac-core/src/commands/mod.rs": {
+        "bytes": 119,
+        "sha256": "18bd6c256d75abe3e9ec9435d4250f1fc2b42e33f16e32cc182733ab4b9b0b0f"
+      },
+      "crates/editac-core/src/commands/structure.rs": {
+        "bytes": 14492,
+        "sha256": "afbd48de381c35626042e01dc6e3917245e16fe4ec836ad60f1bb99930e54fd3"
+      },
+      "crates/editac-core/src/commands/text.rs": {
+        "bytes": 15174,
+        "sha256": "65c346438f846fab27bfa82f84c59e3cb288153ebd36b81b492c10753c8e3273"
+      },
+      "crates/editac-core/src/document.rs": {
+        "bytes": 22381,
+        "sha256": "9748a4c0559b1d33454d09c406461290b062df5d3de48005490fb97d1d7586a8"
+      },
+      "crates/editac-core/src/projection.rs": {
+        "bytes": 23580,
+        "sha256": "b221fa206969047df160cacaadcc534a328e4a3577eee4fdc23e639fd779fde4"
+      },
+      "crates/editac-core/tests/block_profile.rs": {
+        "bytes": 30462,
+        "sha256": "70d6936edd184b5063a5be14510ba1f96e6d3a91024722e8b79e9556ce7c8d43"
+      },
+      "crates/editac-core/tests/interop.rs": {
+        "bytes": 7188,
+        "sha256": "80712a38c7efbaa070d00d7caf8cb05cdb8df37207302bff1adf7ff063e5f75a"
+      },
+      "crates/editac-core/tests/ownership_profile.rs": {
+        "bytes": 25970,
+        "sha256": "0556417060627573c68c007ba405a6eaabe4965284fcd0195f002802caf65965"
+      },
+      "crates/editac-core/tests/schema_interop.rs": {
+        "bytes": 12938,
+        "sha256": "a727045a3940cefa2876dfb6cfc8e1056a6c874da9610e3b62aa6edfce34694e"
+      },
+      "crates/editac-core/tests/split_join.rs": {
+        "bytes": 31374,
+        "sha256": "2493192205b083d25443d03bea2eb78eb089d8c90b7388a73aded40589f31d5c"
+      },
+      "fixtures/schema-v1/exchange.mjs": {
+        "bytes": 14442,
+        "sha256": "1ad86b3001e918a75cd64de6b2828ed0e74993d1a552d39dddcbf83df2be412a"
+      },
+      "fixtures/schema-v3/README.md": {
+        "bytes": 1208,
+        "sha256": "aea080b29d486b80a6c0485fedba465c95496b004ab570c2ae4ab21374dc6c83"
+      },
+      "fixtures/schema-v3/bounded_decoder.rs": {
+        "bytes": 4376,
+        "sha256": "5679118322620c056a3bc84109327c8b4e8e332393681351affe90f8fe2e07d8"
+      },
+      "fixtures/schema-v3/exchange.mjs": {
+        "bytes": 12132,
+        "sha256": "0b1b696566a49dcd2db77f9aa6ae86c0aa19f84a749889f845e359aa499ba0da"
+      },
+      "fixtures/schema-v3/mapping.mjs": {
+        "bytes": 12676,
+        "sha256": "7c4ef1ed4d7edbcedd314fc6fba135774a3053cd913bd6bfb8bfb518c3ac53ea"
+      },
+      "fixtures/schema-v3/mapping.rs": {
+        "bytes": 28458,
+        "sha256": "702df16a4120943a75d55ca8d0ca7c7c4bb89c72d0f1b0a3531e46bac3b4b1fc"
+      },
+      "fixtures/schema-v3/profile.json": {
+        "bytes": 520,
+        "sha256": "a6175c9a8d58477e5dd8b4cc27f2ef513a9c3f3087f443d66756fd8616d8743e"
+      },
+      "fixtures/schema-v3/seed.json": {
+        "bytes": 521,
+        "sha256": "f10cd49e9268d329bcd09ffe88349f1fed7ccda08be36c2faa16cfb912e1b01a"
+      },
+      "package-lock.json": {
+        "bytes": 16713,
+        "sha256": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+      },
+      "package.json": {
+        "bytes": 1464,
+        "sha256": "b202ce374867278a59f9b1f6396458206921e0e66fcbc32c379172ba595f4005"
+      },
+      "rust-toolchain.toml": {
+        "bytes": 113,
+        "sha256": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b"
+      }
+    },
+    "trackingOnly": "../architecture/progress/02-engine.md",
+    "roadmapSourceEdited": false
+  },
+  "environment": {
+    "node": "24.19.0",
+    "nodePath": "/Users/bpstr/.nvm/versions/node/v24.19.0/bin/node",
+    "yrs": "0.28.0 small-client",
+    "yjs": "13.6.33",
+    "yProtocols": "1.0.7",
+    "utf16": true,
+    "updateEncoding": 1
+  },
+  "cleanup": "cleanup.json",
+  "remainingCleanupCandidates": "cleanup-candidates.json",
+  "processes": "task-processes.json",
+  "paidInferenceCalls": 0,
+  "publication": false,
+  "productionIntegration": "ENG-1.18-I1: exact v3 creation/restore/admission, owner projection/anchor routing and prepared text/format/split/join; retain legacy bounds and repeat full production matrix",
+  "remainingOriginalCriteriaForThisParent": [],
+  "artifactHashes": {
+    "anchor-repair.log": {
+      "bytes": 946,
+      "sha256": "d3249e55141ea7a188823bf52755a09649ac925c25a8e85bd1decf55890e90b6"
+    },
+    "architecture-diff-check.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "architecture-final-diff-check.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "binary-dependency-repair-01.log": {
+      "bytes": 457,
+      "sha256": "f4588fe71ff0d138b796072c8eaec5e3155e404ee12a5ac04d92d7084d4df2fa"
+    },
+    "block-regression-exchange/js-anchor.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "block-regression-exchange/js-conflict-a.bin": {
+      "bytes": 45,
+      "sha256": "1255bacc131f08cf37e26fff1f083bbfd88d2f88d63fba19452f88d98ed7cd70"
+    },
+    "block-regression-exchange/js-conflict-b.bin": {
+      "bytes": 26,
+      "sha256": "482c0a8f9e37dbf6d2d293270d2236d364834bb46cbbea348c54458ae369ac76"
+    },
+    "block-regression-exchange/js-invalid-root.bin": {
+      "bytes": 45,
+      "sha256": "4691f97aa781302c832c90d612dfa7bdad40fe55e0d74a31f610cb06e8e77cda"
+    },
+    "block-regression-exchange/js-invalid-shared-tuple.bin": {
+      "bytes": 444,
+      "sha256": "1eec675d74d68e650a9e78d22ec6463152cf9f7d71e0cfeb8039e0798c2ea343"
+    },
+    "block-regression-exchange/js-invalid-tuple.bin": {
+      "bytes": 462,
+      "sha256": "3fc929668374a35789e12d26ec59d6550196226de1316e7d437797b179ffc776"
+    },
+    "block-regression-exchange/js-join.bin": {
+      "bytes": 499,
+      "sha256": "9eee18cab48814f9a7de33ec6be575f324fb906ca8d0f5c4ae5d1766881153e6"
+    },
+    "block-regression-exchange/js-seed.bin": {
+      "bytes": 430,
+      "sha256": "385b0d2ad85e2a26ba279a094da615f2bb3b6a6f5e6fbec4e7f5d8aeeb95c4fa"
+    },
+    "block-regression-exchange/js-split.bin": {
+      "bytes": 498,
+      "sha256": "6362f4f2c617144d1a750374259e6c3d0d9879874f23e076ac4aa3df1080fa12"
+    },
+    "block-regression-exchange/node.log": {
+      "bytes": 660,
+      "sha256": "7296d20eca8b83bedd53b9e5be3fd1b9e23dd4ec10342f5ef8439dfebffa3eb6"
+    },
+    "block-regression-exchange/rust-anchor.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "block-regression-exchange/rust-seed.bin": {
+      "bytes": 430,
+      "sha256": "385b0d2ad85e2a26ba279a094da615f2bb3b6a6f5e6fbec4e7f5d8aeeb95c4fa"
+    },
+    "block-regression-exchange/rust-split.bin": {
+      "bytes": 495,
+      "sha256": "7b637bdbe83ec81b4db43874e1a3223b1a9bf60929b71fed3eacacd239590ca8"
+    },
+    "checks.json": {
+      "bytes": 1087,
+      "sha256": "6d6ae9955006a312b70419e192d88325b345fd489d28a431b166822271ff7e11"
+    },
+    "cleanup-candidates.json": {
+      "bytes": 661,
+      "sha256": "0a0cafd1846d1c69f222ab8016b4e098378098ade120fd7c9f71ad9019968210"
+    },
+    "cleanup.json": {
+      "bytes": 200193,
+      "sha256": "4c6cdb36fd71f7e8c47fe7ea0789be2638fece4627da2fae60e29e3e0dd9a06e"
+    },
+    "core-diff-check.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "core-final-diff-check.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exchange/js-anchor.bin": {
+      "bytes": 4,
+      "sha256": "a76a215e69a276f583ce5f3d733b0bf2320204eaf6787a4b8e5334741061acca"
+    },
+    "exchange/js-chain.bin": {
+      "bytes": 1637,
+      "sha256": "a0e2a88c3fdb74cb83d4a8c01c44268f7981409138073f99dd033fe7e6d80571"
+    },
+    "exchange/js-chain.json": {
+      "bytes": 2174,
+      "sha256": "c63cefd780f5480f7631b60723acd7bf64fd8906e48a65176564e1e7a69e2af5"
+    },
+    "exchange/js-deleted.bin": {
+      "bytes": 1672,
+      "sha256": "505c3c390faf3331eb8c83c13a8b4096ece980d45f66e8e6697bd1d6d7408acf"
+    },
+    "exchange/js-deleted.json": {
+      "bytes": 2084,
+      "sha256": "b309f5521e9124601b4e7c10e36b8c98077a8d22f467bd4526606238d480232d"
+    },
+    "exchange/js-independent.bin": {
+      "bytes": 1005,
+      "sha256": "592a2b29ea3d56ab9c0cd9f01fd0df90e79eef5ae74a64e4275439501438c34e"
+    },
+    "exchange/js-independent.json": {
+      "bytes": 1266,
+      "sha256": "3903deec1ef79d2bcbaa36642b99290dd28b721f7588d3d7d4300d5bdac28cbb"
+    },
+    "exchange/js-invalid-operation.bin": {
+      "bytes": 1154,
+      "sha256": "e600508f7a82588df74533bdb1a8ccfcf7b18d324cb980063e9d69cc72d84919"
+    },
+    "exchange/js-invalid-root.bin": {
+      "bytes": 1031,
+      "sha256": "32dd7780f285f54b998149d7accd4401d6b94a2953ef0f3c20184c237764b031"
+    },
+    "exchange/js-invalid-tuple.bin": {
+      "bytes": 1037,
+      "sha256": "f0300aa393633f2d7ef8672750529e7fd277eaa05431689e3f98f26cda89de70"
+    },
+    "exchange/js-race.bin": {
+      "bytes": 1341,
+      "sha256": "2ea369d02331721dadb55ed61b18c27ce719c8a7cc7244c8836d4179887d48c8"
+    },
+    "exchange/js-race.json": {
+      "bytes": 1941,
+      "sha256": "bfed04334b049a6ffb8921b3cbb118a88304efef29c1b34b7c4c66f1ea272596"
+    },
+    "exchange/js-seed.bin": {
+      "bytes": 1005,
+      "sha256": "9fb48d6d67a93955274fa5159512ba0ceb1b4daf32cb7bcd5d105b3456493992"
+    },
+    "exchange/js-seed.json": {
+      "bytes": 1266,
+      "sha256": "7cf04a8dcf0755a247f2f755c1a59a2ea00a0f7f89f7294978ca8a73722bf408"
+    },
+    "exchange/node.log": {
+      "bytes": 1788,
+      "sha256": "85c9367d0c7d7d153be4755e9de7a0dc492fcd4263a4228eb1b8bde79fd51372"
+    },
+    "exchange/rust-anchor.bin": {
+      "bytes": 4,
+      "sha256": "a76a215e69a276f583ce5f3d733b0bf2320204eaf6787a4b8e5334741061acca"
+    },
+    "exchange/rust-chain.bin": {
+      "bytes": 1634,
+      "sha256": "ceb0e4901c62c65150d548501d6530446886e0d9692c4f10fb21747e0d50e8f2"
+    },
+    "exchange/rust-chain.json": {
+      "bytes": 2174,
+      "sha256": "6c254a1921aaefaded5ebf8cf63eddf2f347689be6f9f329952212f9d7794ca8"
+    },
+    "exchange/rust-race-a.bin": {
+      "bytes": 151,
+      "sha256": "bebb8518de1b8c322d80d2949e848115a65935562a2acb95954aa921f5237d1e"
+    },
+    "exchange/rust-race-b.bin": {
+      "bytes": 217,
+      "sha256": "73d2d68d14bdccc85b63b529b70913e8c5b1e4c2f4a25eafbf96606f43ba63c9"
+    },
+    "exchange/rust-race-c.bin": {
+      "bytes": 38,
+      "sha256": "60e74474720246a97779dda601075b1ff74c1829a55614897cce0569818aa494"
+    },
+    "exchange/rust-race.json": {
+      "bytes": 1913,
+      "sha256": "2b801c31ab6e4f01ea3194874f5b61c50f3431df11a2c77b9b941e934f93f7b7"
+    },
+    "exchange/rust-seed.bin": {
+      "bytes": 1005,
+      "sha256": "9fb48d6d67a93955274fa5159512ba0ceb1b4daf32cb7bcd5d105b3456493992"
+    },
+    "exchange/rust-seed.json": {
+      "bytes": 1266,
+      "sha256": "a955d8da5f1b4cf8b66b058e589a9d86947726e118544fd430cd8b6fadffd207"
+    },
+    "exchange-repair-01.log": {
+      "bytes": 454,
+      "sha256": "02aa1773d286d5fbe6b2b305c33419e0e0253e5d3d9ade21ededbf843c9b9d71"
+    },
+    "failures.json": {
+      "bytes": 1262,
+      "sha256": "412af5a418007bcdd9676a207107dfa1c4bad35cefb8f32a971d2ca87c7eac90"
+    },
+    "final-integrity.json": {
+      "bytes": 455,
+      "sha256": "b1caf6db4989cc096bd45b563d3caab8fdfeaa3f369c2f325a0079dce765a60c"
+    },
+    "frozen-schema-exchange/bridge-compare.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "frozen-schema-exchange/bridge-generate-js.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "frozen-schema-exchange/bridge-verify.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "frozen-schema-exchange/coverage.json": {
+      "bytes": 236,
+      "sha256": "ce168b1886d422cb907b5989a077747688565598dbc4814b899d1b9776a125e5"
+    },
+    "frozen-schema-exchange/js-cycle-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-cycle-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-cycle-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-cycle-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-cycle-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/js-cycle-edit-js.json": {
+      "bytes": 2212,
+      "sha256": "a89ef940e2d399fad2e9a7b6ae8639a051efecfcebc0df976bc453236999f0de"
+    },
+    "frozen-schema-exchange/js-cycle-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-cycle-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-cycle-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-cycle-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-cycle-edit-rust.bin": {
+      "bytes": 45,
+      "sha256": "62a126e7cdfc48ac0a971dd6f5162d86b415176b8910fff41bd4c1ca7569e820"
+    },
+    "frozen-schema-exchange/js-cycle-edit-rust.json": {
+      "bytes": 841,
+      "sha256": "6168af1f07dd8972ee6093684d32b5c0473b6e18ce7cb87101b7ed6741cb422b"
+    },
+    "frozen-schema-exchange/js-delete-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-delete-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-delete-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-delete-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-delete-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/js-delete-edit-js.json": {
+      "bytes": 2209,
+      "sha256": "cbf47f00912fb63b2b0d0abff8a23e04b6c8d9f89b4a69d8b6804435748e00ce"
+    },
+    "frozen-schema-exchange/js-delete-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-delete-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-delete-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-delete-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-delete-edit-rust.bin": {
+      "bytes": 41,
+      "sha256": "85026bf31366c523c04ac78495eec048dec5ecaac6e6af52df27309a31bcbf5c"
+    },
+    "frozen-schema-exchange/js-delete-edit-rust.json": {
+      "bytes": 835,
+      "sha256": "15a9e6609b352ef368b79eb67ac9583fb8484abaa35cd99bc6b3e2a7022f79fd"
+    },
+    "frozen-schema-exchange/js-edit-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-edit-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-edit-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-edit-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-edit-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/js-edit-edit-js.json": {
+      "bytes": 2294,
+      "sha256": "b2945f13af87e5d94a509c0c7b6d72f4cf519758031b65c1064175f54964355e"
+    },
+    "frozen-schema-exchange/js-edit-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-edit-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-edit-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-edit-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-edit-edit-rust.bin": {
+      "bytes": 50,
+      "sha256": "383c181233c3a588e12ae3dc5daf5259c489a19a44ec55c237c3edded1c67aba"
+    },
+    "frozen-schema-exchange/js-edit-edit-rust.json": {
+      "bytes": 856,
+      "sha256": "73de614c1aaa96b8ab5cddc1cd9ed3f460d4ff50f5a9e623e5f838a0205a2efa"
+    },
+    "frozen-schema-exchange/js-join-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-join-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-join-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-join-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-join-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/js-join-edit-js.json": {
+      "bytes": 2083,
+      "sha256": "890db9a072fcba944d40dc66dd7613d224ed3d6d1100752c8bd83174af945d08"
+    },
+    "frozen-schema-exchange/js-join-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-join-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-join-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-join-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-join-edit-rust.bin": {
+      "bytes": 21,
+      "sha256": "7d206114a0a6a32ca7e46ce0680884b0f0bda194d5adffebbfc3165000fd714a"
+    },
+    "frozen-schema-exchange/js-join-edit-rust.json": {
+      "bytes": 776,
+      "sha256": "7550014ace463c7cc18dc4b33425dbe9b585c4ee72b9f4e6ce075b315594ba2a"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-js.bin": {
+      "bytes": 42,
+      "sha256": "9939508d1da213c65abb7633238ea93a0c70394e17884798a5228abf8b61bece"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-js.json": {
+      "bytes": 2206,
+      "sha256": "4cb4929c86414fa21b548a3467e0ecdfb70237b3ea30a6fb48b503f23239a0de"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-rust.bin": {
+      "bytes": 46,
+      "sha256": "0a174683876fab24f599a560662f4e2b17107bf418590a8efa5abe66f024f372"
+    },
+    "frozen-schema-exchange/js-js-delete-edit-rust.json": {
+      "bytes": 832,
+      "sha256": "a088de677421031ec5543e73ce021fc697818ac300b42098394c5a4f80f84d9f"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-js.bin": {
+      "bytes": 59,
+      "sha256": "dcdfcdb6e23ccd414d18e5d4c3c5041ae04d8dbc0440e3565851f8ee47e54108"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-js.json": {
+      "bytes": 2294,
+      "sha256": "b2945f13af87e5d94a509c0c7b6d72f4cf519758031b65c1064175f54964355e"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-rust.bin": {
+      "bytes": 46,
+      "sha256": "0a174683876fab24f599a560662f4e2b17107bf418590a8efa5abe66f024f372"
+    },
+    "frozen-schema-exchange/js-js-edit-edit-rust.json": {
+      "bytes": 856,
+      "sha256": "a0bf634698c5ed4305590af2f0e0b3846fca7723d90c0c36615b975157d15cee"
+    },
+    "frozen-schema-exchange/js-js-join-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-js-join-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-js-join-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-js-join-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-js-join-edit-js.bin": {
+      "bytes": 22,
+      "sha256": "4cfa6e937a31d9375a06f6d7444bc0761faac671ea345cde6d751ed076097ddd"
+    },
+    "frozen-schema-exchange/js-js-join-edit-js.json": {
+      "bytes": 2080,
+      "sha256": "db3a814e707f865e2830c2549f41d4d53530d88667da0a2544d38815536a0567"
+    },
+    "frozen-schema-exchange/js-js-join-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-js-join-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-js-join-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-js-join-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-js-join-edit-rust.bin": {
+      "bytes": 46,
+      "sha256": "0a174683876fab24f599a560662f4e2b17107bf418590a8efa5abe66f024f372"
+    },
+    "frozen-schema-exchange/js-js-join-edit-rust.json": {
+      "bytes": 773,
+      "sha256": "4601954e3281899361539e2d0cc35853829e401b318ef37bfbed5c7268f9630b"
+    },
+    "frozen-schema-exchange/js-js-move-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-js-move-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-js-move-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-js-move-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-js-move-edit-js.bin": {
+      "bytes": 27,
+      "sha256": "17849b4e025284d8b0ff14ad9cfb29ef05e218b184a0435e149b238ceb5c7796"
+    },
+    "frozen-schema-exchange/js-js-move-edit-js.json": {
+      "bytes": 2209,
+      "sha256": "e542e4e1a05dc96108d1458c54e038636384f4e863ce1ca2ce353e1b5d48021b"
+    },
+    "frozen-schema-exchange/js-js-move-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-js-move-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-js-move-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-js-move-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-js-move-edit-rust.bin": {
+      "bytes": 46,
+      "sha256": "0a174683876fab24f599a560662f4e2b17107bf418590a8efa5abe66f024f372"
+    },
+    "frozen-schema-exchange/js-js-move-edit-rust.json": {
+      "bytes": 838,
+      "sha256": "3f5cfe5c5838b6790ddd1c3498960ad6c81f2eb4507104b0f5b7faf5624096ab"
+    },
+    "frozen-schema-exchange/js-js-split-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-js-split-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-js-split-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-js-split-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-js-split-edit-js.bin": {
+      "bytes": 29,
+      "sha256": "65283510c5a3f52f75a5057db542a5e16ea78c6e8fd8bc0a10cbef417eaa34a6"
+    },
+    "frozen-schema-exchange/js-js-split-edit-js.json": {
+      "bytes": 2506,
+      "sha256": "da2e43cb10970b57aa2e18b50fc1b1e116deb45beeadbe082d03e5854a8c99b6"
+    },
+    "frozen-schema-exchange/js-js-split-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-js-split-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-js-split-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-js-split-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-js-split-edit-rust.bin": {
+      "bytes": 46,
+      "sha256": "0a174683876fab24f599a560662f4e2b17107bf418590a8efa5abe66f024f372"
+    },
+    "frozen-schema-exchange/js-js-split-edit-rust.json": {
+      "bytes": 968,
+      "sha256": "4fa809774ac609bca17d7a9becd7d850038c7559412ec329a9b0aa1ff689f7fb"
+    },
+    "frozen-schema-exchange/js-move-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-move-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-move-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-move-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-move-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/js-move-edit-js.json": {
+      "bytes": 2212,
+      "sha256": "2147de42550d929f0a26a330514f57c13c9749c3416331b436852536e4de4ca2"
+    },
+    "frozen-schema-exchange/js-move-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-move-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-move-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-move-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-move-edit-rust.bin": {
+      "bytes": 26,
+      "sha256": "0cc8a84ac0ea59723db0174f8be626c46a7de5122f37782573fb37122162da78"
+    },
+    "frozen-schema-exchange/js-move-edit-rust.json": {
+      "bytes": 841,
+      "sha256": "ca20eb734356408d4b194779b01e76406af4ffbb2081d645b99d21d01a836c3f"
+    },
+    "frozen-schema-exchange/js-move-move-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-move-move-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-move-move-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-move-move-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-move-move-js.bin": {
+      "bytes": 25,
+      "sha256": "6688303d3c384779cbcfb81ad5566888758e854a9591e00ddd05bac30bb7c9f2"
+    },
+    "frozen-schema-exchange/js-move-move-js.json": {
+      "bytes": 2074,
+      "sha256": "e1b874a264df5bff2d981af937a4a0797171ae7b6552696d8edbb53c68e02131"
+    },
+    "frozen-schema-exchange/js-move-move-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-move-move-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-move-move-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-move-move-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-move-move-rust.bin": {
+      "bytes": 26,
+      "sha256": "0cc8a84ac0ea59723db0174f8be626c46a7de5122f37782573fb37122162da78"
+    },
+    "frozen-schema-exchange/js-move-move-rust.json": {
+      "bytes": 810,
+      "sha256": "529d151a090f8859e798d297cb6692f1d74e17dec5fb36b97a60021dccb3dd79"
+    },
+    "frozen-schema-exchange/js-seed.bin": {
+      "bytes": 344,
+      "sha256": "27436e08b27509c0af9dd9b0284b13536b8fbfcc35b5db86217d0770f946af9d"
+    },
+    "frozen-schema-exchange/js-split-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-split-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-split-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-split-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-split-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/js-split-edit-js.json": {
+      "bytes": 2509,
+      "sha256": "f61665a4003e11605856cf5bd64919380f24a11dda1c065aa693b8684e0c6de7"
+    },
+    "frozen-schema-exchange/js-split-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-split-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-split-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-split-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-split-edit-rust.bin": {
+      "bytes": 28,
+      "sha256": "37781d98aec2b3def34896925fa42c10d2b186d939c4378b70dd6929656e3352"
+    },
+    "frozen-schema-exchange/js-split-edit-rust.json": {
+      "bytes": 971,
+      "sha256": "5ecf0c1ace43aeb557d813acb667fb34d3cbcf43e5a4cc917b5db7be4e55e83e"
+    },
+    "frozen-schema-exchange/js-split-join-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-split-join-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-split-join-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-split-join-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-split-join-js.bin": {
+      "bytes": 22,
+      "sha256": "4cfa6e937a31d9375a06f6d7444bc0761faac671ea345cde6d751ed076097ddd"
+    },
+    "frozen-schema-exchange/js-split-join-js.json": {
+      "bytes": 1947,
+      "sha256": "f124e3edc8d99ce2ee3cd2f7df80442d468237b2be53aae074baf4ad7d7f5513"
+    },
+    "frozen-schema-exchange/js-split-join-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/js-split-join-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/js-split-join-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/js-split-join-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/js-split-join-rust.bin": {
+      "bytes": 28,
+      "sha256": "37781d98aec2b3def34896925fa42c10d2b186d939c4378b70dd6929656e3352"
+    },
+    "frozen-schema-exchange/js-split-join-rust.json": {
+      "bytes": 747,
+      "sha256": "6f5cbc773de45208390cc5eab03fabb0d6c35e78474eeff9ece4babfc2e266e7"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-js.json": {
+      "bytes": 2212,
+      "sha256": "a89ef940e2d399fad2e9a7b6ae8639a051efecfcebc0df976bc453236999f0de"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-rust.bin": {
+      "bytes": 45,
+      "sha256": "62a126e7cdfc48ac0a971dd6f5162d86b415176b8910fff41bd4c1ca7569e820"
+    },
+    "frozen-schema-exchange/rust-cycle-edit-rust.json": {
+      "bytes": 841,
+      "sha256": "e6ee0becc3d298adefa1cc7fcfa593411354178039bdcd1ac4d89d0b8b299ee6"
+    },
+    "frozen-schema-exchange/rust-delete-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-delete-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-delete-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-delete-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-delete-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/rust-delete-edit-js.json": {
+      "bytes": 2209,
+      "sha256": "cbf47f00912fb63b2b0d0abff8a23e04b6c8d9f89b4a69d8b6804435748e00ce"
+    },
+    "frozen-schema-exchange/rust-delete-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-delete-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-delete-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-delete-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-delete-edit-rust.bin": {
+      "bytes": 41,
+      "sha256": "85026bf31366c523c04ac78495eec048dec5ecaac6e6af52df27309a31bcbf5c"
+    },
+    "frozen-schema-exchange/rust-delete-edit-rust.json": {
+      "bytes": 835,
+      "sha256": "a43fb697d8f84e59a4b705dff981cfb95c93d6febd1fac63ff26c74dbda5db0b"
+    },
+    "frozen-schema-exchange/rust-edit-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-edit-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-edit-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-edit-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-edit-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/rust-edit-edit-js.json": {
+      "bytes": 2294,
+      "sha256": "b2945f13af87e5d94a509c0c7b6d72f4cf519758031b65c1064175f54964355e"
+    },
+    "frozen-schema-exchange/rust-edit-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-edit-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-edit-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-edit-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-edit-edit-rust.bin": {
+      "bytes": 50,
+      "sha256": "383c181233c3a588e12ae3dc5daf5259c489a19a44ec55c237c3edded1c67aba"
+    },
+    "frozen-schema-exchange/rust-edit-edit-rust.json": {
+      "bytes": 856,
+      "sha256": "67983e4d7df9091489de9647b61f8c893c638ef8c033bb221fb467bcfd030ec0"
+    },
+    "frozen-schema-exchange/rust-join-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-join-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-join-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-join-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-join-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/rust-join-edit-js.json": {
+      "bytes": 2083,
+      "sha256": "890db9a072fcba944d40dc66dd7613d224ed3d6d1100752c8bd83174af945d08"
+    },
+    "frozen-schema-exchange/rust-join-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-join-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-join-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-join-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-join-edit-rust.bin": {
+      "bytes": 21,
+      "sha256": "7d206114a0a6a32ca7e46ce0680884b0f0bda194d5adffebbfc3165000fd714a"
+    },
+    "frozen-schema-exchange/rust-join-edit-rust.json": {
+      "bytes": 776,
+      "sha256": "6eea2791715f5a619d2c6bc31b0e9594780b62770d2870d63d2d985f948d812e"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-js.bin": {
+      "bytes": 42,
+      "sha256": "9939508d1da213c65abb7633238ea93a0c70394e17884798a5228abf8b61bece"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-js.json": {
+      "bytes": 2206,
+      "sha256": "4cb4929c86414fa21b548a3467e0ecdfb70237b3ea30a6fb48b503f23239a0de"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-rust.bin": {
+      "bytes": 46,
+      "sha256": "0a174683876fab24f599a560662f4e2b17107bf418590a8efa5abe66f024f372"
+    },
+    "frozen-schema-exchange/rust-js-delete-edit-rust.json": {
+      "bytes": 832,
+      "sha256": "20335eb7cc7463ad4721fe76757716c1221a6f99a34fcec4c69b5aa9d5afc90b"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-js.bin": {
+      "bytes": 59,
+      "sha256": "dcdfcdb6e23ccd414d18e5d4c3c5041ae04d8dbc0440e3565851f8ee47e54108"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-js.json": {
+      "bytes": 2294,
+      "sha256": "b2945f13af87e5d94a509c0c7b6d72f4cf519758031b65c1064175f54964355e"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-rust.bin": {
+      "bytes": 46,
+      "sha256": "0a174683876fab24f599a560662f4e2b17107bf418590a8efa5abe66f024f372"
+    },
+    "frozen-schema-exchange/rust-js-edit-edit-rust.json": {
+      "bytes": 856,
+      "sha256": "dadb9e0c5a7bdb92595ecf4b573c88d94f1b90022a11abf1479b1ea0cacdc892"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-js.bin": {
+      "bytes": 22,
+      "sha256": "4cfa6e937a31d9375a06f6d7444bc0761faac671ea345cde6d751ed076097ddd"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-js.json": {
+      "bytes": 2080,
+      "sha256": "db3a814e707f865e2830c2549f41d4d53530d88667da0a2544d38815536a0567"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-rust.bin": {
+      "bytes": 46,
+      "sha256": "0a174683876fab24f599a560662f4e2b17107bf418590a8efa5abe66f024f372"
+    },
+    "frozen-schema-exchange/rust-js-join-edit-rust.json": {
+      "bytes": 773,
+      "sha256": "1b8695812e76cf7fb093c63c7b5530df059379cddf3755a1b1840676de7c7264"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-js.bin": {
+      "bytes": 27,
+      "sha256": "17849b4e025284d8b0ff14ad9cfb29ef05e218b184a0435e149b238ceb5c7796"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-js.json": {
+      "bytes": 2209,
+      "sha256": "e542e4e1a05dc96108d1458c54e038636384f4e863ce1ca2ce353e1b5d48021b"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-rust.bin": {
+      "bytes": 46,
+      "sha256": "0a174683876fab24f599a560662f4e2b17107bf418590a8efa5abe66f024f372"
+    },
+    "frozen-schema-exchange/rust-js-move-edit-rust.json": {
+      "bytes": 838,
+      "sha256": "4e45c5d82e4e99131d4911ac5a7609e55a4ba478b74f2380fb4b0706d7cbca58"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-js.bin": {
+      "bytes": 29,
+      "sha256": "65283510c5a3f52f75a5057db542a5e16ea78c6e8fd8bc0a10cbef417eaa34a6"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-js.json": {
+      "bytes": 2506,
+      "sha256": "da2e43cb10970b57aa2e18b50fc1b1e116deb45beeadbe082d03e5854a8c99b6"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-rust.bin": {
+      "bytes": 46,
+      "sha256": "0a174683876fab24f599a560662f4e2b17107bf418590a8efa5abe66f024f372"
+    },
+    "frozen-schema-exchange/rust-js-split-edit-rust.json": {
+      "bytes": 968,
+      "sha256": "88c23742e4da30f4b48eda650cbb668d94f732ebc692cbfe3cae375f70d10bae"
+    },
+    "frozen-schema-exchange/rust-move-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-move-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-move-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-move-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-move-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/rust-move-edit-js.json": {
+      "bytes": 2212,
+      "sha256": "2147de42550d929f0a26a330514f57c13c9749c3416331b436852536e4de4ca2"
+    },
+    "frozen-schema-exchange/rust-move-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-move-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-move-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-move-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-move-edit-rust.bin": {
+      "bytes": 26,
+      "sha256": "0cc8a84ac0ea59723db0174f8be626c46a7de5122f37782573fb37122162da78"
+    },
+    "frozen-schema-exchange/rust-move-edit-rust.json": {
+      "bytes": 841,
+      "sha256": "bf6c1a5f2a66a38949ddc06553e4e543c259dd318e5c0468ae558f9403711d91"
+    },
+    "frozen-schema-exchange/rust-move-move-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-move-move-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-move-move-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-move-move-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-move-move-js.bin": {
+      "bytes": 25,
+      "sha256": "6688303d3c384779cbcfb81ad5566888758e854a9591e00ddd05bac30bb7c9f2"
+    },
+    "frozen-schema-exchange/rust-move-move-js.json": {
+      "bytes": 2074,
+      "sha256": "e1b874a264df5bff2d981af937a4a0797171ae7b6552696d8edbb53c68e02131"
+    },
+    "frozen-schema-exchange/rust-move-move-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-move-move-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-move-move-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-move-move-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-move-move-rust.bin": {
+      "bytes": 26,
+      "sha256": "0cc8a84ac0ea59723db0174f8be626c46a7de5122f37782573fb37122162da78"
+    },
+    "frozen-schema-exchange/rust-move-move-rust.json": {
+      "bytes": 810,
+      "sha256": "1b87992287a243899f708d6c70d403634687a5e2d4543143bb7f61e7d94f5d1f"
+    },
+    "frozen-schema-exchange/rust-seed.bin": {
+      "bytes": 344,
+      "sha256": "27436e08b27509c0af9dd9b0284b13536b8fbfcc35b5db86217d0770f946af9d"
+    },
+    "frozen-schema-exchange/rust-split-edit-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-split-edit-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-split-edit-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-split-edit-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-split-edit-js.bin": {
+      "bytes": 55,
+      "sha256": "e24237a0cfa367beb07b46d7d925332ac51590abb6d4df8dc6a8b34020d9fba7"
+    },
+    "frozen-schema-exchange/rust-split-edit-js.json": {
+      "bytes": 2509,
+      "sha256": "f61665a4003e11605856cf5bd64919380f24a11dda1c065aa693b8684e0c6de7"
+    },
+    "frozen-schema-exchange/rust-split-edit-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-split-edit-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-split-edit-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-split-edit-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-split-edit-rust.bin": {
+      "bytes": 28,
+      "sha256": "37781d98aec2b3def34896925fa42c10d2b186d939c4378b70dd6929656e3352"
+    },
+    "frozen-schema-exchange/rust-split-edit-rust.json": {
+      "bytes": 971,
+      "sha256": "c247d0ac2c4359ca532aaa8762b7f898fad592c45acc3f4ee74d64fbf82745fe"
+    },
+    "frozen-schema-exchange/rust-split-join-js-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-split-join-js-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-split-join-js-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-split-join-js-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-split-join-js.bin": {
+      "bytes": 22,
+      "sha256": "4cfa6e937a31d9375a06f6d7444bc0761faac671ea345cde6d751ed076097ddd"
+    },
+    "frozen-schema-exchange/rust-split-join-js.json": {
+      "bytes": 1947,
+      "sha256": "f124e3edc8d99ce2ee3cd2f7df80442d468237b2be53aae074baf4ad7d7f5513"
+    },
+    "frozen-schema-exchange/rust-split-join-rust-anchor-0.bin": {
+      "bytes": 4,
+      "sha256": "34f2dfa2bb77f694da767e6e87b2f8c86328ef1e73e13ac69fa82ed182d90b0e"
+    },
+    "frozen-schema-exchange/rust-split-join-rust-anchor-1.bin": {
+      "bytes": 4,
+      "sha256": "ff402fdc4173ee0894fa396bfbd3dc580fb05c5c0f0ccb9de5475515662364ff"
+    },
+    "frozen-schema-exchange/rust-split-join-rust-anchor-2.bin": {
+      "bytes": 4,
+      "sha256": "ba5a46ecf4b94522b75ad86251d8105821a7bfaa952b0a132d3ab213fbba4909"
+    },
+    "frozen-schema-exchange/rust-split-join-rust-anchor-3.bin": {
+      "bytes": 4,
+      "sha256": "5b24efdee20694b091f9f920d78b5ddfb83b0aabc11837526f034d33135dc04e"
+    },
+    "frozen-schema-exchange/rust-split-join-rust.bin": {
+      "bytes": 28,
+      "sha256": "37781d98aec2b3def34896925fa42c10d2b186d939c4378b70dd6929656e3352"
+    },
+    "frozen-schema-exchange/rust-split-join-rust.json": {
+      "bytes": 747,
+      "sha256": "4c60720548727991aeb95a9931be2d69803626030b1d5847cce020fa8617521d"
+    },
+    "legacy-command-exchange/bridge.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "legacy-command-exchange/js-join.bin": {
+      "bytes": 394,
+      "sha256": "2b40108d3ed8f043275deda0ae9fbc9a1bf0598b31d2d95d1cf7f527f3be1801"
+    },
+    "legacy-command-exchange/js-split-edit.bin": {
+      "bytes": 404,
+      "sha256": "9264c9cf717b776800d9dd30ee7f6bca545133f75be0890a7da1aa759604c1cb"
+    },
+    "legacy-command-exchange/rust-join.bin": {
+      "bytes": 376,
+      "sha256": "237e0fe1e4583e82886f274408d6e7a16387aebfa2bfebc694282e913e5639aa"
+    },
+    "legacy-command-exchange/rust-split.bin": {
+      "bytes": 383,
+      "sha256": "a87fb1101c53fb0abb2dc518a22552a1957bc6afdcd0108e355c5383eaed4d73"
+    },
+    "legacy-command-exchange/seed.bin": {
+      "bytes": 365,
+      "sha256": "5646382dc9c2583269d766ece3093e7d8404648bd05247c9ec174065b0e22b52"
+    },
+    "legacy-hashes.json": {
+      "bytes": 2731,
+      "sha256": "f5763bac4b3f8879776635a8ac7dd65e619828e458ef7d01b037b23d96120eb6"
+    },
+    "legacy-interop-exchange/js-0.bin": {
+      "bytes": 122,
+      "sha256": "a81dd584362024d63957337c6865e2a7bfbfc011f9cb161e0699beb512fe662f"
+    },
+    "legacy-interop-exchange/js-1.bin": {
+      "bytes": 46,
+      "sha256": "dc3a74413e11fb7762765d93332934634e7c5e5be87f02d3c3a40d238e1d2a80"
+    },
+    "legacy-interop-exchange/js-2.bin": {
+      "bytes": 28,
+      "sha256": "4b32457230f02755f029d847271f4b23122140f0a582dccdee1ba49761ac1145"
+    },
+    "legacy-interop-exchange/js-for-rust-sv.bin": {
+      "bytes": 7,
+      "sha256": "4b8cc6261208db78b2c33d1a2bc6cc2d04175754a3a1256f563768a1530e6daa"
+    },
+    "legacy-interop-exchange/js-for-rust.bin": {
+      "bytes": 59,
+      "sha256": "3f74735fdd50c10c4c881549a4c8afb832093217c9727f097c2e3c3a6ba48e1b"
+    },
+    "legacy-interop-exchange/js-full.bin": {
+      "bytes": 189,
+      "sha256": "283340f86c2db20da9d54677ebeeb3bfcd7ab84bb617a8f51153a68470d1d48b"
+    },
+    "legacy-interop-exchange/js-sv-0.bin": {
+      "bytes": 3,
+      "sha256": "9fefc65ae3d2443eeb04e8b092f96ab6ebaba12a07450500585f3847bc61b392"
+    },
+    "legacy-interop-exchange/js-sv-1.bin": {
+      "bytes": 3,
+      "sha256": "d195c30580b6cbcc3942798d25379716f33e7756c08097a9731a16c21f2da2b8"
+    },
+    "legacy-interop-exchange/js-sv-2.bin": {
+      "bytes": 3,
+      "sha256": "14bff0290fc4d3180b03d410bf85b53eba425667b67d60683af9e776753bba6e"
+    },
+    "legacy-interop-exchange/rust-0.bin": {
+      "bytes": 132,
+      "sha256": "9db2cc07a73514f4c21feb4a79aa0b3a0536515c03c9375a0461a4c9eeeb6505"
+    },
+    "legacy-interop-exchange/rust-1.bin": {
+      "bytes": 53,
+      "sha256": "c0c0f00345fdc0bb120a69c79b0da7b2f15f138be00ccd66f1ba4ea5412e2502"
+    },
+    "legacy-interop-exchange/rust-2.bin": {
+      "bytes": 31,
+      "sha256": "e4505af3501c36faf5d418900953d0204794b8f2f65b2133f0fe5ab9a5b59822"
+    },
+    "legacy-interop-exchange/rust-for-js.bin": {
+      "bytes": 69,
+      "sha256": "776e6ee129a7e8fd1ea5bbcc0ffa9feafc864e93c76acbcef1d1b7b23e57e0c3"
+    },
+    "legacy-interop-exchange/rust-sv-0.bin": {
+      "bytes": 4,
+      "sha256": "04cef3cc2ae6f00503c0fb20a94624c148ca0f0e884ab36d5e670b9ab911f25a"
+    },
+    "matrix.json": {
+      "bytes": 4576,
+      "sha256": "1629d94fdb25ef60e44a494653b87e313b0026fadd09dd0ec896607c60512692"
+    },
+    "node-exchange-repair-01.log": {
+      "bytes": 1295,
+      "sha256": "ff12a162237a98c5860f1cde846bf25774084c8cfdefd64d51e8963342d870d8"
+    },
+    "node-ownership-03.log": {
+      "bytes": 1587,
+      "sha256": "58f884a162bc36d497370780fb05ad918ca0026c7ca91d3dc0cb7dfe6b748488"
+    },
+    "node-ownership-04.log": {
+      "bytes": 1781,
+      "sha256": "18f88eb0324728ca2af83e60ea818747196fc5ebc148cf591171b3a62fa87c79"
+    },
+    "node-ownership-05.log": {
+      "bytes": 1788,
+      "sha256": "85c9367d0c7d7d153be4755e9de7a0dc492fcd4263a4228eb1b8bde79fd51372"
+    },
+    "ownership-01.log": {
+      "bytes": 6269,
+      "sha256": "e8bdc01107d13f737b9c7d16518e14032548b5efe93db1c8767a720e2e76224b"
+    },
+    "ownership-02.log": {
+      "bytes": 2766,
+      "sha256": "cf91c25862ac0a946405af3d1206db3fe1c8207c0e1aa71a939e2d33ee331ae9"
+    },
+    "ownership-03.log": {
+      "bytes": 2906,
+      "sha256": "2bd58ae9b6e27e70d2ed1a3691ab3ec766a1985fa238dbd08e6d629043ad2a02"
+    },
+    "ownership-04.log": {
+      "bytes": 2375,
+      "sha256": "b7c79da0540a81e94be19c0150f6cdac96edbea04c1b8efaa8696cd6abda821c"
+    },
+    "ownership-05.log": {
+      "bytes": 2375,
+      "sha256": "21a9d2765c92f9121846b0b26db74928d9e203d1883a171752776cbfc28d73a6"
+    },
+    "regression-01.log": {
+      "bytes": 4065,
+      "sha256": "68e882f0039c8483e18d060dcfce026dadb515a5998394d7c671a3965c878b49"
+    },
+    "rustfmt-check.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "rustfmt.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "schema-regression-01.log": {
+      "bytes": 456,
+      "sha256": "c43081529a02d74bf731e7f89ea1f1879d58b9b954d6e30da3cc526db4f11287"
+    },
+    "selection.json": {
+      "bytes": 1060,
+      "sha256": "3202218ac5e272f6d29bc158a09d4842224d2b21de25545409a9ce7576c6f80e"
+    },
+    "task-processes.json": {
+      "bytes": 286,
+      "sha256": "ed49d89fcf30dccf2bf05d66187ea718a3607f0d9e82b3a00e28fc8bc9f0af67"
+    }
+  },
+  "finalIntegrity": "final-integrity.json"
+}

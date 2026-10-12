@@ -1,0 +1,329 @@
+✔ native Rust checkpoint restores in compiled WASM without defaults or writer reuse (3023.473625ms)
+✔ native journal replay, duplicates and dependent reordered restore match Rust snapshot (1.917875ms)
+✔ state-vector differential exchange and duplicate remote updates have exact patches (10.333917ms)
+✔ three disconnected compiled replicas converge across all six duplicate delivery permutations (27.220042ms)
+✔ pinned Yjs reads production WASM bytes and edits original rich text for WASM replay (5.526209ms)
+✔ delete-set replay works even when clocks did not change (2.806708ms)
+✔ remote replay preserves local history and undo/redo produces usable sync bytes (6.885542ms)
+✖ wrong epoch update rejects before content, history or patch mutation (3.18525ms)
+✖ wrong document update rejects before content, history or patch mutation (1.271042ms)
+✖ wrong profile update rejects before content, history or patch mutation (1.021625ms)
+✖ wrong schema update rejects before content, history or patch mutation (0.988083ms)
+✖ wrong encoding update rejects before content, history or patch mutation (1.0685ms)
+✖ malformed update and state-vector bytes reject atomically (1.702625ms)
+✖ invalid root and mutated immutable rows reject through real staged admission (1.853584ms)
+✔ restore rejects missing initialization, wrong journal identity and malformed tails (0.693667ms)
+✖ byte inputs enforce types, data envelopes and resource limits without getter execution (1.06075ms)
+✔ checkpoint, vector, update and event bytes remain owned after mutation and disposal (1.522167ms)
+✖ scoped batches report exact changed node/range and ignore unrelated listeners (1.261167ms)
+✔ post-transaction reentrant commit dispatches FIFO and subscriptions start with future batches (1.894834ms)
+✔ observer throws and mutations cannot corrupt commits or other observers (1.834209ms)
+✖ unsubscribe/dispose are idempotent and pending callbacks are removed (1.699167ms)
+✔ subscription validation and bounded table preserve normal operations (2.6855ms)
+✔ built WASM structural/format/history checkpoint and update replay agrees with native Rust (180.90975ms)
+✔ actual Chromium IndexedDB checkpoint/tail restore and peer sync use owned production bytes (1369.879834ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 14
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4975.936833
+
+✖ failing tests:
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong epoch update rejects before content, history or patch mutation (3.18525ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:1839399265:1',
+  -     'n:1839399265:2'
+  -   ],
+      identity: {
+        documentId: '12345678-1234-4234-8234-000000000001',
+        epoch: '23456789-2345-4345-8345-23456789abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  
+      at rejectAtomic (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:66:197)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:100:183
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:1839399265:1', 'n:1839399265:2' ], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong document update rejects before content, history or patch mutation (1.271042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:1839399265:1',
+  -     'n:1839399265:2'
+  -   ],
+      identity: {
+        documentId: '12345678-1234-4234-8234-000000000001',
+        epoch: '23456789-2345-4345-8345-23456789abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  
+      at rejectAtomic (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:66:197)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:100:183
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:1839399265:1', 'n:1839399265:2' ], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong profile update rejects before content, history or patch mutation (1.021625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:1839399265:1',
+  -     'n:1839399265:2'
+  -   ],
+      identity: {
+        documentId: '12345678-1234-4234-8234-000000000001',
+        epoch: '23456789-2345-4345-8345-23456789abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  
+      at rejectAtomic (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:66:197)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:100:183
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:1839399265:1', 'n:1839399265:2' ], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong schema update rejects before content, history or patch mutation (0.988083ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:1839399265:1',
+  -     'n:1839399265:2'
+  -   ],
+      identity: {
+        documentId: '12345678-1234-4234-8234-000000000001',
+        epoch: '23456789-2345-4345-8345-23456789abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  
+      at rejectAtomic (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:66:197)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:100:183
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:1839399265:1', 'n:1839399265:2' ], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ wrong encoding update rejects before content, history or patch mutation (1.0685ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:1839399265:1',
+  -     'n:1839399265:2'
+  -   ],
+      identity: {
+        documentId: '12345678-1234-4234-8234-000000000001',
+        epoch: '23456789-2345-4345-8345-23456789abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  
+      at rejectAtomic (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:66:197)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:100:183
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:1839399265:1', 'n:1839399265:2' ], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ malformed update and state-vector bytes reject atomically (1.702625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:1839399265:1',
+  -     'n:1839399265:2'
+  -   ],
+      identity: {
+        documentId: '12345678-1234-4234-8234-000000000001',
+        epoch: '23456789-2345-4345-8345-23456789abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  
+      at rejectAtomic (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:66:197)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:103:55
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:1839399265:1', 'n:1839399265:2' ], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ invalid root and mutated immutable rows reject through real staged admission (1.853584ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:1839399265:1',
+  -     'n:1839399265:2'
+  -   ],
+      identity: {
+        documentId: '12345678-1234-4234-8234-000000000001',
+        epoch: '23456789-2345-4345-8345-23456789abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  
+      at rejectAtomic (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:66:197)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:107:153
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:1839399265:1', 'n:1839399265:2' ], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ byte inputs enforce types, data envelopes and resource limits without getter execution (1.06075ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:1839399265:1',
+  -     'n:1839399265:2'
+  -   ],
+      identity: {
+        documentId: '12345678-1234-4234-8234-000000000001',
+        epoch: '23456789-2345-4345-8345-23456789abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  
+      at rejectAtomic (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:66:197)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:116:99
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:1839399265:1', 'n:1839399265:2' ], identity: { documentId: '12345678-1234-4234-8234-000000000001', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 0, touchedRanges: [], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ scoped batches report exact changed node/range and ignore unrelated listeners (1.261167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'editac:local:sync:explicit'
+  - 'sync:explicit'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:127:155
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'editac:local:sync:explicit',
+    expected: 'sync:explicit',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/wasm-updates.test.mjs:57:28
+✖ unsubscribe/dispose are idempotent and pending callbacks are removed (1.699167ms)
+  Error [EngineError]: engine has been disposed
+      at file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:126:19
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:13:16)
+      at use (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:124:40)
+      at Object.releaseAnchor (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:185:36)
+      at insert (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:65:196)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:140:139
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-updates.test.mjs:57:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+    code: 'Disposed',
+    operation: 'releaseAnchor'
+  }

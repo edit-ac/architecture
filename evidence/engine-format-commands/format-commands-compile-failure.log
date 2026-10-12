@@ -1,0 +1,88 @@
+   Compiling stable_deref_trait v1.2.1
+   Compiling litemap v0.8.3
+   Compiling writeable v0.6.4
+   Compiling utf8_iter v1.0.4
+   Compiling icu_properties_data v2.3.0
+   Compiling icu_normalizer_data v2.3.0
+   Compiling syn v3.0.7
+   Compiling percent-encoding v2.3.2
+   Compiling form_urlencoded v1.2.2
+   Compiling synstructure v0.14.0
+   Compiling zerovec-derive v0.11.6
+   Compiling displaydoc v0.2.7
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling async-trait v0.1.92
+   Compiling zerofrom-derive v0.1.8
+   Compiling yoke-derive v0.8.3
+   Compiling thiserror v2.0.21
+   Compiling zerofrom v0.1.8
+   Compiling serde v1.0.229
+   Compiling yoke v0.8.3
+   Compiling yrs v0.28.0
+   Compiling zerovec v0.11.8
+   Compiling zerotrie v0.2.5
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+   Compiling icu_collections v2.3.0
+   Compiling icu_locale_core v2.3.0
+   Compiling icu_provider v2.3.1
+   Compiling icu_properties v2.3.0
+   Compiling icu_normalizer v2.3.0
+   Compiling idna_adapter v1.2.2
+   Compiling idna v1.1.0
+   Compiling url v2.5.8
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: unused import: `decoder::Decode`
+ --> crates/editac-core/tests/format_commands.rs:9:20
+  |
+9 | use yrs::updates::{decoder::Decode, encoder::Encode};
+  |                    ^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `Update`
+  --> crates/editac-core/tests/format_commands.rs:12:34
+   |
+12 |     StateVector, Text, Transact, Update, XmlTextPrelim, XmlTextRef,
+   |                                  ^^^^^^
+
+error[E0599]: no method named `apply_remote` found for struct `Document` in the current scope
+   --> crates/editac-core/tests/format_commands.rs:646:7
+    |
+646 |     d.apply_remote(&ReplayUpdate {
+    |     --^^^^^^^^^^^^ method not found in `Document`
+
+error[E0599]: no method named `apply_remote` found for struct `Document` in the current scope
+   --> crates/editac-core/tests/format_commands.rs:682:7
+    |
+682 |     d.apply_remote(&ReplayUpdate {
+    |     --^^^^^^^^^^^^ method not found in `Document`
+
+error[E0599]: no method named `apply_remote` found for struct `Document` in the current scope
+   --> crates/editac-core/tests/format_commands.rs:787:7
+    |
+787 |     d.apply_remote(&ReplayUpdate {
+    |     --^^^^^^^^^^^^ method not found in `Document`
+
+error[E0599]: no method named `apply_remote` found for struct `Document` in the current scope
+   --> crates/editac-core/tests/format_commands.rs:821:11
+    |
+821 |         a.apply_remote(u).unwrap();
+    |           ^^^^^^^^^^^^ method not found in `Document`
+
+error[E0599]: no method named `apply_remote` found for struct `Document` in the current scope
+   --> crates/editac-core/tests/format_commands.rs:824:11
+    |
+824 |         b.apply_remote(u).unwrap();
+    |           ^^^^^^^^^^^^ method not found in `Document`
+
+error[E0599]: no method named `apply_remote` found for struct `Document` in the current scope
+   --> crates/editac-core/tests/format_commands.rs:827:11
+    |
+827 |         c.apply_remote(u).unwrap();
+    |           ^^^^^^^^^^^^ method not found in `Document`
+
+For more information about this error, try `rustc --explain E0599`.
+warning: `editac-core` (test "format_commands") generated 2 warnings
+error: could not compile `editac-core` (test "format_commands") due to 6 previous errors; 2 warnings emitted

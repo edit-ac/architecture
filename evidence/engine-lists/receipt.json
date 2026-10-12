@@ -1,0 +1,210 @@
+{
+  "parent": "ENG-1.8",
+  "closedChild": "ENG-1.8-P1",
+  "state": "PREREQUISITE_IMPLEMENTED_AND_VERIFIED_PARENT_INCOMPLETE",
+  "iteration": 12,
+  "date": "2026-10-11",
+  "promptRevision": "7eaa063f3629",
+  "sourceRevision": "6af2cefc37184d9851b1896783ab9abf3c0527606485cf1a2928c4274cea8b6b",
+  "baseCommit": "2696304e556cb528f7fec4e5ec3ea3307dc8d74b",
+  "changedPaths": [
+    "crates/editac-core/src/commands/lists.rs",
+    "crates/editac-core/src/commands/mod.rs",
+    "crates/editac-core/tests/lists.rs"
+  ],
+  "sourceHashes": {
+    "crates/editac-core/src/commands/lists.rs": {
+      "sha256": "ccc096523d6981e2864d8b7db273d3b0fdccb325084bdb7c62c66a7d45249064",
+      "bytes": 4751
+    },
+    "crates/editac-core/src/commands/mod.rs": {
+      "sha256": "077f8a830b7dc0ba8aa64451c1fa62b5a6fd6a90e65273ff18602e9590e16009",
+      "bytes": 134
+    },
+    "crates/editac-core/tests/lists.rs": {
+      "sha256": "4b337acb3abab66cd455be52d4e74641c1dae75be8cabf6512604668bbd2586e",
+      "bytes": 9606
+    },
+    "crates/editac-core/src/commands/text.rs": {
+      "sha256": "2606be22e70f5ba98423cb966d0e1f33c080ce158de7900cdeccb6db7e3453f7",
+      "bytes": 16216
+    },
+    "crates/editac-core/src/projection.rs": {
+      "sha256": "73a38ecceead3aa3568e8e37716e218605939530e52786456053e007929dc731",
+      "bytes": 27521
+    },
+    "crates/editac-core/src/document.rs": {
+      "sha256": "20ac891f20f03846809b777ef88c1098e7a8a81c7232f98ed9820c2e81b1f5d8",
+      "bytes": 28542
+    },
+    "Cargo.toml": {
+      "sha256": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7",
+      "bytes": 406
+    },
+    "Cargo.lock": {
+      "sha256": "52476d26e42c8ed8943b0c924fb31491d1e6eaa70d5146ccb31deda46fe71be9",
+      "bytes": 17615
+    },
+    "crates/editac-core/Cargo.toml": {
+      "sha256": "2e24079747593490f72d75e98edb9807ab0a632e55cd057e4a8c82b9c0daa88f",
+      "bytes": 393
+    },
+    ".node-version": {
+      "sha256": "7e8a2fa94951112b894a3dbe3d05efef5e9263741fa49125f0a70f40fedab4cc",
+      "bytes": 8
+    },
+    "../architecture/specs/schema-v1.md": {
+      "sha256": "9c9dcdb3e9edad74d841c55ec11a99962f3e002b823758e88e531291b6d82d23",
+      "bytes": 9434
+    },
+    "../architecture/specs/schema-v3.md": {
+      "sha256": "3467da1488a864abba3e153bebb834d835dbe39ba05c4c1cc43adc6d8b0f31ff",
+      "bytes": 8230
+    },
+    "../architecture/specs/engine.md": {
+      "sha256": "8de39e63780468a53c07efdb0030e618adafe73f386ed6ec050d0034228159d8",
+      "bytes": 11191
+    },
+    "../architecture/specs/verification.md": {
+      "sha256": "56a82adc7f23df2d75c1827cea12e123652b010a31375e455e461516db748dc0",
+      "bytes": 6013
+    },
+    "../architecture/progress/.roadmap-runner/02-engine-4d812f5d0e69/source-f6218bddbd75.md": {
+      "sha256": "6af2cefc37184d9851b1896783ab9abf3c0527606485cf1a2928c4274cea8b6b",
+      "bytes": 37451
+    }
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test lists --locked",
+      "log": "lists.log",
+      "exit": 0,
+      "executed": 23,
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "ENG-1.8-P1 hierarchy prerequisite; not parent acceptance"
+    },
+    {
+      "command": "cargo test -p editac-core --test projection --test initialization --test split_join --locked",
+      "log": "regressions.log",
+      "exit": 101,
+      "executed": 84,
+      "passed": 83,
+      "failed": 1,
+      "skipped": 0,
+      "scope": "17 initialization, 16 projection pass; 50/51 split_join; ambient Node 26.4.0 rejected by fixture pin 24.19.0"
+    },
+    {
+      "command": "env PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_GENERAL_EXCHANGE=/Users/bpstr/Github/edit-ac/architecture/evidence/engine-lists/pinned-exchange cargo test -p editac-core --test split_join --locked",
+      "log": "split-join-pinned.log",
+      "exit": 0,
+      "executed": 51,
+      "passed": 51,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "rerun only failed/invalidated suite after concrete runtime correction"
+    },
+    {
+      "command": "node --test fixtures/schema-v3/production-exchange.mjs (spawned by Rust split_join under pinned Node 24.19.0)",
+      "log": "pinned-exchange/node.log",
+      "exit": 0,
+      "executed": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "git diff --check",
+      "log": "diff-check.log",
+      "exit": 0
+    }
+  ],
+  "distinctFinalCounts": {
+    "Rust": {
+      "executed": 107,
+      "passed": 107,
+      "failed": 0,
+      "skipped": 0
+    },
+    "YjsProduction": {
+      "executed": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "matrix": {
+    "whole-batch cycles and self/descendant cycles": [
+      "self_parent_is_a_cycle",
+      "parent_under_descendant_is_a_cycle",
+      "individually_valid_changes_can_jointly_cycle",
+      "final_graph_allows_atomic_break_and_reparent"
+    ],
+    "missing/deleted/illegal targets and parents": [
+      "item_cannot_be_a_parent",
+      "unknown_kind_cannot_be_a_parent",
+      "unknown_kind_cannot_be_a_command_target",
+      "missing_target_is_not_redirected",
+      "missing_parent_is_not_repaired_to_root",
+      "deleted_target_is_distinct_from_missing",
+      "deleted_parent_does_not_resurrect_or_redirect_content"
+    ],
+    "descendant depth and resource bounds": [
+      "exact_editing_depth_limit_is_accepted",
+      "unchanged_descendant_depth_is_checked_after_reparenting",
+      "already_excessive_hierarchy_rejects_without_recursion",
+      "excessive_change_batch_is_bounded_before_graph_work",
+      "excessive_snapshot_is_bounded_before_graph_work"
+    ],
+    "no partial mutation": "Every real Document check compares checkpoint bytes and visible/recovery semantics with original integrated identities; validator receives only a derived snapshot, acquires no transaction and emits no update. There is no commit API.",
+    "no v3 structural extension": "ordinary_v3_blocks_do_not_gain_list_semantics"
+  },
+  "productionRemaining": [
+    "versioned list/quote structural schema and its Rust/Yjs qualification",
+    "nested ordered/unordered/checklist and blockquote commands",
+    "enter/backspace/indent/outdent transition snapshots",
+    "numbering and checked-state persistence",
+    "canonical preparation/commit/exchange with complete atomic rejection proof"
+  ],
+  "dependency": "schema-v3.md explicitly has ordinary block kinds only; exact root-only placements and paragraph/heading metadata do not admit structural kinds. Controller question and proposed ordered qualification/integration split recorded in progress. No schema/source-roadmap edit.",
+  "priorSupervisorTarget": "ENG-1.18 matrix/receipt satisfied in iteration 11. This run adds a 51/51 Rust and 4/4 pinned Yjs production regression; previous broader source hashes unchanged except additive commands/mod.rs. Prior receipt logs/tested sources preserved; seven exchange artifacts were accidentally overwritten by first default-path regression. See historical-artifact-overwrite.json; historical referenced artifacts must not be reported as hash-matching.",
+  "preservedFailures": [
+    "regressions.log",
+    "failed-regression-exchange/node.log"
+  ],
+  "historicalArtifactIncident": "historical-artifact-overwrite.json",
+  "paidInferenceCalls": 0,
+  "publication": false,
+  "deployment": false,
+  "cleanup": "cleanup.json",
+  "processes": "processes.txt; open-files.txt; no task browser/server started, unrelated Assign services retained",
+  "artifactHashes": {
+    "build-baseline.json": "88331027c3b7eccbeeb0edcd515be587604045b23e5956702ba0e1bc7793dab2",
+    "lists.log": "68dd24f95bc7d6854d0ba10450c36ffe0958f0c4252f997e7c818f44a987fb68",
+    "diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "split-join-pinned.log": "9820933118874fc3f1f9f42a53cdbd4b84a28eba05e99d2a731d6b84711d1ff7",
+    "cleanup.json": "0bde1352677640e4528fc4cfd8806f5c3c54fc15adfa5c70e63a79bf39148860",
+    "processes.txt": "cca1052d66a851ce8a630fa41b5ec39a6a22a5f2bcf8cdd38efd0c57db322011",
+    "open-files.txt": "ad4ba8020adc8bb4b2393f1d415a7acb788939dca2472aa78d1173fa13294f68",
+    "cleanup-candidates.json": "3e9597b0c47d808c72c431b50607187701174816411986bfdd0197d2c3e0a3cf",
+    "regressions.log": "48a07f7ff6dcb1e2036edaa6038cef83ecd537998ffd3470e7d497d87d98e1ca",
+    "tested-sources.tar.gz": "5d39d5dd83d36e423d00a6884d4f5fbbc0b5addea487c062528b90762c3638e3",
+    "lsof-errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-artifact-overwrite.json": "3dfbc3405e2d552c700167ecf35992933d1702ddf8e0043fa3f0cfcfd46d8255",
+    "failed-regression-exchange/js-deleted-gap.json": "82d1cd392b9be74561ea77f0da0eac6850d446b921d3542e8358ea7ed6251a52",
+    "failed-regression-exchange/node.log": "c9d6c60446fc843e045ce69c233b7f072bf1b0ecf1580441f5f770e8eb38b669",
+    "failed-regression-exchange/js-production.bin": "e210c094a7212b8445f73828cd9e003b50c5f99f7b14176934cdf99f1873d97a",
+    "failed-regression-exchange/rust-production.bin": "848502d9378078c748f31914fd00447c8b8629b3f0afe9eacc46d992467a5622",
+    "failed-regression-exchange/js-deleted-gap.bin": "9e9aba4f06d101862ad3a20e204f7c2e88db72cf53e4c1e1929fccd1478427d2",
+    "failed-regression-exchange/rust-production.json": "3747349c9faf677cb0d9d13a0197102dda7d23859a9c91b38bc5c2dc5e6be91f",
+    "failed-regression-exchange/js-production.json": "c7e2083cb6d56ef1f4da5830f9194b33a5a610abacfd8a795b111954c715399f",
+    "pinned-exchange/js-deleted-gap.json": "b1999e4b9e59bd33cc0a06358e8475236da518cafcff35a40bbd0e782d4fbd38",
+    "pinned-exchange/node.log": "89693a8bcc8e80de2c481e30b078940a0bf76423d593cb8df3a724b2700df9ae",
+    "pinned-exchange/js-production.bin": "ceac6ca4845eb4ae9337f45541278002e6ac2960a96eaf86e68b8100d0ff4416",
+    "pinned-exchange/rust-production.bin": "ed1e687fa4c4f68f4c85a06fe9c7cdfd014036dad875320a5257216124dfecbc",
+    "pinned-exchange/js-deleted-gap.bin": "6b966168b51f822af19e233a90d05da04475581853bdb88e7ddc9edfc4c49e7f",
+    "pinned-exchange/rust-production.json": "c8d4d63f5cfd8fe8d5c77c11b3f3818bd4f452df33ba3ca42d174eca30ee838c",
+    "pinned-exchange/js-production.json": "01c8851b5c3736a92666eda3cd1610362de7d7b41b4b1c28a78f97e829c7f7c5"
+  }
+}

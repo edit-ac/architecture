@@ -1,0 +1,37 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.51s
+     Running tests/projection.rs (target/debug/deps/projection-7d6019fff65c6bb4)
+
+running 16 tests
+test disposing_an_index_leaves_other_indexes_and_document_available ... ok
+test fixed_seed_snapshot_preserves_rich_text_and_integrated_identities ... ok
+test joined_source_edit_updates_its_owner_without_changing_source_identity ... ok
+test formatting_and_deletion_report_utf16_transaction_ranges ... ok
+test index_keeps_the_same_replica_alive_after_external_handle_drop ... ok
+test malformed_and_fractional_placements_use_frozen_root_fallback ... ok
+test empty_and_hidden_source_spans_keep_recovery_identity_and_visible_children ... ok
+test hierarchy_fallback_cycles_and_late_parent_are_read_only ... ok
+test malformed_ownership_returns_recovery_error_without_writes_and_can_retry_after_repair ... ok
+test multiple_commits_accumulate_ranges_without_rereading_unrelated_text ... ok
+test replacing_registry_text_is_detected_as_identity_change ... FAILED
+test owned_document_snapshot_is_the_same_projection_after_checkpoint_restore ... ok
+test split_cut_tracks_remote_text_and_only_changed_owners_are_reported ... ok
+test reordered_duplicate_real_updates_converge_in_incremental_snapshots ... ok
+test one_unicode_edit_reads_only_one_source_and_preserves_untouched_nodes ... ok
+test composed_ownership_deletion_and_hierarchy_match_frozen_fixtures ... ok
+
+failures:
+
+---- replacing_registry_text_is_detected_as_identity_change stdout ----
+
+thread 'replacing_registry_text_is_detected_as_identity_change' (149836740) panicked at /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/branch.rs:251:13:
+internal error: entered unreachable code: Could not get ID for branch
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    replacing_registry_text_is_detected_as_identity_change
+
+test result: FAILED. 15 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p editac-core --test projection`

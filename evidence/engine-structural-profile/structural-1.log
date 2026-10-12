@@ -1,0 +1,190 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0277]: the trait bound `yrs::Any: From<u64>` is not satisfied
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:879:25
+    |
+879 |                         Any::from(
+    |                         ^^^ the trait `From<u64>` is not implemented for `yrs::Any`
+    |
+    = help: `yrs::Any` implements trait `From<T>`:
+              From<&[u8]>
+              From<&str>
+              From<Arc<[u8]>>
+              From<Arc<str>>
+              From<HashMap<std::string::String, T>>
+              From<Option<T>>
+              From<Vec<T>>
+              From<Vec<u8>>
+            and 10 others
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1224:22
+     |
+1224 |                     .min_by_key(|id| canonical(id).unwrap())
+     |                      ^^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `Sized` is not implemented for `str`
+     = note: required for `std::slice::Iter<'_, str>` to implement `Iterator`
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1222:32
+     |
+1222 |                   let detached = path[at..]
+     |  ________________________________^
+1223 | |                     .iter()
+1224 | |                     .min_by_key(|id| canonical(id).unwrap())
+     | |____________________________________________________________^ doesn't have a size known at compile-time
+     |
+     = help: the trait `Sized` is not implemented for `str`
+note: required by an implicit `Sized` bound in `std::slice::Iter`
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/slice/iter.rs:67:21
+     |
+  67 | pub struct Iter<'a, T: 'a> {
+     |                     ^ required by the implicit `Sized` requirement on this type parameter in `Iter`
+help: consider borrowing the value
+     |
+1224 |                     .min_by_key(|id| &canonical(id).unwrap())
+     |                                      +
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1223:22
+     |
+1223 |                     .iter()
+     |                      ^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `Sized` is not implemented for `str`
+note: required by a bound in `core::slice::<impl [T]>::iter`
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/slice/mod.rs:101:6
+     |
+ 101 | impl<T> [T] {
+     |      ^ required by this bound in `core::slice::<impl [T]>::iter`
+...
+1041 |     pub const fn iter(&self) -> Iter<'_, T> {
+     |                  ---- required by a bound in this associated function
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1218:31
+     |
+1218 |             if let Some(at) = path.iter().position(|id| id == &cursor) {
+     |                               ^^^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `Sized` is not implemented for `str`
+     = note: required for `Vec<str>` to implement `Deref`
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1218:36
+     |
+1218 |             if let Some(at) = path.iter().position(|id| id == &cursor) {
+     |                                    ^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `Sized` is not implemented for `str`
+note: required by a bound in `core::slice::<impl [T]>::iter`
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/slice/mod.rs:101:6
+     |
+ 101 | impl<T> [T] {
+     |      ^ required by this bound in `core::slice::<impl [T]>::iter`
+...
+1041 |     pub const fn iter(&self) -> Iter<'_, T> {
+     |                  ---- required by a bound in this associated function
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1218:31
+     |
+1218 |             if let Some(at) = path.iter().position(|id| id == &cursor) {
+     |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `Sized` is not implemented for `str`
+     = note: required for `std::slice::Iter<'_, str>` to implement `Iterator`
+help: consider borrowing the value
+     |
+1218 |             if let Some(at) = path.iter().position(|id| &id == &cursor) {
+     |                                                         +
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1215:24
+     |
+1215 |         let mut path = vec![];
+     |                        ^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `Sized` is not implemented for `str`
+note: required by an implicit `Sized` bound in `Vec`
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:438:16
+     |
+ 438 | pub struct Vec<T, #[unstable(feature = "allocator_api", issue = "32838")] A: Allocator = Global> {
+     |                ^ required by the implicit `Sized` requirement on this type parameter in `Vec`
+
+error[E0277]: the size for values of type `str` cannot be known at compilation time
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1215:24
+     |
+1215 |         let mut path = vec![];
+     |                        ^^^^^^ doesn't have a size known at compile-time
+     |
+     = help: the trait `Sized` is not implemented for `str`
+note: required by a bound in `Vec::<T>::new`
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:447:6
+     |
+ 447 | impl<T> Vec<T> {
+     |      ^ required by this bound in `Vec::<T>::new`
+...
+ 463 |     pub const fn new() -> Self {
+     |                  --- required by a bound in this associated function
+
+error[E0308]: mismatched types
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1227:32
+     |
+1227 |                 parents.insert(detached.clone(), "@root".into());
+     |                         ------ ^^^^^^^^^^^^^^^^ expected `String`, found `&str`
+     |                         |
+     |                         arguments to this method are incorrect
+     |
+note: method defined here
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/alloc/src/collections/btree/map.rs:1045:12
+     |
+1045 |     pub fn insert(&mut self, key: K, value: V) -> Option<V>
+     |            ^^^^^^
+help: try using a conversion method
+     |
+1227 -                 parents.insert(detached.clone(), "@root".into());
+1227 +                 parents.insert(detached.to_string(), "@root".into());
+     |
+
+error[E0599]: the method `push` exists for struct `Vec<str>`, but its trait bounds were not satisfied
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1231:18
+     |
+1231 |             path.push(cursor.clone());
+     |                  ^^^^ method cannot be called on `Vec<str>` due to unsatisfied trait bounds
+     |
+     = note: the following trait bounds were not satisfied:
+             `str: Sized`
+
+error[E0599]: the method `len` exists for struct `Vec<str>`, but its trait bounds were not satisfied
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1232:21
+     |
+1232 |             if path.len() > 4096 {
+     |                     ^^^ private field, not a method
+     |
+     = note: the following trait bounds were not satisfied:
+             `str: Sized`
+
+error[E0716]: temporary value dropped while borrowed
+   --> crates/editac-core/tests/structural_profile.rs:795:18
+    |
+789 |           s.visible.push(mk(
+    |  ________________________-
+790 | |             &format!("c:31:{}", n + 1),
+791 | |             "quote",
+792 | |             if n == 0 {
+...   |
+795 | |                 &format!("c:31:{n}")
+    | |                  ^^^^^^^^^^^^^^^^^^-
+    | |                  |                 |
+    | |                  |                 temporary value is freed at the end of this statement
+    | |                  creates a temporary value which is freed while still in use
+796 | |             },
+797 | |         ));
+    | |_________- borrow later used here
+    |
+    = note: consider using a `let` binding to create a longer lived value
+
+Some errors have detailed explanations: E0277, E0308, E0599, E0716.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `editac-core` (test "structural_profile") due to 13 previous errors

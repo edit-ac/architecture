@@ -1,0 +1,44 @@
+warning: function `resolve` is never used
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1038:8
+     |
+1038 | pub fn resolve(d: &Doc, source: &str, encoded: &[u8]) -> Result<(String, u32, bool)> {
+     |        ^^^^^^^
+     |
+     = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "block_kinds_profile") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.86s
+     Running tests/block_kinds_profile.rs (target/debug/deps/block_kinds_profile-cae9cc3a48881c2d)
+
+running 15 tests
+test empty_code_and_blank_lines_restore_without_reseeding ... ok
+test empty_derived_separator_retains_original_span_and_typed_target_policy ... ok
+test empty_heading_and_code_count_as_editable_no_unnecessary_neighbor ... ok
+test literal_newlines_whitespace_dormant_marks_and_paragraph_restoration ... ok
+test last_editable_convert_delete_insert_reserve_accessible_adjacent_paragraph_atomically ... ok
+test nested_last_owner_neighbor_keeps_parent_adjacent_and_original_identity ... ok
+test code_explicit_split_join_endpoints_empty_and_multisource_identity ... ok
+test mismatched_language_code_rich_and_separator_joins_fail_without_mutation ... ok
+test atomic_tuple_language_level_matrix_and_unknown_retention ... ok
+test separator_nonempty_conversion_and_text_mark_split_join_targets_reject ... ok
+test malformed_known_tuples_reject_admission_and_whole_preparation ... ok
+test stale_preparation_utf16_and_oversized_literal_batch_are_atomic ... ok
+test three_replica_duplicate_reordered_metadata_literal_and_remote_mark_races ... ok
+test neighbor_identity_operation_and_resource_failures_leave_no_partial_separator ... ok
+test pinned_bidirectional_block_kinds_exchange_complete_policies_races_and_restore ... FAILED
+
+failures:
+
+---- pinned_bidirectional_block_kinds_exchange_complete_policies_races_and_restore stdout ----
+
+thread 'pinned_bidirectional_block_kinds_exchange_complete_policies_races_and_restore' (152227136) panicked at crates/editac-core/tests/block_kinds_profile.rs:556:5:
+inspect /Users/bpstr/Github/edit-ac/architecture/evidence/engine-block-kinds/exchange-final-writer/node.log
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    pinned_bidirectional_block_kinds_exchange_complete_policies_races_and_restore
+
+test result: FAILED. 14 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.31s
+
+error: test failed, to rerun pass `-p editac-core --test block_kinds_profile`

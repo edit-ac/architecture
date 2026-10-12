@@ -1,0 +1,73 @@
+   Compiling stable_deref_trait v1.2.1
+   Compiling smallvec v1.16.3
+   Compiling litemap v0.8.3
+   Compiling writeable v0.6.4
+   Compiling utf8_iter v1.0.4
+   Compiling zerofrom v0.1.8
+   Compiling icu_normalizer_data v2.3.0
+   Compiling icu_properties_data v2.3.0
+   Compiling pin-project-lite v0.2.17
+   Compiling parking v2.2.1
+   Compiling libc v0.2.190
+   Compiling yoke v0.8.3
+   Compiling serde_core v1.0.229
+   Compiling scopeguard v1.2.0
+   Compiling cfg-if v1.0.5
+   Compiling crossbeam-utils v0.8.23
+   Compiling lock_api v0.4.14
+   Compiling zmij v1.0.23
+   Compiling itoa v1.0.18
+   Compiling zerovec v0.11.8
+   Compiling zerotrie v0.2.5
+   Compiling event-listener v5.4.2
+   Compiling hashbrown v0.14.5
+   Compiling event-listener-strategy v0.5.4
+   Compiling once_cell v1.21.4
+   Compiling percent-encoding v2.3.2
+   Compiling memchr v2.8.3
+   Compiling async-lock v3.4.2
+   Compiling form_urlencoded v1.2.2
+   Compiling parking_lot_core v0.9.12
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+   Compiling thiserror v2.0.21
+   Compiling arc-swap v1.9.2
+   Compiling icu_collections v2.3.0
+   Compiling dashmap v6.2.1
+   Compiling icu_locale_core v2.3.0
+   Compiling smallstr v0.3.1
+   Compiling fastrand v2.5.0
+   Compiling unicode-segmentation v1.12.0
+   Compiling icu_provider v2.3.1
+   Compiling icu_properties v2.3.0
+   Compiling icu_normalizer v2.3.0
+   Compiling serde_json v1.0.152
+   Compiling serde v1.0.229
+   Compiling idna_adapter v1.2.2
+   Compiling idna v1.1.0
+   Compiling yrs v0.28.0
+   Compiling url v2.5.8
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0164]: expected tuple struct or tuple variant, found struct variant `Resolution::Deleted`
+   --> crates/editac-core/tests/editor_profile.rs:498:9
+    |
+498 |         Resolution::Deleted(_)
+    |         ^^^^^^^^^^^^^^^^^^^^^^ not a tuple struct or tuple variant
+    |
+help: the struct variant's fields are being ignored
+    |
+498 -         Resolution::Deleted(_)
+498 +         Resolution::Deleted { source: _, owner: _ }
+    |
+
+warning: unused import: `Text`
+  --> crates/editac-core/tests/editor_profile.rs:15:30
+   |
+15 | use yrs::{Any, Map, ReadTxn, Text, Transact};
+   |                              ^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+For more information about this error, try `rustc --explain E0164`.
+warning: `editac-core` (test "editor_profile") generated 1 warning
+error: could not compile `editac-core` (test "editor_profile") due to 1 previous error; 1 warning emitted
