@@ -38,6 +38,16 @@ Use fixed `git diff --no-index` golden cases to validate conventional unified ou
 
 Applying a reviewed hunk to a live collaborative document uses source reconciliation or stable semantic commands and current revision checks. It never patches serialized Markdown and re-imports the whole live document. “Accept all” means apply the validated proposal. Partial hunk application recomputes a valid semantic plan and rejects unsafe fragments (for example half a fenced block).
 
+### Session review admission (DIF-1.5)
+
+The source review adapter captures an opaque source baseline, ordered owner bindings, source mode and full observed revision. A proposal carries an exact patch; “accept all” validates its full baseline/output hashes and bounds before preparing semantic reconciliation. Partial acceptance uses strictly increasing zero-based hunk indexes against original line positions, validates the full patch first, then recomputes a complete selected source candidate and a fresh reconciliation plan. Empty selection is a no-op. Host and recorded patch limits both bound selected output; the endpoint also budgets base plus candidate bytes. The underlying reconciler's supported mappings remain authoritative: ambiguous structural changes reject rather than replacing live identities.
+
+Whole-document Markdown grammar events distinguish fenced from indented code, including quote/list nesting. Review requires an explicit fenced-block close; a permissive EOF close or a literal fence-like final content line cannot make a partial fragment safe. Literal source mode does not apply Markdown syntax rules.
+
+Preparation and application both bind the integrated observed revision, including deletions. Prepared review edits are opaque and consumed on application, which delegates to the existing service's current writable/history/module/permission/limit checks, semantic undo grouping, journaling and trusted-host origin admission. Client routing tags remain untrusted attribution. No live document reimport or automatic historical capture is added.
+
+Rejected valid candidates retain exact base, selected proposed and full-proposal inputs plus the current semantic projection. Malformed patches or invalid selections explicitly lack a materialized selected candidate; projection failure is explicit rather than fabricating current source. Default review diagnostics expose only reason categories and input lengths. Store acknowledgment failure follows the existing unsaved/recovery-required policy and reports the actual post-mutation current state; it is not represented as an atomic semantic rejection.
+
 ## Views and attribution
 
 Provide accessible unified, inline and side-by-side web views; a portable changes model feeds native and terminal presenters. Readonly current, readonly historical and writable live modes are distinct. History checkout cannot rewind the live replica. “Restore this version” produces a new authorized edit against the current state with a preview and conflict result.
