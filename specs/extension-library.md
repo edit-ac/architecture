@@ -29,6 +29,24 @@ its own renderer implementation through a typed interface; renderer callbacks,
 code and downloaded executable plugins never live in document state. Unknown
 types and versions retain their bounded original payload and explicit fallback.
 
+### Implemented public v1 entry points
+
+`@edit-ac/core/extensions` owns the portable registry (also re-exported compatibly
+by `@edit-ac/web`). `@edit-ac/web/modules` exposes that same registry with browser
+runtime/presenter contracts; heavy math remains `@edit-ac/web/math`.
+`EXTENSION_API_VERSION = 1` and the `ModuleDefinitionV1`, `ExtensionCommandV1`,
+`MarkdownCodecV1`, `MarkdownExtensionV1` aliases identify this API contract, not
+stored module data versions. Existing bounded data versions remain positive u32.
+Rust uses `editac_core::modules::v1` and `editac_markdown::v1` re-exports from
+owning crates. Public package declarations require no private source imports.
+
+Registration consumes the existing data-only attributed-text contract and freezes
+before attachment. It does not authorize a new arbitrary-attribute editing command
+or schema migration. Runtime/codec callbacks remain host objects. Invalid,
+duplicate and incompatible entries fail before insertion; previously accepted
+entries remain unchanged. See packed consumer evidence in
+`../evidence/extension-exports.md` for exact artifact qualification.
+
 ## Conformance and evolution
 
 The reusable conformance suite accepts a descriptor plus fixed fixtures and
