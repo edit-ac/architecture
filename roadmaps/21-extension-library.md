@@ -6,9 +6,11 @@ Status: IN_PROGRESS
 
 Workspace: `core` (sibling of `architecture`). Read [the owning contract](../specs/extension-library.md), [shared client contracts](../specs/client-contracts.md) and the active task's named context. Paths below are relative to `core` unless explicitly prefixed with `../architecture/`. Planned implementation/test files are created by their task. Source is controller-owned; write checkmarks, state and evidence only in the separate progress file.
 
-Upstream entry gates: `05-markdown-content.md`, `07-extension-modules.md`, `12-client-contracts.md` complete at current source revisions with passing artifact evidence. Cross-roadmap IDs are context references; dependencies below name only parents in this file. Do not launch implementation while an upstream gate is unavailable.
+Upstream entry gates: `07-extension-modules.md` and `12-client-contracts.md` complete at current source revisions with passing artifact evidence; `05-markdown-content.md` passes the portable and simulator/emulator development level defined in verification.md, including FMT-1.12. Physical FMT-1.15-V1 remains a release gate. Cross-roadmap IDs are context references; dependencies below name only parents in this file. Do not launch implementation while an upstream gate is unavailable.
 
 Reuse the qualified built-in modules rather than duplicating them. This track owns public contracts, conformance fixtures, examples and platform presenter obligations; tracks 16/17/18 own their full native/desktop renderers. Define those downstream hooks without depending on completed downstream implementations. The final full-delivery gate consumes the library and actual platform evidence.
+
+Controller development-entry amendment (2026-10-13): interpret the roadmap-05 gate using the simulator/emulator development level in `../architecture/specs/verification.md`. Qualified portable FMT-1.1–FMT-1.14 behavior plus the actual passing virtual-device receipt is sufficient for this development track; physical FMT-1.15-V1 remains an open release obligation. No other upstream acceptance is waived.
 
 ## Execution rules
 
