@@ -4,7 +4,7 @@ Repository: `edit-ac/docs`, public Apache-2.0. The initial repository contains M
 
 ## Public information architecture
 
-Organize a clear landing page; getting started by web/React/native/CLI; local-first and collaboration guides; extension authoring and recipes; custom/internal links; import/export matrix; cloud host operations; host-app MCP; security profiles; generated API reference; troubleshooting, migration and release notes. Separate tutorials, task guides, conceptual explanations and reference tables. Keep internal tasks and architecture decisions in architecture, linked when useful.
+Organize a clear landing page; getting started by web/React/Astro/native/CLI; local-first and collaboration guides; extension authoring and recipes; custom/internal links; import/export matrix; cloud host operations; host-app MCP; security profiles; generated API reference; troubleshooting, migration and release notes. Explain the framework-independent SDK and make qualified first-party bindings discoverable as adoption paths; future integrations need their own qualified examples. Separate tutorials, task guides, conceptual explanations and reference tables. Keep internal tasks and architecture decisions in architecture, linked when useful.
 
 Every API snippet is compiled/executed against named immutable artifacts. Mark conceptual contracts as such until the API exists. Generate versioned API pages from the owning packages and native bindings. Public feature tables consume the qualified capability/release profile. Show unsupported/experimental modes clearly, including **PDF export only**. Do not publish an install tutorial for empty placeholder packages.
 
@@ -16,7 +16,7 @@ Use the organization of the official [Tiptap getting-started docs](https://tipta
 
 | Reader section | Canonical planned location | Concrete example requirements | Owner |
 |---|---|---|---|
-| Getting started | `content/docs/getting-started/` plus existing entry guide | Minimal browser editor and React client/SSR consumer: create, mount, edit, read content, save, switch read-only, unmount/dispose; pin exact package/assets and show loading/save failures | DOC-1.3/1.5 |
+| Getting started | `content/docs/getting-started/` plus existing entry guide | Minimal browser editor, React client/SSR and Astro static/SSR consumers: create, mount, edit, read content, save, switch read-only, unmount/dispose; Astro also covers ClientRouter cleanup without React. Pin exact package/assets and show loading/save failures | DOC-1.3/1.5 |
 | Core concepts | `content/docs/concepts/` | One Project kickoff fixture traced through semantic blocks, inline formatting, schema/version, selection, command, undo, local save and remote update; include small semantic tree/state diagrams and independently authored expected states | DOC-1.31 |
 | Editor API | `content/docs/reference/` | Public document/lifecycle, commands, selection, events, local storage and sync signatures; before/action/after examples for formatting a selection, splitting/joining paragraphs, history and rejected operations | DOC-1.4/1.32/1.33 |
 | Extensions | `content/docs/extensions/` | Catalog by blocks/nodes, inline marks and behavior/modules with exact profiles, costs and platform presenters; configuration examples for headings/lists/code/tables/assets, then a custom callout, highlight mark and command/menu entry | DOC-1.34/1.35 |
@@ -73,3 +73,7 @@ EQL-1.9 publishes tested immutable prerelease artifacts after feature/platform q
 ## Mobile support claims
 
 Document touch controls, soft-keyboard alternatives, browser API fallbacks, embedding/viewport requirements and optional module costs from [mobile web](mobile-web.md). Claim mobile browser support only from reviewed MWB-1.11 evidence and optional feature support from MWX-1.8. Distinguish actual mobile browsers from emulation, installed-app modes and native SDKs; expose tested versions and known limitations in the public demo/profile.
+
+## Migration sequencing decision — 2026-10-13
+
+User-content/editor migration converters and adoption guides are deferred until the entire app is completed and correctly qualified. See [the preserved contracts and activation gate](../operations/deferred-content-migrations.md). Current SDK, integrations, executable examples and non-migration documentation do not depend on those deferred tasks; do not advertise unsupported migration capability. Internal version compatibility and data preservation required for current correctness remain mandatory.

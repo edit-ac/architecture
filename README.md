@@ -4,7 +4,7 @@
 
 [Shared editor, GitHub and website styling](design/brand-guide.md)
 
-This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 42 roadmap files and 568 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
+This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 42 roadmap files and 555 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
 
 The user selected public repositories and Apache-2.0. [Decision 001](decisions/001-web-first.md) resolves scope, ownership, naming and release conflicts. [Decision003](decisions/003-extension-ecosystem.md) adds the requested extension, format, cloud and public-documentation delivery. The [original proposal](sources/initial-roadmap.md) is archived unchanged as reference material; current specs and task acceptance supersede it. [Decision 002](decisions/002-full-delivery.md) extends delivery beyond the initial browser release; the [requirement review](requirements.md) maps each requested capability to concrete tasks.
 
@@ -30,9 +30,9 @@ Clone [core](https://github.com/edit-ac/core), this repository as `architecture`
 | [05 Markdown/content](roadmaps/05-markdown-content.md) | 15 | 02, 04 | Tested dialect, safe paste, round trips and source reconciliation |
 | [06 Synchronization](roadmaps/06-synchronization.md) | 7 | 02, 03 | Direct wire exchange, reconnect and explicit durable receipts |
 | [07 Modules](roadmaps/07-extension-modules.md) | 9 | 05, 06 | Portable extensions and optional browser interactions |
-| [08 SDK integration](roadmaps/08-sdk-integration.md) | 6 | 04–07 | Packed SDK consumers, React wrapper and scoped migration |
+| [08 SDK integration](roadmaps/08-sdk-integration.md) | 7 | 04–07 | Framework-independent SDK, first-party React/Astro integrations, packed consumers and integration/recovery examples |
 | [09 Native preparation](roadmaps/09-native-preparation.md) | 7 | 02 | Swift/Kotlin and native control probes; follow-up scope |
-| [10 Web qualification](roadmaps/10-web-qualification.md) | 9 | 08, 38, 40 | Measured browser support, recovery and vetted prerelease |
+| [10 Web qualification](roadmaps/10-web-qualification.md) | 9 | 08, 38, 40 | Default Task gzip caps, measured browser support, recovery and vetted prerelease |
 | [11 Editor CLI](roadmaps/11-offline-cli.md) | 12 | 02, 05; hosted tasks also 06 | Local Markdown/text editing, recovery and hosted sync |
 
 Milestone A: foundation and semantic kernel (01–02). Milestone B: durable browser editing (03–04). Milestone C: everyday content and collaboration (05–06). Milestone D: extensible consumable SDK (07–08). Milestone E: browser release qualification (10). Native preparation (09) and the local-first editor client (11) are independent delivery branches, not browser release prerequisites.
@@ -89,7 +89,7 @@ The initial browser milestone remains independently deliverable. These tracks co
 | [26 Public and internal links](roadmaps/26-link-resolution.md) | 12 | 12, 21 | Automatic metadata, permission-scoped references and safe activation |
 | [27 Document formats](roadmaps/27-document-conversion.md) | 18 | 05, 12, 21, 25 | Direction/fidelity profiles; PDF export only |
 | [28 Cloud-store readiness](roadmaps/28-cloud-document-store.md) | 21 | 06, 12, 25 | Durable reference service, tenant isolation, assets and recovery |
-| [29 Public docs and demo](roadmaps/29-public-docs-demo.md) | 38 | None; task-specific gates | Concepts/API/extensions, concrete examples, migrations/comparisons and a deployed editor |
+| [29 Public docs and demo](roadmaps/29-public-docs-demo.md) | 25 | None; task-specific gates | Concepts/API/extensions, concrete examples, comparisons and a deployed editor |
 | [30 Architecture fitness](roadmaps/30-architecture-fitness.md) | 9 | 08, 12, 21 | Layer/capability/compatibility/loading/privacy checks |
 | [31 iOS extensions](roadmaps/31-ios-extension-integration.md) | 9 | 16, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
 | [32 Android extensions](roadmaps/32-android-extension-integration.md) | 9 | 17, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
@@ -139,7 +139,9 @@ Baseline keyboard access, screen-reader editing and OS dictation work without th
 | [40 Mobile web](roadmaps/40-mobile-web.md) | 11 | 08, 38 | Touch/keyboard/viewport/API fallback and actual-device evidence; required by 10 |
 | [41 Mobile extensions](roadmaps/41-mobile-web-extensions.md) | 9 | 40, 25, 26, 27, 30; web assistance gates per task | Touch-accessible rich presenters, capability fallbacks and measured optional costs; required by 37 |
 
-Mobile baseline support does not load optional rich-content, converter, gesture or assistance packages. The proposed incremental baseline JS allowance is 5 KiB Brotli within the existing total adapter budget, with event-driven idle behavior and bounded geometry work. Exact costs and support require real measurements; browser API presence alone is insufficient.
+Browser release qualification uses [gzip bundle budgets](specs/verification.md#browser-bundle-size-budgets): 512 KB total / 32 KB editor JS hard caps, with 256 KB total / 16 KB editor JS preferred sizes (KB = 1,000 bytes). Required WASM glue, runtime dependencies and lazy required code count toward the caps.
+
+Mobile baseline support does not load optional rich-content, converter, gesture or assistance packages. The proposed incremental baseline JS allowance is 5 KB gzip within the 32 KB JS hard cap, with event-driven idle behavior and bounded geometry work. Exact costs and support require real measurements; browser API presence alone is insufficient.
 
 ## Editing regression suite
 
@@ -170,3 +172,5 @@ Deliver explicit Ask AI/fill and selected-text actions first, then bounded autoc
 ## Clipboard format and device follow-ups
 
 [Native clipboard cases](tests/native-clipboard-cases.md) define 28 future cases for simulator/emulator/OS-host regression and separately recorded physical-device qualification. Native SDK track tasks 2.4 feed the handoffs; DEL-1.9/DEL-1.10 gate real mobile/desktop transfer qualification. FMT-1.13 owns full Markdown/HTML/plain/internal palette integration; FMT-1.15 preserves its actual-device clipboard-menu and OS-shortcut qualification gate and EXT-1.13 plus native extension tasks 1.9 own formatting-preserving tables and other extension content. No native tests were run by authoring these plans.
+
+Content migrations and editor migration guides are [deferred until full app completion and qualification](operations/deferred-content-migrations.md). Their preserved tasks are outside the active runner catalog.

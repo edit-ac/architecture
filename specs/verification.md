@@ -10,14 +10,27 @@ Use built-in Rust tests initially, Node's deterministic test runner for compiled
 
 Task: 20 blocks/~10 KiB text. Long: 2,000 mixed blocks/~1 MiB. Large: 10,000/~5 MiB. Aged: long after 100,000 seeded edits. Adversarial: 250 KiB paragraph, fragmented marks, emoji/ZWJ/combining/RTL, nesting limits and wide tables. Multi-editor: 50 static previews, separately 1 and 10 active editors. Commit generators, seeds and expected semantic snapshots; record text bytes and serialized CRDT bytes separately.
 
-## Provisional targets
+## Browser bundle size budgets
+
+The default Task preset has two independent gzip release caps. Preferred sizes are optimization goals; exceeding either hard cap blocks release qualification. KB means 1,000 bytes, not KiB.
+
+| Scope | Hard cap | Preferred size |
+|---|---:|---:|
+| Task preset total JS + WASM + essential CSS/assets, including Yrs and Markdown | 512 KB (512,000 bytes) | 256 KB (256,000 bytes) |
+| Editor JavaScript, including generated WASM glue and required runtime dependencies | 32 KB (32,000 bytes) | 16 KB (16,000 bytes) |
+
+Measure production artifacts with gzip level 9 and fixed metadata, summing each distinct delivered resource once. Include required code even when loaded lazily, and preserve the declared schema, collaboration, persistence and Markdown capabilities. Count generated WASM glue in both the JS subtotal and total. Exclude document data, development/test code and unrelated host application code. Record minifier/compressor versions/settings, artifact hashes, raw/gzip/Brotli sizes, both budget results and preferred-size results. Brotli is diagnostic and cannot substitute for gzip admission.
+
+Disabled optional feature assets may be excluded only when production import/request evidence proves absence. Report enabled optional configurations and their additional costs separately; do not use a disabled/minimal configuration to claim that a larger default profile meets these caps. Mobile baseline additions remain inside both caps. Missing required artifacts or measurements fail admission; a hard-cap overrun cannot be accepted as a provisional performance result or silently waived. Changes to either cap require an explicit user-approved budget decision.
+
+SDK-1.8 implements the default Task artifact reductions, reproducible inventory and executable cap assertions before REL-1.2 establishes feature-equivalent comparison baselines. REL-1.2/1.3, EXT-1.9 and FIT-1.6 consume the same budget contract and harness. Preferred-size misses remain visible optimization work even when both hard caps pass.
+
+## Provisional performance targets
 
 These are retained design targets from the proposal and have no measured result yet. Pin actual hardware, browser/OS versions, CPU/network profiles and capability parity before making comparisons.
 
 | Metric (p95 unless stated) | Desktop | Mid-range phone |
 |---|---:|---:|
-| Task preset JS+WASM+essential CSS, Brotli | 400 KiB | same artifact |
-| Runtime/adapter JS, Brotli | 35 KiB | same artifact |
 | Core ordinary edit | 1 ms | 2 ms |
 | Input to visible update, controlled 60 Hz | 16.7 ms | 33 ms |
 | Warm task activation | 50 ms | 100 ms |
@@ -30,7 +43,7 @@ These are retained design targets from the proposal and have no measured result 
 
 Measure transfer, decode, compilation, instantiation, CRDT restore, DOM adoption, first accepted edit, p50/p95/p99, long tasks, memory plateau, peak paste memory, journal amplification and remote bursts. Warm includes local persistence restore; cold includes uncached assets and document transfer. Emit raw samples; summaries alone cannot establish a regression.
 
-Qualify Task and Long as initial supported sizes. Large and Aged remain diagnostic stress fixtures until qualified. Missing a target requires a recorded release scope/architecture decision and honest published envelope. Data loss, silent import loss, divergent states, broken supported IME, corrupt undo, unsafe paste and stale-target overwrite cannot be waived as performance tradeoffs.
+Qualify Task and Long as initial supported sizes. Large and Aged remain diagnostic stress fixtures until qualified. Missing a provisional latency/resource target requires a recorded release scope/architecture decision and honest published envelope; this does not waive the hard gzip bundle caps above. Data loss, silent import loss, divergent states, broken supported IME, corrupt undo, unsafe paste and stale-target overwrite cannot be waived as performance tradeoffs.
 
 ## Public editor comparison evidence
 

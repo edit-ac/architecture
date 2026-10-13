@@ -8,6 +8,8 @@ Workspace: `core` (sibling of `architecture`). Deliver only the outcomes below. 
 
 Upstream entry gates: `02-engine.md` complete at current source revision with passing artifact evidence.
 
+Controller handoff (2026-10-13): The user authorized this runner with GPT-6.1 Sol, medium effort, hourly monitoring and autonomous blocker resolution. Inactive native Rust build output `core/target/debug` was removed to recover disk space; retain archived qualification evidence and rebuild current native artifacts. User-content migrations and migration guides remain deferred until full app completion and qualification under `../operations/deferred-content-migrations.md`. Preserve the partial migration implementation/tests but do not implement, execute or qualify that feature in this track. NAT-1.1 must inventory Cargo test targets and validate the library plus every current non-deferred integration target using explicit target selection; exclude only the retired `migration` target, record the exact selected/excluded inventory and actual counts, and do not claim the unfiltered whole-crate command ran. No active native criterion is waived. Resolve required host tooling/fixture/engineering blockers within this track and available disk, serialized against its worker; unavailable external access or actual device/host evidence must remain explicitly unqualified. Preserve footprint/performance/release gates and all other tasks’ processes. No paid synthetic inference, `.secrets` loading, publication, deployment or later-roadmap expansion is authorized.
+
 ## Execution rules
 
 Each iteration may implement at most one parent task, including all its implementation and validation substeps. Target 15–45 minutes plus validation; if a boundary is too large, stop with a precise proposed split for the controller. Pick a task only when every named dependency is implemented and validated. Other ready tasks are permitted independent work; a roadmap entry gate remains mandatory for its dependents. Do not launch this roadmap while its upstream gate is unavailable.
@@ -32,7 +34,7 @@ Implementation:
 
 Validation:
 
-- [ ] NAT-1.1-V1 cargo test -p editac-core --locked. Assert the acceptance cases above and record build/probe exit results and executed/passed/failed/skipped counts for actual test suites (nonzero matching tests required).
+- [ ] NAT-1.1-V1 Enumerate editac-core Cargo metadata targets, then run cargo test -p editac-core --lib with explicit --test NAME selectors for every current non-deferred integration target and --locked. Exclude only the migration integration target under the user’s deferral; record the exact resolved command and complete selected/excluded target inventory. Assert the acceptance cases above and record build/probe exit results and executed/passed/failed/skipped counts for actual test suites (nonzero matching tests required).
 
 Evidence: Progress entry `NAT-1.1` with changed paths, exact command/result, source and implementation revisions, fixture/artifact hashes, and any preserved failure log. Durable milestone summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, changed symbols/files, exact failing fixture or missing fact, and next bounded action for `NAT-1.1`.

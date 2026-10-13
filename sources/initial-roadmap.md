@@ -354,6 +354,8 @@ Use fixed reproducible content, not only repeated identical strings that compres
 
 ### Initial targets
 
+The two Brotli bundle figures below are historical proposal targets, superseded by the [current gzip release budgets](../specs/verification.md#browser-bundle-size-budgets): 512 KB total / 32 KB editor JS hard caps and 256 KB total / 16 KB editor JS preferred sizes (KB = 1,000 bytes). Use the current contract for implementation and qualification; preserve these original proposal figures as history.
+
 | Metric | Desktop target | Mid-range phone target |
 |---|---:|---:|
 | Runtime/adapter JS alone, Brotli | ≤35 KiB | Same artifact |

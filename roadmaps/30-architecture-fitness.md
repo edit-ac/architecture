@@ -132,11 +132,11 @@ Purpose: Check independent consumer and optional-loading boundaries as one bound
 Context: `tests/consumers/`; `tests/architecture/loading/`; `../architecture/specs/ecosystem-maintainability.md`.
 Dependencies: FIT-1.1, FIT-1.2.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Packed consumers work without workspace aliases; disabled heavy format/highlighting/cloud dependencies stay outside minimal loading.
+Acceptance: Packed consumers work without workspace aliases; disabled heavy format/highlighting/cloud dependencies stay outside minimal loading. Default Task browser artifacts pass verification.md's 512 KB total / 32 KB editor JS gzip hard caps, including required lazy code, WASM glue and runtime dependencies; missing measurements or either overrun fail qualification. Report preferred-size results against 256 KB total / 16 KB JS and enabled optional costs separately (KB = 1,000 bytes).
 
 Implementation:
 
-- [ ] FIT-1.6-I1 Extend existing package/FFI consumer harnesses with import graph and artifact-byte checks; scope semver checks to exported public contracts and actual supported consumer versions.
+- [ ] FIT-1.6-I1 Extend existing package/FFI consumer harnesses with import graph and artifact-byte checks; consume the shared gzip counting/cap assertions from verification.md/SDK-1.8 and report preferred-size status without duplicating the measurement harness. Scope semver checks to exported public contracts and actual supported consumer versions.
 
 Validation:
 

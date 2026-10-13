@@ -47,7 +47,7 @@ Observability records bounded operation IDs, error codes, queue/durability state
 
 ## Mobile web overhead boundary
 
-[Mobile web](mobile-web.md) freezes an incremental baseline allocation within existing total limits; MWB-1.9 and MWX-1.8 own packed baseline/disabled/enabled cost evidence. FIT loading and budget checks consume these receipts where the mobile profile is claimed. The engine remains platform-neutral, optional APIs/dependencies load on demand, idle work is event-driven and per-frame geometry work is bounded. Budget failures require decomposition or an explicit recorded budget decision while preserving essential accessible editing.
+[Mobile web](mobile-web.md) freezes an incremental baseline allocation within the [gzip bundle hard caps and preferred sizes](verification.md#browser-bundle-size-budgets); MWB-1.9 and MWX-1.8 own packed baseline/disabled/enabled cost evidence. FIT loading and budget checks consume these receipts where the mobile profile is claimed. The engine remains platform-neutral, optional APIs/dependencies load on demand, idle work is event-driven and per-frame geometry work is bounded. Budget failures require decomposition while preserving essential accessible editing; any hard-cap change requires an explicit user-approved budget decision.
 
 ## Editing boundary fitness
 
