@@ -1,0 +1,38 @@
+{
+  "engine": "firefox",
+  "processes": [
+    {
+      "pid": 55151,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 60389,
+      "purpose": "measured packed Task resources",
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/direct-import"
+    },
+    {
+      "pid": 55229,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "measured Task firefox",
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/direct-import"
+    }
+  ],
+  "requests": [
+    "/",
+    "/task.css",
+    "/task.css",
+    "/favicon.ico",
+    "/task.js",
+    "/wasm/editac_wasm_bg.wasm"
+  ],
+  "version": "157.0",
+  "result": {
+    "before": "A😀B!",
+    "after": "A😀B!",
+    "sameIdentity": true
+  },
+  "passed": true,
+  "teardown": {
+    "browserExited": true,
+    "serverClosed": true
+  }
+}

@@ -1,0 +1,31 @@
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (3567.5735ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3956.582916
+
+✖ failing tests:
+
+test at tests/browser/sdk.spec.ts:13:1
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (3567.5735ms)
+  AssertionError [ERR_ASSERTION]: {"disposition":"rejected","reason":"clipboard-target","diagnostic":{"request":{"kind":"fragment","origin":"clipboard:1","range":{"anchor":"3574919956:anchor:82","focus":"3574919956:anchor:83"},"blocks":[{"attributes":{"level":1,"type":"heading"},"checked":null,"containers":[],"runs":[{"marks":[],"text":"Offline heading"}]},{"attributes":{"type":"paragraph"},"checked":null,"containers":[],"runs":[{"marks":[{"href":null,"mark":"bold"}],"text":"Saved"}]}]},"afterCan":"InvalidCommand"},"trace":[{"bias":"right","node":"o:3574919956:3","offset":0,"source":"n:3574919956:1","sourceOffset":0,"type":"position"},{"bias":"right","node":"o:3574919956:3","offset":0,"source":"n:3574919956:1","sourceOffset":0,"type":"position"},{"bias":"right","node":"o:3574919956:3","offset":0,"source":"n:3574919956:1","sourceOffset":0,"type":"position"},{"bias":"right","node":"o:3574919956:3","offset":0,"source":"n:3574919956:1","sourceOffset":0,"type":"position"}]}
+  + actual - expected
+  
+  + 'rejected'
+  - 'committed'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/sdk.spec.ts:39:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:81:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'rejected',
+    expected: 'committed',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

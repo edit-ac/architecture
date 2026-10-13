@@ -1,0 +1,40 @@
+(node:29466) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ exact protocol runtime and dependency pins (1.222291ms)
+✔ Rust seed reconstructs all six typed roots, exact tuples and original marks (4.731542ms)
+✔ Rust split override resolves the same retained text and binary anchor in Yjs (0.669625ms)
+✔ Yjs emits split, join and stable source anchor from the sole shared initializer for Rust (2.197917ms)
+✔ Yjs whole-tuple concurrent conflicts and independent owner writes reorder/duplicate (4.754167ms)
+✔ exact envelope and invalid tuple policy reject before applying live bytes (2.440916ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 109.61525
+
+✖ failing tests:
+
+test at ../../fixtures/schema-v2/exchange.mjs:13:1
+✖ exact protocol runtime and dependency pins (1.222291ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'v26.4.0'
+  - 'v24.19.0'
+       ^
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/fixtures/schema-v2/exchange.mjs:14:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'v26.4.0',
+    expected: 'v24.19.0',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,93 @@
+# @edit-ac/core
+
+Private development package for the v5 semantic engine. The engine owns one Yrs
+replica per handle; the browser adapter renders and edits that replica. Public
+types describe implemented commands, anchors, patches, Markdown and checkpoint
+operations. Registry release and packed consumer qualification remain pending.
+
+Use the pinned Rust 1.97.1 toolchain and wasm32-unknown-unknown target. Install
+`cargo install wasm-bindgen-cli --version 0.2.129 --locked`, then run
+`npm ci` and `npm run build:wasm` from the repository root. `WASM_BINDGEN` may
+point to an exact-version CLI binary; the build rejects other versions. Cargo
+builds with the lockfile in offline mode, so fetch locked dependencies first
+when preparing a new machine. Generated web-target bindings live only in
+`dist/wasm/`; they never overwrite this package's metadata or source.
+
+```js
+import { init } from '@edit-ac/core';
+
+const runtime = await init('/assets/editac_wasm_bg.wasm');
+const engine = runtime.createEngine({
+  profile: 'v5',
+  documentId: '81000000-0000-4000-8000-000000000100',
+  epoch: '82000000-0000-4000-8000-000000000100',
+  nodes: [{ text: 'Hello' }],
+});
+try {
+  const node = engine.read().visible[0];
+  const at = engine.anchor(node.id, 5, 'right'); // offsets are UTF-16
+  try {
+    const plan = engine.prepare({
+      kind: 'text', origin: 'local:example',
+      command: { type: 'insert', at, text: ' world' },
+    });
+    try { engine.commit(plan); } finally { engine.releasePlan(plan); }
+  } finally { engine.releaseAnchor(at); }
+  const checkpoint = engine.checkpoint(); // persist envelope and bytes atomically
+  console.log(engine.read().visible[0].runs.map(run => run.text).join(''));
+} finally {
+  engine.dispose();
+}
+```
+
+The host supplies a nonempty asset URL and serves WASM as `application/wasm`.
+The package export `@edit-ac/core/wasm` identifies the packed binary for a host's
+asset pipeline; browsers cannot import that binary directly as JavaScript.
+The tested loading mode is native browser ESM. Serve `dist/index.js` with its
+relative `dist/wasm/editac_wasm.js` dependency, or copy the whole `dist` tree.
+Bundler-specific asset rewriting is not qualified here.
+
+SSR import performs no fetch, browser-global access, instantiation or document
+creation. Only `init(assetUrl)` loads the runtime. `createEngine()` creates an
+explicit new document with UUID document and epoch identifiers; `restoreEngine(identity, checkpoint, journal)` recovers an
+existing document with identity validation. Concurrent calls with the same URL share initialization;
+a different URL is rejected after loading starts. A failed load rejects and
+allows retry. `createdDocumentCount()` is a cumulative fixture diagnostic.
+
+`prepare()` validates a command before mutation; `can()` checks admissibility.
+Plans are scoped to a handle and single use, including failed stale commits.
+Anchors survive intervening edits and must be released. `subscribe(scope, callback)`
+returns a disposable subscription; observer failures are available through
+`takeObserverErrors()` without changing an already committed result.
+
+`EngineError` exposes `code`, `operation` and `message`. Current codes are
+`InvalidInput`, `InvalidHandle`, `EngineRejected`, `ResourceLimit` and `Disposed`.
+The exported `EngineErrorCode` type also permits future codes; handle unknown
+codes explicitly. `can()` returns false for inadmissible requests, while methods
+requiring a live handle throw `Disposed` after disposal. Repeated disposal is safe.
+
+`importMarkdown()` prepares supported content and diagnostics without changing the
+document. `exportMarkdown()` reports unsupported representations and retains
+recovery content. Neither operation implies a live document edit. Apply prepared
+blocks through a validated fragment command. Optional codecs are explicit.
+
+`checkpoint()`, `stateVector()`, `encodeUpdate()` and `applyUpdate()` expose the
+v5 recovery/synchronization boundary with copied bytes and identity envelopes.
+Obtaining bytes or applying a peer update does not establish local durability or
+remote settlement. Identity/epoch mismatches reject before mutation. Storage and
+transport remain host responsibilities.
+
+`createFixture()` retains the earlier disposable XML/text interoperability probe.
+Its `apply_v1(bytes)` accepts trusted fixture updates only; use the production
+engine identity boundary for editor updates. The bridge uses Yrs 0.28.0 with
+small-client and v1 updates. Neither fixture nor engine import qualifies native
+input, OS clipboard or physical-device behavior.
+
+For the actual browser and installed-tarball smoke checks, run
+`npx playwright install chromium --only-shell`, then `npm run check:wasm`.
+Playwright is pinned in the workspace lockfile. The harness installs a local
+tarball offline into a temporary consumer and shuts down its server/browser.
+
+Publishing is disabled until the implementation and release gates in
+[edit-ac/architecture](https://github.com/edit-ac/architecture) pass.
+License: Apache-2.0.

@@ -1,0 +1,36 @@
+{
+  "engine": "chromium",
+  "processes": [
+    {
+      "pid": 55151,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 60381,
+      "purpose": "measured packed Task resources",
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/direct-import"
+    },
+    {
+      "pid": 55165,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "measured Task chromium",
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/direct-import"
+    }
+  ],
+  "requests": [
+    "/",
+    "/task.css",
+    "/task.js",
+    "/wasm/editac_wasm_bg.wasm"
+  ],
+  "version": "156.0.8078.4",
+  "result": {
+    "before": "A😀B!",
+    "after": "A😀B!",
+    "sameIdentity": true
+  },
+  "passed": true,
+  "teardown": {
+    "browserExited": true,
+    "serverClosed": true
+  }
+}

@@ -1,0 +1,1457 @@
+
+> edit-ac-workspace@0.0.0 check:browser-baseline
+> npm run build:wasm && npm run build && node --test tests/browser/baseline-runner.test.mjs && npm run test:browser -- baseline
+
+
+> edit-ac-workspace@0.0.0 build:wasm
+> node scripts/build-wasm.mjs
+
+wasm-bindgen 0.2.129
+/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/cargo
+/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc
+    Finished `release` profile [optimized] target(s) in 0.48s
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+{"artifact":"editac_wasm_bg.wasm","bytes":3708331,"sha256":"d0fe2f4bb6504618b8caf8f205d70a8506508885ea8067fed5627b8385a7cfa9"}
+{"artifact":"editac_wasm.js","bytes":25241,"sha256":"ef26054ec4c44c92160bad2f4b3fc29507a3f7db88142c62bceba39a93c57e74"}
+
+> edit-ac-workspace@0.0.0 build
+> npm run build --workspaces
+
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+
+> @edit-ac/web@0.0.0 build
+> tsc --project tsconfig.json && node ../../scripts/build-math-assets.mjs
+
+
+> @edit-ac/react@0.0.0 build
+> tsc --project tsconfig.json
+
+✔ baseline gate rejects partial execution through --test-name-pattern=missing (43.394542ms)
+✔ baseline gate rejects partial execution through --test-skip-pattern=.* (43.305583ms)
+✔ baseline gate rejects partial execution through --test-shard=1/2 (40.706416ms)
+✔ unknown browser suite fails before executing zero tests (40.27075ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 226.87075
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs baseline
+
+baseline browser: chromium
+TAP version 13
+# (node:82868) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: native-prose-shift-tab moves focus backward without updates
+ok 1 - native-prose-shift-tab moves focus backward without updates
+  ---
+  duration_ms: 2515.909791
+  type: 'test'
+  ...
+# Subtest: native-code-shift-tab dedents a caret line and preserves authored spaces
+ok 2 - native-code-shift-tab dedents a caret line and preserves authored spaces
+  ---
+  duration_ms: 152.131958
+  type: 'test'
+  ...
+# Subtest: native-escape-shift-tab leaves code backward without updates
+ok 3 - native-escape-shift-tab leaves code backward without updates
+  ---
+  duration_ms: 191.45425
+  type: 'test'
+  ...
+# Subtest: native-escape-shift-tab leaves unordered backward without updates
+ok 4 - native-escape-shift-tab leaves unordered backward without updates
+  ---
+  duration_ms: 166.413125
+  type: 'test'
+  ...
+# Subtest: native-paragraph-enter splits and moves caret once
+ok 5 - native-paragraph-enter splits and moves caret once
+  ---
+  duration_ms: 147.325042
+  type: 'test'
+  ...
+# Subtest: native-selected-enter-false
+ok 6 - native-selected-enter-false
+  ---
+  duration_ms: 152.945708
+  type: 'test'
+  ...
+# Subtest: native-selected-enter-true
+ok 7 - native-selected-enter-true
+  ---
+  duration_ms: 143.844
+  type: 'test'
+  ...
+# Subtest: native-code-Enter
+ok 8 - native-code-Enter
+  ---
+  duration_ms: 166.097875
+  type: 'test'
+  ...
+# Subtest: native-code-Shift+Enter
+ok 9 - native-code-Shift+Enter
+  ---
+  duration_ms: 154.127458
+  type: 'test'
+  ...
+# Subtest: native-hard-break stays in paragraph including repeated trailing breaks
+ok 10 - native-hard-break stays in paragraph including repeated trailing breaks
+  ---
+  duration_ms: 160.975833
+  type: 'test'
+  ...
+# Subtest: native-heading-middle retains level
+ok 11 - native-heading-middle retains level
+  ---
+  duration_ms: 151.101791
+  type: 'test'
+  ...
+# Subtest: native-heading-end creates paragraph (original acceptance)
+ok 12 - native-heading-end creates paragraph (original acceptance)
+  ---
+  duration_ms: 176.151125
+  type: 'test'
+  ...
+# Subtest: native heading-end before a list preserves placement, next input and content history ("alpha")
+ok 13 - native heading-end before a list preserves placement, next input and content history ("alpha")
+  ---
+  duration_ms: 385.622334
+  type: 'test'
+  ...
+# Subtest: native heading-end before a list preserves placement, next input and content history ("alpha  ")
+ok 14 - native heading-end before a list preserves placement, next input and content history ("alpha  ")
+  ---
+  duration_ms: 329.056417
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-tail-false
+ok 15 - native-heading-selected-tail-false
+  ---
+  duration_ms: 194.213833
+  type: 'test'
+  ...
+# Subtest: native-heading-cross-block-end-false
+ok 16 - native-heading-cross-block-end-false
+  ---
+  duration_ms: 170.183375
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-all-false
+ok 17 - native-heading-selected-all-false
+  ---
+  duration_ms: 163.756625
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-tail-true
+ok 18 - native-heading-selected-tail-true
+  ---
+  duration_ms: 181.815333
+  type: 'test'
+  ...
+# Subtest: native-heading-cross-block-end-true
+ok 19 - native-heading-cross-block-end-true
+  ---
+  duration_ms: 179.29
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-all-true
+ok 20 - native-heading-selected-all-true
+  ---
+  duration_ms: 145.0355
+  type: 'test'
+  ...
+# Subtest: native-heading cross-block suffix retains heading split
+ok 21 - native-heading cross-block suffix retains heading split
+  ---
+  duration_ms: 147.187333
+  type: 'test'
+  ...
+# Subtest: native-heading-end undo redo preserves remote sibling and result caret
+ok 22 - native-heading-end undo redo preserves remote sibling and result caret
+  ---
+  duration_ms: 249.33725
+  type: 'test'
+  ...
+# Subtest: prepared-heading result caret releases when DOM restoration throws
+ok 23 - prepared-heading result caret releases when DOM restoration throws
+  ---
+  duration_ms: 154.558291
+  type: 'test'
+  ...
+# Subtest: native-heading-end shared-source sibling keeps identity through follow-up typing
+ok 24 - native-heading-end shared-source sibling keeps identity through follow-up typing
+  ---
+  duration_ms: 185.610166
+  type: 'test'
+  ...
+# Subtest: prepared-menu heading-end uses the same result and read-only rejects
+ok 25 - prepared-menu heading-end uses the same result and read-only rejects
+  ---
+  duration_ms: 172.075792
+  type: 'test'
+  ...
+# Subtest: native-empty-heading becomes paragraph
+ok 26 - native-empty-heading becomes paragraph
+  ---
+  duration_ms: 170.573833
+  type: 'test'
+  ...
+# Subtest: native-boundary-Backspace
+ok 27 - native-boundary-Backspace
+  ---
+  duration_ms: 165.750583
+  type: 'test'
+  ...
+# Subtest: native-boundary-Delete
+ok 28 - native-boundary-Delete
+  ---
+  duration_ms: 206.034584
+  type: 'test'
+  ...
+# Subtest: native-cross-block-Enter
+ok 29 - native-cross-block-Enter
+  ---
+  duration_ms: 151.578958
+  type: 'test'
+  ...
+# Subtest: native-cross-block-Shift+Enter
+ok 30 - native-cross-block-Shift+Enter
+  ---
+  duration_ms: 150.190708
+  type: 'test'
+  ...
+# Subtest: native-cross-block-Backspace
+ok 31 - native-cross-block-Backspace
+  ---
+  duration_ms: 146.039291
+  type: 'test'
+  ...
+# Subtest: native-unordered-enter
+ok 32 - native-unordered-enter
+  ---
+  duration_ms: 179.415208
+  type: 'test'
+  ...
+# Subtest: native-checklist-enter
+ok 33 - native-checklist-enter
+  ---
+  duration_ms: 204.251458
+  type: 'test'
+  ...
+# Subtest: native-quote-enter
+ok 34 - native-quote-enter
+  ---
+  duration_ms: 163.820625
+  type: 'test'
+  ...
+# Subtest: native-list-tab indentation and outdent preserve backward selection
+ok 35 - native-list-tab indentation and outdent preserve backward selection
+  ---
+  duration_ms: 188.158875
+  type: 'test'
+  ...
+# Subtest: native-prose-tab and Escape-Tab leave focus without updates
+ok 36 - native-prose-tab and Escape-Tab leave focus without updates
+  ---
+  duration_ms: 210.176667
+  type: 'test'
+  ...
+# Subtest: native-code-tab inserts literal tab; selection indents and outdents lines
+ok 37 - native-code-tab inserts literal tab; selection indents and outdents lines
+  ---
+  duration_ms: 193.361583
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar retains backward captured selection after focus moves
+ok 38 - prepared-toolbar retains backward captured selection after focus moves
+  ---
+  duration_ms: 153.915375
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar read-only and disposed targets reject without mutation
+ok 39 - prepared-toolbar read-only and disposed targets reject without mutation
+  ---
+  duration_ms: 116.687375
+  type: 'test'
+  ...
+# Subtest: native-keyboard and prepared-menu undo redo preserve remote text
+ok 40 - native-keyboard and prepared-menu undo redo preserve remote text
+  ---
+  duration_ms: 193.875417
+  type: 'test'
+  ...
+# Subtest: prepared-key-beforeinput duplicates retain a second deliberate Enter
+ok 41 - prepared-key-beforeinput duplicates retain a second deliberate Enter
+  ---
+  duration_ms: 130.726667
+  type: 'test'
+  ...
+# Subtest: native-navigation and modified host Enter retain ownership
+ok 42 - native-navigation and modified host Enter retain ownership
+  ---
+  duration_ms: 134.472333
+  type: 'test'
+  ...
+# Subtest: native-empty-unordered exits one level
+ok 43 - native-empty-unordered exits one level
+  ---
+  duration_ms: 243.417958
+  type: 'test'
+  ...
+# Subtest: native-empty-quote exits one level
+ok 44 - native-empty-quote exits one level
+  ---
+  duration_ms: 237.247292
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar across blocks retains direction and supported marks
+ok 45 - prepared-toolbar across blocks retains direction and supported marks
+  ---
+  duration_ms: 148.833083
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar deleted target rejects instead of using current caret
+ok 46 - prepared-toolbar deleted target rejects instead of using current caret
+  ---
+  duration_ms: 182.597875
+  type: 'test'
+  ...
+# Subtest: prepared-nonkeyboard Enter and break have semantic selection results
+ok 47 - prepared-nonkeyboard Enter and break have semantic selection results
+  ---
+  duration_ms: 169.7195
+  type: 'test'
+  ...
+# Subtest: native-code-multiline Tab preserves backward range and existing whitespace
+ok 48 - native-code-multiline Tab preserves backward range and existing whitespace
+  ---
+  duration_ms: 221.367167
+  type: 'test'
+  ...
+# Subtest: prepared-read-only structural and history commands never mutate
+ok 49 - prepared-read-only structural and history commands never mutate
+  ---
+  duration_ms: 161.455625
+  type: 'test'
+  ...
+# Subtest: prepared-composition owns Enter before structural routing
+ok 50 - prepared-composition owns Enter before structural routing
+  ---
+  duration_ms: 187.729209
+  type: 'test'
+  ...
+# Subtest: native-selected-hard-break-false
+ok 51 - native-selected-hard-break-false
+  ---
+  duration_ms: 171.848333
+  type: 'test'
+  ...
+# Subtest: native-selected-hard-break-true
+ok 52 - native-selected-hard-break-true
+  ---
+  duration_ms: 235.529917
+  type: 'test'
+  ...
+# Subtest: native-inapplicable-list-Tab follows focus
+ok 53 - native-inapplicable-list-Tab follows focus
+  ---
+  duration_ms: 193.984292
+  type: 'test'
+  ...
+# Subtest: prepared-host-owned structural events are not consumed
+ok 54 - prepared-host-owned structural events are not consumed
+  ---
+  duration_ms: 142.711792
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after shortcut
+ok 55 - native-focus-escape expires after shortcut
+  ---
+  duration_ms: 173.728334
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after beforeinput
+ok 56 - native-focus-escape expires after beforeinput
+  ---
+  duration_ms: 197.669208
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after blur
+ok 57 - native-focus-escape expires after blur
+  ---
+  duration_ms: 187.217083
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after composition
+ok 58 - native-focus-escape expires after composition
+  ---
+  duration_ms: 205.818
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after input
+ok 59 - native-focus-escape expires after input
+  ---
+  duration_ms: 235.392125
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after observer
+ok 60 - native-focus-escape expires after observer
+  ---
+  duration_ms: 207.572375
+  type: 'test'
+  ...
+# Subtest: authored whitespace stays visible across block kinds and heading replacement (editable)
+ok 61 - authored whitespace stays visible across block kinds and heading replacement (editable)
+  ---
+  duration_ms: 3182.999584
+  type: 'test'
+  ...
+# Subtest: authored whitespace stays visible across block kinds and heading replacement (read-only)
+ok 62 - authored whitespace stays visible across block kinds and heading replacement (read-only)
+  ---
+  duration_ms: 381.956125
+  type: 'test'
+  ...
+# Subtest: one-character patch preserves unrelated blocks and marked spans
+ok 63 - one-character patch preserves unrelated blocks and marked spans
+  ---
+  duration_ms: 320.348333
+  type: 'test'
+  ...
+# Subtest: semantic headings marks nested lists checklist quote code and atoms
+ok 64 - semantic headings marks nested lists checklist quote code and atoms
+  ---
+  duration_ms: 266.795625
+  type: 'test'
+  ...
+# Subtest: read-only engine projection displays hostile text literally
+ok 65 - read-only engine projection displays hostile text literally
+  ---
+  duration_ms: 221.314959
+  type: 'test'
+  ...
+# Subtest: untrusted projection attributes cannot create active markup or unsafe links
+ok 66 - untrusted projection attributes cannot create active markup or unsafe links
+  ---
+  duration_ms: 225.655541
+  type: 'test'
+  ...
+# Subtest: structural patches preserve node identity while changing headings and moving lists
+ok 67 - structural patches preserve node identity while changing headings and moving lists
+  ---
+  duration_ms: 219.042
+  type: 'test'
+  ...
+# Subtest: hard-break UTF-16 maps and literal code newlines survive patches
+ok 68 - hard-break UTF-16 maps and literal code newlines survive patches
+  ---
+  duration_ms: 189.373042
+  type: 'test'
+  ...
+# Subtest: renderer rebuilds disposable maps from authoritative recovered state
+ok 69 - renderer rebuilds disposable maps from authoritative recovered state
+  ---
+  duration_ms: 218.984875
+  type: 'test'
+  ...
+# Subtest: example heading trailing spaces remain visible and export as U+0020
+ok 70 - example heading trailing spaces remain visible and export as U+0020
+  ---
+  duration_ms: 837.926958
+  type: 'test'
+  ...
+# Subtest: example heading Enter before a list creates a paragraph with the next typed character
+ok 71 - example heading Enter before a list creates a paragraph with the next typed character
+  ---
+  duration_ms: 531.300541
+  type: 'test'
+  ...
+# Subtest: public surface shares mount ownership and releases adapters while the host retains its engine
+ok 72 - public surface shares mount ownership and releases adapters while the host retains its engine
+  ---
+  duration_ms: 157.941916
+  type: 'test'
+  ...
+# Subtest: all three documents render real headings, marks and lists, then export their text
+ok 73 - all three documents render real headings, marks and lists, then export their text
+  ---
+  duration_ms: 425.040208
+  type: 'test'
+  ...
+# Subtest: typing, undo, redo, read-only, reset and reload work without persistence
+ok 74 - typing, undo, redo, read-only, reset and reload work without persistence
+  ---
+  duration_ms: 752.7205
+  type: 'test'
+  ...
+# Subtest: mobile layout fits the viewport and controls remain keyboard accessible
+ok 75 - mobile layout fits the viewport and controls remain keyboard accessible
+  ---
+  duration_ms: 298.93725
+  type: 'test'
+  ...
+# Subtest: missing WASM keeps the editor disabled and shows a loading failure
+ok 76 - missing WASM keeps the editor disabled and shows a loading failure
+  ---
+  duration_ms: 144.723042
+  type: 'test'
+  ...
+1..76
+# tests 76
+# suites 0
+# pass 76
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 23256.328
+baseline browser: firefox
+TAP version 13
+# (node:83642) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: native-prose-shift-tab moves focus backward without updates
+ok 1 - native-prose-shift-tab moves focus backward without updates
+  ---
+  duration_ms: 5329.610583
+  type: 'test'
+  ...
+# Subtest: native-code-shift-tab dedents a caret line and preserves authored spaces
+ok 2 - native-code-shift-tab dedents a caret line and preserves authored spaces
+  ---
+  duration_ms: 810.049791
+  type: 'test'
+  ...
+# Subtest: native-escape-shift-tab leaves code backward without updates
+ok 3 - native-escape-shift-tab leaves code backward without updates
+  ---
+  duration_ms: 945.0505
+  type: 'test'
+  ...
+# Subtest: native-escape-shift-tab leaves unordered backward without updates
+ok 4 - native-escape-shift-tab leaves unordered backward without updates
+  ---
+  duration_ms: 859.137875
+  type: 'test'
+  ...
+# Subtest: native-paragraph-enter splits and moves caret once
+ok 5 - native-paragraph-enter splits and moves caret once
+  ---
+  duration_ms: 393.257791
+  type: 'test'
+  ...
+# Subtest: native-selected-enter-false
+ok 6 - native-selected-enter-false
+  ---
+  duration_ms: 372.218416
+  type: 'test'
+  ...
+# Subtest: native-selected-enter-true
+ok 7 - native-selected-enter-true
+  ---
+  duration_ms: 763.357
+  type: 'test'
+  ...
+# Subtest: native-code-Enter
+ok 8 - native-code-Enter
+  ---
+  duration_ms: 423.845125
+  type: 'test'
+  ...
+# Subtest: native-code-Shift+Enter
+ok 9 - native-code-Shift+Enter
+  ---
+  duration_ms: 427.167834
+  type: 'test'
+  ...
+# Subtest: native-hard-break stays in paragraph including repeated trailing breaks
+ok 10 - native-hard-break stays in paragraph including repeated trailing breaks
+  ---
+  duration_ms: 1242.73025
+  type: 'test'
+  ...
+# Subtest: native-heading-middle retains level
+ok 11 - native-heading-middle retains level
+  ---
+  duration_ms: 557.742375
+  type: 'test'
+  ...
+# Subtest: native-heading-end creates paragraph (original acceptance)
+ok 12 - native-heading-end creates paragraph (original acceptance)
+  ---
+  duration_ms: 282.314167
+  type: 'test'
+  ...
+# Subtest: native heading-end before a list preserves placement, next input and content history ("alpha")
+ok 13 - native heading-end before a list preserves placement, next input and content history ("alpha")
+  ---
+  duration_ms: 435.793458
+  type: 'test'
+  ...
+# Subtest: native heading-end before a list preserves placement, next input and content history ("alpha  ")
+ok 14 - native heading-end before a list preserves placement, next input and content history ("alpha  ")
+  ---
+  duration_ms: 433.136292
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-tail-false
+ok 15 - native-heading-selected-tail-false
+  ---
+  duration_ms: 349.240833
+  type: 'test'
+  ...
+# Subtest: native-heading-cross-block-end-false
+ok 16 - native-heading-cross-block-end-false
+  ---
+  duration_ms: 362.241875
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-all-false
+ok 17 - native-heading-selected-all-false
+  ---
+  duration_ms: 286.086791
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-tail-true
+ok 18 - native-heading-selected-tail-true
+  ---
+  duration_ms: 342.749458
+  type: 'test'
+  ...
+# Subtest: native-heading-cross-block-end-true
+ok 19 - native-heading-cross-block-end-true
+  ---
+  duration_ms: 363.904833
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-all-true
+ok 20 - native-heading-selected-all-true
+  ---
+  duration_ms: 877.360208
+  type: 'test'
+  ...
+# Subtest: native-heading cross-block suffix retains heading split
+ok 21 - native-heading cross-block suffix retains heading split
+  ---
+  duration_ms: 323.539666
+  type: 'test'
+  ...
+# Subtest: native-heading-end undo redo preserves remote sibling and result caret
+ok 22 - native-heading-end undo redo preserves remote sibling and result caret
+  ---
+  duration_ms: 292.505208
+  type: 'test'
+  ...
+# Subtest: prepared-heading result caret releases when DOM restoration throws
+ok 23 - prepared-heading result caret releases when DOM restoration throws
+  ---
+  duration_ms: 258.877208
+  type: 'test'
+  ...
+# Subtest: native-heading-end shared-source sibling keeps identity through follow-up typing
+ok 24 - native-heading-end shared-source sibling keeps identity through follow-up typing
+  ---
+  duration_ms: 292.057083
+  type: 'test'
+  ...
+# Subtest: prepared-menu heading-end uses the same result and read-only rejects
+ok 25 - prepared-menu heading-end uses the same result and read-only rejects
+  ---
+  duration_ms: 274.47775
+  type: 'test'
+  ...
+# Subtest: native-empty-heading becomes paragraph
+ok 26 - native-empty-heading becomes paragraph
+  ---
+  duration_ms: 269.720459
+  type: 'test'
+  ...
+# Subtest: native-boundary-Backspace
+ok 27 - native-boundary-Backspace
+  ---
+  duration_ms: 256.673834
+  type: 'test'
+  ...
+# Subtest: native-boundary-Delete
+ok 28 - native-boundary-Delete
+  ---
+  duration_ms: 260.885209
+  type: 'test'
+  ...
+# Subtest: native-cross-block-Enter
+ok 29 - native-cross-block-Enter
+  ---
+  duration_ms: 281.588375
+  type: 'test'
+  ...
+# Subtest: native-cross-block-Shift+Enter
+ok 30 - native-cross-block-Shift+Enter
+  ---
+  duration_ms: 892.718417
+  type: 'test'
+  ...
+# Subtest: native-cross-block-Backspace
+ok 31 - native-cross-block-Backspace
+  ---
+  duration_ms: 283.991
+  type: 'test'
+  ...
+# Subtest: native-unordered-enter
+ok 32 - native-unordered-enter
+  ---
+  duration_ms: 275.385417
+  type: 'test'
+  ...
+# Subtest: native-checklist-enter
+ok 33 - native-checklist-enter
+  ---
+  duration_ms: 280.750333
+  type: 'test'
+  ...
+# Subtest: native-quote-enter
+ok 34 - native-quote-enter
+  ---
+  duration_ms: 263.859583
+  type: 'test'
+  ...
+# Subtest: native-list-tab indentation and outdent preserve backward selection
+ok 35 - native-list-tab indentation and outdent preserve backward selection
+  ---
+  duration_ms: 285.88925
+  type: 'test'
+  ...
+# Subtest: native-prose-tab and Escape-Tab leave focus without updates
+ok 36 - native-prose-tab and Escape-Tab leave focus without updates
+  ---
+  duration_ms: 267.491209
+  type: 'test'
+  ...
+# Subtest: native-code-tab inserts literal tab; selection indents and outdents lines
+ok 37 - native-code-tab inserts literal tab; selection indents and outdents lines
+  ---
+  duration_ms: 289.66875
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar retains backward captured selection after focus moves
+ok 38 - prepared-toolbar retains backward captured selection after focus moves
+  ---
+  duration_ms: 271.845875
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar read-only and disposed targets reject without mutation
+ok 39 - prepared-toolbar read-only and disposed targets reject without mutation
+  ---
+  duration_ms: 257.830833
+  type: 'test'
+  ...
+# Subtest: native-keyboard and prepared-menu undo redo preserve remote text
+ok 40 - native-keyboard and prepared-menu undo redo preserve remote text
+  ---
+  duration_ms: 856.013
+  type: 'test'
+  ...
+# Subtest: prepared-key-beforeinput duplicates retain a second deliberate Enter
+ok 41 - prepared-key-beforeinput duplicates retain a second deliberate Enter
+  ---
+  duration_ms: 281.955708
+  type: 'test'
+  ...
+# Subtest: native-navigation and modified host Enter retain ownership
+ok 42 - native-navigation and modified host Enter retain ownership
+  ---
+  duration_ms: 289.316792
+  type: 'test'
+  ...
+# Subtest: native-empty-unordered exits one level
+ok 43 - native-empty-unordered exits one level
+  ---
+  duration_ms: 315.9715
+  type: 'test'
+  ...
+# Subtest: native-empty-quote exits one level
+ok 44 - native-empty-quote exits one level
+  ---
+  duration_ms: 295.997875
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar across blocks retains direction and supported marks
+ok 45 - prepared-toolbar across blocks retains direction and supported marks
+  ---
+  duration_ms: 287.864834
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar deleted target rejects instead of using current caret
+ok 46 - prepared-toolbar deleted target rejects instead of using current caret
+  ---
+  duration_ms: 275.342917
+  type: 'test'
+  ...
+# Subtest: prepared-nonkeyboard Enter and break have semantic selection results
+ok 47 - prepared-nonkeyboard Enter and break have semantic selection results
+  ---
+  duration_ms: 273.39775
+  type: 'test'
+  ...
+# Subtest: native-code-multiline Tab preserves backward range and existing whitespace
+ok 48 - native-code-multiline Tab preserves backward range and existing whitespace
+  ---
+  duration_ms: 292.332417
+  type: 'test'
+  ...
+# Subtest: prepared-read-only structural and history commands never mutate
+ok 49 - prepared-read-only structural and history commands never mutate
+  ---
+  duration_ms: 251.201334
+  type: 'test'
+  ...
+# Subtest: prepared-composition owns Enter before structural routing
+ok 50 - prepared-composition owns Enter before structural routing
+  ---
+  duration_ms: 918.131416
+  type: 'test'
+  ...
+# Subtest: native-selected-hard-break-false
+ok 51 - native-selected-hard-break-false
+  ---
+  duration_ms: 296.71825
+  type: 'test'
+  ...
+# Subtest: native-selected-hard-break-true
+ok 52 - native-selected-hard-break-true
+  ---
+  duration_ms: 271.50525
+  type: 'test'
+  ...
+# Subtest: native-inapplicable-list-Tab follows focus
+ok 53 - native-inapplicable-list-Tab follows focus
+  ---
+  duration_ms: 286.127667
+  type: 'test'
+  ...
+# Subtest: prepared-host-owned structural events are not consumed
+ok 54 - prepared-host-owned structural events are not consumed
+  ---
+  duration_ms: 246.260041
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after shortcut
+ok 55 - native-focus-escape expires after shortcut
+  ---
+  duration_ms: 264.646292
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after beforeinput
+ok 56 - native-focus-escape expires after beforeinput
+  ---
+  duration_ms: 288.778834
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after blur
+ok 57 - native-focus-escape expires after blur
+  ---
+  duration_ms: 290.9945
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after composition
+ok 58 - native-focus-escape expires after composition
+  ---
+  duration_ms: 345.633834
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after input
+ok 59 - native-focus-escape expires after input
+  ---
+  duration_ms: 297.324917
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after observer
+ok 60 - native-focus-escape expires after observer
+  ---
+  duration_ms: 746.024125
+  type: 'test'
+  ...
+# Subtest: authored whitespace stays visible across block kinds and heading replacement (editable)
+ok 61 - authored whitespace stays visible across block kinds and heading replacement (editable)
+  ---
+  duration_ms: 3357.692875
+  type: 'test'
+  ...
+# Subtest: authored whitespace stays visible across block kinds and heading replacement (read-only)
+ok 62 - authored whitespace stays visible across block kinds and heading replacement (read-only)
+  ---
+  duration_ms: 402.512125
+  type: 'test'
+  ...
+# Subtest: one-character patch preserves unrelated blocks and marked spans
+ok 63 - one-character patch preserves unrelated blocks and marked spans
+  ---
+  duration_ms: 331.012625
+  type: 'test'
+  ...
+# Subtest: semantic headings marks nested lists checklist quote code and atoms
+ok 64 - semantic headings marks nested lists checklist quote code and atoms
+  ---
+  duration_ms: 307.886875
+  type: 'test'
+  ...
+# Subtest: read-only engine projection displays hostile text literally
+ok 65 - read-only engine projection displays hostile text literally
+  ---
+  duration_ms: 476.941542
+  type: 'test'
+  ...
+# Subtest: untrusted projection attributes cannot create active markup or unsafe links
+ok 66 - untrusted projection attributes cannot create active markup or unsafe links
+  ---
+  duration_ms: 359.260125
+  type: 'test'
+  ...
+# Subtest: structural patches preserve node identity while changing headings and moving lists
+ok 67 - structural patches preserve node identity while changing headings and moving lists
+  ---
+  duration_ms: 367.529584
+  type: 'test'
+  ...
+# Subtest: hard-break UTF-16 maps and literal code newlines survive patches
+ok 68 - hard-break UTF-16 maps and literal code newlines survive patches
+  ---
+  duration_ms: 398.146167
+  type: 'test'
+  ...
+# Subtest: renderer rebuilds disposable maps from authoritative recovered state
+ok 69 - renderer rebuilds disposable maps from authoritative recovered state
+  ---
+  duration_ms: 427.5265
+  type: 'test'
+  ...
+# Subtest: example heading trailing spaces remain visible and export as U+0020
+ok 70 - example heading trailing spaces remain visible and export as U+0020
+  ---
+  duration_ms: 3347.989542
+  type: 'test'
+  ...
+# Subtest: example heading Enter before a list creates a paragraph with the next typed character
+ok 71 - example heading Enter before a list creates a paragraph with the next typed character
+  ---
+  duration_ms: 1153.917542
+  type: 'test'
+  ...
+# Subtest: public surface shares mount ownership and releases adapters while the host retains its engine
+ok 72 - public surface shares mount ownership and releases adapters while the host retains its engine
+  ---
+  duration_ms: 814.192584
+  type: 'test'
+  ...
+# Subtest: all three documents render real headings, marks and lists, then export their text
+ok 73 - all three documents render real headings, marks and lists, then export their text
+  ---
+  duration_ms: 1478.689833
+  type: 'test'
+  ...
+# Subtest: typing, undo, redo, read-only, reset and reload work without persistence
+ok 74 - typing, undo, redo, read-only, reset and reload work without persistence
+  ---
+  duration_ms: 1929.735917
+  type: 'test'
+  ...
+# Subtest: mobile layout fits the viewport and controls remain keyboard accessible
+ok 75 - mobile layout fits the viewport and controls remain keyboard accessible
+  ---
+  duration_ms: 1690.548458
+  type: 'test'
+  ...
+# Subtest: missing WASM keeps the editor disabled and shows a loading failure
+ok 76 - missing WASM keeps the editor disabled and shows a loading failure
+  ---
+  duration_ms: 1269.112583
+  type: 'test'
+  ...
+1..76
+# tests 76
+# suites 0
+# pass 76
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 49564.917083
+baseline browser: webkit
+TAP version 13
+# (node:85120) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: native-prose-shift-tab moves focus backward without updates
+ok 1 - native-prose-shift-tab moves focus backward without updates
+  ---
+  duration_ms: 6175.514583
+  type: 'test'
+  ...
+# Subtest: native-code-shift-tab dedents a caret line and preserves authored spaces
+ok 2 - native-code-shift-tab dedents a caret line and preserves authored spaces
+  ---
+  duration_ms: 1386.235792
+  type: 'test'
+  ...
+# Subtest: native-escape-shift-tab leaves code backward without updates
+ok 3 - native-escape-shift-tab leaves code backward without updates
+  ---
+  duration_ms: 1342.8385
+  type: 'test'
+  ...
+# Subtest: native-escape-shift-tab leaves unordered backward without updates
+ok 4 - native-escape-shift-tab leaves unordered backward without updates
+  ---
+  duration_ms: 1837.865292
+  type: 'test'
+  ...
+# Subtest: native-paragraph-enter splits and moves caret once
+ok 5 - native-paragraph-enter splits and moves caret once
+  ---
+  duration_ms: 2880.137791
+  type: 'test'
+  ...
+# Subtest: native-selected-enter-false
+ok 6 - native-selected-enter-false
+  ---
+  duration_ms: 1425.655458
+  type: 'test'
+  ...
+# Subtest: native-selected-enter-true
+ok 7 - native-selected-enter-true
+  ---
+  duration_ms: 576.542375
+  type: 'test'
+  ...
+# Subtest: native-code-Enter
+ok 8 - native-code-Enter
+  ---
+  duration_ms: 872.424583
+  type: 'test'
+  ...
+# Subtest: native-code-Shift+Enter
+ok 9 - native-code-Shift+Enter
+  ---
+  duration_ms: 707.786834
+  type: 'test'
+  ...
+# Subtest: native-hard-break stays in paragraph including repeated trailing breaks
+ok 10 - native-hard-break stays in paragraph including repeated trailing breaks
+  ---
+  duration_ms: 805.172959
+  type: 'test'
+  ...
+# Subtest: native-heading-middle retains level
+ok 11 - native-heading-middle retains level
+  ---
+  duration_ms: 2335.048375
+  type: 'test'
+  ...
+# Subtest: native-heading-end creates paragraph (original acceptance)
+ok 12 - native-heading-end creates paragraph (original acceptance)
+  ---
+  duration_ms: 3515.744125
+  type: 'test'
+  ...
+# Subtest: native heading-end before a list preserves placement, next input and content history ("alpha")
+ok 13 - native heading-end before a list preserves placement, next input and content history ("alpha")
+  ---
+  duration_ms: 2724.112209
+  type: 'test'
+  ...
+# Subtest: native heading-end before a list preserves placement, next input and content history ("alpha  ")
+ok 14 - native heading-end before a list preserves placement, next input and content history ("alpha  ")
+  ---
+  duration_ms: 1578.392917
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-tail-false
+ok 15 - native-heading-selected-tail-false
+  ---
+  duration_ms: 1748.423625
+  type: 'test'
+  ...
+# Subtest: native-heading-cross-block-end-false
+ok 16 - native-heading-cross-block-end-false
+  ---
+  duration_ms: 2261.373084
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-all-false
+ok 17 - native-heading-selected-all-false
+  ---
+  duration_ms: 3496.653125
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-tail-true
+ok 18 - native-heading-selected-tail-true
+  ---
+  duration_ms: 3658.176417
+  type: 'test'
+  ...
+# Subtest: native-heading-cross-block-end-true
+ok 19 - native-heading-cross-block-end-true
+  ---
+  duration_ms: 2412.755166
+  type: 'test'
+  ...
+# Subtest: native-heading-selected-all-true
+ok 20 - native-heading-selected-all-true
+  ---
+  duration_ms: 2110.304209
+  type: 'test'
+  ...
+# Subtest: native-heading cross-block suffix retains heading split
+ok 21 - native-heading cross-block suffix retains heading split
+  ---
+  duration_ms: 3038.890917
+  type: 'test'
+  ...
+# Subtest: native-heading-end undo redo preserves remote sibling and result caret
+ok 22 - native-heading-end undo redo preserves remote sibling and result caret
+  ---
+  duration_ms: 1567.451542
+  type: 'test'
+  ...
+# Subtest: prepared-heading result caret releases when DOM restoration throws
+ok 23 - prepared-heading result caret releases when DOM restoration throws
+  ---
+  duration_ms: 2031.049458
+  type: 'test'
+  ...
+# Subtest: native-heading-end shared-source sibling keeps identity through follow-up typing
+ok 24 - native-heading-end shared-source sibling keeps identity through follow-up typing
+  ---
+  duration_ms: 1789.313333
+  type: 'test'
+  ...
+# Subtest: prepared-menu heading-end uses the same result and read-only rejects
+ok 25 - prepared-menu heading-end uses the same result and read-only rejects
+  ---
+  duration_ms: 2605.895458
+  type: 'test'
+  ...
+# Subtest: native-empty-heading becomes paragraph
+ok 26 - native-empty-heading becomes paragraph
+  ---
+  duration_ms: 2610.199375
+  type: 'test'
+  ...
+# Subtest: native-boundary-Backspace
+ok 27 - native-boundary-Backspace
+  ---
+  duration_ms: 2136.471208
+  type: 'test'
+  ...
+# Subtest: native-boundary-Delete
+ok 28 - native-boundary-Delete
+  ---
+  duration_ms: 660.65575
+  type: 'test'
+  ...
+# Subtest: native-cross-block-Enter
+ok 29 - native-cross-block-Enter
+  ---
+  duration_ms: 297.636625
+  type: 'test'
+  ...
+# Subtest: native-cross-block-Shift+Enter
+ok 30 - native-cross-block-Shift+Enter
+  ---
+  duration_ms: 300.859375
+  type: 'test'
+  ...
+# Subtest: native-cross-block-Backspace
+ok 31 - native-cross-block-Backspace
+  ---
+  duration_ms: 333.310625
+  type: 'test'
+  ...
+# Subtest: native-unordered-enter
+ok 32 - native-unordered-enter
+  ---
+  duration_ms: 319.510167
+  type: 'test'
+  ...
+# Subtest: native-checklist-enter
+ok 33 - native-checklist-enter
+  ---
+  duration_ms: 381.259375
+  type: 'test'
+  ...
+# Subtest: native-quote-enter
+ok 34 - native-quote-enter
+  ---
+  duration_ms: 364.856875
+  type: 'test'
+  ...
+# Subtest: native-list-tab indentation and outdent preserve backward selection
+ok 35 - native-list-tab indentation and outdent preserve backward selection
+  ---
+  duration_ms: 390.689125
+  type: 'test'
+  ...
+# Subtest: native-prose-tab and Escape-Tab leave focus without updates
+ok 36 - native-prose-tab and Escape-Tab leave focus without updates
+  ---
+  duration_ms: 417.79
+  type: 'test'
+  ...
+# Subtest: native-code-tab inserts literal tab; selection indents and outdents lines
+ok 37 - native-code-tab inserts literal tab; selection indents and outdents lines
+  ---
+  duration_ms: 307.2325
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar retains backward captured selection after focus moves
+ok 38 - prepared-toolbar retains backward captured selection after focus moves
+  ---
+  duration_ms: 398.607417
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar read-only and disposed targets reject without mutation
+ok 39 - prepared-toolbar read-only and disposed targets reject without mutation
+  ---
+  duration_ms: 302.244458
+  type: 'test'
+  ...
+# Subtest: native-keyboard and prepared-menu undo redo preserve remote text
+ok 40 - native-keyboard and prepared-menu undo redo preserve remote text
+  ---
+  duration_ms: 413.995375
+  type: 'test'
+  ...
+# Subtest: prepared-key-beforeinput duplicates retain a second deliberate Enter
+ok 41 - prepared-key-beforeinput duplicates retain a second deliberate Enter
+  ---
+  duration_ms: 402.46875
+  type: 'test'
+  ...
+# Subtest: native-navigation and modified host Enter retain ownership
+ok 42 - native-navigation and modified host Enter retain ownership
+  ---
+  duration_ms: 385.223958
+  type: 'test'
+  ...
+# Subtest: native-empty-unordered exits one level
+ok 43 - native-empty-unordered exits one level
+  ---
+  duration_ms: 427.623667
+  type: 'test'
+  ...
+# Subtest: native-empty-quote exits one level
+ok 44 - native-empty-quote exits one level
+  ---
+  duration_ms: 450.260375
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar across blocks retains direction and supported marks
+ok 45 - prepared-toolbar across blocks retains direction and supported marks
+  ---
+  duration_ms: 372.701375
+  type: 'test'
+  ...
+# Subtest: prepared-toolbar deleted target rejects instead of using current caret
+ok 46 - prepared-toolbar deleted target rejects instead of using current caret
+  ---
+  duration_ms: 398.03725
+  type: 'test'
+  ...
+# Subtest: prepared-nonkeyboard Enter and break have semantic selection results
+ok 47 - prepared-nonkeyboard Enter and break have semantic selection results
+  ---
+  duration_ms: 531.939417
+  type: 'test'
+  ...
+# Subtest: native-code-multiline Tab preserves backward range and existing whitespace
+ok 48 - native-code-multiline Tab preserves backward range and existing whitespace
+  ---
+  duration_ms: 419.510667
+  type: 'test'
+  ...
+# Subtest: prepared-read-only structural and history commands never mutate
+ok 49 - prepared-read-only structural and history commands never mutate
+  ---
+  duration_ms: 266.092041
+  type: 'test'
+  ...
+# Subtest: prepared-composition owns Enter before structural routing
+ok 50 - prepared-composition owns Enter before structural routing
+  ---
+  duration_ms: 350.312459
+  type: 'test'
+  ...
+# Subtest: native-selected-hard-break-false
+ok 51 - native-selected-hard-break-false
+  ---
+  duration_ms: 410.405375
+  type: 'test'
+  ...
+# Subtest: native-selected-hard-break-true
+ok 52 - native-selected-hard-break-true
+  ---
+  duration_ms: 292.099625
+  type: 'test'
+  ...
+# Subtest: native-inapplicable-list-Tab follows focus
+ok 53 - native-inapplicable-list-Tab follows focus
+  ---
+  duration_ms: 447.814
+  type: 'test'
+  ...
+# Subtest: prepared-host-owned structural events are not consumed
+ok 54 - prepared-host-owned structural events are not consumed
+  ---
+  duration_ms: 355.117292
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after shortcut
+ok 55 - native-focus-escape expires after shortcut
+  ---
+  duration_ms: 341.662542
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after beforeinput
+ok 56 - native-focus-escape expires after beforeinput
+  ---
+  duration_ms: 433.901083
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after blur
+ok 57 - native-focus-escape expires after blur
+  ---
+  duration_ms: 638.193709
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after composition
+ok 58 - native-focus-escape expires after composition
+  ---
+  duration_ms: 448.103875
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after input
+ok 59 - native-focus-escape expires after input
+  ---
+  duration_ms: 401.168084
+  type: 'test'
+  ...
+# Subtest: native-focus-escape expires after observer
+ok 60 - native-focus-escape expires after observer
+  ---
+  duration_ms: 425.816
+  type: 'test'
+  ...
+# Subtest: authored whitespace stays visible across block kinds and heading replacement (editable)
+ok 61 - authored whitespace stays visible across block kinds and heading replacement (editable)
+  ---
+  duration_ms: 6910.990583
+  type: 'test'
+  ...
+# Subtest: authored whitespace stays visible across block kinds and heading replacement (read-only)
+ok 62 - authored whitespace stays visible across block kinds and heading replacement (read-only)
+  ---
+  duration_ms: 1898.459792
+  type: 'test'
+  ...
+# Subtest: one-character patch preserves unrelated blocks and marked spans
+ok 63 - one-character patch preserves unrelated blocks and marked spans
+  ---
+  duration_ms: 2109.41875
+  type: 'test'
+  ...
+# Subtest: semantic headings marks nested lists checklist quote code and atoms
+ok 64 - semantic headings marks nested lists checklist quote code and atoms
+  ---
+  duration_ms: 5750.565292
+  type: 'test'
+  ...
+# Subtest: read-only engine projection displays hostile text literally
+ok 65 - read-only engine projection displays hostile text literally
+  ---
+  duration_ms: 1548.597583
+  type: 'test'
+  ...
+# Subtest: untrusted projection attributes cannot create active markup or unsafe links
+ok 66 - untrusted projection attributes cannot create active markup or unsafe links
+  ---
+  duration_ms: 526.388416
+  type: 'test'
+  ...
+# Subtest: structural patches preserve node identity while changing headings and moving lists
+ok 67 - structural patches preserve node identity while changing headings and moving lists
+  ---
+  duration_ms: 697.701167
+  type: 'test'
+  ...
+# Subtest: hard-break UTF-16 maps and literal code newlines survive patches
+ok 68 - hard-break UTF-16 maps and literal code newlines survive patches
+  ---
+  duration_ms: 465.807166
+  type: 'test'
+  ...
+# Subtest: renderer rebuilds disposable maps from authoritative recovered state
+ok 69 - renderer rebuilds disposable maps from authoritative recovered state
+  ---
+  duration_ms: 456.366459
+  type: 'test'
+  ...
+# Subtest: example heading trailing spaces remain visible and export as U+0020
+ok 70 - example heading trailing spaces remain visible and export as U+0020
+  ---
+  duration_ms: 1852.644625
+  type: 'test'
+  ...
+# Subtest: example heading Enter before a list creates a paragraph with the next typed character
+ok 71 - example heading Enter before a list creates a paragraph with the next typed character
+  ---
+  duration_ms: 794.068875
+  type: 'test'
+  ...
+# Subtest: public surface shares mount ownership and releases adapters while the host retains its engine
+ok 72 - public surface shares mount ownership and releases adapters while the host retains its engine
+  ---
+  duration_ms: 420.669459
+  type: 'test'
+  ...
+# Subtest: all three documents render real headings, marks and lists, then export their text
+ok 73 - all three documents render real headings, marks and lists, then export their text
+  ---
+  duration_ms: 748.951083
+  type: 'test'
+  ...
+# Subtest: typing, undo, redo, read-only, reset and reload work without persistence
+ok 74 - typing, undo, redo, read-only, reset and reload work without persistence
+  ---
+  duration_ms: 925.98425
+  type: 'test'
+  ...
+# Subtest: mobile layout fits the viewport and controls remain keyboard accessible
+ok 75 - mobile layout fits the viewport and controls remain keyboard accessible
+  ---
+  duration_ms: 388.820667
+  type: 'test'
+  ...
+# Subtest: missing WASM keeps the editor disabled and shows a loading failure
+ok 76 - missing WASM keeps the editor disabled and shows a loading failure
+  ---
+  duration_ms: 240.867709
+  type: 'test'
+  ...
+1..76
+# tests 76
+# suites 0
+# pass 76
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 100944.745333

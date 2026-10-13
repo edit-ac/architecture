@@ -1,0 +1,51 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.66s
+     Running tests/heading_end.rs (target/debug/deps/heading_end-05c0722e416c35a2)
+
+running 1 test
+test paragraph_end_destination_accepts_a_formatted_fragment ... FAILED
+
+failures:
+
+---- paragraph_end_destination_accepts_a_formatted_fragment stdout ----
+unsupported target at 642
+unsupported target at 642
+unsupported target at 642
+unsupported target at 642
+unsupported target at 1123
+unsupported target at 642
+unsupported target at 1184
+unsupported target at 642
+unsupported target at 230
+unsupported target at 234
+unsupported target at 306
+unsupported target at 313
+unsupported target at 642
+unsupported target at 642
+unsupported target at 642
+unsupported target at 642
+unsupported target at 642
+unsupported target at 642
+unsupported target at 642
+unsupported target at 642
+unsupported target at 1123
+unsupported target at 642
+unsupported target at 1184
+unsupported target at 642
+unsupported target at 230
+unsupported target at 234
+unsupported target at 306
+unsupported target at 313
+unsupported target at 642
+
+thread 'paragraph_end_destination_accepts_a_formatted_fragment' (168856785) panicked at crates/editac-core/tests/heading_end.rs:935:10:
+called `Result::unwrap()` on an `Err` value: UnsupportedTarget
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    paragraph_end_destination_accepts_a_formatted_fragment
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 17 filtered out; finished in 0.09s
+
+error: test failed, to rerun pass `-p editac-core --test heading_end`

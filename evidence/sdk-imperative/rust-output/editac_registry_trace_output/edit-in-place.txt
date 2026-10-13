@@ -1,0 +1,61 @@
+before=Projection {
+    block_id: "block-1",
+    parent: "left",
+    order: 0,
+    text_identity: "<11#2>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 4,
+}
+after=Projection {
+    block_id: "block-1",
+    parent: "left",
+    order: 0,
+    text_identity: "<11#2>",
+    runs: [
+        (
+            "a",
+            [],
+        ),
+        (
+            "😀",
+            [
+                (
+                    "bold",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "!",
+            [
+                (
+                    "italic",
+                    "true",
+                ),
+            ],
+        ),
+        (
+            "b",
+            [],
+        ),
+    ],
+    utf16_len: 5,
+}

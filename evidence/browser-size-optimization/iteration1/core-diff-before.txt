@@ -1,0 +1,24 @@
+ crates/editac-core/Cargo.toml             |   1 +
+ crates/editac-core/src/commands/editor.rs |  89 ++++++++++++++-----
+ crates/editac-core/src/lib.rs             |   1 +
+ crates/editac-core/tests/heading_end.rs   | 138 ++++++++++++++++++++++++++++++
+ packages/core/README.md                   |  81 +++++++++++++++---
+ packages/core/package.json                |   3 +-
+ packages/core/src/engine.ts               |  22 ++++-
+ packages/core/src/index.ts                |   5 +-
+ packages/core/tsconfig.json               |   6 +-
+ packages/react/README.md                  |  60 +++++++++++--
+ packages/react/package.json               |  11 ++-
+ packages/react/src/index.ts               | 114 +++++++++++++++++++++++-
+ packages/react/tsconfig.json              |   7 +-
+ packages/web/README.md                    |  13 +++
+ packages/web/package.json                 |   8 +-
+ packages/web/src/dom/render.ts            |   8 +-
+ packages/web/src/editor.ts                |  92 +++++++++++++++++++-
+ packages/web/src/index.ts                 |   7 +-
+ scripts/build-wasm.mjs                    |   1 +
+ scripts/check-package-exports.mjs         |   7 +-
+ scripts/test-browser.mjs                  |   3 +
+ tests/browser/browser-harness.ts          |  20 +++--
+ tests/browser/lifecycle.spec.ts           |  27 ++++++
+ 23 files changed, 655 insertions(+), 69 deletions(-)

@@ -1,0 +1,10 @@
+{"output":"/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/fresh-baseline","result":{"total":{"bytes":973926,"hard":512000,"preferred":256000,"hardPass":false,"preferredPass":false,"gap":461926},"js":{"bytes":36859,"hard":32000,"preferred":16000,"hardPass":false,"preferredPass":false,"gap":4859}},"productionFixtureAbsent":false}
+file:///Users/bpstr/Github/edit-ac/core/scripts/browser-size-contract.mjs:30
+  if (misses.length) throw new Error(misses.map(([scope, value]) => `${scope}: ${value.bytes} gzip bytes exceeds ${value.hard} by ${value.gap}`).join('; '));
+                           ^
+
+Error: total: 973926 gzip bytes exceeds 512000 by 461926; js: 36859 gzip bytes exceeds 32000 by 4859
+    at assertBudget (file:///Users/bpstr/Github/edit-ac/core/scripts/browser-size-contract.mjs:30:28)
+    at file:///Users/bpstr/Github/edit-ac/core/scripts/check-browser-size.mjs:65:3
+
+Node.js v24.19.0

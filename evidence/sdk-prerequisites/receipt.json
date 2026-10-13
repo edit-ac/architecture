@@ -1,0 +1,449 @@
+{
+  "gate": "SDK-1.1",
+  "children": [
+    "SDK-1.1-I1",
+    "SDK-1.1-V1"
+  ],
+  "state": "implemented/verified; not published or deployed",
+  "verifiedAtUtc": "2026-10-13T08:09:21.051219+00:00",
+  "sourceSnapshot": "../architecture/progress/.roadmap-runner/08-sdk-integration-c067d82a29b2/source-cbd39ac8e8cf.md",
+  "sourceRevision": "9ad2175d5d1e51af487a470728a505fab8c664fc1f9d72705ac9cac77f6fce65",
+  "promptRevision": "2e18a98412c7",
+  "iteration": 1,
+  "coreBaseCommit": "f24b52043e4b7b429d81da0f2a2371635c332475",
+  "architectureBaseCommit": "9c37117a8d505c9fdd6f6e7c0e69e213b9313465",
+  "implementationRevision": "Uncommitted implementation over core base; exact source snapshots, SHA-256 manifest and implementation.patch retained.",
+  "sourceHashes": {
+    "package.json": "43768360abe8cfc638325b48843665ff41a1d1640eb486c79e2cbc6074a63a44",
+    "package-lock.json": "a304a54f28c26c9e1e3124c5c5a626f354e28b5c63026b4f5f33f745675ae8ef",
+    "Cargo.lock": "1d8c3e26a50a9e8d8e799032b905aaaf668bf46082beaa4992d6463f220ef3a6",
+    "rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b",
+    "packages/core/package.json": "fdddd0d837af30e1baf994d8a1236f01fcb5d1d909c891e1f5bc66c2cc35908e",
+    "packages/core/src/index.ts": "bdcd267ae69132cb13479db306a7a20d7633d6cc71614f04beb707b3ba3379d7",
+    "packages/core/src/engine.ts": "6cec2074d45c1a3b40e438cabf1db12c12ed6b41a808765d2c4bf67fe1612ccb",
+    "packages/core/README.md": "b261658d9dda2513b3751a2ccb6c9d7a7b1f144213249479dce4dfa665d2f9da",
+    "packages/web/package.json": "0ffd246674846c598810670c7aea406043594214d84a47278a0284e675d0eaf9",
+    "packages/web/src/index.ts": "e2ab78de9fc60f36061f1c0c4554cbef5c767cde3acbd0a38e7785f964d4670a",
+    "packages/web/src/editor.ts": "3d3bea207355328de7ab8eef387c2f06a1b2f5a4ecd7c2df6fd90a38b7cb23d7",
+    "packages/web/src/surface.ts": "b955dae031e9f6f4b46249f83a44839d183eefea0e0a19cacf0e4b3d7a249d68",
+    "packages/web/src/storage/index.ts": "85450d0d66f43bd9e781e756b1c9984e1246c4a10b95896f0bad94509099f70a",
+    "packages/web/README.md": "8d7bfe837809d6320a4b7d6ef77c199ada8e391651604012857de38fe18c59e8",
+    "scripts/check-package-exports.mjs": "b93a4035ffebe0b840d92e650c75430417cfcb6e0ae6db43a730196ea719553d",
+    "scripts/build-wasm.mjs": "bb725f384c56cb2a7170f97b54292a812ef85f192ddbcf53e8ef38b269f88ac9",
+    "scripts/test-browser.mjs": "2b7cc96011b253875f583eb44d56b98d6c9dac3ede6d857df8b846de26db7c3b",
+    "tests/sdk-prerequisites.test.mjs": "984a366ac562250f76c618caf6c9076ad801d6dbe258262b2269ba1464e0f309",
+    "tests/browser/lifecycle.spec.ts": "4f63b0976a17f1cd66cc29aee7c4da21b8c0e7af34d9b2a5f184c54b5d21e50f",
+    "tests/browser/baseline-runner.test.mjs": "282dab90c7d46b0593fff99911305fab73a688c7e7fb085364082b8d34998349",
+    "tests/browser/render.spec.ts": "5a9d680cd8ffc4d3b44416f6b93ea3cf7dbf29c382a3367bf0621e608dcee1d5",
+    "tests/browser/keyboard.spec.ts": "d54e9c78e870694ce9a3e997b4055c106912f59a31bd9a1f4df89186b718cf2c",
+    "tests/browser/web-example.test.mjs": "4eff2511c7d78c343d65ac36fc2a43f88482669981b451238df953d2bc0feac6",
+    "tests/module-bundles.test.mjs": "e132c6f1f5e2f4c5e26ca4956b531b2f5b6c38197fa6f6845db59ad2f2426c41"
+  },
+  "artifacts": {
+    "packages/core/dist/wasm/editac_wasm_bg.wasm": {
+      "sha256": "d0fe2f4bb6504618b8caf8f205d70a8506508885ea8067fed5627b8385a7cfa9",
+      "bytes": 3708331
+    },
+    "packages/core/dist/wasm/editac_wasm.js": {
+      "sha256": "ef26054ec4c44c92160bad2f4b3fc29507a3f7db88142c62bceba39a93c57e74",
+      "bytes": 25241
+    },
+    "packages/core/dist/index.js": {
+      "sha256": "db9945040f82be675b6b2626158b44db26c9fb704b42bfa5929077819a90bf1e",
+      "bytes": 1624
+    },
+    "packages/core/dist/index.d.ts": {
+      "sha256": "7885f67f73a2283f03cdf559fedd93b778a908fbda120cc3852c3a52208d6163",
+      "bytes": 1743
+    },
+    "packages/core/dist/engine.d.ts": {
+      "sha256": "1727eea6567746389e90c50ca2dce0120a3de6bcdbd7c16160204bf056a5401a",
+      "bytes": 11218
+    },
+    "packages/web/dist/index.js": {
+      "sha256": "4c2b663c7258e7519bc01285e8108b515a11d170fac2a3fc8f82e892f57f371c",
+      "bytes": 537
+    },
+    "packages/web/dist/index.d.ts": {
+      "sha256": "fe6ca31f788786797981828d7c2c9848fb630b01526a1b3b337834eceb131d31",
+      "bytes": 1531
+    },
+    "packages/web/dist/editor.js": {
+      "sha256": "1f52f0b1604e02d3343d927ffb05c81a2f0cde64db53e484cdadcce02b7381fd",
+      "bytes": 13270
+    }
+  },
+  "fixture": {
+    "kind": "deterministic production WASM and real DOM/IndexedDB; no provider network or paid inference",
+    "hash": "984a366ac562250f76c618caf6c9076ad801d6dbe258262b2269ba1464e0f309",
+    "content": "A\ud83d\ude00B, Hello world and supported heading/bold/code Markdown; explicit UUID document/epoch envelopes"
+  },
+  "checks": [
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH npm run check:packages",
+      "exitCode": 0,
+      "log": "packages.log",
+      "logSha256": "6dde2ae7cbcb62c917983a421abac51c40678adb334a3a63123913ca2001d2d7",
+      "counts": {
+        "executed": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "suiteGroups": {
+        "tests": [
+          9
+        ],
+        "pass": [
+          9
+        ],
+        "fail": [
+          0
+        ],
+        "skipped": [
+          0
+        ],
+        "cancelled": [
+          0
+        ]
+      }
+    },
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_MODULE_BUNDLES_OUTPUT=/Users/bpstr/Github/edit-ac/architecture/evidence/sdk-prerequisites/modules node --test tests/module-bundles.test.mjs",
+      "exitCode": 0,
+      "log": "modules.log",
+      "logSha256": "c68d90923fa4a98493954d055f89fdfce0aee467a464bdd11998e4a4b33bd787",
+      "counts": {
+        "executed": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "suiteGroups": {
+        "tests": [
+          9
+        ],
+        "pass": [
+          9
+        ],
+        "fail": [
+          0
+        ],
+        "skipped": [
+          0
+        ],
+        "cancelled": [
+          0
+        ]
+      }
+    },
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_BASELINE_OUTPUT=/Users/bpstr/Github/edit-ac/architecture/evidence/sdk-prerequisites/baseline-pinned npm run check:browser-baseline",
+      "exitCode": 0,
+      "log": "baseline-pinned.log",
+      "logSha256": "e68311471fdcf7436fbb5f4bc396eb8c49dcfcebcd065fe6fbe6de725e21ba77",
+      "counts": {
+        "executed": 232,
+        "passed": 232,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "suiteGroups": {
+        "tests": [
+          4,
+          76,
+          76,
+          76
+        ],
+        "pass": [
+          4,
+          76,
+          76,
+          76
+        ],
+        "fail": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "skipped": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "cancelled": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_LIFECYCLE_OUTPUT=/Users/bpstr/Github/edit-ac/architecture/evidence/sdk-prerequisites/lifecycle npm run test:browser -- lifecycle",
+      "exitCode": 0,
+      "log": "lifecycle.log",
+      "logSha256": "e34f5ba5010df7d8b8d3ddb0aeec955f749c4faa5edfd091dc38f149ed7f822e",
+      "counts": {
+        "executed": 24,
+        "passed": 24,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "suiteGroups": {
+        "tests": [
+          8,
+          8,
+          8
+        ],
+        "pass": [
+          8,
+          8,
+          8
+        ],
+        "fail": [
+          0,
+          0,
+          0
+        ],
+        "skipped": [
+          0,
+          0,
+          0
+        ],
+        "cancelled": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "baselineBreakdown": {
+    "runnerGuards": 4,
+    "browsers": 228,
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ]
+  },
+  "criteria": {
+    "honestMethods": "Implemented methods exercise real Rust/Yrs. Mixed unsupported command batches leave checkpoints unchanged. Core bridge errors preserve code/operation; disposed handles reject. Browser unsupported remote flush, invalid destroy, unsupported command and read-only commit reject without document mutation.",
+    "examples": "Core README production example executes; web README compiles through public built declarations. Public export list excludes pending createEditor/attachSync; README states their boundaries.",
+    "upstream": "Controller-approved baseline plus current module presenter source hashes and 144 hashed passing three-engine proof references verified; original 81 module artifacts restored/audited unchanged. Synchronization completion receipt retained.",
+    "currentArtifacts": "Fresh locked/offline WASM build and full unfiltered three-engine browser baseline pass on pinned Node 24.19.0. Local lifecycle regressions run in all three engines."
+  },
+  "upstreamEvidenceHashes": {
+    "../evidence/roadmap-06-runner/completion-review.json": "6556c91cea067ea26e62022cd95709d121db913b996807cb70dddf6eab185ada",
+    "../evidence/roadmap-07-runner/completion-review.json": "ddb1f048dd38d3401d5190035bc3757ba3d4b9c01752d3670ff64eacfce7d0c3",
+    "../architecture/evidence/baseline-typing/verification.json": "bda7fee7412b01077f076c378282effb885c46c866932c9d48d418b74660471c",
+    "../architecture/evidence/modules-matrix/receipt.json": "52dc5aed089330c6e31f9fed6a1c5e988b8583af45b5f68577aafb5f320fd2de",
+    "../architecture/evidence/modules-matrix/capabilities.json": "8968e5ca95b3c2c6acc5cc751b2a680e131256b4a954a13b150e75ccf470d454",
+    "../architecture/evidence/modules-matrix/artifact-hashes.json": "efb01dc7526d7907f69b705934c82ee9632eb0fa79e8695220494b2eab993b6e",
+    "../architecture/evidence/synchronization-offline-completion/receipt.json": "5b89022b109f7b6e70d81dc36bd77d34ef2eb333ecd6a75fc41f770c2248c377"
+  },
+  "preservedEvidence": [
+    {
+      "log": "packages-first.log",
+      "counts": {
+        "executed": 9,
+        "passed": 3,
+        "failed": 6,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "failure": "New fixtures/example used non-UUID IDs, yielding InvalidMetadata; repaired to valid unique deterministic UUIDs."
+    },
+    {
+      "log": "packages-repaired.log",
+      "counts": {
+        "executed": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "node": "26.4.0",
+      "acceptance": false
+    },
+    {
+      "log": "baseline.log",
+      "counts": {
+        "executed": 232,
+        "passed": 232,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "node": "26.4.0",
+      "acceptance": false,
+      "reason": "Replaced for final qualification by pinned Node 24 run."
+    }
+  ],
+  "moduleOutputRecovery": {
+    "reason": "Incorrect EDITAC_MODULE_BUNDLES_OUTPUT variable selected default directory; artifacts relocated before restoring prior clean tracked evidence from HEAD. Correct variable is EDITAC_MODULE_BUNDLES.",
+    "restoredPaths": [
+      "evidence/modules-matrix/bundles/all-manifest.json",
+      "evidence/modules-matrix/bundles/all/stdin.js",
+      "evidence/modules-matrix/bundles/cleanup.json",
+      "evidence/modules-matrix/bundles/content-manifest.json",
+      "evidence/modules-matrix/bundles/disabled-manifest.json",
+      "evidence/modules-matrix/bundles/math-manifest.json",
+      "evidence/modules-matrix/bundles/math/stdin.js",
+      "evidence/modules-matrix/bundles/minimal-manifest.json",
+      "evidence/modules-matrix/bundles/pack-core.log",
+      "evidence/modules-matrix/bundles/pack-core/edit-ac-core-0.0.0.tgz",
+      "evidence/modules-matrix/bundles/pack-web.log",
+      "evidence/modules-matrix/bundles/pack-web/edit-ac-web-0.0.0.tgz",
+      "evidence/modules-matrix/bundles/profiles.json",
+      "evidence/modules-matrix/bundles/references-manifest.json",
+      "evidence/modules-matrix/bundles/reorder-manifest.json",
+      "evidence/modules-matrix/bundles/slash-manifest.json"
+    ],
+    "retainedCurrentRun": "modules/",
+    "removedSessionCreatedDuplicates": [
+      "../architecture/evidence/modules-matrix/bundles/all/math-renderer-T5RMLPYC.js",
+      "../architecture/evidence/modules-matrix/bundles/math/math-renderer-T5RMLPYC.js"
+    ],
+    "originalArtifactManifestAudit": {
+      "checked": 81,
+      "mismatches": [],
+      "missing": []
+    },
+    "duplicateBytesRemoved": 537512
+  },
+  "limits": [
+    "Private packages remain unpublishable until downstream packed/release gates.",
+    "FMT-1.15 actual-device evidence unclaimed; baseline does not qualify physical-device/native parity.",
+    "RGS-1.3/REG-01/G07 stored-selection restoration limitation remains; no history-selection requalification.",
+    "Upstream minimal footprint 658095 Brotli bytes exceeds provisional 400 KiB target; performance/release constraints remain.",
+    "SDK-1.2 through SDK-1.6 remain pending; no publication, deployment or paid provider calls."
+  ],
+  "resources": {
+    "ownedPidsChecked": 24,
+    "ownedPortsChecked": 12,
+    "remainingOwnedProcesses": [],
+    "remainingOwnedListeners": [],
+    "testTeardownReceipts": [
+      {
+        "file": "baseline/chromium/render/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline/chromium/keyboard/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline/webkit/render/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline/webkit/keyboard/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline/firefox/render/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline/firefox/keyboard/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline-pinned/chromium/render/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline-pinned/chromium/keyboard/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline-pinned/webkit/render/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline-pinned/webkit/keyboard/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline-pinned/firefox/render/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline-pinned/firefox/keyboard/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      }
+    ],
+    "automatedChromeProcessesPresent": [],
+    "dataVolumeFreeBytes": 13014835200,
+    "dataVolumeFreeGiB": 12.12,
+    "touchedDirectoryBytes": {
+      "target": 9434279936,
+      "packages/core/dist": 3788800,
+      "packages/web/dist": 1155072,
+      "../architecture/evidence/sdk-prerequisites": 24285184
+    },
+    "removedPaths": [
+      "../architecture/evidence/modules-matrix/bundles/all/math-renderer-T5RMLPYC.js",
+      "../architecture/evidence/modules-matrix/bundles/math/math-renderer-T5RMLPYC.js"
+    ],
+    "reclaimedDuplicateBytes": 537512,
+    "scope": "Browser/fixture servers and temporary consumers use harness teardown; type fixture removed in finally. Preexisting Rust cache and reusable dist artifacts preserved. Qualification artifacts retained; no unrelated processes or files stopped/removed."
+  },
+  "timing": "About 6 min discovery, 3 min implementation/repair, 10 min verification/evidence. One parent only; exits after SDK-1.1 criteria pass."
+}

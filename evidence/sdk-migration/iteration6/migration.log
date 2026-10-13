@@ -1,0 +1,44 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.27s
+     Running tests/migration.rs (target/debug/deps/migration-d54f7bbd13ac00cf)
+
+running 16 tests
+test malformed_json_version_and_session_fail_without_conversion ... ok
+test nested_container_depth_is_bounded ... ok
+test conflicting_and_duplicate_marks_fail_before_session_initialization ... ok
+test malformed_supported_content_is_not_silently_downgraded ... ok
+test actual_old_yjs_update_is_rejected_before_live_mutation ... ok
+test literal_code_whitespace_and_unsupported_marks_are_reported ... ok
+test old_live_replica_is_unchanged_and_its_offline_tail_is_rejected ... ok
+test new_epoch_replicas_exchange_only_new_profile_updates ... ok
+test empty_document_starts_once_and_restores_without_reimport ... ok
+test unknown_inline_mark_attributes_and_fields_all_emit_diagnostics ... FAILED
+test same_epoch_and_invalid_epoch_are_rejected_before_creation ... ok
+test bounded_input_block_run_and_diagnostic_limits_fail_explicitly ... ok
+test unsafe_links_preserve_text_and_source_without_active_link ... ok
+test unknown_block_keeps_inert_bounded_source_and_exact_recovery_input ... FAILED
+test supported_marks_and_presentations_survive_in_production_projection ... ok
+test supported_fixture_survives_semantic_migration_and_checkpoint_restore ... ok
+
+failures:
+
+---- unknown_inline_mark_attributes_and_fields_all_emit_diagnostics stdout ----
+
+thread 'unknown_inline_mark_attributes_and_fields_all_emit_diagnostics' (169266574) panicked at crates/editac-core/tests/migration.rs:160:5:
+assertion `left == right` failed
+  left: 5
+ right: 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- unknown_block_keeps_inert_bounded_source_and_exact_recovery_input stdout ----
+
+thread 'unknown_block_keeps_inert_bounded_source_and_exact_recovery_input' (169266573) panicked at crates/editac-core/tests/migration.rs:130:47:
+called `Result::unwrap()` on an `Err` value: Semantic(UnsupportedTarget)
+
+
+failures:
+    unknown_block_keeps_inert_bounded_source_and_exact_recovery_input
+    unknown_inline_mark_attributes_and_fields_all_emit_diagnostics
+
+test result: FAILED. 14 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.71s
+
+error: test failed, to rerun pass `-p editac-core --test migration`

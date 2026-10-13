@@ -1,0 +1,40 @@
+[
+  {
+    "command": "npm",
+    "args": [
+      "pack",
+      "--workspace=@edit-ac/core",
+      "--pack-destination",
+      "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-browser-size-Cv17GP",
+      "--json"
+    ],
+    "exit": 0,
+    "label": "pack-core"
+  },
+  {
+    "command": "npm",
+    "args": [
+      "pack",
+      "--workspace=@edit-ac/web",
+      "--pack-destination",
+      "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-browser-size-Cv17GP",
+      "--json"
+    ],
+    "exit": 0,
+    "label": "pack-web"
+  },
+  {
+    "command": "npm",
+    "args": [
+      "install",
+      "--offline",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund",
+      "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-browser-size-Cv17GP/edit-ac-core-0.0.0.tgz",
+      "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-browser-size-Cv17GP/edit-ac-web-0.0.0.tgz"
+    ],
+    "exit": 0,
+    "label": "install"
+  }
+]

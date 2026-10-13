@@ -1,0 +1,657 @@
+diff --git a/crates/editac-core/src/commands/editor.rs b/crates/editac-core/src/commands/editor.rs
+index 3bee0f9..95e4bb9 100644
+--- a/crates/editac-core/src/commands/editor.rs
++++ b/crates/editac-core/src/commands/editor.rs
+@@ -211,7 +211,7 @@ impl Document {
+         let position =
+             |doc: &Document, anchor: &crate::anchors::Anchor| match doc.resolve_anchor(anchor) {
+                 Ok(Resolution::Position(p)) => Ok(p),
+-                _ => Err(EditorError::UnsupportedTarget),
++                other => { eprintln!("fragment position rejection: {other:?}"); Err(EditorError::UnsupportedTarget) },
+             };
+         let snapshot = stage.inspect().map_err(|_| EditorError::InvalidCommand)?;
+         let nodes: Vec<_> = snapshot
+@@ -219,8 +219,11 @@ impl Document {
+             .iter()
+             .filter(|n| n.kind == "block")
+             .collect();
+-        let a = position(&stage, &selection.anchor)?;
+-        let b = position(&stage, &selection.focus)?;
++        // Resolve the caller's stable targets against the live immutable
++        // baseline, before staging. Recovery-only aliases of an empty source
++        // must not replace a visible destination while cloning for preparation.
++        let a = position(self, &selection.anchor)?;
++        let b = position(self, &selection.focus)?;
+         let ai = nodes
+             .iter()
+             .position(|n| n.id == a.node)
+@@ -235,7 +238,15 @@ impl Document {
+             (b, a, bi, ai)
+         };
+         let insertion = stage
+-            .anchor(&start.node, start.offset, Bias::Left)
++            .anchor(
++                &start.node,
++                start.offset,
++                if nodes[first].runs.iter().all(|run| run.text.is_empty()) {
++                    Bias::Right
++                } else {
++                    Bias::Left
++                },
++            )
+             .map_err(|_| EditorError::InvalidCommand)?;
+         let mut deletes = Vec::new();
+         for (index, node) in nodes.iter().enumerate().take(last + 1).skip(first) {
+@@ -271,7 +282,13 @@ impl Document {
+             let plan = stage.prepare_editor(&deletes, origin)?;
+             stage.commit_editor(plan)?;
+         }
+-        let cursor = position(&stage, &insertion)?;
++        let cursor = if nodes[first].runs.iter().all(|run| run.text.is_empty()) {
++            // Deleting/joining the selected tail preserves this empty first
++            // owner. Its source cut can also occur in a preceding owner.
++            start.clone()
++        } else {
++            position(&stage, &insertion)?
++        };
+         let mut result = insertion;
+         let mut imported = Vec::new();
+         // Split only existing text. Incoming payloads are independent immutable
+@@ -622,7 +639,7 @@ fn target(d: &yrs::Doc, stable: bool, id: &str) -> Result<m::Owner, EditorError>
+         .owners
+         .into_iter()
+         .find(|o| o.id == id && !o.deleted)
+-        .ok_or(EditorError::UnsupportedTarget)
++        .ok_or_else(|| { eprintln!("editor target missing: {id}"); EditorError::UnsupportedTarget })
+ }
+ fn register(
+     d: &yrs::Doc,
+@@ -1142,7 +1159,20 @@ impl Document {
+                             return Err(EditorError::UnsupportedTarget);
+                         }
+                     }
+-                    if heading_end {
++                    // Contextual list/quote Enter expands through Split too; keep
++                    // those source-preserving policies unchanged.
++                    let terminal_paragraph = node.parent == "@root"
++                        && matches!(
++                            node.block_attributes,
++                            Some(crate::document::BlockAttributes::Paragraph)
++                        )
++                        && p.offset.0 as usize
++                            == node
++                                .runs
++                                .iter()
++                                .map(|r| r.text.encode_utf16().count())
++                                .sum::<usize>();
++                    if heading_end || terminal_paragraph {
+                         // A fresh source prevents collisions with existing source cuts.
+                         // Every structural step is confined to the disposable replica.
+                         let o = target(&stage, stable, owner)?;
+diff --git a/crates/editac-core/tests/heading_end.rs b/crates/editac-core/tests/heading_end.rs
+index 3d982bc..82fcfb4 100644
+--- a/crates/editac-core/tests/heading_end.rs
++++ b/crates/editac-core/tests/heading_end.rs
+@@ -833,3 +833,108 @@ fn heading_end_batch_last_heading_owns_result() {
+         matches!(d.resolve_anchor(commit.result_caret.as_ref().unwrap()).unwrap(), Resolution::Position(p) if p.node == after[3].id && p.offset == U(0))
+     );
+ }
++
++#[test]
++fn paragraph_end_split_returns_a_fresh_caret_without_rerouting_the_input_cut() {
++    for value in ["A😀Z", ""] {
++        let mut d = engine(&[value, "untouched"]);
++        let id = blocks(&d)[0].id.clone();
++        edit(
++            &mut d,
++            &[EditorCommand::Block {
++                target: id.clone(),
++                tuple: Any::Array(vec![Any::from("paragraph")].into()),
++            }],
++        );
++        d.clear_history();
++        let at = d
++            .anchor(&id, U(value.encode_utf16().count() as u32), Bias::Right)
++            .unwrap();
++        let before = frozen(&d);
++        let command = EditorCommand::Split {
++            owner: id.clone(),
++            at: at.clone(),
++        };
++        d.can_editor(&[command.clone()], &origin()).unwrap();
++        assert_eq!(frozen(&d), before);
++        let result = edit(&mut d, &[command]);
++        let nodes = blocks(&d);
++        assert_eq!(
++            nodes.iter().map(text).collect::<Vec<_>>(),
++            vec![value, "", "untouched"]
++        );
++        assert_eq!(nodes[0].id, id);
++        let caret = result
++            .result_caret
++            .expect("terminal split must author its empty destination caret");
++        let Resolution::Position(position) = d.resolve_anchor(&caret).unwrap() else {
++            panic!("result caret must resolve");
++        };
++        assert_eq!(position.node, nodes[1].id);
++        assert_eq!(position.offset, U(0));
++        // The existing caller's source cut remains attached to its old paragraph.
++        let Resolution::Position(input) = d.resolve_anchor(&at).unwrap() else {
++            panic!("input cut must resolve");
++        };
++        assert_eq!(input.node, id);
++        edit(
++            &mut d,
++            &[EditorCommand::Text(TextCommand::Insert {
++                at: caret,
++                text: "next".into(),
++            })],
++        );
++        assert_eq!(
++            blocks(&d).iter().map(text).collect::<Vec<_>>(),
++            vec![value, "next", "untouched"]
++        );
++    }
++}
++
++#[test]
++fn paragraph_end_destination_accepts_a_formatted_fragment() {
++    let mut d = engine(&["task", "untouched"]);
++    let id = blocks(&d)[0].id.clone();
++    edit(
++        &mut d,
++        &[EditorCommand::Block {
++            target: id.clone(),
++            tuple: Any::Array(vec![Any::from("paragraph")].into()),
++        }],
++    );
++    let at = d.anchor(&id, U(4), Bias::Right).unwrap();
++    let result = edit(&mut d, &[EditorCommand::Split { owner: id, at }]);
++    let caret = result.result_caret.unwrap();
++    let selection = editac_core::anchors::Selection {
++        anchor: caret.clone(),
++        focus: caret,
++    };
++    let fragment = vec![
++        FragmentBlock {
++            runs: vec![FragmentRun {
++                text: "Offline heading".into(),
++                marks: vec![],
++            }],
++            attributes: Some(BlockAttributes::Heading(1)),
++            containers: vec![],
++            checked: None,
++        },
++        FragmentBlock {
++            runs: vec![FragmentRun {
++                text: "Saved".into(),
++                marks: vec![(Mark::Bold, None)],
++            }],
++            attributes: Some(BlockAttributes::Paragraph),
++            containers: vec![],
++            checked: None,
++        },
++    ];
++    let plan = d
++        .prepare_fragment(&selection, &fragment, &origin())
++        .unwrap();
++    d.commit_editor(plan).unwrap();
++    assert_eq!(
++        blocks(&d).iter().map(text).collect::<Vec<_>>(),
++        vec!["task", "Offline heading", "Saved", "untouched"]
++    );
++}
+diff --git a/package.json b/package.json
+index e1d2366..90e2d88 100644
+--- a/package.json
++++ b/package.json
+@@ -16,13 +16,14 @@
+   ],
+   "scripts": {
+     "example:web": "node examples/web/serve.mjs",
++    "example:task": "node examples/task-editor/serve.mjs",
+     "test:example:web": "node --test tests/browser/web-example.test.mjs",
+     "build": "npm run build --workspaces",
+     "test:browser": "node scripts/test-browser.mjs",
+     "check:browser-baseline": "npm run build:wasm && npm run build && node --test tests/browser/baseline-runner.test.mjs && npm run test:browser -- baseline",
+     "typecheck": "npm run typecheck --workspaces",
+     "check:rust": "cargo fmt --all -- --check && cargo check --workspace --all-targets --locked --offline && cargo test --workspace --locked --offline",
+-    "check:packages": "npm run typecheck && npm run build && node scripts/check-package-exports.mjs",
++    "check:packages": "npm run typecheck && npm run build && node scripts/check-package-exports.mjs && node --test tests/sdk-prerequisites.test.mjs",
+     "check:protocol": "cargo check -p editac-wasm --target wasm32-unknown-unknown --locked --offline && node --test tests/protocol-toolchain.test.mjs",
+     "check:interop": "node --test tests/interop.test.mjs",
+     "check:fixtures": "node --test tests/fixtures.test.mjs",
+diff --git a/packages/core/README.md b/packages/core/README.md
+index 365b021..0384661 100644
+--- a/packages/core/README.md
++++ b/packages/core/README.md
+@@ -1,7 +1,9 @@
+ # @edit-ac/core
+ 
+-Private foundation fixture loading boundary. This is a disposable XML/text
+-interop bridge, not the frozen structural schema or an editor API.
++Private development package for the v5 semantic engine. The engine owns one Yrs
++replica per handle; the browser adapter renders and edits that replica. Public
++types describe implemented commands, anchors, patches, Markdown and checkpoint
++operations. Registry release and packed consumer qualification remain pending.
+ 
+ Use the pinned Rust 1.97.1 toolchain and wasm32-unknown-unknown target. Install
+ `cargo install wasm-bindgen-cli --version 0.2.129 --locked`, then run
+@@ -15,12 +17,26 @@ when preparing a new machine. Generated web-target bindings live only in
+ import { init } from '@edit-ac/core';
+ 
+ const runtime = await init('/assets/editac_wasm_bg.wasm');
+-const fixture = runtime.createFixture();
++const engine = runtime.createEngine({
++  profile: 'v5',
++  documentId: '81000000-0000-4000-8000-000000000100',
++  epoch: '82000000-0000-4000-8000-000000000100',
++  nodes: [{ text: 'Hello' }],
++});
+ try {
+-  console.log(fixture.text(), fixture.utf16_length());
+-  const bytes = fixture.update_v1(); // receipt of bytes is not durable storage
++  const node = engine.read().visible[0];
++  const at = engine.anchor(node.id, 5, 'right'); // offsets are UTF-16
++  try {
++    const plan = engine.prepare({
++      kind: 'text', origin: 'local:example',
++      command: { type: 'insert', at, text: ' world' },
++    });
++    try { engine.commit(plan); } finally { engine.releasePlan(plan); }
++  } finally { engine.releaseAnchor(at); }
++  const checkpoint = engine.checkpoint(); // persist envelope and bytes atomically
++  console.log(engine.read().visible[0].runs.map(run => run.text).join(''));
+ } finally {
+-  fixture.free();
++  engine.dispose();
+ }
+ ```
+ 
+@@ -32,15 +48,40 @@ relative `dist/wasm/editac_wasm.js` dependency, or copy the whole `dist` tree.
+ Bundler-specific asset rewriting is not qualified here.
+ 
+ SSR import performs no fetch, browser-global access, instantiation or document
+-creation. Only `init(assetUrl)` loads the runtime, and only `createFixture()`
+-creates a Yrs replica. Concurrent calls with the same URL share initialization;
++creation. Only `init(assetUrl)` loads the runtime. `createEngine()` creates an
++explicit new document with UUID document and epoch identifiers; `restoreEngine(identity, checkpoint, journal)` recovers an
++existing document with identity validation. Concurrent calls with the same URL share initialization;
+ a different URL is rejected after loading starts. A failed load rejects and
+ allows retry. `createdDocumentCount()` is a cumulative fixture diagnostic.
+ 
+-`apply_v1(bytes)` accepts trusted fixture updates and decodes before mutation.
+-It is not an untrusted-update admission port. The bridge uses the core UTF-16
+-factory, Yrs 0.28.0 with small-client, v1 updates and the earlier `interop` XML
+-root. Production schema commands, resource limits and persistence are later work.
++`prepare()` validates a command before mutation; `can()` checks admissibility.
++Plans are scoped to a handle and single use, including failed stale commits.
++Anchors survive intervening edits and must be released. `subscribe(scope, callback)`
++returns a disposable subscription; observer failures are available through
++`takeObserverErrors()` without changing an already committed result.
++
++`EngineError` exposes `code`, `operation` and `message`. Current codes are
++`InvalidInput`, `InvalidHandle`, `EngineRejected`, `ResourceLimit` and `Disposed`.
++The exported `EngineErrorCode` type also permits future codes; handle unknown
++codes explicitly. `can()` returns false for inadmissible requests, while methods
++requiring a live handle throw `Disposed` after disposal. Repeated disposal is safe.
++
++`importMarkdown()` prepares supported content and diagnostics without changing the
++document. `exportMarkdown()` reports unsupported representations and retains
++recovery content. Neither operation implies a live document edit. Apply prepared
++blocks through a validated fragment command. Optional codecs are explicit.
++
++`checkpoint()`, `stateVector()`, `encodeUpdate()` and `applyUpdate()` expose the
++v5 recovery/synchronization boundary with copied bytes and identity envelopes.
++Obtaining bytes or applying a peer update does not establish local durability or
++remote settlement. Identity/epoch mismatches reject before mutation. Storage and
++transport remain host responsibilities.
++
++`createFixture()` retains the earlier disposable XML/text interoperability probe.
++Its `apply_v1(bytes)` accepts trusted fixture updates only; use the production
++engine identity boundary for editor updates. The bridge uses Yrs 0.28.0 with
++small-client and v1 updates. Neither fixture nor engine import qualifies native
++input, OS clipboard or physical-device behavior.
+ 
+ For the actual browser and installed-tarball smoke checks, run
+ `npx playwright install chromium --only-shell`, then `npm run check:wasm`.
+diff --git a/packages/core/src/engine.ts b/packages/core/src/engine.ts
+index 6b71227..a83d4ba 100644
+--- a/packages/core/src/engine.ts
++++ b/packages/core/src/engine.ts
+@@ -135,8 +135,10 @@ export interface EngineHandle {
+   /** Drops replica and all anchors/plans/history. Safe to call repeatedly. */
+   dispose(): void;
+ }
++/** Current bridge errors. Preserve unknown future codes when handling a newer engine. */
++export type EngineErrorCode = "InvalidInput" | "InvalidHandle" | "EngineRejected" | "ResourceLimit" | "Disposed" | (string & {});
+ export class EngineError extends Error {
+-  constructor(public readonly code: string, public readonly operation: string, message: string) {
++  constructor(public readonly code: EngineErrorCode, public readonly operation: string, message: string) {
+     super(message); this.name = "EngineError";
+   }
+ }
+diff --git a/packages/core/src/index.ts b/packages/core/src/index.ts
+index 0498112..b20f309 100644
+--- a/packages/core/src/index.ts
++++ b/packages/core/src/index.ts
+@@ -2,6 +2,7 @@ import { createHandle, restoreHandle, type Checkpoint, type ReplayUpdate, type D
+ export type { CreateOptions, EngineHandle, CommitResult, AnchorToken, PortableAnchor, PlanToken, Bias, StableRange, ContainerStyle, MoveTarget, EditorCommand, TextCommand, FormatAction, MarkCommand, BlockFormatCommand, PrepareRequest, Json, ProjectedNode, Snapshot, AnchorResolution, HistoryRequest, HistoryState, DocumentIdentity, Checkpoint, ReplayUpdate, PatchScope, Patch, PatchSubscription, ObserverError } from "./engine.js";
+ export type { FragmentBlock, FragmentRun, PreparedMarkdown, MarkdownDiagnostic, MarkdownExport, MarkdownExtension, MarkdownOptions } from "./engine.js";
+ export { EngineError } from "./engine.js";
++export type { EngineErrorCode } from "./engine.js";
+ 
+ /** Disposable foundation fixture; callers must release its WASM allocation. */
+ export interface Fixture {
+diff --git a/packages/web/README.md b/packages/web/README.md
+index ec8a49c..6bee166 100644
+--- a/packages/web/README.md
++++ b/packages/web/README.md
+@@ -7,6 +7,8 @@ Build from the repository root with `npm run build` before importing `dist/`.
+ ```ts
+ import { mountEditor } from '@edit-ac/web';
+ 
++// root, assetUrl, databaseName and identity are supplied by the host.
++
+ const editor = mountEditor(root, {
+   assetUrl, databaseName, identity, indexedDB, locks: navigator.locks,
+   label: 'Document editor',
+@@ -20,6 +22,17 @@ unsubscribe();
+ await editor.destroy({ policy: 'flush' });
+ ```
+ 
++`flush({ target: 'local' })` waits for local journal commits; it does not report
++remote settlement. Other flush targets reject. Commands reject while loading,
++closing or read-only; recovery failures reject `ready` and remain observable in
++state. `createEditor` returns the same lifecycle handle as `mountEditor`;
++await `ready` before using it. `taskPreset()` supplies explicit Markdown paste
++and typing-shortcut defaults. `chain()` collects commands for a single Rust
++prepare/commit; `can()` validates them without mutation. `attachSync()` attaches
++a host-supplied transport to the existing document and requires the peer identity
++and authorization decision. Hosts drive its `receive()` and `pump()` methods;
++attachment and sending frames do not establish durable remote settlement.
++
+ The host supplies an initialized document identity and local checkpoint through
+ the core/storage contracts. Mounting recovers that document before accepting
+ input. Existing preview DOM stays read-only and is replaced with authoritative
+diff --git a/packages/web/src/dom/render.ts b/packages/web/src/dom/render.ts
+index f527e20..a39afda 100644
+--- a/packages/web/src/dom/render.ts
++++ b/packages/web/src/dom/render.ts
+@@ -58,6 +58,12 @@ export class DOMRenderer {
+   positions(id: string): readonly DOMPosition[] {
+     const entry = this.entries.get(id);
+     if (!entry) return [];
++    // A freshly authored empty source can project zero runs. Its placeholder
++    // still owns an editable UTF-16 boundary for selection and the next input.
++    const placeholder = entry.content.lastElementChild;
++    if (!entry.runs.length && placeholder?.matches('br[data-placeholder]')) {
++      return [{ node: placeholder, start: 0, length: 0 }];
++    }
+     let offset = 0;
+     return entry.runs.flatMap(run => run.positions.map(position => {
+       const result = { ...position, start: offset }; offset += position.length; return result;
+@@ -65,7 +71,7 @@ export class DOMRenderer {
+   }
+   /** Document-ordered editable blocks, excluding containers and noneditable atoms. */
+   textBlockIds(): string[] {
+-    return [...this.entries.values()].filter(entry => entry.runs.length > 0 && entry.content.contentEditable !== "false")
++    return [...this.entries.values()].filter(entry => (entry.runs.length > 0 || entry.content.lastElementChild?.matches('br[data-placeholder]')) && entry.content.contentEditable !== "false")
+       .sort((a, b) => a.node.order - b.node.order).map(entry => entry.node.id);
+   }
+   setReadOnly(value: boolean): void { if (!this.disposed) { this.root.contentEditable = value ? "false" : "true"; for (const entry of this.entries.values()) entry.contentView?.setReadOnly(value); } }
+diff --git a/packages/web/src/editor.ts b/packages/web/src/editor.ts
+index c74683f..aa43343 100644
+--- a/packages/web/src/editor.ts
++++ b/packages/web/src/editor.ts
+@@ -1,4 +1,6 @@
+-import type { CommitResult, PrepareRequest, Snapshot } from '@edit-ac/core';
++import type { AnchorToken, Bias, CommitResult, DocumentIdentity, EditorCommand, Patch, PatchScope, PrepareRequest, Snapshot } from '@edit-ac/core';
++import { SyncSession, type SyncSessionOptions, type SyncTransport } from './sync/session.js';
++import { UpdateOutbox } from './storage/outbox.js';
+ import { recoverLocalDocument } from './entry.js';
+ import type { DOMRenderer } from './dom/render.js';
+ import type { DOMSelection } from './dom/selection.js';
+@@ -31,6 +33,37 @@ export interface EditorOptions extends RecoveryOptions {
+   recover?: typeof recoverLocalDocument;
+ }
+ export interface DestroyResult { unsaved: boolean; recovery: RecoveryExport | null; provisional: readonly { text?: string; reason: string }[]; clipboard: readonly { mime: string; raw: string; reason: string }[] }
++export interface SyncAttachment {
++  readonly state: SyncSession['state'];
++  receive(frame: Uint8Array): void;
++  pump(now: number): Promise<void>;
++  detach(): void;
++}
++export interface AttachSyncOptions extends SyncSessionOptions {
++  transport: SyncTransport;
++  peerIdentity: DocumentIdentity;
++  authorized: boolean;
++}
++/** A chain is one Rust prepare/commit, never a loop of partially applied commands. */
++export class CommandChain {
++  private readonly commands: EditorCommand[] = [];
++  private consumed = false;
++  constructor(private readonly editor: BrowserEditor, private readonly origin: string) {}
++  command(command: EditorCommand): this {
++    if (this.consumed) throw Error('Command chain consumed');
++    this.commands.push(structuredClone(command)); return this;
++  }
++  private request(): PrepareRequest {
++    if (this.consumed) throw Error('Command chain consumed');
++    return { kind: 'editor', origin: this.origin, commands: structuredClone(this.commands) };
++  }
++  can(): boolean { return this.editor.can(this.request()); }
++  /** A returned caret token is caller-owned; release it after applying selection. */
++  run(): CommitResult {
++    const request = this.request(); this.consumed = true;
++    return this.editor.commit(request);
++  }
++}
+ const mounts = new WeakMap<HTMLElement, BrowserEditor>();
+ let editorSequence = 0;
+ 
+@@ -52,6 +85,10 @@ export class BrowserEditor {
+     void this.plainPaste(undefined, target).catch(() => {});
+   };
+   private session: LocalSession | undefined;
++  private readonly recoveryOptions: RecoveryOptions;
++  private sync: SyncAttachment | undefined;
++  private syncGeneration = 0;
++  private readonly patchObservers = new Set<() => void>();
+   private renderer: DOMRenderer | undefined;
+   private selection: DOMSelection | undefined;
+   private input: TextInput | undefined;
+@@ -71,6 +108,7 @@ export class BrowserEditor {
+     mounts.set(root, this);
+     const captured: EditorOptions = { ...options, identity: { ...options.identity },
+       ...(options.preview ? { preview: { identity: { ...options.preview.identity }, revision: options.preview.revision } } : {}) };
++    this.recoveryOptions = captured;
+     this.readOnly = options.readOnly ?? false;
+     this.lifecycle = new BrowserLifecycle(!!root.childNodes.length, this.readOnly);
+     root.contentEditable = 'false'; root.setAttribute('role', 'textbox'); root.setAttribute('aria-multiline', 'true');
+@@ -91,7 +129,15 @@ export class BrowserEditor {
+   }
+   get state() { return this.lifecycle.state; }
+   get clipboardRecovery() { return this.input?.clipboard.recovery.map(record => ({ ...record })) ?? []; }
+-  subscribe(listener: Parameters<BrowserLifecycle['subscribe']>[0]): () => void { return this.lifecycle.subscribe(listener); }
++  subscribe(listener: Parameters<BrowserLifecycle['subscribe']>[0]): () => void;
++  subscribe(scope: PatchScope, listener: (patch: Patch) => void): () => void;
++  subscribe(scope: PatchScope | Parameters<BrowserLifecycle['subscribe']>[0], listener?: (patch: Patch) => void): () => void {
++    if (typeof scope === 'function') return this.lifecycle.subscribe(scope);
++    if (!listener) throw TypeError('Patch listener required');
++    const subscription = this.requireReady().writer.engine.subscribe(scope, listener);
++    const dispose = () => { subscription.dispose(); this.patchObservers.delete(dispose); };
++    this.patchObservers.add(dispose); return dispose;
++  }
+   private async activate(options: EditorOptions): Promise<void> {
+     try {
+       const cancellation = new Promise<never>((_, reject) => { this.cancelActivation = () => reject(Error('Editor initialization canceled')); });
+@@ -152,6 +198,46 @@ export class BrowserEditor {
+   get slash(): import('./modules/slash.js').SlashPresenter | undefined { return this.input?.slash; }
+   get moduleRuntime(): import('./modules/runtime.js').ModuleRuntime | undefined { return this.renderer?.moduleRuntime; }
+   read(): Snapshot { return this.requireReady().writer.engine.read(); }
++  anchor(node: string, offset: number, bias: Bias = 'right'): AnchorToken { return this.requireReady().writer.engine.anchor(node, offset, bias); }
++  releaseAnchor(anchor: AnchorToken): void { this.requireReady().writer.engine.releaseAnchor(anchor); }
++  can(request: PrepareRequest): boolean {
++    const session = this.requireReady();
++    return !this.readOnly && session.storage.state.phase !== 'error' && session.writer.engine.can(request);
++  }
++  chain(origin = 'local:sdk'): CommandChain { this.requireReady(); return new CommandChain(this, origin); }
++  /** Host drives receive/pump on transport events and retry deadlines. Sending
++   * frames establishes no durable remote-save claim. Attachment never restores a replica. */
++  async attachSync(options: AttachSyncOptions): Promise<SyncAttachment> {
++    const session = this.requireReady(), generation = ++this.syncGeneration;
++    const { transport, authorized, peerIdentity, ...limits } = options;
++    const identity = { ...peerIdentity };
++    const outbox = await UpdateOutbox.open(this.recoveryOptions.indexedDB, this.recoveryOptions.databaseName);
++    let sync: SyncSession | undefined;
++    try {
++      if (this.requireReady() !== session || generation !== this.syncGeneration) throw Error('Sync attachment superseded');
++      sync = new SyncSession(session.writer.engine, outbox, limits);
++      sync.attach(transport, identity, authorized);
++      const owned = sync;
++      let latest = session.storage.state.localCommitted?.updateId, detached = false;
++      const unsubscribe = session.storage.subscribe(state => {
++        if (state.localCommitted && state.localCommitted.updateId !== latest) {
++          latest = state.localCommitted.updateId;
++          // Re-read the durable outbox; SyncSession filters remote/restore origins.
++          owned.localCommitted('local:sdk');
++        }
++      });
++      const attachment: SyncAttachment = {
++        get state() { return owned.state; },
++        receive: frame => owned.receive(frame), pump: now => owned.pump(now),
++        detach: () => {
++          if (detached) return; detached = true;
++          unsubscribe(); owned.dispose(); outbox.close();
++          if (this.sync === attachment) this.sync = undefined;
++        }
++      };
++      this.sync?.detach(); this.sync = attachment; return attachment;
++    } catch (error) { sync?.dispose(); outbox.close(); throw error; }
++  }
+   commit(request: PrepareRequest): CommitResult {
+     const session = this.requireReady(); if (this.readOnly) throw Error('Editor is read-only'); return session.storage.commit(request);
+   }
+@@ -189,6 +275,8 @@ export class BrowserEditor {
+     if (this.destroyPromise) return this.destroyPromise;
+     if (options.policy !== 'flush' && options.policy !== 'report') return Promise.reject(Error('Explicit destroy policy required'));
+     this.closing = true;
++    this.syncGeneration++; this.sync?.detach();
++    for (const dispose of this.patchObservers) dispose();
+     this.root.contentEditable = 'false'; this.root.setAttribute('aria-readonly', 'true');
+     // Publish the shared teardown promise before notifying reentrant subscribers.
+     this.destroyPromise = Promise.resolve().then(async () => {
+diff --git a/packages/web/src/index.ts b/packages/web/src/index.ts
+index e56303c..a1af32e 100644
+--- a/packages/web/src/index.ts
++++ b/packages/web/src/index.ts
+@@ -1,5 +1,8 @@
+-export { mountEditor, BrowserEditor } from './editor.js';
+-export type { EditorOptions, DestroyResult } from './editor.js';
++export { mountEditor, BrowserEditor, CommandChain } from './editor.js';
++export type { EditorOptions, DestroyResult, AttachSyncOptions, SyncAttachment } from './editor.js';
++export { createEditor, taskPreset } from './sdk.js';
++export type { TaskPresetOptions } from './sdk.js';
++export { CheckpointStorage } from './storage/checkpoint.js';
+ export { mountEditorSurface } from './surface.js';
+ export type { EditorSurface, EditorSurfaceOptions } from './surface.js';
+ export type { EditorState, PreviewTag } from './lifecycle.js';
+diff --git a/scripts/check-package-exports.mjs b/scripts/check-package-exports.mjs
+index 687d45c..cc543c4 100644
+--- a/scripts/check-package-exports.mjs
++++ b/scripts/check-package-exports.mjs
+@@ -1,6 +1,5 @@
+-// Exercise the actual compiled workspace exports. This is a packaging smoke
+-// check, not evidence that an editor or WASM runtime has been implemented.
++// Import smoke only; sdk-prerequisites.test.mjs exercises the implemented API.
+ for (const name of ["@edit-ac/core", "@edit-ac/web", "@edit-ac/react"]) {
+   await import(name);
+-  console.log(`Imported compiled scaffold: ${name}`);
++  console.log(`Imported compiled package: ${name}`);
+ }
+diff --git a/scripts/test-browser.mjs b/scripts/test-browser.mjs
+index 0cbf4e2..ae6a2ca 100644
+--- a/scripts/test-browser.mjs
++++ b/scripts/test-browser.mjs
+@@ -22,6 +22,7 @@ suites['extension-entry'] = ['tests/browser/extension-entry.spec.ts'];
+ suites['markdown-paste'] = ['tests/browser/markdown-paste.spec.ts'];
+ suites.clipboard = ['tests/browser/clipboard.spec.ts'];
+ suites.lifecycle = ['tests/browser/lifecycle.spec.ts'];
++suites.sdk = ['tests/browser/sdk.spec.ts'];
+ suites.dispose = ['tests/browser/dispose.spec.ts'];
+ suites.accessibility = ['tests/browser/accessibility.spec.ts'];
+ suites.example = ['tests/browser/web-example.test.mjs'];
+diff --git a/tests/browser/browser-harness.ts b/tests/browser/browser-harness.ts
+index 97ef56d..60cf8f4 100644
+--- a/tests/browser/browser-harness.ts
++++ b/tests/browser/browser-harness.ts
+@@ -8,7 +8,7 @@ import { createHash } from 'node:crypto';
+ import { chromium, firefox, webkit } from 'playwright';
+ import { startFixtureServer } from './fixture-server.mjs';
+ 
+-export function browserHarness(suite, fixtureDirectory = 'fixtures/browser-input') {
++export function browserHarness(suite, fixtureDirectory = 'fixtures/browser-input', options = {}) {
+   const key = suite.toUpperCase().replaceAll('-', '_');
+   const engine = process.env[`EDITAC_${key}_BROWSER`] ?? 'chromium';
+   const browserType = { chromium, firefox, webkit }[engine];
+@@ -25,6 +25,7 @@ export function browserHarness(suite, fixtureDirectory = 'fixtures/browser-input
+     await mkdir(output, { recursive: true });
+     facts.revision = spawnSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).stdout.trim();
+     const paths = ['packages/web/src/clipboard/fragment.ts', 'packages/web/src/clipboard/html.ts', 'packages/web/src/clipboard/markdown.ts', 'packages/web/src/clipboard/pending.ts', 'tests/browser/format-helpers.ts', 'crates/editac-markdown/src/extensions.rs', 'crates/editac-markdown/src/optional.rs', 'crates/editac-core/src/modules/content.rs', 'packages/web/src/input/text.ts', 'packages/web/src/input/shortcuts.ts', 'packages/core/src/engine.ts', 'crates/editac-core/src/commands/editor.rs', 'crates/editac-wasm/src/bridge.rs', 'scripts/test-browser.mjs', `tests/browser/${suite}.spec.ts`, 'tests/browser/browser-harness.ts', 'package-lock.json'];
++    if (suite === 'sdk') paths.push('packages/web/src/sdk.ts', 'packages/web/src/editor.ts', 'packages/web/src/index.ts', 'examples/task-editor/editor.mjs', 'examples/task-editor/index.html');
+     if (suite === 'math') paths.push('packages/web/src/modules/math.ts', 'packages/web/src/modules/math-renderer.ts', 'packages/web/src/dom/render.ts', 'packages/web/src/input/text.ts', 'scripts/build-math-assets.mjs', 'fixtures/modules/math.json', 'fixtures/browser-math/session.mjs', 'fixtures/browser-math/index.html', 'crates/editac-core/tests/math_atom.rs', 'packages/web/package.json');
+     if (suite === 'content-modules') paths.push('packages/web/src/modules/content.ts', 'packages/web/src/dom/render.ts', 'packages/web/src/surface.ts', 'packages/web/src/editor.ts', 'packages/web/src/index.ts', 'fixtures/browser-content-modules/session.mjs', 'fixtures/browser-content-modules/index.html', 'crates/editac-core/tests/table_cells.rs');
+     if (suite === 'reorder') paths.push('packages/web/src/modules/reorder.ts', 'packages/web/src/dom/selection.ts', 'packages/web/src/surface.ts', 'packages/web/src/editor.ts', 'packages/web/src/index.ts', 'fixtures/browser-reorder/session.mjs', 'fixtures/browser-reorder/index.html');
+@@ -64,8 +65,11 @@ export function browserHarness(suite, fixtureDirectory = 'fixtures/browser-input
+     facts.cases.push(fact);
+     const page = await context.newPage(); page.on('pageerror', e => fact.errors.push(e.message));
+     try {
+-      await page.goto(server.url); await page.waitForFunction(() => !!window.inputFixture);
+-      await page.evaluate(text => window.inputFixture.mount(text), text);
++      await page.goto(server.url);
++      if (options.autoMount !== false) {
++        await page.waitForFunction(() => !!window.inputFixture);
++        await page.evaluate(text => window.inputFixture.mount(text), text);
++      }
+       await page.evaluate(() => {
+         // Firefox intentionally discards DataTransfer in constructed ClipboardEvents.
+         // Supply the prepared payload explicitly; this is never OS clipboard evidence.
+diff --git a/tests/browser/lifecycle.spec.ts b/tests/browser/lifecycle.spec.ts
+index 5b54250..adf0504 100644
+--- a/tests/browser/lifecycle.spec.ts
++++ b/tests/browser/lifecycle.spec.ts
+@@ -3,6 +3,33 @@ import { test } from 'node:test';
+ import { browserHarness } from './browser-harness.ts';
+ import { prepareEditor } from './editor-test-utils.ts';
+ const {probe}=browserHarness('lifecycle');
++test('public SDK methods reject unsupported targets and commands without fake success',()=>probe('sdk-errors',async(page,fact)=>{
++  await prepareEditor(page);
++  const result=await page.evaluate(async()=>{
++    const editor=window.activeEditor=window.mountBrowserEditor(window.inputFixture.root,window.editorOptions);
++    await editor.ready;
++    const before=editor.read(), failures={};
++    try { await editor.flush({target:'remote'}); } catch(error) { failures.flush=error.message; }
++    try { editor.commit({kind:'editor',origin:'local:sdk',commands:[{type:'unsupported'}]}); } catch(error) { failures.command={code:error.code,operation:error.operation}; }
++    try { await editor.destroy({policy:'unsupported'}); } catch(error) { failures.destroy=error.message; }
++    const readyAfterInvalidDestroy=editor.state.ready;
++    editor.setReadOnly(true);
++    try { editor.commit({kind:'editor',origin:'local:sdk',commands:[]}); } catch(error) { failures.readOnly=error.message; }
++    const after=editor.read();
++    await editor.flush({target:'local'});
++    let notifications=0;const unsubscribe=editor.subscribe(()=>notifications++);unsubscribe();
++    const count=notifications;
++    await editor.destroy({policy:'flush'});
++    return {before,after,failures,readyAfterInvalidDestroy,unsubscribed:notifications===count};
++  });
++  fact.snapshots.push(result);
++  assert.deepEqual(result.after,result.before);
++  assert.equal(result.failures.flush,'Unsupported flush target');
++  assert.deepEqual(result.failures.command,{code:'InvalidInput',operation:'prepare'});
++  assert.equal(result.failures.destroy,'Explicit destroy policy required');
++  assert.equal(result.failures.readOnly,'Editor is read-only');
++  assert.equal(result.readyAfterInvalidDestroy,true);assert.equal(result.unsubscribed,true);
++}));
+ test('stale preview is never editable and recovered content replaces it before ready',()=>probe('stale-preview',async(page,fact)=>{
+   await prepareEditor(page);
+   const s=await page.evaluate(async()=>{const root=window.inputFixture.root;root.textContent='stale preview';const e=window.activeEditor=window.mountBrowserEditor(root,{...window.editorOptions,preview:{identity:{...window.editorOptions.identity},revision:999}});const before={...e.state,editable:root.contentEditable};window.states=[];e.subscribe(s=>window.states.push({...s,error:!!s.error}));await e.ready;return {before,after:e.state,editable:root.contentEditable,text:root.textContent,states:window.states};});

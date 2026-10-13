@@ -1,0 +1,157 @@
+
+> edit-ac-workspace@0.0.0 check:packages
+> npm run typecheck && npm run build && node scripts/check-package-exports.mjs && node --test tests/sdk-prerequisites.test.mjs
+
+
+> edit-ac-workspace@0.0.0 typecheck
+> npm run typecheck --workspaces
+
+
+> @edit-ac/core@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/web@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/react@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> edit-ac-workspace@0.0.0 build
+> npm run build --workspaces
+
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+
+> @edit-ac/web@0.0.0 build
+> tsc --project tsconfig.json && node ../../scripts/build-math-assets.mjs
+
+
+> @edit-ac/react@0.0.0 build
+> tsc --project tsconfig.json
+
+Imported compiled package: @edit-ac/core
+Imported compiled package: @edit-ac/web
+Imported compiled package: @edit-ac/react
+✔ public SSR imports allocate nothing and reject empty asset URLs without I/O (48.7245ms)
+✔ public web exports resolve implemented entrypoints without advertising unfinished SDK methods (0.685708ms)
+✖ the core README example executes against the public production runtime (4.069208ms)
+✖ unsupported commands and invalid JSON reject before mutation, including a mixed batch (0.446417ms)
+✖ UTF-16 commands, stable anchors, scoped patches and history use one live replica (0.625875ms)
+✖ checkpoint recovery and real peer updates preserve identity and reject another epoch (0.159875ms)
+✖ Markdown preparation and export report actual content without editing the document (0.091833ms)
+✖ implemented error variants remain visible and disposed methods cannot report success (0.097792ms)
+✔ README examples and public error/command types compile against built declarations (209.603375ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 3
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 430.935459
+
+✖ failing tests:
+
+test at tests/sdk-prerequisites.test.mjs:44:1
+✖ the core README example executes against the public production runtime (4.069208ms)
+  Error [EngineError]: InvalidMetadata
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at eval (eval at <anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:52:9), <anonymous>:6:24)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:52:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/sdk-prerequisites.test.mjs:56:1
+✖ unsupported commands and invalid JSON reject before mutation, including a mixed batch (0.446417ms)
+  Error [EngineError]: InvalidMetadata
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at create (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:13:30)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:57:18)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/sdk-prerequisites.test.mjs:74:1
+✖ UTF-16 commands, stable anchors, scoped patches and history use one live replica (0.625875ms)
+  Error [EngineError]: InvalidMetadata
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at create (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:13:30)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:75:18)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/sdk-prerequisites.test.mjs:101:1
+✖ checkpoint recovery and real peer updates preserve identity and reject another epoch (0.159875ms)
+  Error [EngineError]: InvalidMetadata
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at create (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:13:30)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:102:18)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/sdk-prerequisites.test.mjs:121:1
+✖ Markdown preparation and export report actual content without editing the document (0.091833ms)
+  Error [EngineError]: InvalidMetadata
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at create (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:13:30)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:122:18)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/sdk-prerequisites.test.mjs:135:1
+✖ implemented error variants remain visible and disposed methods cannot report success (0.097792ms)
+  Error [EngineError]: InvalidMetadata
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at create (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:13:30)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sdk-prerequisites.test.mjs:136:18)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }

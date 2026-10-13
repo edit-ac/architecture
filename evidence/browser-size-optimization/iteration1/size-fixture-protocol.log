@@ -1,0 +1,42 @@
+✔ total cap admits its exact boundary (2.700375ms)
+✔ total cap rejects one byte above (0.289083ms)
+✔ js cap admits its exact boundary (0.088125ms)
+✔ js cap rejects one byte above (0.085ms)
+✔ preferred misses remain visible when hard caps pass (0.114333ms)
+✔ preferred exact boundaries pass (0.076709ms)
+✔ omitted required resource fails: task.js (0.082208ms)
+✔ omitted required resource fails: glue.js (0.051667ms)
+✔ omitted required resource fails: engine.wasm (0.0625ms)
+✔ omitted required resource fails: task.css (0.108625ms)
+✔ omitted required resource fails: required-lazy.js (0.071834ms)
+✔ duplicate resources cannot disguise the inventory (0.067667ms)
+✔ invalid measurements and incomplete inventory fail (0.146917ms)
+✔ resource hashes and level-9 fixed-metadata gzip are reproducible (58.567791ms)
+✔ production graph admits only audited packed dependencies (0.216542ms)
+✔ omitted required runtime dependency fails graph admission (0.098666ms)
+✔ workspace source resolution fails graph admission (0.054416ms)
+✔ hidden required lazy code fails even when statically bundled bytes fit (0.078542ms)
+✔ an extra hidden lazy dependency in the known glue loader fails (0.070584ms)
+✔ production WASM/glue exclude foundation roots; explicit qualification build retains them (64.756333ms)
+✔ a real update larger than 100k bytes restores from the checkpoint journal (215.269208ms)
+✔ untrusted metadata arrays retain the existing structure bound (0.848125ms)
+✔ multiple bounded updates can exceed 100k payload bytes in aggregate during replay (88.029583ms)
+✔ oversized journal payload still rejects before replay or document allocation (1.281875ms)
+✔ lockfile keeps exact protocol fixture pins dev-only (6.256625ms)
+✔ Yjs fixture import provides UTF-16 text offsets (5.916917ms)
+✔ protocol fixture subpath imports resolve (0.076791ms)
+✔ built and packed SSR imports perform no browser access, fetch or WASM initialization (3583.923917ms)
+✔ built browser consumer loads actual compiled WASM at the explicit asset URL (621.954458ms)
+✔ packed browser consumer loads actual compiled WASM at the explicit asset URL (119.446709ms)
+✔ failed asset initialization is observable and retry creates no document until requested (280.97ms)
+✔ compiled bridge applies JS-authored marked Unicode v1 updates and rejects malformed bytes (81.736167ms)
+✔ packed binary and glue bytes are measured and generated output does not replace package metadata (1.482375ms)
+✔ built and packed browser consumers own real engine plans, anchors and history (191.496375ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5601.794125

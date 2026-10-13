@@ -1,0 +1,135 @@
+
+> edit-ac-workspace@0.0.0 check:rust
+> cargo fmt --all -- --check && cargo check --workspace --all-targets --locked --offline && node scripts/test-rust.mjs
+
+warning: constant `BLOCK` is never used
+  --> crates/editac-core/tests/structure_registry.rs:11:7
+   |
+11 | const BLOCK: &str = "block-1";
+   |       ^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "structure_registry") generated 1 warning
+warning: enum `Command` is never used
+ --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:4:10
+  |
+4 | pub enum Command {
+  |          ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `Neighbor` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:32:12
+   |
+32 | pub struct Neighbor {
+   |            ^^^^^^^^
+
+warning: struct `Prepared` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:36:12
+   |
+36 | pub struct Prepared {
+   |            ^^^^^^^^
+
+warning: function `target` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:40:4
+   |
+40 | fn target(d: &Doc, key: &str) -> Result<Owner> {
+   |    ^^^^^^
+
+warning: function `register` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:55:4
+   |
+55 | fn register(d: &Doc, key: &str, parent: &str, tuple: Any) -> Result<()> {
+   |    ^^^^^^^^
+
+warning: function `execute` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:74:4
+   |
+74 | fn execute(d: &Doc, c: &Command) -> Result<String> {
+   |    ^^^^^^^
+
+warning: function `prepare` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:170:8
+    |
+170 | pub fn prepare(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<Prepared> {
+    |        ^^^^^^^
+
+warning: function `commit` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:211:8
+    |
+211 | pub fn commit(d: &Doc, p: Prepared) -> Result<()> {
+    |        ^^^^^^
+
+warning: function `batch` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:220:8
+    |
+220 | pub fn batch(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<()> {
+    |        ^^^^^
+
+warning: function `rendered_runs` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:224:8
+    |
+224 | pub fn rendered_runs(d: &Doc, key: &str) -> Result<Any> {
+    |        ^^^^^^^^^^^^^
+
+warning: `editac-core` (test "structural_profile") generated 10 warnings
+warning: function `resolve` is never used
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1038:8
+     |
+1038 | pub fn resolve(d: &Doc, source: &str, encoded: &[u8]) -> Result<(String, u32, bool)> {
+     |        ^^^^^^^
+     |
+     = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "block_kinds_profile") generated 1 warning
+warning: function `fixture` is never used
+ --> crates/editac-core/tests/support/hierarchy.rs:9:15
+  |
+9 | pub(crate) fn fixture() -> Doc {
+  |               ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `relative` is never used
+  --> crates/editac-core/tests/support/split_join.rs:86:4
+   |
+86 | fn relative<T: yrs::ReadTxn>(
+   |    ^^^^^^^^
+
+warning: method `len` is never used
+   --> crates/editac-core/tests/support/split_join.rs:179:19
+    |
+175 | impl Block {
+    | ---------- method in this implementation
+...
+179 |     pub(crate) fn len(&self) -> u32 {
+    |                   ^^^
+
+warning: function `project` is never used
+   --> crates/editac-core/tests/support/split_join.rs:234:15
+    |
+234 | pub(crate) fn project(doc: &Doc) -> Vec<Block> {
+    |               ^^^^^^^
+
+warning: struct `Anchor` is never constructed
+   --> crates/editac-core/tests/support/split_join.rs:320:19
+    |
+320 | pub(crate) struct Anchor {
+    |                   ^^^^^^
+
+warning: function `anchor` is never used
+   --> crates/editac-core/tests/support/split_join.rs:325:15
+    |
+325 | pub(crate) fn anchor(doc: &Doc, key: &str, index: u32, assoc: Assoc) -> Anchor {
+    |               ^^^^^^
+
+warning: function `resolve` is never used
+   --> crates/editac-core/tests/support/split_join.rs:337:15
+    |
+337 | pub(crate) fn resolve(doc: &Doc, anchor: &Anchor) -> Option<(String, u32)> {
+    |               ^^^^^^^
+
+warning: `editac-core` (test "structure_conflicts") generated 7 warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.27s
+{"output":"/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/rust-qualified","exit":0,"counts":{"executed":707,"passed":707,"failed":0,"skipped":0,"filtered":0},"nonemptySuites":45}

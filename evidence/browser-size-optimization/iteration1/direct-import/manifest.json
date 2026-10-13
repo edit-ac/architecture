@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "profile": "default-task",
+  "fixtureBaseline": false,
+  "productionFixtureAbsent": true,
+  "node": "v24.19.0",
+  "zlib": "1.3.2.1-motley-3246f1b",
+  "esbuild": "0.25.12",
+  "minifier": {
+    "target": "es2022",
+    "minify": true,
+    "bundle": true,
+    "splitting": false
+  },
+  "compression": {
+    "gzip": {
+      "level": 9,
+      "mtime": 0
+    },
+    "brotli": {
+      "quality": 11
+    },
+    "counting": "each distinct delivered resource once; required lazy code included"
+  },
+  "packs": [
+    {
+      "name": "core",
+      "filename": "edit-ac-core-0.0.0.tgz",
+      "integrity": "sha512-DeC4kyks1m/SZVxUeB7BFhAmcEl1xo5t0GtOObQGV1QN23xvV5j1EKf5I7AWk8uqHx4Xg/2OJLQDP+wj4BL93g==",
+      "shasum": "763c445bfee578efc77191d6fbe10ba8df43978a"
+    },
+    {
+      "name": "web",
+      "filename": "edit-ac-web-0.0.0.tgz",
+      "integrity": "sha512-+3BChJZYFTctf/6OVgUN1294NhtuuA4jAkB1Pq8ghfdMIoZDcOxEJzDWeSJj8wSUKN8kGYHGuq6Kk8w/A2QkaA==",
+      "shasum": "4986718f9b11655dac84bb80a7c9e10bf2e2665d"
+    }
+  ],
+  "required": [
+    {
+      "name": "task.js",
+      "kind": "js"
+    },
+    {
+      "name": "wasm/editac_wasm_bg.wasm",
+      "kind": "wasm"
+    },
+    {
+      "name": "task.css",
+      "kind": "css"
+    }
+  ],
+  "assets": [
+    {
+      "name": "task.js",
+      "kind": "js",
+      "sha256": "1572cdecf3f8e5fe85cd854017a479e81de2e3cc456ad794e4b3035e154b9a6a",
+      "raw": 131614,
+      "gzip": 36812,
+      "brotli": 32685
+    },
+    {
+      "name": "wasm/editac_wasm_bg.wasm",
+      "kind": "wasm",
+      "sha256": "715f2eed019fa5d95ce5cc66ef235930b049d33d0370952d3d2bd311838dd2ea",
+      "raw": 1765718,
+      "gzip": 536533,
+      "brotli": 405888
+    },
+    {
+      "name": "task.css",
+      "kind": "css",
+      "sha256": "7bf359c6547cfcadfaaa4eb0e3c2b79fb47c41c68a9153a1ca501c05795d327b",
+      "raw": 184,
+      "gzip": 153,
+      "brotli": 114
+    }
+  ],
+  "result": {
+    "total": {
+      "bytes": 573498,
+      "hard": 512000,
+      "preferred": 256000,
+      "hardPass": false,
+      "preferredPass": false,
+      "gap": 61498
+    },
+    "js": {
+      "bytes": 36812,
+      "hard": 32000,
+      "preferred": 16000,
+      "hardPass": false,
+      "preferredPass": false,
+      "gap": 4812
+    }
+  },
+  "commands": [
+    {
+      "command": "npm",
+      "args": [
+        "pack",
+        "--workspace=@edit-ac/core",
+        "--pack-destination",
+        "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-browser-size-mtExFu",
+        "--json"
+      ],
+      "exit": 0,
+      "label": "pack-core"
+    },
+    {
+      "command": "npm",
+      "args": [
+        "pack",
+        "--workspace=@edit-ac/web",
+        "--pack-destination",
+        "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-browser-size-mtExFu",
+        "--json"
+      ],
+      "exit": 0,
+      "label": "pack-web"
+    },
+    {
+      "command": "npm",
+      "args": [
+        "install",
+        "--offline",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-browser-size-mtExFu/edit-ac-core-0.0.0.tgz",
+        "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-browser-size-mtExFu/edit-ac-web-0.0.0.tgz"
+      ],
+      "exit": 0,
+      "label": "install"
+    }
+  ],
+  "inputs": [
+    "node_modules/@edit-ac/core/dist/engine.js",
+    "node_modules/@edit-ac/core/dist/wasm/editac_wasm.js",
+    "node_modules/@edit-ac/core/dist/index.js",
+    "node_modules/@edit-ac/web/dist/sync/protocol.js",
+    "node_modules/@edit-ac/web/dist/sync/session.js",
+    "node_modules/@edit-ac/web/dist/storage/journal.js",
+    "node_modules/@edit-ac/web/dist/storage/outbox.js",
+    "node_modules/@edit-ac/web/dist/storage/checkpoint.js",
+    "node_modules/@edit-ac/web/dist/storage/writer.js",
+    "node_modules/@edit-ac/web/dist/storage/index.js",
+    "node_modules/@edit-ac/web/dist/entry.js",
+    "node_modules/@edit-ac/web/dist/modules/registry.js",
+    "node_modules/@edit-ac/web/dist/modules/runtime.js",
+    "node_modules/@edit-ac/web/dist/dom/render.js",
+    "node_modules/@edit-ac/web/dist/dom/selection.js",
+    "node_modules/@edit-ac/web/dist/input/shortcuts.js",
+    "node_modules/@edit-ac/web/dist/input/keyboard.js",
+    "node_modules/@edit-ac/web/dist/input/reconcile.js",
+    "node_modules/@edit-ac/web/dist/input/composition.js",
+    "node_modules/@edit-ac/web/dist/clipboard/pending.js",
+    "node_modules/@edit-ac/web/dist/clipboard/markdown.js",
+    "node_modules/@edit-ac/web/dist/clipboard/html.js",
+    "node_modules/@edit-ac/web/dist/clipboard/fragment.js",
+    "node_modules/@edit-ac/web/dist/input/text.js",
+    "node_modules/@edit-ac/web/dist/surface.js",
+    "node_modules/@edit-ac/web/dist/lifecycle.js",
+    "node_modules/@edit-ac/web/dist/editor.js",
+    "node_modules/@edit-ac/web/dist/sdk.js",
+    "node_modules/@edit-ac/web/dist/modules/slash.js",
+    "node_modules/@edit-ac/web/dist/modules/references.js",
+    "node_modules/@edit-ac/web/dist/modules/reorder.js",
+    "node_modules/@edit-ac/web/dist/modules/content.js",
+    "node_modules/@edit-ac/web/dist/index.js",
+    "task.mjs"
+  ],
+  "ephemeralRoot": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-browser-size-mtExFu"
+}

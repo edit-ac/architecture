@@ -1,0 +1,65 @@
+
+> edit-ac-workspace@0.0.0 check:packages
+> npm run typecheck && npm run build && node scripts/check-package-exports.mjs && node --test tests/sdk-prerequisites.test.mjs
+
+
+> edit-ac-workspace@0.0.0 typecheck
+> npm run typecheck --workspaces
+
+
+> @edit-ac/core@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/web@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/react@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/astro@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> edit-ac-workspace@0.0.0 build
+> npm run build --workspaces
+
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+
+> @edit-ac/web@0.0.0 build
+> tsc --project tsconfig.json && node ../../scripts/build-math-assets.mjs
+
+
+> @edit-ac/react@0.0.0 build
+> tsc --project tsconfig.json
+
+
+> @edit-ac/astro@0.0.0 build
+> tsc --project tsconfig.json
+
+Imported compiled package: @edit-ac/core
+Imported compiled package: @edit-ac/web
+Imported compiled package: @edit-ac/react
+Imported compiled package: @edit-ac/astro
+✔ public SSR imports allocate nothing and reject empty asset URLs without I/O (43.236084ms)
+✔ public web exports resolve implemented entrypoints and explicit task defaults (0.871917ms)
+✔ the core README example executes against the public production runtime (21.217083ms)
+✔ unsupported commands and invalid JSON reject before mutation, including a mixed batch (2.319459ms)
+✔ UTF-16 commands, stable anchors, scoped patches and history use one live replica (5.656667ms)
+✔ checkpoint recovery and real peer updates preserve identity and reject another epoch (3.303459ms)
+✔ Markdown preparation and export report actual content without editing the document (4.641667ms)
+✔ implemented error variants remain visible and disposed methods cannot report success (7.92425ms)
+✔ README examples and public error/command types compile against built declarations (189.345833ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 396.59225

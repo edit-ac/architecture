@@ -1,0 +1,555 @@
+
+> edit-ac-workspace@0.0.0 check:rust
+> cargo fmt --all -- --check && cargo check --workspace --all-targets --locked --offline && cargo test --workspace --locked --offline
+
+   Compiling unicode-ident v1.0.26
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+    Checking stable_deref_trait v1.2.1
+    Checking smallvec v1.16.3
+   Compiling rustversion v1.0.23
+    Checking writeable v0.6.4
+    Checking litemap v0.8.3
+    Checking utf8_iter v1.0.4
+   Compiling icu_normalizer_data v2.3.0
+   Compiling icu_properties_data v2.3.0
+   Compiling serde_core v1.0.229
+   Compiling libc v0.2.190
+   Compiling crossbeam-utils v0.8.23
+    Checking parking v2.2.1
+   Compiling parking_lot_core v0.9.12
+    Checking cfg-if v1.0.5
+   Compiling zmij v1.0.23
+    Checking pin-project-lite v0.2.17
+    Checking event-listener v5.4.2
+   Compiling syn v3.0.7
+   Compiling thiserror v2.0.21
+    Checking memchr v2.8.3
+    Checking once_cell v1.21.4
+   Compiling serde_json v1.0.152
+   Compiling serde v1.0.229
+    Checking scopeguard v1.2.0
+    Checking lock_api v0.4.14
+    Checking event-listener-strategy v0.5.4
+    Checking percent-encoding v2.3.2
+    Checking hashbrown v0.14.5
+    Checking itoa v1.0.18
+    Checking form_urlencoded v1.2.2
+    Checking async-lock v3.4.2
+    Checking arc-swap v1.9.2
+    Checking smallstr v0.3.1
+    Checking fastrand v2.5.0
+    Checking unicode-segmentation v1.12.0
+   Compiling pulldown-cmark v0.13.4
+    Checking bitflags v2.13.2
+    Checking unicase v2.10.0
+    Checking dashmap v6.2.1
+    Checking pulldown-cmark-escape v0.11.0
+   Compiling wasm-bindgen-shared v0.2.129
+   Compiling bumpalo v3.20.3
+   Compiling synstructure v0.14.0
+   Compiling wasm-bindgen v0.2.129
+   Compiling zerofrom-derive v0.1.8
+   Compiling yoke-derive v0.8.3
+   Compiling zerovec-derive v0.11.6
+   Compiling displaydoc v0.2.7
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling async-trait v0.1.92
+   Compiling wasm-bindgen-macro-support v0.2.129
+    Checking zerofrom v0.1.8
+    Checking yoke v0.8.3
+    Checking zerovec v0.11.8
+    Checking zerotrie v0.2.5
+   Compiling wasm-bindgen-macro v0.2.129
+    Checking yrs v0.28.0
+    Checking tinystr v0.8.4
+    Checking potential_utf v0.1.6
+    Checking icu_collections v2.3.0
+    Checking icu_locale_core v2.3.0
+    Checking icu_provider v2.3.1
+    Checking icu_properties v2.3.0
+    Checking icu_normalizer v2.3.0
+    Checking idna_adapter v1.2.2
+    Checking idna v1.1.0
+    Checking url v2.5.8
+    Checking editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Checking editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+    Checking editac-wasm v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-wasm)
+warning: function `fixture` is never used
+ --> crates/editac-core/tests/support/hierarchy.rs:9:15
+  |
+9 | pub(crate) fn fixture() -> Doc {
+  |               ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `relative` is never used
+  --> crates/editac-core/tests/support/split_join.rs:86:4
+   |
+86 | fn relative<T: yrs::ReadTxn>(
+   |    ^^^^^^^^
+
+warning: method `len` is never used
+   --> crates/editac-core/tests/support/split_join.rs:179:19
+    |
+175 | impl Block {
+    | ---------- method in this implementation
+...
+179 |     pub(crate) fn len(&self) -> u32 {
+    |                   ^^^
+
+warning: function `project` is never used
+   --> crates/editac-core/tests/support/split_join.rs:234:15
+    |
+234 | pub(crate) fn project(doc: &Doc) -> Vec<Block> {
+    |               ^^^^^^^
+
+warning: struct `Anchor` is never constructed
+   --> crates/editac-core/tests/support/split_join.rs:320:19
+    |
+320 | pub(crate) struct Anchor {
+    |                   ^^^^^^
+
+warning: function `anchor` is never used
+   --> crates/editac-core/tests/support/split_join.rs:325:15
+    |
+325 | pub(crate) fn anchor(doc: &Doc, key: &str, index: u32, assoc: Assoc) -> Anchor {
+    |               ^^^^^^
+
+warning: function `resolve` is never used
+   --> crates/editac-core/tests/support/split_join.rs:337:15
+    |
+337 | pub(crate) fn resolve(doc: &Doc, anchor: &Anchor) -> Option<(String, u32)> {
+    |               ^^^^^^^
+
+warning: `editac-core` (test "structure_conflicts") generated 7 warnings
+warning: function `resolve` is never used
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1038:8
+     |
+1038 | pub fn resolve(d: &Doc, source: &str, encoded: &[u8]) -> Result<(String, u32, bool)> {
+     |        ^^^^^^^
+     |
+     = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "block_kinds_profile") generated 1 warning
+warning: constant `BLOCK` is never used
+  --> crates/editac-core/tests/structure_registry.rs:11:7
+   |
+11 | const BLOCK: &str = "block-1";
+   |       ^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "structure_registry") generated 1 warning
+warning: enum `Command` is never used
+ --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:4:10
+  |
+4 | pub enum Command {
+  |          ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `Neighbor` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:32:12
+   |
+32 | pub struct Neighbor {
+   |            ^^^^^^^^
+
+warning: struct `Prepared` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:36:12
+   |
+36 | pub struct Prepared {
+   |            ^^^^^^^^
+
+warning: function `target` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:40:4
+   |
+40 | fn target(d: &Doc, key: &str) -> Result<Owner> {
+   |    ^^^^^^
+
+warning: function `register` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:55:4
+   |
+55 | fn register(d: &Doc, key: &str, parent: &str, tuple: Any) -> Result<()> {
+   |    ^^^^^^^^
+
+warning: function `execute` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:74:4
+   |
+74 | fn execute(d: &Doc, c: &Command) -> Result<String> {
+   |    ^^^^^^^
+
+warning: function `prepare` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:170:8
+    |
+170 | pub fn prepare(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<Prepared> {
+    |        ^^^^^^^
+
+warning: function `commit` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:211:8
+    |
+211 | pub fn commit(d: &Doc, p: Prepared) -> Result<()> {
+    |        ^^^^^^
+
+warning: function `batch` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:220:8
+    |
+220 | pub fn batch(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<()> {
+    |        ^^^^^
+
+warning: function `rendered_runs` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:224:8
+    |
+224 | pub fn rendered_runs(d: &Doc, key: &str) -> Result<Any> {
+    |        ^^^^^^^^^^^^^
+
+warning: `editac-core` (test "structural_profile") generated 10 warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 15.96s
+   Compiling unicode-ident v1.0.26
+   Compiling stable_deref_trait v1.2.1
+   Compiling smallvec v1.16.3
+   Compiling litemap v0.8.3
+   Compiling writeable v0.6.4
+   Compiling utf8_iter v1.0.4
+   Compiling icu_properties_data v2.3.0
+   Compiling icu_normalizer_data v2.3.0
+   Compiling cfg-if v1.0.5
+   Compiling parking v2.2.1
+   Compiling proc-macro2 v1.0.107
+   Compiling pin-project-lite v0.2.17
+   Compiling libc v0.2.190
+   Compiling serde_core v1.0.229
+   Compiling memchr v2.8.3
+   Compiling event-listener v5.4.2
+   Compiling once_cell v1.21.4
+   Compiling scopeguard v1.2.0
+   Compiling zmij v1.0.23
+   Compiling lock_api v0.4.14
+   Compiling crossbeam-utils v0.8.23
+   Compiling event-listener-strategy v0.5.4
+   Compiling itoa v1.0.18
+   Compiling quote v1.0.47
+   Compiling hashbrown v0.14.5
+   Compiling syn v3.0.7
+   Compiling percent-encoding v2.3.2
+   Compiling async-lock v3.4.2
+   Compiling smallstr v0.3.1
+   Compiling form_urlencoded v1.2.2
+   Compiling arc-swap v1.9.2
+   Compiling fastrand v2.5.0
+   Compiling parking_lot_core v0.9.12
+   Compiling unicode-segmentation v1.12.0
+   Compiling unicase v2.10.0
+   Compiling bitflags v2.13.2
+   Compiling dashmap v6.2.1
+   Compiling pulldown-cmark-escape v0.11.0
+   Compiling wasm-bindgen-shared v0.2.129
+   Compiling pulldown-cmark v0.13.4
+   Compiling serde_json v1.0.152
+   Compiling synstructure v0.14.0
+   Compiling wasm-bindgen-macro-support v0.2.129
+   Compiling zerovec-derive v0.11.6
+   Compiling displaydoc v0.2.7
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.21
+   Compiling async-trait v0.1.92
+   Compiling zerofrom-derive v0.1.8
+   Compiling yoke-derive v0.8.3
+   Compiling zerofrom v0.1.8
+   Compiling thiserror v2.0.21
+   Compiling yoke v0.8.3
+   Compiling serde v1.0.229
+   Compiling zerovec v0.11.8
+   Compiling zerotrie v0.2.5
+   Compiling wasm-bindgen-macro v0.2.129
+   Compiling wasm-bindgen v0.2.129
+   Compiling yrs v0.28.0
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+   Compiling icu_collections v2.3.0
+   Compiling icu_locale_core v2.3.0
+   Compiling icu_provider v2.3.1
+   Compiling icu_properties v2.3.0
+   Compiling icu_normalizer v2.3.0
+   Compiling idna_adapter v1.2.2
+   Compiling idna v1.1.0
+   Compiling url v2.5.8
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+   Compiling editac-wasm v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-wasm)
+warning: function `fixture` is never used
+ --> crates/editac-core/tests/support/hierarchy.rs:9:15
+  |
+9 | pub(crate) fn fixture() -> Doc {
+  |               ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `relative` is never used
+  --> crates/editac-core/tests/support/split_join.rs:86:4
+   |
+86 | fn relative<T: yrs::ReadTxn>(
+   |    ^^^^^^^^
+
+warning: method `len` is never used
+   --> crates/editac-core/tests/support/split_join.rs:179:19
+    |
+175 | impl Block {
+    | ---------- method in this implementation
+...
+179 |     pub(crate) fn len(&self) -> u32 {
+    |                   ^^^
+
+warning: function `project` is never used
+   --> crates/editac-core/tests/support/split_join.rs:234:15
+    |
+234 | pub(crate) fn project(doc: &Doc) -> Vec<Block> {
+    |               ^^^^^^^
+
+warning: struct `Anchor` is never constructed
+   --> crates/editac-core/tests/support/split_join.rs:320:19
+    |
+320 | pub(crate) struct Anchor {
+    |                   ^^^^^^
+
+warning: function `anchor` is never used
+   --> crates/editac-core/tests/support/split_join.rs:325:15
+    |
+325 | pub(crate) fn anchor(doc: &Doc, key: &str, index: u32, assoc: Assoc) -> Anchor {
+    |               ^^^^^^
+
+warning: function `resolve` is never used
+   --> crates/editac-core/tests/support/split_join.rs:337:15
+    |
+337 | pub(crate) fn resolve(doc: &Doc, anchor: &Anchor) -> Option<(String, u32)> {
+    |               ^^^^^^^
+
+warning: `editac-core` (test "structure_conflicts") generated 7 warnings
+warning: function `resolve` is never used
+    --> crates/editac-core/tests/../../../fixtures/schema-v4/mapping.rs:1038:8
+     |
+1038 | pub fn resolve(d: &Doc, source: &str, encoded: &[u8]) -> Result<(String, u32, bool)> {
+     |        ^^^^^^^
+     |
+     = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: enum `Command` is never used
+ --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:4:10
+  |
+4 | pub enum Command {
+  |          ^^^^^^^
+  |
+  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `Neighbor` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:32:12
+   |
+32 | pub struct Neighbor {
+   |            ^^^^^^^^
+
+warning: struct `Prepared` is never constructed
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:36:12
+   |
+36 | pub struct Prepared {
+   |            ^^^^^^^^
+
+warning: function `target` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:40:4
+   |
+40 | fn target(d: &Doc, key: &str) -> Result<Owner> {
+   |    ^^^^^^
+
+warning: function `register` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:55:4
+   |
+55 | fn register(d: &Doc, key: &str, parent: &str, tuple: Any) -> Result<()> {
+   |    ^^^^^^^^
+
+warning: function `execute` is never used
+  --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:74:4
+   |
+74 | fn execute(d: &Doc, c: &Command) -> Result<String> {
+   |    ^^^^^^^
+
+warning: function `prepare` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:170:8
+    |
+170 | pub fn prepare(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<Prepared> {
+    |        ^^^^^^^
+
+warning: function `commit` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:211:8
+    |
+211 | pub fn commit(d: &Doc, p: Prepared) -> Result<()> {
+    |        ^^^^^^
+
+warning: function `batch` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:220:8
+    |
+220 | pub fn batch(d: &Doc, commands: &[Command], neighbor: Option<&Neighbor>) -> Result<()> {
+    |        ^^^^^
+
+warning: function `rendered_runs` is never used
+   --> crates/editac-core/tests/../../../fixtures/schema-v4/policy.rs:224:8
+    |
+224 | pub fn rendered_runs(d: &Doc, key: &str) -> Result<Any> {
+    |        ^^^^^^^^^^^^^
+
+warning: constant `BLOCK` is never used
+  --> crates/editac-core/tests/structure_registry.rs:11:7
+   |
+11 | const BLOCK: &str = "block-1";
+   |       ^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `editac-core` (test "structure_registry") generated 1 warning
+warning: `editac-core` (test "block_kinds_profile") generated 1 warning
+warning: `editac-core` (test "structural_profile") generated 10 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 27.45s
+     Running unittests src/lib.rs (target/debug/deps/editac_core-ccaf2d204c9bb162)
+
+running 14 tests
+test commands::format::remote_tests::deletion_only_remote_update_invalidates_exact_state_even_without_revision_change ... ok
+test commands::format::block_transaction_tests::mixed_mark_and_empty_block_batch_has_one_origin_transaction_and_read_only_rejection ... ok
+test commands::format::tests::complete_batch_has_one_origin_transaction_and_no_preparation_observers ... ok
+test commands::structure::tests::deletion_only_remote_state_invalidates_plan_and_anchor_repreparation_is_safe ... ok
+test commands::structure::tests::revision_exhaustion_rejects_before_ownership_mutation ... ok
+test commands::editor::transaction_tests::v4_whole_batch_preparation_is_silent_commit_is_one_origin_and_only_local_writer ... ok
+test commands::structure::tests::preparation_is_read_only_and_commit_has_one_explicit_origin_transaction ... ok
+test commands::r#move::tests::move_preparation_is_silent_and_commit_has_one_local_origin_and_writer ... ok
+test commands::text::tests::delete_only_remote_update_invalidates_plan_even_with_unchanged_state_vector ... ok
+test commands::text::tests::one_explicit_origin_transaction_and_no_applicability_callbacks ... ok
+test commands::editor::transaction_tests::v4_block_text_batch_is_silent_and_commits_once_with_only_local_writer ... ok
+test commands::structure::general_transaction_tests::v3_preparation_and_rejection_are_silent_and_each_commit_has_one_explicit_origin ... ok
+test commands::editor::transaction_tests::v5_witnessed_cross_source_literal_conversion_is_silent_then_commits_once ... ok
+test commands::lists::transaction_tests::list_expansion_is_silent_and_compound_commit_emits_one_transaction_with_origin ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/anchors.rs (target/debug/deps/anchors-0f8458c58796ed72)
+
+running 24 tests
+test cross_node_selection_resolves_deleted_endpoint_independently ... ok
+test deleted_characters_collapse_to_surviving_boundary ... ok
+test empty_source_endpoints_keep_bias_after_remote_insert ... ok
+test combining_fixed_offsets_and_delete ... ok
+test backward_selection_keeps_independent_endpoint_bias ... ok
+test grapheme_movement_and_deletion_are_extended_and_logical ... ok
+test deleted_target_is_explicit_and_cannot_be_captured_again ... ok
+test fully_deleted_text_keeps_explicit_empty_position ... ok
+test malformed_offsets_and_selection_leave_state_and_updates_unchanged ... ok
+test emoji_fixed_offsets_and_delete ... ok
+test placement_change_does_not_change_text_anchor ... ok
+test reserved_split_owner_remains_invalid_as_a_registered_source ... ok
+test flag_fixed_offsets_and_delete ... ok
+test replaced_shared_text_and_not_yet_received_position_are_unresolvable ... ok
+test biased_positions_survive_insertion_at_start_middle_and_end ... ok
+test joined_sources_preserve_identity_and_boundary_affinity ... ok
+test hidden_join_span_never_redirects_and_visible_offsets_exclude_hidden_text ... ok
+test wrong_document_and_epoch_never_resolve ... ok
+test split_source_deletion_hides_both_owners_without_resurrection ... ok
+test split_cut_and_deleted_derived_owner_obey_bias ... ok
+test rtl_fixed_logical_offsets_and_delete ... ok
+test three_replicas_reordered_duplicate_updates_preserve_anchors ... ok
+test zero_and_end_split_keep_endpoint_owners ... ok
+test zwj_fixed_offsets_and_delete ... ok
+
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/block_kinds_profile.rs (target/debug/deps/block_kinds_profile-6fa51869f2701314)
+
+running 15 tests
+test empty_code_and_blank_lines_restore_without_reseeding ... ok
+test empty_heading_and_code_count_as_editable_no_unnecessary_neighbor ... ok
+test empty_derived_separator_retains_original_span_and_typed_target_policy ... ok
+test literal_newlines_whitespace_dormant_marks_and_paragraph_restoration ... ok
+test nested_last_owner_neighbor_keeps_parent_adjacent_and_original_identity ... ok
+test mismatched_language_code_rich_and_separator_joins_fail_without_mutation ... ok
+test last_editable_convert_delete_insert_reserve_accessible_adjacent_paragraph_atomically ... ok
+test separator_nonempty_conversion_and_text_mark_split_join_targets_reject ... ok
+test atomic_tuple_language_level_matrix_and_unknown_retention ... ok
+test malformed_known_tuples_reject_admission_and_whole_preparation ... ok
+test stale_preparation_utf16_and_oversized_literal_batch_are_atomic ... ok
+test code_explicit_split_join_endpoints_empty_and_multisource_identity ... ok
+test three_replica_duplicate_reordered_metadata_literal_and_remote_mark_races ... ok
+test neighbor_identity_operation_and_resource_failures_leave_no_partial_separator ... ok
+test pinned_bidirectional_block_kinds_exchange_complete_policies_races_and_restore ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.01s
+
+     Running tests/block_profile.rs (target/debug/deps/block_profile-d1a605639fb51ebf)
+
+running 21 tests
+test block_profile_does_not_reinterpret_list_and_item_kinds ... ok
+test bounded_admission_invalid_bytes_and_missing_dependencies_preserve_live_state ... ok
+test absent_tuple_defaults_without_repair_writes ... ok
+test identical_replay_does_not_mutate_revision_projection_or_checkpoint ... ok
+test exact_profile_schema_epoch_document_and_encoding_rejection ... ok
+test concurrent_whole_tuple_conflicts_and_independent_writes_converge ... ok
+test absorbed_and_deleted_metadata_retained_without_resurrection ... ok
+test dormant_override_and_losing_join_branch_do_not_synthesize_owners ... ok
+test metadata_only_changes_are_observable_without_text_reads_or_identity_changes ... ok
+test unknown_json_tuple_and_marks_retained_with_safe_opaque_projection ... ok
+test unknown_non_json_or_excessively_deep_tuples_rejected ... ok
+test causal_override_split_reorder_duplicates_restore_and_stable_anchors ... ok
+test malformed_binary_ownership_or_surrogate_cut_rejected_atomically ... ok
+test unsupported_tuple_shared_types_and_targets_rejected ... ok
+test v2_creation_empty_restore_once_and_fresh_writers ... ok
+test v2_empty_document_restore_never_seeds ... ok
+test heading_levels_one_through_six_and_paragraph_switching ... ok
+test concurrent_deleted_split_owner_retains_metadata_and_stable_deleted_anchor ... ok
+test live_split_inheritance_override_and_empty_sides ... ok
+test invalid_tuple_matrix_rejects_without_partial_content_or_vector_change ... ok
+test pinned_yjs_exchange_both_directions_with_atomic_conflicts_and_replay ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+
+     Running tests/blocks.rs (target/debug/deps/blocks-1fff3055dc89b521)
+
+running 22 tests
+test hard_break_in_rich_text_keeps_owner_and_newline_is_not_a_split ... ok
+test incompatible_join_and_rich_format_on_code_reject_without_mutation ... ok
+test production_blocks_bidirectional_pinned_yjs_exchange_and_restore ... FAILED
+test production_v5_joined_presentation_bidirectional_pinned_yjs_checkpoints ... FAILED
+test deleting_only_separator_prepares_neighbor_and_retains_recovery_identity ... ok
+test separator_conversion_reserves_accessible_empty_paragraph_atomically ... ok
+test legacy_v4_presentation_changes_that_invalidate_retained_joins_reject_whole_local_batch ... ok
+test joined_original_code_replacement_and_deletion_preserve_literal_policy_and_anchors ... ok
+test code_literal_whitespace_blank_lines_dormant_marks_and_empty_restore ... ok
+test code_language_bounds_and_mixed_invalid_batches_are_atomic ... ok
+test separator_rejects_text_split_join_nonempty_and_wrong_navigation_targets ... ok
+test v3_profile_and_wrong_epoch_anchors_do_not_acquire_v4_roots_or_mutate ... ok
+test stale_wrong_replica_deleted_anchor_and_resource_rejection_are_atomic ... ok
+test v5_list_move_format_control_and_anchor_commands_consume_witnessed_ownership ... ok
+test v5_joined_language_paragraph_heading_and_opaque_changes_keep_witnesses_ownership_marks_and_anchors ... ok
+test separators_insert_both_sides_preserve_nested_identity_and_navigate ... ok
+test v5_profile_and_malformed_witness_admission_reject_before_live_mutation ... ok
+test v5_public_structural_witnesses_survive_split_presentation_and_reject_fresh_invalid_batches ... ok
+test code_split_endpoints_and_matching_join_preserve_original_sources ... ok
+test v5_concurrent_join_presentation_and_text_preserve_absorbed_owner_in_all_six_duplicate_orders ... ok
+test three_writer_code_metadata_literal_edit_and_separator_races_replay_restore ... ok
+test last_editable_separator_reservation_resource_failure_leaves_live_state_exact ... ok
+
+failures:
+
+---- production_blocks_bidirectional_pinned_yjs_exchange_and_restore stdout ----
+
+thread 'production_blocks_bidirectional_pinned_yjs_exchange_and_restore' (170370023) panicked at crates/editac-core/tests/blocks.rs:578:14:
+isolated exchange directory required
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- production_v5_joined_presentation_bidirectional_pinned_yjs_checkpoints stdout ----
+
+thread 'production_v5_joined_presentation_bidirectional_pinned_yjs_checkpoints' (170370024) panicked at crates/editac-core/tests/blocks.rs:1124:14:
+isolated joined exchange directory required
+
+
+failures:
+    production_blocks_bidirectional_pinned_yjs_exchange_and_restore
+    production_v5_joined_presentation_bidirectional_pinned_yjs_checkpoints
+
+test result: FAILED. 20 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 27.63s
+
+error: test failed, to rerun pass `-p editac-core --test blocks`

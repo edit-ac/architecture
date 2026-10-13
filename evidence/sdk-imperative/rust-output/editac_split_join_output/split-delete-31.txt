@@ -1,0 +1,115 @@
+inputs=a😀b (bold [1,3)); cאבd (code [1,3)); UTF-16
+expected=[
+    Block {
+        id: "block-1",
+        parent: "left",
+        order: 0,
+        spans: [
+            Span {
+                source: "block-1",
+                identity: "<11#2>",
+                start: 0,
+                end: 6,
+            },
+        ],
+        runs: [
+            (
+                "a",
+                [],
+            ),
+            (
+                "👩\u{200d}💻",
+                [
+                    (
+                        "code",
+                        "true",
+                    ),
+                ],
+            ),
+        ],
+    },
+    Block {
+        id: "block-split",
+        parent: "left",
+        order: 1,
+        spans: [
+            Span {
+                source: "block-1",
+                identity: "<11#2>",
+                start: 6,
+                end: 6,
+            },
+        ],
+        runs: [],
+    },
+    Block {
+        id: "block-2",
+        parent: "right",
+        order: 0,
+        spans: [
+            Span {
+                source: "block-2",
+                identity: "<11#10>",
+                start: 0,
+                end: 4,
+            },
+        ],
+        runs: [
+            (
+                "c",
+                [],
+            ),
+            (
+                "אב",
+                [
+                    (
+                        "code",
+                        "true",
+                    ),
+                ],
+            ),
+            (
+                "d",
+                [],
+            ),
+        ],
+    },
+]
+anchors=[
+    (
+        Anchor {
+            source: "block-1",
+            bytes: [
+                0,
+                11,
+                3,
+                65,
+            ],
+        },
+        (
+            "block-1",
+            1,
+        ),
+    ),
+    (
+        Anchor {
+            source: "block-1",
+            bytes: [
+                0,
+                11,
+                6,
+                65,
+            ],
+        },
+        (
+            "block-1",
+            6,
+        ),
+    ),
+]
+[0, 1, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 2, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 0, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 2, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 0, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 1, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree

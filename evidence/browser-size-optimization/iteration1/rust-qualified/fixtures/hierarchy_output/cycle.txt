@@ -1,0 +1,139 @@
+Projection {
+    nodes: {
+        "a": Node {
+            parent: "@root",
+            order: 0,
+            reason: Some(
+                "cycle-cut",
+            ),
+            identity: "<11#2>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+        "b": Node {
+            parent: "a",
+            order: 0,
+            reason: None,
+            identity: "<11#11>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+        "c": Node {
+            parent: "a",
+            order: 0,
+            reason: None,
+            identity: "<11#20>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+        "d": Node {
+            parent: "c",
+            order: 0,
+            reason: None,
+            identity: "<11#29>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+        "e": Node {
+            parent: "b",
+            order: 0,
+            reason: None,
+            identity: "<11#38>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+    },
+    traversal: [
+        "a",
+        "b",
+        "e",
+        "c",
+        "d",
+    ],
+    edge_visits: 12,
+}

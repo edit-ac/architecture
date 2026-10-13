@@ -1,0 +1,56 @@
+
+> edit-ac-workspace@0.0.0 check:packages
+> npm run typecheck && npm run build && node scripts/check-package-exports.mjs && node --test tests/sdk-prerequisites.test.mjs
+
+
+> edit-ac-workspace@0.0.0 typecheck
+> npm run typecheck --workspaces
+
+
+> @edit-ac/core@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/web@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/react@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> edit-ac-workspace@0.0.0 build
+> npm run build --workspaces
+
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+
+> @edit-ac/web@0.0.0 build
+> tsc --project tsconfig.json && node ../../scripts/build-math-assets.mjs
+
+
+> @edit-ac/react@0.0.0 build
+> tsc --project tsconfig.json
+
+Imported compiled package: @edit-ac/core
+Imported compiled package: @edit-ac/web
+Imported compiled package: @edit-ac/react
+✔ public SSR imports allocate nothing and reject empty asset URLs without I/O (81.99175ms)
+✔ public web exports resolve implemented entrypoints and explicit task defaults (1.011292ms)
+✔ the core README example executes against the public production runtime (31.323166ms)
+✔ unsupported commands and invalid JSON reject before mutation, including a mixed batch (3.072667ms)
+✔ UTF-16 commands, stable anchors, scoped patches and history use one live replica (7.746292ms)
+✔ checkpoint recovery and real peer updates preserve identity and reject another epoch (3.178125ms)
+✔ Markdown preparation and export report actual content without editing the document (6.487833ms)
+✔ implemented error variants remain visible and disposed methods cannot report success (19.118416ms)
+✔ README examples and public error/command types compile against built declarations (585.545416ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1152.337792

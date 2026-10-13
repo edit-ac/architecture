@@ -1,0 +1,24 @@
+tests/wasm-load.test.mjs:101:      const before = runtime.createdDocumentCount();
+tests/wasm-load.test.mjs:102:      const fixture = runtime.createFixture();
+tests/wasm-load.test.mjs:104:        const result = { samePromise, before, after: runtime.createdDocumentCount(), text: fixture.text(), length: fixture.utf16_length(), update: Array.from(fixture.update_v1()) };
+tests/wasm-load.test.mjs:147:      return { failed, created: runtime.createdDocumentCount() };
+tests/wasm-load.test.mjs:159:      globalThis.fixture = runtime.createFixture();
+tests/large-update-recovery.test.mjs:40:  const before = runtime.createdDocumentCount();
+tests/large-update-recovery.test.mjs:43:  assert.equal(runtime.createdDocumentCount(), before, 'Rejected input cannot create a document');
+tests/large-update-recovery.test.mjs:72:    const identity = engine.read().identity, checkpoint = engine.checkpoint(), before = runtime.createdDocumentCount();
+tests/large-update-recovery.test.mjs:75:    assert.equal(runtime.createdDocumentCount(), before);
+tests/fixtures.test.mjs:6:import { createFixtures, describeFixtures, generate, leaves, SEED, sha256, unicodeCases } from '../fixtures/generate.mjs';
+tests/fixtures.test.mjs:8:const fixtures = createFixtures();
+tests/fixtures.test.mjs:15:  const changedSeed = describeFixtures(createFixtures(SEED + 1));
+packages/core/src/index.ts:21:export interface FixtureRuntime extends EngineRuntime {
+packages/core/src/index.ts:22:  createFixture(): Fixture;
+packages/core/src/index.ts:23:  createdDocumentCount(): number;
+packages/core/src/index.ts:30:  created_document_count(): number;
+packages/core/src/index.ts:33:let loading: { assetUrl: string; promise: Promise<FixtureRuntime> } | undefined;
+packages/core/src/index.ts:40:export function init(assetUrl: string): Promise<FixtureRuntime> {
+packages/core/src/index.ts:59:      createFixture: () => new bindings.Fixture(),
+packages/core/src/index.ts:60:      createdDocumentCount: () => bindings.created_document_count(),
+tests/browser/sdk.spec.ts:91:      const countBefore = runtime.createdDocumentCount();
+tests/browser/sdk.spec.ts:93:      const countAfter = runtime.createdDocumentCount(), immediatelyAfter = e.read();
+packages/core/README.md:69:allows retry. `createdDocumentCount()` is a cumulative fixture diagnostic.
+packages/core/README.md:94:`createFixture()` retains the earlier disposable XML/text interoperability probe.

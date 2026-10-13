@@ -1,0 +1,104 @@
+Projection {
+    visible: [
+        Block {
+            id: "block-2",
+            parent: "@root",
+            order: 1,
+            spans: [
+                Span {
+                    source: "block-2",
+                    identity: "<11#10>",
+                    start: 0,
+                    end: 4,
+                },
+            ],
+            runs: [
+                (
+                    "c",
+                    [],
+                ),
+                (
+                    "אב",
+                    [
+                        (
+                            "code",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "d",
+                    [],
+                ),
+            ],
+        },
+    ],
+    recovery: [
+        Block {
+            id: "block-1",
+            parent: "@root",
+            order: 0,
+            spans: [
+                Span {
+                    source: "block-1",
+                    identity: "<11#2>",
+                    start: 0,
+                    end: 3,
+                },
+            ],
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "😀",
+                    [
+                        (
+                            "bold",
+                            "true",
+                        ),
+                    ],
+                ),
+            ],
+        },
+        Block {
+            id: "block-split",
+            parent: "@root",
+            order: 1,
+            spans: [
+                Span {
+                    source: "block-1",
+                    identity: "<11#2>",
+                    start: 3,
+                    end: 5,
+                },
+            ],
+            runs: [
+                (
+                    "!",
+                    [
+                        (
+                            "italic",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+            ],
+        },
+    ],
+    identities: [
+        (
+            "block-1",
+            "<11#2>",
+        ),
+        (
+            "block-2",
+            "<11#10>",
+        ),
+    ],
+}

@@ -1,0 +1,397 @@
+diff --git a/package.json b/package.json
+index e1d2366..e2a7743 100644
+--- a/package.json
++++ b/package.json
+@@ -22,7 +22,7 @@
+     "check:browser-baseline": "npm run build:wasm && npm run build && node --test tests/browser/baseline-runner.test.mjs && npm run test:browser -- baseline",
+     "typecheck": "npm run typecheck --workspaces",
+     "check:rust": "cargo fmt --all -- --check && cargo check --workspace --all-targets --locked --offline && cargo test --workspace --locked --offline",
+-    "check:packages": "npm run typecheck && npm run build && node scripts/check-package-exports.mjs",
++    "check:packages": "npm run typecheck && npm run build && node scripts/check-package-exports.mjs && node --test tests/sdk-prerequisites.test.mjs",
+     "check:protocol": "cargo check -p editac-wasm --target wasm32-unknown-unknown --locked --offline && node --test tests/protocol-toolchain.test.mjs",
+     "check:interop": "node --test tests/interop.test.mjs",
+     "check:fixtures": "node --test tests/fixtures.test.mjs",
+diff --git a/packages/core/README.md b/packages/core/README.md
+index 365b021..0384661 100644
+--- a/packages/core/README.md
++++ b/packages/core/README.md
+@@ -1,7 +1,9 @@
+ # @edit-ac/core
+ 
+-Private foundation fixture loading boundary. This is a disposable XML/text
+-interop bridge, not the frozen structural schema or an editor API.
++Private development package for the v5 semantic engine. The engine owns one Yrs
++replica per handle; the browser adapter renders and edits that replica. Public
++types describe implemented commands, anchors, patches, Markdown and checkpoint
++operations. Registry release and packed consumer qualification remain pending.
+ 
+ Use the pinned Rust 1.97.1 toolchain and wasm32-unknown-unknown target. Install
+ `cargo install wasm-bindgen-cli --version 0.2.129 --locked`, then run
+@@ -15,12 +17,26 @@ when preparing a new machine. Generated web-target bindings live only in
+ import { init } from '@edit-ac/core';
+ 
+ const runtime = await init('/assets/editac_wasm_bg.wasm');
+-const fixture = runtime.createFixture();
++const engine = runtime.createEngine({
++  profile: 'v5',
++  documentId: '81000000-0000-4000-8000-000000000100',
++  epoch: '82000000-0000-4000-8000-000000000100',
++  nodes: [{ text: 'Hello' }],
++});
+ try {
+-  console.log(fixture.text(), fixture.utf16_length());
+-  const bytes = fixture.update_v1(); // receipt of bytes is not durable storage
++  const node = engine.read().visible[0];
++  const at = engine.anchor(node.id, 5, 'right'); // offsets are UTF-16
++  try {
++    const plan = engine.prepare({
++      kind: 'text', origin: 'local:example',
++      command: { type: 'insert', at, text: ' world' },
++    });
++    try { engine.commit(plan); } finally { engine.releasePlan(plan); }
++  } finally { engine.releaseAnchor(at); }
++  const checkpoint = engine.checkpoint(); // persist envelope and bytes atomically
++  console.log(engine.read().visible[0].runs.map(run => run.text).join(''));
+ } finally {
+-  fixture.free();
++  engine.dispose();
+ }
+ ```
+ 
+@@ -32,15 +48,40 @@ relative `dist/wasm/editac_wasm.js` dependency, or copy the whole `dist` tree.
+ Bundler-specific asset rewriting is not qualified here.
+ 
+ SSR import performs no fetch, browser-global access, instantiation or document
+-creation. Only `init(assetUrl)` loads the runtime, and only `createFixture()`
+-creates a Yrs replica. Concurrent calls with the same URL share initialization;
++creation. Only `init(assetUrl)` loads the runtime. `createEngine()` creates an
++explicit new document with UUID document and epoch identifiers; `restoreEngine(identity, checkpoint, journal)` recovers an
++existing document with identity validation. Concurrent calls with the same URL share initialization;
+ a different URL is rejected after loading starts. A failed load rejects and
+ allows retry. `createdDocumentCount()` is a cumulative fixture diagnostic.
+ 
+-`apply_v1(bytes)` accepts trusted fixture updates and decodes before mutation.
+-It is not an untrusted-update admission port. The bridge uses the core UTF-16
+-factory, Yrs 0.28.0 with small-client, v1 updates and the earlier `interop` XML
+-root. Production schema commands, resource limits and persistence are later work.
++`prepare()` validates a command before mutation; `can()` checks admissibility.
++Plans are scoped to a handle and single use, including failed stale commits.
++Anchors survive intervening edits and must be released. `subscribe(scope, callback)`
++returns a disposable subscription; observer failures are available through
++`takeObserverErrors()` without changing an already committed result.
++
++`EngineError` exposes `code`, `operation` and `message`. Current codes are
++`InvalidInput`, `InvalidHandle`, `EngineRejected`, `ResourceLimit` and `Disposed`.
++The exported `EngineErrorCode` type also permits future codes; handle unknown
++codes explicitly. `can()` returns false for inadmissible requests, while methods
++requiring a live handle throw `Disposed` after disposal. Repeated disposal is safe.
++
++`importMarkdown()` prepares supported content and diagnostics without changing the
++document. `exportMarkdown()` reports unsupported representations and retains
++recovery content. Neither operation implies a live document edit. Apply prepared
++blocks through a validated fragment command. Optional codecs are explicit.
++
++`checkpoint()`, `stateVector()`, `encodeUpdate()` and `applyUpdate()` expose the
++v5 recovery/synchronization boundary with copied bytes and identity envelopes.
++Obtaining bytes or applying a peer update does not establish local durability or
++remote settlement. Identity/epoch mismatches reject before mutation. Storage and
++transport remain host responsibilities.
++
++`createFixture()` retains the earlier disposable XML/text interoperability probe.
++Its `apply_v1(bytes)` accepts trusted fixture updates only; use the production
++engine identity boundary for editor updates. The bridge uses Yrs 0.28.0 with
++small-client and v1 updates. Neither fixture nor engine import qualifies native
++input, OS clipboard or physical-device behavior.
+ 
+ For the actual browser and installed-tarball smoke checks, run
+ `npx playwright install chromium --only-shell`, then `npm run check:wasm`.
+diff --git a/packages/core/src/engine.ts b/packages/core/src/engine.ts
+index 6b71227..a83d4ba 100644
+--- a/packages/core/src/engine.ts
++++ b/packages/core/src/engine.ts
+@@ -135,8 +135,10 @@ export interface EngineHandle {
+   /** Drops replica and all anchors/plans/history. Safe to call repeatedly. */
+   dispose(): void;
+ }
++/** Current bridge errors. Preserve unknown future codes when handling a newer engine. */
++export type EngineErrorCode = "InvalidInput" | "InvalidHandle" | "EngineRejected" | "ResourceLimit" | "Disposed" | (string & {});
+ export class EngineError extends Error {
+-  constructor(public readonly code: string, public readonly operation: string, message: string) {
++  constructor(public readonly code: EngineErrorCode, public readonly operation: string, message: string) {
+     super(message); this.name = "EngineError";
+   }
+ }
+diff --git a/packages/core/src/index.ts b/packages/core/src/index.ts
+index 0498112..b20f309 100644
+--- a/packages/core/src/index.ts
++++ b/packages/core/src/index.ts
+@@ -2,6 +2,7 @@ import { createHandle, restoreHandle, type Checkpoint, type ReplayUpdate, type D
+ export type { CreateOptions, EngineHandle, CommitResult, AnchorToken, PortableAnchor, PlanToken, Bias, StableRange, ContainerStyle, MoveTarget, EditorCommand, TextCommand, FormatAction, MarkCommand, BlockFormatCommand, PrepareRequest, Json, ProjectedNode, Snapshot, AnchorResolution, HistoryRequest, HistoryState, DocumentIdentity, Checkpoint, ReplayUpdate, PatchScope, Patch, PatchSubscription, ObserverError } from "./engine.js";
+ export type { FragmentBlock, FragmentRun, PreparedMarkdown, MarkdownDiagnostic, MarkdownExport, MarkdownExtension, MarkdownOptions } from "./engine.js";
+ export { EngineError } from "./engine.js";
++export type { EngineErrorCode } from "./engine.js";
+ 
+ /** Disposable foundation fixture; callers must release its WASM allocation. */
+ export interface Fixture {
+diff --git a/packages/web/README.md b/packages/web/README.md
+index ec8a49c..2e1c590 100644
+--- a/packages/web/README.md
++++ b/packages/web/README.md
+@@ -7,6 +7,8 @@ Build from the repository root with `npm run build` before importing `dist/`.
+ ```ts
+ import { mountEditor } from '@edit-ac/web';
+ 
++// root, assetUrl, databaseName and identity are supplied by the host.
++
+ const editor = mountEditor(root, {
+   assetUrl, databaseName, identity, indexedDB, locks: navigator.locks,
+   label: 'Document editor',
+@@ -20,6 +22,12 @@ unsubscribe();
+ await editor.destroy({ policy: 'flush' });
+ ```
+ 
++`flush({ target: 'local' })` waits for local journal commits; it does not report
++remote settlement. Other flush targets reject. Commands reject while loading,
++closing or read-only; recovery failures reject `ready` and remain observable in
++state. Command chains, `createEditor` and editor-level `attachSync` are pending SDK
++work and are not exported by this package.
++
+ The host supplies an initialized document identity and local checkpoint through
+ the core/storage contracts. Mounting recovers that document before accepting
+ input. Existing preview DOM stays read-only and is replaced with authoritative
+diff --git a/scripts/check-package-exports.mjs b/scripts/check-package-exports.mjs
+index 687d45c..cc543c4 100644
+--- a/scripts/check-package-exports.mjs
++++ b/scripts/check-package-exports.mjs
+@@ -1,6 +1,5 @@
+-// Exercise the actual compiled workspace exports. This is a packaging smoke
+-// check, not evidence that an editor or WASM runtime has been implemented.
++// Import smoke only; sdk-prerequisites.test.mjs exercises the implemented API.
+ for (const name of ["@edit-ac/core", "@edit-ac/web", "@edit-ac/react"]) {
+   await import(name);
+-  console.log(`Imported compiled scaffold: ${name}`);
++  console.log(`Imported compiled package: ${name}`);
+ }
+diff --git a/tests/browser/lifecycle.spec.ts b/tests/browser/lifecycle.spec.ts
+index 5b54250..adf0504 100644
+--- a/tests/browser/lifecycle.spec.ts
++++ b/tests/browser/lifecycle.spec.ts
+@@ -3,6 +3,33 @@ import { test } from 'node:test';
+ import { browserHarness } from './browser-harness.ts';
+ import { prepareEditor } from './editor-test-utils.ts';
+ const {probe}=browserHarness('lifecycle');
++test('public SDK methods reject unsupported targets and commands without fake success',()=>probe('sdk-errors',async(page,fact)=>{
++  await prepareEditor(page);
++  const result=await page.evaluate(async()=>{
++    const editor=window.activeEditor=window.mountBrowserEditor(window.inputFixture.root,window.editorOptions);
++    await editor.ready;
++    const before=editor.read(), failures={};
++    try { await editor.flush({target:'remote'}); } catch(error) { failures.flush=error.message; }
++    try { editor.commit({kind:'editor',origin:'local:sdk',commands:[{type:'unsupported'}]}); } catch(error) { failures.command={code:error.code,operation:error.operation}; }
++    try { await editor.destroy({policy:'unsupported'}); } catch(error) { failures.destroy=error.message; }
++    const readyAfterInvalidDestroy=editor.state.ready;
++    editor.setReadOnly(true);
++    try { editor.commit({kind:'editor',origin:'local:sdk',commands:[]}); } catch(error) { failures.readOnly=error.message; }
++    const after=editor.read();
++    await editor.flush({target:'local'});
++    let notifications=0;const unsubscribe=editor.subscribe(()=>notifications++);unsubscribe();
++    const count=notifications;
++    await editor.destroy({policy:'flush'});
++    return {before,after,failures,readyAfterInvalidDestroy,unsubscribed:notifications===count};
++  });
++  fact.snapshots.push(result);
++  assert.deepEqual(result.after,result.before);
++  assert.equal(result.failures.flush,'Unsupported flush target');
++  assert.deepEqual(result.failures.command,{code:'InvalidInput',operation:'prepare'});
++  assert.equal(result.failures.destroy,'Explicit destroy policy required');
++  assert.equal(result.failures.readOnly,'Editor is read-only');
++  assert.equal(result.readyAfterInvalidDestroy,true);assert.equal(result.unsubscribed,true);
++}));
+ test('stale preview is never editable and recovered content replaces it before ready',()=>probe('stale-preview',async(page,fact)=>{
+   await prepareEditor(page);
+   const s=await page.evaluate(async()=>{const root=window.inputFixture.root;root.textContent='stale preview';const e=window.activeEditor=window.mountBrowserEditor(root,{...window.editorOptions,preview:{identity:{...window.editorOptions.identity},revision:999}});const before={...e.state,editable:root.contentEditable};window.states=[];e.subscribe(s=>window.states.push({...s,error:!!s.error}));await e.ready;return {before,after:e.state,editable:root.contentEditable,text:root.textContent,states:window.states};});
+diff --git a/tests/sdk-prerequisites.test.mjs b/tests/sdk-prerequisites.test.mjs
+new file mode 100644
+index 0000000..10c2d84
+--- /dev/null
++++ b/tests/sdk-prerequisites.test.mjs
+@@ -0,0 +1,179 @@
++import assert from 'node:assert/strict';
++import { test } from 'node:test';
++import { readFile, mkdtemp, writeFile, rm } from 'node:fs/promises';
++import { spawnSync } from 'node:child_process';
++import { fileURLToPath } from 'node:url';
++import { init, EngineError } from '@edit-ac/core';
++import * as web from '@edit-ac/web';
++
++// Production WASM, deterministic content, no provider/network or recording port.
++const wasm = await readFile(new URL('../packages/core/dist/wasm/editac_wasm_bg.wasm', import.meta.url));
++const asset = 'data:application/wasm;base64,' + wasm.toString('base64');
++const runtime = await init(asset);
++let sequence = 0;
++const create = () => runtime.createEngine({ profile: 'v5', documentId: `81000000-0000-4000-8000-${String(++sequence).padStart(12, '0')}`, epoch: '82000000-0000-4000-8000-000000000001', nodes: [{ text: 'A😀B' }] });
++const text = engine => engine.read().visible.map(n => n.runs.map(r => r.text).join('')).join('\n');
++const rejects = (code, operation) => error => error instanceof EngineError && error.code === code && (!operation || error.operation === operation);
++
++test('public SSR imports allocate nothing and reject empty asset URLs without I/O', () => {
++  const result = spawnSync(process.execPath, ['--input-type=module', '-e', `
++    import assert from 'node:assert/strict';
++    const forbidden = () => { throw Error('unexpected initialization'); };
++    for (const key of ['window', 'document', 'navigator', 'indexedDB']) Object.defineProperty(globalThis, key, { get: forbidden, configurable: true });
++    globalThis.fetch = forbidden;
++    globalThis.WebAssembly = new Proxy(WebAssembly, { get: forbidden });
++    const core = await import('@edit-ac/core');
++    await import('@edit-ac/web'); await import('@edit-ac/web/math');
++    await assert.rejects(core.init(''), /nonempty/);
++  `], { encoding: 'utf8' });
++  assert.equal(result.error, undefined);
++  assert.equal(result.status, 0, result.stderr);
++});
++
++test('public web exports resolve implemented entrypoints without advertising unfinished SDK methods', () => {
++  assert.deepEqual(Object.keys(web).sort(), [
++    'BrowserEditor', 'ModuleContractError', 'ModuleRegistry', 'ModuleRuntime',
++    'ReferencePresenter', 'ReorderPresenter', 'SlashPresenter', 'contentModules',
++    'mountEditor', 'mountEditorSurface', 'referenceBlock', 'referenceSuggestions',
++    'reorderControls', 'slashCommands',
++  ].sort());
++  for (const value of Object.values(web)) assert.equal(typeof value, 'function');
++  assert.equal(web.createEditor, undefined);
++  assert.equal(web.BrowserEditor.prototype.attachSync, undefined);
++});
++
++test('the core README example executes against the public production runtime', async () => {
++  const readme = await readFile(new URL('../packages/core/README.md', import.meta.url), 'utf8');
++  const snippets = [...readme.matchAll(/```js\n([\s\S]*?)```/g)];
++  assert.equal(snippets.length, 1);
++  const code = snippets[0][1].replace("import { init } from '@edit-ac/core';", '')
++    .replace("'/assets/editac_wasm_bg.wasm'", 'asset');
++  const output = [];
++  const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
++  await new AsyncFunction('init', 'asset', 'console', code)(init, asset, { log: value => output.push(value) });
++  assert.deepEqual(output, ['Hello world']);
++});
++
++test('unsupported commands and invalid JSON reject before mutation, including a mixed batch', () => {
++  const engine = create();
++  try {
++    const at = engine.anchor(engine.read().visible[0].id, 1, 'right');
++    const before = engine.checkpoint();
++    const invalid = { kind: 'editor', origin: 'local:sdk', commands: [
++      { type: 'insert', at, text: 'must not appear' }, { type: 'unsupported' },
++    ] };
++    assert.equal(engine.can(invalid), false);
++    assert.throws(() => engine.prepare(invalid), rejects('InvalidInput', 'prepare'));
++    assert.throws(() => engine.anchor(engine.read().visible[0].id, NaN, 'right'), rejects('InvalidInput', 'anchor'));
++    assert.deepEqual(engine.checkpoint(), before);
++    assert.equal(text(engine), 'A😀B');
++    engine.releaseAnchor(at);
++    assert.throws(() => runtime.createEngine({ profile: 'unsupported', documentId: 'x', epoch: 'one', nodes: [] }), rejects('InvalidInput', 'create'));
++  } finally { engine.dispose(); }
++});
++
++test('UTF-16 commands, stable anchors, scoped patches and history use one live replica', () => {
++  const engine = create();
++  try {
++    const at = engine.anchor(engine.read().visible[0].id, 3, 'right');
++    const updates = [], absent = [];
++    const scoped = engine.subscribe({ type: 'updates' }, patch => updates.push(patch));
++    const other = engine.subscribe({ type: 'nodes', ids: ['missing'] }, patch => absent.push(patch));
++    const request = { kind: 'text', origin: 'local:sdk', command: { type: 'insert', at, text: '!' } };
++    assert.equal(engine.can(request), true);
++    assert.equal(text(engine), 'A😀B');
++    const plan = engine.prepare(request);
++    const result = engine.commit(plan);
++    assert.ok(result.revision > 0);
++    assert.equal(text(engine), 'A😀!B');
++    assert.equal(engine.resolve(at).offset, 4);
++    assert.equal(updates.length, 1); assert.equal(absent.length, 0);
++    assert.ok(updates[0].update.bytes instanceof Uint8Array);
++    assert.throws(() => engine.commit(plan), rejects('InvalidHandle', 'commit'));
++    engine.releasePlan(plan);
++    engine.history({ type: 'undo' }); assert.equal(text(engine), 'A😀B');
++    engine.history({ type: 'redo' }); assert.equal(text(engine), 'A😀!B');
++    scoped.dispose(); other.dispose(); assert.equal(scoped.active, false);
++    assert.deepEqual(engine.takeObserverErrors(), []);
++    engine.releaseAnchor(at);
++  } finally { engine.dispose(); }
++});
++
++test('checkpoint recovery and real peer updates preserve identity and reject another epoch', () => {
++  const engine = create();
++  let restored;
++  try {
++    const checkpoint = engine.checkpoint();
++    restored = runtime.restoreEngine(checkpoint.identity, checkpoint);
++    const vector = restored.stateVector();
++    const at = engine.anchor(engine.read().visible[0].id, 4, 'right');
++    engine.commit(engine.prepare({ kind: 'text', origin: 'local:sdk', command: { type: 'insert', at, text: ' peer' } }));
++    engine.releaseAnchor(at);
++    const update = engine.encodeUpdate(vector);
++    restored.applyUpdate(update);
++    assert.equal(text(restored), 'A😀B peer');
++    const before = restored.checkpoint();
++    assert.throws(() => restored.applyUpdate({ identity: { ...update.identity, epoch: '82000000-0000-4000-8000-000000000999' }, bytes: update.bytes }), rejects('EngineRejected', 'applyUpdate'));
++    assert.deepEqual(restored.checkpoint(), before);
++    assert.throws(() => runtime.restoreEngine({ ...checkpoint.identity, epoch: '82000000-0000-4000-8000-000000000999' }, checkpoint), rejects('EngineRejected', 'restore'));
++  } finally { restored?.dispose(); engine.dispose(); }
++});
++
++test('Markdown preparation and export report actual content without editing the document', () => {
++  const engine = create();
++  try {
++    const before = engine.checkpoint();
++    const prepared = engine.importMarkdown('# Task\n\n**bold** and `code`\n');
++    assert.equal(prepared.blocks[0].attributes.type, 'heading');
++    assert.ok(prepared.blocks[1].runs.some(r => r.marks.some(m => m.mark === 'bold')));
++    const exported = engine.exportMarkdown(prepared.blocks);
++    assert.match(exported.markdown, /# Task/); assert.match(exported.markdown, /\*\*bold\*\*/);
++    assert.deepEqual(exported.diagnostics, []);
++    assert.deepEqual(engine.checkpoint(), before);
++  } finally { engine.dispose(); }
++});
++
++test('implemented error variants remain visible and disposed methods cannot report success', () => {
++  const engine = create();
++  try {
++    const node = engine.read().visible[0].id;
++    assert.throws(() => engine.anchor(node, 2, 'right'), rejects('EngineRejected', 'anchor'));
++    assert.throws(() => engine.resolve('missing'), rejects('InvalidHandle'));
++    assert.throws(() => engine.importMarkdown('x'.repeat(2 * 1024 * 1024 + 1)), rejects('ResourceLimit'));
++    const subscription = engine.subscribe({ type: 'all' }, () => {});
++    engine.dispose(); engine.dispose();
++    assert.equal(subscription.active, false);
++    for (const action of [() => engine.read(), () => engine.can({ kind: 'editor', origin: 'local:sdk', commands: [] }), () => engine.checkpoint()]) {
++      assert.throws(action, rejects('Disposed'));
++    }
++    subscription.dispose();
++  } finally { engine.dispose(); }
++});
++
++test('README examples and public error/command types compile against built declarations', async () => {
++  // Place beside workspace node_modules so this uses normal package exports, not source aliases.
++  const directory = await mkdtemp(new URL('../.sdk-types-', import.meta.url));
++  try {
++    const readme = await readFile(new URL('../packages/web/README.md', import.meta.url), 'utf8');
++    const examples = [...readme.matchAll(/```ts\n([\s\S]*?)```/g)];
++    assert.equal(examples.length, 1);
++    await writeFile(`${directory}/examples.mts`, `
++      import type { DocumentIdentity, EngineErrorCode, EngineHandle } from '@edit-ac/core';
++      declare const root: HTMLElement, assetUrl: string, databaseName: string, identity: DocumentIdentity;
++      ${examples[0][1]}
++      declare const engine: EngineHandle;
++      const code: EngineErrorCode = 'Disposed';
++      // @ts-expect-error unsupported public command
++      engine.prepare({ kind: 'editor', origin: 'local:type', commands: [{ type: 'unsupported' }] });
++      // @ts-expect-error remote settlement is not implemented by local flush
++      editor.flush({ target: 'remote' });
++      // @ts-expect-error editor-level sync attachment is pending SDK-1.2
++      editor.attachSync({});
++    `);
++    const result = spawnSync(process.execPath, ['node_modules/typescript/bin/tsc', '--noEmit', '--strict', '--target', 'ES2022', '--module', 'NodeNext', '--lib', 'ES2022,DOM', `${directory}/examples.mts`], {
++      cwd: fileURLToPath(new URL('../', import.meta.url)), encoding: 'utf8',
++    });
++    assert.equal(result.error, undefined);
++    assert.equal(result.status, 0, result.stdout + result.stderr);
++  } finally { await rm(directory, { recursive: true, force: true }); }
++});

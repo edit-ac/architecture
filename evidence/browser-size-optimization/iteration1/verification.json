@@ -1,0 +1,156 @@
+{
+  "environment": {
+    "EDITAC_BROWSER_SIZE_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/direct-import",
+    "EDITAC_WASM_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/fixture-compatibility-final",
+    "EDITAC_BASELINE_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/baseline",
+    "EDITAC_PACKED_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/packed",
+    "EDITAC_MODULE_BUNDLES": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/module-bundles",
+    "EDITAC_CHECKPOINT_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/checkpoint",
+    "EDITAC_LIFECYCLE_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/storage-lifecycle",
+    "EDITAC_SYNC_PROTOCOL_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/sync-protocol",
+    "EDITAC_EXTENSION_ENTRY_FIXTURES": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/rust-qualified/fixtures/extension_entry_output",
+    "EDITAC_MATH_FIXTURES": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/rust-qualified/fixtures/math_fixtures",
+    "EDITAC_MODULE_REGISTRY_FIXTURES": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/rust-qualified/fixtures/module_registry_fixtures",
+    "EDITAC_SDK_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/sdk",
+    "EDITAC_INPUT_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/input",
+    "EDITAC_INPUT_POLICY_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/input-policy",
+    "EDITAC_COMPOSITION_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/composition",
+    "EDITAC_COMPOSITION_REMOTE_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/composition-remote",
+    "EDITAC_SELECTION_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/selection",
+    "EDITAC_RECOVERY_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/recovery",
+    "EDITAC_OFFLINE_COLLABORATION_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/offline-collaboration",
+    "EDITAC_MARKDOWN_PASTE_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/markdown-paste",
+    "EDITAC_CLIPBOARD_FORMATS_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/clipboard-formats",
+    "EDITAC_MARKDOWN_EXTENSIONS_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/markdown-extensions",
+    "EDITAC_HTML_PASTE_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/html-paste",
+    "EDITAC_MARKDOWN_COLLABORATION_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/markdown-collaboration",
+    "EDITAC_MODULE_RUNTIME_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/module-runtime",
+    "EDITAC_MODULE_CONTRACT_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/module-contract",
+    "EDITAC_EXTENSION_ENTRY_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/extension-entry",
+    "EDITAC_CONTENT_MODULES_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/content-modules",
+    "EDITAC_MATH_OUTPUT": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/browser/math"
+  },
+  "checks": [
+    {
+      "name": "packages",
+      "command": [
+        "npm",
+        "run",
+        "check:packages"
+      ],
+      "exit": 0,
+      "seconds": 6.53,
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/verify-packages.log"
+    },
+    {
+      "name": "size-runtime",
+      "command": [
+        "node",
+        "--test",
+        "tests/browser-size.test.mjs",
+        "tests/browser-size-consumer.test.mjs",
+        "tests/wasm-load.test.mjs",
+        "tests/large-update-recovery.test.mjs",
+        "tests/protocol-toolchain.test.mjs"
+      ],
+      "exit": 0,
+      "seconds": 16.81,
+      "counts": {
+        "tests": 38,
+        "pass": 38,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/verify-size-runtime.log"
+    },
+    {
+      "name": "module-storage-sync",
+      "command": [
+        "node",
+        "--test",
+        "tests/module-runtime.test.mjs",
+        "tests/module-contract.test.mjs",
+        "tests/module-bundles.test.mjs",
+        "tests/checkpoint.test.mjs",
+        "tests/storage-lifecycle.test.mjs",
+        "tests/sync-protocol.test.mjs"
+      ],
+      "exit": 0,
+      "seconds": 13.75,
+      "counts": {
+        "tests": 61,
+        "pass": 61,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/verify-module-storage-sync.log"
+    },
+    {
+      "name": "baseline",
+      "command": [
+        "npm",
+        "run",
+        "check:browser-baseline"
+      ],
+      "exit": 1,
+      "seconds": 574.13,
+      "counts": {
+        "tests": 232,
+        "pass": 230,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/verify-baseline.log"
+    },
+    {
+      "name": "sdk",
+      "command": [
+        "npm",
+        "run",
+        "test:browser",
+        "--",
+        "sdk"
+      ],
+      "exit": 0,
+      "seconds": 42.3,
+      "counts": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/verify-sdk.log"
+    },
+    {
+      "name": "input",
+      "command": [
+        "npm",
+        "run",
+        "test:browser",
+        "--",
+        "input"
+      ],
+      "exit": 0,
+      "seconds": 160.19,
+      "counts": {
+        "tests": 51,
+        "pass": 51,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/verify-input.log"
+    }
+  ]
+}

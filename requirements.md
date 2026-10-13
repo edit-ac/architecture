@@ -8,7 +8,8 @@ Reviewed against the current docs on 2026-10-12. “Covered” below means plann
 | Markdown/literal file editing and hosted CLI | Expanded 11 uses external editor; FMT-1.12 reconciles source | Preserve this work; 15 adds built-in TUI, ac:// routing, dirty-buffer conflicts and deterministic terminal qualification |
 | Agent Markdown editing/uploads through embedding app MCP | Portable source reconciliation, commands/anchors and host auth responsibilities | 12 adds shared revision/policy/operation service; 14 adds host-tool schemas, prepare/diff/apply, durable retries and realtime observation; CLI MCP stays optional |
 | Exact Git-like diffs and tracking | CRDT update/patch metadata only; no review/history API | 13 adds immutable representation-specific revisions, exact patches, semantic changes, review UI and restore-as-new-edit; native/TUI presenters consume it |
-| PM ticket web/mobile/desktop embedding | Browser preset and React integration, native probes | 16/17/18/22/23 deliver real native editors; 20 qualifies the same mandatory ticket capabilities across all five native OS targets and web |
+| PM ticket web/mobile/desktop embedding | Framework-independent browser preset, first-party React/Astro integrations, native probes | SDK-1.7 adds Astro; SDK-1.4/1.6 qualify and document both framework consumers. 16/17/18/22/23 deliver real native editors; 20 qualifies the same mandatory ticket capabilities across all five native OS targets and web |
+| Framework integrations as a product adoption channel | Shared Rust/WASM engine and imperative web SDK | React and Astro are committed first-party bindings; future frameworks reuse the optional adapter boundary with their own compatibility, lifecycle, packed-consumer and quickstart evidence. Astro 7's Rust compiler direction aligns with edit.ac's Rust-first positioning; no compatibility or performance claim follows without qualification |
 | Collaborative cross-platform documents | Browser/Rust fixtures; native future scope | Shared session/update profile and every actual client participate in 20 offline/crash/reconnect/composition tests |
 | Native iOS/Android with same capabilities | 09 probes only | 16/17 deliver complete adapters, typed bindings, storage/sync, mandatory module UI and packaged consumers; actual device evidence closes in 20 |
 | Native macOS/Windows/Linux | Not previously planned | Independent 18/22/23 platform tracks with toolkit feasibility, real native controls, bindings, package consumers and qualified support matrix |
@@ -71,6 +72,10 @@ The October 11 interaction request is captured in [editor interactions](specs/ed
 
 Track 38 is a prerequisite of browser release track 10; track 39 gates expanded ecosystem qualification 37. Basic accessible editing and OS dictation are baseline obligations, not optional-extension features. The catalog is a minimum regression set to grow with observed failures, not a promise to enumerate every possible browser/OS edge case.
 
+## Browser delivery size — 2026-10-13
+
+The user-approved [gzip bundle budgets](specs/verification.md#browser-bundle-size-budgets) replace the proposal's Brotli bundle targets. The default Task preset has a 512 KB total hard cap and 256 KB preferred size; editor JavaScript has a separate 32 KB hard cap and 16 KB preferred size. KB = 1,000 bytes. Required WASM glue, runtime dependencies and lazy required code count. SDK-1.8 owns implementation to get below both caps and the executable measurement/enforcement harness before comparison baselines; REL-1.2/1.3, EXT-1.9 and FIT-1.6 reuse it. Either hard-cap overrun or missing required measurements block release qualification, while preferred-size misses remain explicit optimization work. Mobile additions fit inside these caps.
+
 ## Touch devices and mobile web platforms
 
 The mobile-web follow-up is captured in [mobile web](specs/mobile-web.md), [baseline tests](tests/mobile-web-cases.md), [extension tests](tests/mobile-extension-cases.md) and primary-source [platform](evidence/mobile-web-platform-research.md)/[touch](evidence/touch-extension-research.md) research. This is planned implementation/qualification, not a current capability claim.
@@ -121,7 +126,7 @@ Research on Word/Pages/LibreOffice and IDE conventions extends existing tracks, 
 | Platform protocol precision | IOS/AND/DSK/WIN/LNX selection/input/clipboard/accessibility and qualification tasks | NAT API-specific units, composition, services, provider lifetimes and device receipts |
 | Responsive mixed-feature editing | FIT-1.8, RCH-1.20, MWB-1.9, MWX-1.8 | PRF comparable input-to-visible, continuous frame, memory, loading and native traces under existing budgets |
 
-Those desktop additions preserved the previous 42 roadmaps and 512 bounded parents. The AI extension and editor migration/comparison/docs-example additions expand the current plan to 42 roadmaps and 550 parents. Runtime bindings and device/performance results remain separate. An unlimited promise of every possible behavior or universal best performance cannot be established by a finite catalog; required boundary combinations, explicit supported profiles, minimized new regressions and measured release gates govern delivery.
+Those desktop additions preserved the previous 42 roadmaps and 512 bounded parents. The AI extension and editor migration/comparison/docs-example additions expanded the plan to 42 roadmaps and 550 parents. Subsequent bounded additions, including browser-size optimization SDK-1.8, bring the current validated total to 556 parents. Runtime bindings and device/performance results remain separate. An unlimited promise of every possible behavior or universal best performance cannot be established by a finite catalog; required boundary combinations, explicit supported profiles, minimized new regressions and measured release gates govern delivery.
 
 
 ## AI Extensions
@@ -158,7 +163,7 @@ Extend the existing docs track with original edit.ac material using Tiptap's Get
 
 | Requirement | Task owners | Concrete evidence |
 |---|---|---|
-| Section navigation, page templates and executable getting started | DOC-1.3/1.4/1.5 | Canonical Zola sections, version/status/prerequisite fields, minimal browser/React create-edit-save-read-only-dispose consumers and checked snippet source ranges |
+| Section navigation, page templates and executable getting started | DOC-1.3/1.4/1.5 | Canonical Zola sections, version/status/prerequisite fields, minimal browser/React/Astro create-edit-save-read-only-dispose consumers and checked snippet source ranges |
 | Core concepts and command/event references | DOC-1.31/1.32/1.33 | Project kickoff fixture, semantic tree/transcripts, formatting/split/join/history snapshots and subscription/commit/cleanup timelines |
 | Extension catalog and custom extension tutorials | DOC-1.34/1.35 | Versioned descriptor/options/profiles; callout block, highlight mark and local command/menu examples with interchange, unknown-data and presenter limits |
 | Complete example gallery and task recipes | DOC-1.36/1.37; existing DOC-1.6/1.7/1.8/1.9–1.11 consumers | Ticket, collaborative note and structured report source/downloads; accessible toolbar, Markdown paste, save/reconnect, import/upload/link failure and cancellation outcomes |
@@ -174,3 +179,7 @@ Documentation source and explicitly conceptual examples can proceed before packa
 | Native simulator/emulator and OS-host clipboard mechanics | IOS/AND/DSK/WIN/LNX-2.4 | NCL-01–NCL-20 with explicit virtual versus physical provenance; no native runs in this roadmap revision |
 | Native physical mobile and desktop clipboard | DEL-1.9/DEL-1.10 | NCL-01–NCL-28 with real-device/OS/menu/provider/privacy/accessibility artifacts |
 | Table and other extension formatting preservation | EXT-1.13; RCH-1.23; NIX/NAX/NMX/NWX/NLX-1.9; MWX-1.9 | Formatted cells, captions and inline/block extension codec round-trips, accessible commands, literal bypass and source-preserving absence |
+
+## Content migration sequencing — 2026-10-13
+
+The user deferred editor-content migrations and migration guides until full app completion and qualification. SDK-1.5 and DOC-1.15–1.27 are preserved in [the deferred migration backlog](operations/deferred-content-migrations.md), outside active SDK/docs runners. Earlier migration requirement mappings describe retained future scope, not current delivery gates. SDK integration/recovery examples and comparison documentation proceed without migration dependencies. No migration implementation or qualification is claimed by this deferral.

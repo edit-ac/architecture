@@ -1,0 +1,103 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs sdk --test-name-pattern=standalone task
+
+sdk browser: chromium
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (3390.907167ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3816.993584
+
+✖ failing tests:
+
+test at tests/browser/sdk.spec.ts:13:1
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (3390.907167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Plan the task editedOffline heading'
+  - 'Plan the task edited'
+                         ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/sdk.spec.ts:25:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:81:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Plan the task editedOffline heading',
+    expected: 'Plan the task edited',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+sdk browser: firefox
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (5292.802958ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6108.397291
+
+✖ failing tests:
+
+test at tests/browser/sdk.spec.ts:13:1
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (5292.802958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Plan the task editedOffline heading'
+  - 'Plan the task edited'
+                         ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/sdk.spec.ts:25:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:81:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Plan the task editedOffline heading',
+    expected: 'Plan the task edited',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+sdk browser: webkit
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (4231.809875ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4596.136584
+
+✖ failing tests:
+
+test at tests/browser/sdk.spec.ts:13:1
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (4231.809875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Plan the task editedOffline heading'
+  - 'Plan the task edited'
+                         ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/sdk.spec.ts:25:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:81:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Plan the task editedOffline heading',
+    expected: 'Plan the task edited',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

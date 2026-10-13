@@ -1,0 +1,35 @@
+{
+  "profile": "release (unoptimized size policy), full foundation fixture roots",
+  "baseline": "reconstructed fresh pre-optimization configuration; current identical semantic engine source plus fixture feature/module separation, original opaque loader",
+  "commands": [
+    {
+      "command": [
+        "/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/cargo",
+        "build",
+        "-p",
+        "editac-wasm",
+        "--release",
+        "--features",
+        "foundation-fixture",
+        "--target",
+        "wasm32-unknown-unknown",
+        "--locked",
+        "--offline"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "wasm-bindgen",
+        "target/wasm32-unknown-unknown/release/editac_wasm.wasm",
+        "--target",
+        "web",
+        "--out-dir",
+        "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/baseline-core/dist/wasm",
+        "--out-name",
+        "editac_wasm"
+      ],
+      "exit": 0
+    }
+  ]
+}

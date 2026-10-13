@@ -1,0 +1,46 @@
+✔ chromium: measured packed Task resources edit and recover without source fallbacks (2662.624666ms)
+✔ firefox: measured packed Task resources edit and recover without source fallbacks (8747.155292ms)
+✔ webkit: measured packed Task resources edit and recover without source fallbacks (4766.792916ms)
+✔ total cap admits its exact boundary (32.476792ms)
+✔ total cap rejects one byte above (2.649625ms)
+✔ js cap admits its exact boundary (0.219833ms)
+✔ js cap rejects one byte above (0.797333ms)
+✔ preferred misses remain visible when hard caps pass (0.231625ms)
+✔ preferred exact boundaries pass (0.4105ms)
+✔ omitted required resource fails: task.js (0.326208ms)
+✔ omitted required resource fails: glue.js (0.233625ms)
+✔ omitted required resource fails: engine.wasm (0.1065ms)
+✔ omitted required resource fails: task.css (0.231167ms)
+✔ omitted required resource fails: required-lazy.js (1.637833ms)
+✔ duplicate resources cannot disguise the inventory (2.973875ms)
+✔ invalid measurements and incomplete inventory fail (2.709708ms)
+✔ resource hashes and level-9 fixed-metadata gzip are reproducible (6.906042ms)
+✔ production graph admits only audited packed dependencies (0.22025ms)
+✔ omitted required runtime dependency fails graph admission (0.1565ms)
+✔ workspace source resolution fails graph admission (0.647375ms)
+✔ hidden required lazy code fails even when statically bundled bytes fit (0.128333ms)
+✔ an extra hidden lazy dependency in the known glue loader fails (0.114542ms)
+✔ production WASM/glue exclude foundation roots; explicit qualification build retains them (46.058125ms)
+✔ visible direct async glue import must resolve inside the packed graph (0.175791ms)
+✔ a real update larger than 100k bytes restores from the checkpoint journal (251.504125ms)
+✔ untrusted metadata arrays retain the existing structure bound (0.797875ms)
+✔ multiple bounded updates can exceed 100k payload bytes in aggregate during replay (164.918041ms)
+✔ oversized journal payload still rejects before replay or document allocation (2.036042ms)
+✔ lockfile keeps exact protocol fixture pins dev-only (9.880791ms)
+✔ Yjs fixture import provides UTF-16 text offsets (2.080584ms)
+✔ protocol fixture subpath imports resolve (0.079ms)
+✔ built and packed SSR imports perform no browser access, fetch or WASM initialization (3423.230917ms)
+✔ built browser consumer loads actual compiled WASM at the explicit asset URL (202.630625ms)
+✔ packed browser consumer loads actual compiled WASM at the explicit asset URL (322.807709ms)
+✔ failed asset initialization is observable and retry creates no document until requested (85.464ms)
+✔ compiled bridge applies JS-authored marked Unicode v1 updates and rejects malformed bytes (136.540167ms)
+✔ packed binary and glue bytes are measured and generated output does not replace package metadata (29.624375ms)
+✔ built and packed browser consumers own real engine plans, anchors and history (340.196791ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16761.743458

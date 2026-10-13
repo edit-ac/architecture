@@ -1,0 +1,109 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs sdk
+
+sdk browser: chromium
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (3009.81775ms)
+✔ chains validate atomically and scoped subscribers observe only committed changes (126.187167ms)
+✔ authorized binary sync attaches to the existing replica and persists converged content (122.781167ms)
+✔ attachment authorization, replacement and teardown fence pending IndexedDB work (100.642458ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3745.131625
+
+✖ failing tests:
+
+test at tests/browser/sdk.spec.ts:13:1
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (3009.81775ms)
+  AssertionError [ERR_ASSERTION]: {"disposition":"rejected","reason":"clipboard-target"}
+  + actual - expected
+  
+  + 'rejected'
+  - 'committed'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/sdk.spec.ts:25:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:81:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'rejected',
+    expected: 'committed',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+sdk browser: firefox
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (5482.074208ms)
+✔ chains validate atomically and scoped subscribers observe only committed changes (385.443541ms)
+✔ authorized binary sync attaches to the existing replica and persists converged content (278.594084ms)
+✔ attachment authorization, replacement and teardown fence pending IndexedDB work (329.30225ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7178.845375
+
+✖ failing tests:
+
+test at tests/browser/sdk.spec.ts:13:1
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (5482.074208ms)
+  AssertionError [ERR_ASSERTION]: {"disposition":"rejected","reason":"clipboard-target"}
+  + actual - expected
+  
+  + 'rejected'
+  - 'committed'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/sdk.spec.ts:25:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:81:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'rejected',
+    expected: 'committed',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+sdk browser: webkit
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (3839.275042ms)
+✔ chains validate atomically and scoped subscribers observe only committed changes (394.730875ms)
+✔ authorized binary sync attaches to the existing replica and persists converged content (287.427042ms)
+✔ attachment authorization, replacement and teardown fence pending IndexedDB work (254.744917ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5148.25675
+
+✖ failing tests:
+
+test at tests/browser/sdk.spec.ts:13:1
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (3839.275042ms)
+  AssertionError [ERR_ASSERTION]: {"disposition":"rejected","reason":"clipboard-target"}
+  + actual - expected
+  
+  + 'rejected'
+  - 'committed'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/sdk.spec.ts:25:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:81:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'rejected',
+    expected: 'committed',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

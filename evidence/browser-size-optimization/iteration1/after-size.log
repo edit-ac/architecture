@@ -1,0 +1,14 @@
+
+> edit-ac-workspace@0.0.0 check:browser-size
+> node scripts/check-browser-size.mjs
+
+{"output":"/Users/bpstr/Github/edit-ac/architecture/evidence/browser-size-optimization/iteration1/after","result":{"total":{"bytes":573636,"hard":512000,"preferred":256000,"hardPass":false,"preferredPass":false,"gap":61636},"js":{"bytes":36950,"hard":32000,"preferred":16000,"hardPass":false,"preferredPass":false,"gap":4950}},"productionFixtureAbsent":true}
+file:///Users/bpstr/Github/edit-ac/core/scripts/browser-size-contract.mjs:30
+  if (misses.length) throw new Error(misses.map(([scope, value]) => `${scope}: ${value.bytes} gzip bytes exceeds ${value.hard} by ${value.gap}`).join('; '));
+                           ^
+
+Error: total: 573636 gzip bytes exceeds 512000 by 61636; js: 36950 gzip bytes exceeds 32000 by 4950
+    at assertBudget (file:///Users/bpstr/Github/edit-ac/core/scripts/browser-size-contract.mjs:30:28)
+    at file:///Users/bpstr/Github/edit-ac/core/scripts/check-browser-size.mjs:62:3
+
+Node.js v24.19.0

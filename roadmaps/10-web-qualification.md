@@ -46,15 +46,15 @@ Purpose: Deliver build feature-equivalent performance baselines as one reviewabl
 Context: `benchmarks/baselines/`; `benchmarks/manifest.json`; `../architecture/specs/verification.md`.
 Dependencies: REL-1.1.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Benchmark manifests declare versions, features/device/network settings and differences; no disabled durability or hidden WASM bytes create an artificial win. Minimal and feature-equivalent configurations are separate; exact optimized editor versions, fixture hashes, primary-source configuration references and unavoidable differences are retained for DOC-1.29/1.30.
+Acceptance: Benchmark manifests declare versions, features/device/network settings and differences; no disabled durability or hidden WASM bytes create an artificial win. Minimal and feature-equivalent configurations are separate; exact optimized editor versions, fixture hashes, primary-source configuration references and unavoidable differences are retained for DOC-1.29/1.30. The edit.ac default Task preset must pass both approved gzip hard caps: 512 KB total and 32 KB editor JS, including generated WASM glue and required dependencies. Report preferred-size results against 256 KB total / 16 KB JS. Use verification.md's byte-counting contract (KB = 1,000 bytes); missing required measurements or either hard-cap overrun block qualification.
 
 Implementation:
 
-- [ ] REL-1.2-I1 Pin optimized Tiptap, Lexical and plain-contenteditable baselines with comparable schema, collaboration, persistence and UI; record unavoidable capability differences. Follow the public comparison evidence contract in verification.md; keep plain-contenteditable explicitly a limited reference, itemize required/optional bytes and document reproducible hardware/network/build/warmup/order/sample profiles.
+- [ ] REL-1.2-I1 Pin optimized Tiptap, Lexical and plain-contenteditable baselines with comparable schema, collaboration, persistence and UI; record unavoidable capability differences. Follow the public comparison evidence contract in verification.md; keep plain-contenteditable explicitly a limited reference, itemize required/optional bytes and document reproducible hardware/network/build/warmup/order/sample profiles. Consume SDK-1.8's production artifact inventory and executable assertions for edit.ac's 512,000-byte total / 32,000-byte JS gzip hard caps; record the 256,000-byte total / 16,000-byte JS preferred-size results. Include required lazy code, WASM glue and dependencies; retain reproducible gzip level-9 settings and per-artifact hashes. These caps apply to edit.ac, not the comparison editors.
 
 Validation:
 
-- [ ] REL-1.2-V1 Run the deterministic baseline sanity command added with the benchmark harness. Assert the acceptance cases above and record build/probe exit results and executed/passed/failed/skipped counts for actual test suites (nonzero matching tests required).
+- [ ] REL-1.2-V1 Run the deterministic baseline sanity command added with the benchmark harness and SDK-1.8's shared cap checks against the actual comparison-profile edit.ac artifacts. Reuse its boundary/negative-control receipts when source and settings match; distinguish preferred-size misses from hard failures. Assert the acceptance cases above and record build/probe exit results and executed/passed/failed/skipped counts for actual test suites (nonzero matching tests required).
 
 Evidence: Progress entry `REL-1.2` with changed paths, exact command/result, source and implementation revisions, fixture/artifact hashes, and any preserved failure log. Durable milestone summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, changed symbols/files, exact failing fixture or missing fact, and next bounded action for `REL-1.2`.
@@ -68,7 +68,7 @@ Purpose: Deliver measure loading, editability and paste as one reviewable bounda
 Context: `benchmarks/browser/`; `../architecture/evidence/performance.md`; `../architecture/specs/verification.md`.
 Dependencies: REL-1.2.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Task/Long targets are measured on declared desktop/phone profiles; Large/Aged are diagnostic until separately qualified; failures remain explicit. Public comparison evidence covers distinct first-visible/edit-ready timestamps, HTML/Markdown paste, input-to-visible latency, large-document edits, save/restore and reconnect; missing metrics remain Not yet measured.
+Acceptance: Task/Long targets are measured on declared desktop/phone profiles; Large/Aged are diagnostic until separately qualified; failures remain explicit. Public comparison evidence covers distinct first-visible/edit-ready timestamps, HTML/Markdown paste, input-to-visible latency, large-document edits, save/restore and reconnect; missing metrics remain Not yet measured. The measured edit.ac default Task artifacts must pass REL-1.2's 512 KB total / 32 KB JS gzip hard-cap assertions; report 256 KB total / 16 KB JS preferred-size results alongside timings. No provisional timing envelope or excluded required feature can waive a hard-cap failure.
 
 Implementation:
 

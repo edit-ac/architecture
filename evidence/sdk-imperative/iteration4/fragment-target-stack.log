@@ -1,0 +1,46 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.67s
+     Running tests/heading_end.rs (target/debug/deps/heading_end-05c0722e416c35a2)
+
+running 1 test
+test paragraph_end_destination_accepts_a_formatted_fragment ... FAILED
+
+failures:
+
+---- paragraph_end_destination_accepts_a_formatted_fragment stdout ----
+target o:4194685130:3:    0: <std::backtrace::Backtrace>::create
+   1: editac_core::commands::editor::target::{closure#1}
+             at ./src/commands/editor.rs:642:55
+   2: <core::option::Option<editac_core::editor_mapping::Owner>>::ok_or_else::<editac_core::commands::editor::EditorError, editac_core::commands::editor::target::{closure#1}>
+             at /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/option.rs:1366:25
+   3: editac_core::commands::editor::target
+             at ./src/commands/editor.rs:642:10
+   4: <editac_core::document::Document>::prepare_editor
+             at ./src/commands/editor.rs:1330:33
+   5: <editac_core::document::Document>::prepare_fragment
+             at ./src/commands/editor.rs:446:26
+   6: heading_end::paragraph_end_destination_accepts_a_formatted_fragment
+             at ./tests/heading_end.rs:934:10
+   7: heading_end::paragraph_end_destination_accepts_a_formatted_fragment::{closure#0}
+             at ./tests/heading_end.rs:895:60
+   8: <heading_end::paragraph_end_destination_accepts_a_formatted_fragment::{closure#0} as core::ops::function::FnOnce<()>>::call_once
+             at /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/ops/function.rs:250:5
+   9: test::__rust_begin_short_backtrace::<core::result::Result<(), alloc::string::String>, fn() -> core::result::Result<(), alloc::string::String>>
+  10: test::run_test::{closure#0}
+  11: std::sys::backtrace::__rust_begin_short_backtrace::<test::run_test::{closure#1}, ()>
+  12: <std::thread::lifecycle::spawn_unchecked<test::run_test::{closure#1}, ()>::{closure#1} as core::ops::function::FnOnce<()>>::call_once::{shim:vtable#0}
+  13: <std::sys::thread::unix::Thread>::new::thread_start
+  14: __pthread_cond_wait
+
+
+thread 'paragraph_end_destination_accepts_a_formatted_fragment' (168861505) panicked at crates/editac-core/tests/heading_end.rs:935:10:
+called `Result::unwrap()` on an `Err` value: UnsupportedTarget
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    paragraph_end_destination_accepts_a_formatted_fragment
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 17 filtered out; finished in 0.22s
+
+error: test failed, to rerun pass `-p editac-core --test heading_end`

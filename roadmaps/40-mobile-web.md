@@ -22,7 +22,7 @@ Purpose: Freeze mobile capabilities, fixtures and baseline cost as one bounded i
 Context: `tests/mobile-web/fixtures/`; `tests/mobile-web/harness.ts`; `packages/web/package.json`; [mobile web contract](../specs/mobile-web.md); [case catalog](../tests/mobile-web-cases.md).
 Dependencies: none.
 Session scope: One named group and its validation; touch only named paths and directly required test/configuration glue.
-Acceptance: All 59 catalog IDs have an owner and explicit mechanics/device receipt type; packaged baseline artifacts and mandatory device/mode/keyboard sample are frozen. Record the proposed 5 KiB incremental allowance inside the existing total budget, capability fallback matrix and exact upstream evidence.
+Acceptance: All 59 catalog IDs have an owner and explicit mechanics/device receipt type; packaged baseline artifacts and mandatory device/mode/keyboard sample are frozen. Record the proposed 5 KB gzip JS incremental allowance inside the approved 32 KB JS / 512 KB total gzip hard caps, preferred-size results (16 KB JS / 256 KB total), capability fallback matrix and exact upstream evidence. Use the measurement/counting contract in verification.md; missing measurements or either hard-cap overrun fail baseline admission.
 
 Implementation:
 

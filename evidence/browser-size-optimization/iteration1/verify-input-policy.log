@@ -1,0 +1,120 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs input-policy
+
+input-policy browser: chromium
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (12471.512125ms)
+✔ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (1205.455708ms)
+✔ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (445.015709ms)
+✔ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (629.990041ms)
+✔ noncancelable beforeinput remains native-pending until the actual DOM mutation (552.661375ms)
+✔ cancelable event identity prevents duplicate command replay while an identical new intent commits (476.184708ms)
+✔ identified renderer echo and independent native mutation in the same turn retain only the real input (334.35375ms)
+✔ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (254.543709ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (744.049083ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (306.51075ms)
+✔ composition blur has one explicit terminal result and zero intermediate commits (258.946625ms)
+✔ composition readonly has one explicit terminal result and zero intermediate commits (291.305584ms)
+✔ composition dispose has one explicit terminal result and zero intermediate commits (555.3965ms)
+✔ remote before preserves the browser-owned subtree and resolves the captured composition anchor (386.53975ms)
+✔ remote after preserves the browser-owned subtree and resolves the captured composition anchor (662.145542ms)
+✔ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (437.342334ms)
+✔ remote overlap rejects finalization with captured recovery text instead of deleting peer content (224.339458ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (529.413042ms)
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (648.481875ms)
+✔ read-only ordinary input is rejected and disposed queued generations cannot commit (380.418958ms)
+✔ native wrapper replacement reprojects only the affected block and keeps unrelated node identity (691.543917ms)
+✔ read-only noncancelable mutation restores authoritative content with an explicit rejection (876.746917ms)
+✔ composition keydown before finalization and duplicate final input notifications commit once (559.933084ms)
+✖ commit-key suppression expires at a dispatcher boundary when no keyup arrives (1389.160375ms)
+✔ composition adopts its preceding physical key intent instead of leaving an extra pending edit (5053.50575ms)
+✔ composition preserves a backward replacement range and restores the resulting caret (1729.208625ms)
+✔ composition remote insertion at the collapsed anchor precedes the final local text under right affinity (681.18725ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 25
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34676.068959
+
+✖ failing tests:
+
+test at tests/browser/input-policy.spec.ts:92:1
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (648.481875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'n:4061433277:1'
+  - 'o:1594386348:3'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:94:194
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:42:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'n:4061433277:1',
+    expected: 'o:1594386348:3',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:109:1
+✖ commit-key suppression expires at a dispatcher boundary when no keyup arrives (1389.160375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'n:794923900:1'
+  - 'o:1776880882:3'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:112:194
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:42:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'n:794923900:1',
+    expected: 'o:1776880882:3',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+input-policy browser: firefox
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (110527.95125ms)
+✔ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (17087.988292ms)
+✔ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (7023.150417ms)
+✔ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (5890.462666ms)
+✔ noncancelable beforeinput remains native-pending until the actual DOM mutation (8059.981958ms)
+✖ cancelable event identity prevents duplicate command replay while an identical new intent commits (20309.000958ms)
+✔ identified renderer echo and independent native mutation in the same turn retain only the real input (12323.35125ms)
+✔ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (7737.993666ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (4376.170542ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (9994.93175ms)
+
+Interrupted while running:
+
+⚠ tests/browser/input-policy.spec.ts (tests/browser/input-policy.spec.ts:1:1)
+✖ tests/browser/input-policy.spec.ts (302174.487833ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 9
+ℹ fail 1
+ℹ cancelled 1
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 302048.594917
+
+✖ failing tests:
+
+test at tests/browser/input-policy.spec.ts:62:1
+✖ cancelable event identity prevents duplicate command replay while an identical new intent commits (20309.000958ms)
+  browserContext.newPage: Target crashed 
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:41:27) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests/browser/input-policy.spec.ts:1:1
+✖ tests/browser/input-policy.spec.ts (302174.487833ms)
+  'Promise resolution is still pending but the event loop has already resolved'

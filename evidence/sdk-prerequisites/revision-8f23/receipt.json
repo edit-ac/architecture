@@ -1,0 +1,111 @@
+{
+  "gate": "SDK-1.1",
+  "children": [
+    "SDK-1.1-I1",
+    "SDK-1.1-V1"
+  ],
+  "state": "implemented/verified; not published/deployed; SDK-1.2 remains unqualified",
+  "verifiedAtUtc": "2026-10-13T09:04:38.797289+00:00",
+  "sourceRevision": "8f23d776c8fc69936013bc0b09bfaf8d2d4e0f82ece5e3b1cd4a3d5b7594066e",
+  "sourceSnapshot": "progress/.roadmap-runner/08-sdk-integration-c067d82a29b2/source-cbd39ac8e8cf.md",
+  "sourceSnapshotSha256": "8f23d776c8fc69936013bc0b09bfaf8d2d4e0f82ece5e3b1cd4a3d5b7594066e",
+  "promptRevision": "2e18a98412c7",
+  "iteration": 3,
+  "coreBaseCommit": "f24b52043e4b7b429d81da0f2a2371635c332475",
+  "implementation": "Uncommitted implementation; implementation.patch plus untracked-source/ and source-hashes.json retained. Prior SDK-1.2 repairs preserved. Only stale prerequisite probe and web README repaired this iteration.",
+  "toolchain": {
+    "node": "24.19.0",
+    "wasmBindgen": "0.2.129",
+    "rust": "1.97.1"
+  },
+  "checks": [
+    {
+      "command": "npm run check:packages",
+      "exit": 0,
+      "executed": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "packages.log"
+    },
+    {
+      "command": "npm run check:browser-baseline",
+      "exit": 0,
+      "executed": 232,
+      "passed": 232,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "parts": {
+        "baselineRunner": 4,
+        "chromium": 76,
+        "firefox": 76,
+        "webkit": 76
+      },
+      "log": "baseline.log",
+      "builds": "Fresh WASM and workspace builds exit 0; unfiltered baseline."
+    }
+  ],
+  "resources": {
+    "fixtureCleanup": [
+      {
+        "file": "baseline/chromium/render/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline/chromium/keyboard/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline/webkit/render/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline/webkit/keyboard/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline/firefox/render/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "file": "baseline/firefox/keyboard/facts.json",
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      }
+    ],
+    "remainingAutomatedProcesses": [],
+    "freeBytes": 12912947200,
+    "freeGiB": 12.03,
+    "removedPaths": [
+      "/tmp/sdk-iteration3-processes.txt"
+    ],
+    "scope": "Harness closed task-owned browsers/fixture listeners/temporary consumers. Preserved preexisting/other-task processes. Current-session artifacts are a few MiB; qualification evidence and reusable dist outputs retained, no preexisting Rust cache removed.",
+    "directorySizes": "disk-sizes.txt"
+  },
+  "remaining": "SDK-1.2 feature-level acceptance and latest native fragment guard are pending; no native/device/performance/release qualification claimed."
+}

@@ -1,0 +1,103 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs sdk
+
+sdk browser: chromium
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (2758.999917ms)
+✔ chains validate atomically and scoped subscribers observe only committed changes (152.580375ms)
+✔ authorized binary sync attaches to the existing replica and persists converged content (132.996709ms)
+✔ attachment authorization, replacement and teardown fence pending IndexedDB work (107.89025ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3528.971916
+
+✖ failing tests:
+
+test at tests/browser/sdk.spec.ts:13:1
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (2758.999917ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(content(before).some(node => JSON.stringify(node.attributes) === JSON.stringify(['heading', 1])))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/sdk.spec.ts:26:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:81:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+sdk browser: firefox
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (4063.046208ms)
+✔ chains validate atomically and scoped subscribers observe only committed changes (295.856083ms)
+✔ authorized binary sync attaches to the existing replica and persists converged content (259.592166ms)
+✔ attachment authorization, replacement and teardown fence pending IndexedDB work (241.690916ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5493.622541
+
+✖ failing tests:
+
+test at tests/browser/sdk.spec.ts:13:1
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (4063.046208ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(content(before).some(node => JSON.stringify(node.attributes) === JSON.stringify(['heading', 1])))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/sdk.spec.ts:26:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:81:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+sdk browser: webkit
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (3077.227166ms)
+✔ chains validate atomically and scoped subscribers observe only committed changes (290.593459ms)
+✔ authorized binary sync attaches to the existing replica and persists converged content (273.788333ms)
+✔ attachment authorization, replacement and teardown fence pending IndexedDB work (270.62425ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4233.640292
+
+✖ failing tests:
+
+test at tests/browser/sdk.spec.ts:13:1
+✖ standalone task edits, pastes Markdown and recovers its exact offline document (3077.227166ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(content(before).some(node => JSON.stringify(node.attributes) === JSON.stringify(['heading', 1])))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/sdk.spec.ts:26:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:81:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
