@@ -24,6 +24,12 @@ Count and encoded-byte retention are FIFO. Byte accounting includes retained lab
 
 An optional host key-profile label records the access generation needed to read a snapshot. Missing or rotated key access returns key-unavailable. This decrypted in-memory store is not an encryption boundary; hosts must enforce authorization and optional encrypted persistence before supplying access. Source text is omitted from store diagnostics. Capture labels are user-supplied, not authenticated attribution. Named snapshots and their capabilities disappear with the host-owned store; durable archival storage and restoration are not claimed here.
 
+### Semantic comparison model (DIF-1.4)
+
+The on-demand diff companion copies the engine's read-only projection, including visible/recovery nodes, integrated source spans, attributed runs, original block tuples, editor metadata and complete retained structure. It never substitutes presentation fallbacks for unknown tuples. JSON-incompatible engine values reject explicitly; node/byte/depth limits apply before capture. No observer or typing hook is installed.
+
+Version `editac-semantic-diff-v1` compares compatible immutable semantic revisions by stable node ID. Insert/delete, visibility, placement, kind, text, formatting, references, table, attributes, opaque modules and source identities are independent facets; a move never suppresses another facet. Run segmentation is normalized only for comparison of UTF-16 mark ranges. Link values have a separate reference facet; built-in reference/table tuple changes additionally have their own facets. Unknown tuples and marks stay inert and visible, with full before/after node payloads. Retained structure changes remain an explicit document-level before/after result even without visible changes. Ordered IDs and facets are deterministic, output bytes/change count are bounded, hashes and revision scopes bind inputs, and attribution is always unknown. This model does not apply edits, infer authors or establish Git/browser/native presenter qualification.
+
 ## Patch contract
 
 Pin deterministic line/word diff algorithms and options. A patch carries before/after hashes, representation/profile, limits and hunk ranges. Applying it to the exact baseline must yield byte-for-byte expected output and the expected hash. Wrong baseline, overlapping hunks, malformed lengths, missing context or output-limit violations fail without mutation. Git-like unified output is an interoperability format, not a promise that tie-breaking matches every Git version/options combination.
