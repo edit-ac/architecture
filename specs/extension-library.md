@@ -69,6 +69,29 @@ the original data recoverable. Qualification includes old/new/unknown versions,
 interrupted migration and delayed updates. Module version numbers alone do not
 authorize a document-wide schema transition.
 
+### Candidate-data evolution conformance
+
+The public Rust `modules::v1::ModuleEvolution` and browser
+`prepareModuleMigration` accept a bounded declaration of compatible descriptor
+reads and directed version transitions. Both validate source and target data using
+the owning frozen registry. Undeclared/reverse/unknown transitions reject before
+calling the trusted host transform. Preparation preserves the original envelope
+and returns inert candidate data; there is no document handle, live-state rewrite
+or implicit migration on registration. Callback failure or discarding preparation
+leaves the original recoverable. A candidate is not a prepared engine edit.
+The host must separately use a supported owning edit or explicit new-epoch
+migration protocol. This interface does not introduce arbitrary attribute editing
+or authorize reinterpreting an existing checkpoint under a different identity.
+
+`prepareExtensionSource` is a reusable browser conformance hook over the owning
+Markdown codec and bounded literal-input path. Literal input calls no codecs.
+The fixed version corpus is `core/fixtures/extensions/versions/conformance.json`;
+EXT-1.4 exercises actual Rust source reconciliation/checkpoints, portable
+fragment copy/export, production WASM clipboard/copy and delayed epoch replay.
+Reference Markdown export retains a diagnostic and typed recovery when its
+identity cannot be represented. Unavailable math/future extension codecs keep
+opaque payload and source; this is preservation, not richer format support.
+
 ## Presenter and host interfaces
 
 Presenters receive stable node identity, validated content, selection/capability
