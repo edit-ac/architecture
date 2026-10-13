@@ -4,7 +4,7 @@ Created 2026-10-13 by explicit user request. Primary workspace: `/Users/bpstr/Gi
 
 ## Ownership and queue
 
-Primary runner `0386f4f01f5517a86d785da5` exclusively owns roadmap 08 SDK/optional Markdown footprint and queued roadmap 09 native preparation. Parallel runner owns this FIFO queue: 12 shared client contracts, 13 exact change review, 21 extension library, 11 offline CLI, 15 TUI, 26 link resolution, 19 optional protection. Do not launch duplicate controllers or take another runner's parents. Roadmaps 10, 14, 16–18, 20, 22–25, 27–30 and 31–42 remain outside this new queue; their missing SDK/native/client/content/device prerequisites need fresh scheduling.
+Primary runner `f8ac8f9bb10d07675936cfbc` owns completed roadmap 08 SDK, active roadmap 09 native preparation, then queued roadmaps 42 regression suite, 30 architecture fitness, 14 host-agent editing, 16 iOS SDK and 17 Android SDK. Parallel runner owns this FIFO queue: 12 shared client contracts, 13 exact change review, 21 extension library, 11 offline CLI, 15 TUI, 26 link resolution, 19 optional protection. Do not launch duplicate controllers or take another runner's parents. The remaining roadmaps stay outside these two queues; their missing SDK/native/client/content/device prerequisites need fresh scheduling.
 
 The queue is dependency-ordered, not a claim that later tracks already pass their gates. Recheck each entry against current code, named evidence and merged progress. Reuse the committed engine, storage, Markdown SourceBaseline/prepare/commit, synchronization and module implementations. Preserve roadmap 05's explicit physical-device FMT-1.15 gap; portable FMT-1.12 and the already recorded module/SDK implementation baseline are the headless entry evidence, not a device/release claim. CAP-1.1 must verify the reviewed contracts at the actual isolated source hashes. If a required portable gate fails, stop with the concrete blocker; do not waive acceptance or retry indefinitely.
 
@@ -33,3 +33,25 @@ Stop only verified task-owned temporary browsers/servers; preserve primary runne
 ## User-approved emulator development entry amendment
 
 2026-10-13: "Lets unblock, emulator should do for now" overrides the previous physical-only development blocker. Read the amended verification/formats/client specs and roadmaps 05/11/12/21. The resumed CAP-1.1 worker executes the five native clipboard assertions on an actual task-owned simulator/emulator and records FMT-1.15 development evidence; physical release evidence stays open. Reuse the completed audit matrix and passing tests, retain prior failed/BLOCKED evidence and stop on a new concrete unrecoverable blocker.
+
+## User-approved binary hard caps
+
+2026-10-13: "Lets increase hard caps to 512KB and 32KB" is adopted as 512 KiB total = 524,288 bytes and 32 KiB editor JS = 32,768 bytes. Preferred targets remain decimal 256,000 total / 16,000 JS bytes. Both architecture copies and both code contract/test copies were updated in place; historical measurements and failed evidence retain their original budget meaning. The primary runner was stopped for source adoption and will resume its preserved SDK progress plus queued native preparation on the revised source. A 31,996 JS / 478,907 total candidate already fit the old caps; prioritize full default/enabled parity, not unnecessary further size optimization. This budget decision does not close qualification or authorize publication.
+
+Current primary controller after the cap amendment: `f8ac8f9bb10d07675936cfbc`; its 08/09 ownership is unchanged. Supervisor reviews now occur every two workers to strengthen handoff/integration checkpoints. The parallel controller is still `83cb6d69f62d4858e0234a36`.
+
+## Primary queue expansion — user authorized
+
+2026-10-13: user accepted the proposal with "Perfect lets queue them". Primary FIFO after 09 is **42 → 30 → 14 → 16 → 17**. The parallel queue remains **12 → 13 → 21 → 11 → 15 → 26 → 19**. Do not duplicate these owners.
+
+42 consumes the completed 08 evidence. Before 30, safely integrate and validate completed parallel 12 and 21 plus current 08 evidence. Before 14, additionally integrate qualified 13. Before 16/17, verify the merged 07/12/13/21 contracts and their platform-specific 09 preparation receipts; 16 consumes NAT-1.1/1.2/1.3/1.5, 17 consumes NAT-1.1/1.2/1.4/1.6. Physical support claims remain with their designated release/device owners.
+
+At the 09 and 42 completion checkpoints, review the pending integration request and reconcile main/parallel history under the shared lock. Preserve and commit only owned validated changes, resolve overlapping contracts with both lanes' passing behavior, rerun affected checks and record exact merged commits/progress hashes. Being queued does not satisfy an upstream gate. If required parallel delivery or a safe merge is unavailable when its roadmap reaches the front, save the precise handoff/unblock condition and stop that controller rather than retrying an unchanged gate or reproducing another lane's implementation.
+
+## Hourly active monitor and integration
+
+User authorization (2026-10-13): "Set up hourly monitor and resolve any blockers. Also make sure regular merge to main to avoid code drifts". Active thread heartbeat: monitor-edit-ac-runners-and-merge-progress. Read queue.json for current controller IDs; fix actionable code/toolchain/fixture/integration issues within existing roadmap scopes, and preserve paid-inference and publication restrictions.
+
+Process validated unmerged deliveries on hourly checks, after two completed parents, and at roadmap boundaries. Generic dirty-tree deferral is insufficient: compare exact dirty paths with incoming changes and determine ownership/overlap. If needed, first prepare and test a union of immutable main/parallel commits in a separate integration worktree while preserving live work. Pause the affected controllers only for a safe landing checkpoint, retain partial source/logs and pending queues, preserve unrelated nonoverlapping changes byte-for-byte, land reviewed commits with normal Git merges, and reconcile merged main back into the parallel branch before resuming. Do not blindly stash/reset, overwrite active files, stage unvalidated work from another task, force-update main, or treat a queued prerequisite as completed.
+
+The controller can commit explicitly user-authorized, reviewed planning/rule amendments after planning validation so they no longer prevent integration. Leave unrelated benchmark work and historical/generated qualification changes untouched. Record actual merged revisions, checks, preserved dirty-path hashes and resumed IDs in the ledger and acknowledgment. If overlap cannot be resolved safely, identify exact paths and an actionable next step instead of repeatedly polling the same blocker.

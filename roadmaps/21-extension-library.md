@@ -213,7 +213,7 @@ Purpose: Keep disabled presenters out of minimal bundles while preserving their 
 Context: `tests/extension-bundles.test.mjs`; `scripts/`; `fixtures/extensions/consumers/`; `docs/extensions/footprint.md`; `../architecture/specs/extension-library.md`.
 Dependencies: EXT-1.2, EXT-1.7, EXT-1.8.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Packed minimal and enabled browser consumers have recorded JS/WASM/CSS/asset manifests; disabled optional presenter assets are absent and not implicitly requested. The default Task preset passes verification.md's 512 KB total / 32 KB editor JS gzip hard caps and reports the 256 KB total / 16 KB JS preferred-size results (KB = 1,000 bytes). Required lazy code, generated WASM glue and runtime dependencies count; enabled optional costs are reported separately. Native/TUI manifests identify optional dependencies honestly; size claims use actual artifacts and declared settings.
+Acceptance: Packed minimal and enabled browser consumers have recorded JS/WASM/CSS/asset manifests; disabled optional presenter assets are absent and not implicitly requested. The default Task preset passes verification.md's 512 KiB total / 32 KiB editor JS gzip hard caps and reports the 256 KB total / 16 KB JS preferred-size results (KB = 1,000 bytes). Required lazy code, generated WASM glue and runtime dependencies count; enabled optional costs are reported separately. Native/TUI manifests identify optional dependencies honestly; size claims use actual artifacts and declared settings.
 
 Implementation:
 

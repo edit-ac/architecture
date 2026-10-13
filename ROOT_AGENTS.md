@@ -89,3 +89,7 @@ Before changing or running AI tests or dogfood, read `architecture/operations/pa
 ## Parallel roadmap delivery checkpoints
 
 For the explicitly authorized concurrent 08–09 and shared-client runners, read `../.roadmap-coordination/parallel-clients.md` from a repository (or `.roadmap-coordination/parallel-clients.md` from the workspace root) before every parent. Respect lane ownership and the integration lock. Commit validated owned work and reconcile with main after every two completed parents and at roadmap boundaries. The primary lane processes integration requests only at a safe checkpoint; the parallel lane must not modify a checkout with an active worker. Record merged commits, progress locations and deferred conflicts in the shared ledger so later tasks reuse completed work. Keep paid synthetic inference and publication prohibited.
+
+## Hourly runner health and drift repair
+
+The user-authorized hourly monitor actively resolves roadmap blockers and integrates validated completed work into local main. Use the shared coordination plan and lock, compare exact dirty paths, prepare/test merges in an isolated worktree if needed, and pause affected workers only for a safe landing checkpoint. Preserve unrelated nonoverlapping work byte-for-byte and never blindly stash/reset or stage another task's unvalidated changes. Record tested merged commits and restart IDs, synchronize the parallel branch with main, and stop unchanged blocked retry loops.

@@ -12,12 +12,12 @@ Task: 20 blocks/~10 KiB text. Long: 2,000 mixed blocks/~1 MiB. Large: 10,000/~5 
 
 ## Browser bundle size budgets
 
-The default Task preset has two independent gzip release caps. Preferred sizes are optimization goals; exceeding either hard cap blocks release qualification. KB means 1,000 bytes, not KiB.
+The default Task preset has two independent gzip release caps. Preferred sizes are optimization goals; exceeding either hard cap blocks release qualification. Hard caps use KiB (1,024 bytes); preferred sizes continue to use decimal KB (1,000 bytes). The user approved these binary hard caps on 2026-10-13: 512 KiB total (524,288 bytes) and 32 KiB editor JavaScript (32,768 bytes).
 
 | Scope | Hard cap | Preferred size |
 |---|---:|---:|
-| Task preset total JS + WASM + essential CSS/assets, including Yrs and Markdown | 512 KB (512,000 bytes) | 256 KB (256,000 bytes) |
-| Editor JavaScript, including generated WASM glue and required runtime dependencies | 32 KB (32,000 bytes) | 16 KB (16,000 bytes) |
+| Task preset total JS + WASM + essential CSS/assets, including Yrs and Markdown | 512 KiB (524,288 bytes) | 256 KB (256,000 bytes) |
+| Editor JavaScript, including generated WASM glue and required runtime dependencies | 32 KiB (32,768 bytes) | 16 KB (16,000 bytes) |
 
 Measure production artifacts with gzip level 9 and fixed metadata, summing each distinct delivered resource once. Include required code even when loaded lazily, and preserve the declared schema, collaboration, persistence and Markdown capabilities. Count generated WASM glue in both the JS subtotal and total. Exclude document data, development/test code and unrelated host application code. Record minifier/compressor versions/settings, artifact hashes, raw/gzip/Brotli sizes, both budget results and preferred-size results. Brotli is diagnostic and cannot substitute for gzip admission.
 
