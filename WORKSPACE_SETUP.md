@@ -50,7 +50,7 @@ From the workspace root, prepare locked dependencies:
 (cd cli && cargo fetch --locked)
 ```
 
-For core browser checks, install the browser belonging to the locked Playwright dependency from `core`: `npx --no-install playwright install chromium --only-shell`. Dependency installation may download packages and browsers; validation uses deterministic fixtures and prepared/mock transports. Follow the root paid-inference policy before any AI test or separately authorized live-content dogfood.
+For core browser checks, install the browsers belonging to the locked Playwright dependency from `core`: `npx --no-install playwright install chromium firefox webkit`. The default baseline check runs all three engines. Dependency installation may download packages and browsers; validation uses deterministic fixtures and prepared/mock transports. Follow the root paid-inference policy before any AI test or separately authorized live-content dogfood.
 
 ## Verify each checkout
 
