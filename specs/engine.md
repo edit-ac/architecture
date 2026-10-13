@@ -121,6 +121,14 @@ Host focus/menu side effects are outside the atomic document mutation contract.
 Reentrant adapter callbacks cannot mutate a document while a transaction is active.
 Revision numbers are local observation tokens, not globally comparable CRDT timestamps.
 
+## Ordered text and mark batch coordinates
+
+The existing prepared editor batch admits `replaceAt` and `markAt` commands over one logical owner. Their `from`/`to` offsets are UTF-16 cuts in the disposable replica after all preceding commands, not coordinates captured from the live entry snapshot. A collapsed replacement inserts; empty replacement text deletes. Mark actions reuse the qualified formatting planner, including code/link/unknown-attribute policy. Mixed commands stage in order and publish one live update only after the entire plan passes admission. Invalid later owners, surrogate-interior cuts, mark policy or resource limits reject without changing content, state vector, revision, history or subscribers.
+
+An optional final `selectionAt` supplies anchor/focus owner, UTF-16 offset and left/right bias against that staged result. It must be the last command and validates both endpoints before any live mutation. Commit returns engine-scoped stable `selection` anchor tokens preserving endpoint order and biases; adapters retain their declared affinity and release both tokens. This metadata does not invent a storage root or a browser selection. The WASM boundary reserves all result tokens before exposing the plan, includes reservations in anchor capacity, releases them with the plan, and never allocates a result token after commit. Existing caret results remain compatible.
+
+These synchronous coordinates are not asynchronous targets. Preparing a batch does not mutate live state; commit checks the original replica/revision/checkpoint and rejects a stale plan rather than rebasing integer offsets onto unrelated content. Use stable anchors for asynchronous work. Exact atomic text/mark and selection vectors are in `crates/editac-core/tests/atomic_batch.rs`, bridge capacity tests, and the packed `tests/editing/atomic-batch.test.mjs` proof. These tests unblock the missing SEQ-11 primitive; they do not close all RGS-1.2 recipes or native device qualification.
+
 ## Atomic heading-end Enter
 
 WEB-1.14 owns the engine/WASM prerequisite for WEB-1.8. Add the prepared Rust editor command `HeadingEnd { owner, at }` and the packed command `{ type: "headingEnd", owner, at }`, using the existing engine-owned stable anchor token and editor request envelope. This is an additive command API on the qualified v5 replica; it does not change the persisted schema or peer update protocol.

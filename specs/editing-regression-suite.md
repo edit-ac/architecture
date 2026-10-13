@@ -5,6 +5,10 @@ Scope: semantic commands, browser input, composition, selection, rendering, hist
 
 The machine-readable [suite manifest](../tests/editing-suite/suite.json) indexes catalog cases, architectural guards and concrete step-by-step recipes. [Track 42](../roadmaps/42-editing-regression-suite.md) builds the real-engine test drivers and checks before track 38 consumes them. This repository's validator checks fixture/coverage integrity only. All recipes remain planned until their real adapters, assertions and evidence exist.
 
+## Atomic batch entry proof
+
+SEQ-11 may use the engine's ordered `replaceAt`/`markAt` editor commands and final `selectionAt`, which resolve cuts on the disposable post-operation state. The invalid final mark target must reject every staged change. The valid retry must preserve the original owner/source, bold only inserted X, publish one commit and return the exact stable result selection. Dedicated native and packed WASM vectors establish this primitive only; the full semantic group, variants and G02/G03/G04/G06 remain RGS-1.2 acceptance work.
+
 ## Prevention boundaries
 
 | Guard | Required boundary | Falsifying test |

@@ -50,7 +50,7 @@ Acceptance: SEQ-01–SEQ-07, SEQ-11 and SEQ-12 pass their representative checkpo
 
 Implementation:
 
-- [ ] RGS-1.2-I1 Reuse qualified prepared operations. If current plain-text, format or structure APIs cannot express one atomic action with its selection policy, stop with the upstream engine gap; do not sequentially commit or weaken the recipe. Add schema-crossing suffix preservation, separated pre fragments, block-attribute/pending-mark and invalid-final-operation variants.
+- [ ] RGS-1.2-I1 Reuse qualified prepared operations. Ordered mixed text/mark recipes may use the hash-qualified `replaceAt`/`markAt` editor batch and final `selectionAt` result; assert staged UTF-16 offsets, full invalid-final-operation rejection and both returned selection endpoints. If current plain-text, format or structure APIs cannot express one atomic action with its selection policy, stop with the upstream engine gap; do not sequentially commit or weaken the recipe. Add schema-crossing suffix preservation, separated pre fragments, block-attribute/pending-mark and invalid-final-operation variants.
 
 Validation:
 
