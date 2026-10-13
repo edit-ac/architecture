@@ -1,0 +1,565 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs keyboard
+
+keyboard browser: chromium
+✔ native-paragraph-enter splits and moves caret once (16541.876125ms)
+✔ native-selected-enter-false (4294.228958ms)
+✔ native-selected-enter-true (3294.154417ms)
+✔ native-code-Enter (832.493042ms)
+✔ native-code-Shift+Enter (435.019542ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (1446.073334ms)
+✔ native-heading-middle retains level (3671.772542ms)
+✖ native-heading-end creates paragraph (original acceptance) (2338.379542ms)
+✔ native-empty-heading becomes paragraph (2046.9435ms)
+✔ native-boundary-Backspace (6223.981625ms)
+✔ native-boundary-Delete (8327.42425ms)
+✔ native-cross-block-Enter (571.686917ms)
+✖ native-cross-block-Shift+Enter (454.118458ms)
+✔ native-cross-block-Backspace (853.081709ms)
+✖ native-unordered-enter (548.3665ms)
+✖ native-checklist-enter (531.631834ms)
+✖ native-quote-enter (335.864958ms)
+✖ native-list-tab indentation and outdent preserve backward selection (276.739ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (344.209375ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (484.495292ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (368.302375ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (336.634667ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (405.711375ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (401.447667ms)
+✔ native-navigation and modified host Enter retain ownership (508.96025ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 19
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57291.92325
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:59:1
+✖ native-heading-end creates paragraph (original acceptance) (2338.379542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'alpha',
+  -   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:59:245
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'alpha', '', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:62:54
+✖ native-cross-block-Shift+Enter (454.118458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 3
+  
+      at caret (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:51:207)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:62:346
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:63:53
+✖ native-unordered-enter (548.3665ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alphaindependent',
+  -   '',
+      'al',
+      'pha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:63:224
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alphaindependent', 'al', 'pha', 'independent' ],
+    expected: [ '', 'al', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:63:53
+✖ native-checklist-enter (531.631834ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '☐al☐pha☐independent',
+  -   '',
+      'al',
+      'pha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:63:224
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '☐al☐pha☐independent', 'al', 'pha', 'independent' ],
+    expected: [ '', 'al', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:63:53
+✖ native-quote-enter (335.864958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alphaindependent',
+  -   '',
+      'al',
+      'pha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:63:224
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alphaindependent', 'al', 'pha', 'independent' ],
+    expected: [ '', 'al', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:64:1
+✖ native-list-tab indentation and outdent preserve backward selection (276.739ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alphaindependent',
+  -   '',
+      'alpha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:64:193
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alphaindependent', 'alpha', 'independent' ],
+    expected: [ '', 'alpha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+keyboard browser: firefox
+✔ native-paragraph-enter splits and moves caret once (13040.22825ms)
+✔ native-selected-enter-false (4707.021416ms)
+✔ native-selected-enter-true (5609.194625ms)
+✔ native-code-Enter (4326.91875ms)
+✔ native-code-Shift+Enter (4125.422167ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (1723.250125ms)
+✔ native-heading-middle retains level (396.631958ms)
+✖ native-heading-end creates paragraph (original acceptance) (319.807458ms)
+✔ native-empty-heading becomes paragraph (366.337292ms)
+✔ native-boundary-Backspace (1282.702417ms)
+✔ native-boundary-Delete (518.162916ms)
+✔ native-cross-block-Enter (299.553458ms)
+✖ native-cross-block-Shift+Enter (303.603209ms)
+✔ native-cross-block-Backspace (250.218417ms)
+✖ native-unordered-enter (281.317375ms)
+✖ native-checklist-enter (309.971958ms)
+✖ native-quote-enter (275.740209ms)
+✖ native-list-tab indentation and outdent preserve backward selection (312.232708ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (364.821334ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (976.262208ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (339.795209ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (253.617916ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (379.397875ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (386.713917ms)
+✔ native-navigation and modified host Enter retain ownership (310.448208ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 19
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 42643.552333
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:59:1
+✖ native-heading-end creates paragraph (original acceptance) (319.807458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'alpha',
+  -   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:59:245
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'alpha', '', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:62:54
+✖ native-cross-block-Shift+Enter (303.603209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 3
+  
+      at caret (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:51:207)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:62:346
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:63:53
+✖ native-unordered-enter (281.317375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alphaindependent',
+  -   '',
+      'al',
+      'pha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:63:224
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alphaindependent', 'al', 'pha', 'independent' ],
+    expected: [ '', 'al', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:63:53
+✖ native-checklist-enter (309.971958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '☐al☐pha☐independent',
+  -   '',
+      'al',
+      'pha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:63:224
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '☐al☐pha☐independent', 'al', 'pha', 'independent' ],
+    expected: [ '', 'al', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:63:53
+✖ native-quote-enter (275.740209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alphaindependent',
+  -   '',
+      'al',
+      'pha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:63:224
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alphaindependent', 'al', 'pha', 'independent' ],
+    expected: [ '', 'al', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:64:1
+✖ native-list-tab indentation and outdent preserve backward selection (312.232708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alphaindependent',
+  -   '',
+      'alpha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:64:193
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alphaindependent', 'alpha', 'independent' ],
+    expected: [ '', 'alpha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+keyboard browser: webkit
+✔ native-paragraph-enter splits and moves caret once (20809.111125ms)
+✔ native-selected-enter-false (3279.627167ms)
+✔ native-selected-enter-true (376.6775ms)
+✔ native-code-Enter (407.204875ms)
+✔ native-code-Shift+Enter (332.6665ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (327.417792ms)
+✔ native-heading-middle retains level (408.297125ms)
+✖ native-heading-end creates paragraph (original acceptance) (264.069667ms)
+✔ native-empty-heading becomes paragraph (456.713042ms)
+✔ native-boundary-Backspace (339.87775ms)
+✔ native-boundary-Delete (253.447166ms)
+✔ native-cross-block-Enter (272.974667ms)
+✖ native-cross-block-Shift+Enter (390.707292ms)
+✔ native-cross-block-Backspace (346.611625ms)
+✖ native-unordered-enter (301.020792ms)
+✖ native-checklist-enter (383.096292ms)
+✖ native-quote-enter (311.643792ms)
+✖ native-list-tab indentation and outdent preserve backward selection (309.132958ms)
+✖ native-prose-tab and Escape-Tab leave focus without updates (362.459208ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (508.41075ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (365.807083ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (236.560042ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (317.195625ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (317.622541ms)
+✔ native-navigation and modified host Enter retain ownership (286.60225ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 18
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32466.190208
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:59:1
+✖ native-heading-end creates paragraph (original acceptance) (264.069667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'alpha',
+  -   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:59:245
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'alpha', '', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:62:54
+✖ native-cross-block-Shift+Enter (390.707292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 3
+  
+      at caret (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:51:207)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:62:346
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:63:53
+✖ native-unordered-enter (301.020792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alphaindependent',
+  -   '',
+      'al',
+      'pha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:63:224
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alphaindependent', 'al', 'pha', 'independent' ],
+    expected: [ '', 'al', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:63:53
+✖ native-checklist-enter (383.096292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '☐al☐pha☐independent',
+  -   '',
+      'al',
+      'pha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:63:224
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '☐al☐pha☐independent', 'al', 'pha', 'independent' ],
+    expected: [ '', 'al', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:63:53
+✖ native-quote-enter (311.643792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alphaindependent',
+  -   '',
+      'al',
+      'pha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:63:224
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alphaindependent', 'al', 'pha', 'independent' ],
+    expected: [ '', 'al', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:64:1
+✖ native-list-tab indentation and outdent preserve backward selection (309.132958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alphaindependent',
+  -   '',
+      'alpha',
+      'independent'
+    ]
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:44:487)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:64:193
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alphaindependent', 'alpha', 'independent' ],
+    expected: [ '', 'alpha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:65:1
+✖ native-prose-tab and Escape-Tab leave focus without updates (362.459208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '' !== 'after'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:65:284
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'after',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,94 @@
+TAP version 13
+# (node:29401) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: explicit capability is separate from ordinary accepted delivery
+ok 1 - explicit capability is separate from ordinary accepted delivery
+  ---
+  duration_ms: 99.481333
+  type: 'test'
+  ...
+# Subtest: prepared authorization, complete metadata and revocation isolate stored identities
+ok 2 - prepared authorization, complete metadata and revocation isolate stored identities
+  ---
+  duration_ms: 107.329916
+  type: 'test'
+  ...
+# Subtest: receipt waits for commit completion; failed commit rolls back and permits retry
+ok 3 - receipt waits for commit completion; failed commit rolls back and permits retry
+  ---
+  duration_ms: 95.861
+  type: 'test'
+  ...
+# Subtest: process crash at before-transaction preserves only committed bytes and retry identity
+ok 4 - process crash at before-transaction preserves only committed bytes and retry identity
+  ---
+  duration_ms: 189.764959
+  type: 'test'
+  ...
+# Subtest: process crash at before-commit preserves only committed bytes and retry identity
+ok 5 - process crash at before-commit preserves only committed bytes and retry identity
+  ---
+  duration_ms: 220.678583
+  type: 'test'
+  ...
+# Subtest: process crash at after-commit preserves only committed bytes and retry identity
+ok 6 - process crash at after-commit preserves only committed bytes and retry identity
+  ---
+  duration_ms: 177.392208
+  type: 'test'
+  ...
+# Subtest: process crash at before-receipt preserves only committed bytes and retry identity
+ok 7 - process crash at before-receipt preserves only committed bytes and retry identity
+  ---
+  duration_ms: 244.631542
+  type: 'test'
+  ...
+# Subtest: Rust and JS updates converge after shuffled duplicates, pagination and service restart
+not ok 8 - Rust and JS updates converge after shuffled duplicates, pagination and service restart
+  ---
+  duration_ms: 175.763916
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:3'
+  failureType: 'testCodeFailure'
+  error: 'expected Uint8Array'
+  code: 'InvalidInput'
+  name: 'EngineError'
+  stack: |-
+    bytes (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:89:15)
+    file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:283:81
+    file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:135:16
+    invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:13:16)
+    use (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:132:40)
+    mutate (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:185:24)
+    Object.applyUpdate (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:281:34)
+    file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:227:18
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+  ...
+# Subtest: content identity, writer/sequence conflicts and request/replay limits fail before mutation
+ok 9 - content identity, writer/sequence conflicts and request/replay limits fail before mutation
+  ---
+  duration_ms: 128.796625
+  type: 'test'
+  ...
+# Subtest: bounded queue returns backpressure while pending updates remain retryable
+ok 10 - bounded queue returns backpressure while pending updates remain retryable
+  ---
+  duration_ms: 72.371167
+  type: 'test'
+  ...
+# Subtest: reference relay refuses non-loopback binding and persistent metadata reinterpretation
+ok 11 - reference relay refuses non-loopback binding and persistent metadata reinterpretation
+  ---
+  duration_ms: 6.914458
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 10
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1734.076709

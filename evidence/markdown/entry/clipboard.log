@@ -1,0 +1,1495 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs clipboard
+
+clipboard browser: chromium
+✖ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (554.0825ms)
+✖ cross-block fragment round-trips headings, marks and links atomically (0.433167ms)
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (0.145625ms)
+✖ malformed fragment falls back safely (0.032375ms)
+✖ unsupported-version fragment falls back safely (0.037041ms)
+✖ schema fragment falls back safely (0.031459ms)
+✖ oversize fragment falls back safely (0.020083ms)
+✖ unsafe-link fragment falls back safely (0.02425ms)
+✖ kernel-url-rejection fragment falls back safely (0.0445ms)
+✖ HTML retains supported formatting and never installs source nodes or handlers (0.047083ms)
+✖ HTML lists and quotes preserve portable container formatting (0.03375ms)
+✖ direct quote text preserves quoted content and style (0.018208ms)
+✖ unsupported table codec keeps inert rich source and explicit fallback diagnostics (0.020709ms)
+✖ code target ignores rich flavors and keeps paste literal (0.015625ms)
+✖ inline-code literal paste retains destination code formatting (0.014ms)
+✖ control-shift-v opts into paste without formatting (0.015375ms)
+✖ command-shift-v opts into paste without formatting (0.014ms)
+✖ command-option-shift-v opts into paste without formatting (0.014958ms)
+✖ ordinary paste shortcut retains HTML formatting (0.017042ms)
+✖ mobile beforeinput-only paste is independent of keydown (0.060625ms)
+✖ mobile noncancelable paste repairs native DOM and commits once (0.073583ms)
+✖ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (0.04225ms)
+✖ clipboard write failure cannot cut content or add history (0.013292ms)
+✖ read-only and active composition reject paste with zero updates (0.017917ms)
+✖ empty/unavailable clipboard never erases a replacement selection (0.015042ms)
+✖ explicit plain command captures stable target before OS permission and preserves later selection (0.011375ms)
+✖ late plain paste after read-only transition is canceled (0.0115ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 0
+ℹ fail 27
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1017.895167
+
+✖ failing tests:
+
+test at tests/browser/clipboard.spec.ts:19:1
+✖ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (554.0825ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:26:1
+✖ cross-block fragment round-trips headings, marks and links atomically (0.433167ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:37:1
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (0.145625ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ malformed fragment falls back safely (0.032375ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ unsupported-version fragment falls back safely (0.037041ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ schema fragment falls back safely (0.031459ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ oversize fragment falls back safely (0.020083ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ unsafe-link fragment falls back safely (0.02425ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ kernel-url-rejection fragment falls back safely (0.0445ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:47:1
+✖ HTML retains supported formatting and never installs source nodes or handlers (0.047083ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:51:1
+✖ HTML lists and quotes preserve portable container formatting (0.03375ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:56:1
+✖ direct quote text preserves quoted content and style (0.018208ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:57:1
+✖ unsupported table codec keeps inert rich source and explicit fallback diagnostics (0.020709ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:58:1
+✖ code target ignores rich flavors and keeps paste literal (0.015625ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:62:1
+✖ inline-code literal paste retains destination code formatting (0.014ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:67:3
+✖ control-shift-v opts into paste without formatting (0.015375ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:67:3
+✖ command-shift-v opts into paste without formatting (0.014ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:67:3
+✖ command-option-shift-v opts into paste without formatting (0.014958ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:69:1
+✖ ordinary paste shortcut retains HTML formatting (0.017042ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:70:1
+✖ mobile beforeinput-only paste is independent of keydown (0.060625ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:71:1
+✖ mobile noncancelable paste repairs native DOM and commits once (0.073583ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:74:1
+✖ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (0.04225ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:77:1
+✖ clipboard write failure cannot cut content or add history (0.013292ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:78:1
+✖ read-only and active composition reject paste with zero updates (0.017917ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:79:1
+✖ empty/unavailable clipboard never erases a replacement selection (0.015042ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:80:1
+✖ explicit plain command captures stable target before OS permission and preserves later selection (0.011375ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:83:1
+✖ late plain paste after read-only transition is canceled (0.0115ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+clipboard browser: firefox
+✖ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (420.916292ms)
+✖ cross-block fragment round-trips headings, marks and links atomically (0.335583ms)
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (0.067709ms)
+✖ malformed fragment falls back safely (0.03475ms)
+✖ unsupported-version fragment falls back safely (0.033375ms)
+✖ schema fragment falls back safely (0.043458ms)
+✖ oversize fragment falls back safely (0.027625ms)
+✖ unsafe-link fragment falls back safely (0.027042ms)
+✖ kernel-url-rejection fragment falls back safely (0.03775ms)
+✖ HTML retains supported formatting and never installs source nodes or handlers (0.047791ms)
+✖ HTML lists and quotes preserve portable container formatting (0.029834ms)
+✖ direct quote text preserves quoted content and style (0.023083ms)
+✖ unsupported table codec keeps inert rich source and explicit fallback diagnostics (0.01675ms)
+✖ code target ignores rich flavors and keeps paste literal (0.011875ms)
+✖ inline-code literal paste retains destination code formatting (0.013417ms)
+✖ control-shift-v opts into paste without formatting (0.014333ms)
+✖ command-shift-v opts into paste without formatting (0.015917ms)
+✖ command-option-shift-v opts into paste without formatting (0.016625ms)
+✖ ordinary paste shortcut retains HTML formatting (0.011166ms)
+✖ mobile beforeinput-only paste is independent of keydown (0.011084ms)
+✖ mobile noncancelable paste repairs native DOM and commits once (0.010875ms)
+✖ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (0.012875ms)
+✖ clipboard write failure cannot cut content or add history (0.027041ms)
+✖ read-only and active composition reject paste with zero updates (0.027209ms)
+✖ empty/unavailable clipboard never erases a replacement selection (0.023917ms)
+✖ explicit plain command captures stable target before OS permission and preserves later selection (0.018625ms)
+✖ late plain paste after read-only transition is canceled (0.018ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 0
+ℹ fail 27
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 697.718625
+
+✖ failing tests:
+
+test at tests/browser/clipboard.spec.ts:19:1
+✖ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (420.916292ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:26:1
+✖ cross-block fragment round-trips headings, marks and links atomically (0.335583ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:37:1
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (0.067709ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ malformed fragment falls back safely (0.03475ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ unsupported-version fragment falls back safely (0.033375ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ schema fragment falls back safely (0.043458ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ oversize fragment falls back safely (0.027625ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ unsafe-link fragment falls back safely (0.027042ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ kernel-url-rejection fragment falls back safely (0.03775ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:47:1
+✖ HTML retains supported formatting and never installs source nodes or handlers (0.047791ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:51:1
+✖ HTML lists and quotes preserve portable container formatting (0.029834ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:56:1
+✖ direct quote text preserves quoted content and style (0.023083ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:57:1
+✖ unsupported table codec keeps inert rich source and explicit fallback diagnostics (0.01675ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:58:1
+✖ code target ignores rich flavors and keeps paste literal (0.011875ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:62:1
+✖ inline-code literal paste retains destination code formatting (0.013417ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:67:3
+✖ control-shift-v opts into paste without formatting (0.014333ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:67:3
+✖ command-shift-v opts into paste without formatting (0.015917ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:67:3
+✖ command-option-shift-v opts into paste without formatting (0.016625ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:69:1
+✖ ordinary paste shortcut retains HTML formatting (0.011166ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:70:1
+✖ mobile beforeinput-only paste is independent of keydown (0.011084ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:71:1
+✖ mobile noncancelable paste repairs native DOM and commits once (0.010875ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:74:1
+✖ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (0.012875ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:77:1
+✖ clipboard write failure cannot cut content or add history (0.027041ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:78:1
+✖ read-only and active composition reject paste with zero updates (0.027209ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:79:1
+✖ empty/unavailable clipboard never erases a replacement selection (0.023917ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:80:1
+✖ explicit plain command captures stable target before OS permission and preserves later selection (0.018625ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:83:1
+✖ late plain paste after read-only transition is canceled (0.018ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+clipboard browser: webkit
+✖ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (510.384125ms)
+✖ cross-block fragment round-trips headings, marks and links atomically (0.533709ms)
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (0.078208ms)
+✖ malformed fragment falls back safely (0.030167ms)
+✖ unsupported-version fragment falls back safely (0.087042ms)
+✖ schema fragment falls back safely (0.042334ms)
+✖ oversize fragment falls back safely (0.027875ms)
+✖ unsafe-link fragment falls back safely (0.03025ms)
+✖ kernel-url-rejection fragment falls back safely (0.04875ms)
+✖ HTML retains supported formatting and never installs source nodes or handlers (0.074292ms)
+✖ HTML lists and quotes preserve portable container formatting (0.03275ms)
+✖ direct quote text preserves quoted content and style (0.01775ms)
+✖ unsupported table codec keeps inert rich source and explicit fallback diagnostics (0.018292ms)
+✖ code target ignores rich flavors and keeps paste literal (0.016209ms)
+✖ inline-code literal paste retains destination code formatting (0.013709ms)
+✖ control-shift-v opts into paste without formatting (0.013583ms)
+✖ command-shift-v opts into paste without formatting (0.01375ms)
+✖ command-option-shift-v opts into paste without formatting (0.017333ms)
+✖ ordinary paste shortcut retains HTML formatting (0.014458ms)
+✖ mobile beforeinput-only paste is independent of keydown (0.030416ms)
+✖ mobile noncancelable paste repairs native DOM and commits once (0.029917ms)
+✖ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (0.031583ms)
+✖ clipboard write failure cannot cut content or add history (0.020083ms)
+✖ read-only and active composition reject paste with zero updates (0.018333ms)
+✖ empty/unavailable clipboard never erases a replacement selection (0.02025ms)
+✖ explicit plain command captures stable target before OS permission and preserves later selection (0.023541ms)
+✖ late plain paste after read-only transition is canceled (0.017792ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 0
+ℹ fail 27
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 775.32925
+
+✖ failing tests:
+
+test at tests/browser/clipboard.spec.ts:19:1
+✖ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (510.384125ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:26:1
+✖ cross-block fragment round-trips headings, marks and links atomically (0.533709ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:37:1
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (0.078208ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ malformed fragment falls back safely (0.030167ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ unsupported-version fragment falls back safely (0.087042ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ schema fragment falls back safely (0.042334ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ oversize fragment falls back safely (0.027875ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ unsafe-link fragment falls back safely (0.03025ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:45:3
+✖ kernel-url-rejection fragment falls back safely (0.04875ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:47:1
+✖ HTML retains supported formatting and never installs source nodes or handlers (0.074292ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:51:1
+✖ HTML lists and quotes preserve portable container formatting (0.03275ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:56:1
+✖ direct quote text preserves quoted content and style (0.01775ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:57:1
+✖ unsupported table codec keeps inert rich source and explicit fallback diagnostics (0.018292ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:58:1
+✖ code target ignores rich flavors and keeps paste literal (0.016209ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:62:1
+✖ inline-code literal paste retains destination code formatting (0.013709ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:67:3
+✖ control-shift-v opts into paste without formatting (0.013583ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:67:3
+✖ command-shift-v opts into paste without formatting (0.01375ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:67:3
+✖ command-option-shift-v opts into paste without formatting (0.017333ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:69:1
+✖ ordinary paste shortcut retains HTML formatting (0.014458ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:70:1
+✖ mobile beforeinput-only paste is independent of keydown (0.030416ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:71:1
+✖ mobile noncancelable paste repairs native DOM and commits once (0.029917ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:74:1
+✖ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (0.031583ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:77:1
+✖ clipboard write failure cannot cut content or add history (0.020083ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:78:1
+✖ read-only and active composition reject paste with zero updates (0.018333ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:79:1
+✖ empty/unavailable clipboard never erases a replacement selection (0.02025ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:80:1
+✖ explicit plain command captures stable target before OS permission and preserves later selection (0.023541ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:83:1
+✖ late plain paste after read-only transition is canceled (0.017792ms)
+  AssertionError [ERR_ASSERTION]: pack-core.log
+  
+  255 !== 0
+  
+      at run (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:21:56)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:32:31)
+      at async TestHook.run (node:internal/test_runner/test:1389:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,103 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs module-runtime
+
+module-runtime browser: chromium
+✔ packed real engine scopes local/remote edits and native selection while retaining stable atom views (13049.965416ms)
+✔ mount failures remove host decoration and retain source fallback without blocking healthy views (232.369292ms)
+✔ update failures remove host decoration and retain source fallback without blocking healthy views (133.640417ms)
+✖ removed/replaced runs and repeated mount/dispose release each host view once (205.2405ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14399.627208
+
+✖ failing tests:
+
+test at tests/browser/module-runtime.spec.ts:93:1
+✖ removed/replaced runs and repeated mount/dispose release each host view once (205.2405ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/module-runtime.spec.ts:113:68
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+module-runtime browser: firefox
+✔ packed real engine scopes local/remote edits and native selection while retaining stable atom views (14309.529666ms)
+✔ mount failures remove host decoration and retain source fallback without blocking healthy views (279.085875ms)
+✔ update failures remove host decoration and retain source fallback without blocking healthy views (279.86125ms)
+✖ removed/replaced runs and repeated mount/dispose release each host view once (275.835958ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15923.878458
+
+✖ failing tests:
+
+test at tests/browser/module-runtime.spec.ts:93:1
+✖ removed/replaced runs and repeated mount/dispose release each host view once (275.835958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/module-runtime.spec.ts:113:68
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+module-runtime browser: webkit
+✔ packed real engine scopes local/remote edits and native selection while retaining stable atom views (2841.034542ms)
+✔ mount failures remove host decoration and retain source fallback without blocking healthy views (293.734792ms)
+✔ update failures remove host decoration and retain source fallback without blocking healthy views (271.496916ms)
+✖ removed/replaced runs and repeated mount/dispose release each host view once (266.660833ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3959.524209
+
+✖ failing tests:
+
+test at tests/browser/module-runtime.spec.ts:93:1
+✖ removed/replaced runs and repeated mount/dispose release each host view once (266.660833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/module-runtime.spec.ts:113:68
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,122 @@
+TAP version 13
+# (node:31962) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: detached and unauthorized local edits remain recoverable; attachment preserves stable anchors and history
+ok 1 - detached and unauthorized local edits remain recoverable; attachment preserves stable anchors and history
+  ---
+  duration_ms: 63.229333
+  type: 'test'
+  ...
+# Subtest: disconnect and authorized reconnect replay all local bytes through shuffled duplicate messages without echo
+ok 2 - disconnect and authorized reconnect replay all local bytes through shuffled duplicate messages without echo
+  ---
+  duration_ms: 21.266625
+  type: 'test'
+  ...
+# Subtest: saturated prepared socket pauses bounded send replay and drops no committed local updates
+ok 3 - saturated prepared socket pauses bounded send replay and drops no committed local updates
+  ---
+  duration_ms: 42.507916
+  type: 'test'
+  ...
+# Subtest: bounded exponential retry exhaustion detaches; explicit reconnect recovers without losing edits
+ok 4 - bounded exponential retry exhaustion detaches; explicit reconnect recovers without losing edits
+  ---
+  duration_ms: 4.092333
+  type: 'test'
+  ...
+# Subtest: receive frame/count/byte bounds reject before mutation and require a recoverable reconnect
+ok 5 - receive frame/count/byte bounds reject before mutation and require a recoverable reconnect
+  ---
+  duration_ms: 9.479166
+  type: 'test'
+  ...
+# Subtest: remote, restore and replay journal origins never become outbound update messages
+ok 6 - remote, restore and replay journal origins never become outbound update messages
+  ---
+  duration_ms: 4.907042
+  type: 'test'
+  ...
+# Subtest: generation fence prevents a delayed old outbox read from sending on a replacement attachment
+ok 7 - generation fence prevents a delayed old outbox read from sending on a replacement attachment
+  ---
+  duration_ms: 2.084459
+  type: 'test'
+  ...
+# Subtest: local commit during a replay read gets a second pass and concurrent pumps share bounded work
+ok 8 - local commit during a replay read gets a second pass and concurrent pumps share bounded work
+  ---
+  duration_ms: 4.720333
+  type: 'test'
+  ...
+# Subtest: transport failure and malformed frames expose errors while local recovery and history remain intact
+ok 9 - transport failure and malformed frames expose errors while local recovery and history remain intact
+  ---
+  duration_ms: 5.373459
+  type: 'test'
+  ...
+# Subtest: offline undo and redo updates replay as local edits and preserve selective history across attachments
+ok 10 - offline undo and redo updates replay as local edits and preserve selective history across attachments
+  ---
+  duration_ms: 8.1415
+  type: 'test'
+  ...
+# Subtest: synchronous detach during a refusing send cannot schedule retries on the replacement session
+ok 11 - synchronous detach during a refusing send cannot schedule retries on the replacement session
+  ---
+  duration_ms: 3.633417
+  type: 'test'
+  ...
+# (node:31963) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits
+ok 12 - both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits
+  ---
+  duration_ms: 64.180459
+  type: 'test'
+  ...
+# Subtest: update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo
+ok 13 - update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo
+  ---
+  duration_ms: 9.973042
+  type: 'test'
+  ...
+# Subtest: deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent
+ok 14 - deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent
+  ---
+  duration_ms: 4.205041
+  type: 'test'
+  ...
+# Subtest: reject malformed frames and state vectors before any engine mutation
+ok 15 - reject malformed frames and state vectors before any engine mutation
+  ---
+  duration_ms: 6.35075
+  type: 'test'
+  ...
+# Subtest: malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes
+ok 16 - malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes
+  ---
+  duration_ms: 8.049
+  type: 'test'
+  ...
+# Subtest: inbound and outbound byte bounds include headers; no input buffers are aliased
+ok 17 - inbound and outbound byte bounds include headers; no input buffers are aliased
+  ---
+  duration_ms: 2.431292
+  type: 'test'
+  ...
+# Subtest: metadata must match every immutable field before adapter construction or outbound update
+ok 18 - metadata must match every immutable field before adapter construction or outbound update
+  ---
+  duration_ms: 9.821541
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 434.848833

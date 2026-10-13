@@ -1,0 +1,104 @@
+{
+  "gate": "LOC-1.1",
+  "children": [
+    "LOC-1.1-I1",
+    "LOC-1.1-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "../architecture/progress/.roadmap-runner/03-local-storage-490e984e7714/source-4b0b018a0077.md",
+  "sourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseCommit": "3cea914c983233a091faeb70382865a335c85b40",
+  "implementationRevision": "uncommitted additive storage harness; tested source hashes and implementation.diff identify exact work",
+  "verifiedAtUtc": "2026-10-12T07:54:57.156866+00:00",
+  "entryGate": {
+    "sourceRevision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+    "receipt": "../engine-wasm-updates/receipt.json",
+    "testedSourceHashesMatchedBeforeImplementation": 59
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test patches --locked storage_contract_",
+      "exit": 0,
+      "executed": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 23,
+      "log": "narrow.log",
+      "sha256": "d48432900c9f9b34aba7f5063c96c76c90d5d320aeb67748c7854b8cabed3362"
+    },
+    {
+      "command": "cargo test -p editac-core --test patches --locked",
+      "exit": 0,
+      "executed": 28,
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "patches.log",
+      "sha256": "b2bb82098d6533abf0c66f7288c857a51711c3fe33fb64a92bc536e92563eb25"
+    },
+    {
+      "command": "cargo test -p editac-core --test initialization --locked",
+      "exit": 0,
+      "executed": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0,
+      "log": "initialization.log",
+      "sha256": "a984e1775a9ea62a73887e7ac6baa47e1801b15909954abe82773626bb64a301"
+    }
+  ],
+  "otherChecks": [
+    {
+      "command": "rustfmt --edition 2024 --check crates/editac-core/tests/patches.rs",
+      "exit": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0
+    }
+  ],
+  "testedSources": {
+    "crates/editac-core/tests/patches.rs": "44cff0f9759c647283d07d00b2605f5e8b80edcfb4b514bbc128016ddb18288b",
+    "crates/editac-core/src/patches.rs": "5b194f1c003d20e2c8446e3d4202476da50ce3f1fddc143edac9b499e3bc29b1",
+    "crates/editac-core/src/document.rs": "e1a6f3cba71199d538c7e8d6edd0b8c1c68a1ffd124128d042a6766875da8a14",
+    "fixtures/schema-v5/mapping.rs": "47f3ac42dc1ba97b06b33f1f0e1b717e37cb18082bdc586f9ee2376c30ba3025",
+    "fixtures/schema-v5/seed.json": "5248ce5b2ab27b8ae5b281933eb6a5882e3fb8e865489282450d1be19d31bf4d",
+    "fixtures/schema-v5/bounded_decoder.rs": "5679118322620c056a3bc84109327c8b4e8e332393681351affe90f8fe2e07d8",
+    "Cargo.lock": "2f1f79f14e37c342dfd91e99a7d27e207591725352b9f5e24a7f651f4994ba3c"
+  },
+  "fixtures": {
+    "v1": "legacy_seed in tested-patches.rs: fixed writer 11, exact frozen pair/marks; fixture generator hash is tested-patches.rs SHA-256",
+    "v5": "fixed writer 11 schema-v5 mapping.rs and seed.json; qualified production patch and restore boundary; fresh live writer IDs intentionally nondeterministic"
+  },
+  "criterionMap": {
+    "realOwnedBytes": "storage_contract_owned_patch_tail_survives_engine_disposal_and_reordering",
+    "restoreNoBrowserOrSync": "all five storage_contract_* tests",
+    "checkpointCoverage": "storage_contract_checkpoint_coverage_and_repeated_tail_are_idempotent",
+    "frozenV1": "storage_contract_frozen_v1_marks_and_original_source_identities_survive",
+    "metadataAndRecovery": "identity_failures and corrupt_or_incomplete_tail checks"
+  },
+  "scope": "Native real-engine integration only; no IndexedDB adapter, browser crash, remote receipt, provider, publication or deployed claim.",
+  "cleanup": {
+    "serversOrBrowsersStarted": 0,
+    "automatedCandidates": 0,
+    "removed": [],
+    "diskBeforeKiB": 4159892,
+    "diskAfterKiB": 3247848,
+    "targetBeforeKiB": 6081168,
+    "targetAfterKiB": 6121832,
+    "note": "Existing target and qualification artifacts preserved; no safely identified disposable session-only large artifacts. Remaining disk pressure is outside this gate."
+  },
+  "artifacts": {
+    "format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "initialization.log": "a984e1775a9ea62a73887e7ac6baa47e1801b15909954abe82773626bb64a301",
+    "tested-patches.rs": "44cff0f9759c647283d07d00b2605f5e8b80edcfb4b514bbc128016ddb18288b",
+    "patches.log": "b2bb82098d6533abf0c66f7288c857a51711c3fe33fb64a92bc536e92563eb25",
+    "implementation.diff": "adcdf72f9d39a47f775ce199574058cb3b2cabd30ab71dd10c6be3a505a06597",
+    "process-audit.log": "60415440b8e8f4c0cfa5f443d06bc3c5c41dfe7c8a73187a748df2133208bad4",
+    "narrow.log": "d48432900c9f9b34aba7f5063c96c76c90d5d320aeb67748c7854b8cabed3362"
+  }
+}

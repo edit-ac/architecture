@@ -1,0 +1,178 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs markdown-paste
+
+markdown-paste browser: chromium
+✖ first frame is formatted; one update, storage record and undo group; repeated redo (3903.974916ms)
+✖ whole parser sees nested fences lists and reference definitions (626.40675ms)
+✔ minimal and explicit plain preserve Unicode whitespace and Markdown (284.126375ms)
+✔ internal before Markdown before HTML before plain (352.154417ms)
+✔ disabled modules keep exact source with diagnostics and recovery (270.321625ms)
+✔ portable bridge is read-only and deterministic (187.674875ms)
+✔ code destination overrides the Markdown policy (217.599667ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 5
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6382.723041
+
+✖ failing tests:
+
+test at tests/browser/markdown-paste.spec.ts:18:1
+✖ first frame is formatted; one update, storage record and undo group; repeated redo (3903.974916ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'committed'
+  - 'applied'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-paste.spec.ts:21:38
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'committed',
+    expected: 'applied',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/markdown-paste.spec.ts:25:1
+✖ whole parser sees nested fences lists and reference definitions (626.40675ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'committed'
+  - 'applied'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-paste.spec.ts:27:83
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'committed',
+    expected: 'applied',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+markdown-paste browser: firefox
+✖ first frame is formatted; one update, storage record and undo group; repeated redo (6664.16525ms)
+✖ whole parser sees nested fences lists and reference definitions (808.899958ms)
+✔ minimal and explicit plain preserve Unicode whitespace and Markdown (487.62325ms)
+✔ internal before Markdown before HTML before plain (530.053417ms)
+✔ disabled modules keep exact source with diagnostics and recovery (447.690917ms)
+✔ portable bridge is read-only and deterministic (473.613459ms)
+✔ code destination overrides the Markdown policy (574.21625ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 5
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10790.823958
+
+✖ failing tests:
+
+test at tests/browser/markdown-paste.spec.ts:18:1
+✖ first frame is formatted; one update, storage record and undo group; repeated redo (6664.16525ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'committed'
+  - 'applied'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-paste.spec.ts:21:38
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'committed',
+    expected: 'applied',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/markdown-paste.spec.ts:25:1
+✖ whole parser sees nested fences lists and reference definitions (808.899958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'committed'
+  - 'applied'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-paste.spec.ts:27:83
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'committed',
+    expected: 'applied',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+markdown-paste browser: webkit
+✖ first frame is formatted; one update, storage record and undo group; repeated redo (6281.112375ms)
+✖ whole parser sees nested fences lists and reference definitions (851.932208ms)
+✔ minimal and explicit plain preserve Unicode whitespace and Markdown (453.902375ms)
+✔ internal before Markdown before HTML before plain (561.525792ms)
+✔ disabled modules keep exact source with diagnostics and recovery (313.346417ms)
+✔ portable bridge is read-only and deterministic (241.530625ms)
+✔ code destination overrides the Markdown policy (266.075625ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 5
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9377.446042
+
+✖ failing tests:
+
+test at tests/browser/markdown-paste.spec.ts:18:1
+✖ first frame is formatted; one update, storage record and undo group; repeated redo (6281.112375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'committed'
+  - 'applied'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-paste.spec.ts:21:38
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'committed',
+    expected: 'applied',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/markdown-paste.spec.ts:25:1
+✖ whole parser sees nested fences lists and reference definitions (851.932208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'committed'
+  - 'applied'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-paste.spec.ts:27:83
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'committed',
+    expected: 'applied',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

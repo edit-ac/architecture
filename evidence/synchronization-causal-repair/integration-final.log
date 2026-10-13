@@ -1,0 +1,436 @@
+TAP version 13
+# Subtest: Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions
+ok 1 - Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions
+  ---
+  duration_ms: 27.617208
+  type: 'test'
+  ...
+# Subtest: relative selections move under remote inserts and fail safely after semantic target deletion
+ok 2 - relative selections move under remote inserts and fail safely after semantic target deletion
+  ---
+  duration_ms: 20.117958
+  type: 'test'
+  ...
+# Subtest: stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime
+ok 3 - stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime
+  ---
+  duration_ms: 4.830459
+  type: 'test'
+  ...
+# Subtest: unknown zero-clock state is ignored and same-clock null removes a known peer as in the pinned oracle
+ok 4 - unknown zero-clock state is ignored and same-clock null removes a known peer as in the pinned oracle
+  ---
+  duration_ms: 1.742291
+  type: 'test'
+  ...
+# Subtest: burst coalescing, backpressure and thrown sends retain one bounded pending state
+ok 5 - burst coalescing, backpressure and thrown sends retain one bounded pending state
+  ---
+  duration_ms: 639.831291
+  type: 'test'
+  ...
+# Subtest: host-driven renewal and clear presence use compatible clocks without idle traffic
+ok 6 - host-driven renewal and clear presence use compatible clocks without idle traffic
+  ---
+  duration_ms: 0.603292
+  type: 'test'
+  ...
+# Subtest: invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically
+ok 7 - invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically
+  ---
+  duration_ms: 13.1075
+  type: 'test'
+  ...
+# Subtest: malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers
+ok 8 - malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers
+  ---
+  duration_ms: 2.037958
+  type: 'test'
+  ...
+# Subtest: capacity includes expired tombstones; untrusted remote frames cannot remove local presence
+ok 9 - capacity includes expired tombstones; untrusted remote frames cannot remove local presence
+  ---
+  duration_ms: 1.578083
+  type: 'test'
+  ...
+# Subtest: replacement, expiry, invalid batch and disposal release every imported anchor
+ok 10 - replacement, expiry, invalid batch and disposal release every imported anchor
+  ---
+  duration_ms: 3.163583
+  type: 'test'
+  ...
+# Subtest: reentrant send cannot erase a newer queued state or undo disposal
+ok 11 - reentrant send cannot erase a newer queued state or undo disposal
+  ---
+  duration_ms: 1.073666
+  type: 'test'
+  ...
+# Subtest: awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox
+ok 12 - awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox
+  ---
+  duration_ms: 105.8395
+  type: 'test'
+  ...
+# Subtest: invalid options/time and oversize local presence fail without discarding valid state
+ok 13 - invalid options/time and oversize local presence fail without discarding valid state
+  ---
+  duration_ms: 0.931083
+  type: 'test'
+  ...
+# Subtest: deterministic synchronization entry fixes separate update, sync, awareness and receipt profiles
+ok 14 - deterministic synchronization entry fixes separate update, sync, awareness and receipt profiles
+  ---
+  duration_ms: 8.656125
+  type: 'test'
+  ...
+# Subtest: deterministic prepared socket delivery preserves outbox until matching application receipts commit
+ok 15 - deterministic prepared socket delivery preserves outbox until matching application receipts commit
+  ---
+  duration_ms: 2.44425
+  type: 'test'
+  ...
+# Subtest: deterministic checkpoint coverage retains every pending identity and retransmittable real update
+ok 16 - deterministic checkpoint coverage retains every pending identity and retransmittable real update
+  ---
+  duration_ms: 3.414583
+  type: 'test'
+  ...
+# Subtest: deterministic sync events, socket delivery and state vectors cannot acknowledge updates
+ok 17 - deterministic sync events, socket delivery and state vectors cannot acknowledge updates
+  ---
+  duration_ms: 0.828375
+  type: 'test'
+  ...
+# Subtest: deterministic absent negotiated receipt capability reports unknown durability and retains updates
+ok 18 - deterministic absent negotiated receipt capability reports unknown durability and retains updates
+  ---
+  duration_ms: 0.71525
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt documentId cannot prune pending updates
+ok 19 - deterministic wrong receipt documentId cannot prune pending updates
+  ---
+  duration_ms: 0.703208
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt epoch cannot prune pending updates
+ok 20 - deterministic wrong receipt epoch cannot prune pending updates
+  ---
+  duration_ms: 0.539791
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt schema cannot prune pending updates
+ok 21 - deterministic wrong receipt schema cannot prune pending updates
+  ---
+  duration_ms: 0.707
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt profile cannot prune pending updates
+ok 22 - deterministic wrong receipt profile cannot prune pending updates
+  ---
+  duration_ms: 0.654083
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt writerId cannot prune pending updates
+ok 23 - deterministic wrong receipt writerId cannot prune pending updates
+  ---
+  duration_ms: 0.505625
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt sequence cannot prune pending updates
+ok 24 - deterministic wrong receipt sequence cannot prune pending updates
+  ---
+  duration_ms: 0.433667
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt checksum cannot prune pending updates
+ok 25 - deterministic wrong receipt checksum cannot prune pending updates
+  ---
+  duration_ms: 0.449583
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt updateId cannot prune pending updates
+ok 26 - deterministic wrong receipt updateId cannot prune pending updates
+  ---
+  duration_ms: 0.469583
+  type: 'test'
+  ...
+# Subtest: deterministic receipt acknowledgment and pruning wait for completion, not request success
+ok 27 - deterministic receipt acknowledgment and pruning wait for completion, not request success
+  ---
+  duration_ms: 0.639125
+  type: 'test'
+  ...
+# Subtest: deterministic receipt abort before-lookup retains outbox and permits retry
+ok 28 - deterministic receipt abort before-lookup retains outbox and permits retry
+  ---
+  duration_ms: 0.572791
+  type: 'test'
+  ...
+# Subtest: deterministic receipt abort after-write-success retains outbox and permits retry
+ok 29 - deterministic receipt abort after-write-success retains outbox and permits retry
+  ---
+  duration_ms: 0.606792
+  type: 'test'
+  ...
+# Subtest: deterministic quota, permission and receipt write failures propagate without pruning
+ok 30 - deterministic quota, permission and receipt write failures propagate without pruning
+  ---
+  duration_ms: 0.753833
+  type: 'test'
+  ...
+# Subtest: deterministic duplicate/reordered durable receipts survive reopen and duplicate append
+ok 31 - deterministic duplicate/reordered durable receipts survive reopen and duplicate append
+  ---
+  duration_ms: 2.825958
+  type: 'test'
+  ...
+# Subtest: deterministic unknown receipt cannot pre-acknowledge a future journal append
+ok 32 - deterministic unknown receipt cannot pre-acknowledge a future journal append
+  ---
+  duration_ms: 0.740125
+  type: 'test'
+  ...
+# Subtest: deterministic corrupt receipt or journal fails explicitly instead of hiding pending work
+ok 33 - deterministic corrupt receipt or journal fails explicitly instead of hiding pending work
+  ---
+  duration_ms: 0.649041
+  type: 'test'
+  ...
+# Subtest: deterministic detached pending bytes and unsupported strict durability preserve identity
+ok 34 - deterministic detached pending bytes and unsupported strict durability preserve identity
+  ---
+  duration_ms: 0.839292
+  type: 'test'
+  ...
+# Subtest: deterministic bounded outbox pages preserve cursor identity, byte limits and receipt filtering
+ok 35 - deterministic bounded outbox pages preserve cursor identity, byte limits and receipt filtering
+  ---
+  duration_ms: 1.45575
+  type: 'test'
+  ...
+# Subtest: actual Chromium v2 upgrade, receipt abort boundaries, checkpoint retention and restart preserve real Rust updates
+ok 36 - actual Chromium v2 upgrade, receipt abort boundaries, checkpoint retention and restart preserve real Rust updates
+  ---
+  duration_ms: 1314.308833
+  type: 'test'
+  ...
+# Subtest: ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending
+ok 37 - ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending
+  ---
+  duration_ms: 1526.2935
+  type: 'test'
+  ...
+# Subtest: negotiated actual relay commit prunes only pending membership and preserves recovery journal
+ok 38 - negotiated actual relay commit prunes only pending membership and preserves recovery journal
+  ---
+  duration_ms: 219.737416
+  type: 'test'
+  ...
+# Subtest: receipt documentId mismatch cannot prune or claim remoteCommitted
+ok 39 - receipt documentId mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 200.465709
+  type: 'test'
+  ...
+# Subtest: receipt epoch mismatch cannot prune or claim remoteCommitted
+ok 40 - receipt epoch mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 194.1345
+  type: 'test'
+  ...
+# Subtest: receipt schema mismatch cannot prune or claim remoteCommitted
+ok 41 - receipt schema mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 200.751417
+  type: 'test'
+  ...
+# Subtest: receipt writerId mismatch cannot prune or claim remoteCommitted
+ok 42 - receipt writerId mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 193.066958
+  type: 'test'
+  ...
+# Subtest: receipt sequence mismatch cannot prune or claim remoteCommitted
+ok 43 - receipt sequence mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 196.094125
+  type: 'test'
+  ...
+# Subtest: receipt checksum mismatch cannot prune or claim remoteCommitted
+ok 44 - receipt checksum mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 190.044
+  type: 'test'
+  ...
+# Subtest: receipt updateId mismatch cannot prune or claim remoteCommitted
+ok 45 - receipt updateId mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 205.230458
+  type: 'test'
+  ...
+# Subtest: denied authorization keeps offline commands editable and recovery export available without upload
+ok 46 - denied authorization keeps offline commands editable and recovery export available without upload
+  ---
+  duration_ms: 200.410583
+  type: 'test'
+  ...
+# Subtest: service revocation stops upload and baseline traffic while retaining edits for authorized reconnect
+ok 47 - service revocation stops upload and baseline traffic while retaining edits for authorized reconnect
+  ---
+  duration_ms: 204.535375
+  type: 'test'
+  ...
+# Subtest: late committed response after revocation is fenced; reconnect resends idempotently
+ok 48 - late committed response after revocation is fenced; reconnect resends idempotently
+  ---
+  duration_ms: 212.130042
+  type: 'test'
+  ...
+# Subtest: receipt transaction abort cannot publish remoteCommitted or prune
+ok 49 - receipt transaction abort cannot publish remoteCommitted or prune
+  ---
+  duration_ms: 213.021875
+  type: 'test'
+  ...
+# Subtest: new local commit during durable upload restarts the bounded replay cursor
+ok 50 - new local commit during durable upload restarts the bounded replay cursor
+  ---
+  duration_ms: 208.739709
+  type: 'test'
+  ...
+# Subtest: unsupported negotiation and wrong peer identity fail before replacing an authorized connection
+ok 51 - unsupported negotiation and wrong peer identity fail before replacing an authorized connection
+  ---
+  duration_ms: 200.337625
+  type: 'test'
+  ...
+# Subtest: malformed non-durable receipts fail admission and capability absence ignores even a valid receipt
+ok 52 - malformed non-durable receipts fail admission and capability absence ignores even a valid receipt
+  ---
+  duration_ms: 194.954958
+  type: 'test'
+  ...
+# Subtest: durable replay is bounded to one page per event without dropping the remaining local backlog
+ok 53 - durable replay is bounded to one page per event without dropping the remaining local backlog
+  ---
+  duration_ms: 339.938458
+  type: 'test'
+  ...
+# Subtest: explicit capability is separate from ordinary accepted delivery
+ok 54 - explicit capability is separate from ordinary accepted delivery
+  ---
+  duration_ms: 171.181375
+  type: 'test'
+  ...
+# Subtest: prepared authorization, complete metadata and revocation isolate stored identities
+ok 55 - prepared authorization, complete metadata and revocation isolate stored identities
+  ---
+  duration_ms: 106.114916
+  type: 'test'
+  ...
+# Subtest: receipt waits for commit completion; failed commit rolls back and permits retry
+ok 56 - receipt waits for commit completion; failed commit rolls back and permits retry
+  ---
+  duration_ms: 68.884333
+  type: 'test'
+  ...
+# Subtest: process crash at before-transaction preserves only committed bytes and retry identity
+ok 57 - process crash at before-transaction preserves only committed bytes and retry identity
+  ---
+  duration_ms: 140.440125
+  type: 'test'
+  ...
+# Subtest: process crash at before-commit preserves only committed bytes and retry identity
+ok 58 - process crash at before-commit preserves only committed bytes and retry identity
+  ---
+  duration_ms: 141.5765
+  type: 'test'
+  ...
+# Subtest: process crash at after-commit preserves only committed bytes and retry identity
+ok 59 - process crash at after-commit preserves only committed bytes and retry identity
+  ---
+  duration_ms: 167.916083
+  type: 'test'
+  ...
+# Subtest: process crash at before-receipt preserves only committed bytes and retry identity
+ok 60 - process crash at before-receipt preserves only committed bytes and retry identity
+  ---
+  duration_ms: 172.687416
+  type: 'test'
+  ...
+# Subtest: Rust and JS updates converge after shuffled duplicates, pagination and service restart
+ok 61 - Rust and JS updates converge after shuffled duplicates, pagination and service restart
+  ---
+  duration_ms: 219.850833
+  type: 'test'
+  ...
+# Subtest: content identity, writer/sequence conflicts and request/replay limits fail before mutation
+ok 62 - content identity, writer/sequence conflicts and request/replay limits fail before mutation
+  ---
+  duration_ms: 92.704708
+  type: 'test'
+  ...
+# Subtest: bounded queue returns backpressure while pending updates remain retryable
+ok 63 - bounded queue returns backpressure while pending updates remain retryable
+  ---
+  duration_ms: 83.539209
+  type: 'test'
+  ...
+# Subtest: reference relay refuses non-loopback binding and persistent metadata reinterpretation
+ok 64 - reference relay refuses non-loopback binding and persistent metadata reinterpretation
+  ---
+  duration_ms: 8.260708
+  type: 'test'
+  ...
+# Subtest: both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits
+ok 65 - both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits
+  ---
+  duration_ms: 50.742833
+  type: 'test'
+  ...
+# Subtest: update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo
+ok 66 - update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo
+  ---
+  duration_ms: 23.120375
+  type: 'test'
+  ...
+# Subtest: deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent
+ok 67 - deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent
+  ---
+  duration_ms: 9.393084
+  type: 'test'
+  ...
+# Subtest: reject malformed frames and state vectors before any engine mutation
+ok 68 - reject malformed frames and state vectors before any engine mutation
+  ---
+  duration_ms: 7.60925
+  type: 'test'
+  ...
+# Subtest: malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes
+ok 69 - malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes
+  ---
+  duration_ms: 5.02225
+  type: 'test'
+  ...
+# Subtest: inbound and outbound byte bounds include headers; no input buffers are aliased
+ok 70 - inbound and outbound byte bounds include headers; no input buffers are aliased
+  ---
+  duration_ms: 2.730333
+  type: 'test'
+  ...
+# Subtest: metadata must match every immutable field before adapter construction or outbound update
+ok 71 - metadata must match every immutable field before adapter construction or outbound update
+  ---
+  duration_ms: 7.030792
+  type: 'test'
+  ...
+1..71
+# tests 71
+# suites 0
+# pass 71
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5304.433625

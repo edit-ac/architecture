@@ -1,0 +1,127 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs markdown-extensions
+
+markdown-extensions browser: chromium
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-extensions.spec.ts:12
+}));
+test('duplicate names and unsafe extension output recover source with zero effects',()=>probe('rejection',async(page,fact)=>{const r=await page.evaluate(()=>{const f=window.inputFixture,before=Array.from(f.engine.checkpoint().bytes),errors=[];for(const options of [{extensions:[{name:'same'},{name:'same'}]},{extensions:[{name:'unsafe',prepare:()=>[{attributes:{type:'paragraph'},runs:[{text:'bad',marks:[{mark:'link',href:'javascript:alert(1)'}]}]}]}]){try{f.engine.importMarkdown('source',options);}catch(e){errors.push(e.message);}}return {before,after:Array.from(f.engine.checkpoint().bytes),errors};});assert.deepEqual(r.before,r.after);assert.equal(r.errors.length,2);assert.equal((await state(page,fact)).journal.length,0);}));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+test('disabled callout and false custom serialization have explicit recovery',()=>probe('recovery',async(page,fact)=>{const r=await page.evaluate(()=>{const f=window.inputFixture,p=f.engine.importMarkdown('> [!NOTE]\n> body'),e=f.engine.exportMarkdown(f.engine.importMarkdown('**safe**').blocks,{extensions:[{name:'wrong',serialize:()=> 'lost'}]});return {p,e};});assert.ok(r.p.diagnostics.some(d=>d.code==='callout-codec-disabled'));assert.equal(r.e.diagnostics[0].code,'extension-unrepresentable');assert.ok(r.e.recovery.length);assert.equal((await state(page,fact)).journal.length,0);}));
+
+SyntaxError [ERR_INVALID_TYPESCRIPT_SYNTAX]: Expected ',', got ')'
+    at parseTypeScript (node:internal/modules/typescript:72:36)
+    at processTypeScriptCode (node:internal/modules/typescript:146:42)
+    at stripTypeScriptModuleTypes (node:internal/modules/typescript:215:22)
+    at ModuleLoader.<anonymous> (node:internal/modules/esm/translators:680:29)
+    at #translate (node:internal/modules/esm/loader:434:20)
+    at afterLoad (node:internal/modules/esm/loader:502:29)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:507:12)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:560:36)
+    at afterResolve (node:internal/modules/esm/loader:607:52)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:613:12) {
+  code: 'ERR_INVALID_TYPESCRIPT_SYNTAX'
+}
+
+Node.js v24.19.0
+✖ tests/browser/markdown-extensions.spec.ts (145.332042ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 151.350083
+
+✖ failing tests:
+
+test at tests/browser/markdown-extensions.spec.ts:1:1
+✖ tests/browser/markdown-extensions.spec.ts (145.332042ms)
+  'test failed'
+markdown-extensions browser: firefox
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-extensions.spec.ts:12
+}));
+test('duplicate names and unsafe extension output recover source with zero effects',()=>probe('rejection',async(page,fact)=>{const r=await page.evaluate(()=>{const f=window.inputFixture,before=Array.from(f.engine.checkpoint().bytes),errors=[];for(const options of [{extensions:[{name:'same'},{name:'same'}]},{extensions:[{name:'unsafe',prepare:()=>[{attributes:{type:'paragraph'},runs:[{text:'bad',marks:[{mark:'link',href:'javascript:alert(1)'}]}]}]}]){try{f.engine.importMarkdown('source',options);}catch(e){errors.push(e.message);}}return {before,after:Array.from(f.engine.checkpoint().bytes),errors};});assert.deepEqual(r.before,r.after);assert.equal(r.errors.length,2);assert.equal((await state(page,fact)).journal.length,0);}));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+test('disabled callout and false custom serialization have explicit recovery',()=>probe('recovery',async(page,fact)=>{const r=await page.evaluate(()=>{const f=window.inputFixture,p=f.engine.importMarkdown('> [!NOTE]\n> body'),e=f.engine.exportMarkdown(f.engine.importMarkdown('**safe**').blocks,{extensions:[{name:'wrong',serialize:()=> 'lost'}]});return {p,e};});assert.ok(r.p.diagnostics.some(d=>d.code==='callout-codec-disabled'));assert.equal(r.e.diagnostics[0].code,'extension-unrepresentable');assert.ok(r.e.recovery.length);assert.equal((await state(page,fact)).journal.length,0);}));
+
+SyntaxError [ERR_INVALID_TYPESCRIPT_SYNTAX]: Expected ',', got ')'
+    at parseTypeScript (node:internal/modules/typescript:72:36)
+    at processTypeScriptCode (node:internal/modules/typescript:146:42)
+    at stripTypeScriptModuleTypes (node:internal/modules/typescript:215:22)
+    at ModuleLoader.<anonymous> (node:internal/modules/esm/translators:680:29)
+    at #translate (node:internal/modules/esm/loader:434:20)
+    at afterLoad (node:internal/modules/esm/loader:502:29)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:507:12)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:560:36)
+    at afterResolve (node:internal/modules/esm/loader:607:52)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:613:12) {
+  code: 'ERR_INVALID_TYPESCRIPT_SYNTAX'
+}
+
+Node.js v24.19.0
+✖ tests/browser/markdown-extensions.spec.ts (60.032667ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 64.385667
+
+✖ failing tests:
+
+test at tests/browser/markdown-extensions.spec.ts:1:1
+✖ tests/browser/markdown-extensions.spec.ts (60.032667ms)
+  'test failed'
+markdown-extensions browser: webkit
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-extensions.spec.ts:12
+}));
+test('duplicate names and unsafe extension output recover source with zero effects',()=>probe('rejection',async(page,fact)=>{const r=await page.evaluate(()=>{const f=window.inputFixture,before=Array.from(f.engine.checkpoint().bytes),errors=[];for(const options of [{extensions:[{name:'same'},{name:'same'}]},{extensions:[{name:'unsafe',prepare:()=>[{attributes:{type:'paragraph'},runs:[{text:'bad',marks:[{mark:'link',href:'javascript:alert(1)'}]}]}]}]){try{f.engine.importMarkdown('source',options);}catch(e){errors.push(e.message);}}return {before,after:Array.from(f.engine.checkpoint().bytes),errors};});assert.deepEqual(r.before,r.after);assert.equal(r.errors.length,2);assert.equal((await state(page,fact)).journal.length,0);}));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+test('disabled callout and false custom serialization have explicit recovery',()=>probe('recovery',async(page,fact)=>{const r=await page.evaluate(()=>{const f=window.inputFixture,p=f.engine.importMarkdown('> [!NOTE]\n> body'),e=f.engine.exportMarkdown(f.engine.importMarkdown('**safe**').blocks,{extensions:[{name:'wrong',serialize:()=> 'lost'}]});return {p,e};});assert.ok(r.p.diagnostics.some(d=>d.code==='callout-codec-disabled'));assert.equal(r.e.diagnostics[0].code,'extension-unrepresentable');assert.ok(r.e.recovery.length);assert.equal((await state(page,fact)).journal.length,0);}));
+
+SyntaxError [ERR_INVALID_TYPESCRIPT_SYNTAX]: Expected ',', got ')'
+    at parseTypeScript (node:internal/modules/typescript:72:36)
+    at processTypeScriptCode (node:internal/modules/typescript:146:42)
+    at stripTypeScriptModuleTypes (node:internal/modules/typescript:215:22)
+    at ModuleLoader.<anonymous> (node:internal/modules/esm/translators:680:29)
+    at #translate (node:internal/modules/esm/loader:434:20)
+    at afterLoad (node:internal/modules/esm/loader:502:29)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:507:12)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:560:36)
+    at afterResolve (node:internal/modules/esm/loader:607:52)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:613:12) {
+  code: 'ERR_INVALID_TYPESCRIPT_SYNTAX'
+}
+
+Node.js v24.19.0
+✖ tests/browser/markdown-extensions.spec.ts (60.228209ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 64.522208
+
+✖ failing tests:
+
+test at tests/browser/markdown-extensions.spec.ts:1:1
+✖ tests/browser/markdown-extensions.spec.ts (60.228209ms)
+  'test failed'

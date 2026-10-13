@@ -1,0 +1,28 @@
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 21.63s
+     Running tests/roundtrip.rs (target/debug/deps/roundtrip-267c86fbae8f044e)
+
+running 7 tests
+test source_spelling_is_normalized_only_on_export ... ok
+test underline_unknown_content_and_unrepresentable_code_retain_data ... ok
+test adjacent_ambiguous_marks_never_report_a_lossless_export ... FAILED
+test unicode_breaks_empty_documents_and_separators ... ok
+test code_delimiters_spaces_and_nested_fences ... ok
+test nested_lists_quotes_and_check_states ... ok
+test headings_marks_links_and_escaping ... ok
+
+failures:
+
+---- adjacent_ambiguous_marks_never_report_a_lossless_export stdout ----
+
+thread 'adjacent_ambiguous_marks_never_report_a_lossless_export' (162407463) panicked at crates/editac-markdown/tests/roundtrip.rs:22:32:
+assertion failed: output.diagnostics.iter().any(|d| d.code == "markdown-unrepresentable")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    adjacent_ambiguous_marks_never_report_a_lossless_export
+
+test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p editac-markdown --test roundtrip`

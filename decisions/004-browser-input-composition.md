@@ -1,0 +1,46 @@
+# Decision 004: Correlate native input and buffer composition
+
+Version: 1 (2026-10-12).
+Status: mechanically qualified by WEB-1.13; actual OS/IME/device support remains unqualified.
+Authority: track 04 immutable source revision `78ed60d4dd3fa0c8055ffe2dbc957703e144f2e69172c0e26e1cb112e953c2ab`.
+Evidence: [input-policy receipt](../evidence/browser-input-policy/receipt.json), including retained failures, native/prepared traces, actual engine profiles and source/artifact hashes.
+
+## Basis and ownership
+
+The probe uses the packed WASM engine, authoritative checkpoint recovery, real IndexedDB journal, production DOMRenderer/DOMSelection and the listeners in `packages/web/src/input/protocol.ts`. This internal qualification protocol is not an enabled public editor router. WEB-1.4 owns ordinary production routing; WEB-1.6/1.7 own production composition/remote routing. RGS-1.4 later integrates the shared recipe driver with those production adapters.
+
+Rust owns committed document semantics and history. The browser owns a temporary composing block and caret. Composition captures an independently retained, directional stable range, baseline block text and selected text before native mutation. Intermediate composition notifications and actual DOM mutations cause zero engine commits, history groups or journal entries. Renderer patches for that block are held, retaining its DOM identity; independent blocks continue to patch. The selection bridge suspends capture/restoration while its text map is temporarily stale.
+
+The qualified probe profile is a bounded plain-text edit in a single mapped paragraph, including UTF-16 emoji and forward/backward replacement. It does not qualify cross-block composition, rich clipboard, pending marks, structural keyboard context, mobile controls or all interaction recipes. Unsupported scope yields an explicit rejected intent. Production owners must add the corresponding acceptance coverage rather than treat this probe as the full editor.
+
+## Identity and terminal disposition
+
+An intent ID contains document/epoch, editor instance, generation and a monotonically allocated sequence. Its origin distinguishes key, beforeinput, native mutation and composition. The same Event object has one owner. A physical key cycle owns its beforeinput and resulting native mutation; repeat keydowns create new intents. A preceding key/native-pending beforeinput is adopted by compositionstart. Composition sessions have separate owners.
+
+Without usable beforeinput, an observed native mutation batch in one mapped block creates an intent. Observer-first and input-first notifications can attach to that batch; duplicate input notifications without a fresh mutation are not another commit. An independently authored identical second edit has a new event/key/mutation/session owner and commits again. Payload equality and elapsed-time debounce are never identity. Comparing a projected block with its native text computes a bounded edit or no-op only after ownership is determined.
+
+Dispositions are native-pending, committed, canceled, rejected, handled or disposed. Native-pending is not a commit. A consumed key's beforeinput cannot repeat the command. Each committed input intent prepares one real engine operation and produces one attributable update, semantic undo group and durable journal entry. Remote updates remain outside local semantic history. Rejected/canceled/disposed composition produces none. A nonediting completed key cycle is handled.
+
+## Finalization and interruption
+
+For a valid compositionend, extract the composed replacement from the captured prefix/suffix, resolve the retained range against current core state, validate it, then prepare/commit once. The caret resolves to the admitted replacement's end. Duplicate final notifications do not repeat that commit. A final input before compositionend remains buffered; final input after compositionend observes the terminal session.
+
+An empty compositionend cancels. An unchanged replacement is a canceled no-op. Blur finalizes valid captured native text once, so a subsequent compositionend cannot repeat or discard it. Read-only transition cancels the temporary composition and restores authoritative DOM before disabling input. Dispose cancels temporary ownership, invalidates queued generations, restores owned projection, disables editing and removes protocol listeners/observer/subscription; later notifications cannot mutate the engine. Captured text remains in the terminal result for recovery. Storage flush failures retain the existing lifecycle's observable failure semantics.
+
+A commit Enter is consumed while composition is active. A compositionend-before-Enter continuation in the same dispatcher turn is also consumed even with isComposing=false. Ownership lasts through its physical key cycle, or a MessageChannel dispatcher boundary when no key remains. Keyup releases it; the next deliberate Enter executes the probe's paragraph split. This is an event-cycle/dispatcher rule, not text matching or a fixed sleep. Both orderings, duplicate final notifications, keyup release and no-keyup dispatcher expiry have prepared proofs. Actual OS event orderings must still qualify this rule before an IME support claim.
+
+## Remote edits and renderer echoes
+
+Remote insertion before/after a retained target does not redirect the local edit. At a collapsed target, right affinity places the remote insertion before the local composed text. The temporary DOM is retained while the engine receives those updates. At finalization, deferred admitted state is projected and the captured anchors determine the local edit/caret.
+
+Remote insertion inside a selected replacement changes its captured selected text: reject with remote-overlap, preserve the peer edit and composed recovery text, restore authoritative DOM and clear the native selection. If the owner is deleted, reject stale-target, preserve recovery text, remove its projection and clear selection. Never use the current caret or a surviving adjacent block as a replacement target. The deletion proof uses the existing prepared Yjs deletion-probe tombstone mechanism through real engine update admission, not a new production delete API.
+
+Before a renderer patch, pending native observer records are taken and retain their native ownership for later dispatch. After the synchronous renderer boundary, only records produced inside that boundary are drained as identified renderer echoes with editor generation and mapped owners. A native edit in the same turn, including one queued before a renderer patch, remains an input intent. Native wrapper replacement is canonicalized only inside the affected mapped block; unrelated node identity remains intact.
+
+Settlement drains observer records and owned jobs with generation checks and at most eight microtask turns, then awaits the real local persistence barrier. There are no fixed sleeps or provider calls.
+
+## Evidence limits and next owners
+
+Pinned Playwright Chromium/Firefox/WebKit mechanics are independently reported. Trusted browser keyboard traces prove the tested physical typing/deletion and deliberate Enter actions. Composition, noncancelable/missing-beforeinput permutations, duplicates, remote overlaps/deletion and interruption are prepared real-DOM replay. Trusted incidental browser events do not turn a prepared composition case into native IME evidence. Every case records its trace provenance.
+
+No Japanese/Korean/Chinese OS IME, dead-key keyboard, Safari device, mobile selection, screen reader, dictation or support/release qualification is claimed. Track 42's shared driver and final device/release owners retain their original gates. This decision permits the dependent implementation work only within its unchanged acceptance criteria.

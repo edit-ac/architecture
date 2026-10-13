@@ -1,0 +1,68 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs render
+
+✔ one-character patch preserves unrelated blocks and marked spans (3026.688667ms)
+✖ semantic headings marks nested lists checklist quote code and atoms (183.334834ms)
+✔ read-only engine projection displays hostile text literally (186.459333ms)
+✔ untrusted projection attributes cannot create active markup or unsafe links (197.884458ms)
+✖ structural patches preserve node identity while changing headings and moving lists (216.934459ms)
+✔ hard-break UTF-16 maps and literal code newlines survive patches (230.365125ms)
+✔ renderer rebuilds disposable maps from authoritative recovered state (179.467334ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 5
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4648.630834
+
+✖ failing tests:
+
+test at tests/browser/render.spec.ts:108:1
+✖ semantic headings marks nested lists checklist quote code and atoms (183.334834ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   undefined,
+  +   undefined,
+  +   undefined,
+  +   undefined,
+      'al',
+  -   'al',
+  -   'al',
+  -   'al',
+  -   'al'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/render.spec.ts:121:10
+      at async withContext (file:///Users/bpstr/Github/edit-ac/core/tests/browser/render.spec.ts:82:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ undefined, undefined, undefined, undefined, 'al' ],
+    expected: [ 'al', 'al', 'al', 'al', 'al' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/render.spec.ts:147:1
+✖ structural patches preserve node identity while changing headings and moving lists (216.934459ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/render.spec.ts:158:110
+      at async withContext (file:///Users/bpstr/Github/edit-ac/core/tests/browser/render.spec.ts:82:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

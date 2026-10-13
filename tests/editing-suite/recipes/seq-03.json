@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "id": "SEQ-03",
+  "layer": "semantic",
+  "covers": [
+    "MRK-01",
+    "REG-01"
+  ],
+  "requires": [
+    "range-format",
+    "history-selection"
+  ],
+  "context": {
+    "document": "doc-a",
+    "editor": "editor-a",
+    "epoch": 1
+  },
+  "initial": {
+    "blocks": [
+      {
+        "id": "p1",
+        "kind": "paragraph",
+        "text": "abcd",
+        "hardBreaks": [],
+        "marks": []
+      }
+    ],
+    "selection": {
+      "anchor": {
+        "block": "p1",
+        "offset": 1
+      },
+      "focus": {
+        "block": "p1",
+        "offset": 3
+      },
+      "affinity": "forward"
+    },
+    "pendingMarks": null
+  },
+  "steps": [
+    {
+      "id": "bold",
+      "action": {
+        "type": "toggleMark",
+        "mark": "bold"
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "abcd",
+              "hardBreaks": [],
+              "marks": [
+                {
+                  "from": 1,
+                  "to": 3,
+                  "type": "bold"
+                }
+              ]
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 1
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 3
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "move",
+      "action": {
+        "type": "setSelection",
+        "selection": {
+          "anchor": {
+            "block": "p1",
+            "offset": 4
+          },
+          "focus": {
+            "block": "p1",
+            "offset": 4
+          },
+          "affinity": "forward"
+        }
+      },
+      "expect": {
+        "outcome": "selection-only",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "abcd",
+              "hardBreaks": [],
+              "marks": [
+                {
+                  "from": 1,
+                  "to": 3,
+                  "type": "bold"
+                }
+              ]
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 4
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 4
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 0,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "undo",
+      "action": {
+        "type": "undo"
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "abcd",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 1
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 3
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "redo",
+      "action": {
+        "type": "redo"
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "abcd",
+              "hardBreaks": [],
+              "marks": [
+                {
+                  "from": 1,
+                  "to": 3,
+                  "type": "bold"
+                }
+              ]
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 1
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 3
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    }
+  ]
+}

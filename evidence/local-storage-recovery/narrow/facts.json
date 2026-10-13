@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "name": "browser-kill-journal-ack",
+      "passed": false,
+      "mechanism": "browser-kill",
+      "boundary": "journal-ack"
+    }
+  ],
+  "processes": [
+    {
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium-1248/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "profile": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-crash-profile-02OMaJ",
+      "port": null,
+      "purpose": "LOC-1.7 browser-kill-journal-ack",
+      "log": "../architecture/evidence/local-storage-recovery/narrow/browser-kill-journal-ack-browser.log",
+      "exited": false
+    }
+  ],
+  "browser": {},
+  "server": {
+    "pid": 66787,
+    "port": 56449,
+    "workspace": "/Users/bpstr/Github/edit-ac/core/",
+    "launcher": "node --test tests/browser/recovery.spec.ts",
+    "purpose": "LOC-1.7 loopback fixture",
+    "log": "full.log",
+    "listenerRemoved": true
+  },
+  "cleanup": [
+    {
+      "profile": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-crash-profile-02OMaJ",
+      "removed": true
+    }
+  ]
+}

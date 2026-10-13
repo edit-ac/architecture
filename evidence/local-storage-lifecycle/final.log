@@ -1,0 +1,20 @@
+✔ deterministic captured flush waits for completion, excludes later edits and clears saved on enqueue (22.061291ms)
+✔ deterministic AbortError rejects barriers, clears saved and retains edits/export under default continue policy (3.945041ms)
+✔ deterministic QuotaExceededError rejects barriers, clears saved and retains edits/export under default continue policy (3.888917ms)
+✔ deterministic NotAllowedError rejects barriers, clears saved and retains edits/export under default continue policy (3.991292ms)
+✔ deterministic later transaction failure cannot reject an earlier captured set, and no-op work adds no storage (2.444958ms)
+✔ deterministic explicit reject policy prevents Rust mutation after failure; policy is captured by value (2.235791ms)
+✔ deterministic reports actual default durability without claiming strict capability (1.494084ms)
+✔ deterministic reports actual unknown durability without claiming strict capability (1.469167ms)
+✔ deterministic destroy flush blocks edits until completion and releases lease/subscription/database (1.373417ms)
+✔ deterministic failed destroy flush preserves live edits and explicit report exports unsaved state (1.468916ms)
+✔ deterministic report destruction never claims pending data saved; missing policy/unsupported target fail explicitly (1.137791ms)
+✔ actual Chromium lifecycle uses leased Rust writer and IndexedDB completion, recovers committed bytes and retains aborted edits (1470.008791ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1866.868208

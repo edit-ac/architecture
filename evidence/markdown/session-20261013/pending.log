@@ -1,0 +1,96 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs large-paste
+
+large-paste browser: chromium
+✔ 100 KiB preparation captures once, preserves later selection and commits once (1872.219542ms)
+✔ accessible cancel retains exact source with zero effects and ignores late completion (227.816583ms)
+✔ deleted target rejects rather than redirecting to an adjacent owner (176.565708ms)
+✔ remote target move rejects with retained source and no paste update (203.7675ms)
+✔ destroy cancels pending work and tears down status and retained target (134.81325ms)
+✖ prepared second replica text updates revalidate stable offsets (126.802333ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3058.694583
+
+✖ failing tests:
+
+test at tests/browser/large-paste.spec.ts:36:1
+✖ prepared second replica text updates revalidate stable offsets (126.802333ms)
+  page.evaluate: EngineError: invalid type: string "remote ", expected u32 at line 1 column 43
+      at invoke (http://127.0.0.1:54182/core/engine.js:22:27)
+      at use (http://127.0.0.1:54182/core/engine.js:132:40)
+      at Object.anchor (http://127.0.0.1:54182/core/engine.js:232:41)
+      at Object.remote (http://127.0.0.1:54182/fixture/session.mjs:38:177)
+      at eval (eval at evaluate (:370:30), <anonymous>:1:25)
+      at UtilityScript.evaluate (<anonymous>:372:16)
+      at UtilityScript.<anonymous> (<anonymous>:1:44)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/large-paste.spec.ts:37:43
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7) {
+    log: []
+  }
+large-paste browser: firefox
+✔ 100 KiB preparation captures once, preserves later selection and commits once (7246.549209ms)
+✔ accessible cancel retains exact source with zero effects and ignores late completion (396.645ms)
+✔ deleted target rejects rather than redirecting to an adjacent owner (311.133917ms)
+✔ remote target move rejects with retained source and no paste update (345.740709ms)
+✔ destroy cancels pending work and tears down status and retained target (323.057875ms)
+✖ prepared second replica text updates revalidate stable offsets (339.133708ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9735.477125
+
+✖ failing tests:
+
+test at tests/browser/large-paste.spec.ts:36:1
+✖ prepared second replica text updates revalidate stable offsets (339.133708ms)
+  page.evaluate: invalid type: string "remote ", expected u32 at line 1 column 43
+  EngineError@http://127.0.0.1:54271/core/engine.js:5:9
+  invoke@http://127.0.0.1:54271/core/engine.js:22:27
+  use@http://127.0.0.1:54271/core/engine.js:132:46
+  anchor@http://127.0.0.1:54271/core/engine.js:232:44
+  remote@http://127.0.0.1:54271/fixture/session.mjs:38:177
+  @debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/large-paste.spec.ts:37:43
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7) {
+    log: []
+  }
+large-paste browser: webkit
+✔ 100 KiB preparation captures once, preserves later selection and commits once (4297.247583ms)
+✔ accessible cancel retains exact source with zero effects and ignores late completion (431.341292ms)
+✔ deleted target rejects rather than redirecting to an adjacent owner (274.16725ms)
+✔ remote target move rejects with retained source and no paste update (320.994167ms)
+✔ destroy cancels pending work and tears down status and retained target (278.884833ms)
+✖ prepared second replica text updates revalidate stable offsets (412.451958ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6358.215042
+
+✖ failing tests:
+
+test at tests/browser/large-paste.spec.ts:36:1
+✖ prepared second replica text updates revalidate stable offsets (412.451958ms)
+  page.evaluate: EngineError: invalid type: string "remote ", expected u32 at line 1 column 43
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/large-paste.spec.ts:37:43
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7) {
+    log: []
+  }

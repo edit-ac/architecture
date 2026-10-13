@@ -1,0 +1,23 @@
+✔ deterministic acknowledgment waits for completion, not enqueue or request success (13.780333ms)
+✔ deterministic duplicate identity is idempotent and independently waits for completion (1.936625ms)
+✔ deterministic journal takes immutable ownership before asynchronous hashing (2.2405ms)
+✔ deterministic bytes collision aborts without overwriting (3.427875ms)
+✔ deterministic origin collision aborts without overwriting (1.511958ms)
+✔ deterministic profile collision aborts without overwriting (0.507709ms)
+✔ deterministic quota/abort failure at lookup rejects and rolls back (0.656334ms)
+✔ deterministic quota/abort failure at write rejects and rolls back (0.540667ms)
+✔ deterministic quota/abort failure at after-request rejects and rolls back (0.702333ms)
+✔ deterministic explicit abort without an error still rejects (0.37075ms)
+✔ deterministic unsupported strict option falls back and reports observed capability (0.511375ms)
+✔ deterministic transaction creation quota/permission/closed errors are not retried (0.914458ms)
+✔ deterministic document/epoch/schema/writer/sequence keys are isolated (2.217417ms)
+✔ deterministic invalid identity/sequence/bytes fail before creating a transaction (0.340667ms)
+✔ deterministic read rejects corrupt bytes/checksum/receipt/schema instead of returning replay (2.726542ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 665.816333

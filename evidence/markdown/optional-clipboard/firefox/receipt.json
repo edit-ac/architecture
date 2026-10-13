@@ -1,0 +1,4497 @@
+{
+  "suite": "clipboard",
+  "engine": "firefox",
+  "cases": [
+    {
+      "name": "literal",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2832230314:1",
+            "n:2832230314:2"
+          ],
+          "blocks": [
+            "n:2832230314:1",
+            "n:2832230314:2"
+          ],
+          "text": [
+            "alpha# title\n\n  **literal**\t😀\r\n<script>x</script>",
+            "independent"
+          ],
+          "dom": [
+            "alpha# title\n\n  **literal**\t😀\r\n<script>x</script>",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha# title  **literal**\t😀\r<script>x</script>",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 796
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 796,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 796
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 18,
+            "focus": 18
+          },
+          "caret": {
+            "node": "n:2832230314:1",
+            "offset": 50,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3848125858:4"
+              },
+              "id": "n:2832230314:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "# title\n\n  **literal**\t😀\r\n<script>x</script>"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2832230314#2>",
+                  "source": "n:2832230314:1",
+                  "start": 0
+                },
+                {
+                  "end": 45,
+                  "identity": "<3848125858#3>",
+                  "source": "n:3848125858:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<2832230314#2>",
+                  "source": "n:2832230314:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2832230314:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2832230314#12>",
+                  "source": "n:2832230314:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        },
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2832230314:1",
+            "n:2832230314:2"
+          ],
+          "blocks": [
+            "n:2832230314:1",
+            "n:2832230314:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 796
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 313
+            }
+          ],
+          "history": {
+            "redoGroups": 1,
+            "retainedUpdateBytes": 796,
+            "revision": 2,
+            "undoGroups": 0
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 796
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 2,
+              "bytes": 313
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 5,
+            "focus": 5
+          },
+          "caret": {
+            "node": "n:2832230314:1",
+            "offset": 5,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2832230314:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2832230314#2>",
+                  "source": "n:2832230314:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2832230314:2",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2832230314#12>",
+                  "source": "n:2832230314:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        },
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2832230314:1",
+            "n:2832230314:2"
+          ],
+          "blocks": [
+            "n:2832230314:1",
+            "n:2832230314:2"
+          ],
+          "text": [
+            "alpha# title\n\n  **literal**\t😀\r\n<script>x</script>",
+            "independent"
+          ],
+          "dom": [
+            "alpha# title\n\n  **literal**\t😀\r\n<script>x</script>",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha# title  **literal**\t😀\r<script>x</script>",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 796
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 313
+            },
+            {
+              "sequence": 3,
+              "revision": 3,
+              "operation": "Redo",
+              "origin": "history:redo",
+              "update": true,
+              "bytes": 125
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 796,
+            "revision": 3,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 796
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 2,
+              "bytes": 313
+            },
+            {
+              "origin": "history:redo",
+              "sequence": 3,
+              "bytes": 125
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 18,
+            "focus": 18
+          },
+          "caret": {
+            "node": "n:2832230314:1",
+            "offset": 50,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3848125858:4"
+              },
+              "id": "n:2832230314:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "# title\n\n  **literal**\t😀\r\n<script>x</script>"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2832230314#2>",
+                  "source": "n:2832230314:1",
+                  "start": 0
+                },
+                {
+                  "end": 45,
+                  "identity": "<3848125858#3>",
+                  "source": "n:3848125858:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<2832230314#2>",
+                  "source": "n:2832230314:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2832230314:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2832230314#12>",
+                  "source": "n:2832230314:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "rich-fragment",
+      "passed": false,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:890690734:1",
+            "n:890690734:2"
+          ],
+          "blocks": [
+            "n:890690734:1",
+            "n:890690734:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [],
+          "patches": [],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 11
+          },
+          "caret": {
+            "node": "n:890690734:1",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:890690734:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<890690734#2>",
+                  "source": "n:890690734:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:890690734:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<890690734#12>",
+                  "source": "n:890690734:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "rejected",
+            "reason": "clipboard-target"
+          },
+          "diagnostics": [
+            "fragment-semantics"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "menu-copy-cut",
+      "passed": false,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:808492685:1",
+            "n:808492685:2"
+          ],
+          "blocks": [
+            "n:808492685:1",
+            "n:808492685:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [],
+          "patches": [],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 1,
+            "focus": 3
+          },
+          "caret": {
+            "node": "n:808492685:1",
+            "offset": 1,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:808492685:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<808492685#2>",
+                  "source": "n:808492685:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:808492685:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<808492685#12>",
+                  "source": "n:808492685:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "rejected",
+            "reason": "InvalidCommand"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "malformed",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:242781472:1",
+            "n:242781472:2"
+          ],
+          "blocks": [
+            "n:242781472:1",
+            "n:242781472:2"
+          ],
+          "text": [
+            "alphasafe",
+            "independent"
+          ],
+          "dom": [
+            "alphasafe",
+            "independent"
+          ],
+          "boundDom": [
+            "alphasafe",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 748
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 748,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 748
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:242781472:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3831438667:4"
+              },
+              "id": "n:242781472:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "safe"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<242781472#2>",
+                  "source": "n:242781472:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<3831438667#3>",
+                  "source": "n:3831438667:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<242781472#2>",
+                  "source": "n:242781472:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:242781472:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<242781472#12>",
+                  "source": "n:242781472:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "JSON.parse: end of data while reading object contents at line 1 column 2 of the JSON data"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "unsupported-version",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:1241536586:1",
+            "n:1241536586:2"
+          ],
+          "blocks": [
+            "n:1241536586:1",
+            "n:1241536586:2"
+          ],
+          "text": [
+            "alphasafe",
+            "independent"
+          ],
+          "dom": [
+            "alphasafe",
+            "independent"
+          ],
+          "boundDom": [
+            "alphasafe",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 715
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 715,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 715
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:1241536586:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:26445823:4"
+              },
+              "id": "n:1241536586:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "safe"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1241536586#2>",
+                  "source": "n:1241536586:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<26445823#3>",
+                  "source": "n:26445823:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<1241536586#2>",
+                  "source": "n:1241536586:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1241536586:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<1241536586#12>",
+                  "source": "n:1241536586:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "fragment-schema"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "schema",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2668843818:1",
+            "n:2668843818:2"
+          ],
+          "blocks": [
+            "n:2668843818:1",
+            "n:2668843818:2"
+          ],
+          "text": [
+            "alphasafe",
+            "independent"
+          ],
+          "dom": [
+            "alphasafe",
+            "independent"
+          ],
+          "boundDom": [
+            "alphasafe",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 753
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 753,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 753
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:2668843818:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4214961170:4"
+              },
+              "id": "n:2668843818:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "safe"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2668843818#2>",
+                  "source": "n:2668843818:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<4214961170#3>",
+                  "source": "n:4214961170:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<2668843818#2>",
+                  "source": "n:2668843818:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2668843818:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2668843818#12>",
+                  "source": "n:2668843818:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "fragment-schema"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "oversize",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:3237257807:1",
+            "n:3237257807:2"
+          ],
+          "blocks": [
+            "n:3237257807:1",
+            "n:3237257807:2"
+          ],
+          "text": [
+            "alphasafe",
+            "independent"
+          ],
+          "dom": [
+            "alphasafe",
+            "independent"
+          ],
+          "boundDom": [
+            "alphasafe",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 753
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 753,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 753
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:3237257807:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4087785987:4"
+              },
+              "id": "n:3237257807:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "safe"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3237257807#2>",
+                  "source": "n:3237257807:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<4087785987#3>",
+                  "source": "n:4087785987:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<3237257807#2>",
+                  "source": "n:3237257807:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3237257807:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<3237257807#12>",
+                  "source": "n:3237257807:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "fragment-limit"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "unsafe-link",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2734237545:1",
+            "n:2734237545:2"
+          ],
+          "blocks": [
+            "n:2734237545:1",
+            "n:2734237545:2"
+          ],
+          "text": [
+            "alphasafe",
+            "independent"
+          ],
+          "dom": [
+            "alphasafe",
+            "independent"
+          ],
+          "boundDom": [
+            "alphasafe",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 753
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 753,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 753
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:2734237545:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2636226388:4"
+              },
+              "id": "n:2734237545:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "safe"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2734237545#2>",
+                  "source": "n:2734237545:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<2636226388#3>",
+                  "source": "n:2636226388:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<2734237545#2>",
+                  "source": "n:2734237545:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2734237545:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2734237545#12>",
+                  "source": "n:2734237545:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "fragment-url"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "kernel-url-rejection",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:4257347685:1",
+            "n:4257347685:2"
+          ],
+          "blocks": [
+            "n:4257347685:1",
+            "n:4257347685:2"
+          ],
+          "text": [
+            "alphasafe",
+            "independent"
+          ],
+          "dom": [
+            "alphasafe",
+            "independent"
+          ],
+          "boundDom": [
+            "alphasafe",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 715
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 715,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 715
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:4257347685:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:27749402:4"
+              },
+              "id": "n:4257347685:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "safe"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4257347685#2>",
+                  "source": "n:4257347685:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<27749402#3>",
+                  "source": "n:27749402:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<4257347685#2>",
+                  "source": "n:4257347685:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4257347685:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<4257347685#12>",
+                  "source": "n:4257347685:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "fragment-semantics"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "html",
+      "passed": false,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:640044238:1",
+            "n:640044238:2"
+          ],
+          "blocks": [
+            "n:640044238:1",
+            "n:640044238:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [],
+          "patches": [],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 11
+          },
+          "caret": {
+            "node": "n:640044238:1",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:640044238:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<640044238#2>",
+                  "source": "n:640044238:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:640044238:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<640044238#12>",
+                  "source": "n:640044238:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "rejected",
+            "reason": "clipboard-target"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "html-containers",
+      "passed": false,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:2504450300:1",
+            "n:2504450300:2"
+          ],
+          "blocks": [
+            "n:2504450300:1"
+          ],
+          "text": [
+            "fallback"
+          ],
+          "dom": [
+            "fallback"
+          ],
+          "boundDom": [
+            "fallback",
+            null
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 2
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 896
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 896,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 896
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 8,
+            "focus": 8
+          },
+          "caret": {
+            "node": "n:2504450300:1",
+            "offset": 8,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2286349317:5"
+              },
+              "id": "n:2504450300:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "fallback"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<2504450300#2>",
+                  "source": "n:2504450300:1",
+                  "start": 0
+                },
+                {
+                  "end": 8,
+                  "identity": "<2286349317#4>",
+                  "source": "n:2286349317:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2504450300#2>",
+                  "source": "n:2504450300:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2504450300#12>",
+                  "source": "n:2504450300:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "text/html-semantics"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "direct-quote",
+      "passed": false,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:372610410:1",
+            "n:372610410:2"
+          ],
+          "blocks": [
+            "n:372610410:1",
+            "n:372610410:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [],
+          "patches": [],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 11
+          },
+          "caret": {
+            "node": "n:372610410:1",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:372610410:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<372610410#2>",
+                  "source": "n:372610410:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:372610410:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<372610410#12>",
+                  "source": "n:372610410:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "rejected",
+            "reason": "clipboard-target"
+          },
+          "diagnostics": [
+            "text/html-semantics"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "extension-source",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2241028792:1",
+            "n:2241028792:2"
+          ],
+          "blocks": [
+            "n:2241028792:1",
+            "n:2241028792:2"
+          ],
+          "text": [
+            "alphacell",
+            "independent"
+          ],
+          "dom": [
+            "alphacell",
+            "independent"
+          ],
+          "boundDom": [
+            "alphacell",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 753
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 753,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 753
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:2241028792:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2177793894:4"
+              },
+              "id": "n:2241028792:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "cell"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2241028792#2>",
+                  "source": "n:2241028792:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<2177793894#3>",
+                  "source": "n:2177793894:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<2241028792#2>",
+                  "source": "n:2241028792:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2241028792:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2241028792#12>",
+                  "source": "n:2241028792:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "html-table-requires-extension-codec"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "code-literal",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2979624932:1",
+            "n:2979624932:2"
+          ],
+          "blocks": [
+            "n:2979624932:1",
+            "n:2979624932:2"
+          ],
+          "text": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "dom": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 2
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:fixture",
+              "update": true,
+              "bytes": 36
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 762
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 762,
+            "revision": 2,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:fixture",
+              "sequence": 1,
+              "bytes": 36
+            },
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 2,
+              "bytes": 762
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 11,
+            "focus": 11
+          },
+          "caret": {
+            "node": "n:2979624932:1",
+            "offset": 16,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "code",
+                "js"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2561023004:4"
+              },
+              "id": "n:2979624932:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "**literal**"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2979624932#2>",
+                  "source": "n:2979624932:1",
+                  "start": 0
+                },
+                {
+                  "end": 11,
+                  "identity": "<2561023004#3>",
+                  "source": "n:2561023004:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<2979624932#2>",
+                  "source": "n:2979624932:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2979624932:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2979624932#12>",
+                  "source": "n:2979624932:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "inline-code",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:1608045039:1",
+            "n:1608045039:2"
+          ],
+          "blocks": [
+            "n:1608045039:1",
+            "n:1608045039:2"
+          ],
+          "text": [
+            "al**literal**pha",
+            "independent"
+          ],
+          "dom": [
+            "al**literal**pha",
+            "independent"
+          ],
+          "boundDom": [
+            "al**literal**pha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 2
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Format",
+              "origin": "editac:local:fixture",
+              "update": true,
+              "bytes": 42
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 794
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 794,
+            "revision": 2,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:fixture",
+              "sequence": 1,
+              "bytes": 42
+            },
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 2,
+              "bytes": 794
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 0
+          },
+          "caret": {
+            "node": "n:1608045039:1",
+            "offset": 13,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1568865761:4"
+              },
+              "id": "n:1608045039:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "code": true
+                  },
+                  "text": "al"
+                },
+                {
+                  "attributes": {
+                    "code": true
+                  },
+                  "text": "**literal**"
+                },
+                {
+                  "attributes": {
+                    "code": true
+                  },
+                  "text": "pha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 2,
+                  "identity": "<1608045039#2>",
+                  "source": "n:1608045039:1",
+                  "start": 0
+                },
+                {
+                  "end": 11,
+                  "identity": "<1568865761#3>",
+                  "source": "n:1568865761:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<1608045039#2>",
+                  "source": "n:1608045039:1",
+                  "start": 2
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1608045039:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<1608045039#12>",
+                  "source": "n:1608045039:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "control-shift-v",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:3913438024:1",
+            "n:3913438024:2"
+          ],
+          "blocks": [
+            "n:3913438024:1",
+            "n:3913438024:2"
+          ],
+          "text": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "dom": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "key",
+              "disposition": "native-pending"
+            }
+          ],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "keydown",
+              "trusted": false,
+              "generation": 1,
+              "cancelable": true,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 760
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 760,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 760
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 11,
+            "focus": 11
+          },
+          "caret": {
+            "node": "n:3913438024:1",
+            "offset": 16,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1832034564:4"
+              },
+              "id": "n:3913438024:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "**literal**"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3913438024#2>",
+                  "source": "n:3913438024:1",
+                  "start": 0
+                },
+                {
+                  "end": 11,
+                  "identity": "<1832034564#3>",
+                  "source": "n:1832034564:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<3913438024#2>",
+                  "source": "n:3913438024:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3913438024:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<3913438024#12>",
+                  "source": "n:3913438024:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "command-shift-v",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:1194664104:1",
+            "n:1194664104:2"
+          ],
+          "blocks": [
+            "n:1194664104:1",
+            "n:1194664104:2"
+          ],
+          "text": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "dom": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "key",
+              "disposition": "native-pending"
+            }
+          ],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "keydown",
+              "trusted": false,
+              "generation": 1,
+              "cancelable": true,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 760
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 760,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 760
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 11,
+            "focus": 11
+          },
+          "caret": {
+            "node": "n:1194664104:1",
+            "offset": 16,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1720114803:4"
+              },
+              "id": "n:1194664104:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "**literal**"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1194664104#2>",
+                  "source": "n:1194664104:1",
+                  "start": 0
+                },
+                {
+                  "end": 11,
+                  "identity": "<1720114803#3>",
+                  "source": "n:1720114803:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<1194664104#2>",
+                  "source": "n:1194664104:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1194664104:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<1194664104#12>",
+                  "source": "n:1194664104:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "command-option-shift-v",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2050780957:1",
+            "n:2050780957:2"
+          ],
+          "blocks": [
+            "n:2050780957:1",
+            "n:2050780957:2"
+          ],
+          "text": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "dom": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha**literal**",
+            "independent"
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "key",
+              "disposition": "native-pending"
+            }
+          ],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "keydown",
+              "trusted": false,
+              "generation": 1,
+              "cancelable": true,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 760
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 760,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 760
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 11,
+            "focus": 11
+          },
+          "caret": {
+            "node": "n:2050780957:1",
+            "offset": 16,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2291677519:4"
+              },
+              "id": "n:2050780957:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "**literal**"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2050780957#2>",
+                  "source": "n:2050780957:1",
+                  "start": 0
+                },
+                {
+                  "end": 11,
+                  "identity": "<2291677519#3>",
+                  "source": "n:2291677519:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<2050780957#2>",
+                  "source": "n:2050780957:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2050780957:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2050780957#12>",
+                  "source": "n:2050780957:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "ordinary-shortcut",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2923719343:1",
+            "n:2923719343:2"
+          ],
+          "blocks": [
+            "n:2923719343:1",
+            "n:2923719343:2"
+          ],
+          "text": [
+            "alpharich",
+            "independent"
+          ],
+          "dom": [
+            "alpharich",
+            "independent"
+          ],
+          "boundDom": [
+            "alpharich",
+            "independent"
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "key",
+              "disposition": "native-pending"
+            }
+          ],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "keydown",
+              "trusted": false,
+              "generation": 1,
+              "cancelable": true,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 787
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 787,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 787
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:2923719343:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4187721363:4"
+              },
+              "id": "n:2923719343:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "rich"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2923719343#2>",
+                  "source": "n:2923719343:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<4187721363#3>",
+                  "source": "n:4187721363:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<2923719343#2>",
+                  "source": "n:2923719343:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2923719343:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2923719343#12>",
+                  "source": "n:2923719343:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "mobile-beforeinput",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:191136307:1",
+            "n:191136307:2"
+          ],
+          "blocks": [
+            "n:191136307:1",
+            "n:191136307:2"
+          ],
+          "text": [
+            "alphamobile",
+            "independent"
+          ],
+          "dom": [
+            "alphamobile",
+            "independent"
+          ],
+          "boundDom": [
+            "alphamobile",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 732
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 732,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 732
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 6,
+            "focus": 6
+          },
+          "caret": {
+            "node": "n:191136307:1",
+            "offset": 11,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:655386819:4"
+              },
+              "id": "n:191136307:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "mobile"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<191136307#2>",
+                  "source": "n:191136307:1",
+                  "start": 0
+                },
+                {
+                  "end": 6,
+                  "identity": "<655386819#3>",
+                  "source": "n:655386819:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<191136307#2>",
+                  "source": "n:191136307:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:191136307:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<191136307#12>",
+                  "source": "n:191136307:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "mobile-noncancelable",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2846209377:1",
+            "n:2846209377:2"
+          ],
+          "blocks": [
+            "n:2846209377:1",
+            "n:2846209377:2"
+          ],
+          "text": [
+            "alphamobile",
+            "independent"
+          ],
+          "dom": [
+            "alphamobile",
+            "independent"
+          ],
+          "boundDom": [
+            "alphamobile",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 2
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 755
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 755,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 755
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": null,
+          "caret": null,
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1025906020:4"
+              },
+              "id": "n:2846209377:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "mobile"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2846209377#2>",
+                  "source": "n:2846209377:1",
+                  "start": 0
+                },
+                {
+                  "end": 6,
+                  "identity": "<1025906020#3>",
+                  "source": "n:1025906020:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<2846209377#2>",
+                  "source": "n:2846209377:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2846209377:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2846209377#12>",
+                  "source": "n:2846209377:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "paste-events",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2999490314:1",
+            "n:2999490314:2"
+          ],
+          "blocks": [
+            "n:2999490314:1",
+            "n:2999490314:2"
+          ],
+          "text": [
+            "alphasamesame",
+            "independent"
+          ],
+          "dom": [
+            "alphasamesame",
+            "independent"
+          ],
+          "boundDom": [
+            "alphasamesame",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 753
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:2",
+              "update": true,
+              "bytes": 763
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1516,
+            "revision": 2,
+            "undoGroups": 2
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 753
+            },
+            {
+              "origin": "editac:local:clipboard:2",
+              "sequence": 2,
+              "bytes": 763
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:2999490314:1",
+            "offset": 13,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2237898654:4"
+              },
+              "id": "n:2999490314:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "same"
+                },
+                {
+                  "attributes": {},
+                  "text": "same"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2999490314#2>",
+                  "source": "n:2999490314:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<2334182976#3>",
+                  "source": "n:2334182976:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<2237898654#3>",
+                  "source": "n:2237898654:1",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<2334182976#3>",
+                  "source": "n:2334182976:1",
+                  "start": 4
+                },
+                {
+                  "end": 5,
+                  "identity": "<2999490314#2>",
+                  "source": "n:2999490314:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2999490314:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2999490314#12>",
+                  "source": "n:2999490314:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "write-failure",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2802206391:1",
+            "n:2802206391:2"
+          ],
+          "blocks": [
+            "n:2802206391:1",
+            "n:2802206391:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [],
+          "patches": [],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 5
+          },
+          "caret": {
+            "node": "n:2802206391:1",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2802206391:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2802206391#2>",
+                  "source": "n:2802206391:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2802206391:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2802206391#12>",
+                  "source": "n:2802206391:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "rejected",
+            "reason": "denied"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "readonly-composition",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:1825163853:1",
+            "n:1825163853:2"
+          ],
+          "blocks": [
+            "n:1825163853:1",
+            "n:1825163853:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "composition",
+              "disposition": "native-pending"
+            }
+          ],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "blur",
+              "trusted": true,
+              "generation": 1,
+              "cancelable": false
+            },
+            {
+              "type": "compositionstart",
+              "trusted": false,
+              "generation": 1,
+              "cancelable": false,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            }
+          ],
+          "patches": [],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "selectionSuspended": true,
+          "nativeCaret": {
+            "anchor": 5,
+            "focus": 5
+          },
+          "caret": null,
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1825163853:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1825163853#2>",
+                  "source": "n:1825163853:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1825163853:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<1825163853#12>",
+                  "source": "n:1825163853:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "rejected",
+            "reason": "clipboard-unavailable"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "empty",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:456396512:1",
+            "n:456396512:2"
+          ],
+          "blocks": [
+            "n:456396512:1",
+            "n:456396512:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [],
+          "patches": [],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 5
+          },
+          "caret": {
+            "node": "n:456396512:1",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:456396512:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<456396512#2>",
+                  "source": "n:456396512:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:456396512:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<456396512#12>",
+                  "source": "n:456396512:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "rejected",
+            "reason": "clipboard-empty"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "async-plain",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:1220253106:1",
+            "n:1220253106:2"
+          ],
+          "blocks": [
+            "n:1220253106:1",
+            "n:1220253106:2"
+          ],
+          "text": [
+            "alphaplain",
+            "independent"
+          ],
+          "dom": [
+            "alphaplain",
+            "independent"
+          ],
+          "boundDom": [
+            "alphaplain",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 754
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 754,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 754
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 2,
+            "focus": 2
+          },
+          "caret": {
+            "node": "n:1220253106:2",
+            "offset": 2,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1092339076:4"
+              },
+              "id": "n:1220253106:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                },
+                {
+                  "attributes": {},
+                  "text": "plain"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1220253106#2>",
+                  "source": "n:1220253106:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<1092339076#3>",
+                  "source": "n:1092339076:1",
+                  "start": 0
+                },
+                {
+                  "end": 5,
+                  "identity": "<1220253106#2>",
+                  "source": "n:1220253106:1",
+                  "start": 5
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1220253106:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<1220253106#12>",
+                  "source": "n:1220253106:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "async-canceled",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:443809036:1",
+            "n:443809036:2"
+          ],
+          "blocks": [
+            "n:443809036:1",
+            "n:443809036:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "false",
+          "trace": [
+            {
+              "type": "blur",
+              "trusted": true,
+              "generation": 1,
+              "cancelable": false
+            }
+          ],
+          "patches": [],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 5,
+            "focus": 5
+          },
+          "caret": {
+            "node": "n:443809036:1",
+            "offset": 5,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:443809036:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<443809036#2>",
+                  "source": "n:443809036:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:443809036:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<443809036#12>",
+                  "source": "n:443809036:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "rejected",
+            "reason": "clipboard-canceled"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "processes": [
+    {
+      "pid": 81522,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "clipboard",
+      "log": "../architecture/evidence/markdown/optional-clipboard/firefox"
+    }
+  ],
+  "packs": [
+    {
+      "name": "core",
+      "file": "edit-ac-core-0.0.0.tgz",
+      "bytes": 779473,
+      "sha256": "a68f98dffe5b24cf203855e6107dbda5c98c5acc978f8ae1fa7e291f6aae1294"
+    },
+    {
+      "name": "web",
+      "file": "edit-ac-web-0.0.0.tgz",
+      "bytes": 53008,
+      "sha256": "492f93ee9884c2b8c5fa5d9fcaaace6c0db2004e35dab47a51c4c36248452e0a"
+    }
+  ],
+  "cleanup": {
+    "browserExited": true,
+    "serverClosed": true,
+    "consumerRemoved": true
+  },
+  "revision": "6edb83432468e44083740b586f973fb44f623352",
+  "sources": {
+    "packages/web/src/clipboard/fragment.ts": "2d9718e4f37f9ac91c8cd8afec1a85d581adce3fa6a678aaae288fe87ef19385",
+    "packages/web/src/clipboard/html.ts": "de4c520df34bb334cad7a3ec1eeeb81f84dacb3d35fab388d634b410a0d8c2d5",
+    "packages/web/src/input/text.ts": "e9d1e0d36867f00b7235c690c13457c9d71a5eb1082cc347abec5ef14fb30b47",
+    "packages/core/src/engine.ts": "8b3ef74cf8fd7c44f9fa1bba9c8c315274db70d97fb2bfb521abc98e7579ecf8",
+    "crates/editac-core/src/commands/editor.rs": "3c55002c4f58f549ab142e6af4748b1a24db9d9f973fa530514a9e1946923cb4",
+    "crates/editac-wasm/src/bridge.rs": "98d6a5ed2efd32316a25cc8af5f8c6d10aca3b9bfe4547f2370e1d859ad43725",
+    "scripts/test-browser.mjs": "c9572b26117e0371315a7112f3eb3fea77dcec105ecbda5a295e33867d4b8ed0",
+    "tests/browser/clipboard.spec.ts": "184a4ebb68ebbf7b177248b88163e381dd5a348928070eb06c0cb811651bc44f",
+    "tests/browser/browser-harness.ts": "d061d677bd8c0db93bad5fa251fb22a4c424a0ccc870f8f21b21d4bf47bfbe15",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+  },
+  "server": {
+    "pid": 81455,
+    "port": 54608,
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "clipboard",
+    "log": "../architecture/evidence/markdown/optional-clipboard/firefox"
+  },
+  "browser": {
+    "version": "157.0",
+    "engine": "firefox",
+    "playwright": "1.64.0",
+    "node": "v26.4.0"
+  },
+  "counts": {
+    "executed": 27,
+    "passed": 22,
+    "failed": 5,
+    "skipped": 0
+  }
+}

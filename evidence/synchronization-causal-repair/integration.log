@@ -1,0 +1,538 @@
+TAP version 13
+# Subtest: Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions
+ok 1 - Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions
+  ---
+  duration_ms: 42.381333
+  type: 'test'
+  ...
+# Subtest: relative selections move under remote inserts and fail safely after semantic target deletion
+ok 2 - relative selections move under remote inserts and fail safely after semantic target deletion
+  ---
+  duration_ms: 21.182792
+  type: 'test'
+  ...
+# Subtest: stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime
+ok 3 - stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime
+  ---
+  duration_ms: 4.323
+  type: 'test'
+  ...
+# Subtest: unknown zero-clock state is ignored and same-clock null removes a known peer as in the pinned oracle
+ok 4 - unknown zero-clock state is ignored and same-clock null removes a known peer as in the pinned oracle
+  ---
+  duration_ms: 0.65025
+  type: 'test'
+  ...
+# Subtest: burst coalescing, backpressure and thrown sends retain one bounded pending state
+ok 5 - burst coalescing, backpressure and thrown sends retain one bounded pending state
+  ---
+  duration_ms: 684.250792
+  type: 'test'
+  ...
+# Subtest: host-driven renewal and clear presence use compatible clocks without idle traffic
+ok 6 - host-driven renewal and clear presence use compatible clocks without idle traffic
+  ---
+  duration_ms: 0.919584
+  type: 'test'
+  ...
+# Subtest: invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically
+ok 7 - invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically
+  ---
+  duration_ms: 18.028083
+  type: 'test'
+  ...
+# Subtest: malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers
+ok 8 - malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers
+  ---
+  duration_ms: 2.081833
+  type: 'test'
+  ...
+# Subtest: capacity includes expired tombstones; untrusted remote frames cannot remove local presence
+ok 9 - capacity includes expired tombstones; untrusted remote frames cannot remove local presence
+  ---
+  duration_ms: 2.823958
+  type: 'test'
+  ...
+# Subtest: replacement, expiry, invalid batch and disposal release every imported anchor
+ok 10 - replacement, expiry, invalid batch and disposal release every imported anchor
+  ---
+  duration_ms: 5.687875
+  type: 'test'
+  ...
+# Subtest: reentrant send cannot erase a newer queued state or undo disposal
+ok 11 - reentrant send cannot erase a newer queued state or undo disposal
+  ---
+  duration_ms: 1.699709
+  type: 'test'
+  ...
+# Subtest: awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox
+ok 12 - awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox
+  ---
+  duration_ms: 161.430458
+  type: 'test'
+  ...
+# Subtest: invalid options/time and oversize local presence fail without discarding valid state
+ok 13 - invalid options/time and oversize local presence fail without discarding valid state
+  ---
+  duration_ms: 3.305917
+  type: 'test'
+  ...
+# Subtest: deterministic synchronization entry fixes separate update, sync, awareness and receipt profiles
+ok 14 - deterministic synchronization entry fixes separate update, sync, awareness and receipt profiles
+  ---
+  duration_ms: 10.693333
+  type: 'test'
+  ...
+# Subtest: deterministic prepared socket delivery preserves outbox until matching application receipts commit
+ok 15 - deterministic prepared socket delivery preserves outbox until matching application receipts commit
+  ---
+  duration_ms: 2.989417
+  type: 'test'
+  ...
+# Subtest: deterministic checkpoint coverage retains every pending identity and retransmittable real update
+ok 16 - deterministic checkpoint coverage retains every pending identity and retransmittable real update
+  ---
+  duration_ms: 3.5965
+  type: 'test'
+  ...
+# Subtest: deterministic sync events, socket delivery and state vectors cannot acknowledge updates
+ok 17 - deterministic sync events, socket delivery and state vectors cannot acknowledge updates
+  ---
+  duration_ms: 1.028417
+  type: 'test'
+  ...
+# Subtest: deterministic absent negotiated receipt capability reports unknown durability and retains updates
+ok 18 - deterministic absent negotiated receipt capability reports unknown durability and retains updates
+  ---
+  duration_ms: 0.6895
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt documentId cannot prune pending updates
+ok 19 - deterministic wrong receipt documentId cannot prune pending updates
+  ---
+  duration_ms: 0.605291
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt epoch cannot prune pending updates
+ok 20 - deterministic wrong receipt epoch cannot prune pending updates
+  ---
+  duration_ms: 0.655208
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt schema cannot prune pending updates
+ok 21 - deterministic wrong receipt schema cannot prune pending updates
+  ---
+  duration_ms: 1.009334
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt profile cannot prune pending updates
+ok 22 - deterministic wrong receipt profile cannot prune pending updates
+  ---
+  duration_ms: 0.535291
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt writerId cannot prune pending updates
+ok 23 - deterministic wrong receipt writerId cannot prune pending updates
+  ---
+  duration_ms: 0.516625
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt sequence cannot prune pending updates
+ok 24 - deterministic wrong receipt sequence cannot prune pending updates
+  ---
+  duration_ms: 0.448042
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt checksum cannot prune pending updates
+ok 25 - deterministic wrong receipt checksum cannot prune pending updates
+  ---
+  duration_ms: 0.593542
+  type: 'test'
+  ...
+# Subtest: deterministic wrong receipt updateId cannot prune pending updates
+ok 26 - deterministic wrong receipt updateId cannot prune pending updates
+  ---
+  duration_ms: 0.508792
+  type: 'test'
+  ...
+# Subtest: deterministic receipt acknowledgment and pruning wait for completion, not request success
+ok 27 - deterministic receipt acknowledgment and pruning wait for completion, not request success
+  ---
+  duration_ms: 0.548667
+  type: 'test'
+  ...
+# Subtest: deterministic receipt abort before-lookup retains outbox and permits retry
+ok 28 - deterministic receipt abort before-lookup retains outbox and permits retry
+  ---
+  duration_ms: 0.692041
+  type: 'test'
+  ...
+# Subtest: deterministic receipt abort after-write-success retains outbox and permits retry
+ok 29 - deterministic receipt abort after-write-success retains outbox and permits retry
+  ---
+  duration_ms: 0.506834
+  type: 'test'
+  ...
+# Subtest: deterministic quota, permission and receipt write failures propagate without pruning
+ok 30 - deterministic quota, permission and receipt write failures propagate without pruning
+  ---
+  duration_ms: 0.601
+  type: 'test'
+  ...
+# Subtest: deterministic duplicate/reordered durable receipts survive reopen and duplicate append
+ok 31 - deterministic duplicate/reordered durable receipts survive reopen and duplicate append
+  ---
+  duration_ms: 1.961084
+  type: 'test'
+  ...
+# Subtest: deterministic unknown receipt cannot pre-acknowledge a future journal append
+ok 32 - deterministic unknown receipt cannot pre-acknowledge a future journal append
+  ---
+  duration_ms: 0.626458
+  type: 'test'
+  ...
+# Subtest: deterministic corrupt receipt or journal fails explicitly instead of hiding pending work
+ok 33 - deterministic corrupt receipt or journal fails explicitly instead of hiding pending work
+  ---
+  duration_ms: 0.554583
+  type: 'test'
+  ...
+# Subtest: deterministic detached pending bytes and unsupported strict durability preserve identity
+ok 34 - deterministic detached pending bytes and unsupported strict durability preserve identity
+  ---
+  duration_ms: 0.604375
+  type: 'test'
+  ...
+# Subtest: deterministic bounded outbox pages preserve cursor identity, byte limits and receipt filtering
+ok 35 - deterministic bounded outbox pages preserve cursor identity, byte limits and receipt filtering
+  ---
+  duration_ms: 1.240083
+  type: 'test'
+  ...
+# Subtest: actual Chromium v2 upgrade, receipt abort boundaries, checkpoint retention and restart preserve real Rust updates
+ok 36 - actual Chromium v2 upgrade, receipt abort boundaries, checkpoint retention and restart preserve real Rust updates
+  ---
+  duration_ms: 1282.583542
+  type: 'test'
+  ...
+# Subtest: ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending
+not ok 37 - ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending
+  ---
+  duration_ms: 1186.734459
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: negotiated actual relay commit prunes only pending membership and preserves recovery journal
+not ok 38 - negotiated actual relay commit prunes only pending membership and preserves recovery journal
+  ---
+  duration_ms: 69.807875
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: receipt documentId mismatch cannot prune or claim remoteCommitted
+not ok 39 - receipt documentId mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 77.24925
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: receipt epoch mismatch cannot prune or claim remoteCommitted
+not ok 40 - receipt epoch mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 75.303625
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: receipt schema mismatch cannot prune or claim remoteCommitted
+not ok 41 - receipt schema mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 106.43375
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: receipt writerId mismatch cannot prune or claim remoteCommitted
+not ok 42 - receipt writerId mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 60.971458
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: receipt sequence mismatch cannot prune or claim remoteCommitted
+not ok 43 - receipt sequence mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 56.053084
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: receipt checksum mismatch cannot prune or claim remoteCommitted
+not ok 44 - receipt checksum mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 56.33475
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: receipt updateId mismatch cannot prune or claim remoteCommitted
+not ok 45 - receipt updateId mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 52.143917
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: denied authorization keeps offline commands editable and recovery export available without upload
+not ok 46 - denied authorization keeps offline commands editable and recovery export available without upload
+  ---
+  duration_ms: 55.222291
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: service revocation stops upload and baseline traffic while retaining edits for authorized reconnect
+not ok 47 - service revocation stops upload and baseline traffic while retaining edits for authorized reconnect
+  ---
+  duration_ms: 53.325667
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: late committed response after revocation is fenced; reconnect resends idempotently
+not ok 48 - late committed response after revocation is fenced; reconnect resends idempotently
+  ---
+  duration_ms: 55.300416
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: receipt transaction abort cannot publish remoteCommitted or prune
+not ok 49 - receipt transaction abort cannot publish remoteCommitted or prune
+  ---
+  duration_ms: 56.08925
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: new local commit during durable upload restarts the bounded replay cursor
+not ok 50 - new local commit during durable upload restarts the bounded replay cursor
+  ---
+  duration_ms: 50.636166
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: unsupported negotiation and wrong peer identity fail before replacing an authorized connection
+not ok 51 - unsupported negotiation and wrong peer identity fail before replacing an authorized connection
+  ---
+  duration_ms: 50.502417
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: malformed non-durable receipts fail admission and capability absence ignores even a valid receipt
+not ok 52 - malformed non-durable receipts fail admission and capability absence ignores even a valid receipt
+  ---
+  duration_ms: 51.529291
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: durable replay is bounded to one page per event without dropping the remaining local backlog
+not ok 53 - durable replay is bounded to one page per event without dropping the remaining local backlog
+  ---
+  duration_ms: 51.421375
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:30:3'
+  failureType: 'testCodeFailure'
+  error: 'page.evaluate: TypeError: Failed to resolve module specifier "@edit-ac/core". Relative references must start with either "/", "./", or "../".'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:60:18)
+  ...
+# Subtest: explicit capability is separate from ordinary accepted delivery
+ok 54 - explicit capability is separate from ordinary accepted delivery
+  ---
+  duration_ms: 189.339125
+  type: 'test'
+  ...
+# Subtest: prepared authorization, complete metadata and revocation isolate stored identities
+ok 55 - prepared authorization, complete metadata and revocation isolate stored identities
+  ---
+  duration_ms: 99.865875
+  type: 'test'
+  ...
+# Subtest: receipt waits for commit completion; failed commit rolls back and permits retry
+ok 56 - receipt waits for commit completion; failed commit rolls back and permits retry
+  ---
+  duration_ms: 81.224417
+  type: 'test'
+  ...
+# Subtest: process crash at before-transaction preserves only committed bytes and retry identity
+ok 57 - process crash at before-transaction preserves only committed bytes and retry identity
+  ---
+  duration_ms: 151.031166
+  type: 'test'
+  ...
+# Subtest: process crash at before-commit preserves only committed bytes and retry identity
+ok 58 - process crash at before-commit preserves only committed bytes and retry identity
+  ---
+  duration_ms: 141.009667
+  type: 'test'
+  ...
+# Subtest: process crash at after-commit preserves only committed bytes and retry identity
+ok 59 - process crash at after-commit preserves only committed bytes and retry identity
+  ---
+  duration_ms: 227.796334
+  type: 'test'
+  ...
+# Subtest: process crash at before-receipt preserves only committed bytes and retry identity
+ok 60 - process crash at before-receipt preserves only committed bytes and retry identity
+  ---
+  duration_ms: 271.905042
+  type: 'test'
+  ...
+# Subtest: Rust and JS updates converge after shuffled duplicates, pagination and service restart
+ok 61 - Rust and JS updates converge after shuffled duplicates, pagination and service restart
+  ---
+  duration_ms: 207.603958
+  type: 'test'
+  ...
+# Subtest: content identity, writer/sequence conflicts and request/replay limits fail before mutation
+ok 62 - content identity, writer/sequence conflicts and request/replay limits fail before mutation
+  ---
+  duration_ms: 197.026792
+  type: 'test'
+  ...
+# Subtest: bounded queue returns backpressure while pending updates remain retryable
+ok 63 - bounded queue returns backpressure while pending updates remain retryable
+  ---
+  duration_ms: 100.05225
+  type: 'test'
+  ...
+# Subtest: reference relay refuses non-loopback binding and persistent metadata reinterpretation
+ok 64 - reference relay refuses non-loopback binding and persistent metadata reinterpretation
+  ---
+  duration_ms: 10.215584
+  type: 'test'
+  ...
+# Subtest: both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits
+ok 65 - both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits
+  ---
+  duration_ms: 69.874917
+  type: 'test'
+  ...
+# Subtest: update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo
+ok 66 - update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo
+  ---
+  duration_ms: 7.953292
+  type: 'test'
+  ...
+# Subtest: deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent
+ok 67 - deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent
+  ---
+  duration_ms: 3.7625
+  type: 'test'
+  ...
+# Subtest: reject malformed frames and state vectors before any engine mutation
+ok 68 - reject malformed frames and state vectors before any engine mutation
+  ---
+  duration_ms: 21.455792
+  type: 'test'
+  ...
+# Subtest: malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes
+ok 69 - malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes
+  ---
+  duration_ms: 31.517084
+  type: 'test'
+  ...
+# Subtest: inbound and outbound byte bounds include headers; no input buffers are aliased
+ok 70 - inbound and outbound byte bounds include headers; no input buffers are aliased
+  ---
+  duration_ms: 2.721083
+  type: 'test'
+  ...
+# Subtest: metadata must match every immutable field before adapter construction or outbound update
+ok 71 - metadata must match every immutable field before adapter construction or outbound update
+  ---
+  duration_ms: 17.824458
+  type: 'test'
+  ...
+1..71
+# tests 71
+# suites 0
+# pass 54
+# fail 17
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2680.471292

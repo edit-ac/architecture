@@ -14,6 +14,16 @@ This document describes required behavior; it does not assert that the engine is
 - React owns the host lifecycle; it never owns a second document tree.
 - Yjs is used in interoperability fixtures. Do not mirror production state into a second `Y.Doc`.
 - Core code has no DOM, React, IndexedDB, socket, UIKit or Android dependencies.
+- Prepared optional content uses validated v1 image/table descriptors in existing
+  opaque block tuples. FMT-1.6 stages descriptor presentation after fragment text,
+  marks and containers; one final admitted update preserves unknown source/data
+  and history. Unknown blocks remain inert and are not generic text-edit targets.
+- V5 source registration appends a new immutable root placement after existing
+  root registrations. A later original source must not interleave the baseline
+  adjacency witnessed by historical joins before its own Place operation replays.
+  This uses the existing placement shape/bounds; v4's frozen creation rule stays
+  unchanged. Fragment payloads use distinct original sources, with existing
+  prefix/suffix sources retained, so redo cannot shift cuts into reinserted text.
 - Persistence and synchronization consume immutable update bytes and metadata through ports.
 
 ## Compatibility profile
@@ -84,6 +94,15 @@ evidence; do not call a presentation-conflict rejection positive conversion proo
 - A deleted target never silently redirects an asynchronous insertion to the document end.
 - Each fixture records the original string, UTF-16 range, expected text and anchor result.
 
+The optional SYN-1.4 presence bridge adds read-only `exportAnchor` / `importAnchor`
+to the packed handle (WASM `export_anchor` / `import_anchor`). Export returns the
+versioned source/relative-position envelope in [storage-sync](storage-sync.md#optional-awareness-bridge);
+import checks complete lineage, source identity, branch and current UTF-16/semantic
+resolution before retaining an engine-scoped token. It does not mutate the replica,
+history, selection, pending document plans or journal. Imported tokens use the
+existing release policy and bounded anchor capacity. Presence frames remain outside
+document update/schema/receipt contracts.
+
 ## Prepare, validate, commit
 
 1. Parse arguments and resolve dependencies before acquiring a mutable Yrs transaction.
@@ -101,6 +120,16 @@ A command chain validates all document mutations before any of them changes the 
 Host focus/menu side effects are outside the atomic document mutation contract.
 Reentrant adapter callbacks cannot mutate a document while a transaction is active.
 Revision numbers are local observation tokens, not globally comparable CRDT timestamps.
+
+## Atomic heading-end Enter
+
+WEB-1.14 owns the engine/WASM prerequisite for WEB-1.8. Add the prepared Rust editor command `HeadingEnd { owner, at }` and the packed command `{ type: "headingEnd", owner, at }`, using the existing engine-owned stable anchor token and editor request envelope. This is an additive command API on the qualified v5 replica; it does not change the persisted schema or peer update protocol.
+
+Prepare this command only for a nonempty heading whose resolved cut is its current text end. Earlier text deletions in the same prepared batch may produce that end cut; qualify both selected replacement and cross-block selected replacement without live intermediate mutations. Preserve the original heading identity, level, remaining text and marks. Create one empty paragraph immediately after it under the same parent. Preserve unrelated blocks and remote edits. The input cut retains its existing source-relative routing. Return a separate engine-owned fresh-source stable result caret resolving to the new paragraph at offset zero, under [Decision 005](../decisions/005-engine-command-result-caret.md); adapters do not guess generated owner IDs.
+
+Stage the admitted fresh-source Create + Place + Join + Split construction and destination paragraph attributes together before one live mutation, with normal resource/schema/stale checks. `can` and rejected preparations leave content, state vector, history, updates and journal effects unchanged. Admission/read-only/disposed/stale rejection uses the existing boundary policies. One successful local command produces one update and one explicit semantic undo group. Undo/redo restores/reapplies the original heading and paragraph while retaining unrelated remote edits. Empty-heading Enter remains conversion of that owner to a paragraph; interior-heading Enter remains ordinary split; code, lists and quotes retain their existing contextual policies.
+
+Qualify actual Rust semantics, packed WASM dispatch/types, UTF-16 anchors and independently authored undo/redo/peer outcomes before the browser switches from its explicit rejection. Full browser heading-end mechanics remain WEB-1.8 acceptance; neither a planned API nor filtered keyboard successes pass that parent.
 
 ## Structural representation gate
 
@@ -176,3 +205,15 @@ All tests remain local or use deterministic transports; no paid inference belong
 ## Full-client compatibility contract
 
 Follow-up [client contracts](client-contracts.md) build on these primitives for every native/terminal/host-agent client. Stable identities, prepared commands, anchors and update ports must remain usable without DOM, MCP or a particular store. Revision validation must account for deletions; a state vector alone is not an exact content token. Companion revision/history/security modules remain optional boundaries. The existing foundation roadmap is unchanged; new follow-up entry gates verify the frozen implementation before claiming compatibility.
+
+## Atomic portable clipboard fragments
+
+`prepare({kind: 'fragment', origin, range, blocks})` captures stable UTF-16 endpoints and stages all replacement, block splitting, presentation, inline marks and optional list/quote hierarchy on an isolated Rust replica. It admits the final complete update once through the existing editor commit boundary; failed/stale/bounded/schema preparation produces zero live edits. Versioned transfer data uses paragraph/heading/code blocks, six admitted inline marks with the existing URL policy, bounded container paths and checklist state. It carries no live owner/source identity, executable markup or native platform policy. One commit produces one patch/update and one explicit clipboard undo group. Full table/asset/reference/math transfer awaits qualified extension codecs under EXT-1.13 and FMT-1.13.
+
+### Bounded fragment preflight reuse
+
+The TypeScript handle may retain one prepared fragment plan across repeated `can`/`prepare` for identical validated serialized input. The plan is consumed by `prepare`, released when replaced or disposed, and invalidated before document mutations. Explicit history boundaries do not alter its document preconditions. Native commit still checks the exact replica identity, revision and checkpoint. This avoids preparing a clipboard batch repeatedly without weakening admission or creating document/history/subscriber effects during preflight.
+
+### Atomic disjoint prepared source edits
+
+`Document::prepare_source_edits` stages bounded disjoint source-derived text/format/presentation commands on an isolated replica, validates the final immutable structure/hierarchy, and returns one prepared update. No live transaction opens until `commit_editor` accepts the original exact identity/revision/checkpoint. Failure in a later staged edit leaves all live content, history, state vector and subscribers unchanged. `fragment_for_node` exposes portable supported runs/presentation/container data without allowing unknown mark data to be erased during preparation.

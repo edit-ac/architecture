@@ -1,0 +1,148 @@
+(node:92459) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions (23.527417ms)
+✖ relative selections move under remote inserts and fail safely after semantic target deletion (2.102291ms)
+✖ stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime (2.079625ms)
+✔ burst coalescing, backpressure and thrown sends retain one bounded pending state (562.815541ms)
+✔ host-driven renewal and clear presence use compatible clocks without idle traffic (0.738459ms)
+✖ invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically (1.285083ms)
+✖ malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers (1.013125ms)
+✖ capacity includes expired tombstones; untrusted remote frames cannot remove local presence (0.947084ms)
+✖ replacement, expiry, invalid batch and disposal release every imported anchor (1.191416ms)
+✔ reentrant send cannot erase a newer queued state or undo disposal (1.044917ms)
+✖ awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox (16.552042ms)
+✔ invalid options/time and oversize local presence fail without discarding valid state (0.699792ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 4
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 835.135125
+
+✖ failing tests:
+
+test at tests/awareness.test.mjs:27:28
+✖ Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions (23.527417ms)
+  Error [AwarenessError]: Unsupported presence state/cursor
+      at fail (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:11:38)
+      at AwarenessAdapter.receive (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:183:17)
+      at Object.inbound (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:54:38)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:84:23
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:27:115)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    code: 'invalid-cursor'
+  }
+
+test at tests/awareness.test.mjs:27:28
+✖ relative selections move under remote inserts and fail safely after semantic target deletion (2.102291ms)
+  Error [AwarenessError]: Unsupported presence state/cursor
+      at fail (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:11:38)
+      at AwarenessAdapter.receive (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:183:17)
+      at Object.inbound (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:54:38)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:94:7
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:27:115)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    code: 'invalid-cursor'
+  }
+
+test at tests/awareness.test.mjs:27:28
+✖ stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime (2.079625ms)
+  Error [AwarenessError]: Unsupported presence state/cursor
+      at fail (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:11:38)
+      at AwarenessAdapter.receive (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:183:17)
+      at Object.inbound (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:54:38)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:108:21
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:27:115)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    code: 'invalid-cursor'
+  }
+
+test at tests/awareness.test.mjs:27:28
+✖ invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically (1.285083ms)
+  Error [AwarenessError]: Unsupported presence state/cursor
+      at fail (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:11:38)
+      at AwarenessAdapter.receive (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:183:17)
+      at Object.inbound (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:54:38)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:140:7
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:27:115)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    code: 'invalid-cursor'
+  }
+
+test at tests/awareness.test.mjs:27:28
+✖ malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers (1.013125ms)
+  Error [AwarenessError]: Unsupported presence state/cursor
+      at fail (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:11:38)
+      at AwarenessAdapter.receive (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:183:17)
+      at Object.inbound (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:54:38)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:157:7
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:27:115)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    code: 'invalid-cursor'
+  }
+
+test at tests/awareness.test.mjs:27:28
+✖ capacity includes expired tombstones; untrusted remote frames cannot remove local presence (0.947084ms)
+  Error [AwarenessError]: Unsupported presence state/cursor
+      at fail (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:11:38)
+      at AwarenessAdapter.receive (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:183:17)
+      at Object.inbound (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:54:38)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:169:7
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:27:115)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    code: 'invalid-cursor'
+  }
+
+test at tests/awareness.test.mjs:27:28
+✖ replacement, expiry, invalid batch and disposal release every imported anchor (1.191416ms)
+  Error [AwarenessError]: Unsupported presence state/cursor
+      at fail (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:11:38)
+      at AwarenessAdapter.receive (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:183:17)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:181:13
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:27:115)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'invalid-cursor'
+  }
+
+test at tests/awareness.test.mjs:27:28
+✖ awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox (16.552042ms)
+  Error [AwarenessError]: Unsupported presence state/cursor
+      at fail (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:11:38)
+      at AwarenessAdapter.receive (file:///Users/bpstr/Github/edit-ac/core/packages/web/dist/sync/awareness.js:183:17)
+      at Object.inbound (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:54:38)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:210:174
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:27:109)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'invalid-cursor'
+  }

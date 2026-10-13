@@ -1,0 +1,21 @@
+ Cargo.lock                                |   35 +
+ Cargo.toml                                |    2 +-
+ crates/editac-core/src/anchors.rs         |   31 +-
+ crates/editac-core/src/commands/editor.rs | 1019 ++++++++++++++++++++++++++++-
+ crates/editac-core/src/commands/format.rs |    7 +-
+ crates/editac-core/src/lib.rs             |    1 +
+ crates/editac-core/tests/patches.rs       |  258 ++++++++
+ crates/editac-wasm/Cargo.toml             |    1 +
+ crates/editac-wasm/src/bridge.rs          |  508 +++++++++++++-
+ crates/editac-wasm/src/engine.rs          |   48 ++
+ package.json                              |    6 +-
+ packages/core/src/engine.ts               |   99 ++-
+ packages/core/src/index.ts                |    3 +-
+ packages/web/README.md                    |   68 +-
+ packages/web/src/index.ts                 |   20 +-
+ packages/web/tsconfig.json                |    1 +
+ scripts/build-wasm.mjs                    |   11 +-
+ tests/interop.test.mjs                    |   52 +-
+ tests/wasm-command-types.ts               |   11 +-
+ tests/wasm-commands.test.mjs              |  292 ++++++++-
+ 20 files changed, 2428 insertions(+), 45 deletions(-)

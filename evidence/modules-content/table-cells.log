@@ -1,0 +1,29 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0624]: method `inspect` is private
+   --> crates/editac-core/tests/table_cells.rs:14:30
+    |
+ 14 |   fn attrs(d:&Document)->Any{d.inspect().unwrap().visible.into_iter().find(|n|n.id=="n:11:1").unwrap().block_attributes}
+    |                                ^^^^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:657:5
+    |
+657 | /     pub(crate) fn inspect(
+658 | |         &self,
+659 | |     ) -> Result<crate::projection::Snapshot, crate::projection::ProjectionError> {
+    | |________________________________________________________________________________- private method defined here
+
+error[E0624]: method `inspect` is private
+   --> crates/editac-core/tests/table_cells.rs:22:13
+    |
+ 22 |    let node=d.inspect().unwrap().visible.into_iter().find(|n|n.id=="n:11:1").unwrap();assert_eq!(node.runs.iter().map(|r|r.text.as_...
+    |               ^^^^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:657:5
+    |
+657 | /     pub(crate) fn inspect(
+658 | |         &self,
+659 | |     ) -> Result<crate::projection::Snapshot, crate::projection::ProjectionError> {
+    | |________________________________________________________________________________- private method defined here
+
+For more information about this error, try `rustc --explain E0624`.
+error: could not compile `editac-core` (test "table_cells") due to 2 previous errors

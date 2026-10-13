@@ -1,0 +1,84 @@
+TAP version 13
+# (node:95482) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions
+ok 1 - Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions
+  ---
+  duration_ms: 27.418208
+  type: 'test'
+  ...
+# Subtest: relative selections move under remote inserts and fail safely after semantic target deletion
+ok 2 - relative selections move under remote inserts and fail safely after semantic target deletion
+  ---
+  duration_ms: 9.76725
+  type: 'test'
+  ...
+# Subtest: stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime
+ok 3 - stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime
+  ---
+  duration_ms: 1.9855
+  type: 'test'
+  ...
+# Subtest: burst coalescing, backpressure and thrown sends retain one bounded pending state
+ok 4 - burst coalescing, backpressure and thrown sends retain one bounded pending state
+  ---
+  duration_ms: 511.693166
+  type: 'test'
+  ...
+# Subtest: host-driven renewal and clear presence use compatible clocks without idle traffic
+ok 5 - host-driven renewal and clear presence use compatible clocks without idle traffic
+  ---
+  duration_ms: 0.677541
+  type: 'test'
+  ...
+# Subtest: invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically
+ok 6 - invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically
+  ---
+  duration_ms: 13.01725
+  type: 'test'
+  ...
+# Subtest: malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers
+ok 7 - malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers
+  ---
+  duration_ms: 1.852291
+  type: 'test'
+  ...
+# Subtest: capacity includes expired tombstones; untrusted remote frames cannot remove local presence
+ok 8 - capacity includes expired tombstones; untrusted remote frames cannot remove local presence
+  ---
+  duration_ms: 1.260333
+  type: 'test'
+  ...
+# Subtest: replacement, expiry, invalid batch and disposal release every imported anchor
+ok 9 - replacement, expiry, invalid batch and disposal release every imported anchor
+  ---
+  duration_ms: 2.664958
+  type: 'test'
+  ...
+# Subtest: reentrant send cannot erase a newer queued state or undo disposal
+ok 10 - reentrant send cannot erase a newer queued state or undo disposal
+  ---
+  duration_ms: 0.988166
+  type: 'test'
+  ...
+# Subtest: awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox
+ok 11 - awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox
+  ---
+  duration_ms: 88.399417
+  type: 'test'
+  ...
+# Subtest: invalid options/time and oversize local presence fail without discarding valid state
+ok 12 - invalid options/time and oversize local presence fail without discarding valid state
+  ---
+  duration_ms: 0.790042
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 902.437

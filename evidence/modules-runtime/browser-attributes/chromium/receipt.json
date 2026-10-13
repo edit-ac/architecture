@@ -1,0 +1,255 @@
+{
+  "suite": "module-runtime",
+  "engine": "chromium",
+  "cases": [
+    {
+      "name": "attribute-only-remote",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "original": {
+            "blockAttributes": [
+              "heading",
+              1
+            ],
+            "editor": {
+              "checked": null,
+              "containerAttributes": null,
+              "number": 7,
+              "version": "base"
+            },
+            "id": "n:11:1",
+            "kind": "block",
+            "order": 1,
+            "parent": "c:11:1",
+            "runs": [
+              {
+                "attributes": {
+                  "module:demo.highlight": [
+                    1,
+                    {
+                      "active": true,
+                      "label": "important",
+                      "rank": 3
+                    }
+                  ]
+                },
+                "text": "Marked 😀"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    1,
+                    {
+                      "label": "badge"
+                    }
+                  ]
+                },
+                "text": "<img src=x onerror=alert(1)>"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    2,
+                    {
+                      "opaque": {
+                        "keep": [
+                          "original",
+                          7
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "text": "Future version"
+              },
+              {
+                "attributes": {
+                  "module:other.label": [
+                    1,
+                    {
+                      "target": "host-id"
+                    }
+                  ]
+                },
+                "text": "Unknown label"
+              }
+            ],
+            "spans": [
+              {
+                "end": 64,
+                "identity": "<11#1>",
+                "source": "n:11:1",
+                "start": 0
+              }
+            ]
+          },
+          "changed": {
+            "blockAttributes": [
+              "heading",
+              1
+            ],
+            "editor": {
+              "checked": null,
+              "containerAttributes": null,
+              "number": 7,
+              "version": "base"
+            },
+            "id": "n:11:1",
+            "kind": "block",
+            "order": 1,
+            "parent": "c:11:1",
+            "runs": [
+              {
+                "attributes": {
+                  "module:demo.highlight": [
+                    1,
+                    {
+                      "active": true,
+                      "label": "important",
+                      "rank": 3
+                    }
+                  ]
+                },
+                "text": "Marked 😀"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    1,
+                    {
+                      "label": "Changed attribute only"
+                    }
+                  ]
+                },
+                "text": "<img src=x onerror=alert(1)>"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    2,
+                    {
+                      "opaque": {
+                        "keep": [
+                          "original",
+                          7
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "text": "Future version"
+              },
+              {
+                "attributes": {
+                  "module:other.label": [
+                    1,
+                    {
+                      "target": "host-id"
+                    }
+                  ]
+                },
+                "text": "Unknown label"
+              }
+            ],
+            "spans": [
+              {
+                "end": 64,
+                "identity": "<11#1>",
+                "source": "n:11:1",
+                "start": 0
+              }
+            ]
+          },
+          "retained": true,
+          "dom": "Marked 😀<img src=x onerror=alert(1)>Future versionUnknown label",
+          "counts": {
+            "mount": 1,
+            "update": 1,
+            "dispose": 1,
+            "atomRange": 1,
+            "disjoint": 0
+          },
+          "content": {
+            "type": "demo.badge",
+            "version": 1,
+            "kind": "inline-atom",
+            "text": "<img src=x onerror=alert(1)>",
+            "attributes": {
+              "label": "Changed attribute only"
+            }
+          }
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "processes": [
+    {
+      "pid": 5287,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "module-runtime",
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/modules-runtime/browser-attributes/chromium"
+    }
+  ],
+  "packs": [
+    {
+      "name": "core",
+      "file": "edit-ac-core-0.0.0.tgz",
+      "bytes": 937829,
+      "sha256": "e6873e0ee590e0b56e9c2e5b5ede89f246a605c5787f61bb9c908a5f3b481f3e"
+    },
+    {
+      "name": "web",
+      "file": "edit-ac-web-0.0.0.tgz",
+      "bytes": 78269,
+      "sha256": "f6ad7c2710e0f575e0325ace0d81c98fb055bf20b423fb46dd0cf4a804e8b35b"
+    }
+  ],
+  "cleanup": {
+    "browserExited": true,
+    "serverClosed": true,
+    "consumerRemoved": true
+  },
+  "revision": "6edb83432468e44083740b586f973fb44f623352",
+  "sources": {
+    "packages/web/src/clipboard/fragment.ts": "a8ea0095bd8f4ea7c5dd6f557d86b07ef33ced49ff630f2046204ab4220d5408",
+    "packages/web/src/clipboard/html.ts": "de9b4265d2cc60dc85da1daf0cd3f3f8dc817a006e9b5712df6bc676556ed880",
+    "packages/web/src/clipboard/markdown.ts": "21cadac434ca183fee40195c61e69ce72fab10aafd1f3cbc6228c3bc2ad98771",
+    "packages/web/src/clipboard/pending.ts": "eda3d054d1c0e45916bea110c0e4dcb7ec55294dc3d683605c5a8751db5e7165",
+    "tests/browser/format-helpers.ts": "0a097c4a7638f1ba746a9490486331c4e4fd1e97f0fa0f8daead584f6735a504",
+    "crates/editac-markdown/src/extensions.rs": "5f7d8f3a8aba33cd50356aa08850ae9e392a196197e669b7dbe8ed0e27f1e3e1",
+    "crates/editac-markdown/src/optional.rs": "9c77a438909573f9f40e485c17a9c0dee82a8ffff01b651ad24bae5ed1e8bd11",
+    "crates/editac-core/src/modules/content.rs": "3e773ec32c798b11dbcca42b4d9c35a741928f10fa75ac211cac289800f27f90",
+    "packages/web/src/input/text.ts": "80645c045a1bc667f8cfd161113d15ff1861f17e32596dd07f1846d461121e24",
+    "packages/web/src/input/shortcuts.ts": "453638df12f18e7a7a87d268dc0c75129d867352dea08ae2ee0803bd5a6cf118",
+    "packages/core/src/engine.ts": "554a99f1ae46ae26992acf17e8a782cfbe9c8dcdba695dd4ff94b150a3c80093",
+    "crates/editac-core/src/commands/editor.rs": "cdf48fad1e731a64c9c5ef4312aea9c0c38e85c411bfd9289a0cfa440164e09d",
+    "crates/editac-wasm/src/bridge.rs": "a2dfdcbe6bf6af7d94dea6f6a44e3aaf393f90425a3726666e87415aa647894e",
+    "scripts/test-browser.mjs": "96d2888faece008817b861e7a541b3732fa582623168ab3732b34516c8d16f1b",
+    "tests/browser/module-runtime.spec.ts": "c22143b673a63975cd545d27849c78be39cfb2c4a72b006cd2e915d54e648edf",
+    "tests/browser/browser-harness.ts": "5c428e8fec3bfd29367c3356e795c71cdddce6a5a71e46add6b0a098f3ba45fe",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+  },
+  "server": {
+    "pid": 5164,
+    "port": 63014,
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "module-runtime",
+    "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/modules-runtime/browser-attributes/chromium"
+  },
+  "browser": {
+    "version": "156.0.8078.4",
+    "engine": "chromium",
+    "playwright": "1.64.0",
+    "node": "v24.19.0"
+  },
+  "counts": {
+    "executed": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  }
+}

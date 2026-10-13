@@ -1,0 +1,406 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs keyboard --test-name-pattern=^(?!native-heading-end)
+
+keyboard browser: chromium
+(node:16668) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-paragraph-enter splits and moves caret once (3564.098084ms)
+✔ native-selected-enter-false (201.142333ms)
+✔ native-selected-enter-true (161.769041ms)
+✔ native-code-Enter (145.684333ms)
+✔ native-code-Shift+Enter (152.004333ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (172.846833ms)
+✔ native-heading-middle retains level (157.203042ms)
+✖ native-heading-end creates paragraph (original acceptance) (216.703958ms)
+✔ native-empty-heading becomes paragraph (208.331042ms)
+✔ native-boundary-Backspace (145.66475ms)
+✔ native-boundary-Delete (194.816042ms)
+✔ native-cross-block-Enter (168.953583ms)
+✔ native-cross-block-Shift+Enter (208.718167ms)
+✔ native-cross-block-Backspace (243.326625ms)
+✔ native-unordered-enter (307.118375ms)
+✔ native-checklist-enter (397.79875ms)
+✔ native-quote-enter (347.210125ms)
+✖ native-list-tab indentation and outdent preserve backward selection (307.118958ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (234.00025ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (304.912417ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (353.842834ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (168.304375ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (195.564791ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (177.198666ms)
+✔ native-navigation and modified host Enter retain ownership (146.26725ms)
+✔ native-empty-unordered exits one level (159.584333ms)
+✖ native-empty-quote exits one level (182.938209ms)
+✔ prepared-toolbar across blocks retains direction and supported marks (161.642083ms)
+✔ prepared-toolbar deleted target rejects instead of using current caret (155.963375ms)
+✔ prepared-nonkeyboard Enter and break have semantic selection results (144.194542ms)
+✖ native-code-multiline Tab preserves backward range and existing whitespace (258.2005ms)
+✔ prepared-read-only structural and history commands never mutate (121.926042ms)
+✔ prepared-composition owns Enter before structural routing (197.556541ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 29
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11042.4655
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:60:1
+✖ native-heading-end creates paragraph (original acceptance) (216.703958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'alpha',
+  -   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:60:245
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'alpha', '', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:65:1
+✖ native-list-tab indentation and outdent preserve backward selection (307.118958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '',
+      'alpha',
+  +   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:65:289
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '', 'alpha', '', 'independent' ],
+    expected: [ '', 'alpha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:73:41
+✖ native-empty-quote exits one level (182.938209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'c:2619208247:1'
+  - '@root'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:73:350
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'c:2619208247:1',
+    expected: '@root',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:77:1
+✖ native-code-multiline Tab preserves backward range and existing whitespace (258.2005ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '\t x\n\t\ty\n'
+  - '\t\n\t x\n\t\ty'
+       ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:77:362
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '\t x\n\t\ty\n',
+    expected: '\t\n\t x\n\t\ty',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+keyboard browser: firefox
+(node:17101) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-paragraph-enter splits and moves caret once (18048.291417ms)
+✔ native-selected-enter-false (716.028833ms)
+✔ native-selected-enter-true (439.476167ms)
+✔ native-code-Enter (1083.425416ms)
+✔ native-code-Shift+Enter (931.187959ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (511.344584ms)
+✔ native-heading-middle retains level (622.632167ms)
+✖ native-heading-end creates paragraph (original acceptance) (454.091833ms)
+✔ native-empty-heading becomes paragraph (587.842208ms)
+✔ native-boundary-Backspace (1500.474875ms)
+✔ native-boundary-Delete (710.6275ms)
+✔ native-cross-block-Enter (831.681875ms)
+✔ native-cross-block-Shift+Enter (1800.835792ms)
+✔ native-cross-block-Backspace (2565.323042ms)
+✔ native-unordered-enter (1433.9315ms)
+✔ native-checklist-enter (2333.412792ms)
+✔ native-quote-enter (1627.365125ms)
+✖ native-list-tab indentation and outdent preserve backward selection (3565.256708ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (2911.728709ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (2268.77325ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (1850.238959ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (2253.887916ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (2364.27725ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (1152.042708ms)
+✔ native-navigation and modified host Enter retain ownership (264.264958ms)
+✔ native-empty-unordered exits one level (312.938583ms)
+✖ native-empty-quote exits one level (296.021666ms)
+✔ prepared-toolbar across blocks retains direction and supported marks (255.120583ms)
+✔ prepared-toolbar deleted target rejects instead of using current caret (338.673ms)
+✔ prepared-nonkeyboard Enter and break have semantic selection results (1231.172875ms)
+✖ native-code-multiline Tab preserves backward range and existing whitespace (402.575042ms)
+✔ prepared-read-only structural and history commands never mutate (291.049042ms)
+✔ prepared-composition owns Enter before structural routing (294.94275ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 29
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57553.467416
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:60:1
+✖ native-heading-end creates paragraph (original acceptance) (454.091833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'alpha',
+  -   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:60:245
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'alpha', '', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:65:1
+✖ native-list-tab indentation and outdent preserve backward selection (3565.256708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '',
+      'alpha',
+  +   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:65:289
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '', 'alpha', '', 'independent' ],
+    expected: [ '', 'alpha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:73:41
+✖ native-empty-quote exits one level (296.021666ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'c:653785964:1'
+  - '@root'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:73:350
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'c:653785964:1',
+    expected: '@root',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:77:1
+✖ native-code-multiline Tab preserves backward range and existing whitespace (402.575042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '\t x\n\t\ty\n'
+  - '\t\n\t x\n\t\ty'
+       ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:77:362
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '\t x\n\t\ty\n',
+    expected: '\t\n\t x\n\t\ty',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+keyboard browser: webkit
+(node:18735) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-paragraph-enter splits and moves caret once (3577.646625ms)
+✔ native-selected-enter-false (259.166333ms)
+✔ native-selected-enter-true (311.644875ms)
+✔ native-code-Enter (255.191917ms)
+✔ native-code-Shift+Enter (234.769292ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (247.021083ms)
+✔ native-heading-middle retains level (240.3305ms)
+✖ native-heading-end creates paragraph (original acceptance) (245.071875ms)
+✔ native-empty-heading becomes paragraph (270.654625ms)
+✔ native-boundary-Backspace (272.97625ms)
+✔ native-boundary-Delete (292.594375ms)
+✔ native-cross-block-Enter (251.551042ms)
+✔ native-cross-block-Shift+Enter (315.583625ms)
+✔ native-cross-block-Backspace (304.398041ms)
+✔ native-unordered-enter (297.677292ms)
+✔ native-checklist-enter (305.892875ms)
+✔ native-quote-enter (268.034084ms)
+✖ native-list-tab indentation and outdent preserve backward selection (276.641125ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (279.159167ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (295.412291ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (265.927833ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (283.657291ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (284.240583ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (457.1915ms)
+✔ native-navigation and modified host Enter retain ownership (490.840291ms)
+✔ native-empty-unordered exits one level (314.263458ms)
+✖ native-empty-quote exits one level (284.550917ms)
+✔ prepared-toolbar across blocks retains direction and supported marks (246.454375ms)
+✔ prepared-toolbar deleted target rejects instead of using current caret (287.433833ms)
+✔ prepared-nonkeyboard Enter and break have semantic selection results (252.533875ms)
+✖ native-code-multiline Tab preserves backward range and existing whitespace (304.316667ms)
+✔ prepared-read-only structural and history commands never mutate (231.5375ms)
+✔ prepared-composition owns Enter before structural routing (272.123292ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 29
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13177.360833
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:60:1
+✖ native-heading-end creates paragraph (original acceptance) (245.071875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'alpha',
+  -   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:60:245
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'alpha', '', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:65:1
+✖ native-list-tab indentation and outdent preserve backward selection (276.641125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '',
+      'alpha',
+  +   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:65:289
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '', 'alpha', '', 'independent' ],
+    expected: [ '', 'alpha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:73:41
+✖ native-empty-quote exits one level (284.550917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'c:2519727724:1'
+  - '@root'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:73:350
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'c:2519727724:1',
+    expected: '@root',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:77:1
+✖ native-code-multiline Tab preserves backward range and existing whitespace (304.316667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '\t x\n\t\ty\n'
+  - '\t\n\t x\n\t\ty'
+       ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:77:362
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '\t x\n\t\ty\n',
+    expected: '\t\n\t x\n\t\ty',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

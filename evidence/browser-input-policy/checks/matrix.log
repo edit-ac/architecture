@@ -1,0 +1,1380 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs input-policy
+
+input-policy browser: chromium
+(node:45759) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (2450.282958ms)
+✖ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (146.115709ms)
+✖ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (117.048875ms)
+✖ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (114.715292ms)
+✖ noncancelable beforeinput remains native-pending until the actual DOM mutation (110.130292ms)
+✖ cancelable event identity prevents duplicate command replay while an identical new intent commits (118.449708ms)
+✖ identified renderer echo and independent native mutation in the same turn retain only the real input (201.786292ms)
+✖ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (142.843042ms)
+✖ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (235.438334ms)
+✖ composition cancel has one explicit terminal result and zero intermediate commits (122.751166ms)
+✖ composition blur has one explicit terminal result and zero intermediate commits (131.212416ms)
+✖ composition readonly has one explicit terminal result and zero intermediate commits (117.010208ms)
+✖ composition dispose has one explicit terminal result and zero intermediate commits (124.679583ms)
+✖ remote before preserves the browser-owned subtree and resolves the captured composition anchor (111.813959ms)
+✖ remote after preserves the browser-owned subtree and resolves the captured composition anchor (117.676ms)
+✖ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (119.962042ms)
+✖ remote overlap rejects finalization with captured recovery text instead of deleting peer content (132.957375ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (121.263166ms)
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (120.236333ms)
+✖ read-only ordinary input is rejected and disposed queued generations cannot commit (109.314625ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 1
+ℹ fail 19
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5384.054334
+
+✖ failing tests:
+
+test at tests/browser/input-policy.spec.ts:45:1
+✖ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (2450.282958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 3
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:42:200)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:46:133
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:50:69
+✖ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (146.115709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alphaXXalphaXX'
+  - 'alphaXX'
+            ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:52:39
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alphaXXalphaXX',
+    expected: 'alphaXX',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:50:69
+✖ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (117.048875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alphaXXalphaXX'
+  - 'alphaXX'
+            ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:52:39
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alphaXXalphaXX',
+    expected: 'alphaXX',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:50:69
+✖ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (114.715292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alphaXXalphaXX'
+  - 'alphaXX'
+            ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:52:39
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alphaXXalphaXX',
+    expected: 'alphaXX',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:54:1
+✖ noncancelable beforeinput remains native-pending until the actual DOM mutation (110.130292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alpha!alpha!'
+  - 'alpha!'
+           ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:56:177
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alpha!alpha!',
+    expected: 'alpha!',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:58:1
+✖ cancelable event identity prevents duplicate command replay while an identical new intent commits (118.449708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 2
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:42:200)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:59:350
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:61:1
+✖ identified renderer echo and independent native mutation in the same turn retain only the real input (201.786292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alphaXalphaX'
+  - 'alphaX'
+           ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:62:202
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alphaXalphaX',
+    expected: 'alphaX',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:64:1
+✖ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (142.843042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alphaXalphaX'
+  - 'alphaX'
+           ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:65:151
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alphaXalphaX',
+    expected: 'alphaX',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:67:1
+✖ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (235.438334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'a日本😀日本😀aa日本😀日本😀a'
+  - 'a日本😀日本😀a'
+               ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:70:39
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'a日本😀日本😀aa日本😀日本😀a',
+    expected: 'a日本😀日本😀a',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition cancel has one explicit terminal result and zero intermediate commits (122.751166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alphaalpha語'
+  - 'alpha'
+          ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:74:105
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alphaalpha語',
+    expected: 'alpha',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition blur has one explicit terminal result and zero intermediate commits (131.212416ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alpha語alpha語'
+  - 'alpha語'
+           ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:74:105
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alpha語alpha語',
+    expected: 'alpha語',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition readonly has one explicit terminal result and zero intermediate commits (117.010208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alphaalpha語'
+  - 'alpha'
+          ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:74:105
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alphaalpha語',
+    expected: 'alpha',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition dispose has one explicit terminal result and zero intermediate commits (124.679583ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alphaalpha語'
+  - 'alpha'
+          ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:74:105
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alphaalpha語',
+    expected: 'alpha',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:76:53
+✖ remote before preserves the browser-owned subtree and resolves the captured composition anchor (111.813959ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '!al語phaal語pha'
+  - '!al語pha'
+            ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:78:120
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '!al語phaal語pha',
+    expected: '!al語pha',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:76:53
+✖ remote after preserves the browser-owned subtree and resolves the captured composition anchor (117.676ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'al語pha!al語pha'
+  - 'al語pha!'
+            ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:78:120
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'al語pha!al語pha',
+    expected: 'al語pha!',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:76:53
+✖ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (119.962042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'al語phaal語pha'
+  - 'al語pha'
+           ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:78:120
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'al語phaal語pha',
+    expected: 'al語pha',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:80:1
+✖ remote overlap rejects finalization with captured recovery text instead of deleting peer content (132.957375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'al!phaa語a'
+  - 'al!pha'
+           ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:81:271
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'al!phaa語a',
+    expected: 'al!pha',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:88:1
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (120.236333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alpha語alpha語'
+  - 'alpha語'
+           ^
+  
+      at content (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:43:88)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:89:331
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alpha語alpha語',
+    expected: 'alpha語',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input-policy.spec.ts:92:1
+✖ read-only ordinary input is rejected and disposed queued generations cannot commit (109.314625ms)
+  page.evaluate: WrongDocumentError: Failed to execute 'compareBoundaryPoints' on 'Range': The source range is in a different document than this range.
+      at DOMSelection.toModel (http://127.0.0.1:54489/web/dom/selection.js:62:38)
+      at Object.state (http://127.0.0.1:54489/fixture/session.mjs:35:374)
+      at async <anonymous>:396:30
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:41:58)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:93:321
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143) {
+    log: []
+  }
+input-policy browser: firefox
+(node:45944) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (597.167583ms)
+✖ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (0.305666ms)
+✖ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (0.074417ms)
+✖ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (0.031875ms)
+✖ noncancelable beforeinput remains native-pending until the actual DOM mutation (0.050542ms)
+✖ cancelable event identity prevents duplicate command replay while an identical new intent commits (0.026125ms)
+✖ identified renderer echo and independent native mutation in the same turn retain only the real input (0.028625ms)
+✖ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (0.034708ms)
+✖ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (0.04ms)
+✖ composition cancel has one explicit terminal result and zero intermediate commits (0.045667ms)
+✖ composition blur has one explicit terminal result and zero intermediate commits (0.025042ms)
+✖ composition readonly has one explicit terminal result and zero intermediate commits (0.019833ms)
+✖ composition dispose has one explicit terminal result and zero intermediate commits (0.017917ms)
+✖ remote before preserves the browser-owned subtree and resolves the captured composition anchor (0.016833ms)
+✖ remote after preserves the browser-owned subtree and resolves the captured composition anchor (0.016458ms)
+✖ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (0.017167ms)
+✖ remote overlap rejects finalization with captured recovery text instead of deleting peer content (0.017459ms)
+✖ remote deletion of the composition owner reports stale-target without redirecting to another block (0.0155ms)
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (0.014875ms)
+✖ read-only ordinary input is rejected and disposed queued generations cannot commit (0.014292ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 0
+ℹ fail 20
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 958.730709
+
+✖ failing tests:
+
+test at tests/browser/input-policy.spec.ts:45:1
+✖ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (597.167583ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:50:69
+✖ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (0.305666ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:50:69
+✖ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (0.074417ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:50:69
+✖ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (0.031875ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:54:1
+✖ noncancelable beforeinput remains native-pending until the actual DOM mutation (0.050542ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:58:1
+✖ cancelable event identity prevents duplicate command replay while an identical new intent commits (0.026125ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:61:1
+✖ identified renderer echo and independent native mutation in the same turn retain only the real input (0.028625ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:64:1
+✖ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (0.034708ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:67:1
+✖ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (0.04ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition cancel has one explicit terminal result and zero intermediate commits (0.045667ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition blur has one explicit terminal result and zero intermediate commits (0.025042ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition readonly has one explicit terminal result and zero intermediate commits (0.019833ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition dispose has one explicit terminal result and zero intermediate commits (0.017917ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:76:53
+✖ remote before preserves the browser-owned subtree and resolves the captured composition anchor (0.016833ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:76:53
+✖ remote after preserves the browser-owned subtree and resolves the captured composition anchor (0.016458ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:76:53
+✖ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (0.017167ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:80:1
+✖ remote overlap rejects finalization with captured recovery text instead of deleting peer content (0.017459ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:83:1
+✖ remote deletion of the composition owner reports stale-target without redirecting to another block (0.0155ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:88:1
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (0.014875ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:92:1
+✖ read-only ordinary input is rejected and disposed queued generations cannot commit (0.014292ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34651:49)
+      at Firefox._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async Firefox._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async Firefox._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async Firefox._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+input-policy browser: webkit
+(node:45979) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (545.55525ms)
+✖ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (0.361292ms)
+✖ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (0.071417ms)
+✖ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (0.030666ms)
+✖ noncancelable beforeinput remains native-pending until the actual DOM mutation (0.05025ms)
+✖ cancelable event identity prevents duplicate command replay while an identical new intent commits (0.025291ms)
+✖ identified renderer echo and independent native mutation in the same turn retain only the real input (0.024125ms)
+✖ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (0.025334ms)
+✖ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (0.055334ms)
+✖ composition cancel has one explicit terminal result and zero intermediate commits (0.045167ms)
+✖ composition blur has one explicit terminal result and zero intermediate commits (0.021459ms)
+✖ composition readonly has one explicit terminal result and zero intermediate commits (0.017917ms)
+✖ composition dispose has one explicit terminal result and zero intermediate commits (0.015416ms)
+✖ remote before preserves the browser-owned subtree and resolves the captured composition anchor (0.015459ms)
+✖ remote after preserves the browser-owned subtree and resolves the captured composition anchor (0.014708ms)
+✖ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (0.015625ms)
+✖ remote overlap rejects finalization with captured recovery text instead of deleting peer content (0.015958ms)
+✖ remote deletion of the composition owner reports stale-target without redirecting to another block (0.014833ms)
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (0.01475ms)
+✖ read-only ordinary input is rejected and disposed queued generations cannot commit (0.014583ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 0
+ℹ fail 20
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 840.4635
+
+✖ failing tests:
+
+test at tests/browser/input-policy.spec.ts:45:1
+✖ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (545.55525ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:50:69
+✖ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (0.361292ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:50:69
+✖ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (0.071417ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:50:69
+✖ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (0.030666ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:54:1
+✖ noncancelable beforeinput remains native-pending until the actual DOM mutation (0.05025ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:58:1
+✖ cancelable event identity prevents duplicate command replay while an identical new intent commits (0.025291ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:61:1
+✖ identified renderer echo and independent native mutation in the same turn retain only the real input (0.024125ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:64:1
+✖ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (0.025334ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:67:1
+✖ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (0.055334ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition cancel has one explicit terminal result and zero intermediate commits (0.045167ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition blur has one explicit terminal result and zero intermediate commits (0.021459ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition readonly has one explicit terminal result and zero intermediate commits (0.017917ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:72:58
+✖ composition dispose has one explicit terminal result and zero intermediate commits (0.015416ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:76:53
+✖ remote before preserves the browser-owned subtree and resolves the captured composition anchor (0.015459ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:76:53
+✖ remote after preserves the browser-owned subtree and resolves the captured composition anchor (0.014708ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:76:53
+✖ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (0.015625ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:80:1
+✖ remote overlap rejects finalization with captured recovery text instead of deleting peer content (0.015958ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:83:1
+✖ remote deletion of the composition owner reports stale-target without redirecting to another block (0.014833ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:88:1
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (0.01475ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)
+
+test at tests/browser/input-policy.spec.ts:92:1
+✖ read-only ordinary input is rejected and disposed queued generations cannot commit (0.014583ms)
+  Error: Executable doesn't exist at /Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh
+  ╔════════════════════════════════════════════════════════════╗
+  ║ Looks like Playwright was just installed or updated.       ║
+  ║ Please run the following command to download new browsers: ║
+  ║                                                            ║
+  ║     npx playwright install                                 ║
+  ║                                                            ║
+  ║ <3 Playwright Team                                         ║
+  ╚════════════════════════════════════════════════════════════╝ Failed to launch browser.
+      at executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34527:19)
+      at Object.executablePathOrDie (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:34679:49)
+      at WebKit._prepareToLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41200:43)
+      at async WebKit._launchProcess (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41212:26)
+      at async WebKit._innerLaunch (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41125:86)
+      at async WebKit._innerLaunchWithRetries (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:41112:18)
+      at async /Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58660:22
+      at async _ProgressController.run (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:13018:27)
+      at async BrowserServerLauncherImpl.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:58651:21)
+      at async BrowserType2.launchServer (/Users/bpstr/Github/edit-ac/core/node_modules/playwright-core/lib/coreBundle.js:64834:16)

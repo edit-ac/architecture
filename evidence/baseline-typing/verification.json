@@ -1,0 +1,613 @@
+{
+  "date": "2026-10-12",
+  "scope": "WEB-1.2/WEB-1.8 baseline whitespace and heading-before-list; common public surface assembly and ownership; no native/device/provider qualification",
+  "revisions": {
+    "core": {
+      "head": "6edb83432468e44083740b586f973fb44f623352",
+      "uncommittedWork": true
+    },
+    "architecture": {
+      "head": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+      "uncommittedWork": true
+    }
+  },
+  "counts": {
+    "baselineBrowsers": {
+      "executed": 228,
+      "passed": 228,
+      "failed": 0,
+      "skipped": 0
+    },
+    "runnerGuards": {
+      "executed": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "lifecycle": {
+      "executed": 21,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0
+    },
+    "disposal": {
+      "executed": 27,
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0
+    },
+    "historySelection": {
+      "executed": 3,
+      "passed": 0,
+      "failed": 3,
+      "skipped": 0
+    }
+  },
+  "remaining": [
+    {
+      "owner": "RGS-1.3/REG-01/G07",
+      "issue": "Undoing heading-end paragraph creation restores content but clears the native/model caret; the permanent history-selection suite fails in all three engines. Full semantic history bookmarks remain unqualified."
+    }
+  ],
+  "provenance": {
+    "originalWhitespaceNegativeControl": "red-render.log and red-render/facts.json retain two visible-space failures with the original renderer",
+    "retainedFailures": [
+      "typecheck.log",
+      "baseline-1.log",
+      "baseline-final.log",
+      "qualified.log",
+      "verified.log",
+      "verified-current.log",
+      "history-selection-red.log",
+      "history-selection-pinned.log"
+    ],
+    "engineBuild": "Pinned Cargo and rustc resolved with rustup which; locked offline build; wasm-bindgen 0.2.129; fresh engine and adapter build precedes baseline",
+    "tests": "Local deterministic fixtures and real browser input, with no provider transports, paid inference or secret loading",
+    "publicExample": "Native key input and measured authored-space glyph advance, using mountEditorSurface from public @edit-ac/web",
+    "baselineFiltering": "Runner rejects all extra options before launching browsers",
+    "fullWorkspaceCheck": "Not run; package, fresh-WASM baseline, lifecycle/disposal and architecture checks were run"
+  },
+  "commands": [
+    {
+      "command": "EDITAC_BASELINE_OUTPUT=../architecture/evidence/baseline-typing/verified-pinned npm run check:browser-baseline",
+      "exit": 0,
+      "log": "verified-pinned.log",
+      "logSha256": "917ba3d7e3f4041987fde38e73e1230b2001886c2c5b566f0584bd8ce5c15b98"
+    },
+    {
+      "command": "EDITAC_LIFECYCLE_OUTPUT=../architecture/evidence/baseline-typing/lifecycle-pinned npm run test:browser -- lifecycle",
+      "exit": 0,
+      "log": "lifecycle-pinned.log",
+      "logSha256": "7e14f32fa26b6bab0258373407cb4421e936115026ed4d8fc06f30fd769791a7"
+    },
+    {
+      "command": "EDITAC_DISPOSE_OUTPUT=../architecture/evidence/baseline-typing/dispose-pinned npm run test:browser -- dispose",
+      "exit": 0,
+      "log": "dispose-pinned.log",
+      "logSha256": "f5ffea440a19cb2957a27a7bba3aee1d54c244bdf4eb7a1a1244b0ea89beb5de"
+    },
+    {
+      "command": "EDITAC_HISTORY_SELECTION_OUTPUT=../architecture/evidence/baseline-typing/history-selection-pinned npm run test:browser -- history-selection",
+      "exit": 1,
+      "log": "history-selection-pinned.log",
+      "logSha256": "54e8dd16715dc8270df009a0cdde3b4555e4b641dcc2485e5ee9b2e02f6ae9d9"
+    },
+    {
+      "command": "npm run check:packages",
+      "exit": 0,
+      "log": "packages-pinned.log",
+      "logSha256": "eb5ee4ebac2f60810bce542d6c283aa4abfdb6825b88897e11a68a83fafcbcb7"
+    },
+    {
+      "command": "npm run check (architecture workspace)",
+      "exit": 0,
+      "log": "architecture-pinned.log",
+      "logSha256": "2d81de4193833eb15b81db75d43e79e727e62bd0a88fd1bd9808ee5786d48134"
+    },
+    {
+      "command": "git diff --check (core workspace)",
+      "exit": 0,
+      "log": "core-whitespace-check.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "git diff --check (architecture workspace)",
+      "exit": 0,
+      "log": "architecture-whitespace-check.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "runs": [
+    {
+      "file": "verified-pinned/chromium/render/facts.json",
+      "sha256": "1b03f4bbd798e81edf38a41057c602ed4f6d6489e5dd452ae5b20236680d5040",
+      "engine": "chromium",
+      "suite": "render",
+      "counts": {
+        "executed": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "listenerRemoved": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "engine": "chromium",
+        "version": "156.0.8078.4",
+        "playwright": "1.64.0",
+        "node": "v26.4.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      }
+    },
+    {
+      "file": "verified-pinned/chromium/keyboard/facts.json",
+      "sha256": "99789b6fa94d8aa6c014bf8af0b1bb4f1d54e236dc936c45243667cdcb5c99bd",
+      "engine": "chromium",
+      "suite": "keyboard",
+      "counts": {
+        "executed": 60,
+        "passed": 60,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "listenerRemoved": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "engine": "chromium",
+        "version": "156.0.8078.4",
+        "playwright": "1.64.0",
+        "node": "v26.4.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      }
+    },
+    {
+      "file": "verified-pinned/chromium/example/receipt.json",
+      "sha256": "5a9ddb03d62f213b996a9bb16e42195504d3a4a43fe64fdd9e23ae4601420342",
+      "engine": "chromium",
+      "suite": "example",
+      "counts": {
+        "executed": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "listenerRemoved": true
+      },
+      "browser": {
+        "engine": "chromium",
+        "version": "156.0.8078.4"
+      }
+    },
+    {
+      "file": "verified-pinned/firefox/render/facts.json",
+      "sha256": "012bba384c663bb6e7969c3d3ad43c45f46c802d790d2ff1f7175907e558189c",
+      "engine": "firefox",
+      "suite": "render",
+      "counts": {
+        "executed": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "listenerRemoved": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "engine": "firefox",
+        "version": "157.0",
+        "playwright": "1.64.0",
+        "node": "v26.4.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      }
+    },
+    {
+      "file": "verified-pinned/firefox/keyboard/facts.json",
+      "sha256": "cb85e3c6af94631ea478561d7fe779719fc407518694353c0b2bec14fc9a69da",
+      "engine": "firefox",
+      "suite": "keyboard",
+      "counts": {
+        "executed": 60,
+        "passed": 60,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "listenerRemoved": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "engine": "firefox",
+        "version": "157.0",
+        "playwright": "1.64.0",
+        "node": "v26.4.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      }
+    },
+    {
+      "file": "verified-pinned/firefox/example/receipt.json",
+      "sha256": "c544198760e680e854c803219c87ec0233982ea94bbc0387efd30f3279344d6c",
+      "engine": "firefox",
+      "suite": "example",
+      "counts": {
+        "executed": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "listenerRemoved": true
+      },
+      "browser": {
+        "engine": "firefox",
+        "version": "157.0"
+      }
+    },
+    {
+      "file": "verified-pinned/webkit/render/facts.json",
+      "sha256": "00d9de35525fb29d46d03c0ac31a411a051f52894402f74783a4a905ebbf0923",
+      "engine": "webkit",
+      "suite": "render",
+      "counts": {
+        "executed": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "listenerRemoved": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "engine": "webkit",
+        "version": "27.2",
+        "playwright": "1.64.0",
+        "node": "v26.4.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      }
+    },
+    {
+      "file": "verified-pinned/webkit/keyboard/facts.json",
+      "sha256": "8aaa046911c219cd060dad95bd8d92cb0cbd888f825de1f654e409c0bdc6183d",
+      "engine": "webkit",
+      "suite": "keyboard",
+      "counts": {
+        "executed": 60,
+        "passed": 60,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "listenerRemoved": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "engine": "webkit",
+        "version": "27.2",
+        "playwright": "1.64.0",
+        "node": "v26.4.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      }
+    },
+    {
+      "file": "verified-pinned/webkit/example/receipt.json",
+      "sha256": "cfafc235f912f00eb36e14c20a5d16d4eea8cff4266d129a131f315bac0217c8",
+      "engine": "webkit",
+      "suite": "example",
+      "counts": {
+        "executed": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "listenerRemoved": true
+      },
+      "browser": {
+        "engine": "webkit",
+        "version": "27.2"
+      }
+    },
+    {
+      "file": "lifecycle-pinned/chromium/receipt.json",
+      "sha256": "c7d3d1e96fbf9e9e554bab9932a9b6c77dae1a5e0ec8bf2e6c3f4c67a5d858d8",
+      "engine": "chromium",
+      "suite": "lifecycle",
+      "counts": {
+        "executed": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "serverClosed": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "version": "156.0.8078.4",
+        "engine": "chromium",
+        "playwright": "1.64.0",
+        "node": "v26.4.0"
+      }
+    },
+    {
+      "file": "lifecycle-pinned/firefox/receipt.json",
+      "sha256": "0c7c2de271db233fdbdce0b96bd9e032cbba298181246bd76d9084f51b8e1f92",
+      "engine": "firefox",
+      "suite": "lifecycle",
+      "counts": {
+        "executed": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "serverClosed": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "version": "157.0",
+        "engine": "firefox",
+        "playwright": "1.64.0",
+        "node": "v26.4.0"
+      }
+    },
+    {
+      "file": "lifecycle-pinned/webkit/receipt.json",
+      "sha256": "923ba790f0c0949891a34168909b24e044575619598bcf4b8a1cb2bbd1c41281",
+      "engine": "webkit",
+      "suite": "lifecycle",
+      "counts": {
+        "executed": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "serverClosed": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "version": "27.2",
+        "engine": "webkit",
+        "playwright": "1.64.0",
+        "node": "v26.4.0"
+      }
+    },
+    {
+      "file": "dispose-pinned/chromium/receipt.json",
+      "sha256": "cf75f76a1bb07402e3ab9441f5abe22e8bf3b1713d093bcbe9fbb8e4fd15a2a1",
+      "engine": "chromium",
+      "suite": "dispose",
+      "counts": {
+        "executed": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "serverClosed": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "version": "156.0.8078.4",
+        "engine": "chromium",
+        "playwright": "1.64.0",
+        "node": "v26.4.0"
+      }
+    },
+    {
+      "file": "dispose-pinned/firefox/receipt.json",
+      "sha256": "43c958e85e34d09316b3ef42855ebfd20930fc096b6ece41ce04ea0e76c35507",
+      "engine": "firefox",
+      "suite": "dispose",
+      "counts": {
+        "executed": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "serverClosed": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "version": "157.0",
+        "engine": "firefox",
+        "playwright": "1.64.0",
+        "node": "v26.4.0"
+      }
+    },
+    {
+      "file": "dispose-pinned/webkit/receipt.json",
+      "sha256": "2a58e94dee9e7ee0300336f2cb3f3fffd9238391de03553452a69e5520c3fa77",
+      "engine": "webkit",
+      "suite": "dispose",
+      "counts": {
+        "executed": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "serverClosed": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "version": "27.2",
+        "engine": "webkit",
+        "playwright": "1.64.0",
+        "node": "v26.4.0"
+      }
+    },
+    {
+      "file": "history-selection-pinned/chromium/receipt.json",
+      "sha256": "d8b5d816dc1f383f96be1b5174595c64291c253ad0b25795520f09a4857c5562",
+      "engine": "chromium",
+      "suite": "history-selection",
+      "counts": {
+        "executed": 1,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "serverClosed": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "version": "156.0.8078.4",
+        "engine": "chromium",
+        "playwright": "1.64.0",
+        "node": "v26.4.0"
+      }
+    },
+    {
+      "file": "history-selection-pinned/firefox/receipt.json",
+      "sha256": "bfa036b4137ec988068dc8ef12cdbc33bd7e7af6aa74714f2e1b39efd257ea61",
+      "engine": "firefox",
+      "suite": "history-selection",
+      "counts": {
+        "executed": 1,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "serverClosed": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "version": "157.0",
+        "engine": "firefox",
+        "playwright": "1.64.0",
+        "node": "v26.4.0"
+      }
+    },
+    {
+      "file": "history-selection-pinned/webkit/receipt.json",
+      "sha256": "216492db34e3c9672ef991dae094232d45688f86595207f1d44bd5f310798066",
+      "engine": "webkit",
+      "suite": "history-selection",
+      "counts": {
+        "executed": 1,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0
+      },
+      "cleanup": {
+        "browserExited": true,
+        "serverClosed": true,
+        "consumerRemoved": true
+      },
+      "browser": {
+        "version": "27.2",
+        "engine": "webkit",
+        "playwright": "1.64.0",
+        "node": "v26.4.0"
+      }
+    }
+  ],
+  "sources": {
+    "core/package.json": "b78331329eb875df04c2e28dfc48c05643a9557aa1e4152849a29b7bc29396d6",
+    "core/package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+    "core/Cargo.toml": "6edd07e714848a367d6fe6b7a0eeafa869f3822c6b0326e63d7983a9460532b4",
+    "core/Cargo.lock": "070c22e212c6eaf5713864cbc5eb796cc257b869d76c525535a1d61c92afe7fe",
+    "core/rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b",
+    "core/scripts/build-wasm.mjs": "bb725f384c56cb2a7170f97b54292a812ef85f192ddbcf53e8ef38b269f88ac9",
+    "core/scripts/test-browser.mjs": "c9572b26117e0371315a7112f3eb3fea77dcec105ecbda5a295e33867d4b8ed0",
+    "core/packages/web/src/dom/render.ts": "5bc7addccdf05e4b900a0f071526946a4b2bd4322996a8275d39dbc6e50a6558",
+    "core/packages/web/src/dom/selection.ts": "097692c5ba4e1c3e797d607cc77f23aa5286bb2807deec5d2a079311c1cefbb4",
+    "core/packages/web/src/editor.ts": "2fd3885ee7eb1e920016cdc8f55291450f2396d94aad77dca8630991c3ee540d",
+    "core/packages/web/src/surface.ts": "babe672fb60b2052cc568f7e9116f0ba40876f2877bf79c4298c8fa3b9160253",
+    "core/packages/web/src/input/text.ts": "e9d1e0d36867f00b7235c690c13457c9d71a5eb1082cc347abec5ef14fb30b47",
+    "core/packages/web/src/index.ts": "64c5475d8f3774b587a1003795e77f31af9559ccdc5196763c67506cd9a7ed2c",
+    "core/packages/web/README.md": "1cac8ce37bc9e7a052d79c0e9f8fa658a99ea6b63ebf46beca66d7c46ad866bb",
+    "core/packages/core/src/engine.ts": "8b3ef74cf8fd7c44f9fa1bba9c8c315274db70d97fb2bfb521abc98e7579ecf8",
+    "core/crates/editac-core/src/commands/editor.rs": "6e44654c89e937b3c7c698401493fe7b6897ca234e9b5d433e561c0c66bda5d5",
+    "core/crates/editac-core/src/anchors.rs": "d9b3898c75b71d17910ec2f47f8328e69822424e298c0f8a97f4538c058b1e9a",
+    "core/crates/editac-core/src/history.rs": "ca9d8b0c670060382ba6ea4b99109cd7397dd36cfe54fcceeb8ff9a954cd7f40",
+    "core/crates/editac-wasm/src/bridge.rs": "98d6a5ed2efd32316a25cc8af5f8c6d10aca3b9bfe4547f2370e1d859ad43725",
+    "core/crates/editac-wasm/src/engine.rs": "b904ef8642d5136596ecfe2879a2759fa4a75e7c9b5fee14eb004f835a56b22d",
+    "core/tests/browser/render.spec.ts": "5a9d680cd8ffc4d3b44416f6b93ea3cf7dbf29c382a3367bf0621e608dcee1d5",
+    "core/tests/browser/keyboard.spec.ts": "d54e9c78e870694ce9a3e997b4055c106912f59a31bd9a1f4df89186b718cf2c",
+    "core/tests/browser/web-example.test.mjs": "4eff2511c7d78c343d65ac36fc2a43f88482669981b451238df953d2bc0feac6",
+    "core/tests/browser/history-selection.spec.ts": "cd91b170829d09ff2dad3cd8b4330d25900188d0f5b6bb0ca64acb72e29677ac",
+    "core/tests/browser/baseline-runner.test.mjs": "282dab90c7d46b0593fff99911305fab73a688c7e7fb085364082b8d34998349",
+    "core/tests/browser/browser-harness.ts": "d061d677bd8c0db93bad5fa251fb22a4c424a0ccc870f8f21b21d4bf47bfbe15",
+    "core/tests/browser/fixture-server.mjs": "f58d2f45643e3f26a8c58e583be6418bfdcf8e3f7bba0ba4b2d837053369c751",
+    "core/examples/web/editor.mjs": "152bdd10c3ae86aa5fcf948fb26450d9d39aa565ab3a5930d58020a3f34c2f0f",
+    "core/examples/web/index.html": "b7027796179454effe0815fb98b030bcced86cfca0aa738da520ee903f6dd33f",
+    "core/examples/web/README.md": "8b5d03e881bdac0d4d2d04616f4f9188665dac045108abb89202279cfc809f2e",
+    "architecture/specs/web.md": "aceffe983cb84020c915dcbb61fda597cb4c21f9a0210269150144f2ffee3280",
+    "architecture/specs/editor-interactions.md": "133e47114baa4e799358ccfd29c19e7449dd68517e25702d5db06e2bd83cad70",
+    "architecture/roadmaps/04-browser-input.md": "df8a2d0d445ab723789f2fc9b96a2d3b94d199e8e7b04839c84b2f8795cbf6df",
+    "architecture/roadmaps/08-sdk-integration.md": "b16bb90fb2f6ab7ae2ed739ad73660acb94e253f90938c60c7b7a812d4730f56",
+    "architecture/roadmaps/38-editor-interactions.md": "cbeb1200c04824b86666b11c58dd5083c223519cfbfa9bcd7c59f48763880b28",
+    "architecture/roadmaps/42-editing-regression-suite.md": "8137f1a4589b33329e07ca35f89b9fe6d23a6a54902df2d3fae95c14a7fe29db",
+    "architecture/tests/editor-interaction-cases.md": "748ddb465e475c0761795867693c5a4eea3ed99a1b36c57738b4b528422b5493",
+    "architecture/tests/editor-regression-cases.md": "93b580723de02244474c390a0248466fef00dec8b679cdb638b08877b49f2081",
+    "architecture/progress/04-browser-input.md": "6e88a7999f7e4866371e563108c9695ae01a9eda4746655c64fa2fb9f6b6537a"
+  },
+  "artifacts": {
+    "core/packages/core/dist/wasm/editac_wasm_bg.wasm": {
+      "bytes": 3167208,
+      "sha256": "7576321e227ff976e15460ebe1875f7bca2b65eb9ce13e5bc6d21d76eab4268a"
+    },
+    "core/packages/core/dist/wasm/editac_wasm.js": {
+      "bytes": 21276,
+      "sha256": "36e073c8f79bba09b12d454f19a2c6638ecf773093969b1a66ad14ac2f948661"
+    },
+    "core/packages/web/dist/index.js": {
+      "bytes": 109,
+      "sha256": "3295e74b2f3f4f96734e356aed17ca05ad6a1fc4442ae1ef0fcab689f1802761"
+    },
+    "core/packages/web/dist/surface.js": {
+      "bytes": 3505,
+      "sha256": "8a07cd3b3f2f83fa207971abc0a7151af8f8b67f87b49f7f139ec2c328243297"
+    },
+    "core/packages/web/dist/dom/render.js": {
+      "bytes": 15703,
+      "sha256": "31e31e7057c0eead0f3e8992ae9e0a7edaac05e1b97300c90c2aa097665571f5"
+    }
+  },
+  "resources": {
+    "receipt": "resources.json",
+    "ownedPidsChecked": 36,
+    "ownedPortsChecked": 18,
+    "remainingOwnedProcesses": 0,
+    "remainingOwnedListeners": 0,
+    "dataVolumeFreeGiB": 9.1,
+    "existingRustCacheKiB": 7639028,
+    "removedPaths": [],
+    "reason": "Temporary consumers are already removed by test teardown. Remaining build cache predates this session or supports ongoing work; source and qualification evidence are preserved."
+  }
+}

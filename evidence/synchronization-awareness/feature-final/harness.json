@@ -1,0 +1,66 @@
+{
+  "boundary": "Actual Rust engine-v5 WASM, pinned JS awareness/relative-position oracle, real journal/outbox adapters with prepared IndexedDB transactions and copied socket frames; no credentials/network",
+  "wasmSha256": "c16438269e3b69d53da19969fdff6dfb7d1531c9a7e5eb4e6244e617ed52704d",
+  "cases": [
+    {
+      "name": "Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions",
+      "passed": true
+    },
+    {
+      "name": "relative selections move under remote inserts and fail safely after semantic target deletion",
+      "passed": true
+    },
+    {
+      "name": "stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime",
+      "passed": true
+    },
+    {
+      "name": "burst coalescing, backpressure and thrown sends retain one bounded pending state",
+      "passed": true
+    },
+    {
+      "name": "host-driven renewal and clear presence use compatible clocks without idle traffic",
+      "passed": true
+    },
+    {
+      "name": "invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically",
+      "passed": true
+    },
+    {
+      "name": "malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers",
+      "passed": true
+    },
+    {
+      "name": "capacity includes expired tombstones; untrusted remote frames cannot remove local presence",
+      "passed": true
+    },
+    {
+      "name": "replacement, expiry, invalid batch and disposal release every imported anchor",
+      "passed": true
+    },
+    {
+      "name": "reentrant send cannot erase a newer queued state or undo disposal",
+      "passed": true
+    },
+    {
+      "name": "awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox",
+      "passed": true
+    },
+    {
+      "name": "invalid options/time and oversize local presence fail without discarding valid state",
+      "passed": true
+    }
+  ],
+  "frames": [
+    {
+      "name": "rust-awareness",
+      "bytes": 800,
+      "sha256": "164eec637d29cfad70061db0a71d14004209312b63413b3a18754910ea6ed2c7"
+    },
+    {
+      "name": "js-awareness",
+      "bytes": 875,
+      "sha256": "501d825f4db07f4d9ca071ed6197072367f30416f6875810a7f12bff4ed76010"
+    }
+  ]
+}

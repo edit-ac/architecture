@@ -1,0 +1,142 @@
+{
+  "gate": "LOC-1.2",
+  "children": [
+    "LOC-1.2-I1",
+    "LOC-1.2-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "source-4b0b018a0077.md",
+  "sourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+  "promptRevision": "7eaa063f3629",
+  "iteration": 2,
+  "verifiedAtUtc": "2026-10-12T08:06:16.093437+00:00",
+  "coreBaseCommit": "3cea914c983233a091faeb70382865a335c85b40",
+  "implementationRevision": "uncommitted; exact tested sources, compiled adapter and implementation.diff retained",
+  "entryGate": {
+    "engineReceipt": "../engine-wasm-updates/receipt.json",
+    "engineSourcesChecked": 59,
+    "engineDelta": "Only additive patches.rs harness from LOC-1.1; all seven LOC-1.1 tested source hashes still match",
+    "storageBoundaryReceipt": "../local-storage-boundary/receipt.json"
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "log": "build.log",
+      "sha256": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b"
+    },
+    {
+      "command": "node --test --test-name-pattern=deterministic tests/journal.test.mjs",
+      "exit": 0,
+      "log": "narrow.log",
+      "sha256": "45cacc54e2c17ba4b1cf1154196c1e3a4e3955ea3d6d8d7877dbbc7414c00d55",
+      "executed": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "filtered": 1
+    },
+    {
+      "command": "node --test tests/journal.test.mjs",
+      "exit": 0,
+      "log": "journal.log",
+      "sha256": "9e000612580c5d7aae38309bacb982b51eb009b32e050a00ff8c43696c9b7273",
+      "executed": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "filtered": 0
+    },
+    {
+      "command": "node --test --test-name-pattern='actual Chromium' tests/journal.test.mjs",
+      "exit": 0,
+      "log": "integration.log",
+      "sha256": "26235659ce78fcce3b6daf5a134e2c6f70711c718b7df59a6164c5a105af780b",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "filtered": 15
+    },
+    {
+      "command": "node scripts/check-package-exports.mjs",
+      "exit": 0,
+      "log": "package-exports.log",
+      "sha256": "d145a3cb31a62bfd027cf6e79856b4d04f80f0c630978706316025a03d35b4e1"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "diff-check.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "testedSources": {
+    "packages/web/src/storage/journal.ts": "e999b0a330a3e5221d7bd330f15ba8fa3101e78cc354f40e82dfaec966ca7e3a",
+    "packages/web/tsconfig.json": "ddc631f6e23ea8b3d048cdee7bba120a433cb67f18973d8e4bb5b598178de9d3",
+    "tests/helpers/journal-storage.mjs": "89a324d3e98fe1ce0df69ed13000211e026cba88c973d22ca17c34c0609892d2",
+    "tests/journal.test.mjs": "a1adb61eec31883375710045768207c603263b19575ca6af05f7189b897d6eec"
+  },
+  "fixtureArtifacts": {
+    "prepared": "tests/helpers/journal-storage.mjs and journal.test.mjs fixed fixture; see narrow/harness.json",
+    "production": "integration/harness.json contains exact real engine checkpoint/journal bytes, identities, checksums, update IDs, and browser pins",
+    "productionWasm": "06c32af7cf876512e25fb75ce681b5590b1e81cab6945d04cb08206e48ffca6c"
+  },
+  "criterionMap": {
+    "idempotent": "duplicate deterministic check and actual native concurrent same-key submissions",
+    "completionOnly": "controlled enqueue/request-success boundaries and native complete event counter",
+    "quotaAbort": "three deterministic injected boundaries, transaction-creation errors and actual native abort after request success",
+    "immutableIdentity": "owned-input, scoped keys, collision and checksum/receipt integrity checks",
+    "realEngineIntegration": "Chromium adapter close/reopen plus Rust replay to independently expected a\ud83d\ude00Bb"
+  },
+  "verificationReuse": "15 unchanged deterministic cases retain full-suite passing evidence; only Chromium case rerun after adding retention of exact production fixture bytes",
+  "scope": "LOC-1.2 only. Chromium IndexedDB transactions and Rust replay; no process-crash qualification, checkpoint publication/outbox lifecycle, provider or deployment claim. Adapter remains internal/unpublished.",
+  "cleanup": {
+    "processes": [
+      {
+        "pid": 14113,
+        "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+        "workspace": "/Users/bpstr/Github/edit-ac/core",
+        "purpose": "journal IndexedDB qualification",
+        "log": "journal.log"
+      },
+      {
+        "pid": 16874,
+        "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+        "workspace": "/Users/bpstr/Github/edit-ac/core",
+        "purpose": "journal IndexedDB qualification",
+        "log": "journal.log"
+      }
+    ],
+    "allTaskOwnedBrowserPidsExited": true,
+    "serversStarted": 0,
+    "removed": [
+      "packages/web/dist/storage"
+    ],
+    "reclaimedBytes": 9287,
+    "freeDataVolumeKiB": 10215292,
+    "note": "Only this session-created inactive compiled storage output removed after archiving it. Existing target, dist outputs and active Assign services preserved. Free-space changes outside this small removal are not attributed to this session."
+  },
+  "artifacts": {
+    "build.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "compiled/journal.d.ts": "764d59fcdf0f9922620368af33bfa603defda05a1439b1e674f410586aa5feeb",
+    "compiled/journal.js": "94588d29f10e6ef541c7c9ac1facdf290c8eec9564be74eb0828276ed5003bcd",
+    "diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "full/harness.json": "4a33e75a06206a56ff37dc7aa8b3d48011ca13ba825b4ea7c75d91fa19ef493c",
+    "implementation.diff": "1762358f2c309f962ccf592a76df4feb7518ba45bc0512ff5bfdd23204abbad4",
+    "integration/harness.json": "20ef53f01275239a57683c54e8cea44a99e0e8625c7c195405c159347510ccd9",
+    "integration.log": "26235659ce78fcce3b6daf5a134e2c6f70711c718b7df59a6164c5a105af780b",
+    "journal.log": "9e000612580c5d7aae38309bacb982b51eb009b32e050a00ff8c43696c9b7273",
+    "narrow/harness.json": "34c0d30e504a98e0affb8c5762af371694679a80250ae0bb91ce5a8a92a6ade6",
+    "narrow.log": "45cacc54e2c17ba4b1cf1154196c1e3a4e3955ea3d6d8d7877dbbc7414c00d55",
+    "package-exports.log": "d145a3cb31a62bfd027cf6e79856b4d04f80f0c630978706316025a03d35b4e1",
+    "process-audit.log": "285a7c10c61546a896c6dff7b79be678c5c0c5e1503a449f4d0f8e07d79bd709",
+    "tested-sources/journal-storage.mjs": "89a324d3e98fe1ce0df69ed13000211e026cba88c973d22ca17c34c0609892d2",
+    "tested-sources/journal.test.mjs": "a1adb61eec31883375710045768207c603263b19575ca6af05f7189b897d6eec",
+    "tested-sources/journal.ts": "e999b0a330a3e5221d7bd330f15ba8fa3101e78cc354f40e82dfaec966ca7e3a",
+    "tested-sources/tsconfig.json": "ddc631f6e23ea8b3d048cdee7bba120a433cb67f18973d8e4bb5b598178de9d3"
+  }
+}

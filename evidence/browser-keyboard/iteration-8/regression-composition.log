@@ -1,0 +1,403 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs composition
+
+composition browser: chromium
+✔ multi-event-japanese: buffered native ownership then one edit (2241.865625ms)
+✔ multi-event-korean: buffered native ownership then one edit (151.885292ms)
+✔ multi-event-chinese: buffered native ownership then one edit (132.844625ms)
+✔ multi-event-accent: buffered native ownership then one edit (122.675125ms)
+✔ multi-event-emoji: buffered native ownership then one edit (152.770292ms)
+✔ multi-event-multiline: buffered native ownership then one edit (176.717875ms)
+✔ final-input-before: duplicate final notifications have one owner (191.565167ms)
+✔ final-input-after: duplicate final notifications have one owner (134.464625ms)
+✔ final-input-missing: duplicate final notifications have one owner (136.955166ms)
+✔ replacement-forward: retained UTF-16 target and caret (271.888708ms)
+✔ replacement-backward: retained UTF-16 target and caret (202.328291ms)
+✔ empty-block: placeholder contributes no composition text (183.778084ms)
+✔ cancel-empty-end: zero intermediate or canceled commits (197.630833ms)
+✔ cancel-unchanged: zero intermediate or canceled commits (148.502917ms)
+✔ cancel-readonly: zero intermediate or canceled commits (153.166458ms)
+✔ cancel-dispose: zero intermediate or canceled commits (234.372791ms)
+✔ blur-before-end: committed input survives late notifications (181.378584ms)
+✔ blur-after-end: committed input survives late notifications (160.200958ms)
+✔ identical-independent-sessions: duplicates do not swallow deliberate repeat (188.060167ms)
+✖ commit-Enter-key-before-end: one composition owner until keyup (194.810917ms)
+✖ commit-Enter-end-before-key: one composition owner until keyup (141.872542ms)
+✖ commit-key-dispatch-expiry: next deliberate Enter is independent (185.9675ms)
+✔ history-group: composition is one undo step between ordinary edits (274.892791ms)
+✔ unsupported-shape: recovery retains native text without partial commit (158.606083ms)
+✔ adopt-beforeinput: preceding native owner becomes the composition (185.569791ms)
+✔ adopt-Process: preceding native owner becomes the composition (281.981041ms)
+✔ adopt-Dead: preceding native owner becomes the composition (210.897416ms)
+✔ adopted-key-end-then-ordinary: later non-keyboard input is independent (201.509292ms)
+✔ adopted-key-keyup-then-ordinary: later non-keyboard input is independent (176.56625ms)
+✔ adopted-key-blur-then-ordinary: later non-keyboard input is independent (164.535ms)
+✔ adopted-key-readonly-resume: canceled owner cannot swallow later ordinary input (157.672834ms)
+✔ observer-only-composition: native mutation remains buffered without input (155.850667ms)
+✖ keyup-before-end: completed commit cycle does not suppress a later Enter (276.854584ms)
+✔ after-final-readonly: transition preserves the admitted edit (201.837125ms)
+✔ after-final-blur: transition preserves the admitted edit (229.771625ms)
+✔ unsupported-markup: bounded recovery and no edit (135.108917ms)
+✔ unsupported-limit: bounded recovery and no edit (186.388959ms)
+✔ rejected-outside-selection: unrelated page selection survives cleanup (185.922208ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 34
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9832.290625
+
+✖ failing tests:
+
+test at tests/browser/composition.spec.ts:113:56
+✖ commit-Enter-key-before-end: one composition owner until keyup (194.810917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:123:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:113:56
+✖ commit-Enter-end-before-key: one composition owner until keyup (141.872542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:123:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:126:1
+✖ commit-key-dispatch-expiry: next deliberate Enter is independent (185.9675ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:129:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:186:1
+✖ keyup-before-end: completed commit cycle does not suppress a later Enter (276.854584ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:190:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+composition browser: firefox
+✔ multi-event-japanese: buffered native ownership then one edit (7173.884ms)
+✔ multi-event-korean: buffered native ownership then one edit (3665.821917ms)
+✔ multi-event-chinese: buffered native ownership then one edit (2195.670041ms)
+✔ multi-event-accent: buffered native ownership then one edit (1096.24675ms)
+✔ multi-event-emoji: buffered native ownership then one edit (356.078125ms)
+✔ multi-event-multiline: buffered native ownership then one edit (404.167833ms)
+✔ final-input-before: duplicate final notifications have one owner (439.760667ms)
+✔ final-input-after: duplicate final notifications have one owner (343.648ms)
+✔ final-input-missing: duplicate final notifications have one owner (371.357333ms)
+✔ replacement-forward: retained UTF-16 target and caret (815.265125ms)
+✔ replacement-backward: retained UTF-16 target and caret (313.101208ms)
+✔ empty-block: placeholder contributes no composition text (311.474583ms)
+✔ cancel-empty-end: zero intermediate or canceled commits (294.622333ms)
+✔ cancel-unchanged: zero intermediate or canceled commits (241.459375ms)
+✔ cancel-readonly: zero intermediate or canceled commits (273.724625ms)
+✔ cancel-dispose: zero intermediate or canceled commits (343.040958ms)
+✔ blur-before-end: committed input survives late notifications (343.734125ms)
+✔ blur-after-end: committed input survives late notifications (308.770875ms)
+✔ identical-independent-sessions: duplicates do not swallow deliberate repeat (283.121208ms)
+✖ commit-Enter-key-before-end: one composition owner until keyup (1105.773959ms)
+✖ commit-Enter-end-before-key: one composition owner until keyup (337.083958ms)
+✖ commit-key-dispatch-expiry: next deliberate Enter is independent (290.355209ms)
+✔ history-group: composition is one undo step between ordinary edits (275.717541ms)
+✔ unsupported-shape: recovery retains native text without partial commit (244.191375ms)
+✔ adopt-beforeinput: preceding native owner becomes the composition (248.629584ms)
+✔ adopt-Process: preceding native owner becomes the composition (256.781333ms)
+✔ adopt-Dead: preceding native owner becomes the composition (260.06025ms)
+✔ adopted-key-end-then-ordinary: later non-keyboard input is independent (272.873167ms)
+✔ adopted-key-keyup-then-ordinary: later non-keyboard input is independent (257.811541ms)
+✔ adopted-key-blur-then-ordinary: later non-keyboard input is independent (798.876917ms)
+✔ adopted-key-readonly-resume: canceled owner cannot swallow later ordinary input (744.607417ms)
+✔ observer-only-composition: native mutation remains buffered without input (345.933625ms)
+✖ keyup-before-end: completed commit cycle does not suppress a later Enter (270.648458ms)
+✔ after-final-readonly: transition preserves the admitted edit (253.896625ms)
+✔ after-final-blur: transition preserves the admitted edit (274.942167ms)
+✔ unsupported-markup: bounded recovery and no edit (249.989625ms)
+✔ unsupported-limit: bounded recovery and no edit (290.792542ms)
+✔ rejected-outside-selection: unrelated page selection survives cleanup (260.848875ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 34
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 27327.537625
+
+✖ failing tests:
+
+test at tests/browser/composition.spec.ts:113:56
+✖ commit-Enter-key-before-end: one composition owner until keyup (1105.773959ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:123:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:113:56
+✖ commit-Enter-end-before-key: one composition owner until keyup (337.083958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:123:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:126:1
+✖ commit-key-dispatch-expiry: next deliberate Enter is independent (290.355209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:129:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:186:1
+✖ keyup-before-end: completed commit cycle does not suppress a later Enter (270.648458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:190:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+composition browser: webkit
+✔ multi-event-japanese: buffered native ownership then one edit (5175.163416ms)
+✔ multi-event-korean: buffered native ownership then one edit (1044.856791ms)
+✔ multi-event-chinese: buffered native ownership then one edit (347.592208ms)
+✔ multi-event-accent: buffered native ownership then one edit (376.214375ms)
+✔ multi-event-emoji: buffered native ownership then one edit (304.228541ms)
+✔ multi-event-multiline: buffered native ownership then one edit (254.422583ms)
+✔ final-input-before: duplicate final notifications have one owner (245.02525ms)
+✔ final-input-after: duplicate final notifications have one owner (277.483959ms)
+✔ final-input-missing: duplicate final notifications have one owner (251.705125ms)
+✔ replacement-forward: retained UTF-16 target and caret (265.0575ms)
+✔ replacement-backward: retained UTF-16 target and caret (278.235958ms)
+✔ empty-block: placeholder contributes no composition text (262.812541ms)
+✔ cancel-empty-end: zero intermediate or canceled commits (260.238459ms)
+✔ cancel-unchanged: zero intermediate or canceled commits (277.127208ms)
+✔ cancel-readonly: zero intermediate or canceled commits (262.496333ms)
+✔ cancel-dispose: zero intermediate or canceled commits (255.42525ms)
+✔ blur-before-end: committed input survives late notifications (272.359709ms)
+✔ blur-after-end: committed input survives late notifications (303.848583ms)
+✔ identical-independent-sessions: duplicates do not swallow deliberate repeat (352.712709ms)
+✖ commit-Enter-key-before-end: one composition owner until keyup (301.515375ms)
+✖ commit-Enter-end-before-key: one composition owner until keyup (258.224792ms)
+✖ commit-key-dispatch-expiry: next deliberate Enter is independent (298.116833ms)
+✔ history-group: composition is one undo step between ordinary edits (276.875833ms)
+✔ unsupported-shape: recovery retains native text without partial commit (328.292459ms)
+✔ adopt-beforeinput: preceding native owner becomes the composition (313.845958ms)
+✔ adopt-Process: preceding native owner becomes the composition (273.85675ms)
+✔ adopt-Dead: preceding native owner becomes the composition (250.3115ms)
+✔ adopted-key-end-then-ordinary: later non-keyboard input is independent (296.802875ms)
+✔ adopted-key-keyup-then-ordinary: later non-keyboard input is independent (257.951958ms)
+✔ adopted-key-blur-then-ordinary: later non-keyboard input is independent (275.621292ms)
+✔ adopted-key-readonly-resume: canceled owner cannot swallow later ordinary input (242.11125ms)
+✔ observer-only-composition: native mutation remains buffered without input (259.017292ms)
+✖ keyup-before-end: completed commit cycle does not suppress a later Enter (256.817708ms)
+✔ after-final-readonly: transition preserves the admitted edit (276.067625ms)
+✔ after-final-blur: transition preserves the admitted edit (239.962041ms)
+✔ unsupported-markup: bounded recovery and no edit (267.924167ms)
+✔ unsupported-limit: bounded recovery and no edit (490.078375ms)
+✔ rejected-outside-selection: unrelated page selection survives cleanup (257.725542ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 34
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16873.716416
+
+✖ failing tests:
+
+test at tests/browser/composition.spec.ts:113:56
+✖ commit-Enter-key-before-end: one composition owner until keyup (301.515375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:123:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:113:56
+✖ commit-Enter-end-before-key: one composition owner until keyup (258.224792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:123:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:126:1
+✖ commit-key-dispatch-expiry: next deliberate Enter is independent (298.116833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:129:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:186:1
+✖ keyup-before-end: completed commit cycle does not suppress a later Enter (256.817708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:190:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

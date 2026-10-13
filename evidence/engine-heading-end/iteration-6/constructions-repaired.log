@@ -1,0 +1,24 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.11s
+     Running tests/heading_end.rs (target/debug/deps/heading_end-05c0722e416c35a2)
+
+running 2 tests
+test heading_end_v5_construction_fresh_create_place_requires_new_result_anchor ... ok
+test heading_end_v5_construction_fresh_join_split_requires_new_result_anchor ... FAILED
+
+failures:
+
+---- heading_end_v5_construction_fresh_join_split_requires_new_result_anchor stdout ----
+
+thread 'heading_end_v5_construction_fresh_join_split_requires_new_result_anchor' (160672823) panicked at crates/editac-core/tests/heading_end.rs:639:5:
+assertion failed: matches!(d.resolve_anchor(&fresh_cut).unwrap(), Resolution::Deleted
+    { owner, .. } if owner == constructed[1].id)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    heading_end_v5_construction_fresh_join_split_requires_new_result_anchor
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 12 filtered out; finished in 0.04s
+
+error: test failed, to rerun pass `-p editac-core --test heading_end`

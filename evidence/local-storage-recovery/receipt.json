@@ -1,0 +1,215 @@
+{
+  "gate": "LOC-1.7",
+  "children": [
+    "LOC-1.7-I1",
+    "LOC-1.7-V1"
+  ],
+  "state": "implemented and locally verified in tested Chromium process-crash scope",
+  "sourceSnapshot": "../architecture/progress/.roadmap-runner/03-local-storage-490e984e7714/source-4b0b018a0077.md",
+  "sourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+  "sourceSnapshotSha256": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseCommit": "3cea914c983233a091faeb70382865a335c85b40",
+  "implementationRevision": "Uncommitted additive crash fixtures, canonical browser suite, task-owned server and named npm runner. Exact tested-source/compiled/fixture SHA-256 hashes identify final implementation. No production storage/engine changes.",
+  "verifiedAtUtc": "2026-10-12T09:00:53.701024+00:00",
+  "prerequisites": {
+    "writers": {
+      "receipt": "../local-storage-writers/receipt.json",
+      "matchedSourceHashes": 7,
+      "totalSourceHashes": 7
+    },
+    "lifecycle": {
+      "receipt": "../local-storage-lifecycle/receipt.json",
+      "matchedSourceHashes": 8,
+      "totalSourceHashes": 8
+    }
+  },
+  "engineEntryRevision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+  "checks": [
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "log": "build.log",
+      "sha256": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b"
+    },
+    {
+      "command": "EDITAC_RECOVERY_OUTPUT=../architecture/evidence/local-storage-recovery/narrow npm run test:browser -- recovery --test-name-pattern='browser-kill journal-ack'",
+      "exit": 1,
+      "log": "narrow.log",
+      "sha256": "c58ad2492663d92430a85d638552bd6c5d995500485cc740fe7add6bf57d0844",
+      "executed": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "cancelled": 0,
+      "preservedFailure": "Missing full Chromium executable; teardown masked spawn error. Repaired pinned headless executable selection and spawn-error handling."
+    },
+    {
+      "command": "EDITAC_RECOVERY_OUTPUT=../architecture/evidence/local-storage-recovery/narrow-repair npm run test:browser -- recovery --test-name-pattern='browser-kill journal-ack'",
+      "exit": 0,
+      "log": "narrow-repair.log",
+      "sha256": "638ff479526efe340d0e1660a3d7c8f0cc96bcfc67efd16297bae6857cafacb9",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_RECOVERY_OUTPUT=../architecture/evidence/local-storage-recovery/full npm run test:browser -- recovery",
+      "exit": 1,
+      "log": "full.log",
+      "sha256": "d0bc5f717192c450a0be9f0cb205f70667942f467e17539a4ab447b1e5b5c7e1",
+      "executed": 1,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 1,
+      "preservedFailure": "Renderer crash CDP reply hung; 60000ms timeout, remaining five cases not executed. Exact task test PID 70265/browser PID 70275 stopped; initial source/log and crash profile cleanup preserved. Repaired event-first crash observation before repeating."
+    },
+    {
+      "command": "EDITAC_RECOVERY_OUTPUT=../architecture/evidence/local-storage-recovery/full-repair npm run test:browser -- recovery",
+      "exit": 0,
+      "log": "full-repair.log",
+      "sha256": "22bc2e1d8cb7d36f2f09c0fe87c43d8575acc938acf87fd79a9ee4f1e1e3c320",
+      "executed": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "diff-check.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "acceptance": {
+    "acknowledgedUpdates": "Six actual browser cases compare every acknowledged immutable journal identity and byte, independent expected Unicode content, restored writer identity and subsequent real editing. Two cases include checkpoint publication plus tail.",
+    "preAckLoss": "Two cases hold a native transaction alive after request success. No new acknowledgment/saved state; held update is lost while all acknowledged updates survive. Explicit outside-guarantee report recorded in case artifacts.",
+    "noUnloadDependency": "Fixture rejects unload/beforeunload/pagehide registrations before adapters initialize. Actual renderer crash or browser SIGKILL precedes reopen without destroy/flush/page.close.",
+    "integration": "Actual built Rust/WASM, production storage adapters, actual native IndexedDB and disk profiles, loopback asset server. No provider/remote service."
+  },
+  "browser": {
+    "engine": "Chromium",
+    "version": "156.0.8078.4",
+    "playwright": "1.64.0",
+    "executable": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "qualifiedMechanisms": [
+      "CDP Page.crash",
+      "browser PID SIGKILL"
+    ],
+    "exclusions": [
+      "Firefox/WebKit",
+      "mobile devices",
+      "eviction/user deletion",
+      "power/hardware failure"
+    ]
+  },
+  "teardown": {
+    "facts": "full-repair/facts.json",
+    "browserProcessesExited": 10,
+    "fixtureListenerRemoved": true,
+    "profilesRemoved": 6,
+    "interruptedRunCleanup": "cleanup.json",
+    "preservedOtherServices": true
+  },
+  "sourceHashes": {
+    "package.json": "661023f9ff7c99657b00079e3f30054faaa3ea456af77ace514c2cd73d160813",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+    "scripts/test-browser.mjs": "df27686b1a49a68636c9a57d16e3cd2131052318d5ac669a8e55bbaf953d3cce",
+    "tests/browser/recovery.spec.ts": "d30f4173f9e65380fd8f32fed21a9ff4b1137973e5f4fdb92748e5857fee2ad4",
+    "tests/browser/fixture-server.mjs": "6cfcea0daa98c2b439cb3de7ece28ccfb85a9b60012064fc1c8077dcf92659e4",
+    "fixtures/crash-boundaries/index.html": "b0cf5a7c502570476999362208fa596aa068c5ae15244081f8469ccfa7e18fb1",
+    "fixtures/crash-boundaries/session.mjs": "f382cd837441d66a216606475bc840f64558edd5719ad1dd716da54e199c6da7",
+    "fixtures/crash-boundaries/README.md": "c05536f2e04620b5f0a65d254e7809ffcd954d67f67616c62bbd8d2d89af0e1d",
+    "packages/core/src/index.ts": "08c277b8628d968d8957d971798936690c2205ae72e10f82373246397da4754d",
+    "packages/core/src/engine.ts": "5b403551dbc6a7a559e03aec14aeb2f69f122f8832c0e6702a9100bffdb799f7",
+    "packages/web/tsconfig.json": "ddc631f6e23ea8b3d048cdee7bba120a433cb67f18973d8e4bb5b598178de9d3",
+    "packages/web/src/storage/checkpoint.ts": "ce1b5361deffe978e99c230f40591b6cce662a8e5b288474a1bca10848d91893",
+    "packages/web/src/storage/index.ts": "4a6e2e35aa5e882fd2fdd2714d28af543de4c0e907b49f791b41e986252e42b7",
+    "packages/web/src/storage/journal.ts": "53d45abc5c323683512470d41ada3941edfb4c249bd84a6dfca6d892b867c2a1",
+    "packages/web/src/storage/outbox.ts": "660a34984825fca07570c2605000515f22d6eb352ec7d1fb760e81e1f0b75437",
+    "packages/web/src/storage/writer.ts": "d7d82bf7c4a9660a8f6d0b8c2171e208fcc9a8e0aa80ff766389873842c2adac"
+  },
+  "compiledHashes": {
+    "compiled-core/engine.d.ts": "ae4f49d87ec7e4946b62bbd34501fec1a4709aeb8027048155fb9d665a0ebba4",
+    "compiled-core/index.js": "db9945040f82be675b6b2626158b44db26c9fb704b42bfa5929077819a90bf1e",
+    "compiled-core/engine.js": "f3046a0bb71910d45fb2782fe5689d63afd855499d71ebbe7bd1efd2fdeb0935",
+    "compiled-core/index.d.ts": "089b04fc0956867b1faf7b65a9147638478be07318fb6a1960f0c8a7fd00a58b",
+    "compiled-core/wasm/editac_wasm.d.ts": "e791a8b3d0f29b73ac15a1968169a510368d3761012466636d680d7ed39789b2",
+    "compiled-core/wasm/editac_wasm_bg.wasm": "06c32af7cf876512e25fb75ce681b5590b1e81cab6945d04cb08206e48ffca6c",
+    "compiled-core/wasm/editac_wasm_bg.wasm.d.ts": "366bb76d3a2cdb2138546e687e4f407cd9f092883a4bf95beae141fb47af13fd",
+    "compiled-core/wasm/editac_wasm.js": "846d86197125ef4ddf3159085f866c847e4de70d631a7dd70e00a893558ea139",
+    "compiled-storage/checkpoint.d.ts": "2b4b261a9a9fcb36d2f15d5cfdc3a6eaa377f3c3e378457518d2a254782e7832",
+    "compiled-storage/outbox.d.ts": "110d8cb7e95ae9e1126bbae240830bba677d35babe6166fd8506fedf6f302dc2",
+    "compiled-storage/index.js": "b83ecaaee0ba6100a477f67d3177c6985bfa64a3385c035a071f713c20464099",
+    "compiled-storage/checkpoint.js": "20874d44f5965baf46e4c7012c206c3c3a70baa0a71e061fe745b43b92a94b4b",
+    "compiled-storage/journal.js": "d4fe1e43fbb1861e385d4ec33466d897b8882c50f2bdaea0b7356a0d3fb92192",
+    "compiled-storage/journal.d.ts": "5d96e9a86a4eb41b6019c8b924ed2a45024ba0386e666b648ec42fe53a2688ee",
+    "compiled-storage/outbox.js": "858775d88d32a013270706f7eefaed79e5a53b3442a696fbd063a835bc0db777",
+    "compiled-storage/writer.d.ts": "1ea8cd2b2f485328eda1c21cafe34698869b194779293f6af9c2ccd18020d6e1",
+    "compiled-storage/index.d.ts": "48976dcf82f40934fed37a774c2d2c20fc5a87888fffc1b17b10803992211a4e",
+    "compiled-storage/writer.js": "1f97adcfbb311d0e575c4ab6a6dc8a06f4bfc70bd5b78335a04e65ed6ea873c5"
+  },
+  "artifactHashes": {
+    "initial-recovery.spec.ts": "bf797aaf6aaaa3926bd4a277a43d3755470147cb8cd3fab23c980e68477629a5",
+    "full.log": "d0bc5f717192c450a0be9f0cb205f70667942f467e17539a4ab447b1e5b5c7e1",
+    "full-repair.log": "22bc2e1d8cb7d36f2f09c0fe87c43d8575acc938acf87fd79a9ee4f1e1e3c320",
+    "cleanup.json": "f82d9d783149109b90fe79d6adfc6bcedc4eb81c819a63c1205c5d162d16f7a1",
+    "narrow-repair.log": "638ff479526efe340d0e1660a3d7c8f0cc96bcfc67efd16297bae6857cafacb9",
+    "controller-node24.log": "bd8d45781f193ea51762409b084fad4b452864cdf9a8e3231712a51bdcb238ea",
+    "narrow.log": "c58ad2492663d92430a85d638552bd6c5d995500485cc740fe7add6bf57d0844",
+    "build.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "full/renderer-crash-checkpoint-tail-ack-browser.log": "89664eaa69bfda98f46c1ec0fd3d06626004bdf3f38c205733539e5508a0d92d",
+    "full/renderer-crash-journal-ack-browser.log": "f20a6e3cab77b05cc6bb1afc8d9ac4b42ff967c17dae578e85a92dc043f89752",
+    "narrow/browser-kill-journal-ack.json": "b8505b9a89238f06a10c8fa808860009ce80966fc90bf40ea7bb8de352a690b5",
+    "narrow/browser-kill-journal-ack-browser.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "narrow/facts.json": "4162f5f0cafabef07ee8cfcc534ad5a04c6029ed3e66430c2cd2dc04bea32522",
+    "narrow-repair/browser-kill-journal-ack.json": "2ba8252ed473192e8dd3d1878b75f891db21a77622ff549e64ea5969a38fc37f",
+    "narrow-repair/browser-kill-journal-ack-reopen-browser.log": "fb0636ca6ead933ef53c2a703614912e48ea245c64e638e8d95c9edacf68ba9d",
+    "narrow-repair/browser-kill-journal-ack-browser.log": "0069ff0bae693c4716d9d475d6dcbb608fa7f5c034ad47cd1aa7dcca766c38a2",
+    "narrow-repair/facts.json": "fad938f86791a444e88dea5a7fd87734798230cd7bb1f341f8425d2a7a4a9f62",
+    "full-repair/browser-kill-pre-ack-request-success-reopen-browser.log": "cd8a016d29716159b8b9b1b685c7a631958779d738299d78c3727e671cb63764",
+    "full-repair/renderer-crash-pre-ack-request-success.json": "9f8df70f59f02fa548d5980b8fb65acceb93de756e3bef11f946134e368fca42",
+    "full-repair/browser-kill-checkpoint-tail-ack.json": "65b69c984b1bcf6720bfd12fc40699f67a954a21c41b170e48281e6182206947",
+    "full-repair/browser-kill-journal-ack.json": "301c0eb0f60678475e3f6b13ac444a3842bc20dd0225efa0d0a8c515b51bb677",
+    "full-repair/renderer-crash-checkpoint-tail-ack-browser.log": "25c0a9b81e932976f0d3c52dd693feff55a8f38a2b270f2dd9e8b09bc247e6ae",
+    "full-repair/renderer-crash-journal-ack-browser.log": "7bda0219d5838295773310cc29823305113e1c090efc0b2ab560463785f1e5e4",
+    "full-repair/browser-kill-journal-ack-reopen-browser.log": "0d5d33264bdd3819b957ceef838a4d021d8c04935414bcbc077e6d0a5cf4bc93",
+    "full-repair/browser-kill-journal-ack-browser.log": "c36a2484393b89e34a4b2495f88ced6cf1cfc7a5dd6b4e3bcc45dc420681db87",
+    "full-repair/renderer-crash-checkpoint-tail-ack.json": "d7d4d7b95aaac653e1142b777d7417e3c553e517ed16bb6f823c74704a5108f2",
+    "full-repair/browser-kill-pre-ack-request-success.json": "4325b5e3300c5e521bb04b05f4876bf58d5ecf02e6a218fba7cc2c07759f8fbc",
+    "full-repair/browser-kill-checkpoint-tail-ack-browser.log": "6bb368b10a22a74a1960e62ad8250eda75c821304687569568db60ed756174cd",
+    "full-repair/browser-kill-checkpoint-tail-ack-reopen-browser.log": "f20b8fb32ba56c2c0637492248a2e6d2b99f71011e087b17854621775dd78c60",
+    "full-repair/facts.json": "d846dcdca1b2dddadde7fcfd23e4df2b66d1dbec40c5d56273c520c90916cffc",
+    "full-repair/renderer-crash-pre-ack-request-success-browser.log": "7f93914d6f0388926ba1e0815d4d93b30b33935d168f1c225529db26a5ee9919",
+    "full-repair/browser-kill-pre-ack-request-success-browser.log": "953e6e45ad26ae795a65dff1bb06da6cfdb470368363034e9e11ed37a5b3d0cf",
+    "full-repair/renderer-crash-journal-ack.json": "4dd63b36ebe2d335d7c7a135ee8d652658cd5e280464dd1585591295eb06add3",
+    "controller-node24/browser-kill-pre-ack-request-success-reopen-browser.log": "23959f5c0ab87a21e4715b2b3801db39aee74dab3c1fb5b813c24a7d121e59b5",
+    "controller-node24/renderer-crash-pre-ack-request-success.json": "8801712c9837975fb5e983471f0255237eb434528185fc75283f7c31d7725ee9",
+    "controller-node24/browser-kill-checkpoint-tail-ack.json": "61e10351e218ba1ffa87904758628e64760fd72450a4778a5695155f5e09630d",
+    "controller-node24/browser-kill-journal-ack.json": "785ac0d2d8bd4fb14c7a096804e325dc38cc8260cf8c73bffcfe1348f6a2872b",
+    "controller-node24/renderer-crash-checkpoint-tail-ack-browser.log": "8b156877b202829973e1c787fc23f72da96ebd0a7b18cc05cc2abb1b35636b4b",
+    "controller-node24/renderer-crash-journal-ack-browser.log": "7f5464a3dbf6a15da9b12580e56131ec7b76fa320f77d402a33bdaf3cc7da7c9",
+    "controller-node24/browser-kill-journal-ack-reopen-browser.log": "3525a16ce4a0ceaea495efc28c967546dc83b2d3b25797d31a866994b844b851",
+    "controller-node24/browser-kill-journal-ack-browser.log": "bd3454af075326a177125d95053321cc5f3e590c65656d0341cf459be7083208",
+    "controller-node24/renderer-crash-checkpoint-tail-ack.json": "0c52a81102b4e83a6c6dba43404b8aa7b9a20f699f5ee9be4134403b8ef38786",
+    "controller-node24/browser-kill-pre-ack-request-success.json": "8a4667d0f2a42b97441f10b9b2e65c60cde5e439fc854e66640f8bf088724b63",
+    "controller-node24/browser-kill-checkpoint-tail-ack-browser.log": "be1eb953a7c458832cbb08575f8495ae0d2205b5b4e93d02688267337a56e318",
+    "controller-node24/browser-kill-checkpoint-tail-ack-reopen-browser.log": "c17ce9c365b8d0b25612baef08bce87ae9eb87d13e998fde4d769b8d4f5baaef",
+    "controller-node24/facts.json": "08c00a0f392bee07526a5c90884a5e79973378d457aa22e0bf6fe92b15c2522d",
+    "controller-node24/renderer-crash-pre-ack-request-success-browser.log": "fe2bd53d37487f9a942bb857359246db949a89f90a8b698e87628d940502ac61",
+    "controller-node24/browser-kill-pre-ack-request-success-browser.log": "c80545bba92f5a5d4dccc50d2afb8bde1d6495e53e030c26bb10d5512274c926",
+    "controller-node24/renderer-crash-journal-ack.json": "4eba2ed0badccff288b25b588d0004f28c34c42c629778e82d9bf839a53ad5a8"
+  },
+  "trackingValidation": {
+    "originalCheckboxesMatched": 21,
+    "allChecked": true,
+    "status": "COMPLETE",
+    "sourceRoadmapUntouched": true
+  }
+}

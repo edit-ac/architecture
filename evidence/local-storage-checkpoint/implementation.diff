@@ -1,0 +1,396 @@
+--- before/packages/web/src/storage/checkpoint.ts
++++ after/packages/web/src/storage/checkpoint.ts
+@@ -0,0 +1,113 @@
++import type { Checkpoint } from "@edit-ac/core";
++import { checksum, identityKey, ownIdentity, openStorageDatabase, verifyEntries, JournalIntegrityError,
++  type JournalIdentity, type JournalEntry } from "./journal.js";
++
++export interface StoredCheckpoint {
++  version: 1;
++  checkpoint: Checkpoint;
++  /** Exact immutable journal identities included in the engine state. */
++  coverage: string[];
++  checksum: string;
++  manifestHash: string;
++}
++interface Publication { latest?: StoredCheckpoint; previous?: StoredCheckpoint }
++export interface RecoveryState {
++  checkpoint: Checkpoint;
++  tail: JournalEntry[];
++  source: "latest" | "previous";
++  rejected: string[];
++}
++const scope = (identity: JournalIdentity) => [identity.documentId, identity.epoch, identity.schema];
++const key = (identity: JournalIdentity) => JSON.stringify(scope(identity));
++function ownCheckpoint(input: Checkpoint): Checkpoint {
++  const identity = ownIdentity(input.identity);
++  if (input.initialized !== true || !Number.isSafeInteger(input.writerId) || input.writerId <= 0
++    || !(input.bytes instanceof Uint8Array) || !input.bytes.length) throw new JournalIntegrityError("Invalid CRDT checkpoint");
++  return { identity, initialized: true, writerId: input.writerId, bytes: new Uint8Array(input.bytes) };
++}
++async function manifest(record: Omit<StoredCheckpoint, "manifestHash">): Promise<string> {
++  return checksum(new TextEncoder().encode(JSON.stringify([record.version, identityKey(record.checkpoint.identity),
++    record.checkpoint.initialized, record.checkpoint.writerId, record.checksum, record.coverage])));
++}
++async function validate(record: StoredCheckpoint, expected: JournalIdentity): Promise<StoredCheckpoint> {
++  if (record.version !== 1 || !Array.isArray(record.coverage) || record.coverage.some(id => typeof id !== "string")
++    || new Set(record.coverage).size !== record.coverage.length) throw new JournalIntegrityError("Unsupported checkpoint version/coverage");
++  const checkpoint = ownCheckpoint(record.checkpoint);
++  if (identityKey(checkpoint.identity) !== identityKey(expected)) throw new JournalIntegrityError("Checkpoint identity mismatch");
++  if (await checksum(checkpoint.bytes) !== record.checksum || await manifest(record) !== record.manifestHash)
++    throw new JournalIntegrityError("Corrupt checkpoint bytes or coverage");
++  return { ...record, checkpoint, coverage: [...record.coverage] };
++}
++
++/** Internal browser adapter. Retains all journal/outbox bytes; compaction requires later receipt policy. */
++export class CheckpointStorage {
++  private constructor(private readonly database: IDBDatabase) {}
++  static async open(factory: IDBFactory, name = "editac-local-storage"): Promise<CheckpointStorage> {
++    return new CheckpointStorage(await openStorageDatabase(factory, name));
++  }
++  close(): void { this.database.close(); }
++
++  private readRaw(identity: JournalIdentity): Promise<{ publication: Publication; entries: JournalEntry[] }> {
++    return new Promise((resolve, reject) => {
++      const tx = this.database.transaction(["checkpoints", "updates"], "readonly");
++      let publication: Publication = {}, entries: JournalEntry[] = [];
++      tx.oncomplete = () => resolve({ publication, entries });
++      tx.onabort = () => reject(tx.error ?? new DOMException("Checkpoint read aborted", "AbortError"));
++      const point = tx.objectStore("checkpoints").get(key(identity));
++      point.onsuccess = () => { publication = point.result ?? {}; };
++      const tail = tx.objectStore("updates").index("documentEpochSchema").getAll(scope(identity));
++      tail.onsuccess = () => { entries = tail.result; };
++    });
++  }
++
++  /** The host captures coverage from the same engine state as bytes. Publication acknowledges only completion. */
++  async publish(input: Checkpoint, coveredUpdateIds: readonly string[]): Promise<{ state: "checkpointCommitted"; durability: IDBTransactionDurability | "unknown" }> {
++    const checkpoint = ownCheckpoint(input);
++    const coverage = [...coveredUpdateIds];
++    if (coverage.some(id => typeof id !== "string") || new Set(coverage).size !== coverage.length)
++      throw new JournalIntegrityError("Invalid checkpoint coverage");
++    const raw = await this.readRaw(checkpoint.identity);
++    const entries = await verifyEntries(raw.entries, checkpoint.identity);
++    const ids = new Set(entries.map(e => e.updateId));
++    if (coverage.some(id => !ids.has(id))) throw new JournalIntegrityError("Checkpoint covers an uncommitted or foreign update");
++    // Validate retained fallback before starting the write transaction (no async work inside IDB transaction).
++    let previous: StoredCheckpoint | undefined;
++    for (const candidate of [raw.publication.latest, raw.publication.previous]) {
++      if (!candidate) continue;
++      try { previous = await validate(candidate, checkpoint.identity); break; } catch { /* keep searching */ }
++    }
++    const base = { version: 1 as const, checkpoint, coverage, checksum: await checksum(checkpoint.bytes) };
++    const latest: StoredCheckpoint = { ...base, manifestHash: await manifest(base) };
++    let tx: IDBTransaction;
++    try { tx = this.database.transaction("checkpoints", "readwrite", { durability: "strict" }); }
++    catch (error) {
++      if (!(error instanceof TypeError) && !(error instanceof DOMException && error.name === "NotSupportedError")) throw error;
++      tx = this.database.transaction("checkpoints", "readwrite");
++    }
++    return new Promise((resolve, reject) => {
++      tx.oncomplete = () => resolve({ state: "checkpointCommitted", durability: tx.durability ?? "unknown" });
++      tx.onabort = () => reject(tx.error ?? new DOMException("Checkpoint publication aborted", "AbortError"));
++      try { tx.objectStore("checkpoints").put({ latest, previous }, key(checkpoint.identity)); }
++      catch (error) { tx.abort(); reject(error); }
++    });
++  }
++
++  /** Rust callback validates semantic checkpoint bytes and replays the retained tail before exposing a document. */
++  async restore<T>(expectedInput: JournalIdentity, restore: (state: RecoveryState) => T): Promise<{ value: T; recovery: RecoveryState }> {
++    const expected = ownIdentity(expectedInput);
++    const raw = await this.readRaw(expected);
++    const entries = await verifyEntries(raw.entries, expected);
++    const rejected: string[] = [];
++    for (const source of ["latest", "previous"] as const) {
++      const candidate = raw.publication[source];
++      if (!candidate) continue;
++      try {
++        const valid = await validate(candidate, expected);
++        // Retain and replay even covered updates: CRDT replay is idempotent, and this avoids trusting coverage to omit bytes.
++        const recovery: RecoveryState = { checkpoint: valid.checkpoint, tail: entries, source, rejected: [...rejected] };
++        return { value: restore(recovery), recovery };
++      } catch (error) { rejected.push(`${source}: ${error instanceof Error ? error.message : String(error)}`); }
++    }
++    throw new JournalIntegrityError(`No valid recovery checkpoint: ${rejected.join("; ") || "missing checkpoint"}`);
++  }
++}
+--- before/packages/web/src/storage/journal.ts
++++ after/packages/web/src/storage/journal.ts
+@@ -37,11 +37,11 @@
+ const keyPath = ["identity.documentId", "identity.epoch", "identity.schema", "writerId", "sequence"];
+ const identityFields = ["profile", "schema", "documentId", "epoch", "protocolVersion", "updateEncoding", "offsets"] as const;
+ 
+-function identityKey(identity: JournalIdentity): string {
++export function identityKey(identity: JournalIdentity): string {
+   return JSON.stringify(identityFields.map(field => identity[field]));
+ }
+ 
+-function ownIdentity(identity: JournalIdentity): JournalIdentity {
++export function ownIdentity(identity: JournalIdentity): JournalIdentity {
+   if (!identity || [identity.profile, identity.schema, identity.documentId, identity.epoch].some(v => typeof v !== "string" || v.length === 0)
+     || identity.offsets !== "utf16" || identity.protocolVersion !== 1 || identity.updateEncoding !== 1) {
+     throw new JournalIntegrityError("Missing or unsupported document identity/schema/encoding");
+@@ -59,7 +59,7 @@
+   return { identity, writerId: update.writerId, sequence: update.sequence, origin: update.origin, bytes: new Uint8Array(update.bytes) };
+ }
+ 
+-async function checksum(bytes: Uint8Array): Promise<string> {
++export async function checksum(bytes: Uint8Array): Promise<string> {
+   const hash = await globalThis.crypto.subtle.digest("SHA-256", new Uint8Array(bytes).buffer);
+   return Array.from(new Uint8Array(hash), b => b.toString(16).padStart(2, "0")).join("");
+ }
+@@ -78,23 +78,8 @@
+ export class UpdateJournal {
+   private constructor(private readonly database: IDBDatabase) {}
+ 
+-  static open(factory: IDBFactory, name = "editac-local-storage"): Promise<UpdateJournal> {
+-    return new Promise((resolve, reject) => {
+-      const request = factory.open(name, 1);
+-      let rejected = false;
+-      request.onupgradeneeded = () => {
+-        const store = request.result.createObjectStore(storeName, { keyPath });
+-        store.createIndex("documentEpochSchema", ["identity.documentId", "identity.epoch", "identity.schema"]);
+-      };
+-      request.onerror = () => reject(request.error);
+-      request.onblocked = () => { rejected = true; reject(new Error("Journal database upgrade blocked")); };
+-      request.onsuccess = () => {
+-        const database = request.result;
+-        if (rejected) { database.close(); return; }
+-        database.onversionchange = () => database.close();
+-        resolve(new UpdateJournal(database));
+-      };
+-    });
++  static async open(factory: IDBFactory, name = "editac-local-storage"): Promise<UpdateJournal> {
++    return new UpdateJournal(await openStorageDatabase(factory, name));
+   }
+ 
+   close(): void { this.database.close(); }
+@@ -153,12 +138,39 @@
+       request.onerror = () => { failure = request.error; };
+       request.onsuccess = () => { result = request.result as JournalEntry[]; };
+     });
+-    return Promise.all(entries.map(async entry => {
++    return verifyEntries(entries, expected);
++  }
++}
++
++/** Shared schema upgrade for journal and checkpoint adapters. */
++export function openStorageDatabase(factory: IDBFactory, name: string): Promise<IDBDatabase> {
++    return new Promise((resolve, reject) => {
++      const request = factory.open(name, 2);
++      let rejected = false;
++      request.onupgradeneeded = () => {
++        if (!request.result.objectStoreNames.contains(storeName)) {
++          const store = request.result.createObjectStore(storeName, { keyPath });
++          store.createIndex("documentEpochSchema", ["identity.documentId", "identity.epoch", "identity.schema"]);
++        }
++        if (!request.result.objectStoreNames.contains("checkpoints")) request.result.createObjectStore("checkpoints");
++      };
++      request.onerror = () => reject(request.error);
++      request.onblocked = () => { rejected = true; reject(new Error("Journal database upgrade blocked")); };
++      request.onsuccess = () => {
++        const database = request.result;
++        if (rejected) { database.close(); return; }
++        database.onversionchange = () => database.close();
++        resolve(database);
++      };
++    });
++}
++
++export async function verifyEntries(entries: JournalEntry[], expected: JournalIdentity): Promise<JournalEntry[]> {
++  return Promise.all(entries.map(async entry => {
+       const update = ownUpdate(entry);
+       if (identityKey(update.identity) !== identityKey(expected)) throw new JournalIntegrityError("Stored identity does not match trusted document");
+       const hash = await checksum(update.bytes);
+       if (hash !== entry.checksum || entry.updateId !== updateId(update, hash)) throw new JournalIntegrityError("Corrupt journal checksum or receipt identity");
+       return { ...update, checksum: hash, updateId: entry.updateId };
+     }));
+-  }
+ }
+--- before/tests/checkpoint.test.mjs
++++ after/tests/checkpoint.test.mjs
+@@ -0,0 +1,133 @@
++import assert from 'node:assert/strict';
++import { test, after } from 'node:test';
++import { readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
++import { tmpdir } from 'node:os';
++import { join } from 'node:path';
++import { chromium } from 'playwright';
++import { init } from '../packages/core/dist/index.js';
++import { CheckpointStorage } from '../packages/web/dist/storage/checkpoint.js';
++import { UpdateJournal, JournalIntegrityError } from '../packages/web/dist/storage/journal.js';
++import { CheckpointIndexedDB } from './helpers/checkpoint-storage.mjs';
++const output = process.env.EDITAC_CHECKPOINT_OUTPUT ?? await mkdtemp(join(tmpdir(), 'editac-checkpoint-'));
++await mkdir(output, { recursive: true });
++const facts = { cases: [], processes: [] };
++function check(name, fn) { test(name, async () => { const c = { name, passed: false }; facts.cases.push(c); await fn(); c.passed = true; }); }
++const runtime = await init('data:application/wasm;base64,' + (await readFile(new URL('../packages/core/dist/wasm/editac_wasm_bg.wasm', import.meta.url))).toString('base64'));
++const options = { profile: 'v5', documentId: '45678901-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', nodes: [{ text: 'a😀b' }] };
++const engine = runtime.createEngine(options), initial = engine.checkpoint(), updates = [];
++const sub = engine.subscribe({ type: 'updates' }, p => { if (p.update) updates.push({ identity: p.identity, writerId: p.writerId, sequence: p.sequence, origin: p.origin, bytes: p.update.bytes }); });
++function edit(text) { const a = engine.anchor(engine.read().visible[0].id, 3, 'right'); engine.commit(engine.prepare({ kind: 'text', origin: 'checkpoint:test', command: { type: 'insert', at: a, text } })); engine.releaseAnchor(a); }
++edit('B'); const middle = engine.checkpoint(); edit('C'); const latest = engine.checkpoint(); sub.dispose(); engine.dispose();
++const text = e => e.read().visible[0].runs.map(r => r.text).join('');
++function restore(state) { const e = runtime.restoreEngine(initial.identity, state.checkpoint, state.tail.map(u => ({ identity: u.identity, bytes: u.bytes }))); try { return text(e); } finally { e.dispose(); } }
++async function publish(store, db, point, ids) { const p = store.publish(point, ids); const tx = await db.nextWrite(); tx.complete(); return p; }
++async function append(journal, db, update) { const p = journal.append(update); const tx = await db.nextWrite(); await new Promise(resolve => setImmediate(resolve)); tx.complete(); return p; }
++async function setup() {
++  const db = new CheckpointIndexedDB(), store = await CheckpointStorage.open(db), journal = await UpdateJournal.open(db);
++  await publish(store, db, initial, []); const ids = [];
++  for (const u of updates) ids.push((await append(journal, db, u)).updateId);
++  return { db, store, journal, ids };
++}
++check('publication and coverage remain invisible until transaction completion; owned bytes survive reopen', async () => {
++  const { db,store,ids } = await setup(); const input = structuredClone(latest), coverage = [...ids];
++  let settled = false; const p = store.publish(input,coverage).then(v => { settled = true; return v; }); input.bytes.fill(0); coverage.length = 0;
++  const tx = await db.nextWrite(); tx.requestSuccess(); assert.equal(settled,false);
++  assert.equal((await store.restore(initial.identity,restore)).value,'a😀CBb');
++  assert.equal([...db.stores.checkpoints.values()][0].latest.coverage.length,0);
++  tx.complete(); assert.equal((await p).state,'checkpointCommitted');
++  const row = [...db.stores.checkpoints.values()][0]; assert.deepEqual(row.latest.coverage,ids); assert.equal(row.previous.coverage.length,0);
++  store.close(); const reopened = await CheckpointStorage.open(db); assert.equal((await reopened.restore(initial.identity,restore)).value,'a😀CBb');
++  assert.equal(db.stores.updates.size,2);
++});
++for (const boundary of ['before-write-success','after-write-success']) check(`aborted publication ${boundary} recovers all locally committed real engine edits`, async () => {
++  const { db,store,ids } = await setup(); const p = store.publish(latest,ids); const tx = await db.nextWrite(); if (boundary === 'after-write-success') tx.requestSuccess();
++  tx.abort(); await assert.rejects(p,{name:'AbortError'}); const result = await store.restore(initial.identity,restore); assert.equal(result.value,'a😀CBb'); assert.equal(result.recovery.source,'latest'); assert.equal(db.stores.updates.size,2);
++});
++check('after-complete publication recovers covered and later committed tail without loss', async () => {
++  const {db,store,ids}=await setup(); await publish(store,db,middle,[ids[0]]); const result = await store.restore(initial.identity,restore);
++  assert.equal(result.value,'a😀CBb'); assert.equal(result.recovery.tail.length,2);
++});
++for (const corruption of ['bytes','coverage','version','identity','semantic']) check(`corrupt latest ${corruption} falls back to previous point and full committed tail`, async () => {
++  const {db,store,ids}=await setup();
++  if (corruption === 'semantic') await publish(store,db,{...latest,bytes:Uint8Array.of(0)},ids); else await publish(store,db,latest,ids);
++  const row = [...db.stores.checkpoints.values()][0];
++  if (corruption==='bytes') row.latest.checkpoint.bytes[0]^=1;
++  if (corruption==='coverage') row.latest.coverage=[];
++  if (corruption==='version') row.latest.version=99;
++  if (corruption==='identity') row.latest.checkpoint.identity.schema='other';
++  const result=await store.restore(initial.identity,restore); assert.equal(result.value,'a😀CBb'); assert.equal(result.recovery.source,'previous'); assert.equal(result.recovery.rejected.length,1);
++});
++check('both corrupt checkpoints, corrupt journal, missing and incompatible identity fail explicitly', async () => {
++  const {db,store,ids}=await setup(); await publish(store,db,latest,ids); const row=[...db.stores.checkpoints.values()][0]; row.latest.checkpoint.bytes[0]^=1; row.previous.checkpoint.bytes[0]^=1;
++  await assert.rejects(store.restore(initial.identity,restore),JournalIntegrityError);
++  await assert.rejects(store.restore({...initial.identity,documentId:'missing'},restore),/missing checkpoint/);
++  await assert.rejects(store.restore({...initial.identity,epoch:''},restore),JournalIntegrityError);
++  [...db.stores.updates.values()][0].bytes[0]^=1; await assert.rejects(store.restore(initial.identity,restore),/Corrupt journal/);
++});
++check('uncommitted/foreign coverage rejected without publishing; quota and permission failure preserve prior state', async () => {
++  const {db,store}=await setup(); await assert.rejects(store.publish(latest,['foreign']),/uncommitted or foreign/);
++  for (const name of ['QuotaExceededError','SecurityError']) { db.creationError=new DOMException('Injected',name); await assert.rejects(store.publish(latest,[]),{name}); db.creationError=null; assert.equal((await store.restore(initial.identity,restore)).value,'a😀CBb'); }
++});
++check('strict durability fallback is reported and repeated checkpoint publication retains journal/outbox identities',async()=>{
++  const {db,store,ids}=await setup();db.strictSupported=false;assert.equal((await publish(store,db,latest,ids)).durability,'default');await publish(store,db,latest,ids);assert.equal(db.stores.updates.size,2);assert.equal((await store.restore(initial.identity,restore)).value,'a😀CBb');
++});
++check('publication transaction-creation and put failures never acknowledge or replace recoverable state',async()=>{
++  const {db,store,ids}=await setup();
++  for(const field of ['writeCreationError','putError']){
++    db[field]=new DOMException('Injected write boundary','QuotaExceededError');
++    await assert.rejects(store.publish(latest,ids),{name:'QuotaExceededError'}); db[field]=null;
++    assert.equal((await store.restore(initial.identity,restore)).value,'a😀CBb');
++    assert.equal([...db.stores.checkpoints.values()][0].latest.coverage.length,0);
++  }
++});
++check('replacement of checksum-corrupt latest retains previous valid fallback and detached recovery state',async()=>{
++  const {db,store,ids}=await setup();await publish(store,db,middle,[ids[0]]);
++  [...db.stores.checkpoints.values()][0].latest.checkpoint.bytes[0]^=1;
++  await publish(store,db,latest,ids);const row=[...db.stores.checkpoints.values()][0];row.latest.checkpoint.bytes[0]^=1;
++  const result=await store.restore(initial.identity,restore);assert.equal(result.value,'a😀CBb');assert.equal(result.recovery.source,'previous');
++  result.recovery.checkpoint.bytes.fill(0);result.recovery.tail[0].bytes.fill(0);
++  assert.equal((await store.restore(initial.identity,restore)).value,'a😀CBb');
++});
++let controller, browser;
++check('actual Chromium atomic publication, abort boundaries, reopen and corrupt-latest fallback restore real Rust content',async()=>{
++  controller=await chromium.launchServer({headless:true});const child=controller.process();facts.processes.push({pid:child.pid,launcher:child.spawnfile,workspace:process.cwd(),purpose:'checkpoint IndexedDB integration',port:null,log:'full.log'});
++  browser=await chromium.connect(controller.wsEndpoint());facts.browser={version:browser.version(),playwright:JSON.parse(await readFile(new URL('../node_modules/playwright/package.json',import.meta.url))).version};
++  const context=await browser.newContext();
++  try{
++    await context.route('https://checkpoint.test/**',async route=>{
++      const path=new URL(route.request().url()).pathname;
++      if(path==='/')return route.fulfill({contentType:'text/html',body:'<!doctype html><title>Checkpoint qualification</title>'});
++      if(path.includes('..')||!/^\/(core|web)\//.test(path))return route.abort();
++      const prefix=path.startsWith('/core/')?'../packages/core/dist/':'../packages/web/dist/';
++      await route.fulfill({contentType:path.endsWith('.wasm')?'application/wasm':'text/javascript',body:await readFile(new URL(prefix+path.replace(/^\/(core|web)\//,''),import.meta.url))});
++    });
++    const page=await context.newPage();await page.goto('https://checkpoint.test/');
++    const result=await page.evaluate(async({options})=>{
++      const {init}=await import('/core/index.js'),{UpdateJournal}=await import('/web/storage/journal.js'),{CheckpointStorage}=await import('/web/storage/checkpoint.js');
++      const runtime=await init('/core/wasm/editac_wasm_bg.wasm');const engine=runtime.createEngine(options),initial=engine.checkpoint(),updates=[];
++      const sub=engine.subscribe({type:'updates'},p=>{if(p.update)updates.push({identity:p.identity,writerId:p.writerId,sequence:p.sequence,origin:p.origin,bytes:p.update.bytes});});
++      const journal=await UpdateJournal.open(indexedDB,'checkpoint-integration');let storage=await CheckpointStorage.open(indexedDB,'checkpoint-integration');
++      const replay=state=>{const e=runtime.restoreEngine(initial.identity,state.checkpoint,state.tail.map(u=>({identity:u.identity,bytes:u.bytes})));try{return e.read().visible[0].runs.map(r=>r.text).join('');}finally{e.dispose();}};
++      const nativePut=IDBObjectStore.prototype.put,nativeTransaction=IDBDatabase.prototype.transaction;let boundary='',completed=0;const errors=[],observed=[];
++      IDBDatabase.prototype.transaction=function(...args){const tx=nativeTransaction.apply(this,args);if(args[0]==='checkpoints'&&args[1]==='readwrite')tx.addEventListener('complete',()=>completed++);return tx;};
++      IDBObjectStore.prototype.put=function(...args){const request=nativePut.apply(this,args);if(this.name==='checkpoints'&&boundary==='before-success')this.transaction.abort();if(this.name==='checkpoints'&&boundary==='after-success')request.addEventListener('success',()=>this.transaction.abort());return request;};
++      try{
++        await storage.publish(initial,[]);
++        for(const word of ['B','C']){const a=engine.anchor(engine.read().visible[0].id,3,'right');engine.commit(engine.prepare({kind:'text',origin:'checkpoint:browser',command:{type:'insert',at:a,text:word}}));engine.releaseAnchor(a);await journal.append(updates.at(-1));}
++        const point=engine.checkpoint(),entries=await journal.read(initial.identity),ids=entries.map(e=>e.updateId);
++        for(const phase of ['before-success','after-success']){boundary=phase;try{await storage.publish(point,ids);}catch(e){errors.push(e.name);}boundary='';storage.close();storage=await CheckpointStorage.open(indexedDB,'checkpoint-integration');observed.push((await storage.restore(initial.identity,replay)).value);}
++        await storage.publish(point,ids);if(completed!==2)throw Error('Publication acknowledgment preceded transaction completion');storage.close();storage=await CheckpointStorage.open(indexedDB,'checkpoint-integration');observed.push((await storage.restore(initial.identity,replay)).value);
++        // Simulate durable corruption in latest point; previous and journal remain intact.
++        const db=await new Promise((resolve,reject)=>{const r=indexedDB.open('checkpoint-integration',2);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});
++        try{await new Promise((resolve,reject)=>{const tx=db.transaction('checkpoints','readwrite'),store=tx.objectStore('checkpoints'),key=JSON.stringify([initial.identity.documentId,initial.identity.epoch,initial.identity.schema]),r=store.get(key);r.onsuccess=()=>{r.result.latest.checkpoint.bytes[0]^=1;store.put(r.result,key);};tx.oncomplete=resolve;tx.onabort=()=>reject(tx.error);});}finally{db.close();}
++        const fallback=await storage.restore(initial.identity,replay);observed.push(fallback.value);
++        const retained=await journal.read(initial.identity);
++        return{errors,observed,fallback:fallback.recovery.source,rejected:fallback.recovery.rejected,completed,count:retained.length,idsPreserved:JSON.stringify(retained.map(e=>e.updateId))===JSON.stringify(ids),fixtures:{initial:{...initial,bytes:Array.from(initial.bytes)},latest:{...point,bytes:Array.from(point.bytes)},entries:retained.map(e=>({...e,bytes:Array.from(e.bytes)}))}};
++      }finally{IDBObjectStore.prototype.put=nativePut;IDBDatabase.prototype.transaction=nativeTransaction;sub.dispose();engine.dispose();storage.close();journal.close();}
++    },{options});
++    assert.deepEqual(result.errors,['AbortError','AbortError']);assert.deepEqual(result.observed,Array(4).fill('a😀CBb'));assert.equal(result.fallback,'previous');assert.equal(result.rejected.length,1);assert.equal(result.count,2);assert.equal(result.idsPreserved,true);assert.equal(result.completed,3);facts.integration=result;
++  }finally{await context.close();}
++});
++after(async()=>{
++  try{await browser?.close();}finally{await controller?.close();facts.teardown={browserClosed:!browser?.isConnected(),browserProcessExited:!controller||controller.process().exitCode!==null,fixtureServersStarted:0};await writeFile(join(output,'harness.json'),JSON.stringify(facts,null,2));if(!process.env.EDITAC_CHECKPOINT_OUTPUT&&facts.cases.every(c=>c.passed))await rm(output,{recursive:true});}
++});
+--- before/tests/helpers/checkpoint-storage.mjs
++++ after/tests/helpers/checkpoint-storage.mjs
+@@ -0,0 +1,38 @@
++/** Deterministic IndexedDB transaction boundary; publication stays staged until complete. */
++export class CheckpointIndexedDB {
++  stores = { checkpoints: new Map(), updates: new Map() };
++  objectStoreNames = { contains: name => name in this.stores };
++  transactions = []; waiters = []; writes = []; closed = false; strictSupported = true; creationError = null;
++  open() { const r = {}; queueMicrotask(() => { r.result = this; r.onupgradeneeded?.(); r.onsuccess?.(); }); return r; }
++  createObjectStore() { return { createIndex() {} }; }
++  close() { this.closed = true; }
++  transaction(names, mode, options) {
++    if (this.creationError) throw this.creationError;
++    if (mode === 'readwrite' && this.writeCreationError) throw this.writeCreationError;
++    if (options && !this.strictSupported) throw new TypeError('Unsupported strict durability');
++    const tx = new Transaction(this, mode, options ? 'strict' : 'default'); this.transactions.push(tx);
++    if (mode === 'readwrite') { this.writes.push(tx); this.waiters.shift()?.(tx); }
++    return tx;
++  }
++  nextWrite() { return this.writes.length ? Promise.resolve(this.writes.shift()) : new Promise(resolve => this.waiters.push(tx => { this.writes.shift(); resolve(tx); })); }
++}
++class Transaction {
++  pending = 0; staged = []; error = null; aborted = false;
++  constructor(db, mode, durability) { Object.assign(this, { db, mode, durability }); }
++  objectStore(name) {
++    const read = (fn) => {
++      const r = {}; this.pending++;
++      queueMicrotask(() => { if (this.aborted) return; r.result = structuredClone(fn()); r.onsuccess?.(); if (--this.pending === 0 && this.mode === 'readonly') this.complete(); });
++      return r;
++    };
++    return {
++      get: key => read(() => this.db.stores[name].get(JSON.stringify(key))),
++      index: () => ({ getAll: scope => read(() => [...this.db.stores[name].values()].filter(e => [e.identity.documentId, e.identity.epoch, e.identity.schema].every((v,i) => v === scope[i]))) }),
++      put: (value, key) => { if (this.db.putError) throw this.db.putError; this.staged.push([name, JSON.stringify(key), structuredClone(value)]); return {}; },
++      add: value => { const key = [value.identity.documentId, value.identity.epoch, value.identity.schema, value.writerId, value.sequence]; this.staged.push([name, JSON.stringify(key), structuredClone(value)]); return {}; },
++    };
++  }
++  requestSuccess() { this.requestSucceeded = true; }
++  abort(error = new DOMException('Injected abort', 'AbortError')) { this.error = error; this.aborted = true; this.staged = []; queueMicrotask(() => this.onabort?.()); }
++  complete() { if (this.aborted) throw Error('Aborted transaction'); for (const [name,key,value] of this.staged) this.db.stores[name].set(key,value); this.oncomplete?.(); }
++}
+--- before/tests/helpers/journal-storage.mjs
++++ after/tests/helpers/journal-storage.mjs
+@@ -17,6 +17,7 @@
+     });
+     return request;
+   }
++  objectStoreNames = { contains: () => false };
+   createObjectStore() { return { createIndex() {} }; }
+   close() { this.closed = true; }
+   transaction(store, mode, options) {

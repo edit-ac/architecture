@@ -1,0 +1,116 @@
+{
+  "boundary": "Actual Chromium IndexedDB / Rust WASM client and peer / loopback HTTP / SQLite FULL WAL; prepared grants; no production auth",
+  "cases": [
+    {
+      "name": "ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending",
+      "passed": true,
+      "result": {
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": null,
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        },
+        "pending": 1,
+        "frames": [
+          0,
+          2
+        ],
+        "peer": "a😀Zb",
+        "local": "a😀Zb"
+      },
+      "requests": 1
+    },
+    {
+      "name": "malformed non-durable receipts fail admission and capability absence ignores even a valid receipt",
+      "passed": true,
+      "result": {
+        "errors": [
+          "Invalid durable application receipt",
+          "Invalid durable application receipt",
+          "Invalid durable application receipt"
+        ],
+        "ignored": {
+          "state": "ignored",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",443129367,1,\"46358b054e184c1d59da818abeed46f11ce3b81c69844c697835dcc107428964\"]",
+          "reason": "capability-unavailable"
+        },
+        "pending": 1,
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": null,
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        }
+      },
+      "requests": 2
+    },
+    {
+      "name": "durable replay is bounded to one page per event without dropping the remaining local backlog",
+      "passed": true,
+      "result": {
+        "first": 32,
+        "retained": 3,
+        "second": 3,
+        "pending": 0,
+        "journal": 35
+      },
+      "requests": 36
+    }
+  ],
+  "processes": [
+    {
+      "pid": 61515,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 61687,
+      "purpose": "SYN-1.6 Chromium integration",
+      "log": "feature.log"
+    },
+    {
+      "pid": 61490,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 61689,
+      "purpose": "ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending",
+      "log": "feature.log"
+    },
+    {
+      "pid": 61490,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 61720,
+      "purpose": "malformed non-durable receipts fail admission and capability absence ignores even a valid receipt",
+      "log": "feature.log"
+    },
+    {
+      "pid": 61490,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 61726,
+      "purpose": "durable replay is bounded to one page per event without dropping the remaining local backlog",
+      "log": "feature.log"
+    }
+  ],
+  "cleanup": [
+    {
+      "port": 61689,
+      "relayStopped": true
+    },
+    {
+      "port": 61720,
+      "relayStopped": true
+    },
+    {
+      "port": 61726,
+      "relayStopped": true
+    },
+    {
+      "browserStopped": true,
+      "scratchRemoved": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-receipts-databases-oUkZww"
+    }
+  ],
+  "browser": "156.0.8078.4"
+}

@@ -1,0 +1,99 @@
+{
+  "gate": "WEB-1.2",
+  "children": [
+    "WEB-1.2-I1",
+    "WEB-1.2-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "895c9f7fdf7d3a10192cead10ed16c8b13d0bd082dd9f35037f0599b381122ff",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseCommit": "3cea914c983233a091faeb70382865a335c85b40",
+  "architectureBaseCommit": "554509957c5d6b5f80318a8b430d9f2a2784d3e6",
+  "implementationRevision": "Uncommitted additive renderer boundary; exact sources and compiled renderer archived in verified/ and tested-source-hashes.json",
+  "fixtureSeed": "fixed semantic fixture; engine-generated owner IDs are intentionally opaque",
+  "sources": "tested-source-hashes.json",
+  "prerequisites": "prerequisites.json",
+  "environment": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.cargo/bin:$PATH; Node 24.19.0; Playwright 1.64.0; macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "checks": [
+    {
+      "command": "npm run build --workspace @edit-ac/web",
+      "exit": 2,
+      "log": "build.log",
+      "reason": "TypeScript union filter narrowing; fixed before feature tests"
+    },
+    {
+      "command": "npm run build --workspace @edit-ac/web",
+      "exit": 0,
+      "log": "build-final.log"
+    },
+    {
+      "command": "npm run typecheck --workspace @edit-ac/web",
+      "exit": 0,
+      "log": "typecheck.log"
+    },
+    {
+      "command": "node --test --test-name-pattern='one-character patch' tests/browser/render.spec.ts",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "log": "narrow.log"
+    },
+    {
+      "command": "npm run test:browser -- render",
+      "exit": 1,
+      "executed": 7,
+      "passed": 5,
+      "failed": 2,
+      "skipped": 0,
+      "log": "canonical.log",
+      "reason": "Fixture combined exclusive code mark with other marks; nested container child-placement defect exposed after fixture repair"
+    },
+    {
+      "command": "npm run test:browser -- render",
+      "exit": 1,
+      "executed": 7,
+      "passed": 5,
+      "failed": 2,
+      "skipped": 0,
+      "log": "canonical-repaired.log",
+      "reason": "Nested container children attached to outer wrapper; structural text oracle omitted semantic BR newline. Diagnostic: diagnostic.json; renderer/layout and oracle repaired"
+    },
+    {
+      "command": "npm run test:browser -- render",
+      "exit": 0,
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "log": "canonical-fixed.log",
+      "scope": "Chromium before expanding matrix harness"
+    },
+    {
+      "command": "npm run test:browser -- render",
+      "exit": 0,
+      "executed": 21,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "matrix.log",
+      "facts": [
+        "matrix/chromium/facts.json",
+        "matrix/firefox/facts.json",
+        "matrix/webkit/facts.json"
+      ]
+    }
+  ],
+  "criterionMap": {
+    "semanticRendering": "Real packed WASM recovery/persistence; semantic headings, marks, nested ordered/check lists, quotes, code and hard breaks. All engine visible node mappings asserted.",
+    "incremental": "One-character patch changes characterData only, retains unrelated heading/current block/mark/link/text identity and unrelated selection. Multi-line edit retains Text and BR identities. Text patches consume only scoped patch nodes; layout walk only on structural changes.",
+    "safeReadOnly": "Literal hostile text in real engine read-only fixture; prepared hostile projection attributes create no script/img/event/style attributes and only allowlisted href. Safe attributes assigned explicitly, no HTML parsing.",
+    "atomsAndMaps": "Noneditable separator/checklist marker; UTF-16 Text/BR positions, empty placeholder and rebuilt disposable maps."
+  },
+  "scope": "Internal private renderer only; no input readiness, OS/device/IME support, release/publication or paid inference claim. No source roadmap edits. One parent gate implemented.",
+  "cleanup": "cleanup.json",
+  "verifiedAtUtc": "2026-10-12T09:41:26.708076+00:00"
+}

@@ -1,0 +1,121 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs keyboard --test-name-pattern=restoration throws|shared-source
+
+keyboard browser: chromium
+✔ prepared-heading result caret releases when DOM restoration throws (2048.712125ms)
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (186.653166ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2660.575792
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:174:1
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (186.653166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'al',
+  +   '',
+  +   'Xpha',
+  -   'X',
+  -   'pha',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:181:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'al', '', 'Xpha', 'independent' ],
+    expected: [ 'al', 'X', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+keyboard browser: firefox
+✔ prepared-heading result caret releases when DOM restoration throws (3359.556709ms)
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (300.073792ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4214.046333
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:174:1
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (300.073792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'al',
+  +   '',
+  +   'Xpha',
+  -   'X',
+  -   'pha',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:181:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'al', '', 'Xpha', 'independent' ],
+    expected: [ 'al', 'X', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+keyboard browser: webkit
+✔ prepared-heading result caret releases when DOM restoration throws (2665.32675ms)
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (483.084125ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3488.111875
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:174:1
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (483.084125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'al',
+  +   '',
+  +   'Xpha',
+  -   'X',
+  -   'pha',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:181:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'al', '', 'Xpha', 'independent' ],
+    expected: [ 'al', 'X', 'pha', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

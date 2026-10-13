@@ -1,0 +1,29 @@
+
+> edit-ac-workspace@0.0.0 build
+> npm run build --workspaces
+
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+
+> @edit-ac/web@0.0.0 build
+> tsc --project tsconfig.json
+
+src/dom/render.ts(190,5): error TS2322: Type '(Json | undefined)[][]' is not assignable to type 'Json[]'.
+  Type '(Json | undefined)[]' is not assignable to type 'Json'.
+    Type '(Json | undefined)[]' is not assignable to type 'Json[]'.
+      Type 'Json | undefined' is not assignable to type 'Json'.
+        Type 'undefined' is not assignable to type 'Json'.
+npm error Lifecycle script `build` failed with error:
+npm error code 2
+npm error path /Users/bpstr/Github/edit-ac/core/packages/web
+npm error workspace @edit-ac/web@0.0.0
+npm error location /Users/bpstr/Github/edit-ac/core/packages/web
+npm error command failed
+npm error command sh -c tsc --project tsconfig.json
+
+
+> @edit-ac/react@0.0.0 build
+> tsc --project tsconfig.json
+

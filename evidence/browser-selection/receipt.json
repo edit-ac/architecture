@@ -1,0 +1,201 @@
+{
+  "gate": "WEB-1.3",
+  "children": [
+    "WEB-1.3-I1",
+    "WEB-1.3-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "895c9f7fdf7d3a10192cead10ed16c8b13d0bd082dd9f35037f0599b381122ff",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseCommit": "3cea914c983233a091faeb70382865a335c85b40",
+  "architectureBaseCommit": "554509957c5d6b5f80318a8b430d9f2a2784d3e6",
+  "implementationRevision": "Uncommitted selection boundary; exact sources and compiled adapter archived in verified/ and tested-source-hashes.json",
+  "fixtureSeed": "Fixed semantic fixture; engine-generated owner IDs opaque; Yjs deletion peer clientID 1901",
+  "environment": {
+    "pathPrefix": "/Users/bpstr/.nvm/versions/node/v24.19.0/bin",
+    "node": "24.19.0",
+    "playwright": "1.64.0",
+    "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "browsers": {
+      "chromium": {
+        "engine": "chromium",
+        "version": "156.0.8078.4",
+        "playwright": "1.64.0",
+        "node": "v24.19.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      },
+      "firefox": {
+        "engine": "firefox",
+        "version": "157.0",
+        "playwright": "1.64.0",
+        "node": "v24.19.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      },
+      "webkit": {
+        "engine": "webkit",
+        "version": "27.2",
+        "playwright": "1.64.0",
+        "node": "v24.19.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      }
+    }
+  },
+  "checks": [
+    {
+      "command": "npm run build --workspace @edit-ac/web",
+      "exit": 0,
+      "log": "build.log"
+    },
+    {
+      "command": "node --test --test-name-pattern='forward and backward' tests/browser/selection.spec.ts",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "narrow.log"
+    },
+    {
+      "command": "npm run test:browser -- selection",
+      "exit": 1,
+      "executed": 33,
+      "passed": 9,
+      "failed": 24,
+      "skipped": 0,
+      "cancelled": 0,
+      "actualFeatureExecuted": 11,
+      "actualFeaturePassed": 9,
+      "actualFeatureFailed": 2,
+      "hookBlockedBeforeFeature": 22,
+      "reason": "Hard-break element boundary mapping defect; undefined/null assertion mismatch; missing pinned Firefox/WebKit binaries",
+      "log": "matrix.log"
+    },
+    {
+      "command": "npx --no-install playwright install firefox webkit",
+      "exit": 0,
+      "log": "browser-install.log"
+    },
+    {
+      "command": "npm run build --workspace @edit-ac/web",
+      "exit": 0,
+      "log": "build-repaired.log"
+    },
+    {
+      "command": "npm run test:browser -- selection",
+      "exit": 1,
+      "executed": 33,
+      "passed": 29,
+      "failed": 4,
+      "skipped": 0,
+      "cancelled": 0,
+      "reason": "29/33 passed; literal-length oracle and platform Home/selectionchange timing assumption repaired before affected checks reran",
+      "log": "matrix-repaired.log"
+    },
+    {
+      "command": "npm run test:browser -- selection --test-name-pattern='list and root|native keyboard'",
+      "exit": 0,
+      "executed": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "failed-repaired.log"
+    },
+    {
+      "command": "npm run test:browser -- render",
+      "exit": 0,
+      "executed": 21,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "render-regression.log"
+    },
+    {
+      "command": "npm run build --workspace @edit-ac/web",
+      "exit": 0,
+      "log": "build-retained.log"
+    },
+    {
+      "command": "npm run test:browser -- selection --test-name-pattern='retained async|outside selection'",
+      "exit": 0,
+      "executed": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "retained.log"
+    },
+    {
+      "command": "npm run typecheck --workspace @edit-ac/web",
+      "exit": 0,
+      "log": "typecheck-final.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "diff-check.log"
+    }
+  ],
+  "finalCoverage": {
+    "executedDistinct": 36,
+    "passedDistinct": 36,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "perEngine": 12,
+    "receipt": "coverage.json",
+    "reuse": "24 unchanged cases from matrix-repaired + 6 repaired mapping/native checks + 6 async/ownership checks. Only failed/invalidated or new cases reran. This is combined acceptance coverage, not a claim that the last full matrix command passed."
+  },
+  "rendererRegression": {
+    "executed": 21,
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0
+  },
+  "criteria": {
+    "directionUTF16": [
+      "direction",
+      "maps",
+      "invalid-unicode"
+    ],
+    "caretAffinity": [
+      "affinity"
+    ],
+    "crossBlockEmojiEmpty": [
+      "direction",
+      "maps"
+    ],
+    "listsNoneditableAtoms": [
+      "atoms"
+    ],
+    "localRemotePatchRestoration": [
+      "structure",
+      "split-join",
+      "affinity"
+    ],
+    "deletedNodeAndTextPolicy": [
+      "deleted-owner",
+      "deleted-text"
+    ],
+    "noStaleAbsoluteAsyncTargets": [
+      "async-target"
+    ],
+    "nativeNavigationSelectionOnly": [
+      "native-navigation"
+    ],
+    "ownershipTokenCleanup": [
+      "ownership",
+      "async-target"
+    ]
+  },
+  "sources": "tested-source-hashes.json",
+  "prerequisites": "prerequisites.json",
+  "processAndDiskCleanup": "cleanup.json",
+  "limits": "Private internal bridge. No ordinary input/composition readiness, real device/IME, release, provider, publication or deployment qualification. Pinned Firefox/WebKit installed for this session were removed after use under low-free-space cleanup; reinstall pinned binaries before future matrix checks."
+}

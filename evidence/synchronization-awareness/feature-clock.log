@@ -1,0 +1,90 @@
+TAP version 13
+# (node:1502) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions
+ok 1 - Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions
+  ---
+  duration_ms: 26.125459
+  type: 'test'
+  ...
+# Subtest: relative selections move under remote inserts and fail safely after semantic target deletion
+ok 2 - relative selections move under remote inserts and fail safely after semantic target deletion
+  ---
+  duration_ms: 9.589375
+  type: 'test'
+  ...
+# Subtest: stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime
+ok 3 - stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime
+  ---
+  duration_ms: 1.986375
+  type: 'test'
+  ...
+# Subtest: unknown zero-clock state is ignored and same-clock null removes a known peer as in the pinned oracle
+ok 4 - unknown zero-clock state is ignored and same-clock null removes a known peer as in the pinned oracle
+  ---
+  duration_ms: 0.507792
+  type: 'test'
+  ...
+# Subtest: burst coalescing, backpressure and thrown sends retain one bounded pending state
+ok 5 - burst coalescing, backpressure and thrown sends retain one bounded pending state
+  ---
+  duration_ms: 510.496042
+  type: 'test'
+  ...
+# Subtest: host-driven renewal and clear presence use compatible clocks without idle traffic
+ok 6 - host-driven renewal and clear presence use compatible clocks without idle traffic
+  ---
+  duration_ms: 0.677959
+  type: 'test'
+  ...
+# Subtest: invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically
+ok 7 - invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically
+  ---
+  duration_ms: 12.448792
+  type: 'test'
+  ...
+# Subtest: malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers
+ok 8 - malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers
+  ---
+  duration_ms: 1.790042
+  type: 'test'
+  ...
+# Subtest: capacity includes expired tombstones; untrusted remote frames cannot remove local presence
+ok 9 - capacity includes expired tombstones; untrusted remote frames cannot remove local presence
+  ---
+  duration_ms: 1.228834
+  type: 'test'
+  ...
+# Subtest: replacement, expiry, invalid batch and disposal release every imported anchor
+ok 10 - replacement, expiry, invalid batch and disposal release every imported anchor
+  ---
+  duration_ms: 2.528666
+  type: 'test'
+  ...
+# Subtest: reentrant send cannot erase a newer queued state or undo disposal
+ok 11 - reentrant send cannot erase a newer queued state or undo disposal
+  ---
+  duration_ms: 0.811125
+  type: 'test'
+  ...
+# Subtest: awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox
+ok 12 - awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox
+  ---
+  duration_ms: 87.365166
+  type: 'test'
+  ...
+# Subtest: invalid options/time and oversize local presence fail without discarding valid state
+ok 13 - invalid options/time and oversize local presence fail without discarding valid state
+  ---
+  duration_ms: 0.843834
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 870.017625

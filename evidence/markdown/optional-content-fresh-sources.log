@@ -1,0 +1,49 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+warning: unused import: `Mark`
+   --> crates/editac-core/src/commands/editor.rs:122:71
+    |
+122 |             format::{BlockFormatCommand, FormatAction, FormatCommand, Mark},
+    |                                                                       ^^^^
+    |
+    = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> crates/editac-core/src/commands/editor.rs:229:13
+    |
+229 |         let mut cursor = position(&stage, &insertion)?;
+    |             ----^^^^^^
+    |             |
+    |             help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+warning: `editac-core` (lib) generated 2 warnings (run `cargo fix --lib -p editac-core` to apply 2 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 20.63s
+     Running tests/optional_content.rs (target/debug/deps/optional_content-4aad1d0f438b0d5e)
+
+running 6 tests
+test oversize_shapes_and_bad_versions_reject_before_mutation ... ok
+test disabled_inline_and_hostile_images_keep_inert_source_and_diagnostics ... ok
+test registered_images_retain_alt_title_url_and_source ... ok
+test rectangular_tables_retain_alignment_rich_cells_and_code_pipes ... ok
+test edge_atom_paste_preserves_unrelated_prefix_suffix_and_result_caret ... ok
+test mixed_opaque_fragment_is_one_engine_update_with_selective_history ... FAILED
+
+failures:
+
+---- mixed_opaque_fragment_is_one_engine_update_with_selective_history stdout ----
+
+thread 'mixed_opaque_fragment_is_one_engine_update_with_selective_history' (162589773) panicked at crates/editac-markdown/tests/optional_content.rs:46:67:
+assertion `left == right` failed
+  left: [ProjectedNode { id: "n:2561395542:1", kind: "block", parent: "@root", order: 4, spans: [SourceSpan { source: "n:2561395542:1", identity: "<2561395542#2>", start: 0, end: 8 }], runs: [AttributedRun { text: "original", attributes: {} }], block_attributes: Some(Paragraph), editor: Some(EditorMetadata { version: "base", container_attributes: None, checked: None, number: None }) }]
+ right: [ProjectedNode { id: "n:2561395542:1", kind: "block", parent: "@root", order: 0, spans: [SourceSpan { source: "n:2561395542:1", identity: "<2561395542#2>", start: 0, end: 8 }], runs: [AttributedRun { text: "original", attributes: {} }], block_attributes: Some(Paragraph), editor: Some(EditorMetadata { version: "base", container_attributes: None, checked: None, number: None }) }]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    mixed_opaque_fragment_is_one_engine_update_with_selective_history
+
+test result: FAILED. 5 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.32s
+
+error: test failed, to rerun pass `-p editac-markdown --test optional_content`

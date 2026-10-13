@@ -1,0 +1,33 @@
+✔ deterministic captured flush waits for completion, excludes later edits and clears saved on enqueue (24.521958ms)
+✔ deterministic AbortError rejects barriers, clears saved and retains edits/export under default continue policy (5.07275ms)
+✔ deterministic QuotaExceededError rejects barriers, clears saved and retains edits/export under default continue policy (4.890375ms)
+✔ deterministic NotAllowedError rejects barriers, clears saved and retains edits/export under default continue policy (4.184792ms)
+✔ deterministic later transaction failure cannot reject an earlier captured set, and selection-only work adds no storage (3.1525ms)
+✔ deterministic explicit reject policy prevents Rust mutation after failure; policy is captured by value (3.008542ms)
+✔ deterministic reports actual default durability without claiming strict capability (1.474375ms)
+✔ deterministic reports actual unknown durability without claiming strict capability (1.429542ms)
+✔ deterministic destroy flush blocks edits until completion and releases lease/subscription/database (1.581333ms)
+✔ deterministic failed destroy flush preserves live edits and explicit report exports unsaved state (1.952166ms)
+✔ deterministic report destruction never claims pending data saved; missing policy/unsupported target fail explicitly (1.297ms)
+✖ actual Chromium lifecycle uses leased Rust writer and IndexedDB completion, recovers committed bytes and retains aborted edits (7723.750833ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 11
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8696.924834
+
+✖ failing tests:
+
+test at tests/storage-lifecycle.test.mjs:17:3
+✖ actual Chromium lifecycle uses leased Rust writer and IndexedDB completion, recovers committed bytes and retains aborted edits (7723.750833ms)
+  page.evaluate: Error: report/lease teardown failed
+      at verify (eval at evaluate (:370:30), <anonymous>:30:70)
+      at eval (eval at evaluate (:370:30), <anonymous>:56:9)
+      at async <anonymous>:396:30
+      at /Users/bpstr/Github/edit-ac/core/tests/storage-lifecycle.test.mjs:229:36
+      at async TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/storage-lifecycle.test.mjs:17:94) {
+    log: []
+  }

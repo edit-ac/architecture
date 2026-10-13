@@ -1,0 +1,59 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs render
+
+✔ one-character patch preserves unrelated blocks and marked spans (1516.876583ms)
+✖ semantic headings marks nested lists checklist quote code and atoms (153.228458ms)
+✔ read-only engine projection displays hostile text literally (163.885084ms)
+✔ untrusted projection attributes cannot create active markup or unsafe links (159.708292ms)
+✖ structural patches preserve node identity while changing headings and moving lists (164.543041ms)
+✔ hard-break UTF-16 maps and literal code newlines survive patches (167.445958ms)
+✔ renderer rebuilds disposable maps from authoritative recovered state (159.369834ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 5
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2803.12925
+
+✖ failing tests:
+
+test at tests/browser/render.spec.ts:108:1
+✖ semantic headings marks nested lists checklist quote code and atoms (153.228458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'nested'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/render.spec.ts:122:122
+      at async withContext (file:///Users/bpstr/Github/edit-ac/core/tests/browser/render.spec.ts:82:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'nested',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/render.spec.ts:147:1
+✖ structural patches preserve node identity while changing headings and moving lists (164.543041ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/render.spec.ts:158:147
+      at async withContext (file:///Users/bpstr/Github/edit-ac/core/tests/browser/render.spec.ts:82:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

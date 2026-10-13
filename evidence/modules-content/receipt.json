@@ -1,0 +1,195 @@
+{
+  "gate": "MOD-1.7",
+  "state": "implemented and verified; not deployed",
+  "date": "2026-10-13",
+  "sourceRoadmap": {
+    "snapshot": "source-32abd5cd6b3f.md",
+    "revision": "621cbff280187a584cd0ceb5b9ac66d176b916c16f99ba34a48e6fd74c08c294"
+  },
+  "loadedPromptRevision": "2e18a98412c7",
+  "implementation": {
+    "baseCommit": "6edb83432468e44083740b586f973fb44f623352",
+    "workingTree": "Uncommitted delivery over preserved pre-existing work",
+    "exactSources": "source-hashes.json",
+    "snapshots": "sources/",
+    "executedWasm": "build/"
+  },
+  "checks": [
+    {
+      "command": "npm run build:wasm",
+      "log": "build-wasm-final.log",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build",
+      "log": "build-qualified.log",
+      "exitCode": 0
+    },
+    {
+      "command": "EDITAC_CONTENT_MODULES_OUTPUT=<evidence>/canonical npm run test:browser -- content-modules",
+      "log": "content-modules-final.log",
+      "exitCode": 0,
+      "browsers": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ],
+      "receipts": [
+        "canonical/chromium/receipt.json",
+        "canonical/firefox/receipt.json",
+        "canonical/webkit/receipt.json"
+      ],
+      "counts": {
+        "executed": 54,
+        "passed": 54,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "EDITAC_MOVE_EXCHANGE=<evidence>/moves EDITAC_EXTENSION_ENTRY_OUTPUT=<evidence>/extension-entry cargo test -p editac-core --test moves --test patches --test table_cells --locked --offline",
+      "log": "rust-integration-configured.log",
+      "exitCode": 0,
+      "suites": {
+        "moves": 35,
+        "patches": 31,
+        "table_cells": 2
+      },
+      "nestedYjs": {
+        "log": "moves/node.log",
+        "executed": 11,
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "counts": {
+        "executed": 68,
+        "passed": 68,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "cargo test -p editac-wasm --lib --locked --offline",
+      "log": "native-bridge.log",
+      "exitCode": 0,
+      "counts": {
+        "executed": 35,
+        "passed": 35,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "node --test tests/wasm-commands.test.mjs tests/module-runtime.test.mjs",
+      "log": "node-integration.log",
+      "exitCode": 0,
+      "nativeFixtureBootstrap": "Runner asserted nonzero native fixture setup success; internal setup log removed by its normal teardown. Separately retained 35/35 native bridge suite above.",
+      "counts": {
+        "executed": 50,
+        "passed": 50,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "EDITAC_MODULE_RUNTIME_OUTPUT=<evidence>/runtime npm run test:browser -- module-runtime",
+      "log": "runtime.log",
+      "exitCode": 0,
+      "counts": {
+        "executed": 15,
+        "passed": 15,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "EDITAC_RENDER_OUTPUT=<evidence>/render npm run test:browser -- render",
+      "log": "render.log",
+      "exitCode": 0,
+      "counts": {
+        "executed": 27,
+        "passed": 27,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "git diff --check",
+      "log": "diff-check.log",
+      "exitCode": 0
+    }
+  ],
+  "acceptance": {
+    "keyboardSelectionCopy": "Native labeled cell/source controls, keyboard range selection and Tab traversal; prepared ClipboardEvents prove adapter behavior, not OS clipboard qualification.",
+    "cellEditing": "Production prepared Rust tableCell command, exact tuple guard, owner/mark preservation, atomic metadata/fallback, one history group, composition and real two-replica stale-target rejection.",
+    "disabledRoundTrip": "IndexedDB production writer/journal flush and recovery preserve exact edited tuples/fallback; re-enabling restores cells and identical current-row Markdown export.",
+    "images": "Host-provided synchronous asset policy, actual loopback SVG image load, alt/title/source preservation; absent/rejected/throwing policy stays inert.",
+    "excluded": "No uploads, merged cells, spreadsheets, nested/rich cell blocks or native/device parity claims."
+  },
+  "failuresPreserved": [
+    {
+      "log": "build.log",
+      "reason": "Initial TypeScript narrowing error; repaired before qualified build."
+    },
+    {
+      "logs": [
+        "table-cells.log",
+        "table-cells-repair.log"
+      ],
+      "reason": "Test fixture used private inspect and moved a borrowed attribute; compile-only failures, zero executed tests. Repaired before focused/integration checks."
+    },
+    {
+      "log": "content-modules.log",
+      "receipts": "failed-canonical/",
+      "counts": {
+        "executed": 48,
+        "passed": 36,
+        "failed": 12,
+        "skipped": 0
+      },
+      "reason": "Literal angle-bracket alt required valid Markdown escaping; disposal fixture attempted settling a disposed surface. Repaired fixture before full final execution."
+    },
+    {
+      "log": "rust-integration.log",
+      "counts": {
+        "executed": 35,
+        "passed": 34,
+        "failed": 1,
+        "skipped": 0
+      },
+      "notExecuted": [
+        "patches",
+        "table_cells"
+      ],
+      "reason": "Missing required isolated moves exchange environment. Configured exchange/output paths before successful integration run."
+    }
+  ],
+  "qualifiedPreRepair": "qualified-before-link-repair/ and content-modules-before-link-repair.log retain 54/54 passes before adding admitted mailto link rendering; final canonical 54/54 supersedes them.",
+  "environment": {
+    "node": "v24.19.0",
+    "playwright": "1.64.0",
+    "chromium": "156.0.8078.4",
+    "firefox": "157.0",
+    "webkit": "27.2",
+    "transports": "Deterministic prepared content, loopback HTTP asset, real WASM/Yrs peer updates and IndexedDB; no paid inference/secrets/provider calls."
+  },
+  "cleanup": {
+    "processes": "process-check.json",
+    "disk": "disk-cleanup.json"
+  },
+  "timing": {
+    "discoveryMinutes": 5,
+    "implementationAndRepairsMinutes": 9,
+    "verificationEvidenceMinutes": 7,
+    "exit": "Original one-parent MOD-1.7 batch completed; next ready MOD-1.8."
+  },
+  "artifactHashes": "artifact-hashes.json"
+}

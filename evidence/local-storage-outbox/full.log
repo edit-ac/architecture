@@ -1,0 +1,28 @@
+✔ deterministic checkpoint coverage retains every pending identity and retransmittable real update (10.104291ms)
+✔ deterministic sync events, socket delivery and state vectors cannot acknowledge updates (3.825416ms)
+✔ deterministic absent negotiated receipt capability reports unknown durability and retains updates (0.698334ms)
+✔ deterministic wrong receipt documentId cannot prune pending updates (0.779792ms)
+✔ deterministic wrong receipt epoch cannot prune pending updates (0.509125ms)
+✔ deterministic wrong receipt schema cannot prune pending updates (0.525375ms)
+✔ deterministic wrong receipt profile cannot prune pending updates (0.570667ms)
+✔ deterministic wrong receipt writerId cannot prune pending updates (0.494208ms)
+✔ deterministic wrong receipt sequence cannot prune pending updates (0.439125ms)
+✔ deterministic wrong receipt checksum cannot prune pending updates (0.570375ms)
+✔ deterministic wrong receipt updateId cannot prune pending updates (0.458208ms)
+✔ deterministic receipt acknowledgment and pruning wait for completion, not request success (0.522459ms)
+✔ deterministic receipt abort before-lookup retains outbox and permits retry (0.57025ms)
+✔ deterministic receipt abort after-write-success retains outbox and permits retry (0.552625ms)
+✔ deterministic quota, permission and receipt write failures propagate without pruning (0.573541ms)
+✔ deterministic duplicate/reordered durable receipts survive reopen and duplicate append (2.019709ms)
+✔ deterministic unknown receipt cannot pre-acknowledge a future journal append (0.618709ms)
+✔ deterministic corrupt receipt or journal fails explicitly instead of hiding pending work (0.517417ms)
+✔ deterministic detached pending bytes and unsupported strict durability preserve identity (0.502125ms)
+✔ actual Chromium v2 upgrade, receipt abort boundaries, checkpoint retention and restart preserve real Rust updates (1844.749958ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2394.601875

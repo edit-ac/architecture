@@ -1,0 +1,36 @@
+     Locking 3 packages to latest Rust 1.97.1 compatible versions
+      Adding pulldown-cmark v0.13.4
+      Adding pulldown-cmark-escape v0.11.0
+      Adding unicase v2.10.0
+   Compiling memchr v2.8.3
+   Compiling pulldown-cmark v0.13.4
+   Compiling pulldown-cmark-escape v0.11.0
+   Compiling unicase v2.10.0
+   Compiling bitflags v2.13.2
+   Compiling serde_json v1.0.152
+   Compiling yrs v0.28.0
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 10.45s
+     Running tests/parser_profile.rs (target/debug/deps/parser_profile-758fc51695bcbb1a)
+
+running 3 tests
+test extended_autolinks_candidate_gap_is_explicit ... ok
+test required_extensions_have_actual_events ... ok
+test official_commonmark_0312_raw_parser_conformance ... FAILED
+
+failures:
+
+---- official_commonmark_0312_raw_parser_conformance stdout ----
+
+thread 'official_commonmark_0312_raw_parser_conformance' (162286618) panicked at crates/editac-markdown/tests/parser_profile.rs:15:5:
+22 raw parser failures: [(Number(12), "<p>!\"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\\]^_`{|}~</p>\n", String("<p>!&quot;#$%&amp;'()*+,-./:;&lt;=&gt;?@[\\]^_`{|}~</p>\n")), (Number(14), "<p>*not emphasized*\n&lt;br/&gt; not a tag\n[not a link](/foo)\n`not code`\n1. not a list\n* not a list\n# not a heading\n[foo]: /url \"not a reference\"\n&amp;ouml; not a character entity</p>\n", String("<p>*not emphasized*\n&lt;br/&gt; not a tag\n[not a link](/foo)\n`not code`\n1. not a list\n* not a list\n# not a heading\n[foo]: /url &quot;not a reference&quot;\n&amp;ouml; not a character entity</p>\n")), (Number(27), "<p>\" ആ ಫ</p>\n", String("<p>&quot; ആ ಫ</p>\n")), (Number(41), "<p>[a](url \"tit\")</p>\n", String("<p>[a](url &quot;tit&quot;)</p>\n")), (Number(91), "<h2>`Foo</h2>\n<p>`</p>\n<h2>&lt;a title=\"a lot</h2>\n<p>of dashes\"/&gt;</p>\n", String("<h2>`Foo</h2>\n<p>`</p>\n<h2>&lt;a title=&quot;a lot</h2>\n<p>of dashes&quot;/&gt;</p>\n")), (Number(175), "<ul>\n<li><div>\n</li>\n<li>foo</li>\n</ul>\n", String("<ul>\n<li>\n<div>\n</li>\n<li>foo</li>\n</ul>\n")), (Number(209), "<p>[foo]: /url \"title\" ok</p>\n", String("<p>[foo]: /url &quot;title&quot; ok</p>\n")), (Number(210), "<p>\"title\" ok</p>\n", String("<p>&quot;title&quot; ok</p>\n")), (Number(211), "<pre><code>[foo]: /url \"title\"\n</code></pre>\n<p>[foo]</p>\n", String("<pre><code>[foo]: /url &quot;title&quot;\n</code></pre>\n<p>[foo]</p>\n")), (Number(343), "<p><code>&lt;a href=\"</code>\"&gt;`</p>\n", String("<p><code>&lt;a href=&quot;</code>&quot;&gt;`</p>\n")), (Number(352), "<p>a*\"foo\"*</p>\n", String("<p>a*&quot;foo&quot;*</p>\n")), (Number(359), "<p>a_\"foo\"_</p>\n", String("<p>a_&quot;foo&quot;_</p>\n")), (Number(363), "<p>aa_\"bb\"_cc</p>\n", String("<p>aa_&quot;bb&quot;_cc</p>\n")), (Number(380), "<p>a**\"foo\"**</p>\n", String("<p>a**&quot;foo&quot;**</p>\n")), (Number(385), "<p>a__\"foo\"__</p>\n", String("<p>a__&quot;foo&quot;__</p>\n")), (Number(395), "<p><strong>foo \"<em>bar</em>\" foo</strong></p>\n", String("<p><strong>foo &quot;<em>bar</em>&quot; foo</strong></p>\n")), (Number(508), "<p>[link](/url \"title \"and\" title\")</p>\n", String("<p>[link](/url &quot;title &quot;and&quot; title&quot;)</p>\n")), (Number(590), "<p>![[foo]]</p>\n<p>[[foo]]: /url \"title\"</p>\n", String("<p>![[foo]]</p>\n<p>[[foo]]: /url &quot;title&quot;</p>\n")), (Number(619), "<p>&lt;a h*#ref=\"hi\"&gt;</p>\n", String("<p>&lt;a h*#ref=&quot;hi&quot;&gt;</p>\n")), (Number(620), "<p>&lt;a href=\"hi'&gt; &lt;a href=hi'&gt;</p>\n", String("<p>&lt;a href=&quot;hi'&gt; &lt;a href=hi'&gt;</p>\n")), (Number(624), "<p>&lt;/a href=\"foo\"&gt;</p>\n", String("<p>&lt;/a href=&quot;foo&quot;&gt;</p>\n")), (Number(632), "<p>&lt;a href=\"\"\"&gt;</p>\n", String("<p>&lt;a href=&quot;&quot;&quot;&gt;</p>\n"))]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    official_commonmark_0312_raw_parser_conformance
+
+test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p editac-markdown --test parser_profile`

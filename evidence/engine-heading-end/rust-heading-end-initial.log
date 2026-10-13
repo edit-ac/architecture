@@ -1,0 +1,45 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0277]: a value of type `Vec<ProjectedNode>` cannot be built from an iterator over elements of type `Arc<ProjectedNode>`
+    --> crates/editac-core/tests/heading_end.rs:74:10
+     |
+  74 |         .collect()
+     |          ^^^^^^^ value of type `Vec<ProjectedNode>` cannot be built from `std::iter::Iterator<Item=Arc<ProjectedNode>>`
+     |
+help: the trait `FromIterator<Arc<ProjectedNode>>` is not implemented for `Vec<ProjectedNode>`
+      but trait `FromIterator<ProjectedNode>` is implemented for it
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:3923:1
+     |
+3923 | impl<T> FromIterator<T> for Vec<T> {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for that trait implementation, expected `ProjectedNode`, found `Arc<ProjectedNode>`
+note: the method call chain might not have had the expected associated types
+    --> crates/editac-core/tests/heading_end.rs:72:10
+     |
+  69 | /     d.snapshot()
+  70 | |         .unwrap()
+  71 | |         .visible
+     | |________________- this expression has type `Vec<Arc<ProjectedNode>>`
+  72 |           .into_iter()
+     |            ^^^^^^^^^^^ `Iterator::Item` is `Arc<ProjectedNode>` here
+  73 |           .filter(|n| n.kind == "block")
+     |            ----------------------------- `Iterator::Item` remains `Arc<ProjectedNode>` here
+note: required by a bound in `std::iter::Iterator::collect`
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/iter/traits/iterator.rs:2077:19
+     |
+2077 |     fn collect<B: FromIterator<Self::Item>>(self) -> B
+     |                   ^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `Iterator::collect`
+
+error[E0624]: method `read` is private
+   --> crates/editac-core/tests/heading_end.rs:89:11
+    |
+ 89 |         d.read().state_vector().encode_v1(),
+    |           ^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:682:5
+    |
+682 |     pub(crate) fn read(&self) -> Transaction<'_> {
+    |     -------------------------------------------- private method defined here
+
+Some errors have detailed explanations: E0277, E0624.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `editac-core` (test "heading_end") due to 2 previous errors

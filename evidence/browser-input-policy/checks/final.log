@@ -1,0 +1,109 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs input-policy
+
+input-policy browser: chromium
+(node:63729) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (2725.478084ms)
+✔ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (131.6685ms)
+✔ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (111.561375ms)
+✔ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (127.476708ms)
+✔ noncancelable beforeinput remains native-pending until the actual DOM mutation (107.175167ms)
+✔ cancelable event identity prevents duplicate command replay while an identical new intent commits (118.608084ms)
+✔ identified renderer echo and independent native mutation in the same turn retain only the real input (124.09025ms)
+✔ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (115.849208ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (188.427917ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (133.584542ms)
+✔ composition blur has one explicit terminal result and zero intermediate commits (115.740375ms)
+✔ composition readonly has one explicit terminal result and zero intermediate commits (152.2985ms)
+✔ composition dispose has one explicit terminal result and zero intermediate commits (148.315959ms)
+✔ remote before preserves the browser-owned subtree and resolves the captured composition anchor (127.403042ms)
+✔ remote after preserves the browser-owned subtree and resolves the captured composition anchor (114.365ms)
+✔ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (123.549542ms)
+✔ remote overlap rejects finalization with captured recovery text instead of deleting peer content (117.583083ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (140.646166ms)
+✔ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (122.412458ms)
+✔ read-only ordinary input is rejected and disposed queued generations cannot commit (98.512292ms)
+✔ native wrapper replacement reprojects only the affected block and keeps unrelated node identity (124.307417ms)
+✔ read-only noncancelable mutation restores authoritative content with an explicit rejection (108.431958ms)
+✔ composition keydown before finalization and duplicate final input notifications commit once (115.724167ms)
+✔ commit-key suppression expires at a dispatcher boundary when no keyup arrives (153.202709ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6089.816166
+input-policy browser: firefox
+(node:64069) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (3908.89375ms)
+✔ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (581.609291ms)
+✔ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (451.96175ms)
+✔ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (254.447ms)
+✔ noncancelable beforeinput remains native-pending until the actual DOM mutation (273.526875ms)
+✔ cancelable event identity prevents duplicate command replay while an identical new intent commits (254.023ms)
+✔ identified renderer echo and independent native mutation in the same turn retain only the real input (351.766375ms)
+✔ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (425.909666ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (418.033292ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (1139.127334ms)
+✔ composition blur has one explicit terminal result and zero intermediate commits (534.512417ms)
+✔ composition readonly has one explicit terminal result and zero intermediate commits (337.280583ms)
+✔ composition dispose has one explicit terminal result and zero intermediate commits (530.776375ms)
+✔ remote before preserves the browser-owned subtree and resolves the captured composition anchor (457.99875ms)
+✔ remote after preserves the browser-owned subtree and resolves the captured composition anchor (771.939125ms)
+✔ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (1749.690625ms)
+✔ remote overlap rejects finalization with captured recovery text instead of deleting peer content (1958.639208ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (1724.254292ms)
+✔ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (2287.519584ms)
+✔ read-only ordinary input is rejected and disposed queued generations cannot commit (4387.816042ms)
+✔ native wrapper replacement reprojects only the affected block and keeps unrelated node identity (1753.364375ms)
+✔ read-only noncancelable mutation restores authoritative content with an explicit rejection (842.839917ms)
+✔ composition keydown before finalization and duplicate final input notifications commit once (347.776792ms)
+✔ commit-key suppression expires at a dispatcher boundary when no keyup arrives (355.418791ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26790.938042
+input-policy browser: webkit
+(node:64957) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (3755.296625ms)
+✔ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (291.568542ms)
+✔ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (269.001959ms)
+✔ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (259.3685ms)
+✔ noncancelable beforeinput remains native-pending until the actual DOM mutation (313.849416ms)
+✔ cancelable event identity prevents duplicate command replay while an identical new intent commits (269.375666ms)
+✔ identified renderer echo and independent native mutation in the same turn retain only the real input (271.427417ms)
+✔ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (250.807167ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (387.748959ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (301.501041ms)
+✔ composition blur has one explicit terminal result and zero intermediate commits (337.792833ms)
+✔ composition readonly has one explicit terminal result and zero intermediate commits (352.995125ms)
+✔ composition dispose has one explicit terminal result and zero intermediate commits (402.171875ms)
+✔ remote before preserves the browser-owned subtree and resolves the captured composition anchor (411.57175ms)
+✔ remote after preserves the browser-owned subtree and resolves the captured composition anchor (316.486459ms)
+✔ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (452.119209ms)
+✔ remote overlap rejects finalization with captured recovery text instead of deleting peer content (461.163875ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (439.375625ms)
+✔ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (323.155917ms)
+✔ read-only ordinary input is rejected and disposed queued generations cannot commit (368.540666ms)
+✔ native wrapper replacement reprojects only the affected block and keeps unrelated node identity (322.848917ms)
+✔ read-only noncancelable mutation restores authoritative content with an explicit rejection (326.292333ms)
+✔ composition keydown before finalization and duplicate final input notifications commit once (357.183208ms)
+✔ commit-key suppression expires at a dispatcher boundary when no keyup arrives (372.617166ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12155.96425

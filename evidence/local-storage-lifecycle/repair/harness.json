@@ -1,0 +1,146 @@
+{
+  "cases": [
+    {
+      "name": "deterministic later transaction failure cannot reject an earlier captured set, and selection-only work adds no storage",
+      "passed": true
+    },
+    {
+      "name": "deterministic explicit reject policy prevents Rust mutation after failure; policy is captured by value",
+      "passed": true
+    }
+  ],
+  "processes": [],
+  "fixtures": [
+    {
+      "identity": {
+        "profile": "editac.yrs-yjs.editor.v5",
+        "schema": "editac.registry.editor.v5",
+        "documentId": "45678901-4567-4567-8567-45678901abcd",
+        "epoch": "56789012-5678-4678-8678-56789012abcd",
+        "protocolVersion": 1,
+        "updateEncoding": 1,
+        "offsets": "utf16"
+      },
+      "writerId": 949452544,
+      "sequence": 1,
+      "origin": "editac:local:lifecycle:test",
+      "bytes": [
+        1,
+        1,
+        128,
+        254,
+        221,
+        196,
+        3,
+        0,
+        196,
+        235,
+        210,
+        246,
+        153,
+        11,
+        5,
+        235,
+        210,
+        246,
+        153,
+        11,
+        6,
+        1,
+        65,
+        0
+      ],
+      "checksum": "b4774b769c8e03f5db93dcf6f1580b2b6bd82523d9542752ff4451cb780b36d0",
+      "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"45678901-4567-4567-8567-45678901abcd\\\",\\\"56789012-5678-4678-8678-56789012abcd\\\",1,1,\\\"utf16\\\"]\",949452544,1,\"b4774b769c8e03f5db93dcf6f1580b2b6bd82523d9542752ff4451cb780b36d0\"]"
+    },
+    {
+      "identity": {
+        "profile": "editac.yrs-yjs.editor.v5",
+        "schema": "editac.registry.editor.v5",
+        "documentId": "45678901-4567-4567-8567-45678901abcd",
+        "epoch": "56789012-5678-4678-8678-56789012abcd",
+        "protocolVersion": 1,
+        "updateEncoding": 1,
+        "offsets": "utf16"
+      },
+      "writerId": 949452544,
+      "sequence": 2,
+      "origin": "editac:local:lifecycle:test",
+      "bytes": [
+        1,
+        1,
+        128,
+        254,
+        221,
+        196,
+        3,
+        1,
+        196,
+        235,
+        210,
+        246,
+        153,
+        11,
+        5,
+        128,
+        254,
+        221,
+        196,
+        3,
+        0,
+        1,
+        66,
+        0
+      ],
+      "checksum": "cb46b937968aeff7fd4bbb1181bfcbdfe550a6d5e9f7220f8e878150991c0296",
+      "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"45678901-4567-4567-8567-45678901abcd\\\",\\\"56789012-5678-4678-8678-56789012abcd\\\",1,1,\\\"utf16\\\"]\",949452544,2,\"cb46b937968aeff7fd4bbb1181bfcbdfe550a6d5e9f7220f8e878150991c0296\"]"
+    },
+    {
+      "identity": {
+        "profile": "editac.yrs-yjs.editor.v5",
+        "schema": "editac.registry.editor.v5",
+        "documentId": "45678901-4567-4567-8567-45678901abcd",
+        "epoch": "56789012-5678-4678-8678-56789012abcd",
+        "protocolVersion": 1,
+        "updateEncoding": 1,
+        "offsets": "utf16"
+      },
+      "writerId": 3630708456,
+      "sequence": 1,
+      "origin": "editac:local:lifecycle:test",
+      "bytes": [
+        1,
+        1,
+        232,
+        237,
+        160,
+        195,
+        13,
+        0,
+        196,
+        235,
+        210,
+        246,
+        153,
+        11,
+        5,
+        235,
+        210,
+        246,
+        153,
+        11,
+        6,
+        1,
+        65,
+        0
+      ],
+      "checksum": "bbf953a13ae5f635a8c1f6cbed279a8cd27972658d8b752dd7b4777025714721",
+      "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"45678901-4567-4567-8567-45678901abcd\\\",\\\"56789012-5678-4678-8678-56789012abcd\\\",1,1,\\\"utf16\\\"]\",3630708456,1,\"bbf953a13ae5f635a8c1f6cbed279a8cd27972658d8b752dd7b4777025714721\"]"
+    }
+  ],
+  "teardown": {
+    "browserClosed": true,
+    "browserProcessExited": true,
+    "fixtureServersStarted": 0
+  }
+}

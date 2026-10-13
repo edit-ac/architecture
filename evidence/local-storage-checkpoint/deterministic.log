@@ -1,0 +1,20 @@
+✔ publication and coverage remain invisible until transaction completion; owned bytes survive reopen (16.287792ms)
+✔ aborted publication before-write-success recovers all locally committed real engine edits (1.783459ms)
+✔ aborted publication after-write-success recovers all locally committed real engine edits (1.313833ms)
+✔ after-complete publication recovers covered and later committed tail without loss (1.114125ms)
+✔ corrupt latest bytes falls back to previous point and full committed tail (1.097667ms)
+✔ corrupt latest coverage falls back to previous point and full committed tail (1.322709ms)
+✔ corrupt latest version falls back to previous point and full committed tail (1.004708ms)
+✔ corrupt latest identity falls back to previous point and full committed tail (1.053334ms)
+✔ corrupt latest semantic falls back to previous point and full committed tail (1.354875ms)
+✔ both corrupt checkpoints, corrupt journal, missing and incompatible identity fail explicitly (1.10575ms)
+✔ uncommitted/foreign coverage rejected without publishing; quota and permission failure preserve prior state (3.246875ms)
+✔ strict durability fallback is reported and repeated checkpoint publication retains journal/outbox identities (1.134416ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 429.126291

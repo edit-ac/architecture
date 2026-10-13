@@ -1,0 +1,43 @@
+✖ ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending (1465.946958ms)
+✔ negotiated actual relay commit prunes only pending membership and preserves recovery journal (235.82675ms)
+✔ receipt documentId mismatch cannot prune or claim remoteCommitted (227.957666ms)
+✔ receipt epoch mismatch cannot prune or claim remoteCommitted (220.230375ms)
+✔ receipt schema mismatch cannot prune or claim remoteCommitted (218.267792ms)
+✔ receipt writerId mismatch cannot prune or claim remoteCommitted (219.644ms)
+✔ receipt sequence mismatch cannot prune or claim remoteCommitted (203.298334ms)
+✔ receipt checksum mismatch cannot prune or claim remoteCommitted (215.501208ms)
+✔ receipt updateId mismatch cannot prune or claim remoteCommitted (220.33275ms)
+✔ denied authorization keeps offline commands editable and recovery export available without upload (237.487125ms)
+✔ service revocation stops upload and baseline traffic while retaining edits for authorized reconnect (238.62675ms)
+✔ late committed response after revocation is fenced; reconnect resends idempotently (216.8505ms)
+✔ receipt transaction abort cannot publish remoteCommitted or prune (233.769917ms)
+✔ new local commit during durable upload restarts the bounded replay cursor (238.9965ms)
+✔ unsupported negotiation and wrong peer identity fail before replacing an authorized connection (236.297875ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 14
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4948.993167
+
+✖ failing tests:
+
+test at tests/receipts.test.mjs:30:3
+✖ ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending (1465.946958ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(result.frames >= 3)
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:114:43
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/receipts.test.mjs:100:21)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

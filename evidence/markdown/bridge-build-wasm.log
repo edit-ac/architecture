@@ -1,0 +1,18 @@
+
+> edit-ac-workspace@0.0.0 build:wasm
+> node scripts/build-wasm.mjs
+
+wasm-bindgen 0.2.129
+/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/cargo
+/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc
+error: cannot update the lock file /Users/bpstr/Github/edit-ac/core/Cargo.lock because --locked was passed to prevent this
+help: to generate the lock file without accessing the network, remove the --locked flag and use --offline instead.
+file:///Users/bpstr/Github/edit-ac/core/scripts/build-wasm.mjs:15
+  if (result.error || result.status !== 0) throw result.error || new Error(`${command} exited ${result.status}`);
+                                                                 ^
+
+Error: /Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/cargo exited 101
+    at run (file:///Users/bpstr/Github/edit-ac/core/scripts/build-wasm.mjs:15:66)
+    at file:///Users/bpstr/Github/edit-ac/core/scripts/build-wasm.mjs:24:1
+
+Node.js v26.4.0

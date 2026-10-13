@@ -1,0 +1,148 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs math
+
+math browser: chromium
+(node:92219) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ inline: safe lazy preview or literal source without document mutation (2299.308833ms)
+✔ display: safe lazy preview or literal source without document mutation (215.309792ms)
+✔ invalid: safe lazy preview or literal source without document mutation (242.184291ms)
+✔ url: safe lazy preview or literal source without document mutation (193.834542ms)
+✔ image: safe lazy preview or literal source without document mutation (172.851417ms)
+✔ html: safe lazy preview or literal source without document mutation (156.278334ms)
+✔ macro: safe lazy preview or literal source without document mutation (157.380916ms)
+✔ depth: safe lazy preview or literal source without document mutation (155.859417ms)
+✔ literal: safe lazy preview or literal source without document mutation (179.065667ms)
+✔ disabled: no lazy renderer request and source survives IndexedDB recovery (146.834375ms)
+✔ absentRenderer: no lazy renderer request and source survives IndexedDB recovery (142.106958ms)
+✔ portable helper shares exact Rust definition and enforces UTF-16 and control bounds (134.265833ms)
+✔ renderer network failure preserves source and document state (174.218584ms)
+✔ direct pinned renderer disables URL and HTML execution without presenter filtering (142.259292ms)
+✔ unrelated edits and real native selection retain the math view (216.726291ms)
+✔ pending render disposal cannot recreate detached preview (156.736208ms)
+✖ prepared peer math update cancels older content and survives disabled recovery (161.695459ms)
+✔ pending preview update cannot paint an older source (164.846459ms)
+✔ decoration changes stay ephemeral while canonical mutations and forged attributes retain input ownership (171.96475ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 18
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5775.116834
+
+✖ failing tests:
+
+test at tests/browser/math.spec.ts:48:1
+✖ prepared peer math update cancels older content and survives disabled recovery (161.695459ms)
+  page.evaluate: EngineError: expected plain envelope
+      at envelope (http://127.0.0.1:59418/core/engine.js:99:15)
+      at http://127.0.0.1:59418/core/engine.js:282:23
+      at http://127.0.0.1:59418/core/engine.js:135:16
+      at invoke (http://127.0.0.1:59418/core/engine.js:13:16)
+      at use (http://127.0.0.1:59418/core/engine.js:132:40)
+      at mutate (http://127.0.0.1:59418/core/engine.js:185:24)
+      at Object.applyUpdate (http://127.0.0.1:59418/core/engine.js:281:34)
+      at Object.applyUpdate (http://127.0.0.1:59418/fixture/session.mjs:22:155)
+      at eval (eval at evaluate (:370:30), <anonymous>:1:29)
+      at UtilityScript.evaluate (<anonymous>:372:16)
+      at probe.bytes (/Users/bpstr/Github/edit-ac/core/tests/browser/math.spec.ts:51:13)
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:77:7) {
+    log: []
+  }
+math browser: firefox
+(node:92413) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ inline: safe lazy preview or literal source without document mutation (4399.539084ms)
+✔ display: safe lazy preview or literal source without document mutation (361.200458ms)
+✔ invalid: safe lazy preview or literal source without document mutation (307.263459ms)
+✔ url: safe lazy preview or literal source without document mutation (291.459959ms)
+✔ image: safe lazy preview or literal source without document mutation (273.26775ms)
+✔ html: safe lazy preview or literal source without document mutation (279.434292ms)
+✔ macro: safe lazy preview or literal source without document mutation (277.279834ms)
+✔ depth: safe lazy preview or literal source without document mutation (335.375916ms)
+✔ literal: safe lazy preview or literal source without document mutation (425.362875ms)
+✔ disabled: no lazy renderer request and source survives IndexedDB recovery (872.209458ms)
+✔ absentRenderer: no lazy renderer request and source survives IndexedDB recovery (337.680792ms)
+✔ portable helper shares exact Rust definition and enforces UTF-16 and control bounds (451.179ms)
+✔ renderer network failure preserves source and document state (701.372ms)
+✔ direct pinned renderer disables URL and HTML execution without presenter filtering (479.685708ms)
+✔ unrelated edits and real native selection retain the math view (526.037334ms)
+✔ pending render disposal cannot recreate detached preview (546.394209ms)
+✖ prepared peer math update cancels older content and survives disabled recovery (1030.582583ms)
+✔ pending preview update cannot paint an older source (526.316417ms)
+✔ decoration changes stay ephemeral while canonical mutations and forged attributes retain input ownership (602.957334ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 18
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13648.247166
+
+✖ failing tests:
+
+test at tests/browser/math.spec.ts:48:1
+✖ prepared peer math update cancels older content and survives disabled recovery (1030.582583ms)
+  page.evaluate: expected plain envelope
+  EngineError@http://127.0.0.1:59540/core/engine.js:5:9
+  envelope@http://127.0.0.1:59540/core/engine.js:99:15
+  ownHandle/applyUpdate/<@http://127.0.0.1:59540/core/engine.js:282:31
+  ownHandle/use/<@http://127.0.0.1:59540/core/engine.js:135:16
+  invoke@http://127.0.0.1:59540/core/engine.js:13:16
+  use@http://127.0.0.1:59540/core/engine.js:132:46
+  mutate@http://127.0.0.1:59540/core/engine.js:185:27
+  applyUpdate@http://127.0.0.1:59540/core/engine.js:281:40
+  applyUpdate@http://127.0.0.1:59540/fixture/session.mjs:22:155
+  @debugger eval code line 370 > eval:1:29
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at probe.bytes (/Users/bpstr/Github/edit-ac/core/tests/browser/math.spec.ts:51:13)
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:77:7) {
+    log: []
+  }
+math browser: webkit
+(node:92920) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ inline: safe lazy preview or literal source without document mutation (4822.742125ms)
+✔ display: safe lazy preview or literal source without document mutation (2216.235042ms)
+✔ invalid: safe lazy preview or literal source without document mutation (327.771375ms)
+✔ url: safe lazy preview or literal source without document mutation (442.5845ms)
+✔ image: safe lazy preview or literal source without document mutation (327.232375ms)
+✔ html: safe lazy preview or literal source without document mutation (290.868666ms)
+✔ macro: safe lazy preview or literal source without document mutation (331.189708ms)
+✔ depth: safe lazy preview or literal source without document mutation (312.508042ms)
+✔ literal: safe lazy preview or literal source without document mutation (383.1955ms)
+✔ disabled: no lazy renderer request and source survives IndexedDB recovery (346.302167ms)
+✔ absentRenderer: no lazy renderer request and source survives IndexedDB recovery (481.110083ms)
+✔ portable helper shares exact Rust definition and enforces UTF-16 and control bounds (455.317208ms)
+✔ renderer network failure preserves source and document state (407.532375ms)
+✔ direct pinned renderer disables URL and HTML execution without presenter filtering (305.402625ms)
+✔ unrelated edits and real native selection retain the math view (374.767209ms)
+✔ pending render disposal cannot recreate detached preview (316.040958ms)
+✖ prepared peer math update cancels older content and survives disabled recovery (321.1355ms)
+✔ pending preview update cannot paint an older source (350.489333ms)
+✔ decoration changes stay ephemeral while canonical mutations and forged attributes retain input ownership (361.909333ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 18
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13671.090167
+
+✖ failing tests:
+
+test at tests/browser/math.spec.ts:48:1
+✖ prepared peer math update cancels older content and survives disabled recovery (321.1355ms)
+  page.evaluate: EngineError: expected plain envelope
+      at probe.bytes (/Users/bpstr/Github/edit-ac/core/tests/browser/math.spec.ts:51:13)
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:77:7) {
+    log: []
+  }

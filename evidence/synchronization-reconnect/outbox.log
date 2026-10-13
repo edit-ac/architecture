@@ -1,0 +1,30 @@
+✔ deterministic synchronization entry fixes separate update, sync, awareness and receipt profiles (8.799ms)
+✔ deterministic prepared socket delivery preserves outbox until matching application receipts commit (2.094458ms)
+✔ deterministic checkpoint coverage retains every pending identity and retransmittable real update (2.8885ms)
+✔ deterministic sync events, socket delivery and state vectors cannot acknowledge updates (0.602125ms)
+✔ deterministic absent negotiated receipt capability reports unknown durability and retains updates (0.518583ms)
+✔ deterministic wrong receipt documentId cannot prune pending updates (0.627125ms)
+✔ deterministic wrong receipt epoch cannot prune pending updates (0.496084ms)
+✔ deterministic wrong receipt schema cannot prune pending updates (0.552625ms)
+✔ deterministic wrong receipt profile cannot prune pending updates (0.578416ms)
+✔ deterministic wrong receipt writerId cannot prune pending updates (0.477417ms)
+✔ deterministic wrong receipt sequence cannot prune pending updates (0.456667ms)
+✔ deterministic wrong receipt checksum cannot prune pending updates (0.415334ms)
+✔ deterministic wrong receipt updateId cannot prune pending updates (0.416334ms)
+✔ deterministic receipt acknowledgment and pruning wait for completion, not request success (0.535375ms)
+✔ deterministic receipt abort before-lookup retains outbox and permits retry (0.613041ms)
+✔ deterministic receipt abort after-write-success retains outbox and permits retry (0.522083ms)
+✔ deterministic quota, permission and receipt write failures propagate without pruning (0.574875ms)
+✔ deterministic duplicate/reordered durable receipts survive reopen and duplicate append (1.559959ms)
+✔ deterministic unknown receipt cannot pre-acknowledge a future journal append (0.589833ms)
+✔ deterministic corrupt receipt or journal fails explicitly instead of hiding pending work (0.487583ms)
+✔ deterministic detached pending bytes and unsupported strict durability preserve identity (0.578375ms)
+✔ actual Chromium v2 upgrade, receipt abort boundaries, checkpoint retention and restart preserve real Rust updates (1650.301708ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2046.048291

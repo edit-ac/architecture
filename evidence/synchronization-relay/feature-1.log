@@ -1,0 +1,198 @@
+(node:27506) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ explicit capability is separate from ordinary accepted delivery (94.0255ms)
+✖ prepared authorization, complete metadata and revocation isolate stored identities (59.077084ms)
+✖ receipt waits for commit completion; failed commit rolls back and permits retry (62.842625ms)
+✖ process crash at before-transaction preserves only committed bytes and retry identity (63.51925ms)
+✖ process crash at before-commit preserves only committed bytes and retry identity (58.419167ms)
+✖ process crash at after-commit preserves only committed bytes and retry identity (65.804417ms)
+✖ process crash at before-receipt preserves only committed bytes and retry identity (70.553708ms)
+✖ Rust and JS updates converge after shuffled duplicates, pagination and service restart (70.068042ms)
+✖ content identity, writer/sequence conflicts and request/replay limits fail before mutation (113.102958ms)
+✖ bounded queue returns backpressure while pending updates remain retryable (77.058583ms)
+✔ reference relay refuses non-loopback binding and persistent metadata reinterpretation (27.699583ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 1
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1143.543709
+
+✖ failing tests:
+
+test at tests/server-receipts.test.mjs:33:3
+✖ explicit capability is separate from ordinary accepted delivery (94.0255ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      documentId: '12345678-1234-4234-8234-123456789abc',
+      epoch: '23456789-2345-4345-8345-23456789abcd',
+      offsets: 'utf16',
+  +   profile: 'editac.yrs-yjs.editor.v5',
+  -   profile: 'editac.yrs-yjs.v1',
+      protocolVersion: 1,
+  +   schema: 'editac.registry.editor.v5',
+  -   schema: 'editac.registry.v5',
+      updateEncoding: 1
+    }
+  
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:38:47)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:122:39
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { documentId: '12345678-1234-4234-8234-123456789abc', epoch: '23456789-2345-4345-8345-23456789abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 },
+    expected: { profile: 'editac.yrs-yjs.v1', schema: 'editac.registry.v5', documentId: '12345678-1234-4234-8234-123456789abc', epoch: '23456789-2345-4345-8345-23456789abcd', protocolVersion: 1, updateEncoding: 1, offsets: 'utf16' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/server-receipts.test.mjs:33:3
+✖ prepared authorization, complete metadata and revocation isolate stored identities (59.077084ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:36:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:137:39
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/server-receipts.test.mjs:33:3
+✖ receipt waits for commit completion; failed commit rolls back and permits retry (62.842625ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:36:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:160:39
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/server-receipts.test.mjs:33:3
+✖ process crash at before-transaction preserves only committed bytes and retry identity (63.51925ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:36:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:177:85
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/server-receipts.test.mjs:33:3
+✖ process crash at before-commit preserves only committed bytes and retry identity (58.419167ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:36:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:177:85
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/server-receipts.test.mjs:33:3
+✖ process crash at after-commit preserves only committed bytes and retry identity (65.804417ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:36:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:177:85
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/server-receipts.test.mjs:33:3
+✖ process crash at before-receipt preserves only committed bytes and retry identity (70.553708ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:36:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:177:85
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/server-receipts.test.mjs:33:3
+✖ Rust and JS updates converge after shuffled duplicates, pagination and service restart (70.068042ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:36:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:201:43
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/server-receipts.test.mjs:33:3
+✖ content identity, writer/sequence conflicts and request/replay limits fail before mutation (113.102958ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:36:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:239:107
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/server-receipts.test.mjs:33:3
+✖ bounded queue returns backpressure while pending updates remain retryable (77.058583ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:36:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:263:82
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/server-receipts.test.mjs:33:90)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }

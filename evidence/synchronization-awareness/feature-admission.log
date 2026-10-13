@@ -1,0 +1,382 @@
+TAP version 13
+# (node:94425) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions
+ok 1 - Rust portable anchors roundtrip through JS relative-position oracle and awareness in both directions
+  ---
+  duration_ms: 24.739834
+  type: 'test'
+  ...
+# Subtest: relative selections move under remote inserts and fail safely after semantic target deletion
+ok 2 - relative selections move under remote inserts and fail safely after semantic target deletion
+  ---
+  duration_ms: 9.910875
+  type: 'test'
+  ...
+# Subtest: stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime
+ok 3 - stale peers expire exactly at deadline; duplicate/reordered clocks cannot resurrect or extend lifetime
+  ---
+  duration_ms: 1.94425
+  type: 'test'
+  ...
+# Subtest: burst coalescing, backpressure and thrown sends retain one bounded pending state
+ok 4 - burst coalescing, backpressure and thrown sends retain one bounded pending state
+  ---
+  duration_ms: 514.474834
+  type: 'test'
+  ...
+# Subtest: host-driven renewal and clear presence use compatible clocks without idle traffic
+ok 5 - host-driven renewal and clear presence use compatible clocks without idle traffic
+  ---
+  duration_ms: 0.579209
+  type: 'test'
+  ...
+# Subtest: invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically
+ok 6 - invalid, surrogate-interior, wrong-lineage and wrong-source cursors fail atomically
+  ---
+  duration_ms: 12.369958
+  type: 'test'
+  ...
+# Subtest: malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers
+ok 7 - malformed UTF-8/JSON, oversized, truncated, noncanonical and duplicate frames do not change peers
+  ---
+  duration_ms: 1.977959
+  type: 'test'
+  ...
+# Subtest: capacity includes expired tombstones; untrusted remote frames cannot remove local presence
+ok 8 - capacity includes expired tombstones; untrusted remote frames cannot remove local presence
+  ---
+  duration_ms: 1.388583
+  type: 'test'
+  ...
+# Subtest: replacement, expiry, invalid batch and disposal release every imported anchor
+ok 9 - replacement, expiry, invalid batch and disposal release every imported anchor
+  ---
+  duration_ms: 2.84775
+  type: 'test'
+  ...
+# Subtest: reentrant send cannot erase a newer queued state or undo disposal
+ok 10 - reentrant send cannot erase a newer queued state or undo disposal
+  ---
+  duration_ms: 0.969042
+  type: 'test'
+  ...
+# Subtest: awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox
+not ok 11 - awareness traffic never changes actual Rust state/history/update stream or durable journal/outbox
+  ---
+  duration_ms: 87.903
+  type: 'test'
+  location: '/Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:27:28'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      {
+    +   changedNodes: [],
+    -   changedNodes: [
+    -     'n:1451904700:1'
+    -   ],
+        identity: {
+          documentId: '00000011-4567-4567-8567-45678901abcd',
+          epoch: '56789012-5678-4678-8678-56789012abcd',
+          offsets: 'utf16',
+          profile: 'editac.yrs-yjs.editor.v5',
+    ...
+        revision: 1,
+    +   touchedRanges: [],
+    -   touchedRanges: [
+    -     {
+    -       newEnd: 4,
+    -       newStart: 3,
+    -       oldEnd: 3,
+    -       source: 'n:1451904700:1',
+    -       start: 3
+    -     }
+    -   ],
+        visible: [
+          {
+            blockAttributes: [
+              'paragraph'
+            ],
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    changedNodes:
+      0: 'n:1451904700:1'
+    identity:
+      documentId: '00000011-4567-4567-8567-45678901abcd'
+      epoch: '56789012-5678-4678-8678-56789012abcd'
+      offsets: 'utf16'
+      profile: 'editac.yrs-yjs.editor.v5'
+      protocolVersion: 1
+      schema: 'editac.registry.editor.v5'
+      updateEncoding: 1
+    recovery:
+    retainedStructure:
+      checks:
+      containers:
+      controls:
+      deleted:
+      intentions:
+      outcomes:
+      retained:
+        n:1451904700:1:
+          0: 'paragraph'
+        n:1451904700:2:
+          0: 'paragraph'
+      sources:
+        n:1451904700:1:
+          identity: '1451904700:2'
+          runs:
+            0:
+              attributes:
+              insert: 'a😀Xbc'
+        n:1451904700:2:
+          identity: '1451904700:12'
+          runs:
+            0:
+              attributes:
+              insert: 'second'
+      visible:
+        0:
+          check: ~
+          id: 'n:1451904700:1'
+          kind: 'block'
+          number: ~
+          parent: '@root'
+          presentation:
+            0: 'paragraph'
+          runs:
+            0:
+              attributes:
+              insert: 'a😀Xbc'
+          spans:
+            0:
+              0: 'n:1451904700:1'
+              1: 0
+              2: 6
+          tuple:
+            0: 'paragraph'
+          version: 'base'
+        1:
+          check: ~
+          id: 'n:1451904700:2'
+          kind: 'block'
+          number: ~
+          parent: '@root'
+          presentation:
+            0: 'paragraph'
+          runs:
+            0:
+              attributes:
+              insert: 'second'
+          spans:
+            0:
+              0: 'n:1451904700:2'
+              1: 0
+              2: 6
+          tuple:
+            0: 'paragraph'
+          version: 'base'
+    revision: 1
+    touchedRanges:
+      0:
+        newEnd: 4
+        newStart: 3
+        oldEnd: 3
+        source: 'n:1451904700:1'
+        start: 3
+    visible:
+      0:
+        blockAttributes:
+          0: 'paragraph'
+        editor:
+          checked: ~
+          containerAttributes: ~
+          number: ~
+          version: 'base'
+        id: 'n:1451904700:1'
+        kind: 'block'
+        order: 0
+        parent: '@root'
+        runs:
+          0:
+            attributes:
+            text: 'a😀Xbc'
+        spans:
+          0:
+            end: 6
+            identity: '<1451904700#2>'
+            source: 'n:1451904700:1'
+            start: 0
+      1:
+        blockAttributes:
+          0: 'paragraph'
+        editor:
+          checked: ~
+          containerAttributes: ~
+          number: ~
+          version: 'base'
+        id: 'n:1451904700:2'
+        kind: 'block'
+        order: 1
+        parent: '@root'
+        runs:
+          0:
+            attributes:
+            text: 'second'
+        spans:
+          0:
+            end: 6
+            identity: '<1451904700#12>'
+            source: 'n:1451904700:2'
+            start: 0
+  actual:
+    changedNodes:
+    identity:
+      documentId: '00000011-4567-4567-8567-45678901abcd'
+      epoch: '56789012-5678-4678-8678-56789012abcd'
+      offsets: 'utf16'
+      profile: 'editac.yrs-yjs.editor.v5'
+      protocolVersion: 1
+      schema: 'editac.registry.editor.v5'
+      updateEncoding: 1
+    recovery:
+    retainedStructure:
+      checks:
+      containers:
+      controls:
+      deleted:
+      intentions:
+      outcomes:
+      retained:
+        n:1451904700:1:
+          0: 'paragraph'
+        n:1451904700:2:
+          0: 'paragraph'
+      sources:
+        n:1451904700:1:
+          identity: '1451904700:2'
+          runs:
+            0:
+              attributes:
+              insert: 'a😀Xbc'
+        n:1451904700:2:
+          identity: '1451904700:12'
+          runs:
+            0:
+              attributes:
+              insert: 'second'
+      visible:
+        0:
+          check: ~
+          id: 'n:1451904700:1'
+          kind: 'block'
+          number: ~
+          parent: '@root'
+          presentation:
+            0: 'paragraph'
+          runs:
+            0:
+              attributes:
+              insert: 'a😀Xbc'
+          spans:
+            0:
+              0: 'n:1451904700:1'
+              1: 0
+              2: 6
+          tuple:
+            0: 'paragraph'
+          version: 'base'
+        1:
+          check: ~
+          id: 'n:1451904700:2'
+          kind: 'block'
+          number: ~
+          parent: '@root'
+          presentation:
+            0: 'paragraph'
+          runs:
+            0:
+              attributes:
+              insert: 'second'
+          spans:
+            0:
+              0: 'n:1451904700:2'
+              1: 0
+              2: 6
+          tuple:
+            0: 'paragraph'
+          version: 'base'
+    revision: 1
+    touchedRanges:
+    visible:
+      0:
+        blockAttributes:
+          0: 'paragraph'
+        editor:
+          checked: ~
+          containerAttributes: ~
+          number: ~
+          version: 'base'
+        id: 'n:1451904700:1'
+        kind: 'block'
+        order: 0
+        parent: '@root'
+        runs:
+          0:
+            attributes:
+            text: 'a😀Xbc'
+        spans:
+          0:
+            end: 6
+            identity: '<1451904700#2>'
+            source: 'n:1451904700:1'
+            start: 0
+      1:
+        blockAttributes:
+          0: 'paragraph'
+        editor:
+          checked: ~
+          containerAttributes: ~
+          number: ~
+          version: 'base'
+        id: 'n:1451904700:2'
+        kind: 'block'
+        order: 1
+        parent: '@root'
+        runs:
+          0:
+            attributes:
+            text: 'second'
+        spans:
+          0:
+            end: 6
+            identity: '<1451904700#12>'
+            source: 'n:1451904700:2'
+            start: 0
+  operator: 'deepStrictEqual'
+  stack: |-
+    file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:212:12
+    async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/awareness.test.mjs:27:109)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: invalid options/time and oversize local presence fail without discarding valid state
+ok 12 - invalid options/time and oversize local presence fail without discarding valid state
+  ---
+  duration_ms: 0.97625
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 11
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 883.482791

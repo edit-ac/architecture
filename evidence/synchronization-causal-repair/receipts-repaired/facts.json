@@ -1,0 +1,573 @@
+{
+  "boundary": "Actual Chromium IndexedDB / Rust WASM client and peer / loopback HTTP / SQLite FULL WAL; prepared grants; no production auth",
+  "cases": [
+    {
+      "name": "ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending",
+      "passed": true,
+      "result": {
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": null,
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        },
+        "pending": 1,
+        "frames": [
+          0,
+          2
+        ],
+        "peer": "a😀Zb",
+        "local": "a😀Zb"
+      },
+      "requests": 1
+    },
+    {
+      "name": "negotiated actual relay commit prunes only pending membership and preserves recovery journal",
+      "passed": true,
+      "result": {
+        "acknowledgments": [
+          {
+            "state": "remoteCommitted",
+            "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",2874684673,1,\"e7887983ba8dcb54cdd85177e2341004d7aec84dd59f4a85538eec364f133728\"]"
+          }
+        ],
+        "duplicate": {
+          "state": "remoteCommitted",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",2874684673,1,\"e7887983ba8dcb54cdd85177e2341004d7aec84dd59f4a85538eec364f133728\"]"
+        },
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": "editac-durable-receipt-v1",
+          "remoteDurability": "durable",
+          "remoteCommitted": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",2874684673,1,\"e7887983ba8dcb54cdd85177e2341004d7aec84dd59f4a85538eec364f133728\"]",
+          "replayPending": false
+        },
+        "pending": 0,
+        "journal": 1,
+        "recovered": "a😀Zb",
+        "text": "a😀Zb"
+      },
+      "requests": 2
+    },
+    {
+      "name": "receipt documentId mismatch cannot prune or claim remoteCommitted",
+      "passed": true,
+      "result": {
+        "result": {
+          "state": "ignored",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",966278681,1,\"f85bc069ea198dda04164a5c86aebd7e8b5d912d2c10f6292cf9894e785ca03c\"]",
+          "reason": "identity-mismatch"
+        },
+        "pending": 1,
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": "editac-durable-receipt-v1",
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        }
+      },
+      "requests": 1
+    },
+    {
+      "name": "receipt epoch mismatch cannot prune or claim remoteCommitted",
+      "passed": true,
+      "result": {
+        "result": {
+          "state": "ignored",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",2531988799,1,\"1cb4ebc0cbe0c6d81b01def125f69e9cfdc8222b802b6951ac96e7ba5b48665d\"]",
+          "reason": "identity-mismatch"
+        },
+        "pending": 1,
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": "editac-durable-receipt-v1",
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        }
+      },
+      "requests": 1
+    },
+    {
+      "name": "receipt schema mismatch cannot prune or claim remoteCommitted",
+      "passed": true,
+      "result": {
+        "result": {
+          "state": "ignored",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",3749389536,1,\"0b03394794324f0a6d8bdb7fd59fc73d8326d313acc2c58d79fb5476af53940b\"]",
+          "reason": "identity-mismatch"
+        },
+        "pending": 1,
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": "editac-durable-receipt-v1",
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        }
+      },
+      "requests": 1
+    },
+    {
+      "name": "receipt writerId mismatch cannot prune or claim remoteCommitted",
+      "passed": true,
+      "result": {
+        "result": {
+          "state": "ignored",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",419297622,1,\"1e952baa64708f85d524c9e2c81668ca49f354446c659a904a25a23ef45b0fe1\"]",
+          "reason": "unknown-update"
+        },
+        "pending": 1,
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": "editac-durable-receipt-v1",
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        }
+      },
+      "requests": 1
+    },
+    {
+      "name": "receipt sequence mismatch cannot prune or claim remoteCommitted",
+      "passed": true,
+      "result": {
+        "result": {
+          "state": "ignored",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",2846822337,1,\"137195bc9135766fd39886fb402c469e323705b34e8bb093c9373d090e5b9765\"]",
+          "reason": "unknown-update"
+        },
+        "pending": 1,
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": "editac-durable-receipt-v1",
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        }
+      },
+      "requests": 1
+    },
+    {
+      "name": "receipt checksum mismatch cannot prune or claim remoteCommitted",
+      "passed": true,
+      "result": {
+        "result": {
+          "state": "ignored",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",2068436348,1,\"4135c9eafef82087f5be77d1214ed02b8943396df06c5f666c88e37c75e57109\"]",
+          "reason": "identity-mismatch"
+        },
+        "pending": 1,
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": "editac-durable-receipt-v1",
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        }
+      },
+      "requests": 1
+    },
+    {
+      "name": "receipt updateId mismatch cannot prune or claim remoteCommitted",
+      "passed": true,
+      "result": {
+        "result": {
+          "state": "ignored",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",3480176799,1,\"694b8bf3816cd84360e1c37ca2e1aa33ef8e004fa950596f7efd06dc397a22ed\"]-wrong",
+          "reason": "identity-mismatch"
+        },
+        "pending": 1,
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": "editac-durable-receipt-v1",
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        }
+      },
+      "requests": 1
+    },
+    {
+      "name": "denied authorization keeps offline commands editable and recovery export available without upload",
+      "passed": true,
+      "result": {
+        "state": {
+          "authorization": "denied",
+          "receiptProtocol": null,
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        },
+        "pending": 2,
+        "frames": 0,
+        "recovered": "a😀DZb",
+        "text": "a😀DZb",
+        "receipt": {
+          "state": "ignored",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",2709884732,1,\"013f66f94ddfc1d772a77604ddb0f69828bf980e7fbf86e3e2d3ece8fabea815\"]",
+          "reason": "capability-unavailable"
+        }
+      },
+      "requests": 1
+    },
+    {
+      "name": "service revocation stops upload and baseline traffic while retaining edits for authorized reconnect",
+      "passed": true,
+      "result": {
+        "state": {
+          "authorization": "revoked",
+          "receiptProtocol": null,
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        },
+        "pending": 2,
+        "framesAfter": 2,
+        "frames": 2,
+        "recovered": "a😀RZb",
+        "text": "a😀RZb"
+      },
+      "requests": 2
+    },
+    {
+      "name": "late committed response after revocation is fenced; reconnect resends idempotently",
+      "passed": true,
+      "result": {
+        "retained": 1,
+        "revoked": {
+          "authorization": "revoked",
+          "receiptProtocol": null,
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        },
+        "acknowledgments": [
+          {
+            "state": "remoteCommitted",
+            "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",1891535118,1,\"4b6829454431399de7e5102aae0cdbb2392a40a9655062e89d16f255ceb06ee4\"]"
+          }
+        ],
+        "pending": 0
+      },
+      "requests": 4
+    },
+    {
+      "name": "receipt transaction abort cannot publish remoteCommitted or prune",
+      "passed": true,
+      "result": {
+        "error": "AbortError",
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": "editac-durable-receipt-v1",
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        },
+        "pending": 1,
+        "repaired": [
+          {
+            "state": "remoteCommitted",
+            "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",2670111597,1,\"a00a8d7232971ebaeaa9db37c4d65e10672bad5e8a988ef43f7aba79e02a9968\"]"
+          }
+        ],
+        "remaining": 0
+      },
+      "requests": 3
+    },
+    {
+      "name": "new local commit during durable upload restarts the bounded replay cursor",
+      "passed": true,
+      "result": {
+        "retained": 1,
+        "pending": 0,
+        "journal": 2
+      },
+      "requests": 3
+    },
+    {
+      "name": "unsupported negotiation and wrong peer identity fail before replacing an authorized connection",
+      "passed": true,
+      "result": {
+        "errors": [
+          "Unsupported receipt capability",
+          "Receipt peer identity mismatch"
+        ],
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": "editac-durable-receipt-v1",
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        },
+        "acknowledgments": [
+          {
+            "state": "remoteCommitted",
+            "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",1420095820,1,\"670dff7e54dea4c6517eb7519ada60bb1df093581154d927147706157f545f6a\"]"
+          }
+        ]
+      },
+      "requests": 2
+    },
+    {
+      "name": "malformed non-durable receipts fail admission and capability absence ignores even a valid receipt",
+      "passed": true,
+      "result": {
+        "errors": [
+          "Invalid durable application receipt",
+          "Invalid durable application receipt",
+          "Invalid durable application receipt"
+        ],
+        "ignored": {
+          "state": "ignored",
+          "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",2480377235,1,\"b756a037b13374b6074402cce48a18951c4c2a299a9ccb4475dbfd7ef87c6bca\"]",
+          "reason": "capability-unavailable"
+        },
+        "pending": 1,
+        "state": {
+          "authorization": "authorized",
+          "receiptProtocol": null,
+          "remoteDurability": "unknown",
+          "remoteCommitted": null,
+          "replayPending": true
+        }
+      },
+      "requests": 2
+    },
+    {
+      "name": "durable replay is bounded to one page per event without dropping the remaining local backlog",
+      "passed": true,
+      "result": {
+        "first": 32,
+        "retained": 3,
+        "second": 3,
+        "pending": 0,
+        "journal": 35
+      },
+      "requests": 36
+    }
+  ],
+  "processes": [
+    {
+      "pid": 2051,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50008,
+      "purpose": "SYN-1.6 Chromium integration",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50010,
+      "purpose": "ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50014,
+      "purpose": "negotiated actual relay commit prunes only pending membership and preserves recovery journal",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50018,
+      "purpose": "receipt documentId mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50021,
+      "purpose": "receipt epoch mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50024,
+      "purpose": "receipt schema mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50027,
+      "purpose": "receipt writerId mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50029,
+      "purpose": "receipt sequence mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50033,
+      "purpose": "receipt checksum mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50037,
+      "purpose": "receipt updateId mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50039,
+      "purpose": "denied authorization keeps offline commands editable and recovery export available without upload",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50042,
+      "purpose": "service revocation stops upload and baseline traffic while retaining edits for authorized reconnect",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50045,
+      "purpose": "late committed response after revocation is fenced; reconnect resends idempotently",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50048,
+      "purpose": "receipt transaction abort cannot publish remoteCommitted or prune",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50051,
+      "purpose": "new local commit during durable upload restarts the bounded replay cursor",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50055,
+      "purpose": "unsupported negotiation and wrong peer identity fail before replacing an authorized connection",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50058,
+      "purpose": "malformed non-durable receipts fail admission and capability absence ignores even a valid receipt",
+      "log": "feature.log"
+    },
+    {
+      "pid": 2050,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 50061,
+      "purpose": "durable replay is bounded to one page per event without dropping the remaining local backlog",
+      "log": "feature.log"
+    }
+  ],
+  "cleanup": [
+    {
+      "port": 50010,
+      "relayStopped": true
+    },
+    {
+      "port": 50014,
+      "relayStopped": true
+    },
+    {
+      "port": 50018,
+      "relayStopped": true
+    },
+    {
+      "port": 50021,
+      "relayStopped": true
+    },
+    {
+      "port": 50024,
+      "relayStopped": true
+    },
+    {
+      "port": 50027,
+      "relayStopped": true
+    },
+    {
+      "port": 50029,
+      "relayStopped": true
+    },
+    {
+      "port": 50033,
+      "relayStopped": true
+    },
+    {
+      "port": 50037,
+      "relayStopped": true
+    },
+    {
+      "port": 50039,
+      "relayStopped": true
+    },
+    {
+      "port": 50042,
+      "relayStopped": true
+    },
+    {
+      "port": 50045,
+      "relayStopped": true
+    },
+    {
+      "port": 50048,
+      "relayStopped": true
+    },
+    {
+      "port": 50051,
+      "relayStopped": true
+    },
+    {
+      "port": 50055,
+      "relayStopped": true
+    },
+    {
+      "port": 50058,
+      "relayStopped": true
+    },
+    {
+      "port": 50061,
+      "relayStopped": true
+    },
+    {
+      "browserStopped": true,
+      "scratchRemoved": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-receipts-databases-ANtdAJ"
+    }
+  ],
+  "browser": "156.0.8078.4"
+}

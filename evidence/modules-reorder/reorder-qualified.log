@@ -1,0 +1,148 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs reorder
+
+reorder browser: chromium
+✔ keyboard down and up use one semantic move and retain selected identity/range (1893.569958ms)
+✔ explicit accessible button is equivalent to keyboard control (175.034167ms)
+✔ concurrent peer edit delivered before move retains source identity and converges (140.78225ms)
+✔ concurrent peer edit delivered after move retains source identity and converges (121.01525ms)
+✔ invalid nested self destination is atomic (121.600292ms)
+✔ invalid nested descendant destination is atomic (128.830125ms)
+✔ invalid nested non-container destination is atomic (135.336ms)
+✔ invalid nested non-sibling destination is atomic (126.406625ms)
+✔ captured structural version rejects a stale target without retargeting (113.093083ms)
+✔ boundary buttons and keyboard do not create empty history or journal entries (127.412ms)
+✔ native Tab reaches controls and Enter restores editor selection (127.198542ms)
+✔ read-only and composition suppress reorder without taking composition keys (133.661791ms)
+✔ Escape and focus exit cancel retained targets (129.985541ms)
+✔ undo restores order while preserving remote content, redo moves again (168.489833ms)
+✔ disabled recovery retains reordered data and disposal removes controls/listeners (149.692834ms)
+✔ nested sibling keyboard move preserves container and text source identities (144.948583ms)
+✔ backward selection direction survives a move (128.14425ms)
+✔ embedded native controls own their keyboard shortcuts (99.142708ms)
+✖ an open slash presenter retains command and Escape priority (136.639792ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 18
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4606.641084
+
+✖ failing tests:
+
+test at tests/browser/reorder.spec.ts:54:1
+✖ an open slash presenter retains command and Escape priority (136.639792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at probe.text (file:///Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:55:300)
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+reorder browser: firefox
+✔ keyboard down and up use one semantic move and retain selected identity/range (3289.122167ms)
+✔ explicit accessible button is equivalent to keyboard control (310.819542ms)
+✔ concurrent peer edit delivered before move retains source identity and converges (284.028083ms)
+✔ concurrent peer edit delivered after move retains source identity and converges (262.037ms)
+✔ invalid nested self destination is atomic (285.646333ms)
+✔ invalid nested descendant destination is atomic (289.780083ms)
+✔ invalid nested non-container destination is atomic (320.069416ms)
+✔ invalid nested non-sibling destination is atomic (315.651375ms)
+✔ captured structural version rejects a stale target without retargeting (326.983334ms)
+✔ boundary buttons and keyboard do not create empty history or journal entries (832.909125ms)
+✔ native Tab reaches controls and Enter restores editor selection (381.366834ms)
+✔ read-only and composition suppress reorder without taking composition keys (339.245ms)
+✔ Escape and focus exit cancel retained targets (495.377834ms)
+✔ undo restores order while preserving remote content, redo moves again (411.284542ms)
+✔ disabled recovery retains reordered data and disposal removes controls/listeners (307.841375ms)
+✔ nested sibling keyboard move preserves container and text source identities (377.841125ms)
+✔ backward selection direction survives a move (401.7815ms)
+✔ embedded native controls own their keyboard shortcuts (288.639292ms)
+✖ an open slash presenter retains command and Escape priority (325.27875ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 18
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10308.624208
+
+✖ failing tests:
+
+test at tests/browser/reorder.spec.ts:54:1
+✖ an open slash presenter retains command and Escape priority (325.27875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at probe.text (file:///Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:55:300)
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+reorder browser: webkit
+✔ keyboard down and up use one semantic move and retain selected identity/range (2811.875208ms)
+✔ explicit accessible button is equivalent to keyboard control (307.345917ms)
+✔ concurrent peer edit delivered before move retains source identity and converges (337.664333ms)
+✔ concurrent peer edit delivered after move retains source identity and converges (256.219375ms)
+✔ invalid nested self destination is atomic (266.69325ms)
+✔ invalid nested descendant destination is atomic (257.445917ms)
+✔ invalid nested non-container destination is atomic (259.595667ms)
+✔ invalid nested non-sibling destination is atomic (264.889167ms)
+✔ captured structural version rejects a stale target without retargeting (250.098709ms)
+✔ boundary buttons and keyboard do not create empty history or journal entries (279.029292ms)
+✔ native Tab reaches controls and Enter restores editor selection (330.935792ms)
+✔ read-only and composition suppress reorder without taking composition keys (290.488291ms)
+✔ Escape and focus exit cancel retained targets (250.424709ms)
+✔ undo restores order while preserving remote content, redo moves again (403.359958ms)
+✔ disabled recovery retains reordered data and disposal removes controls/listeners (279.936958ms)
+✔ nested sibling keyboard move preserves container and text source identities (287.080792ms)
+✔ backward selection direction survives a move (280.972416ms)
+✔ embedded native controls own their keyboard shortcuts (259.582917ms)
+✖ an open slash presenter retains command and Escape priority (293.535167ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 18
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8272.423459
+
+✖ failing tests:
+
+test at tests/browser/reorder.spec.ts:54:1
+✖ an open slash presenter retains command and Escape priority (293.535167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at probe.text (file:///Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:55:300)
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

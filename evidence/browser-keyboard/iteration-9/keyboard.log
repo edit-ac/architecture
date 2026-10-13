@@ -1,0 +1,351 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs keyboard
+
+keyboard browser: chromium
+✔ native-prose-shift-tab moves focus backward without updates (2875.607666ms)
+✔ native-code-shift-tab dedents a caret line and preserves authored spaces (352.747333ms)
+✖ native-escape-shift-tab leaves code backward without updates (398.905333ms)
+✖ native-escape-shift-tab leaves unordered backward without updates (381.960333ms)
+✔ native-paragraph-enter splits and moves caret once (323.518083ms)
+✔ native-selected-enter-false (288.426541ms)
+✔ native-selected-enter-true (287.931042ms)
+✔ native-code-Enter (487.04425ms)
+✔ native-code-Shift+Enter (361.517375ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (445.375458ms)
+✔ native-heading-middle retains level (383.363334ms)
+✔ native-heading-end creates paragraph (original acceptance) (325.059375ms)
+✔ native-heading-selected-tail-false (371.985791ms)
+✔ native-heading-cross-block-end-false (408.693125ms)
+✔ native-heading-selected-all-false (351.873583ms)
+✔ native-heading-selected-tail-true (347.6975ms)
+✔ native-heading-cross-block-end-true (243.522917ms)
+✔ native-heading-selected-all-true (215.04175ms)
+✔ native-heading cross-block suffix retains heading split (252.010833ms)
+✔ native-heading-end undo redo preserves remote sibling and result caret (407.007917ms)
+✔ prepared-heading result caret releases when DOM restoration throws (250.618917ms)
+✔ native-heading-end shared-source sibling keeps identity through follow-up typing (260.005625ms)
+✔ prepared-menu heading-end uses the same result and read-only rejects (216.2805ms)
+✔ native-empty-heading becomes paragraph (246.482334ms)
+✔ native-boundary-Backspace (152.625208ms)
+✔ native-boundary-Delete (192.558958ms)
+✔ native-cross-block-Enter (252.506875ms)
+✔ native-cross-block-Shift+Enter (182.589709ms)
+✔ native-cross-block-Backspace (175.783417ms)
+✔ native-unordered-enter (246.050666ms)
+✔ native-checklist-enter (275.940834ms)
+✔ native-quote-enter (207.394208ms)
+✔ native-list-tab indentation and outdent preserve backward selection (196.557ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (191.676541ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (198.52775ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (166.317333ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (152.376291ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (323.184292ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (173.2655ms)
+✔ native-navigation and modified host Enter retain ownership (498.432375ms)
+✔ native-empty-unordered exits one level (223.451542ms)
+✔ native-empty-quote exits one level (277.757542ms)
+✔ prepared-toolbar across blocks retains direction and supported marks (190.431834ms)
+✔ prepared-toolbar deleted target rejects instead of using current caret (302.798458ms)
+✔ prepared-nonkeyboard Enter and break have semantic selection results (282.871042ms)
+✔ native-code-multiline Tab preserves backward range and existing whitespace (295.521084ms)
+✔ prepared-read-only structural and history commands never mutate (218.683541ms)
+✔ prepared-composition owns Enter before structural routing (293.605209ms)
+✔ native-selected-hard-break-false (160.447542ms)
+✔ native-selected-hard-break-true (228.643334ms)
+✔ native-inapplicable-list-Tab follows focus (221.858084ms)
+✔ prepared-host-owned structural events are not consumed (212.338041ms)
+✔ native-focus-escape expires after shortcut (215.5895ms)
+✔ native-focus-escape expires after beforeinput (329.533541ms)
+✔ native-focus-escape expires after blur (305.551875ms)
+✔ native-focus-escape expires after composition (323.27575ms)
+✔ native-focus-escape expires after input (222.517417ms)
+✔ native-focus-escape expires after observer (203.555667ms)
+ℹ tests 58
+ℹ suites 0
+ℹ pass 56
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19117.335625
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:81:2
+✖ native-escape-shift-tab leaves code backward without updates (398.905333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'projection'
+  - 'before-editor'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:90:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'projection',
+    expected: 'before-editor',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:81:2
+✖ native-escape-shift-tab leaves unordered backward without updates (381.960333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'projection'
+  - 'before-editor'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:90:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'projection',
+    expected: 'before-editor',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+keyboard browser: firefox
+✔ native-prose-shift-tab moves focus backward without updates (8347.510667ms)
+✔ native-code-shift-tab dedents a caret line and preserves authored spaces (12719.151083ms)
+✖ native-escape-shift-tab leaves code backward without updates (1776.084875ms)
+✖ native-escape-shift-tab leaves unordered backward without updates (1249.780917ms)
+✔ native-paragraph-enter splits and moves caret once (1012.282708ms)
+✔ native-selected-enter-false (856.24325ms)
+✔ native-selected-enter-true (2217.598ms)
+✔ native-code-Enter (1573.653291ms)
+✔ native-code-Shift+Enter (1564.05525ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (2723.290666ms)
+✔ native-heading-middle retains level (2119.169458ms)
+✔ native-heading-end creates paragraph (original acceptance) (1464.283834ms)
+✔ native-heading-selected-tail-false (1558.92875ms)
+✔ native-heading-cross-block-end-false (1442.508708ms)
+✔ native-heading-selected-all-false (1205.050416ms)
+✔ native-heading-selected-tail-true (981.140708ms)
+✔ native-heading-cross-block-end-true (1229.014875ms)
+✔ native-heading-selected-all-true (1519.065875ms)
+✔ native-heading cross-block suffix retains heading split (1874.73675ms)
+✔ native-heading-end undo redo preserves remote sibling and result caret (2170.759417ms)
+✔ prepared-heading result caret releases when DOM restoration throws (339.423292ms)
+✔ native-heading-end shared-source sibling keeps identity through follow-up typing (428.365958ms)
+✔ prepared-menu heading-end uses the same result and read-only rejects (463.795792ms)
+✔ native-empty-heading becomes paragraph (339.87975ms)
+✔ native-boundary-Backspace (362.53875ms)
+✔ native-boundary-Delete (304.626292ms)
+✔ native-cross-block-Enter (281.452667ms)
+✔ native-cross-block-Shift+Enter (285.157333ms)
+✔ native-cross-block-Backspace (271.667458ms)
+✔ native-unordered-enter (954.102167ms)
+✔ native-checklist-enter (327.825542ms)
+✔ native-quote-enter (323.139458ms)
+✔ native-list-tab indentation and outdent preserve backward selection (411.408541ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (417.468417ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (423.808791ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (300.394625ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (261.654917ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (429.22875ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (362.013708ms)
+✔ native-navigation and modified host Enter retain ownership (1245.769ms)
+✔ native-empty-unordered exits one level (1185.68025ms)
+✔ native-empty-quote exits one level (1810.463542ms)
+✔ prepared-toolbar across blocks retains direction and supported marks (2102.603292ms)
+✔ prepared-toolbar deleted target rejects instead of using current caret (1696.48575ms)
+✔ prepared-nonkeyboard Enter and break have semantic selection results (4358.378709ms)
+✔ native-code-multiline Tab preserves backward range and existing whitespace (1680.132125ms)
+✔ prepared-read-only structural and history commands never mutate (1027.114ms)
+✔ prepared-composition owns Enter before structural routing (395.931125ms)
+✔ native-selected-hard-break-false (428.443458ms)
+✔ native-selected-hard-break-true (1086.007208ms)
+✔ native-inapplicable-list-Tab follows focus (582.472083ms)
+✔ prepared-host-owned structural events are not consumed (255.596875ms)
+✔ native-focus-escape expires after shortcut (320.603625ms)
+✔ native-focus-escape expires after beforeinput (336.056ms)
+✔ native-focus-escape expires after blur (274.7925ms)
+✔ native-focus-escape expires after composition (266.4665ms)
+✔ native-focus-escape expires after input (265.358ms)
+✔ native-focus-escape expires after observer (290.936541ms)
+ℹ tests 58
+ℹ suites 0
+ℹ pass 56
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 77452.079958
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:81:2
+✖ native-escape-shift-tab leaves code backward without updates (1776.084875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'projection'
+  - 'before-editor'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:90:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'projection',
+    expected: 'before-editor',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:81:2
+✖ native-escape-shift-tab leaves unordered backward without updates (1249.780917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'projection'
+  - 'before-editor'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:90:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'projection',
+    expected: 'before-editor',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+keyboard browser: webkit
+✖ native-prose-shift-tab moves focus backward without updates (2884.945584ms)
+✔ native-code-shift-tab dedents a caret line and preserves authored spaces (259.16775ms)
+✖ native-escape-shift-tab leaves code backward without updates (258.389125ms)
+✖ native-escape-shift-tab leaves unordered backward without updates (273.84175ms)
+✔ native-paragraph-enter splits and moves caret once (278.019583ms)
+✔ native-selected-enter-false (263.267458ms)
+✔ native-selected-enter-true (288.079791ms)
+✔ native-code-Enter (263.277542ms)
+✔ native-code-Shift+Enter (275.291166ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (264.984209ms)
+✔ native-heading-middle retains level (259.657791ms)
+✔ native-heading-end creates paragraph (original acceptance) (314.437959ms)
+✔ native-heading-selected-tail-false (278.838834ms)
+✔ native-heading-cross-block-end-false (278.747083ms)
+✔ native-heading-selected-all-false (249.994292ms)
+✔ native-heading-selected-tail-true (272.90275ms)
+✔ native-heading-cross-block-end-true (280.482916ms)
+✔ native-heading-selected-all-true (248.725375ms)
+✔ native-heading cross-block suffix retains heading split (251.9975ms)
+✔ native-heading-end undo redo preserves remote sibling and result caret (277.157792ms)
+✔ prepared-heading result caret releases when DOM restoration throws (370.180958ms)
+✔ native-heading-end shared-source sibling keeps identity through follow-up typing (334.571583ms)
+✔ prepared-menu heading-end uses the same result and read-only rejects (346.360084ms)
+✔ native-empty-heading becomes paragraph (296.484584ms)
+✔ native-boundary-Backspace (289.443875ms)
+✔ native-boundary-Delete (375.620834ms)
+✔ native-cross-block-Enter (282.810083ms)
+✔ native-cross-block-Shift+Enter (264.316542ms)
+✔ native-cross-block-Backspace (352.454166ms)
+✔ native-unordered-enter (298.515875ms)
+✔ native-checklist-enter (289.105416ms)
+✔ native-quote-enter (292.415166ms)
+✔ native-list-tab indentation and outdent preserve backward selection (287.476916ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (384.321167ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (287.927375ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (285.182667ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (285.670584ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (261.952917ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (242.0305ms)
+✔ native-navigation and modified host Enter retain ownership (256.851125ms)
+✔ native-empty-unordered exits one level (255.753708ms)
+✔ native-empty-quote exits one level (265.113041ms)
+✔ prepared-toolbar across blocks retains direction and supported marks (246.867125ms)
+✔ prepared-toolbar deleted target rejects instead of using current caret (281.9685ms)
+✔ prepared-nonkeyboard Enter and break have semantic selection results (261.782625ms)
+✔ native-code-multiline Tab preserves backward range and existing whitespace (300.562209ms)
+✔ prepared-read-only structural and history commands never mutate (299.018ms)
+✔ prepared-composition owns Enter before structural routing (339.4775ms)
+✔ native-selected-hard-break-false (266.277416ms)
+✔ native-selected-hard-break-true (267.421292ms)
+✔ native-inapplicable-list-Tab follows focus (313.041208ms)
+✔ prepared-host-owned structural events are not consumed (229.565083ms)
+✔ native-focus-escape expires after shortcut (254.988417ms)
+✔ native-focus-escape expires after beforeinput (276.643791ms)
+✔ native-focus-escape expires after blur (266.01625ms)
+✔ native-focus-escape expires after composition (334.839042ms)
+✔ native-focus-escape expires after input (282.355083ms)
+✔ native-focus-escape expires after observer (303.023667ms)
+ℹ tests 58
+ℹ suites 0
+ℹ pass 55
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19632.824292
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:55:1
+✖ native-prose-shift-tab moves focus backward without updates (2884.945584ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - 'before-editor'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:63:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'before-editor',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:81:2
+✖ native-escape-shift-tab leaves code backward without updates (258.389125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'projection'
+  - 'before-editor'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:90:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'projection',
+    expected: 'before-editor',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:81:2
+✖ native-escape-shift-tab leaves unordered backward without updates (273.84175ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'projection'
+  - 'before-editor'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:90:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'projection',
+    expected: 'before-editor',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

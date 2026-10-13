@@ -1,0 +1,646 @@
+--- HEAD/packages/web/src/storage/outbox.ts
++++ working/packages/web/src/storage/outbox.ts
+@@ -0,0 +1,114 @@
++import { identityKey, ownIdentity, openStorageDatabase, verifyEntries, JournalIntegrityError,
++  type JournalIdentity, type JournalEntry } from "./journal.js";
++
++/** Host-negotiated application protocol, not a Yjs sync event or state vector. */
++export const durableReceiptProtocol = "editac-durable-receipt-v1";
++export interface DurableReceipt {
++  protocol: typeof durableReceiptProtocol;
++  state: "durable";
++  identity: JournalIdentity;
++  writerId: number;
++  sequence: number;
++  checksum: string;
++  updateId: string;
++}
++export interface ReceiptResult {
++  state: "remoteCommitted" | "ignored";
++  updateId: string;
++  reason?: "capability-unavailable" | "unknown-update" | "identity-mismatch";
++}
++
++function ownReceipt(input: DurableReceipt): DurableReceipt {
++  const identity = ownIdentity(input?.identity);
++  if (input.protocol !== durableReceiptProtocol || input.state !== "durable"
++    || !Number.isSafeInteger(input.writerId) || input.writerId <= 0
++    || !Number.isSafeInteger(input.sequence) || input.sequence <= 0
++    || typeof input.updateId !== "string" || !input.updateId
++    || typeof input.checksum !== "string" || !/^[a-f0-9]{64}$/.test(input.checksum)) {
++    throw new JournalIntegrityError("Invalid durable application receipt");
++  }
++  return { protocol: input.protocol, state: input.state, identity, writerId: input.writerId,
++    sequence: input.sequence, checksum: input.checksum, updateId: input.updateId };
++}
++function matches(receipt: DurableReceipt, entry: JournalEntry): boolean {
++  return receipt.updateId === entry.updateId && receipt.checksum === entry.checksum
++    && receipt.writerId === entry.writerId && receipt.sequence === entry.sequence
++    && identityKey(receipt.identity) === identityKey(entry.identity);
++}
++
++/** Internal adapter. Receipts prune pending membership, never the journal's recovery tail.
++ * The host passes only receipts from its negotiated durable application transport.
++ * Existing v1/v2 journals are pending by default; upgrading does not infer acknowledgments.
++ */
++export class UpdateOutbox {
++  private constructor(private readonly database: IDBDatabase, readonly receiptProtocol: typeof durableReceiptProtocol | null) {}
++  static async open(factory: IDBFactory, name = "editac-local-storage",
++    receiptProtocol: typeof durableReceiptProtocol | null = null): Promise<UpdateOutbox> {
++    if (receiptProtocol !== null && receiptProtocol !== durableReceiptProtocol) throw new JournalIntegrityError("Unsupported receipt capability");
++    return new UpdateOutbox(await openStorageDatabase(factory, name), receiptProtocol);
++  }
++  close(): void { this.database.close(); }
++
++  /** One snapshot of committed bytes and durable receipt markers, independent of checkpoints. */
++  async pending(identity: JournalIdentity): Promise<JournalEntry[]> {
++    const expected = ownIdentity(identity);
++    const raw = await new Promise<{ entries: JournalEntry[]; receipts: Map<string, DurableReceipt> }>((resolve, reject) => {
++      const tx = this.database.transaction(["updates", "receipts"], "readonly");
++      let entries: JournalEntry[] = [];
++      const receipts = new Map<string, DurableReceipt>();
++      tx.oncomplete = () => resolve({ entries, receipts });
++      tx.onabort = () => reject(tx.error ?? new DOMException("Outbox read aborted", "AbortError"));
++      const request = tx.objectStore("updates").index("documentEpochSchema").getAll([expected.documentId, expected.epoch, expected.schema]);
++      request.onsuccess = () => {
++        entries = request.result as JournalEntry[];
++        for (const entry of entries) {
++          const receipt = tx.objectStore("receipts").get(entry.updateId);
++          receipt.onsuccess = () => { if (receipt.result !== undefined) receipts.set(entry.updateId, receipt.result as DurableReceipt); };
++        }
++      };
++    });
++    const entries = await verifyEntries(raw.entries, expected);
++    return entries.filter(entry => {
++      const marker = raw.receipts.get(entry.updateId);
++      if (!marker) return true;
++      const receipt = ownReceipt(marker);
++      if (!matches(receipt, entry)) throw new JournalIntegrityError("Stored receipt identity mismatch");
++      return false;
++    });
++  }
++
++  /** Remote acknowledgment becomes visible only after the local receipt transaction completes. */
++  async accept(input: DurableReceipt): Promise<ReceiptResult> {
++    const receipt = ownReceipt(input);
++    if (this.receiptProtocol === null) return { state: "ignored", updateId: receipt.updateId, reason: "capability-unavailable" };
++    let tx: IDBTransaction;
++    try { tx = this.database.transaction(["updates", "receipts"], "readwrite", { durability: "strict" }); }
++    catch (error) {
++      if (!(error instanceof TypeError) && !(error instanceof DOMException && error.name === "NotSupportedError")) throw error;
++      tx = this.database.transaction(["updates", "receipts"], "readwrite");
++    }
++    return new Promise((resolve, reject) => {
++      let failure: unknown;
++      let result: ReceiptResult = { state: "ignored", updateId: receipt.updateId, reason: "unknown-update" };
++      tx.oncomplete = () => resolve(result);
++      tx.onabort = () => reject(failure ?? tx.error ?? new DOMException("Receipt transaction aborted", "AbortError"));
++      tx.onerror = () => { failure ??= tx.error; };
++      const abort = (error: unknown) => { failure = error; try { tx.abort(); } catch { reject(error); } };
++      try {
++        const request = tx.objectStore("updates").get([receipt.identity.documentId, receipt.identity.epoch,
++          receipt.identity.schema, receipt.writerId, receipt.sequence]);
++        request.onerror = () => { failure = request.error; };
++        request.onsuccess = () => {
++          try {
++            const entry = request.result as JournalEntry | undefined;
++            if (entry === undefined) return;
++            if (!matches(receipt, entry)) { result.reason = "identity-mismatch"; return; }
++            const write = tx.objectStore("receipts").put(receipt, receipt.updateId);
++            write.onerror = () => { failure = write.error; };
++            result = { state: "remoteCommitted", updateId: receipt.updateId };
++          } catch (error) { abort(error); }
++        };
++      } catch (error) { abort(error); }
++    });
++  }
++}
+--- HEAD/packages/web/src/storage/journal.ts
++++ working/packages/web/src/storage/journal.ts
+@@ -0,0 +1,177 @@
++/** Browser storage only: engine semantics and replay remain owned by Rust. */
++export interface JournalIdentity {
++  profile: string;
++  schema: string;
++  documentId: string;
++  epoch: string;
++  protocolVersion: number;
++  updateEncoding: number;
++  offsets: "utf16";
++}
++
++export interface JournalUpdate {
++  identity: JournalIdentity;
++  writerId: number;
++  sequence: number;
++  origin: string;
++  bytes: Uint8Array;
++}
++
++export interface JournalEntry extends JournalUpdate {
++  checksum: string;
++  /** Stable pending-receipt identity; checkpoints must not erase it. */
++  updateId: string;
++}
++
++export interface LocalCommit {
++  state: "localCommitted";
++  updateId: string;
++  durability: IDBTransactionDurability | "unknown";
++}
++
++export class JournalIntegrityError extends Error {
++  constructor(message: string) { super(message); this.name = "JournalIntegrityError"; }
++}
++
++const storeName = "updates";
++const keyPath = ["identity.documentId", "identity.epoch", "identity.schema", "writerId", "sequence"];
++const identityFields = ["profile", "schema", "documentId", "epoch", "protocolVersion", "updateEncoding", "offsets"] as const;
++
++export function identityKey(identity: JournalIdentity): string {
++  return JSON.stringify(identityFields.map(field => identity[field]));
++}
++
++export function ownIdentity(identity: JournalIdentity): JournalIdentity {
++  if (!identity || [identity.profile, identity.schema, identity.documentId, identity.epoch].some(v => typeof v !== "string" || v.length === 0)
++    || identity.offsets !== "utf16" || identity.protocolVersion !== 1 || identity.updateEncoding !== 1) {
++    throw new JournalIntegrityError("Missing or unsupported document identity/schema/encoding");
++  }
++  return { profile: identity.profile, schema: identity.schema, documentId: identity.documentId, epoch: identity.epoch,
++    protocolVersion: identity.protocolVersion, updateEncoding: identity.updateEncoding, offsets: identity.offsets };
++}
++
++function ownUpdate(update: JournalUpdate): JournalUpdate {
++  const identity = ownIdentity(update.identity);
++  if (!Number.isSafeInteger(update.writerId) || update.writerId <= 0 || !Number.isSafeInteger(update.sequence) || update.sequence <= 0
++    || typeof update.origin !== "string" || !update.origin || !(update.bytes instanceof Uint8Array) || update.bytes.length === 0) {
++    throw new JournalIntegrityError("Invalid writer/sequence/origin/update bytes");
++  }
++  return { identity, writerId: update.writerId, sequence: update.sequence, origin: update.origin, bytes: new Uint8Array(update.bytes) };
++}
++
++export async function checksum(bytes: Uint8Array): Promise<string> {
++  const hash = await globalThis.crypto.subtle.digest("SHA-256", new Uint8Array(bytes).buffer);
++  return Array.from(new Uint8Array(hash), b => b.toString(16).padStart(2, "0")).join("");
++}
++
++function updateId(update: JournalUpdate, hash: string): string {
++  return JSON.stringify([identityKey(update.identity), update.writerId, update.sequence, hash]);
++}
++
++function equalEntry(a: JournalEntry, b: JournalEntry): boolean {
++  return identityKey(a.identity) === identityKey(b.identity) && a.writerId === b.writerId && a.sequence === b.sequence
++    && a.origin === b.origin && a.checksum === b.checksum && a.updateId === b.updateId
++    && a.bytes instanceof Uint8Array && a.bytes.length === b.bytes.length && a.bytes.every((v, i) => v === b.bytes[i]);
++}
++
++/** Internal adapter, not yet a published editor API. No unload handler or enqueue acknowledgment. */
++export class UpdateJournal {
++  private constructor(private readonly database: IDBDatabase) {}
++
++  static async open(factory: IDBFactory, name = "editac-local-storage"): Promise<UpdateJournal> {
++    return new UpdateJournal(await openStorageDatabase(factory, name));
++  }
++
++  close(): void { this.database.close(); }
++
++  /** Captures owned input before the first await. Repeated identity is a no-op; collisions abort. */
++  async append(input: JournalUpdate): Promise<LocalCommit> {
++    const update = ownUpdate(input);
++    const hash = await checksum(update.bytes);
++    const entry: JournalEntry = { ...update, checksum: hash, updateId: updateId(update, hash) };
++    let transaction: IDBTransaction;
++    try {
++      transaction = this.database.transaction(storeName, "readwrite", { durability: "strict" });
++    } catch (error) {
++      // Only unsupported options permit a fallback. Quota, permission and closed-DB errors remain errors.
++      if (!(error instanceof TypeError) && !(error instanceof DOMException && error.name === "NotSupportedError")) throw error;
++      transaction = this.database.transaction(storeName, "readwrite");
++    }
++    return new Promise((resolve, reject) => {
++      let failure: unknown;
++      transaction.oncomplete = () => resolve({ state: "localCommitted", updateId: entry.updateId, durability: transaction.durability ?? "unknown" });
++      transaction.onabort = () => reject(failure ?? transaction.error ?? new DOMException("Journal transaction aborted", "AbortError"));
++      transaction.onerror = () => { failure ??= transaction.error; };
++      const abort = (error: unknown) => {
++        failure = error;
++        try { transaction.abort(); } catch { reject(error); }
++      };
++      try {
++        const store = transaction.objectStore(storeName);
++        const request = store.get([entry.identity.documentId, entry.identity.epoch, entry.identity.schema, entry.writerId, entry.sequence]);
++        request.onerror = () => { failure = request.error; };
++        request.onsuccess = () => {
++          try {
++            if (request.result !== undefined) {
++              if (!equalEntry(request.result as JournalEntry, entry)) throw new JournalIntegrityError("Journal key collision or corrupt existing update");
++            } else {
++              const write = store.add(entry);
++              write.onerror = () => { failure = write.error; };
++            }
++          } catch (error) { abort(error); }
++        };
++      } catch (error) { abort(error); }
++    });
++  }
++
++  /** Returns detached, verified entries for one trusted document/epoch/schema. */
++  async read(identity: JournalIdentity): Promise<JournalEntry[]> {
++    const expected = ownIdentity(identity);
++    const entries = await new Promise<JournalEntry[]>((resolve, reject) => {
++      const transaction = this.database.transaction(storeName, "readonly");
++      let result: JournalEntry[] = [];
++      let failure: unknown;
++      transaction.oncomplete = () => resolve(result);
++      transaction.onabort = () => reject(failure ?? transaction.error ?? new DOMException("Journal read aborted", "AbortError"));
++      transaction.onerror = () => { failure ??= transaction.error; };
++      const request = transaction.objectStore(storeName).index("documentEpochSchema").getAll([expected.documentId, expected.epoch, expected.schema]);
++      request.onerror = () => { failure = request.error; };
++      request.onsuccess = () => { result = request.result as JournalEntry[]; };
++    });
++    return verifyEntries(entries, expected);
++  }
++}
++
++/** Shared schema upgrade for journal, checkpoint and receipt adapters. */
++export function openStorageDatabase(factory: IDBFactory, name: string): Promise<IDBDatabase> {
++    return new Promise((resolve, reject) => {
++      const request = factory.open(name, 3);
++      let rejected = false;
++      request.onupgradeneeded = () => {
++        if (!request.result.objectStoreNames.contains(storeName)) {
++          const store = request.result.createObjectStore(storeName, { keyPath });
++          store.createIndex("documentEpochSchema", ["identity.documentId", "identity.epoch", "identity.schema"]);
++        }
++        if (!request.result.objectStoreNames.contains("checkpoints")) request.result.createObjectStore("checkpoints");
++        if (!request.result.objectStoreNames.contains("receipts")) request.result.createObjectStore("receipts");
++      };
++      request.onerror = () => reject(request.error);
++      request.onblocked = () => { rejected = true; reject(new Error("Journal database upgrade blocked")); };
++      request.onsuccess = () => {
++        const database = request.result;
++        if (rejected) { database.close(); return; }
++        database.onversionchange = () => database.close();
++        resolve(database);
++      };
++    });
++}
++
++export async function verifyEntries(entries: JournalEntry[], expected: JournalIdentity): Promise<JournalEntry[]> {
++  return Promise.all(entries.map(async entry => {
++      const update = ownUpdate(entry);
++      if (identityKey(update.identity) !== identityKey(expected)) throw new JournalIntegrityError("Stored identity does not match trusted document");
++      const hash = await checksum(update.bytes);
++      if (hash !== entry.checksum || entry.updateId !== updateId(update, hash)) throw new JournalIntegrityError("Corrupt journal checksum or receipt identity");
++      return { ...update, checksum: hash, updateId: entry.updateId };
++    }));
++}
+--- HEAD/tests/outbox.test.mjs
++++ working/tests/outbox.test.mjs
+@@ -0,0 +1,169 @@
++import assert from 'node:assert/strict';
++import { test, after } from 'node:test';
++import { readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
++import { tmpdir } from 'node:os';
++import { join } from 'node:path';
++import { chromium } from 'playwright';
++import { init } from '../packages/core/dist/index.js';
++import { UpdateJournal } from '../packages/web/dist/storage/journal.js';
++import { CheckpointStorage } from '../packages/web/dist/storage/checkpoint.js';
++import { UpdateOutbox, durableReceiptProtocol } from '../packages/web/dist/storage/outbox.js';
++import { CheckpointIndexedDB } from './helpers/checkpoint-storage.mjs';
++
++const output = process.env.EDITAC_OUTBOX_OUTPUT ?? await mkdtemp(join(tmpdir(), 'editac-outbox-'));
++await mkdir(output, { recursive: true });
++const facts = { cases: [], processes: [] };
++function check(name, fn) { test(name, async () => { const c = { name, passed: false }; facts.cases.push(c); await fn(); c.passed = true; }); }
++const tick = () => new Promise(resolve => setImmediate(resolve));
++const runtime = await init('data:application/wasm;base64,' + (await readFile(new URL('../packages/core/dist/wasm/editac_wasm_bg.wasm', import.meta.url))).toString('base64'));
++const options = { profile: 'v5', documentId: '45678901-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', nodes: [{ text: 'a😀b' }] };
++const engine = runtime.createEngine(options), initial = engine.checkpoint(), updates = [];
++const sub = engine.subscribe({ type: 'updates' }, p => { if (p.update) updates.push({ identity: p.identity, writerId: p.writerId, sequence: p.sequence, origin: p.origin, bytes: p.update.bytes }); });
++for (const word of ['B','C']) { const a = engine.anchor(engine.read().visible[0].id, 3, 'right'); engine.commit(engine.prepare({ kind: 'text', origin: 'outbox:test', command: { type: 'insert', at: a, text: word } })); engine.releaseAnchor(a); }
++const latest = engine.checkpoint(); sub.dispose(); engine.dispose();
++const receipt = entry => ({ protocol: durableReceiptProtocol, state: 'durable', identity: { ...entry.identity }, writerId: entry.writerId, sequence: entry.sequence, checksum: entry.checksum, updateId: entry.updateId });
++async function commit(db, operation) { const p = operation(); const tx = await db.nextWrite(); await tick(); tx.complete(); return p; }
++async function setup(capability = durableReceiptProtocol) {
++  const db = new CheckpointIndexedDB(), journal = await UpdateJournal.open(db), points = await CheckpointStorage.open(db), outbox = await UpdateOutbox.open(db, 'test', capability);
++  await commit(db, () => points.publish(initial, []));
++  for (const update of updates) await commit(db, () => journal.append(update));
++  const entries = await journal.read(initial.identity);
++  return { db, journal, points, outbox, entries };
++}
++function restore(state) { const e = runtime.restoreEngine(initial.identity, state.checkpoint, state.tail.map(u => ({ identity: u.identity, bytes: u.bytes }))); try { return e.read().visible[0].runs.map(r => r.text).join(''); } finally { e.dispose(); } }
++facts.fixtures = { initial: { ...initial, bytes: Array.from(initial.bytes) }, latest: { ...latest, bytes: Array.from(latest.bytes) }, updates: updates.map(u => ({ ...u, bytes: Array.from(u.bytes) })) };
++
++check('deterministic checkpoint coverage retains every pending identity and retransmittable real update', async () => {
++  const { db, points, outbox, entries } = await setup();
++  await commit(db, () => points.publish(latest, entries.map(e => e.updateId)));
++  assert.deepEqual(await outbox.pending(initial.identity), entries);
++  assert.equal((await points.restore(initial.identity, restore)).value, 'a😀CBb');
++  assert.equal(db.stores.receipts.size, 0);
++});
++check('deterministic sync events, socket delivery and state vectors cannot acknowledge updates', async () => {
++  const { outbox, entries, db } = await setup();
++  for (const event of [{ state: 'synced' }, { state: 'delivered' }, { stateVector: [1] }, { ...receipt(entries[0]), state: 'synced' }, { ...receipt(entries[0]), protocol: 'yjs-sync' }]) await assert.rejects(outbox.accept(event), { name: 'JournalIntegrityError' });
++  assert.deepEqual(await outbox.pending(initial.identity), entries); assert.equal(db.stores.receipts.size, 0);
++});
++check('deterministic absent negotiated receipt capability reports unknown durability and retains updates', async () => {
++  const { db, outbox, entries } = await setup(null);
++  assert.equal(outbox.receiptProtocol, null);
++  assert.equal((await outbox.accept(receipt(entries[0]))).reason, 'capability-unavailable');
++  assert.deepEqual(await outbox.pending(initial.identity), entries); assert.equal(db.stores.receipts.size, 0);
++});
++for (const field of ['documentId','epoch','schema','profile','writerId','sequence','checksum','updateId']) check(`deterministic wrong receipt ${field} cannot prune pending updates`, async () => {
++  const { db, outbox, entries } = await setup(); const r = receipt(entries[0]);
++  if (field in r.identity) r.identity[field] = 'other'; else if (field === 'writerId' || field === 'sequence') r[field]++; else r[field] = field === 'checksum' ? '0'.repeat(64) : 'other';
++  assert.equal((await commit(db, () => outbox.accept(r))).state, 'ignored');
++  assert.deepEqual(await outbox.pending(initial.identity), entries); assert.equal(db.stores.receipts.size, 0);
++});
++check('deterministic receipt acknowledgment and pruning wait for completion, not request success', async () => {
++  const { db, outbox, entries } = await setup(); const input = receipt(entries[0]);
++  let settled = false; const p = outbox.accept(input).then(v => { settled = true; return v; }); input.identity.epoch = 'mutated'; input.updateId = 'mutated';
++  const tx = await db.nextWrite(); await tick(); tx.requestSuccess();
++  assert.equal(settled, false); assert.deepEqual(await outbox.pending(initial.identity), entries);
++  tx.complete(); assert.deepEqual(await p, { state: 'remoteCommitted', updateId: entries[0].updateId });
++  assert.deepEqual(await outbox.pending(initial.identity), [entries[1]]); assert.equal(db.stores.updates.size, 2);
++});
++for (const boundary of ['before-lookup','after-write-success']) check(`deterministic receipt abort ${boundary} retains outbox and permits retry`, async () => {
++  const { db, outbox, entries } = await setup(); const p = outbox.accept(receipt(entries[0])); const rejection = assert.rejects(p, { name: 'AbortError' });
++  const tx = await db.nextWrite(); if (boundary === 'after-write-success') { await tick(); tx.requestSuccess(); } tx.abort(); await rejection;
++  assert.deepEqual(await outbox.pending(initial.identity), entries);
++  assert.equal((await commit(db, () => outbox.accept(receipt(entries[0])))).state, 'remoteCommitted');
++  assert.deepEqual(await outbox.pending(initial.identity), [entries[1]]);
++});
++check('deterministic quota, permission and receipt write failures propagate without pruning', async () => {
++  const { db, outbox, entries } = await setup();
++  for (const error of [new DOMException('quota', 'QuotaExceededError'), new DOMException('permission', 'SecurityError')]) {
++    db.writeCreationError = error; await assert.rejects(outbox.accept(receipt(entries[0])), e => e === error); db.writeCreationError = null;
++    db.putError = error; await assert.rejects(outbox.accept(receipt(entries[0])), e => e === error); db.putError = null; await db.nextWrite();
++    assert.deepEqual(await outbox.pending(initial.identity), entries);
++  }
++});
++check('deterministic duplicate/reordered durable receipts survive reopen and duplicate append', async () => {
++  const { db, outbox, journal, points, entries } = await setup();
++  for (const i of [1,1,0,1,0]) assert.equal((await commit(db, () => outbox.accept(receipt(entries[i])))).state, 'remoteCommitted');
++  assert.deepEqual(await outbox.pending(initial.identity), []); assert.equal(db.stores.receipts.size, 2);
++  await commit(db, () => journal.append(updates[0])); await commit(db, () => points.publish(latest, entries.map(e => e.updateId)));
++  outbox.close(); const reopened = await UpdateOutbox.open(db, 'test', durableReceiptProtocol);
++  assert.deepEqual(await reopened.pending(initial.identity), []); assert.equal((await points.restore(initial.identity, restore)).value, 'a😀CBb');
++  assert.equal(db.stores.updates.size, 2);
++});
++check('deterministic unknown receipt cannot pre-acknowledge a future journal append', async () => {
++  const reference = await setup();
++  const db = new CheckpointIndexedDB(), journal = await UpdateJournal.open(db), outbox = await UpdateOutbox.open(db, 'future', durableReceiptProtocol);
++  await commit(db, () => journal.append(updates[0]));
++  assert.equal((await commit(db, () => outbox.accept(receipt(reference.entries[1])))).reason, 'unknown-update');
++  assert.equal(db.stores.receipts.size, 0);
++  await commit(db, () => journal.append(updates[1]));
++  assert.deepEqual(await outbox.pending(initial.identity), reference.entries);
++});
++check('deterministic corrupt receipt or journal fails explicitly instead of hiding pending work', async () => {
++  const { db, outbox, entries } = await setup(); await commit(db, () => outbox.accept(receipt(entries[0])));
++  const marker = [...db.stores.receipts.values()][0]; marker.sequence++;
++  await assert.rejects(outbox.pending(initial.identity), { name: 'JournalIntegrityError' }); marker.sequence--;
++  [...db.stores.updates.values()][0].bytes[0] ^= 1;
++  await assert.rejects(outbox.pending(initial.identity), { name: 'JournalIntegrityError' });
++});
++check('deterministic detached pending bytes and unsupported strict durability preserve identity', async () => {
++  const { db, outbox, entries } = await setup(); const pending = await outbox.pending(initial.identity); pending[0].bytes.fill(0); pending[0].identity.epoch = 'mutated';
++  assert.deepEqual(await outbox.pending(initial.identity), entries); db.strictSupported = false;
++  assert.equal((await commit(db, () => outbox.accept(receipt(entries[0])))).state, 'remoteCommitted');
++  assert.deepEqual(await outbox.pending(initial.identity), [entries[1]]);
++});
++
++let controller, browser;
++check('actual Chromium v2 upgrade, receipt abort boundaries, checkpoint retention and restart preserve real Rust updates', async () => {
++  controller = await chromium.launchServer({ headless: true }); const child = controller.process();
++  facts.processes.push({ pid: child.pid, launcher: child.spawnfile, workspace: process.cwd(), purpose: 'outbox IndexedDB integration', port: null, log: 'full.log' });
++  browser = await chromium.connect(controller.wsEndpoint()); facts.browser = { version: browser.version(), playwright: JSON.parse(await readFile(new URL('../node_modules/playwright/package.json', import.meta.url))).version };
++  const context = await browser.newContext();
++  try {
++    await context.route('https://outbox.test/**', async route => {
++      const path = new URL(route.request().url()).pathname;
++      if (path === '/') return route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>Outbox qualification</title>' });
++      if (path.includes('..') || !/^\/(core|web)\//.test(path)) return route.abort();
++      const prefix = path.startsWith('/core/') ? '../packages/core/dist/' : '../packages/web/dist/';
++      await route.fulfill({ contentType: path.endsWith('.wasm') ? 'application/wasm' : 'text/javascript', body: await readFile(new URL(prefix + path.replace(/^\/(core|web)\//, ''), import.meta.url)) });
++    });
++    const page = await context.newPage(); await page.goto('https://outbox.test/');
++    const result = await page.evaluate(async ({ options }) => {
++      const { init } = await import('/core/index.js'), { UpdateJournal } = await import('/web/storage/journal.js'), { CheckpointStorage } = await import('/web/storage/checkpoint.js'), { UpdateOutbox, durableReceiptProtocol } = await import('/web/storage/outbox.js');
++      const rt = await init('/core/wasm/editac_wasm_bg.wasm'), engine = rt.createEngine(options), initial = engine.checkpoint(), updates = [];
++      const sub = engine.subscribe({ type: 'updates' }, p => { if (p.update) updates.push({ identity: p.identity, writerId: p.writerId, sequence: p.sequence, origin: p.origin, bytes: p.update.bytes }); });
++      let journal, points, outbox;
++      const nativePut = IDBObjectStore.prototype.put, nativeTransaction = IDBDatabase.prototype.transaction;
++      let boundary = '', completed = 0; const errors = [], observed = [];
++      const r = e => ({ protocol: durableReceiptProtocol, state: 'durable', identity: e.identity, writerId: e.writerId, sequence: e.sequence, checksum: e.checksum, updateId: e.updateId });
++      try {
++        // Seed the actual old v2 schema with an immutable update, then exercise production upgrade.
++        for (const word of ['B','C']) { const a = engine.anchor(engine.read().visible[0].id, 3, 'right'); engine.commit(engine.prepare({ kind: 'text', origin: 'outbox:browser', command: { type: 'insert', at: a, text: word } })); engine.releaseAnchor(a); }
++        const old = await new Promise((resolve, reject) => { const q = indexedDB.open('outbox-integration', 2); q.onupgradeneeded = () => { const s = q.result.createObjectStore('updates', { keyPath: ['identity.documentId','identity.epoch','identity.schema','writerId','sequence'] }); s.createIndex('documentEpochSchema', ['identity.documentId','identity.epoch','identity.schema']); q.result.createObjectStore('checkpoints'); }; q.onsuccess = () => resolve(q.result); q.onerror = () => reject(q.error); });
++        try {
++          const u = updates[0], hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', u.bytes)), b => b.toString(16).padStart(2,'0')).join('');
++          const identityKey = JSON.stringify(['profile','schema','documentId','epoch','protocolVersion','updateEncoding','offsets'].map(f => u.identity[f]));
++          const entry = { ...u, checksum: hash, updateId: JSON.stringify([identityKey,u.writerId,u.sequence,hash]) };
++          await new Promise((resolve, reject) => { const tx = old.transaction('updates','readwrite'); tx.objectStore('updates').add(entry); tx.oncomplete = resolve; tx.onabort = () => reject(tx.error); });
++        } finally { old.close(); }
++        journal = await UpdateJournal.open(indexedDB, 'outbox-integration'); points = await CheckpointStorage.open(indexedDB, 'outbox-integration'); outbox = await UpdateOutbox.open(indexedDB, 'outbox-integration', durableReceiptProtocol);
++        observed.push((await outbox.pending(initial.identity)).length);
++        await journal.append(updates[1]); const entries = await journal.read(initial.identity);
++        await points.publish(initial, []); await points.publish(engine.checkpoint(), entries.map(e => e.updateId));
++        observed.push((await outbox.pending(initial.identity)).length);
++        const unknown = await UpdateOutbox.open(indexedDB, 'outbox-integration'); const absent = await unknown.accept(r(entries[0])); unknown.close();
++        const wrong = await outbox.accept({ ...r(entries[0]), identity: { ...initial.identity, epoch: 'wrong' } });
++        let syncRejected = false; try { await outbox.accept({ state: 'synced' }); } catch { syncRejected = true; }
++        IDBDatabase.prototype.transaction = function(...args) { const tx = nativeTransaction.apply(this,args); if (args[1] === 'readwrite' && Array.isArray(args[0]) && args[0].includes('receipts')) tx.addEventListener('complete', () => completed++); return tx; };
++        IDBObjectStore.prototype.put = function(...args) { const q = nativePut.apply(this,args); if (this.name === 'receipts' && boundary === 'before-success') this.transaction.abort(); if (this.name === 'receipts' && boundary === 'after-success') q.addEventListener('success', () => this.transaction.abort()); return q; };
++        for (const phase of ['before-success','after-success']) { boundary = phase; try { await outbox.accept(r(entries[0])); } catch (e) { errors.push(e.name); } boundary = ''; observed.push((await outbox.pending(initial.identity)).length); }
++        for (const i of [1,1,0,0]) { const before = completed; if ((await outbox.accept(r(entries[i]))).state !== 'remoteCommitted' || completed !== before + 1) throw Error('Receipt acknowledgment preceded completion'); }
++        outbox.close(); outbox = await UpdateOutbox.open(indexedDB, 'outbox-integration', durableReceiptProtocol); await journal.append(updates[0]);
++        observed.push((await outbox.pending(initial.identity)).length);
++        const restored = await points.restore(initial.identity, state => { const e = rt.restoreEngine(initial.identity, state.checkpoint, state.tail.map(u => ({ identity:u.identity,bytes:u.bytes }))); try { return e.read().visible[0].runs.map(r => r.text).join(''); } finally { e.dispose(); } });
++        return { observed, errors, completed, absent: absent.reason, wrong: wrong.state, syncRejected, content: restored.value, journalCount: (await journal.read(initial.identity)).length, entries: entries.map(e => ({ ...e, bytes: Array.from(e.bytes) })) };
++      } finally { IDBObjectStore.prototype.put = nativePut; IDBDatabase.prototype.transaction = nativeTransaction; sub.dispose(); engine.dispose(); outbox?.close(); points?.close(); journal?.close(); }
++    }, { options });
++    assert.deepEqual(result.observed, [1,2,2,2,0]); assert.deepEqual(result.errors, ['AbortError','AbortError']); assert.equal(result.completed,4); assert.equal(result.absent,'capability-unavailable'); assert.equal(result.wrong,'ignored'); assert.equal(result.syncRejected,true); assert.equal(result.content,'a😀CBb'); assert.equal(result.journalCount,2); facts.integration = result;
++  } finally { await context.close(); }
++});
++after(async () => { try { await browser?.close(); } finally { await controller?.close(); facts.teardown = { browserClosed: !browser?.isConnected(), browserProcessExited: !controller || controller.process().exitCode !== null, fixtureServersStarted: 0 }; await writeFile(join(output,'harness.json'), JSON.stringify(facts,null,2)); if (!process.env.EDITAC_OUTBOX_OUTPUT && facts.cases.every(c => c.passed)) await rm(output,{recursive:true}); } });
+--- HEAD/tests/helpers/checkpoint-storage.mjs
++++ working/tests/helpers/checkpoint-storage.mjs
+@@ -0,0 +1,38 @@
++/** Deterministic IndexedDB transaction boundary; publication stays staged until complete. */
++export class CheckpointIndexedDB {
++  stores = { checkpoints: new Map(), updates: new Map() };
++  objectStoreNames = { contains: name => name in this.stores };
++  transactions = []; waiters = []; writes = []; closed = false; strictSupported = true; creationError = null;
++  open() { const r = {}; queueMicrotask(() => { r.result = this; r.onupgradeneeded?.(); r.onsuccess?.(); }); return r; }
++  createObjectStore(name) { this.stores[name] = new Map(); return { createIndex() {} }; }
++  close() { this.closed = true; }
++  transaction(names, mode, options) {
++    if (this.creationError) throw this.creationError;
++    if (mode === 'readwrite' && this.writeCreationError) throw this.writeCreationError;
++    if (options && !this.strictSupported) throw new TypeError('Unsupported strict durability');
++    const tx = new Transaction(this, mode, options ? 'strict' : 'default'); this.transactions.push(tx);
++    if (mode === 'readwrite') { this.writes.push(tx); this.waiters.shift()?.(tx); }
++    return tx;
++  }
++  nextWrite() { return this.writes.length ? Promise.resolve(this.writes.shift()) : new Promise(resolve => this.waiters.push(tx => { this.writes.shift(); resolve(tx); })); }
++}
++class Transaction {
++  pending = 0; staged = []; error = null; aborted = false;
++  constructor(db, mode, durability) { Object.assign(this, { db, mode, durability }); }
++  objectStore(name) {
++    const read = (fn) => {
++      const r = {}; this.pending++;
++      queueMicrotask(() => { if (this.aborted) return; r.result = structuredClone(fn()); r.onsuccess?.(); if (--this.pending === 0 && this.mode === 'readonly') this.complete(); });
++      return r;
++    };
++    return {
++      get: key => read(() => this.db.stores[name].get(JSON.stringify(key))),
++      index: () => ({ getAll: scope => read(() => [...this.db.stores[name].values()].filter(e => [e.identity.documentId, e.identity.epoch, e.identity.schema].every((v,i) => v === scope[i]))) }),
++      put: (value, key) => { if (this.db.putError) throw this.db.putError; this.staged.push([name, JSON.stringify(key), structuredClone(value)]); return {}; },
++      add: value => { const key = [value.identity.documentId, value.identity.epoch, value.identity.schema, value.writerId, value.sequence]; this.staged.push([name, JSON.stringify(key), structuredClone(value)]); return {}; },
++    };
++  }
++  requestSuccess() { this.requestSucceeded = true; }
++  abort(error = new DOMException('Injected abort', 'AbortError')) { this.error = error; this.aborted = true; this.staged = []; queueMicrotask(() => this.onabort?.()); }
++  complete() { if (this.aborted) throw Error('Aborted transaction'); for (const [name,key,value] of this.staged) this.db.stores[name].set(key,value); this.oncomplete?.(); }
++}
+--- HEAD/tests/checkpoint.test.mjs
++++ working/tests/checkpoint.test.mjs
+@@ -0,0 +1,133 @@
++import assert from 'node:assert/strict';
++import { test, after } from 'node:test';
++import { readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
++import { tmpdir } from 'node:os';
++import { join } from 'node:path';
++import { chromium } from 'playwright';
++import { init } from '../packages/core/dist/index.js';
++import { CheckpointStorage } from '../packages/web/dist/storage/checkpoint.js';
++import { UpdateJournal, JournalIntegrityError } from '../packages/web/dist/storage/journal.js';
++import { CheckpointIndexedDB } from './helpers/checkpoint-storage.mjs';
++const output = process.env.EDITAC_CHECKPOINT_OUTPUT ?? await mkdtemp(join(tmpdir(), 'editac-checkpoint-'));
++await mkdir(output, { recursive: true });
++const facts = { cases: [], processes: [] };
++function check(name, fn) { test(name, async () => { const c = { name, passed: false }; facts.cases.push(c); await fn(); c.passed = true; }); }
++const runtime = await init('data:application/wasm;base64,' + (await readFile(new URL('../packages/core/dist/wasm/editac_wasm_bg.wasm', import.meta.url))).toString('base64'));
++const options = { profile: 'v5', documentId: '45678901-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', nodes: [{ text: 'a😀b' }] };
++const engine = runtime.createEngine(options), initial = engine.checkpoint(), updates = [];
++const sub = engine.subscribe({ type: 'updates' }, p => { if (p.update) updates.push({ identity: p.identity, writerId: p.writerId, sequence: p.sequence, origin: p.origin, bytes: p.update.bytes }); });
++function edit(text) { const a = engine.anchor(engine.read().visible[0].id, 3, 'right'); engine.commit(engine.prepare({ kind: 'text', origin: 'checkpoint:test', command: { type: 'insert', at: a, text } })); engine.releaseAnchor(a); }
++edit('B'); const middle = engine.checkpoint(); edit('C'); const latest = engine.checkpoint(); sub.dispose(); engine.dispose();
++const text = e => e.read().visible[0].runs.map(r => r.text).join('');
++function restore(state) { const e = runtime.restoreEngine(initial.identity, state.checkpoint, state.tail.map(u => ({ identity: u.identity, bytes: u.bytes }))); try { return text(e); } finally { e.dispose(); } }
++async function publish(store, db, point, ids) { const p = store.publish(point, ids); const tx = await db.nextWrite(); tx.complete(); return p; }
++async function append(journal, db, update) { const p = journal.append(update); const tx = await db.nextWrite(); await new Promise(resolve => setImmediate(resolve)); tx.complete(); return p; }
++async function setup() {
++  const db = new CheckpointIndexedDB(), store = await CheckpointStorage.open(db), journal = await UpdateJournal.open(db);
++  await publish(store, db, initial, []); const ids = [];
++  for (const u of updates) ids.push((await append(journal, db, u)).updateId);
++  return { db, store, journal, ids };
++}
++check('publication and coverage remain invisible until transaction completion; owned bytes survive reopen', async () => {
++  const { db,store,ids } = await setup(); const input = structuredClone(latest), coverage = [...ids];
++  let settled = false; const p = store.publish(input,coverage).then(v => { settled = true; return v; }); input.bytes.fill(0); coverage.length = 0;
++  const tx = await db.nextWrite(); tx.requestSuccess(); assert.equal(settled,false);
++  assert.equal((await store.restore(initial.identity,restore)).value,'a😀CBb');
++  assert.equal([...db.stores.checkpoints.values()][0].latest.coverage.length,0);
++  tx.complete(); assert.equal((await p).state,'checkpointCommitted');
++  const row = [...db.stores.checkpoints.values()][0]; assert.deepEqual(row.latest.coverage,ids); assert.equal(row.previous.coverage.length,0);
++  store.close(); const reopened = await CheckpointStorage.open(db); assert.equal((await reopened.restore(initial.identity,restore)).value,'a😀CBb');
++  assert.equal(db.stores.updates.size,2);
++});
++for (const boundary of ['before-write-success','after-write-success']) check(`aborted publication ${boundary} recovers all locally committed real engine edits`, async () => {
++  const { db,store,ids } = await setup(); const p = store.publish(latest,ids); const tx = await db.nextWrite(); if (boundary === 'after-write-success') tx.requestSuccess();
++  tx.abort(); await assert.rejects(p,{name:'AbortError'}); const result = await store.restore(initial.identity,restore); assert.equal(result.value,'a😀CBb'); assert.equal(result.recovery.source,'latest'); assert.equal(db.stores.updates.size,2);
++});
++check('after-complete publication recovers covered and later committed tail without loss', async () => {
++  const {db,store,ids}=await setup(); await publish(store,db,middle,[ids[0]]); const result = await store.restore(initial.identity,restore);
++  assert.equal(result.value,'a😀CBb'); assert.equal(result.recovery.tail.length,2);
++});
++for (const corruption of ['bytes','coverage','version','identity','semantic']) check(`corrupt latest ${corruption} falls back to previous point and full committed tail`, async () => {
++  const {db,store,ids}=await setup();
++  if (corruption === 'semantic') await publish(store,db,{...latest,bytes:Uint8Array.of(0)},ids); else await publish(store,db,latest,ids);
++  const row = [...db.stores.checkpoints.values()][0];
++  if (corruption==='bytes') row.latest.checkpoint.bytes[0]^=1;
++  if (corruption==='coverage') row.latest.coverage=[];
++  if (corruption==='version') row.latest.version=99;
++  if (corruption==='identity') row.latest.checkpoint.identity.schema='other';
++  const result=await store.restore(initial.identity,restore); assert.equal(result.value,'a😀CBb'); assert.equal(result.recovery.source,'previous'); assert.equal(result.recovery.rejected.length,1);
++});
++check('both corrupt checkpoints, corrupt journal, missing and incompatible identity fail explicitly', async () => {
++  const {db,store,ids}=await setup(); await publish(store,db,latest,ids); const row=[...db.stores.checkpoints.values()][0]; row.latest.checkpoint.bytes[0]^=1; row.previous.checkpoint.bytes[0]^=1;
++  await assert.rejects(store.restore(initial.identity,restore),JournalIntegrityError);
++  await assert.rejects(store.restore({...initial.identity,documentId:'missing'},restore),/missing checkpoint/);
++  await assert.rejects(store.restore({...initial.identity,epoch:''},restore),JournalIntegrityError);
++  [...db.stores.updates.values()][0].bytes[0]^=1; await assert.rejects(store.restore(initial.identity,restore),/Corrupt journal/);
++});
++check('uncommitted/foreign coverage rejected without publishing; quota and permission failure preserve prior state', async () => {
++  const {db,store}=await setup(); await assert.rejects(store.publish(latest,['foreign']),/uncommitted or foreign/);
++  for (const name of ['QuotaExceededError','SecurityError']) { db.creationError=new DOMException('Injected',name); await assert.rejects(store.publish(latest,[]),{name}); db.creationError=null; assert.equal((await store.restore(initial.identity,restore)).value,'a😀CBb'); }
++});
++check('strict durability fallback is reported and repeated checkpoint publication retains journal/outbox identities',async()=>{
++  const {db,store,ids}=await setup();db.strictSupported=false;assert.equal((await publish(store,db,latest,ids)).durability,'default');await publish(store,db,latest,ids);assert.equal(db.stores.updates.size,2);assert.equal((await store.restore(initial.identity,restore)).value,'a😀CBb');
++});
++check('publication transaction-creation and put failures never acknowledge or replace recoverable state',async()=>{
++  const {db,store,ids}=await setup();
++  for(const field of ['writeCreationError','putError']){
++    db[field]=new DOMException('Injected write boundary','QuotaExceededError');
++    await assert.rejects(store.publish(latest,ids),{name:'QuotaExceededError'}); db[field]=null;
++    assert.equal((await store.restore(initial.identity,restore)).value,'a😀CBb');
++    assert.equal([...db.stores.checkpoints.values()][0].latest.coverage.length,0);
++  }
++});
++check('replacement of checksum-corrupt latest retains previous valid fallback and detached recovery state',async()=>{
++  const {db,store,ids}=await setup();await publish(store,db,middle,[ids[0]]);
++  [...db.stores.checkpoints.values()][0].latest.checkpoint.bytes[0]^=1;
++  await publish(store,db,latest,ids);const row=[...db.stores.checkpoints.values()][0];row.latest.checkpoint.bytes[0]^=1;
++  const result=await store.restore(initial.identity,restore);assert.equal(result.value,'a😀CBb');assert.equal(result.recovery.source,'previous');
++  result.recovery.checkpoint.bytes.fill(0);result.recovery.tail[0].bytes.fill(0);
++  assert.equal((await store.restore(initial.identity,restore)).value,'a😀CBb');
++});
++let controller, browser;
++check('actual Chromium atomic publication, abort boundaries, reopen and corrupt-latest fallback restore real Rust content',async()=>{
++  controller=await chromium.launchServer({headless:true});const child=controller.process();facts.processes.push({pid:child.pid,launcher:child.spawnfile,workspace:process.cwd(),purpose:'checkpoint IndexedDB integration',port:null,log:'full.log'});
++  browser=await chromium.connect(controller.wsEndpoint());facts.browser={version:browser.version(),playwright:JSON.parse(await readFile(new URL('../node_modules/playwright/package.json',import.meta.url))).version};
++  const context=await browser.newContext();
++  try{
++    await context.route('https://checkpoint.test/**',async route=>{
++      const path=new URL(route.request().url()).pathname;
++      if(path==='/')return route.fulfill({contentType:'text/html',body:'<!doctype html><title>Checkpoint qualification</title>'});
++      if(path.includes('..')||!/^\/(core|web)\//.test(path))return route.abort();
++      const prefix=path.startsWith('/core/')?'../packages/core/dist/':'../packages/web/dist/';
++      await route.fulfill({contentType:path.endsWith('.wasm')?'application/wasm':'text/javascript',body:await readFile(new URL(prefix+path.replace(/^\/(core|web)\//,''),import.meta.url))});
++    });
++    const page=await context.newPage();await page.goto('https://checkpoint.test/');
++    const result=await page.evaluate(async({options})=>{
++      const {init}=await import('/core/index.js'),{UpdateJournal}=await import('/web/storage/journal.js'),{CheckpointStorage}=await import('/web/storage/checkpoint.js');
++      const runtime=await init('/core/wasm/editac_wasm_bg.wasm');const engine=runtime.createEngine(options),initial=engine.checkpoint(),updates=[];
++      const sub=engine.subscribe({type:'updates'},p=>{if(p.update)updates.push({identity:p.identity,writerId:p.writerId,sequence:p.sequence,origin:p.origin,bytes:p.update.bytes});});
++      const journal=await UpdateJournal.open(indexedDB,'checkpoint-integration');let storage=await CheckpointStorage.open(indexedDB,'checkpoint-integration');
++      const replay=state=>{const e=runtime.restoreEngine(initial.identity,state.checkpoint,state.tail.map(u=>({identity:u.identity,bytes:u.bytes})));try{return e.read().visible[0].runs.map(r=>r.text).join('');}finally{e.dispose();}};
++      const nativePut=IDBObjectStore.prototype.put,nativeTransaction=IDBDatabase.prototype.transaction;let boundary='',completed=0;const errors=[],observed=[];
++      IDBDatabase.prototype.transaction=function(...args){const tx=nativeTransaction.apply(this,args);if(args[0]==='checkpoints'&&args[1]==='readwrite')tx.addEventListener('complete',()=>completed++);return tx;};
++      IDBObjectStore.prototype.put=function(...args){const request=nativePut.apply(this,args);if(this.name==='checkpoints'&&boundary==='before-success')this.transaction.abort();if(this.name==='checkpoints'&&boundary==='after-success')request.addEventListener('success',()=>this.transaction.abort());return request;};
++      try{
++        await storage.publish(initial,[]);
++        for(const word of ['B','C']){const a=engine.anchor(engine.read().visible[0].id,3,'right');engine.commit(engine.prepare({kind:'text',origin:'checkpoint:browser',command:{type:'insert',at:a,text:word}}));engine.releaseAnchor(a);await journal.append(updates.at(-1));}
++        const point=engine.checkpoint(),entries=await journal.read(initial.identity),ids=entries.map(e=>e.updateId);
++        for(const phase of ['before-success','after-success']){boundary=phase;try{await storage.publish(point,ids);}catch(e){errors.push(e.name);}boundary='';storage.close();storage=await CheckpointStorage.open(indexedDB,'checkpoint-integration');observed.push((await storage.restore(initial.identity,replay)).value);}
++        await storage.publish(point,ids);if(completed!==2)throw Error('Publication acknowledgment preceded transaction completion');storage.close();storage=await CheckpointStorage.open(indexedDB,'checkpoint-integration');observed.push((await storage.restore(initial.identity,replay)).value);
++        // Simulate durable corruption in latest point; previous and journal remain intact.
++        const db=await new Promise((resolve,reject)=>{const r=indexedDB.open('checkpoint-integration',3);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});
++        try{await new Promise((resolve,reject)=>{const tx=db.transaction('checkpoints','readwrite'),store=tx.objectStore('checkpoints'),key=JSON.stringify([initial.identity.documentId,initial.identity.epoch,initial.identity.schema]),r=store.get(key);r.onsuccess=()=>{r.result.latest.checkpoint.bytes[0]^=1;store.put(r.result,key);};tx.oncomplete=resolve;tx.onabort=()=>reject(tx.error);});}finally{db.close();}
++        const fallback=await storage.restore(initial.identity,replay);observed.push(fallback.value);
++        const retained=await journal.read(initial.identity);
++        return{errors,observed,fallback:fallback.recovery.source,rejected:fallback.recovery.rejected,completed,count:retained.length,idsPreserved:JSON.stringify(retained.map(e=>e.updateId))===JSON.stringify(ids),fixtures:{initial:{...initial,bytes:Array.from(initial.bytes)},latest:{...point,bytes:Array.from(point.bytes)},entries:retained.map(e=>({...e,bytes:Array.from(e.bytes)}))}};
++      }finally{IDBObjectStore.prototype.put=nativePut;IDBDatabase.prototype.transaction=nativeTransaction;sub.dispose();engine.dispose();storage.close();journal.close();}
++    },{options});
++    assert.deepEqual(result.errors,['AbortError','AbortError']);assert.deepEqual(result.observed,Array(4).fill('a😀CBb'));assert.equal(result.fallback,'previous');assert.equal(result.rejected.length,1);assert.equal(result.count,2);assert.equal(result.idsPreserved,true);assert.equal(result.completed,3);facts.integration=result;
++  }finally{await context.close();}
++});
++after(async()=>{
++  try{await browser?.close();}finally{await controller?.close();facts.teardown={browserClosed:!browser?.isConnected(),browserProcessExited:!controller||controller.process().exitCode!==null,fixtureServersStarted:0};await writeFile(join(output,'harness.json'),JSON.stringify(facts,null,2));if(!process.env.EDITAC_CHECKPOINT_OUTPUT&&facts.cases.every(c=>c.passed))await rm(output,{recursive:true});}
++});

@@ -1,0 +1,169 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs reconcile
+
+reconcile browser: chromium
+✔ prepared spellcheck input-first reconciles exactly once (2900.322333ms)
+✔ prepared spellcheck observer-first reconciles exactly once (174.94025ms)
+✔ prepared spellcheck observer-only reconciles exactly once (116.15725ms)
+✔ prepared autocorrect input-first reconciles exactly once (157.871709ms)
+✔ prepared autocorrect observer-first reconciles exactly once (232.6255ms)
+✔ prepared autocorrect observer-only reconciles exactly once (167.21ms)
+✔ prepared paste-like input-first reconciles exactly once (203.79975ms)
+✔ prepared paste-like observer-first reconciles exactly once (189.184833ms)
+✔ prepared paste-like observer-only reconciles exactly once (118.099625ms)
+✔ prepared input without any beforeinput admits an existing text-node mutation (109.314958ms)
+✔ prepared unusable cancelable beforeinput falls back to native text (147.174791ms)
+✔ prepared plain-text child replacement canonicalizes only the affected block (113.023125ms)
+✔ prepared observer-owned duplicates retain a deliberate identical second edit (115.058375ms)
+✔ prepared multiple mutations in one owned batch commit final text once (112.495875ms)
+✔ prepared Unicode replacement preserves UTF-16 scalar boundaries and native caret (258.439791ms)
+✔ prepared no-op child replacement rebuilds mappings without a semantic update (133.927541ms)
+✔ prepared renderer echo cannot consume an unprompted native mutation in the same turn (173.507708ms)
+✔ prepared pure renderer patches and input-only notifications produce zero local effects (117.801625ms)
+✔ prepared pasted markup exposes recovery and leaves authoritative text unchanged (107.404292ms)
+✔ prepared unknown root mutation exposes recovery and stops editing without root diff (134.490708ms)
+✖ prepared multi-block mutation is explicit unsupported recovery, never partial commit (104.911084ms)
+✔ prepared affected-block resource limit retains bounded recovery and no semantic effect (141.246584ms)
+✔ prepared same-block remote patch rejects a changed baseline with captured recovery (129.662125ms)
+✔ prepared read-only unprompted native text is restored with observable recovery (127.274083ms)
+✔ prepared dispose invalidates queued observer-owned edit (117.351459ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 24
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6899.878459
+
+✖ failing tests:
+
+test at tests/browser/reconcile.spec.ts:114:1
+✖ prepared multi-block mutation is explicit unsupported recovery, never partial commit (104.911084ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:44:228)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:116:14
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+reconcile browser: firefox
+✔ prepared spellcheck input-first reconciles exactly once (6703.0995ms)
+✔ prepared spellcheck observer-first reconciles exactly once (472.409458ms)
+✔ prepared spellcheck observer-only reconciles exactly once (313.431584ms)
+✔ prepared autocorrect input-first reconciles exactly once (309.793958ms)
+✔ prepared autocorrect observer-first reconciles exactly once (256.481458ms)
+✔ prepared autocorrect observer-only reconciles exactly once (326.379625ms)
+✔ prepared paste-like input-first reconciles exactly once (270.002709ms)
+✔ prepared paste-like observer-first reconciles exactly once (322.948416ms)
+✔ prepared paste-like observer-only reconciles exactly once (378.361875ms)
+✔ prepared input without any beforeinput admits an existing text-node mutation (1057.434541ms)
+✔ prepared unusable cancelable beforeinput falls back to native text (353.000708ms)
+✔ prepared plain-text child replacement canonicalizes only the affected block (266.005208ms)
+✔ prepared observer-owned duplicates retain a deliberate identical second edit (351.510125ms)
+✔ prepared multiple mutations in one owned batch commit final text once (394.788ms)
+✔ prepared Unicode replacement preserves UTF-16 scalar boundaries and native caret (491.216834ms)
+✔ prepared no-op child replacement rebuilds mappings without a semantic update (371.962958ms)
+✔ prepared renderer echo cannot consume an unprompted native mutation in the same turn (325.656583ms)
+✔ prepared pure renderer patches and input-only notifications produce zero local effects (383.28ms)
+✔ prepared pasted markup exposes recovery and leaves authoritative text unchanged (348.040125ms)
+✔ prepared unknown root mutation exposes recovery and stops editing without root diff (1436.67575ms)
+✖ prepared multi-block mutation is explicit unsupported recovery, never partial commit (768.829375ms)
+✔ prepared affected-block resource limit retains bounded recovery and no semantic effect (348.37775ms)
+✔ prepared same-block remote patch rejects a changed baseline with captured recovery (463.090417ms)
+✔ prepared read-only unprompted native text is restored with observable recovery (450.058542ms)
+✔ prepared dispose invalidates queued observer-owned edit (404.350291ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 24
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18278.360333
+
+✖ failing tests:
+
+test at tests/browser/reconcile.spec.ts:114:1
+✖ prepared multi-block mutation is explicit unsupported recovery, never partial commit (768.829375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:44:228)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:116:14
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+reconcile browser: webkit
+✔ prepared spellcheck input-first reconciles exactly once (14460.061416ms)
+✔ prepared spellcheck observer-first reconciles exactly once (1446.093958ms)
+✔ prepared spellcheck observer-only reconciles exactly once (1935.923833ms)
+✔ prepared autocorrect input-first reconciles exactly once (1028.317041ms)
+✔ prepared autocorrect observer-first reconciles exactly once (630.246875ms)
+✔ prepared autocorrect observer-only reconciles exactly once (932.766833ms)
+✔ prepared paste-like input-first reconciles exactly once (735.411167ms)
+✔ prepared paste-like observer-first reconciles exactly once (402.572125ms)
+✔ prepared paste-like observer-only reconciles exactly once (737.654416ms)
+✔ prepared input without any beforeinput admits an existing text-node mutation (1786.625708ms)
+✔ prepared unusable cancelable beforeinput falls back to native text (1884.870417ms)
+✔ prepared plain-text child replacement canonicalizes only the affected block (2774.257125ms)
+✔ prepared observer-owned duplicates retain a deliberate identical second edit (3852.8ms)
+✔ prepared multiple mutations in one owned batch commit final text once (2963.874583ms)
+✔ prepared Unicode replacement preserves UTF-16 scalar boundaries and native caret (2019.661375ms)
+✔ prepared no-op child replacement rebuilds mappings without a semantic update (1418.962625ms)
+✔ prepared renderer echo cannot consume an unprompted native mutation in the same turn (3218.246208ms)
+✔ prepared pure renderer patches and input-only notifications produce zero local effects (2593.785834ms)
+✔ prepared pasted markup exposes recovery and leaves authoritative text unchanged (1840.883625ms)
+✔ prepared unknown root mutation exposes recovery and stops editing without root diff (3001.27225ms)
+✖ prepared multi-block mutation is explicit unsupported recovery, never partial commit (3075.802292ms)
+✔ prepared affected-block resource limit retains bounded recovery and no semantic effect (2772.815083ms)
+✔ prepared same-block remote patch rejects a changed baseline with captured recovery (3721.813125ms)
+✔ prepared read-only unprompted native text is restored with observable recovery (2557.364833ms)
+✔ prepared dispose invalidates queued observer-owned edit (3010.359417ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 24
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65565.175208
+
+✖ failing tests:
+
+test at tests/browser/reconcile.spec.ts:114:1
+✖ prepared multi-block mutation is explicit unsupported recovery, never partial commit (3075.802292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:44:228)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:116:14
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

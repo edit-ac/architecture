@@ -1,0 +1,62 @@
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+error[E0624]: method `inspect` is private
+   --> crates/editac-markdown/tests/optional_content.rs:39:62
+    |
+ 39 |       let mut d=doc();let before=d.checkpoint();let snapshot=d.inspect().unwrap();let nodes:Vec<_>=snapshot.visible.iter().filter(|...
+    |                                                                ^^^^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:657:5
+    |
+657 | /     pub(crate) fn inspect(
+658 | |         &self,
+659 | |     ) -> Result<crate::projection::Snapshot, crate::projection::ProjectionError> {
+    | |________________________________________________________________________________- private method defined here
+
+error[E0624]: method `inspect` is private
+   --> crates/editac-markdown/tests/optional_content.rs:44:99
+    |
+ 44 |       let commit=d.commit_editor(plan).unwrap();assert!(!commit.update.bytes.is_empty());let view=d.inspect().unwrap();assert_eq!(v...
+    |                                                                                                     ^^^^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:657:5
+    |
+657 | /     pub(crate) fn inspect(
+658 | |         &self,
+659 | |     ) -> Result<crate::projection::Snapshot, crate::projection::ProjectionError> {
+    | |________________________________________________________________________________- private method defined here
+
+error[E0599]: no method named `unwrap` found for struct `HistoryState` in the current scope
+  --> crates/editac-markdown/tests/optional_content.rs:46:34
+   |
+46 |     assert_eq!(d.history_state().unwrap().undo_groups,1);d.undo().unwrap();assert_eq!(d.inspect().unwrap().visible,snapshot.visible)...
+   |                                  ^^^^^^ method not found in `HistoryState`
+
+error[E0624]: method `inspect` is private
+   --> crates/editac-markdown/tests/optional_content.rs:46:89
+    |
+ 46 |       assert_eq!(d.history_state().unwrap().undo_groups,1);d.undo().unwrap();assert_eq!(d.inspect().unwrap().visible,snapshot.visib...
+    |                                                                                           ^^^^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:657:5
+    |
+657 | /     pub(crate) fn inspect(
+658 | |         &self,
+659 | |     ) -> Result<crate::projection::Snapshot, crate::projection::ProjectionError> {
+    | |________________________________________________________________________________- private method defined here
+
+error[E0624]: method `inspect` is private
+   --> crates/editac-markdown/tests/optional_content.rs:46:165
+    |
+ 46 |   ...le,snapshot.visible);d.redo().unwrap();assert_eq!(d.inspect().unwrap().visible,view.visible);
+    |                                                          ^^^^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:657:5
+    |
+657 | /     pub(crate) fn inspect(
+658 | |         &self,
+659 | |     ) -> Result<crate::projection::Snapshot, crate::projection::ProjectionError> {
+    | |________________________________________________________________________________- private method defined here
+
+Some errors have detailed explanations: E0599, E0624.
+For more information about an error, try `rustc --explain E0599`.
+error: could not compile `editac-markdown` (test "optional_content") due to 5 previous errors

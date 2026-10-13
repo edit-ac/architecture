@@ -1,0 +1,22 @@
+12:pub enum EditorCommand {
+65:pub enum EditorError {
+76:pub struct PreparedEditorEdit {
+87:    pub fn result_caret(&self) -> Option<&crate::anchors::Anchor> {
+91:pub struct EditorCommit {
+92:    pub result_caret: Option<crate::anchors::Anchor>,
+93:    pub revision: u64,
+94:    pub origin: TextOrigin,
+95:    pub update: ReplayUpdate,
+100:pub struct FragmentRun {
+101:    pub text: String,
+102:    pub marks: Vec<(super::format::Mark, Option<String>)>,
+105:pub struct FragmentBlock {
+106:    pub runs: Vec<FragmentRun>,
+107:    pub attributes: Option<crate::document::BlockAttributes>,
+108:    pub containers: Vec<(String, super::lists::ContainerStyle)>,
+109:    pub checked: Option<bool>,
+115:    pub fn prepare_fragment(
+689:    pub fn next_editor_id(&self, container: bool) -> Result<String, EditorError> {
+710:    pub fn can_editor(
+717:    pub fn prepare_editor(
+1214:    pub fn commit_editor(&mut self, plan: PreparedEditorEdit) -> Result<EditorCommit, EditorError> {

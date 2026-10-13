@@ -1,0 +1,59 @@
+✔ shared production engine fixture: unicode-replace (74.596583ms)
+✔ shared production engine fixture: text-insert-delete (4.8445ms)
+✔ shared production engine fixture: rich-marks (12.10175ms)
+✔ shared production engine fixture: heading-levels (5.431084ms)
+✔ shared production engine fixture: split-start (9.492708ms)
+✔ shared production engine fixture: split-middle (6.464ms)
+✔ shared production engine fixture: split-end (5.13525ms)
+✔ shared production engine fixture: split-empty (5.009584ms)
+✔ shared production engine fixture: retained-join (10.311541ms)
+✔ shared production engine fixture: literal-code (4.516708ms)
+✔ shared production engine fixture: list-quote-nesting (20.915791ms)
+✔ shared production engine fixture: list-enter-backspace (4.214625ms)
+✔ shared production engine fixture: empty-item-exit (2.077792ms)
+✔ shared production engine fixture: separator-access (3.867542ms)
+✔ shared production engine fixture: separator-insert (2.750416ms)
+✔ shared production engine fixture: semantic-move (4.207083ms)
+✔ shared production engine fixture: history-grouping (3.074583ms)
+✔ malformed JS shapes, unsafe numeric input and unknown fields reject before mutation (4.701625ms)
+✔ mixed valid and invalid command/format batches reject atomically (1.502791ms)
+✔ plans and anchors are scoped, single-use, explicitly releasable and stale-safe (2.3905ms)
+✔ can validates silently and disposal is explicit/idempotent for all operations (0.9585ms)
+✔ raw built-WASM JSON errors are structured, byte bounded, and disposal rejects use (7.201125ms)
+✔ bounded anchor and plan tables reclaim released capacity (110.717042ms)
+✔ parity normalization preserves literal content and opaque attributes (0.180042ms)
+✔ explicitly empty creation adds no defaults and snapshots are detached values (0.406416ms)
+✔ headingEnd packed command preserves heading/marks, stable UTF-16 caret and one update/history group (6.361416ms)
+✔ headingEnd selected suffix deletion resolves the retained cut after one atomic batch (3.509375ms)
+✔ headingEnd cross-block selected replacement stages deletes/join and preserves authored caret/history (6.637709ms)
+✔ headingEnd rejects empty/interior/nonheading/malformed targets and mixed batches without any effects (14.828625ms)
+✔ headingEnd stale/released/foreign anchors and disposed plans use the existing packed boundary (5.189083ms)
+✔ headingEnd peer-preserving undo/redo and replay retain the original heading with unrelated remote edits (7.997916ms)
+✔ headingEnd keeps the parent under quote and admission failures cannot change its packed result (3.854375ms)
+✖ headingEnd deleted remote target rejects rather than redirecting the retained anchor (4.277542ms)
+✔ headingEnd admission honors the existing host read-only guard before preparation (2.85925ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 33
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 472.165667
+
+✖ failing tests:
+
+test at tests/wasm-commands.test.mjs:387:1
+✖ headingEnd deleted remote target rejects rather than redirecting the retained anchor (4.277542ms)
+  Error [EngineError]: UnsupportedSchema
+      at invoke (file:///Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/consumer/node_modules/@edit-ac/core/dist/engine.js:22:27)
+      at use (file:///Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/consumer/node_modules/@edit-ac/core/dist/engine.js:124:40)
+      at mutate (file:///Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/consumer/node_modules/@edit-ac/core/dist/engine.js:172:24)
+      at Object.applyUpdate (file:///Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/consumer/node_modules/@edit-ac/core/dist/engine.js:205:34)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:392:7)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'EngineRejected',
+    operation: 'applyUpdate'
+  }

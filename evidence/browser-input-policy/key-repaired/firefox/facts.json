@@ -1,0 +1,253 @@
+{
+  "cases": [
+    {
+      "name": "composition-commit-key",
+      "passed": true,
+      "provenance": "prepared real-DOM event replay",
+      "snapshots": [
+        {
+          "text": [
+            "alpha語",
+            "independent"
+          ],
+          "dom": [
+            "alpha語",
+            "independent"
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "composition",
+              "disposition": "committed",
+              "text": "語"
+            }
+          ],
+          "trace": [
+            {
+              "type": "compositionstart",
+              "trusted": false
+            },
+            {
+              "type": "compositionend",
+              "trusted": false
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "count": 1
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "count": 1
+            },
+            {
+              "type": "keydown",
+              "trusted": false,
+              "composing": false
+            },
+            {
+              "type": "beforeinput",
+              "trusted": false,
+              "inputType": "insertParagraph",
+              "composing": false
+            },
+            {
+              "type": "keyup",
+              "trusted": false,
+              "composing": false
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Text",
+              "origin": "editac:local:input-policy:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "update": true,
+              "bytes": 20
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 20,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:input-policy:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "sequence": 1,
+              "bytes": 20
+            }
+          ],
+          "caret": {
+            "node": "n:1510643660:1",
+            "offset": 6,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted"
+        },
+        {
+          "text": [
+            "alpha語",
+            "",
+            "independent"
+          ],
+          "dom": [
+            "alpha語",
+            "independent"
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "composition",
+              "disposition": "committed",
+              "text": "語"
+            },
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/2",
+              "generation": 1,
+              "origin": "key",
+              "disposition": "committed"
+            }
+          ],
+          "trace": [
+            {
+              "type": "compositionstart",
+              "trusted": false
+            },
+            {
+              "type": "compositionend",
+              "trusted": false
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "count": 1
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "count": 1
+            },
+            {
+              "type": "keydown",
+              "trusted": false,
+              "composing": false
+            },
+            {
+              "type": "beforeinput",
+              "trusted": false,
+              "inputType": "insertParagraph",
+              "composing": false
+            },
+            {
+              "type": "keyup",
+              "trusted": false,
+              "composing": false
+            },
+            {
+              "type": "keydown",
+              "trusted": true,
+              "composing": false
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "count": 1
+            },
+            {
+              "type": "keyup",
+              "trusted": true,
+              "composing": false
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Text",
+              "origin": "editac:local:input-policy:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "update": true,
+              "bytes": 20
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Editor",
+              "origin": "editac:local:input-policy:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/2",
+              "update": true,
+              "bytes": 122
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 142,
+            "revision": 2,
+            "undoGroups": 2
+          },
+          "journal": [
+            {
+              "origin": "editac:local:input-policy:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "sequence": 1,
+              "bytes": 20
+            },
+            {
+              "origin": "editac:local:input-policy:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/2",
+              "sequence": 2,
+              "bytes": 122
+            }
+          ],
+          "caret": {
+            "node": "o:4291896262:1",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted"
+        }
+      ]
+    }
+  ],
+  "processes": [
+    {
+      "pid": 58221,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "WEB-1.13 pinned firefox",
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-input-policy/key-repaired/firefox"
+    }
+  ],
+  "packed": {
+    "filename": "edit-ac-core-0.0.0.tgz",
+    "bytes": 740614,
+    "sha256": "48e1581709c34991918187f86ccd34e0f3c90ae6ff42388822aac43b56a7fd79",
+    "includesWasm": true
+  },
+  "browser": {
+    "engine": "firefox",
+    "version": "157.0",
+    "playwright": "1.64.0",
+    "node": "v26.4.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "server": {
+    "port": 55594,
+    "url": "http://127.0.0.1:55594",
+    "pid": 58169,
+    "launcher": "node --test tests/browser/input-policy.spec.ts",
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "WEB-1.13 real packed protocol probe",
+    "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/browser-input-policy/key-repaired/firefox"
+  },
+  "cleanup": {
+    "browserExited": true,
+    "listenerRemoved": true,
+    "consumerRemoved": true
+  }
+}

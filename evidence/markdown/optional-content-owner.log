@@ -1,0 +1,36 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.61s
+     Running tests/optional_content.rs (target/debug/deps/optional_content-4aad1d0f438b0d5e)
+
+running 6 tests
+test disabled_inline_and_hostile_images_keep_inert_source_and_diagnostics ... ok
+test oversize_shapes_and_bad_versions_reject_before_mutation ... ok
+test registered_images_retain_alt_title_url_and_source ... ok
+test rectangular_tables_retain_alignment_rich_cells_and_code_pipes ... ok
+test edge_atom_paste_preserves_unrelated_prefix_suffix_and_result_caret ... FAILED
+test mixed_opaque_fragment_is_one_engine_update_with_selective_history ... FAILED
+
+failures:
+
+---- edge_atom_paste_preserves_unrelated_prefix_suffix_and_result_caret stdout ----
+
+thread 'edge_atom_paste_preserves_unrelated_prefix_suffix_and_result_caret' (162522464) panicked at crates/editac-markdown/tests/optional_content.rs:54:122:
+assertion `left == right` failed
+  left: Some(Unknown(Array([String("module:editac.image"), Number(Int(1)), Map({"source": String("![alt](https://example.com/a.png)"), "alt": String("alt"), "url": String("https://example.com/a.png"), "title": String("")})])))
+ right: Some(Paragraph)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- mixed_opaque_fragment_is_one_engine_update_with_selective_history stdout ----
+
+thread 'mixed_opaque_fragment_is_one_engine_update_with_selective_history' (162522465) panicked at crates/editac-markdown/tests/optional_content.rs:43:95:
+called `Result::unwrap()` on an `Err` value: UnsupportedTarget
+
+
+failures:
+    edge_atom_paste_preserves_unrelated_prefix_suffix_and_result_caret
+    mixed_opaque_fragment_is_one_engine_update_with_selective_history
+
+test result: FAILED. 4 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `-p editac-markdown --test optional_content`

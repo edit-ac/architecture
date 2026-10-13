@@ -1,0 +1,190 @@
+{
+  "gate": "LOC-1.6",
+  "children": [
+    "LOC-1.6-I1",
+    "LOC-1.6-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "../architecture/progress/.roadmap-runner/03-local-storage-490e984e7714/source-4b0b018a0077.md",
+  "sourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseCommit": "3cea914c983233a091faeb70382865a335c85b40",
+  "implementationRevision": "Uncommitted additive lifecycle adapter/tests; exact tested-source copies and SHA-256 hashes identify the implementation. Shared journal/writer/engine unchanged.",
+  "verifiedAtUtc": "2026-10-12T08:46:50.494791+00:00",
+  "prerequisites": {
+    "LOC-1.5": "../local-storage-writers/receipt.json",
+    "matchedSourceHashes": 7,
+    "totalSourceHashes": 7,
+    "engineEntryRevision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677"
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "log": "build.log",
+      "sha256": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b"
+    },
+    {
+      "command": "EDITAC_LIFECYCLE_OUTPUT=../architecture/evidence/local-storage-lifecycle/narrow node --test --test-name-pattern=deterministic tests/storage-lifecycle.test.mjs",
+      "exit": 1,
+      "log": "narrow.log",
+      "sha256": "80932852ae4696a4f28d53da31ea96a0922489e95d7e37d0ddce225b97e13962",
+      "executed": 10,
+      "passed": 9,
+      "failed": 1,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_LIFECYCLE_OUTPUT=../architecture/evidence/local-storage-lifecycle/repair node --test --test-name-pattern='explicit reject policy|later transaction failure' tests/storage-lifecycle.test.mjs",
+      "exit": 0,
+      "log": "repair.log",
+      "sha256": "4e84ab7c1acc123ebec1415aace26a6f4dc769533088c778244e846b8ec22c16",
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_LIFECYCLE_OUTPUT=../architecture/evidence/local-storage-lifecycle/full node --test tests/storage-lifecycle.test.mjs",
+      "exit": 1,
+      "log": "full.log",
+      "sha256": "38697fd462484e70b41c11f9154ea00cdcdb963d6d56efdd61b03fc3226b7ce4",
+      "executed": 12,
+      "passed": 11,
+      "failed": 1,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_LIFECYCLE_OUTPUT=../architecture/evidence/local-storage-lifecycle/browser-repair node --test --test-name-pattern='actual Chromium' tests/storage-lifecycle.test.mjs",
+      "exit": 0,
+      "log": "browser-repair.log",
+      "sha256": "46385f1854213a0a444de268d3107c1023f38fd53cdbf37f43d4a30d01767f04",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "log": "build-final.log",
+      "sha256": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b"
+    },
+    {
+      "command": "EDITAC_LIFECYCLE_OUTPUT=../architecture/evidence/local-storage-lifecycle/final node --test tests/storage-lifecycle.test.mjs",
+      "exit": 0,
+      "log": "final.log",
+      "sha256": "d06034e96b9b3fb1d05fa0e2ae5395babd84540fa6c1e133c8653badeb71dba4",
+      "executed": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
+  ],
+  "criterionToCases": {
+    "captured set completion and later edits": [
+      "deterministic captured flush waits for completion, excludes later edits and clears saved on enqueue",
+      "deterministic later transaction failure cannot reject an earlier captured set, and no-op work adds no storage",
+      "actual Chromium lifecycle uses leased Rust writer and IndexedDB completion, recovers committed bytes and retains aborted edits"
+    ],
+    "errors reject and clear saved": [
+      "deterministic AbortError rejects barriers, clears saved and retains edits/export under default continue policy",
+      "deterministic QuotaExceededError rejects barriers, clears saved and retains edits/export under default continue policy",
+      "deterministic NotAllowedError rejects barriers, clears saved and retains edits/export under default continue policy",
+      "actual Chromium lifecycle uses leased Rust writer and IndexedDB completion, recovers committed bytes and retains aborted edits"
+    ],
+    "recoverable in-memory edits": [
+      "deterministic AbortError rejects barriers, clears saved and retains edits/export under default continue policy",
+      "deterministic QuotaExceededError rejects barriers, clears saved and retains edits/export under default continue policy",
+      "deterministic NotAllowedError rejects barriers, clears saved and retains edits/export under default continue policy",
+      "actual Chromium lifecycle uses leased Rust writer and IndexedDB completion, recovers committed bytes and retains aborted edits"
+    ],
+    "host edit/destroy policy": [
+      "deterministic AbortError rejects barriers, clears saved and retains edits/export under default continue policy",
+      "deterministic QuotaExceededError rejects barriers, clears saved and retains edits/export under default continue policy",
+      "deterministic NotAllowedError rejects barriers, clears saved and retains edits/export under default continue policy",
+      "deterministic explicit reject policy prevents Rust mutation after failure; policy is captured by value",
+      "deterministic destroy flush blocks edits until completion and releases lease/subscription/database",
+      "deterministic failed destroy flush preserves live edits and explicit report exports unsaved state",
+      "deterministic report destruction never claims pending data saved; missing policy/unsupported target fail explicitly"
+    ],
+    "actual durability": [
+      "deterministic reports actual default durability without claiming strict capability",
+      "deterministic reports actual unknown durability without claiming strict capability",
+      "actual Chromium lifecycle uses leased Rust writer and IndexedDB completion, recovers committed bytes and retains aborted edits"
+    ]
+  },
+  "failuresPreserved": [
+    {
+      "log": "narrow.log",
+      "counts": "9 passed / 1 failed / 0 skipped",
+      "repair": "Compare stable visible content, revision and checkpoint bytes; read() consumes transient touchedRanges/changedNodes."
+    },
+    {
+      "log": "full.log",
+      "counts": "11 passed / 1 failed / 0 skipped",
+      "repair": "Bounded 3-second Web Locks release wait after lease callback settles; real completion/replay/abort assertions had passed."
+    }
+  ],
+  "finalCoverage": {
+    "executed": 12,
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "deterministic": 11,
+    "actualChromiumIntegration": 1
+  },
+  "browser": {
+    "version": "156.0.8078.4"
+  },
+  "sourceHashes": {
+    "packages/web/src/storage/index.ts": "4a6e2e35aa5e882fd2fdd2714d28af543de4c0e907b49f791b41e986252e42b7",
+    "tests/storage-lifecycle.test.mjs": "57a0280da4d2902802192cae4b2200cdfd9a5161596d51c665994fc2f7c27774",
+    "tests/helpers/journal-storage.mjs": "c8eb0288432b437aca5331c86fcc80b2fb1bcc5181018c2e95edf6fed9c68349",
+    "packages/web/src/storage/journal.ts": "53d45abc5c323683512470d41ada3941edfb4c249bd84a6dfca6d892b867c2a1",
+    "packages/web/src/storage/writer.ts": "d7d82bf7c4a9660a8f6d0b8c2171e208fcc9a8e0aa80ff766389873842c2adac",
+    "packages/core/src/engine.ts": "5b403551dbc6a7a559e03aec14aeb2f69f122f8832c0e6702a9100bffdb799f7",
+    "packages/core/src/index.ts": "08c277b8628d968d8957d971798936690c2205ae72e10f82373246397da4754d",
+    "packages/web/tsconfig.json": "ddc631f6e23ea8b3d048cdee7bba120a433cb67f18973d8e4bb5b598178de9d3"
+  },
+  "compiledHashes": {
+    "compiled-storage/checkpoint.d.ts": "2b4b261a9a9fcb36d2f15d5cfdc3a6eaa377f3c3e378457518d2a254782e7832",
+    "compiled-storage/outbox.d.ts": "110d8cb7e95ae9e1126bbae240830bba677d35babe6166fd8506fedf6f302dc2",
+    "compiled-storage/index.js": "b83ecaaee0ba6100a477f67d3177c6985bfa64a3385c035a071f713c20464099",
+    "compiled-storage/checkpoint.js": "20874d44f5965baf46e4c7012c206c3c3a70baa0a71e061fe745b43b92a94b4b",
+    "compiled-storage/journal.js": "d4fe1e43fbb1861e385d4ec33466d897b8882c50f2bdaea0b7356a0d3fb92192",
+    "compiled-storage/journal.d.ts": "5d96e9a86a4eb41b6019c8b924ed2a45024ba0386e666b648ec42fe53a2688ee",
+    "compiled-storage/outbox.js": "858775d88d32a013270706f7eefaed79e5a53b3442a696fbd063a835bc0db777",
+    "compiled-storage/writer.d.ts": "1ea8cd2b2f485328eda1c21cafe34698869b194779293f6af9c2ccd18020d6e1",
+    "compiled-storage/index.d.ts": "48976dcf82f40934fed37a774c2d2c20fc5a87888fffc1b17b10803992211a4e",
+    "compiled-storage/writer.js": "1f97adcfbb311d0e575c4ab6a6dc8a06f4bfc70bd5b78335a04e65ed6ea873c5",
+    "compiled-core/index.js": "db9945040f82be675b6b2626158b44db26c9fb704b42bfa5929077819a90bf1e",
+    "compiled-core/engine.js": "f3046a0bb71910d45fb2782fe5689d63afd855499d71ebbe7bd1efd2fdeb0935",
+    "compiled-core/wasm/editac_wasm_bg.wasm": "06c32af7cf876512e25fb75ce681b5590b1e81cab6945d04cb08206e48ffca6c",
+    "compiled-core/wasm/editac_wasm.js": "846d86197125ef4ddf3159085f866c847e4de70d631a7dd70e00a893558ea139"
+  },
+  "fixtureHashes": {
+    "full/harness.json": "cbb215eaa1e9d4c2b4c24dc4facc1004da79a1eb62938697cf65ea678949c015",
+    "full/initial.json": "0724d58bb5197a84f398366ac4580a1d1702a0735ff85765eb8b89492ce3f720",
+    "narrow/harness.json": "3260cfe9759f9a33d564698ca6c65c9843ddb54e86a56aac215be55518c23931",
+    "narrow/initial.json": "500b9f5eb3446839f30db73ff17c7edde05769fcd67a547d47c86e976714ee1c",
+    "browser-repair/harness.json": "087226113b1dbc14c8b0b7514bc06e611f54c9b7eecfe9923b990a53a1771b70",
+    "browser-repair/initial.json": "e334e4b4ea19f357ac4d3cbff0380fa5f2492bf7231fbf5ca89dc09025008874",
+    "final/harness.json": "a738ccaf3c746a86b88157487ffbbfe0231aca352ad1281d1eac82c336f6244f",
+    "final/initial.json": "a69dc33d3f539a8ace220f7ffb7e06478c101a1bfd970bb3784bd726cb258c04",
+    "repair/harness.json": "5d5e2e41022f97e7226a7f8b785eb8e55619a3255ef55432a3988d06859951a5",
+    "repair/initial.json": "8dfead0dcc96e7735a80657d4ebe2331b0f3239ab2861855fd05e2e563a5ebc7"
+  },
+  "cleanup": "cleanup.json",
+  "limitations": [
+    "Internal unpublishable adapter; no process-termination guarantee yet (LOC-1.7 remains open).",
+    "No eviction/power-loss/deployment/provider qualification.",
+    "Host must route edits through commit to enforce its selected edit policy.",
+    "Failed updates remain exportable and keep future flush rejected; reopening from recovery is explicit host work."
+  ]
+}

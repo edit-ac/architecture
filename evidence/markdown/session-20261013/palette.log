@@ -1,0 +1,255 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs clipboard-formats
+
+clipboard-formats browser: chromium
+✖ text/markdown supports the portable full palette without a raw frame (2961.007375ms)
+✖ text/x-markdown supports the portable full palette without a raw frame (365.384375ms)
+✖ text/plain supports the portable full palette without a raw frame (292.4485ms)
+✔ reserved MIME codecs cannot bypass the qualified parser and fragments are preflighted (170.320833ms)
+✔ word processor style vocabulary imports while unsupported assets keep source (337.256375ms)
+✔ prepared mobile paste-pair routing commits once (170.021667ms)
+✔ prepared mobile beforeinput-only routing commits once (148.043375ms)
+✖ prepared mobile quotation routing commits once (134.207583ms)
+✔ prepared Control+Shift+V routes literal text (131.986208ms)
+✔ prepared Meta+Shift+V routes literal text (152.449166ms)
+✔ public recovered editor honors minimal/task policy and registered content options (182.934917ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 7
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5434.3825
+
+✖ failing tests:
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/markdown supports the portable full palette without a raw frame (2961.007375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:373
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/x-markdown supports the portable full palette without a raw frame (365.384375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:373
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/plain supports the portable full palette without a raw frame (292.4485ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:373
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:21:68
+✖ prepared mobile quotation routing commits once (134.207583ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'mobile 😀'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:22:594
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'mobile 😀' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+clipboard-formats browser: firefox
+✖ text/markdown supports the portable full palette without a raw frame (4816.282709ms)
+✖ text/x-markdown supports the portable full palette without a raw frame (570.611875ms)
+✖ text/plain supports the portable full palette without a raw frame (519.416209ms)
+✔ reserved MIME codecs cannot bypass the qualified parser and fragments are preflighted (298.168583ms)
+✔ word processor style vocabulary imports while unsupported assets keep source (572.199875ms)
+✔ prepared mobile paste-pair routing commits once (296.194625ms)
+✔ prepared mobile beforeinput-only routing commits once (304.9915ms)
+✔ prepared mobile quotation routing commits once (353.42125ms)
+✔ prepared Control+Shift+V routes literal text (306.410958ms)
+✔ prepared Meta+Shift+V routes literal text (837.245792ms)
+✔ public recovered editor honors minimal/task policy and registered content options (353.254125ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 8
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9762.357666
+
+✖ failing tests:
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/markdown supports the portable full palette without a raw frame (4816.282709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:373
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/x-markdown supports the portable full palette without a raw frame (570.611875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:373
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/plain supports the portable full palette without a raw frame (519.416209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:373
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+clipboard-formats browser: webkit
+✖ text/markdown supports the portable full palette without a raw frame (4260.977875ms)
+✖ text/x-markdown supports the portable full palette without a raw frame (1426.552292ms)
+✖ text/plain supports the portable full palette without a raw frame (490.926709ms)
+✔ reserved MIME codecs cannot bypass the qualified parser and fragments are preflighted (357.583416ms)
+✔ word processor style vocabulary imports while unsupported assets keep source (532.410209ms)
+✔ prepared mobile paste-pair routing commits once (354.593958ms)
+✔ prepared mobile beforeinput-only routing commits once (330.466083ms)
+✔ prepared mobile quotation routing commits once (351.495625ms)
+✔ prepared Control+Shift+V routes literal text (368.059ms)
+✔ prepared Meta+Shift+V routes literal text (321.017833ms)
+✔ public recovered editor honors minimal/task policy and registered content options (328.964542ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 8
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9498.676667
+
+✖ failing tests:
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/markdown supports the portable full palette without a raw frame (4260.977875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:373
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/x-markdown supports the portable full palette without a raw frame (1426.552292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:373
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/plain supports the portable full palette without a raw frame (490.926709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:373
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

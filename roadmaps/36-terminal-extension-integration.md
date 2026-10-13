@@ -44,7 +44,7 @@ Purpose: Add bounded code syntax and table formatting actions as one bounded int
 Context: `src/tui/extensions/content.rs`; `tests/tui_content_extensions.rs`; `../architecture/specs/ecosystem-maintainability.md`.
 Dependencies: TCX-1.1.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Visible code coloring and Markdown table formatting stay responsive, preserve source spelling outside edited ranges and handle UTF-16/grapheme conversions.
+Acceptance: Visible code coloring and Markdown table formatting stay responsive, preserve source spelling outside edited ranges and handle UTF-16/grapheme conversions. Expose the qualified code-tools commands and document search through terminal controls where supported; bind relevant FND/IDE cases without claiming pointer/OS GUI parity.
 
 Implementation:
 
@@ -132,7 +132,7 @@ Purpose: Qualify terminal command, readonly and collaboration parity as one boun
 Context: `tests/tui_extension_scenarios.rs`; `docs/tui-support.md`; `../architecture/specs/ecosystem-maintainability.md`.
 Dependencies: TCX-1.2, TCX-1.3, TCX-1.4, TCX-1.5.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Extension actions respect readonly/permissions and concurrent source reconciliation; terminal limitations are explicit rather than graphical parity claims.
+Acceptance: Extension actions respect readonly/permissions and concurrent source reconciliation; terminal limitations are explicit rather than graphical parity claims. Record official profile identities and supported FND/IDE/FPX variants, explicit terminal limitations and deterministic command/history evidence.
 
 Implementation:
 

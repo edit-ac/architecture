@@ -1,0 +1,39 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0507]: cannot move out of an `Arc`
+    --> crates/editac-core/tests/table_cells.rs:64:5
+     |
+  64 | /     d.snapshot()
+  65 | |         .unwrap()
+  66 | |         .visible
+  67 | |         .into_iter()
+  68 | |         .find(|n| n.id == "n:11:1")
+  69 | |         .unwrap()
+  70 | |         .block_attributes
+     | |_________________________^ move occurs because value has type `Option<BlockAttributes>`, which does not implement the `Copy` trait
+  71 |           .unwrap()
+     |            -------- value moved due to this method call
+     |
+note: `Option::<T>::unwrap` takes ownership of the receiver `self`, which moves value
+    --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/option.rs:1010:25
+     |
+1010 |     pub const fn unwrap(self) -> T {
+     |                         ^^^^
+help: consider calling `.as_ref()` to borrow the value's contents
+     |
+  70 |         .block_attributes.as_ref()
+     |                          +++++++++
+help: consider calling `.as_mut()` to mutably borrow the value's contents
+     |
+  70 |         .block_attributes.as_mut()
+     |                          +++++++++
+help: you can `clone` the value and consume it, but this might not be your desired behavior
+     |
+  64 ~     <Option<BlockAttributes> as Clone>::clone(&d.snapshot()
+  65 |         .unwrap()
+ ...
+  69 |         .unwrap()
+  70 ~         .block_attributes)
+     |
+
+For more information about this error, try `rustc --explain E0507`.
+error: could not compile `editac-core` (test "table_cells") due to 1 previous error

@@ -1,0 +1,58 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs dispose
+
+dispose browser: chromium
+✔ twenty create/edit/flush/destroy cycles reach a stable listener and observer plateau (4832.690417ms)
+✔ concurrent and repeated destroy is idempotent and releases the engine (857.140959ms)
+✔ closing subscriber can reenter destroy without recursion or duplicate teardown (225.060875ms)
+✔ late clipboard provider settles canceled without waiting for external permission work (258.972792ms)
+✔ destroy during recovery leaves late resources closed and never enables input (396.748125ms)
+✔ destroy rejects pending readiness even when host recovery never resolves (473.550083ms)
+✔ flush failure is observable, keeps recovery replica and permits explicit report teardown (334.775459ms)
+✔ events and host commands after destroy cannot mutate the document or remount accidentally (190.330292ms)
+✔ disposing one editor preserves the second editor and scoped listeners (206.349792ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8462.598625
+dispose browser: firefox
+✔ twenty create/edit/flush/destroy cycles reach a stable listener and observer plateau (8129.22225ms)
+✔ concurrent and repeated destroy is idempotent and releases the engine (863.5615ms)
+✔ closing subscriber can reenter destroy without recursion or duplicate teardown (1239.229625ms)
+✔ late clipboard provider settles canceled without waiting for external permission work (1034.680375ms)
+✔ destroy during recovery leaves late resources closed and never enables input (1191.973042ms)
+✔ destroy rejects pending readiness even when host recovery never resolves (1847.900917ms)
+✔ flush failure is observable, keeps recovery replica and permits explicit report teardown (1631.419042ms)
+✔ events and host commands after destroy cannot mutate the document or remount accidentally (1679.460625ms)
+✔ disposing one editor preserves the second editor and scoped listeners (881.013542ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19310.638042
+dispose browser: webkit
+✔ twenty create/edit/flush/destroy cycles reach a stable listener and observer plateau (4350.845458ms)
+✔ concurrent and repeated destroy is idempotent and releases the engine (1087.793625ms)
+✔ closing subscriber can reenter destroy without recursion or duplicate teardown (620.739208ms)
+✔ late clipboard provider settles canceled without waiting for external permission work (739.486875ms)
+✔ destroy during recovery leaves late resources closed and never enables input (3213.284333ms)
+✔ destroy rejects pending readiness even when host recovery never resolves (3419.970167ms)
+✔ flush failure is observable, keeps recovery replica and permits explicit report teardown (1936.590167ms)
+✔ events and host commands after destroy cannot mutate the document or remount accidentally (1498.572625ms)
+✔ disposing one editor preserves the second editor and scoped listeners (1423.455417ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18772.601166

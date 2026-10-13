@@ -1,0 +1,912 @@
+{
+  "task": "WEB-1.8",
+  "state": "implemented and locally verified",
+  "date": "2026-10-12",
+  "sourceSnapshot": "progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "809e587431638a0dfb8c9dd277c02dc79e0acee9f6c641598c9ceb51087ea02b",
+  "loadedPromptRevision": "7eaa063f3629",
+  "implementationRevision": "6edb83432468e44083740b586f973fb44f623352",
+  "implementationState": "Uncommitted shared worktree; tested source snapshots/hashes identify this delivery; prior unrelated changes preserved",
+  "sourceHashes": "iteration-9/source-hashes.json",
+  "testedSource": "iteration-9/tested-source/",
+  "checks": [
+    {
+      "command": "npm run test:browser -- keyboard --test-name-pattern=heading",
+      "outputEnv": "narrow",
+      "exit": 1,
+      "log": "narrow.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 14,
+          "passed": 12,
+          "failed": 2,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "narrow/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 14,
+          "passed": 12,
+          "failed": 2,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "narrow/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 14,
+          "passed": 12,
+          "failed": 2,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "narrow/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser -- keyboard --test-name-pattern='restoration throws|shared-source'",
+      "outputEnv": "repair-narrow",
+      "exit": 1,
+      "log": "repair-narrow.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 2,
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "repair-narrow/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 2,
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "repair-narrow/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 2,
+          "passed": 1,
+          "failed": 1,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "repair-narrow/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser -- keyboard --test-name-pattern=shared-source",
+      "outputEnv": "affinity-narrow",
+      "exit": 1,
+      "log": "affinity-narrow.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 1,
+          "passed": 0,
+          "failed": 1,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "affinity-narrow/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 1,
+          "passed": 0,
+          "failed": 1,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "affinity-narrow/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 1,
+          "passed": 0,
+          "failed": 1,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "affinity-narrow/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser -- keyboard --test-name-pattern=shared-source",
+      "outputEnv": "final-narrow",
+      "exit": 0,
+      "log": "final-narrow.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "final-narrow/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "final-narrow/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "final-narrow/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser -- keyboard",
+      "outputEnv": "keyboard",
+      "exit": 1,
+      "log": "keyboard.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 58,
+          "passed": 56,
+          "failed": 2,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "keyboard/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 58,
+          "passed": 56,
+          "failed": 2,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "keyboard/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 58,
+          "passed": 55,
+          "failed": 3,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "keyboard/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser -- keyboard --test-name-pattern=escape-shift-tab",
+      "outputEnv": "shift-tab-repair",
+      "exit": 1,
+      "log": "shift-tab-repair.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 2,
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "shift-tab-repair/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 2,
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "shift-tab-repair/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 2,
+          "passed": 0,
+          "failed": 2,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "shift-tab-repair/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser -- keyboard --test-name-pattern='shift-tab|focus-escape'",
+      "outputEnv": "focus-repair",
+      "exit": 0,
+      "log": "focus-repair.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 10,
+          "passed": 10,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "focus-repair/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 10,
+          "passed": 10,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "focus-repair/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 10,
+          "passed": 10,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "focus-repair/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser -- keyboard",
+      "outputEnv": "final-keyboard",
+      "exit": 0,
+      "log": "final-keyboard.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 58,
+          "passed": 58,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "final-keyboard/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v26.4.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 749647,
+            "sha256": "10fb2df6a82587f424d2d07e0f137329d2469a870b979fae79560264d9d484de",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 58,
+          "passed": 58,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "final-keyboard/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v26.4.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 749647,
+            "sha256": "10fb2df6a82587f424d2d07e0f137329d2469a870b979fae79560264d9d484de",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 58,
+          "passed": 58,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "final-keyboard/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v26.4.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 749647,
+            "sha256": "10fb2df6a82587f424d2d07e0f137329d2469a870b979fae79560264d9d484de",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser -- input",
+      "outputEnv": "input",
+      "exit": 0,
+      "log": "input.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "input/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "input/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "input/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser -- composition",
+      "outputEnv": "composition",
+      "exit": 0,
+      "log": "composition.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 38,
+          "passed": 38,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "composition/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 38,
+          "passed": 38,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "composition/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 38,
+          "passed": 38,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "composition/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "npm run test:browser -- composition-remote",
+      "outputEnv": "composition-remote",
+      "exit": 0,
+      "log": "composition-remote.log",
+      "results": [
+        {
+          "engine": "chromium",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "composition-remote/chromium/facts.json",
+          "profile": {
+            "engine": "chromium",
+            "version": "156.0.8078.4",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "composition-remote/firefox/facts.json",
+          "profile": {
+            "engine": "firefox",
+            "version": "157.0",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "facts": "composition-remote/webkit/facts.json",
+          "profile": {
+            "engine": "webkit",
+            "version": "27.2",
+            "playwright": "1.64.0",
+            "node": "v24.19.0",
+            "platform": "darwin",
+            "arch": "arm64"
+          },
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 756211,
+            "sha256": "a6b339c1811c000437e5fc8b701e52735a1a332c39e48219117aa2994b5e9dc8",
+            "includesWasm": true
+          }
+        }
+      ]
+    }
+  ],
+  "staticChecks": [
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "log": "build-shift-tab.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exit": 0,
+      "log": "typecheck-verified.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "diff-check.log"
+    }
+  ],
+  "counts": {
+    "keyboard": {
+      "executed": 174,
+      "passed": 174,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "regressions": {
+      "executed": 234,
+      "passed": 234,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
+  },
+  "contractEvidence": {
+    "I1": "Full 58-case matrix per engine: structural Enter/break/join/replacement, toolbar captured ranges and applicability, list/code Tab with selection and whitespace, platform/native ownership and peer-preserving keyboard/menu undo. Full extended Track 38/device navigation qualification remains separate.",
+    "I2/C2": "Heading selected/cross-block replacement, marks/identity/history, native/menu routes, empty and interior contexts, shared-source sibling and follow-up typing. Production KeyboardInput consumes CommitResult.caret then releases in finally; injected postcommit restoration fault verifies release. Block-end capture left-affinity and output affinity preserve native owner without engine routing changes.",
+    "I3/C1": "Native backward prose and Escape\u2013Shift+Tab code/list escape assert actual focus and identical nodes/history/journal; native list outdent and caret/multiline code dedent retain whitespace/direction. Modifier-only keydowns preserve armed escape; six existing invalidation boundaries pass."
+  },
+  "preservedFailures": [
+    "iteration-9/narrow.log",
+    "iteration-9/repair-narrow.log",
+    "iteration-9/affinity-narrow.log",
+    "iteration-9/keyboard.log",
+    "iteration-9/shift-tab-repair.log"
+  ],
+  "failureRepairs": "Initial fault injection also hit renderer subscriber; now targets postcommit restoration. Shared cut capture and output affinity repaired production routing. Sibling order expectation corrected to account for inserted paragraph. Native modifier-only Shift invalidation repaired; backward-focus fixture uses a text field because pinned WebKit Mac native profile skips buttons. Initial full tested source preserved with exact matching recorded hashes in initial-full-tested-source/.",
+  "regressionReuse": "51 ordinary, 114 composition and 69 remote-composition cases passed before the final modifier-only focus repair; their source/artifact hashes and traces remain preserved. Final canonical keyboard verifies modified focus/shortcut/composition precedence. No unchanged regression was rerun.",
+  "upstreamArtifact": "Qualified WEB-1.14 WASM SHA-256 matches current packed browser artifact; evidence/engine-heading-end/receipt.json reused. No engine source/ABI changed in this batch.",
+  "qualificationLimits": "Real packed WASM, production renderer/selection/input/storage, actual IndexedDB and fixed peer updates. Native Playwright browser mechanics plus labeled prepared replay/fault injection; no OS IME/device/Safari support, paid provider, deployment or release claim.",
+  "teardown": "iteration-9/cleanup.json",
+  "runDirectory": "iteration-9/"
+}

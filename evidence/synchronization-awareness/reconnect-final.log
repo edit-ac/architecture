@@ -1,0 +1,78 @@
+TAP version 13
+# (node:98209) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: detached and unauthorized local edits remain recoverable; attachment preserves stable anchors and history
+ok 1 - detached and unauthorized local edits remain recoverable; attachment preserves stable anchors and history
+  ---
+  duration_ms: 83.567292
+  type: 'test'
+  ...
+# Subtest: disconnect and authorized reconnect replay all local bytes through shuffled duplicate messages without echo
+ok 2 - disconnect and authorized reconnect replay all local bytes through shuffled duplicate messages without echo
+  ---
+  duration_ms: 16.973166
+  type: 'test'
+  ...
+# Subtest: saturated prepared socket pauses bounded send replay and drops no committed local updates
+ok 3 - saturated prepared socket pauses bounded send replay and drops no committed local updates
+  ---
+  duration_ms: 25.884125
+  type: 'test'
+  ...
+# Subtest: bounded exponential retry exhaustion detaches; explicit reconnect recovers without losing edits
+ok 4 - bounded exponential retry exhaustion detaches; explicit reconnect recovers without losing edits
+  ---
+  duration_ms: 3.759459
+  type: 'test'
+  ...
+# Subtest: receive frame/count/byte bounds reject before mutation and require a recoverable reconnect
+ok 5 - receive frame/count/byte bounds reject before mutation and require a recoverable reconnect
+  ---
+  duration_ms: 9.716708
+  type: 'test'
+  ...
+# Subtest: remote, restore and replay journal origins never become outbound update messages
+ok 6 - remote, restore and replay journal origins never become outbound update messages
+  ---
+  duration_ms: 5.8055
+  type: 'test'
+  ...
+# Subtest: generation fence prevents a delayed old outbox read from sending on a replacement attachment
+ok 7 - generation fence prevents a delayed old outbox read from sending on a replacement attachment
+  ---
+  duration_ms: 1.885959
+  type: 'test'
+  ...
+# Subtest: local commit during a replay read gets a second pass and concurrent pumps share bounded work
+ok 8 - local commit during a replay read gets a second pass and concurrent pumps share bounded work
+  ---
+  duration_ms: 4.530125
+  type: 'test'
+  ...
+# Subtest: transport failure and malformed frames expose errors while local recovery and history remain intact
+ok 9 - transport failure and malformed frames expose errors while local recovery and history remain intact
+  ---
+  duration_ms: 6.501875
+  type: 'test'
+  ...
+# Subtest: offline undo and redo updates replay as local edits and preserve selective history across attachments
+ok 10 - offline undo and redo updates replay as local edits and preserve selective history across attachments
+  ---
+  duration_ms: 30.773833
+  type: 'test'
+  ...
+# Subtest: synchronous detach during a refusing send cannot schedule retries on the replacement session
+ok 11 - synchronous detach during a refusing send cannot schedule retries on the replacement session
+  ---
+  duration_ms: 4.094166
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 472.938375

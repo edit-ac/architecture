@@ -1,0 +1,119 @@
+{
+  "gate": "LOC-1.5 / I1 / V1",
+  "date": "2026-10-12",
+  "sourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+  "promptRevision": "7eaa063f3629",
+  "baseCoreRevision": "3cea914c983233a091faeb70382865a335c85b40",
+  "implementation": "Uncommitted additive sources captured in source/ with hashes; prior uncommitted changes preserved",
+  "sourceHashes": {
+    "packages/web/src/storage/writer.ts": "d7d82bf7c4a9660a8f6d0b8c2171e208fcc9a8e0aa80ff766389873842c2adac",
+    "packages/web/src/storage/checkpoint.ts": "ce1b5361deffe978e99c230f40591b6cce662a8e5b288474a1bca10848d91893",
+    "tests/writers.test.mjs": "25b61a45f52bf5a385685b2159ff96efb2bad93e9cc0927ce9fe2550c5c57fd7",
+    "tests/checkpoint.test.mjs": "9b07d15c277100606388ab80d47162fa6e5cfa4102f8ee8e611240a4c8e20a47",
+    "tests/helpers/checkpoint-storage.mjs": "77cb2ae2b325927698d37f71d8eaf98925e1225fe2243e16df25dad1b32064b4",
+    "packages/web/src/storage/journal.ts": "53d45abc5c323683512470d41ada3941edfb4c249bd84a6dfca6d892b867c2a1",
+    "packages/web/src/storage/outbox.ts": "660a34984825fca07570c2605000515f22d6eb352ec7d1fb760e81e1f0b75437"
+  },
+  "compiledHashes": {
+    "compiled-storage/checkpoint.d.ts": "2b4b261a9a9fcb36d2f15d5cfdc3a6eaa377f3c3e378457518d2a254782e7832",
+    "compiled-storage/outbox.d.ts": "110d8cb7e95ae9e1126bbae240830bba677d35babe6166fd8506fedf6f302dc2",
+    "compiled-storage/checkpoint.js": "20874d44f5965baf46e4c7012c206c3c3a70baa0a71e061fe745b43b92a94b4b",
+    "compiled-storage/journal.js": "d4fe1e43fbb1861e385d4ec33466d897b8882c50f2bdaea0b7356a0d3fb92192",
+    "compiled-storage/journal.d.ts": "5d96e9a86a4eb41b6019c8b924ed2a45024ba0386e666b648ec42fe53a2688ee",
+    "compiled-storage/outbox.js": "858775d88d32a013270706f7eefaed79e5a53b3442a696fbd063a835bc0db777",
+    "compiled-storage/writer.d.ts": "1ea8cd2b2f485328eda1c21cafe34698869b194779293f6af9c2ccd18020d6e1",
+    "compiled-storage/writer.js": "1f97adcfbb311d0e575c4ab6a6dc8a06f4bfc70bd5b78335a04e65ed6ea873c5"
+  },
+  "fixtureHarnessHashes": {
+    "journal/harness.json": "7f22863a1e73275d213f6dedfb090617c61673fc3f176a299d3a52283579b9ed",
+    "outbox/harness.json": "f86401b791ca7dbd63e299e8683a4d1188345e1f620f9db56ae6a6e91944b86c",
+    "full/harness.json": "f794ea83e12b351a64ec85e002d600efee72c7fa4dbaced7627cec1aef27407b",
+    "checkpoint/harness.json": "a22aa1a620dda6b5d21eb1b3d494f29db7f3b2d0af5e51a6b105291b4b581e7c",
+    "narrow/harness.json": "d67931f52424dd1a24fb32e65267615f06db7c185c678bdcb6fe2f96409f87dd",
+    "final/harness.json": "d887df49634782a9d57a3a629fc1fec134d9691c56ce77664de2409303d281e6",
+    "checkpoint-repaired/harness.json": "8823910c59406f1453feac788200d34b5dd5c6ab4b792fda8227af8c9b4c921b"
+  },
+  "commands": [
+    {
+      "command": "npm run build",
+      "log": "build-final.log",
+      "exit": 0
+    },
+    {
+      "command": "EDITAC_WRITERS_OUTPUT=evidence/local-storage-writers/narrow node --test --test-name-pattern=deterministic tests/writers.test.mjs",
+      "log": "narrow.log",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "EDITAC_WRITERS_OUTPUT=evidence/local-storage-writers/final node --test tests/writers.test.mjs",
+      "log": "final.log",
+      "exit": 0,
+      "executed": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_JOURNAL_OUTPUT=evidence/local-storage-writers/journal EDITAC_CHECKPOINT_OUTPUT=evidence/local-storage-writers/checkpoint EDITAC_OUTBOX_OUTPUT=evidence/local-storage-writers/outbox node --test tests/journal.test.mjs tests/checkpoint.test.mjs tests/outbox.test.mjs",
+      "log": "regressions.log",
+      "exit": 1,
+      "executed": 51,
+      "passed": 37,
+      "failed": 14,
+      "skipped": 0,
+      "cancelled": 0,
+      "failure": "14 prepared checkpoint cases completed before new transaction read; repair awaits request quiescence. Journal 16/16 and outbox 20/20 unchanged passing evidence reused."
+    },
+    {
+      "command": "EDITAC_CHECKPOINT_OUTPUT=evidence/local-storage-writers/checkpoint-repaired node --test tests/checkpoint.test.mjs",
+      "log": "checkpoint-repaired.log",
+      "exit": 0,
+      "executed": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "node scripts/check-package-exports.mjs",
+      "log": "exports-final.log",
+      "exit": 0
+    },
+    {
+      "command": "git diff --check",
+      "log": "diff-check-final.log",
+      "exit": 0
+    }
+  ],
+  "acceptance": {
+    "distinctWriters": "Fresh Rust restore plus origin-wide Web Locks lifetime lease; collision retry, unsupported and sync/async failure cleanup. Actual two separate WASM tab realms. Web Locks is required, absence fails explicitly.",
+    "noOverwrite": "Both actual tabs commit sequence 1 to separate immutable journal keys; entries and pending retransmission bytes survive reopen.",
+    "concurrentCheckpoints": "Actual two-tab barrier after real read transaction completion forces same stale publication snapshot. Serialized IDB write comparison rejects loser; retry retains latest committed predecessor. All journal/outbox bytes remain.",
+    "idempotentReplay": "Real Rust/WASM duplicated/reordered replay converges to independently ordered A/B oracle; deterministic latest corruption falls back and preserves both writers."
+  },
+  "limitations": [
+    "Chromium mechanics only; no process termination, deployment, paid inference or multi-browser release claim",
+    "CheckpointConflictError requires caller retry with fresh validated state; no implicit completion"
+  ],
+  "cleanup": {
+    "removed": [
+      "packages/web/dist/storage"
+    ],
+    "removedFileBytes": 30253,
+    "freeDataVolumeBytes": 24498872320,
+    "taskBrowserPidsAllExited": true,
+    "fixtureServersStarted": 0,
+    "protectedServices": "No unrelated browsers/servers/signals touched",
+    "preserved": [
+      "source",
+      "all qualification evidence",
+      "existing core/react build outputs"
+    ],
+    "lowDisk": "Existing free space below 50 GiB; broader cleanup outside task ownership"
+  }
+}

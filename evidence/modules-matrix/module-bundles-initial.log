@@ -1,0 +1,37 @@
+✔ minimal packed production graph contains no optional presenter or math asset bytes (7984.011667ms)
+✔ disabled packed production graph contains no optional presenter or math asset bytes (0.177917ms)
+✔ slash packed enabled graph retains its presenter and excludes unrelated optional code (0.107916ms)
+✔ references packed enabled graph retains its presenter and excludes unrelated optional code (0.074416ms)
+✔ reorder packed enabled graph retains its presenter and excludes unrelated optional code (2.322709ms)
+✔ content packed enabled graph retains its presenter and excludes unrelated optional code (0.089167ms)
+✔ math packed enabled graph retains its presenter and excludes unrelated optional code (0.064459ms)
+✖ all-enabled graph is the absence-oracle positive control and keeps the verified math renderer lazy (33.3535ms)
+✔ every advertised module capability has hashed passing three-engine fixture evidence at the current presenter revision (180.378834ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8267.242666
+
+✖ failing tests:
+
+test at tests/module-bundles.test.mjs:88:1
+✖ all-enabled graph is the absence-oracle positive control and keeps the verified math renderer lazy (33.3535ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(entry)
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/module-bundles.test.mjs:92:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

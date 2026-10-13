@@ -1,0 +1,294 @@
+{
+  "boundary": "Actual Chromium IndexedDB / Rust WASM client and peer / loopback HTTP / SQLite FULL WAL; prepared grants; no production auth",
+  "cases": [
+    {
+      "name": "ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending",
+      "passed": false
+    },
+    {
+      "name": "negotiated actual relay commit prunes only pending membership and preserves recovery journal",
+      "passed": false
+    },
+    {
+      "name": "receipt documentId mismatch cannot prune or claim remoteCommitted",
+      "passed": false
+    },
+    {
+      "name": "receipt epoch mismatch cannot prune or claim remoteCommitted",
+      "passed": false
+    },
+    {
+      "name": "receipt schema mismatch cannot prune or claim remoteCommitted",
+      "passed": false
+    },
+    {
+      "name": "receipt writerId mismatch cannot prune or claim remoteCommitted",
+      "passed": false
+    },
+    {
+      "name": "receipt sequence mismatch cannot prune or claim remoteCommitted",
+      "passed": false
+    },
+    {
+      "name": "receipt checksum mismatch cannot prune or claim remoteCommitted",
+      "passed": false
+    },
+    {
+      "name": "receipt updateId mismatch cannot prune or claim remoteCommitted",
+      "passed": false
+    },
+    {
+      "name": "denied authorization keeps offline commands editable and recovery export available without upload",
+      "passed": false
+    },
+    {
+      "name": "service revocation stops upload and baseline traffic while retaining edits for authorized reconnect",
+      "passed": false
+    },
+    {
+      "name": "late committed response after revocation is fenced; reconnect resends idempotently",
+      "passed": false
+    },
+    {
+      "name": "receipt transaction abort cannot publish remoteCommitted or prune",
+      "passed": false
+    },
+    {
+      "name": "new local commit during durable upload restarts the bounded replay cursor",
+      "passed": false
+    },
+    {
+      "name": "unsupported negotiation and wrong peer identity fail before replacing an authorized connection",
+      "passed": false
+    },
+    {
+      "name": "malformed non-durable receipts fail admission and capability absence ignores even a valid receipt",
+      "passed": false
+    },
+    {
+      "name": "durable replay is bounded to one page per event without dropping the remaining local backlog",
+      "passed": false
+    }
+  ],
+  "processes": [
+    {
+      "pid": 99148,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49847,
+      "purpose": "SYN-1.6 Chromium integration",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49853,
+      "purpose": "ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49865,
+      "purpose": "negotiated actual relay commit prunes only pending membership and preserves recovery journal",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49871,
+      "purpose": "receipt documentId mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49876,
+      "purpose": "receipt epoch mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49878,
+      "purpose": "receipt schema mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49881,
+      "purpose": "receipt writerId mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49888,
+      "purpose": "receipt sequence mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49890,
+      "purpose": "receipt checksum mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49892,
+      "purpose": "receipt updateId mismatch cannot prune or claim remoteCommitted",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49894,
+      "purpose": "denied authorization keeps offline commands editable and recovery export available without upload",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49896,
+      "purpose": "service revocation stops upload and baseline traffic while retaining edits for authorized reconnect",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49898,
+      "purpose": "late committed response after revocation is fenced; reconnect resends idempotently",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49900,
+      "purpose": "receipt transaction abort cannot publish remoteCommitted or prune",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49902,
+      "purpose": "new local commit during durable upload restarts the bounded replay cursor",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49904,
+      "purpose": "unsupported negotiation and wrong peer identity fail before replacing an authorized connection",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49906,
+      "purpose": "malformed non-durable receipts fail admission and capability absence ignores even a valid receipt",
+      "log": "feature.log"
+    },
+    {
+      "pid": 99143,
+      "launcher": "node --test tests/receipts.test.mjs",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": 49908,
+      "purpose": "durable replay is bounded to one page per event without dropping the remaining local backlog",
+      "log": "feature.log"
+    }
+  ],
+  "cleanup": [
+    {
+      "port": 49853,
+      "relayStopped": true
+    },
+    {
+      "port": 49865,
+      "relayStopped": true
+    },
+    {
+      "port": 49871,
+      "relayStopped": true
+    },
+    {
+      "port": 49876,
+      "relayStopped": true
+    },
+    {
+      "port": 49878,
+      "relayStopped": true
+    },
+    {
+      "port": 49881,
+      "relayStopped": true
+    },
+    {
+      "port": 49888,
+      "relayStopped": true
+    },
+    {
+      "port": 49890,
+      "relayStopped": true
+    },
+    {
+      "port": 49892,
+      "relayStopped": true
+    },
+    {
+      "port": 49894,
+      "relayStopped": true
+    },
+    {
+      "port": 49896,
+      "relayStopped": true
+    },
+    {
+      "port": 49898,
+      "relayStopped": true
+    },
+    {
+      "port": 49900,
+      "relayStopped": true
+    },
+    {
+      "port": 49902,
+      "relayStopped": true
+    },
+    {
+      "port": 49904,
+      "relayStopped": true
+    },
+    {
+      "port": 49906,
+      "relayStopped": true
+    },
+    {
+      "port": 49908,
+      "relayStopped": true
+    },
+    {
+      "browserStopped": true,
+      "scratchRemoved": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-receipts-databases-Te0c3Y"
+    }
+  ],
+  "browser": "156.0.8078.4"
+}

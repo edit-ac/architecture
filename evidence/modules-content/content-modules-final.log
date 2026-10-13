@@ -1,0 +1,85 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs content-modules
+
+content-modules browser: chromium
+✔ image host policy receives inert metadata; alt/title and rectangle render accessibly (2812.373458ms)
+✔ unsafe host image URL is inert: javascript:alert(1) (258.807875ms)
+✔ unsafe host image URL is inert: https://user:pass@assets.invalid/a (200.899875ms)
+✔ unsafe host image URL is inert: https://assets.invalid/%0a.png (160.47775ms)
+✔ absent policy never loads authored asset URLs (195.212417ms)
+✔ throwing host policy is isolated with preserved source (159.143167ms)
+✔ native keyboard selection/copy and Tab traverse cell controls without editor commands (299.198ms)
+✔ cell editing commits through storage, retains owner, marks and unrelated metadata (217.7695ms)
+✔ undo and redo restore both cell tuple and fallback text (202.036625ms)
+✔ composition stays temporary until one committed cell edit (222.036ms)
+✔ stale composition cannot replace a newer engine cell update (199.871375ms)
+✔ read-only blocks native edits and retains selectable copy controls (189.91225ms)
+✔ disabled storage round-trip retains edited data and re-enabling restores cells (245.3555ms)
+✔ disabled initial mount preserves complete descriptors without asset calls (165.100083ms)
+✔ multiline and stale direct commands reject atomically (161.711833ms)
+✔ disposal detaches cell edit listeners and asset URL (172.788ms)
+✔ image source has keyboard selection and literal copy without asset mutation (174.066375ms)
+✔ empty-cell editing preserves the rectangle; multiline input restores committed data (226.843583ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6635.682209
+content-modules browser: firefox
+✔ image host policy receives inert metadata; alt/title and rectangle render accessibly (5379.554542ms)
+✔ unsafe host image URL is inert: javascript:alert(1) (301.731792ms)
+✔ unsafe host image URL is inert: https://user:pass@assets.invalid/a (312.115792ms)
+✔ unsafe host image URL is inert: https://assets.invalid/%0a.png (314.568875ms)
+✔ absent policy never loads authored asset URLs (285.695458ms)
+✔ throwing host policy is isolated with preserved source (273.264041ms)
+✔ native keyboard selection/copy and Tab traverse cell controls without editor commands (309.57275ms)
+✔ cell editing commits through storage, retains owner, marks and unrelated metadata (327.853458ms)
+✔ undo and redo restore both cell tuple and fallback text (373.880542ms)
+✔ composition stays temporary until one committed cell edit (763.583417ms)
+✔ stale composition cannot replace a newer engine cell update (313.176375ms)
+✔ read-only blocks native edits and retains selectable copy controls (272.989125ms)
+✔ disabled storage round-trip retains edited data and re-enabling restores cells (371.178959ms)
+✔ disabled initial mount preserves complete descriptors without asset calls (276.235291ms)
+✔ multiline and stale direct commands reject atomically (265.550375ms)
+✔ disposal detaches cell edit listeners and asset URL (280.141708ms)
+✔ image source has keyboard selection and literal copy without asset mutation (287.496334ms)
+✔ empty-cell editing preserves the rectangle; multiline input restores committed data (314.754209ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11674.939875
+content-modules browser: webkit
+✔ image host policy receives inert metadata; alt/title and rectangle render accessibly (3425.147083ms)
+✔ unsafe host image URL is inert: javascript:alert(1) (386.41975ms)
+✔ unsafe host image URL is inert: https://user:pass@assets.invalid/a (364.052708ms)
+✔ unsafe host image URL is inert: https://assets.invalid/%0a.png (341.970458ms)
+✔ absent policy never loads authored asset URLs (392.159125ms)
+✔ throwing host policy is isolated with preserved source (301.378833ms)
+✔ native keyboard selection/copy and Tab traverse cell controls without editor commands (513.338375ms)
+✔ cell editing commits through storage, retains owner, marks and unrelated metadata (336.674ms)
+✔ undo and redo restore both cell tuple and fallback text (397.949875ms)
+✔ composition stays temporary until one committed cell edit (370.247375ms)
+✔ stale composition cannot replace a newer engine cell update (374.875667ms)
+✔ read-only blocks native edits and retains selectable copy controls (330.458709ms)
+✔ disabled storage round-trip retains edited data and re-enabling restores cells (358.3215ms)
+✔ disabled initial mount preserves complete descriptors without asset calls (287.048708ms)
+✔ multiline and stale direct commands reject atomically (287.302875ms)
+✔ disposal detaches cell edit listeners and asset URL (297.92675ms)
+✔ image source has keyboard selection and literal copy without asset mutation (325.247167ms)
+✔ empty-cell editing preserves the rectangle; multiline input restores committed data (338.957042ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9759.364459

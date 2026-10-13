@@ -1,0 +1,30 @@
+    Checking editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Checking editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+error[E0624]: method `inspect` is private
+   --> crates/editac-markdown/src/reconcile.rs:45:31
+    |
+ 45 |           let snapshot=document.inspect().map_err(|_|conflict(ConflictKind::EngineRejected,None))?;
+    |                                 ^^^^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:657:5
+    |
+657 | /     pub(crate) fn inspect(
+658 | |         &self,
+659 | |     ) -> Result<crate::projection::Snapshot, crate::projection::ProjectionError> {
+    | |________________________________________________________________________________- private method defined here
+
+error[E0624]: method `inspect` is private
+   --> crates/editac-markdown/src/reconcile.rs:60:30
+    |
+ 60 |           let current=document.inspect().map_err(|_|conflict(ConflictKind::EngineRejected,None))?;
+    |                                ^^^^^^^ private method
+    |
+   ::: crates/editac-core/src/document.rs:657:5
+    |
+657 | /     pub(crate) fn inspect(
+658 | |         &self,
+659 | |     ) -> Result<crate::projection::Snapshot, crate::projection::ProjectionError> {
+    | |________________________________________________________________________________- private method defined here
+
+For more information about this error, try `rustc --explain E0624`.
+error: could not compile `editac-markdown` (lib) due to 2 previous errors

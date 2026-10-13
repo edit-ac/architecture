@@ -1,0 +1,69 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.63s
+     Running tests/reconcile.rs (target/debug/deps/reconcile-6d6df05c01c2d6d6)
+
+running 12 tests
+test exact_noop_and_spelling_only_keep_source_ids_and_state ... ok
+test late_second_target_failure_cannot_apply_a_first_delta ... ok
+test core_atomic_batch_rejects_invalid_later_fragment_before_live_effects ... ok
+test ambiguity_structural_change_limits_and_stale_commit_keep_current_state ... FAILED
+test overlapping_remote_text_rejects_with_base_draft_and_current_recoverable ... ok
+test literal_mode_never_interprets_markdown_and_preserves_unicode_boundaries ... ok
+test deleted_and_moved_targets_conflict_without_redirect_or_partial_mutation ... ok
+test unsupported_atom_is_preserved_by_unrelated_edit_and_changed_atom_rejects ... FAILED
+test checked_state_and_heading_presentation_are_portable_edits ... FAILED
+test disjoint_unicode_and_mark_changes_are_one_update_and_keep_untouched_identity ... FAILED
+test second_replica_disjoint_text_survives_original_anchors_and_undo ... FAILED
+test lists_fences_and_reference_definitions_use_one_whole_document_parse ... FAILED
+
+failures:
+
+---- ambiguity_structural_change_limits_and_stale_commit_keep_current_state stdout ----
+staged-fragment InvalidCommand
+
+thread 'ambiguity_structural_change_limits_and_stale_commit_keep_current_state' (164935038) panicked at crates/editac-markdown/tests/reconcile.rs:71:53:
+called `Result::unwrap()` on an `Err` value: Conflict { kind: EngineRejected, target: None, detail: Some("InvalidCommand") }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- unsupported_atom_is_preserved_by_unrelated_edit_and_changed_atom_rejects stdout ----
+
+thread 'unsupported_atom_is_preserved_by_unrelated_edit_and_changed_atom_rejects' (164935073) panicked at crates/editac-markdown/tests/reconcile.rs:59:262:
+called `Result::unwrap()` on an `Err` value: UnsupportedTarget
+
+---- checked_state_and_heading_presentation_are_portable_edits stdout ----
+staged-fragment InvalidCommand
+
+thread 'checked_state_and_heading_presentation_are_portable_edits' (164935039) panicked at crates/editac-markdown/tests/reconcile.rs:38:117:
+called `Result::unwrap()` on an `Err` value: Conflict { kind: EngineRejected, target: None, detail: Some("InvalidCommand") }
+
+---- disjoint_unicode_and_mark_changes_are_one_update_and_keep_untouched_identity stdout ----
+staged-fragment InvalidCommand
+
+thread 'disjoint_unicode_and_mark_changes_are_one_update_and_keep_untouched_identity' (164935042) panicked at crates/editac-markdown/tests/reconcile.rs:26:111:
+called `Result::unwrap()` on an `Err` value: Conflict { kind: EngineRejected, target: None, detail: Some("InvalidCommand") }
+
+---- second_replica_disjoint_text_survives_original_anchors_and_undo stdout ----
+staged-fragment InvalidCommand
+
+thread 'second_replica_disjoint_text_survives_original_anchors_and_undo' (164935072) panicked at crates/editac-markdown/tests/reconcile.rs:43:75:
+called `Result::unwrap()` on an `Err` value: Conflict { kind: EngineRejected, target: None, detail: Some("InvalidCommand") }
+
+---- lists_fences_and_reference_definitions_use_one_whole_document_parse stdout ----
+staged-fragment InvalidCommand
+
+thread 'lists_fences_and_reference_definitions_use_one_whole_document_parse' (164935045) panicked at crates/editac-markdown/tests/reconcile.rs:34:147:
+called `Result::unwrap()` on an `Err` value: Conflict { kind: EngineRejected, target: None, detail: Some("InvalidCommand") }
+
+
+failures:
+    ambiguity_structural_change_limits_and_stale_commit_keep_current_state
+    checked_state_and_heading_presentation_are_portable_edits
+    disjoint_unicode_and_mark_changes_are_one_update_and_keep_untouched_identity
+    lists_fences_and_reference_definitions_use_one_whole_document_parse
+    second_replica_disjoint_text_survives_original_anchors_and_undo
+    unsupported_atom_is_preserved_by_unrelated_edit_and_changed_atom_rejects
+
+test result: FAILED. 6 passed; 6 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+
+error: test failed, to rerun pass `-p editac-markdown --test reconcile`

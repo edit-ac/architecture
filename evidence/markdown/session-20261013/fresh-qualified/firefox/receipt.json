@@ -1,0 +1,1599 @@
+{
+  "suite": "markdown-collaboration",
+  "engine": "firefox",
+  "cases": [
+    {
+      "name": "cost-10240",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:3014708723:1",
+            "n:3014708723:2"
+          ],
+          "blocks": [
+            "n:3014708723:1",
+            "n:3014708723:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 11249
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 414
+            },
+            {
+              "sequence": 3,
+              "revision": 3,
+              "operation": "Redo",
+              "origin": "history:redo",
+              "update": true,
+              "bytes": 158
+            },
+            {
+              "sequence": 4,
+              "revision": 4,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 171
+            }
+          ],
+          "history": {
+            "redoGroups": 1,
+            "retainedUpdateBytes": 11249,
+            "revision": 4,
+            "undoGroups": 0
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 11249
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 2,
+              "bytes": 414
+            },
+            {
+              "origin": "history:redo",
+              "sequence": 3,
+              "bytes": 158
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 4,
+              "bytes": 171
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": null,
+          "caret": null,
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3014708723:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3014708723#2>",
+                  "source": "n:3014708723:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3014708723:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<3014708723#12>",
+                  "source": "n:3014708723:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": [],
+      "fixture": {
+        "seed": "editac-paste-v1-20261013",
+        "bytes": 10240,
+        "sha256": "690431deb4b8dc7f233d88dd872e27207f772b77f71f817706e8c4ebccd5ffa2",
+        "warmup": 2,
+        "samples": 30
+      },
+      "samples": [
+        {
+          "preparationMs": 1,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 46,
+          "formattedFrameMs": 52,
+          "undoMs": 4,
+          "redoMs": 4
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 46,
+          "formattedFrameMs": 55,
+          "undoMs": 4,
+          "redoMs": 3
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 58,
+          "formattedFrameMs": 71,
+          "undoMs": 5,
+          "redoMs": 5
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 42,
+          "formattedFrameMs": 55,
+          "undoMs": 5,
+          "redoMs": 3
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 52,
+          "formattedFrameMs": 71,
+          "undoMs": 5,
+          "redoMs": 2
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 46,
+          "formattedFrameMs": 59,
+          "undoMs": 6,
+          "redoMs": 3
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 62,
+          "formattedFrameMs": 69,
+          "undoMs": 6,
+          "redoMs": 4
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 43,
+          "formattedFrameMs": 47,
+          "undoMs": 6,
+          "redoMs": 5
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 44,
+          "formattedFrameMs": 50,
+          "undoMs": 4,
+          "redoMs": 2
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 43,
+          "formattedFrameMs": 52,
+          "undoMs": 6,
+          "redoMs": 4
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 66,
+          "formattedFrameMs": 83,
+          "undoMs": 5,
+          "redoMs": 3
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 60,
+          "formattedFrameMs": 77,
+          "undoMs": 4,
+          "redoMs": 6
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 43,
+          "formattedFrameMs": 55,
+          "undoMs": 3,
+          "redoMs": 4
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 41,
+          "formattedFrameMs": 45,
+          "undoMs": 3,
+          "redoMs": 4
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 47,
+          "formattedFrameMs": 50,
+          "undoMs": 14,
+          "redoMs": 4
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 51,
+          "formattedFrameMs": 66,
+          "undoMs": 8,
+          "redoMs": 3
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 47,
+          "formattedFrameMs": 59,
+          "undoMs": 5,
+          "redoMs": 3
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 47,
+          "formattedFrameMs": 60,
+          "undoMs": 5,
+          "redoMs": 2
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 44,
+          "formattedFrameMs": 52,
+          "undoMs": 4,
+          "redoMs": 2
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 53,
+          "formattedFrameMs": 58,
+          "undoMs": 5,
+          "redoMs": 4
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 62,
+          "formattedFrameMs": 66,
+          "undoMs": 4,
+          "redoMs": 5
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 48,
+          "formattedFrameMs": 60,
+          "undoMs": 4,
+          "redoMs": 2
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 58,
+          "formattedFrameMs": 68,
+          "undoMs": 3,
+          "redoMs": 3
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 56,
+          "formattedFrameMs": 74,
+          "undoMs": 8,
+          "redoMs": 4
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 49,
+          "formattedFrameMs": 52,
+          "undoMs": 4,
+          "redoMs": 2
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 45,
+          "formattedFrameMs": 50,
+          "undoMs": 6,
+          "redoMs": 3
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 63,
+          "formattedFrameMs": 70,
+          "undoMs": 7,
+          "redoMs": 6
+        },
+        {
+          "preparationMs": 0,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 48,
+          "formattedFrameMs": 56,
+          "undoMs": 9,
+          "redoMs": 4
+        },
+        {
+          "preparationMs": 1,
+          "transferMs": 1,
+          "encodedBytes": 10446,
+          "applyMs": 51,
+          "formattedFrameMs": 68,
+          "undoMs": 6,
+          "redoMs": 6
+        },
+        {
+          "preparationMs": 2,
+          "transferMs": 0,
+          "encodedBytes": 10446,
+          "applyMs": 59,
+          "formattedFrameMs": 76,
+          "undoMs": 4,
+          "redoMs": 3
+        }
+      ],
+      "summary": {
+        "preparationMs": {
+          "count": 30,
+          "median": 1,
+          "p95": 1,
+          "min": 0,
+          "max": 2
+        },
+        "transferMs": {
+          "count": 30,
+          "median": 0,
+          "p95": 1,
+          "min": 0,
+          "max": 1
+        },
+        "applyMs": {
+          "count": 30,
+          "median": 48,
+          "p95": 63,
+          "min": 41,
+          "max": 66
+        },
+        "formattedFrameMs": {
+          "count": 30,
+          "median": 59,
+          "p95": 77,
+          "min": 45,
+          "max": 83
+        },
+        "undoMs": {
+          "count": 30,
+          "median": 5,
+          "p95": 9,
+          "min": 3,
+          "max": 14
+        },
+        "redoMs": {
+          "count": 30,
+          "median": 4,
+          "p95": 6,
+          "min": 2,
+          "max": 6
+        }
+      },
+      "targetMs": 50,
+      "observedWithinTarget": false,
+      "scope": "fresh-session controlled desktop packed browser; physical phone, retained-history stress and peak memory not qualified",
+      "budgetStatus": "missed; release qualification required"
+    },
+    {
+      "name": "cost-102400",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:2419473237:1",
+            "n:2419473237:2"
+          ],
+          "blocks": [
+            "n:2419473237:1",
+            "n:2419473237:2"
+          ],
+          "text": [
+            "alpha",
+            "independent"
+          ],
+          "dom": [
+            "alpha",
+            "independent"
+          ],
+          "boundDom": [
+            "alpha",
+            "independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 103387
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 410
+            },
+            {
+              "sequence": 3,
+              "revision": 3,
+              "operation": "Redo",
+              "origin": "history:redo",
+              "update": true,
+              "bytes": 159
+            },
+            {
+              "sequence": 4,
+              "revision": 4,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 172
+            }
+          ],
+          "history": {
+            "redoGroups": 1,
+            "retainedUpdateBytes": 103387,
+            "revision": 4,
+            "undoGroups": 0
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 103387
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 2,
+              "bytes": 410
+            },
+            {
+              "origin": "history:redo",
+              "sequence": 3,
+              "bytes": 159
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 4,
+              "bytes": 172
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": null,
+          "caret": null,
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2419473237:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2419473237#2>",
+                  "source": "n:2419473237:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:2419473237:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2419473237#12>",
+                  "source": "n:2419473237:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": [],
+      "fixture": {
+        "seed": "editac-paste-v1-20261013",
+        "bytes": 102400,
+        "sha256": "c9e3f27108b630abcf5e51d864ed61569e4bc824da4686fcfe3574afbfa0e260",
+        "warmup": 2,
+        "samples": 30
+      },
+      "samples": [
+        {
+          "preparationMs": 5,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 185,
+          "formattedFrameMs": 210,
+          "undoMs": 16,
+          "redoMs": 13
+        },
+        {
+          "preparationMs": 7,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 180,
+          "formattedFrameMs": 202,
+          "undoMs": 17,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 7,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 201,
+          "formattedFrameMs": 228,
+          "undoMs": 16,
+          "redoMs": 13
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 193,
+          "formattedFrameMs": 216,
+          "undoMs": 16,
+          "redoMs": 13
+        },
+        {
+          "preparationMs": 5,
+          "transferMs": 2,
+          "encodedBytes": 102606,
+          "applyMs": 196,
+          "formattedFrameMs": 216,
+          "undoMs": 17,
+          "redoMs": 13
+        },
+        {
+          "preparationMs": 19,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 187,
+          "formattedFrameMs": 219,
+          "undoMs": 14,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 175,
+          "formattedFrameMs": 193,
+          "undoMs": 15,
+          "redoMs": 13
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 175,
+          "formattedFrameMs": 198,
+          "undoMs": 15,
+          "redoMs": 11
+        },
+        {
+          "preparationMs": 5,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 182,
+          "formattedFrameMs": 205,
+          "undoMs": 16,
+          "redoMs": 11
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 189,
+          "formattedFrameMs": 209,
+          "undoMs": 17,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 174,
+          "formattedFrameMs": 196,
+          "undoMs": 15,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 5,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 173,
+          "formattedFrameMs": 195,
+          "undoMs": 17,
+          "redoMs": 13
+        },
+        {
+          "preparationMs": 5,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 181,
+          "formattedFrameMs": 198,
+          "undoMs": 17,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 7,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 175,
+          "formattedFrameMs": 199,
+          "undoMs": 14,
+          "redoMs": 13
+        },
+        {
+          "preparationMs": 5,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 181,
+          "formattedFrameMs": 206,
+          "undoMs": 15,
+          "redoMs": 13
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 196,
+          "formattedFrameMs": 218,
+          "undoMs": 14,
+          "redoMs": 13
+        },
+        {
+          "preparationMs": 7,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 264,
+          "formattedFrameMs": 294,
+          "undoMs": 25,
+          "redoMs": 20
+        },
+        {
+          "preparationMs": 8,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 199,
+          "formattedFrameMs": 220,
+          "undoMs": 16,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 7,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 186,
+          "formattedFrameMs": 210,
+          "undoMs": 17,
+          "redoMs": 11
+        },
+        {
+          "preparationMs": 8,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 179,
+          "formattedFrameMs": 205,
+          "undoMs": 16,
+          "redoMs": 13
+        },
+        {
+          "preparationMs": 5,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 181,
+          "formattedFrameMs": 203,
+          "undoMs": 16,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 7,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 176,
+          "formattedFrameMs": 201,
+          "undoMs": 15,
+          "redoMs": 11
+        },
+        {
+          "preparationMs": 5,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 176,
+          "formattedFrameMs": 199,
+          "undoMs": 16,
+          "redoMs": 11
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 193,
+          "formattedFrameMs": 221,
+          "undoMs": 17,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 7,
+          "transferMs": 0,
+          "encodedBytes": 102606,
+          "applyMs": 183,
+          "formattedFrameMs": 206,
+          "undoMs": 15,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 172,
+          "formattedFrameMs": 191,
+          "undoMs": 15,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 174,
+          "formattedFrameMs": 197,
+          "undoMs": 20,
+          "redoMs": 11
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 183,
+          "formattedFrameMs": 206,
+          "undoMs": 14,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 5,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 177,
+          "formattedFrameMs": 199,
+          "undoMs": 15,
+          "redoMs": 12
+        },
+        {
+          "preparationMs": 6,
+          "transferMs": 1,
+          "encodedBytes": 102606,
+          "applyMs": 177,
+          "formattedFrameMs": 200,
+          "undoMs": 14,
+          "redoMs": 11
+        }
+      ],
+      "summary": {
+        "preparationMs": {
+          "count": 30,
+          "median": 6,
+          "p95": 8,
+          "min": 5,
+          "max": 19
+        },
+        "transferMs": {
+          "count": 30,
+          "median": 0,
+          "p95": 1,
+          "min": 0,
+          "max": 2
+        },
+        "applyMs": {
+          "count": 30,
+          "median": 181,
+          "p95": 201,
+          "min": 172,
+          "max": 264
+        },
+        "formattedFrameMs": {
+          "count": 30,
+          "median": 205,
+          "p95": 228,
+          "min": 191,
+          "max": 294
+        },
+        "undoMs": {
+          "count": 30,
+          "median": 16,
+          "p95": 20,
+          "min": 14,
+          "max": 25
+        },
+        "redoMs": {
+          "count": 30,
+          "median": 12,
+          "p95": 13,
+          "min": 11,
+          "max": 20
+        }
+      },
+      "targetMs": 150,
+      "observedWithinTarget": false,
+      "scope": "fresh-session controlled desktop packed browser; physical phone, retained-history stress and peak memory not qualified",
+      "budgetStatus": "missed; release qualification required"
+    },
+    {
+      "name": "replica",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "outcome": {
+            "disposition": "committed"
+          },
+          "merged": [
+            {
+              "id": "n:293905731:1",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "heading",
+                1
+              ],
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "é😀"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:141877899:4"
+              }
+            },
+            {
+              "id": "n:141877899:3",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "paragraph"
+              ],
+              "runs": [
+                {
+                  "attributes": {
+                    "link": "https://example.com/a"
+                  },
+                  "text": "ref"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:141877899:5"
+              }
+            },
+            {
+              "id": "n:293905731:2",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "paragraph"
+              ],
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "remote independent"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              }
+            }
+          ],
+          "other": [
+            {
+              "id": "n:293905731:1",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "heading",
+                1
+              ],
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "é😀"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:141877899:4"
+              }
+            },
+            {
+              "id": "n:141877899:3",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "paragraph"
+              ],
+              "runs": [
+                {
+                  "attributes": {
+                    "link": "https://example.com/a"
+                  },
+                  "text": "ref"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:141877899:5"
+              }
+            },
+            {
+              "id": "n:293905731:2",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "paragraph"
+              ],
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "remote independent"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              }
+            }
+          ],
+          "undone": [
+            {
+              "id": "n:293905731:1",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "paragraph"
+              ],
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              }
+            },
+            {
+              "id": "n:293905731:2",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "paragraph"
+              ],
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "remote independent"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              }
+            }
+          ],
+          "redone": [
+            {
+              "id": "n:293905731:1",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "heading",
+                1
+              ],
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "é😀"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:141877899:4"
+              }
+            },
+            {
+              "id": "n:141877899:3",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "paragraph"
+              ],
+              "runs": [
+                {
+                  "attributes": {
+                    "link": "https://example.com/a"
+                  },
+                  "text": "ref"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:141877899:5"
+              }
+            },
+            {
+              "id": "n:293905731:2",
+              "parent": "@root",
+              "kind": "block",
+              "attributes": [
+                "paragraph"
+              ],
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "remote independent"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              }
+            }
+          ],
+          "remoteBytes": 24,
+          "pasteBytes": 1390
+        },
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:293905731:1",
+            "n:293905731:2"
+          ],
+          "blocks": [
+            "n:293905731:1",
+            "n:141877899:3",
+            "n:293905731:2"
+          ],
+          "text": [
+            "é😀",
+            "ref",
+            "remote independent"
+          ],
+          "dom": [
+            "é😀",
+            "ref",
+            "remote independent"
+          ],
+          "boundDom": [
+            "é😀",
+            "remote independent"
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1390
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Remote",
+              "origin": "remote",
+              "update": true,
+              "bytes": 24
+            },
+            {
+              "sequence": 3,
+              "revision": 3,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 557
+            },
+            {
+              "sequence": 4,
+              "revision": 4,
+              "operation": "Redo",
+              "origin": "history:redo",
+              "update": true,
+              "bytes": 223
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1390,
+            "revision": 4,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1390
+            },
+            {
+              "origin": "remote",
+              "sequence": 2,
+              "bytes": 24
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 3,
+              "bytes": 557
+            },
+            {
+              "origin": "history:redo",
+              "sequence": 4,
+              "bytes": 223
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": null,
+          "caret": null,
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:141877899:4"
+              },
+              "id": "n:293905731:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "é😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<293905731#2>",
+                  "source": "n:293905731:1",
+                  "start": 0
+                },
+                {
+                  "end": 3,
+                  "identity": "<141877899#8>",
+                  "source": "n:141877899:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:141877899:5"
+              },
+              "id": "n:141877899:3",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "link": "https://example.com/a"
+                  },
+                  "text": "ref"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 3,
+                  "identity": "<141877899#19>",
+                  "source": "n:141877899:3",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<141877899#2>",
+                  "source": "n:141877899:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:293905731:2",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "remote independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 18,
+                  "identity": "<293905731#12>",
+                  "source": "n:293905731:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "processes": [
+    {
+      "pid": 92595,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "markdown-collaboration",
+      "log": "../architecture/evidence/markdown/session-20261013/fresh-qualified/firefox"
+    }
+  ],
+  "packs": [
+    {
+      "name": "core",
+      "file": "edit-ac-core-0.0.0.tgz",
+      "bytes": 929553,
+      "sha256": "6b2852f34004b2a44b2a03c45d8b66f0ba09bfbef36cb588d1151da534e0f341"
+    },
+    {
+      "name": "web",
+      "file": "edit-ac-web-0.0.0.tgz",
+      "bytes": 58411,
+      "sha256": "4f8bf5ba5a3767e011702bf692637611aedd08a19a41167b6182f6d67257bfb6"
+    }
+  ],
+  "cleanup": {
+    "browserExited": true,
+    "serverClosed": true,
+    "consumerRemoved": true
+  },
+  "revision": "6edb83432468e44083740b586f973fb44f623352",
+  "sources": {
+    "packages/web/src/clipboard/fragment.ts": "fd2487feb655cc838c6a174c14ba525ad06a9e8f578708f15498fe1c51c94bd1",
+    "packages/web/src/clipboard/html.ts": "de9b4265d2cc60dc85da1daf0cd3f3f8dc817a006e9b5712df6bc676556ed880",
+    "packages/web/src/clipboard/markdown.ts": "21cadac434ca183fee40195c61e69ce72fab10aafd1f3cbc6228c3bc2ad98771",
+    "packages/web/src/clipboard/pending.ts": "9a6e2e60ce4a58383f40daf8d5aa8e107b04d19caec6eaa2f8cd439ab018d070",
+    "tests/browser/format-helpers.ts": "0a097c4a7638f1ba746a9490486331c4e4fd1e97f0fa0f8daead584f6735a504",
+    "crates/editac-markdown/src/extensions.rs": "5f7d8f3a8aba33cd50356aa08850ae9e392a196197e669b7dbe8ed0e27f1e3e1",
+    "crates/editac-markdown/src/optional.rs": "9c77a438909573f9f40e485c17a9c0dee82a8ffff01b651ad24bae5ed1e8bd11",
+    "crates/editac-core/src/modules/content.rs": "3e773ec32c798b11dbcca42b4d9c35a741928f10fa75ac211cac289800f27f90",
+    "packages/web/src/input/text.ts": "80645c045a1bc667f8cfd161113d15ff1861f17e32596dd07f1846d461121e24",
+    "packages/web/src/input/shortcuts.ts": "453638df12f18e7a7a87d268dc0c75129d867352dea08ae2ee0803bd5a6cf118",
+    "packages/core/src/engine.ts": "73190749f635c6df0eaa8442cb8d21565ef6f7b1033d314d9787e4ff66cccb3c",
+    "crates/editac-core/src/commands/editor.rs": "0a46d3092ec69cc52199f09155af53c3246658d0d0726df1dc7a94626b5668f1",
+    "crates/editac-wasm/src/bridge.rs": "89198b5d611ca7f161bbe1d0f3042eef00cb761ed1da9e2e9538c5227b23f209",
+    "scripts/test-browser.mjs": "3136f93f0262baa8364434c864421c1387598b9d0a702dd72705559d50615880",
+    "tests/browser/markdown-collaboration.spec.ts": "f5cba8e0b9bedef709100702a6a3c4f4aa3f7ebc4c126aa13add51f9fbf8bc2c",
+    "tests/browser/browser-harness.ts": "5c428e8fec3bfd29367c3356e795c71cdddce6a5a71e46add6b0a098f3ba45fe",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+  },
+  "server": {
+    "pid": 92509,
+    "port": 59507,
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "markdown-collaboration",
+    "log": "../architecture/evidence/markdown/session-20261013/fresh-qualified/firefox"
+  },
+  "browser": {
+    "version": "157.0",
+    "engine": "firefox",
+    "playwright": "1.64.0",
+    "node": "v24.19.0"
+  },
+  "counts": {
+    "executed": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0
+  }
+}

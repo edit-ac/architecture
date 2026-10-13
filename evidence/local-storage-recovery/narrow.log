@@ -1,0 +1,25 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs recovery --test-name-pattern=browser-kill journal-ack
+
+✖ recovery browser-kill journal-ack (10127.194666ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10571.905583
+
+✖ failing tests:
+
+test at tests/browser/recovery.spec.ts:128:5
+✖ recovery browser-kill journal-ack (10127.194666ms)
+  Error: Browser process failed to exit
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/recovery.spec.ts:65:81
+      at async stop (file:///Users/bpstr/Github/edit-ac/core/tests/browser/recovery.spec.ts:65:21)
+      at async launch (file:///Users/bpstr/Github/edit-ac/core/tests/browser/recovery.spec.ts:104:21)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/recovery.spec.ts:134:19)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)

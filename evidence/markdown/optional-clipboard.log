@@ -1,0 +1,425 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs clipboard
+
+clipboard browser: chromium
+✔ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (3218.101666ms)
+✖ cross-block fragment round-trips headings, marks and links atomically (134.55525ms)
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (118.09725ms)
+✔ malformed fragment falls back safely (127.286125ms)
+✔ unsupported-version fragment falls back safely (148.772625ms)
+✔ schema fragment falls back safely (147.4655ms)
+✔ oversize fragment falls back safely (150.776042ms)
+✔ unsafe-link fragment falls back safely (126.709125ms)
+✔ kernel-url-rejection fragment falls back safely (150.747125ms)
+✖ HTML retains supported formatting and never installs source nodes or handlers (245.640708ms)
+✔ HTML lists and quotes preserve portable container formatting (243.948625ms)
+✖ direct quote text preserves quoted content and style (148.887958ms)
+✔ unsupported table codec keeps inert rich source and explicit fallback diagnostics (126.241583ms)
+✔ code target ignores rich flavors and keeps paste literal (143.764333ms)
+✔ inline-code literal paste retains destination code formatting (165.564583ms)
+✔ control-shift-v opts into paste without formatting (131.184292ms)
+✔ command-shift-v opts into paste without formatting (131.351833ms)
+✔ command-option-shift-v opts into paste without formatting (128.479125ms)
+✔ ordinary paste shortcut retains HTML formatting (145.660917ms)
+✔ mobile beforeinput-only paste is independent of keydown (148.906ms)
+✔ mobile noncancelable paste repairs native DOM and commits once (132.667791ms)
+✔ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (152.287ms)
+✔ clipboard write failure cannot cut content or add history (138.378875ms)
+✔ read-only and active composition reject paste with zero updates (153.7715ms)
+✔ empty/unavailable clipboard never erases a replacement selection (108.311417ms)
+✔ explicit plain command captures stable target before OS permission and preserves later selection (126.740291ms)
+✔ late plain paste after read-only transition is canceled (131.760708ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 23
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7497.057666
+
+✖ failing tests:
+
+test at tests/browser/clipboard.spec.ts:26:1
+✖ cross-block fragment round-trips headings, marks and links atomically (134.55525ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'Bold',
+  -   'Link'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:28:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'Bold', 'Link' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:37:1
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (118.09725ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'aependent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:40:119
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'aependent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:47:1
+✖ HTML retains supported formatting and never installs source nodes or handlers (245.640708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'ABCDEFG',
+  -   '  literal\n**x**'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:49:41
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'ABCDEFG', '  literal\n**x**' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:56:1
+✖ direct quote text preserves quoted content and style (148.887958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'direct quote'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:56:284
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'direct quote' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+clipboard browser: firefox
+✔ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (5738.202834ms)
+✖ cross-block fragment round-trips headings, marks and links atomically (500.7965ms)
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (276.582875ms)
+✔ malformed fragment falls back safely (282.487292ms)
+✔ unsupported-version fragment falls back safely (249.636917ms)
+✔ schema fragment falls back safely (309.375125ms)
+✔ oversize fragment falls back safely (376.488792ms)
+✔ unsafe-link fragment falls back safely (321.618333ms)
+✔ kernel-url-rejection fragment falls back safely (293.491666ms)
+✖ HTML retains supported formatting and never installs source nodes or handlers (933.15175ms)
+✖ HTML lists and quotes preserve portable container formatting (331.461208ms)
+✖ direct quote text preserves quoted content and style (258.759875ms)
+✔ unsupported table codec keeps inert rich source and explicit fallback diagnostics (248.060459ms)
+✔ code target ignores rich flavors and keeps paste literal (279.6675ms)
+✔ inline-code literal paste retains destination code formatting (259.425417ms)
+✔ control-shift-v opts into paste without formatting (278.935541ms)
+✔ command-shift-v opts into paste without formatting (254.763708ms)
+✔ command-option-shift-v opts into paste without formatting (773.308958ms)
+✔ ordinary paste shortcut retains HTML formatting (348.620209ms)
+✔ mobile beforeinput-only paste is independent of keydown (1251.019542ms)
+✔ mobile noncancelable paste repairs native DOM and commits once (820.16325ms)
+✔ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (347.999084ms)
+✔ clipboard write failure cannot cut content or add history (247.957709ms)
+✔ read-only and active composition reject paste with zero updates (269.836958ms)
+✔ empty/unavailable clipboard never erases a replacement selection (300.171084ms)
+✔ explicit plain command captures stable target before OS permission and preserves later selection (297.16ms)
+✔ late plain paste after read-only transition is canceled (304.346167ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 22
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16874.047625
+
+✖ failing tests:
+
+test at tests/browser/clipboard.spec.ts:26:1
+✖ cross-block fragment round-trips headings, marks and links atomically (500.7965ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'Bold',
+  -   'Link'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:28:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'Bold', 'Link' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:37:1
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (276.582875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'aependent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:40:119
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'aependent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:47:1
+✖ HTML retains supported formatting and never installs source nodes or handlers (933.15175ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'ABCDEFG',
+  -   '  literal\n**x**'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:49:41
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'ABCDEFG', '  literal\n**x**' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:51:1
+✖ HTML lists and quotes preserve portable container formatting (331.461208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'fallback'
+  -   'one',
+  -   'two',
+  -   'quoted'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:53:41
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'fallback' ],
+    expected: [ 'one', 'two', 'quoted' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:56:1
+✖ direct quote text preserves quoted content and style (258.759875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'direct quote'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:56:284
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'direct quote' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+clipboard browser: webkit
+✔ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (4250.740667ms)
+✖ cross-block fragment round-trips headings, marks and links atomically (293.919333ms)
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (305.802833ms)
+✔ malformed fragment falls back safely (295.506791ms)
+✔ unsupported-version fragment falls back safely (279.584875ms)
+✔ schema fragment falls back safely (297.007ms)
+✔ oversize fragment falls back safely (306.312041ms)
+✔ unsafe-link fragment falls back safely (266.400959ms)
+✔ kernel-url-rejection fragment falls back safely (275.9705ms)
+✔ HTML retains supported formatting and never installs source nodes or handlers (296.503541ms)
+✖ HTML lists and quotes preserve portable container formatting (269.096ms)
+✖ direct quote text preserves quoted content and style (291.710042ms)
+✔ unsupported table codec keeps inert rich source and explicit fallback diagnostics (401.539833ms)
+✔ code target ignores rich flavors and keeps paste literal (288.577417ms)
+✔ inline-code literal paste retains destination code formatting (271.848625ms)
+✔ control-shift-v opts into paste without formatting (277.706459ms)
+✔ command-shift-v opts into paste without formatting (252.57725ms)
+✔ command-option-shift-v opts into paste without formatting (253.369708ms)
+✔ ordinary paste shortcut retains HTML formatting (255.370667ms)
+✔ mobile beforeinput-only paste is independent of keydown (281.25625ms)
+✔ mobile noncancelable paste repairs native DOM and commits once (260.332083ms)
+✔ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (447.809583ms)
+✔ clipboard write failure cannot cut content or add history (295.437792ms)
+✔ read-only and active composition reject paste with zero updates (260.966416ms)
+✔ empty/unavailable clipboard never erases a replacement selection (276.373292ms)
+✔ explicit plain command captures stable target before OS permission and preserves later selection (397.4205ms)
+✔ late plain paste after read-only transition is canceled (242.494292ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 23
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12362.073708
+
+✖ failing tests:
+
+test at tests/browser/clipboard.spec.ts:26:1
+✖ cross-block fragment round-trips headings, marks and links atomically (293.919333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'Bold',
+  -   'Link'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:28:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'Bold', 'Link' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:37:1
+✖ native menu copy/cut/paste events require no keyboard and cut follows successful write (305.802833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'aependent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:40:119
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'aependent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:51:1
+✖ HTML lists and quotes preserve portable container formatting (269.096ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'one',
+  -   'two',
+  -   'quoted'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:53:41
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'one', 'two', 'quoted' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard.spec.ts:56:1
+✖ direct quote text preserves quoted content and style (291.710042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'direct quote'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard.spec.ts:56:284
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'direct quote' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

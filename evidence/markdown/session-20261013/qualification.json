@@ -1,0 +1,88 @@
+{
+  "native": {
+    "command": "cargo test -p editac-core -p editac-markdown --locked --offline",
+    "node": "24.19.0",
+    "exchangeRoot": "/Users/bpstr/Github/edit-ac/architecture/evidence/markdown/session-20261013/native-exchange-final",
+    "core": {
+      "passed": 585,
+      "failed": 0,
+      "ignored": 0
+    },
+    "markdown": {
+      "passed": 50,
+      "failed": 0,
+      "ignored": 0
+    },
+    "log": "native-qualified.log"
+  },
+  "wasm": {
+    "command": "node --test tests/wasm-commands.test.mjs",
+    "passed": 39,
+    "failed": 0,
+    "skipped": 0,
+    "log": "wasm-commands-final.log"
+  },
+  "browser": {
+    "passed": 234,
+    "failed": 0,
+    "skipped": 0,
+    "receiptPaths": [
+      "pending-final/firefox/receipt.json",
+      "pending-final/webkit/receipt.json",
+      "pending-final/chromium/receipt.json",
+      "final-clipboard-formats/firefox/receipt.json",
+      "final-clipboard-formats/webkit/receipt.json",
+      "final-clipboard-formats/chromium/receipt.json",
+      "final-shortcuts/firefox/receipt.json",
+      "final-shortcuts/webkit/receipt.json",
+      "final-shortcuts/chromium/receipt.json",
+      "final-markdown-extensions/firefox/receipt.json",
+      "final-markdown-extensions/webkit/receipt.json",
+      "final-markdown-extensions/chromium/receipt.json",
+      "final-html-paste/firefox/receipt.json",
+      "final-html-paste/webkit/receipt.json",
+      "final-html-paste/chromium/receipt.json",
+      "final-markdown-paste/firefox/receipt.json",
+      "final-markdown-paste/webkit/receipt.json",
+      "final-markdown-paste/chromium/receipt.json",
+      "final-clipboard/firefox/receipt.json",
+      "final-clipboard/webkit/receipt.json",
+      "final-clipboard/chromium/receipt.json"
+    ],
+    "allTeardownPassed": true,
+    "remainingListeners": [],
+    "remainingRegisteredPids": 0
+  },
+  "packages": {
+    "command": "npm run check:packages",
+    "exit": 0,
+    "log": "packages-final.log"
+  },
+  "architecture": {
+    "command": "npm --prefix architecture run check",
+    "exit": 0,
+    "testsPassed": 14,
+    "testsFailed": 0,
+    "log": "architecture-final.log"
+  },
+  "physicalDevices": {
+    "observed": 0,
+    "gate": "FMT-1.15-V1",
+    "status": "BLOCKED"
+  },
+  "diskCleanup": "disk-cleanup.json",
+  "formatting": {
+    "command": "cargo fmt -p editac-core -p editac-markdown -- --check",
+    "exit": 0,
+    "log": "format-check-final.log"
+  },
+  "disk": {
+    "logicalBytesReclaimed": 678198555,
+    "freeDataGiB": 21,
+    "preexistingCandidatesPreserved": {
+      "core/target": "8.6 GiB",
+      "core/node_modules": "60 MiB"
+    },
+    "qualificationEvidencePreserved": true
+  }
+}

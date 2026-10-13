@@ -1,0 +1,222 @@
+inputs=a😀b (bold [1,3)); cאבd (code [1,3)); UTF-16
+expected=[
+    Block {
+        id: "block-1",
+        parent: "left",
+        order: 0,
+        spans: [
+            Span {
+                source: "block-1",
+                identity: "<11#2>",
+                start: 0,
+                end: 5,
+            },
+            Span {
+                source: "block-2",
+                identity: "<11#10>",
+                start: 0,
+                end: 10,
+            },
+        ],
+        runs: [
+            (
+                "a",
+                [],
+            ),
+            (
+                "😀",
+                [
+                    (
+                        "bold",
+                        "true",
+                    ),
+                ],
+            ),
+            (
+                "!",
+                [
+                    (
+                        "italic",
+                        "true",
+                    ),
+                ],
+            ),
+            (
+                "b",
+                [],
+            ),
+            (
+                "c",
+                [],
+            ),
+            (
+                "👩\u{200d}💻",
+                [
+                    (
+                        "underline",
+                        "true",
+                    ),
+                ],
+            ),
+            (
+                "!",
+                [
+                    (
+                        "italic",
+                        "true",
+                    ),
+                ],
+            ),
+            (
+                "אב",
+                [
+                    (
+                        "code",
+                        "true",
+                    ),
+                ],
+            ),
+            (
+                "d",
+                [],
+            ),
+        ],
+    },
+]
+anchors=[
+    (
+        Anchor {
+            source: "block-2",
+            bytes: [
+                0,
+                11,
+                12,
+                0,
+            ],
+        },
+        (
+            "block-1",
+            12,
+        ),
+    ),
+]
+[0, 1, 2, 3, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 1, 2, 4, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 1, 3, 2, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 1, 3, 4, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 1, 4, 2, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 1, 4, 3, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 2, 1, 3, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 2, 1, 4, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 2, 3, 1, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 2, 3, 4, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 2, 4, 1, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 2, 4, 3, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 3, 1, 2, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 3, 1, 4, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 3, 2, 1, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 3, 2, 4, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 3, 4, 1, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 3, 4, 2, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 4, 1, 2, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 4, 1, 3, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 4, 2, 1, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 4, 2, 3, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 4, 3, 1, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[0, 4, 3, 2, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 0, 2, 3, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 0, 2, 4, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 0, 3, 2, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 0, 3, 4, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 0, 4, 2, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 0, 4, 3, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 2, 0, 3, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 2, 0, 4, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 2, 3, 0, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 2, 3, 4, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 2, 4, 0, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 2, 4, 3, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 3, 0, 2, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 3, 0, 4, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 3, 2, 0, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 3, 2, 4, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 3, 4, 0, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 3, 4, 2, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 4, 0, 2, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 4, 0, 3, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 4, 2, 0, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 4, 2, 3, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 4, 3, 0, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[1, 4, 3, 2, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 0, 1, 3, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 0, 1, 4, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 0, 3, 1, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 0, 3, 4, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 0, 4, 1, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 0, 4, 3, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 1, 0, 3, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 1, 0, 4, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 1, 3, 0, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 1, 3, 4, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 1, 4, 0, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 1, 4, 3, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 3, 0, 1, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 3, 0, 4, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 3, 1, 0, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 3, 1, 4, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 3, 4, 0, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 3, 4, 1, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 4, 0, 1, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 4, 0, 3, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 4, 1, 0, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 4, 1, 3, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 4, 3, 0, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[2, 4, 3, 1, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 0, 1, 2, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 0, 1, 4, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 0, 2, 1, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 0, 2, 4, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 0, 4, 1, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 0, 4, 2, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 1, 0, 2, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 1, 0, 4, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 1, 2, 0, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 1, 2, 4, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 1, 4, 0, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 1, 4, 2, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 2, 0, 1, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 2, 0, 4, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 2, 1, 0, 4]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 2, 1, 4, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 2, 4, 0, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 2, 4, 1, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 4, 0, 1, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 4, 0, 2, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 4, 1, 0, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 4, 1, 2, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 4, 2, 0, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[3, 4, 2, 1, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 0, 1, 2, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 0, 1, 3, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 0, 2, 1, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 0, 2, 3, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 0, 3, 1, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 0, 3, 2, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 1, 0, 2, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 1, 0, 3, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 1, 2, 0, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 1, 2, 3, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 1, 3, 0, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 1, 3, 2, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 2, 0, 1, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 2, 0, 3, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 2, 1, 0, 3]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 2, 1, 3, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 2, 3, 0, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 2, 3, 1, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 3, 0, 1, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 3, 0, 2, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 3, 1, 0, 2]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 3, 1, 2, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 3, 2, 0, 1]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree
+[4, 3, 2, 1, 0]: duplicate/reverse replay/restore; content/marks/placement/identities/anchors agree

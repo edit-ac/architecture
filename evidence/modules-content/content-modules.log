@@ -1,0 +1,318 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs content-modules
+
+content-modules browser: chromium
+✖ image host policy receives inert metadata; alt/title and rectangle render accessibly (2671.757541ms)
+✔ unsafe host image URL is inert: javascript:alert(1) (208.338917ms)
+✔ unsafe host image URL is inert: https://user:pass@assets.invalid/a (149.48125ms)
+✔ unsafe host image URL is inert: https://assets.invalid/%0a.png (162.444917ms)
+✔ absent policy never loads authored asset URLs (177.987042ms)
+✖ throwing host policy is isolated with preserved source (185.989917ms)
+✔ native keyboard selection/copy and Tab traverse cell controls without editor commands (364.912417ms)
+✔ cell editing commits through storage, retains owner, marks and unrelated metadata (190.438167ms)
+✔ undo and redo restore both cell tuple and fallback text (218.768875ms)
+✔ composition stays temporary until one committed cell edit (213.394583ms)
+✔ stale composition cannot replace a newer engine cell update (172.26525ms)
+✔ read-only blocks native edits and retains selectable copy controls (154.763208ms)
+✔ disabled storage round-trip retains edited data and re-enabling restores cells (189.193958ms)
+✖ disabled initial mount preserves complete descriptors without asset calls (130.594583ms)
+✔ multiline and stale direct commands reject atomically (134.973084ms)
+✖ disposal detaches cell edit listeners and asset URL (190.454458ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 12
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5978.022375
+
+✖ failing tests:
+
+test at tests/browser/content-modules.spec.ts:9:1
+✖ image host policy receives inert metadata; alt/title and rectangle render accessibly (2671.757541ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Literal  😀'
+  - 'Literal <alt> 😀'
+             ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:10:151
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Literal  😀',
+    expected: 'Literal <alt> 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/content-modules.spec.ts:16:1
+✖ throwing host policy is isolated with preserved source (185.989917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Literal  😀'
+  - 'Literal <alt> 😀'
+             ^
+  
+      at probe.throwPolicy (file:///Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:16:326)
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Literal  😀',
+    expected: 'Literal <alt> 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/content-modules.spec.ts:38:1
+✖ disabled initial mount preserves complete descriptors without asset calls (130.594583ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Literal  😀'
+  - 'Literal <alt> 😀'
+             ^
+  
+      at probe.disabled (file:///Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:38:286)
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Literal  😀',
+    expected: 'Literal <alt> 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/content-modules.spec.ts:42:1
+✖ disposal detaches cell edit listeners and asset URL (190.454458ms)
+  page.evaluate: Error: Editor surface is disposed
+      at requireLive (http://127.0.0.1:53155/web/surface.js:84:19)
+      at Object.settle (http://127.0.0.1:53155/web/surface.js:91:24)
+      at settle (http://127.0.0.1:53155/fixture/session.mjs:18:39)
+      at Object.state (http://127.0.0.1:53155/fixture/session.mjs:19:30)
+      at eval (eval at evaluate (:370:30), <anonymous>:1:25)
+      at UtilityScript.evaluate (<anonymous>:372:16)
+      at UtilityScript.<anonymous> (<anonymous>:1:44)
+      at state (/Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:6:52)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:43:215
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7) {
+    log: []
+  }
+content-modules browser: firefox
+✖ image host policy receives inert metadata; alt/title and rectangle render accessibly (3934.140292ms)
+✔ unsafe host image URL is inert: javascript:alert(1) (516.209666ms)
+✔ unsafe host image URL is inert: https://user:pass@assets.invalid/a (292.294041ms)
+✔ unsafe host image URL is inert: https://assets.invalid/%0a.png (304.64025ms)
+✔ absent policy never loads authored asset URLs (286.787792ms)
+✖ throwing host policy is isolated with preserved source (272.356666ms)
+✔ native keyboard selection/copy and Tab traverse cell controls without editor commands (333.173417ms)
+✔ cell editing commits through storage, retains owner, marks and unrelated metadata (332.399541ms)
+✔ undo and redo restore both cell tuple and fallback text (334.706ms)
+✔ composition stays temporary until one committed cell edit (817.877583ms)
+✔ stale composition cannot replace a newer engine cell update (331.552084ms)
+✔ read-only blocks native edits and retains selectable copy controls (311.625333ms)
+✔ disabled storage round-trip retains edited data and re-enabling restores cells (387.041333ms)
+✖ disabled initial mount preserves complete descriptors without asset calls (256.466917ms)
+✔ multiline and stale direct commands reject atomically (288.448709ms)
+✖ disposal detaches cell edit listeners and asset URL (279.979125ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 12
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9837.055875
+
+✖ failing tests:
+
+test at tests/browser/content-modules.spec.ts:9:1
+✖ image host policy receives inert metadata; alt/title and rectangle render accessibly (3934.140292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Literal  😀'
+  - 'Literal <alt> 😀'
+             ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:10:151
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Literal  😀',
+    expected: 'Literal <alt> 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/content-modules.spec.ts:16:1
+✖ throwing host policy is isolated with preserved source (272.356666ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Literal  😀'
+  - 'Literal <alt> 😀'
+             ^
+  
+      at probe.throwPolicy (file:///Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:16:326)
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Literal  😀',
+    expected: 'Literal <alt> 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/content-modules.spec.ts:38:1
+✖ disabled initial mount preserves complete descriptors without asset calls (256.466917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Literal  😀'
+  - 'Literal <alt> 😀'
+             ^
+  
+      at probe.disabled (file:///Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:38:286)
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Literal  😀',
+    expected: 'Literal <alt> 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/content-modules.spec.ts:42:1
+✖ disposal detaches cell edit listeners and asset URL (279.979125ms)
+  page.evaluate: Editor surface is disposed
+  requireLive@http://127.0.0.1:53262/web/surface.js:84:19
+  settle@http://127.0.0.1:53262/web/surface.js:91:24
+  settle@http://127.0.0.1:53262/fixture/session.mjs:18:39
+  state@http://127.0.0.1:53262/fixture/session.mjs:19:30
+  @debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at state (/Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:6:52)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:43:215
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7) {
+    name: 'Error',
+    log: []
+  }
+content-modules browser: webkit
+✖ image host policy receives inert metadata; alt/title and rectangle render accessibly (3263.244375ms)
+✔ unsafe host image URL is inert: javascript:alert(1) (488.545042ms)
+✔ unsafe host image URL is inert: https://user:pass@assets.invalid/a (402.839041ms)
+✔ unsafe host image URL is inert: https://assets.invalid/%0a.png (372.171958ms)
+✔ absent policy never loads authored asset URLs (301.938875ms)
+✖ throwing host policy is isolated with preserved source (299.021875ms)
+✔ native keyboard selection/copy and Tab traverse cell controls without editor commands (422.943083ms)
+✔ cell editing commits through storage, retains owner, marks and unrelated metadata (318.258875ms)
+✔ undo and redo restore both cell tuple and fallback text (337.906542ms)
+✔ composition stays temporary until one committed cell edit (362.883583ms)
+✔ stale composition cannot replace a newer engine cell update (313.834041ms)
+✔ read-only blocks native edits and retains selectable copy controls (334.012125ms)
+✔ disabled storage round-trip retains edited data and re-enabling restores cells (382.021125ms)
+✖ disabled initial mount preserves complete descriptors without asset calls (348.781875ms)
+✔ multiline and stale direct commands reject atomically (308.412ms)
+✖ disposal detaches cell edit listeners and asset URL (297.709416ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 12
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8883.872084
+
+✖ failing tests:
+
+test at tests/browser/content-modules.spec.ts:9:1
+✖ image host policy receives inert metadata; alt/title and rectangle render accessibly (3263.244375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Literal  😀'
+  - 'Literal <alt> 😀'
+             ^
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:10:151
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Literal  😀',
+    expected: 'Literal <alt> 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/content-modules.spec.ts:16:1
+✖ throwing host policy is isolated with preserved source (299.021875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Literal  😀'
+  - 'Literal <alt> 😀'
+             ^
+  
+      at probe.throwPolicy (file:///Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:16:326)
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Literal  😀',
+    expected: 'Literal <alt> 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/content-modules.spec.ts:38:1
+✖ disabled initial mount preserves complete descriptors without asset calls (348.781875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Literal  😀'
+  - 'Literal <alt> 😀'
+             ^
+  
+      at probe.disabled (file:///Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:38:286)
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Literal  😀',
+    expected: 'Literal <alt> 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/content-modules.spec.ts:42:1
+✖ disposal detaches cell edit listeners and asset URL (297.709416ms)
+  page.evaluate: Error: Editor surface is disposed
+      at state (/Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:6:52)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/content-modules.spec.ts:43:215
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:76:7) {
+    log: []
+  }

@@ -1,0 +1,26 @@
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.13s
+     Running tests/parser_profile.rs (target/debug/deps/parser_profile-758fc51695bcbb1a)
+
+running 5 tests
+test extended_autolinks_candidate_gap_is_explicit ... ok
+test required_extensions_have_actual_events ... ok
+test autolinks_exclude_code_existing_links_and_bad_boundaries ... ok
+test complete_required_gfm_corpus_is_qualified ... FAILED
+test official_commonmark_0312_raw_parser_conformance ... ok
+
+failures:
+
+---- complete_required_gfm_corpus_is_qualified stdout ----
+
+thread 'complete_required_gfm_corpus_is_qualified' (162317777) panicked at crates/editac-markdown/tests/parser_profile.rs:50:5:
+GFM failures: [(7, "<table><thead><tr><th>abc</th><th>def</th></tr></thead><tbody>\n</tbody></table>\n", String("<table>\n<thead>\n<tr>\n<th>abc</th>\n<th>def</th>\n</tr>\n</thead>\n</table>\n"))]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    complete_required_gfm_corpus_is_qualified
+
+test result: FAILED. 4 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p editac-markdown --test parser_profile`

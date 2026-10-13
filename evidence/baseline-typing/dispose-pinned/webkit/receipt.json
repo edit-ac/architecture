@@ -1,0 +1,319 @@
+{
+  "suite": "dispose",
+  "engine": "webkit",
+  "cases": [
+    {
+      "name": "resource-plateau",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        [
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          },
+          {
+            "listeners": 0,
+            "observers": 0,
+            "phase": "destroyed",
+            "statusNodes": 1
+          }
+        ]
+      ],
+      "errors": []
+    },
+    {
+      "name": "idempotent",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "same": true,
+          "firstUnsaved": false,
+          "secondUnsaved": false,
+          "closed": "engine has been disposed",
+          "phase": "destroyed"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "reentrant",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "same": true,
+          "notifications": 1,
+          "phase": "destroyed"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "cancel-pending",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "paste": {
+            "disposition": "rejected",
+            "reason": "clipboard-canceled"
+          },
+          "unsaved": false,
+          "text": 489,
+          "phase": "destroyed"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "pending-initialization",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "canceled": "Editor initialization canceled",
+          "phase": "destroyed",
+          "editable": "false",
+          "ready": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "unresolved-initialization",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "canceled": "Editor initialization canceled",
+          "phase": "destroyed",
+          "editable": "false"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "flush-failure",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "flushError": "fixture quota failure",
+          "destroyError": "fixture quota failure",
+          "retained": "alphaunsaved",
+          "failed": "failed",
+          "updates": 1,
+          "reportUnsaved": true,
+          "reportUpdates": 1,
+          "phase": "destroyed"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "destroyed-events",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "errors": [
+            "Editor is not ready",
+            "Editor is not ready",
+            "Editor is closing"
+          ],
+          "editable": "false",
+          "phase": "destroyed"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "two-editors",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "result": {
+            "disposition": "committed"
+          },
+          "first": "destroyed",
+          "second": "ready",
+          "text": "alphasecond"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "processes": [
+    {
+      "pid": 58088,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "dispose",
+      "log": "../architecture/evidence/baseline-typing/dispose-pinned/webkit"
+    }
+  ],
+  "packs": [
+    {
+      "name": "core",
+      "file": "edit-ac-core-0.0.0.tgz",
+      "bytes": 778491,
+      "sha256": "e301796dec2cc401d563f73ecf94eaf06ad6760281fe262355a1ee7c15f4db54"
+    },
+    {
+      "name": "web",
+      "file": "edit-ac-web-0.0.0.tgz",
+      "bytes": 53008,
+      "sha256": "492f93ee9884c2b8c5fa5d9fcaaace6c0db2004e35dab47a51c4c36248452e0a"
+    }
+  ],
+  "cleanup": {
+    "browserExited": true,
+    "serverClosed": true,
+    "consumerRemoved": true
+  },
+  "revision": "6edb83432468e44083740b586f973fb44f623352",
+  "sources": {
+    "packages/web/src/clipboard/fragment.ts": "2d9718e4f37f9ac91c8cd8afec1a85d581adce3fa6a678aaae288fe87ef19385",
+    "packages/web/src/clipboard/html.ts": "de4c520df34bb334cad7a3ec1eeeb81f84dacb3d35fab388d634b410a0d8c2d5",
+    "packages/web/src/input/text.ts": "e9d1e0d36867f00b7235c690c13457c9d71a5eb1082cc347abec5ef14fb30b47",
+    "packages/core/src/engine.ts": "8b3ef74cf8fd7c44f9fa1bba9c8c315274db70d97fb2bfb521abc98e7579ecf8",
+    "crates/editac-core/src/commands/editor.rs": "6cea93339a05a641d0a68237aa06abf90705e149c7e2c4ac5278c7dcc58be6ff",
+    "crates/editac-wasm/src/bridge.rs": "98d6a5ed2efd32316a25cc8af5f8c6d10aca3b9bfe4547f2370e1d859ad43725",
+    "scripts/test-browser.mjs": "c9572b26117e0371315a7112f3eb3fea77dcec105ecbda5a295e33867d4b8ed0",
+    "tests/browser/dispose.spec.ts": "96e9272e31199f52872b658be6cff7349fa379fd5eb985ed857aa1cdb8ebfddf",
+    "tests/browser/browser-harness.ts": "d061d677bd8c0db93bad5fa251fb22a4c424a0ccc870f8f21b21d4bf47bfbe15",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+  },
+  "server": {
+    "pid": 57986,
+    "port": 52768,
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "dispose",
+    "log": "../architecture/evidence/baseline-typing/dispose-pinned/webkit"
+  },
+  "browser": {
+    "version": "27.2",
+    "engine": "webkit",
+    "playwright": "1.64.0",
+    "node": "v26.4.0"
+  },
+  "counts": {
+    "executed": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0
+  }
+}

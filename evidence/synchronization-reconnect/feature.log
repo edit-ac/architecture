@@ -1,0 +1,17 @@
+✔ detached and unauthorized local edits remain recoverable; attachment preserves stable anchors and history (33.980083ms)
+✔ disconnect and authorized reconnect replay all local bytes through shuffled duplicate messages without echo (10.740708ms)
+✔ saturated prepared socket pauses bounded send replay and drops no committed local updates (17.981458ms)
+✔ bounded exponential retry exhaustion detaches; explicit reconnect recovers without losing edits (3.01425ms)
+✔ receive frame/count/byte bounds reject before mutation and require a recoverable reconnect (6.171208ms)
+✔ remote, restore and replay journal origins never become outbound update messages (3.631417ms)
+✔ generation fence prevents a delayed old outbox read from sending on a replacement attachment (1.474709ms)
+✔ local commit during a replay read gets a second pass and concurrent pumps share bounded work (2.429792ms)
+✔ transport failure and malformed frames expose errors while local recovery and history remain intact (3.117125ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 290.794958

@@ -1,0 +1,123 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs markdown-collaboration
+
+markdown-collaboration browser: chromium
+✖ 10240 byte paste preparation, application and formatted-frame budget (25317.6895ms)
+✖ 102400 byte paste preparation, application and formatted-frame budget (14946.446334ms)
+✔ concurrent second replica paste exchange preserves independent edits and selective history (781.108875ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 41377.925791
+
+✖ failing tests:
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 10240 byte paste preparation, application and formatted-frame budget (25317.6895ms)
+  AssertionError [ERR_ASSERTION]: {"preparationMs":{"count":30,"median":0.30000007152557373,"p95":0.5,"min":0.19999992847442627,"max":0.5},"transferMs":{"count":30,"median":5.600000023841858,"p95":9.700000047683716,"min":0.7999999523162842,"max":10.300000071525574},"applyMs":{"count":30,"median":659.5,"p95":1181.3999999761581,"min":98.20000004768372,"max":1209.5},"formattedFrameMs":{"count":30,"median":680.6999999284744,"p95":1215.5,"min":119.70000004768372,"max":1245.2999999523163},"undoMs":{"count":30,"median":33.10000002384186,"p95":57.60000002384186,"min":6.100000023841858,"max":58.200000047683716},"redoMs":{"count":30,"median":26.100000023841858,"p95":44,"min":4.600000023841858,"max":44.700000047683716}}
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-collaboration.spec.ts:28:93
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 102400 byte paste preparation, application and formatted-frame budget (14946.446334ms)
+  page.evaluate: Error: clipboard-empty
+      at eval (eval at evaluate (:370:30), <anonymous>:8:49)
+      at async <anonymous>:396:30
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/markdown-collaboration.spec.ts:10:28
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:13) {
+    log: []
+  }
+markdown-collaboration browser: firefox
+✖ 10240 byte paste preparation, application and formatted-frame budget (32732.467083ms)
+✖ 102400 byte paste preparation, application and formatted-frame budget (17734.463417ms)
+✔ concurrent second replica paste exchange preserves independent edits and selective history (1169.23ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52230.081625
+
+✖ failing tests:
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 10240 byte paste preparation, application and formatted-frame budget (32732.467083ms)
+  AssertionError [ERR_ASSERTION]: {"preparationMs":{"count":30,"median":1,"p95":1,"min":0,"max":1},"transferMs":{"count":30,"median":7,"p95":11,"min":1,"max":12},"applyMs":{"count":30,"median":878,"p95":1355,"min":125,"max":1406},"formattedFrameMs":{"count":30,"median":916,"p95":1399,"min":151,"max":1454},"undoMs":{"count":30,"median":43,"p95":67,"min":9,"max":70},"redoMs":{"count":30,"median":31,"p95":52,"min":8,"max":54}}
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-collaboration.spec.ts:28:93
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 102400 byte paste preparation, application and formatted-frame budget (17734.463417ms)
+  page.evaluate: clipboard-empty
+  @debugger eval code line 370 > eval:8:49
+  async*evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/markdown-collaboration.spec.ts:10:28
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:13) {
+    name: 'Error',
+    log: []
+  }
+markdown-collaboration browser: webkit
+✖ 10240 byte paste preparation, application and formatted-frame budget (25995.3495ms)
+✖ 102400 byte paste preparation, application and formatted-frame budget (14231.075792ms)
+✔ concurrent second replica paste exchange preserves independent edits and selective history (1171.106291ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 41757.25725
+
+✖ failing tests:
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 10240 byte paste preparation, application and formatted-frame budget (25995.3495ms)
+  AssertionError [ERR_ASSERTION]: {"preparationMs":{"count":30,"median":0,"p95":1,"min":0,"max":1},"transferMs":{"count":30,"median":4,"p95":8,"min":1,"max":8},"applyMs":{"count":30,"median":630,"p95":1033,"min":99,"max":1073},"formattedFrameMs":{"count":30,"median":661,"p95":1074,"min":118,"max":1120},"undoMs":{"count":30,"median":30,"p95":50,"min":8,"max":52},"redoMs":{"count":30,"median":23,"p95":38,"min":4,"max":39}}
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/markdown-collaboration.spec.ts:28:93
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 102400 byte paste preparation, application and formatted-frame budget (14231.075792ms)
+  page.evaluate: Error: clipboard-empty
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/markdown-collaboration.spec.ts:10:28
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:13) {
+    log: []
+  }

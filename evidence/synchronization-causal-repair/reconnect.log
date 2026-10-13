@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: detached and unauthorized local edits remain recoverable; attachment preserves stable anchors and history
+ok 1 - detached and unauthorized local edits remain recoverable; attachment preserves stable anchors and history
+  ---
+  duration_ms: 33.151542
+  type: 'test'
+  ...
+# Subtest: disconnect and authorized reconnect replay all local bytes through shuffled duplicate messages without echo
+ok 2 - disconnect and authorized reconnect replay all local bytes through shuffled duplicate messages without echo
+  ---
+  duration_ms: 10.179416
+  type: 'test'
+  ...
+# Subtest: saturated prepared socket pauses bounded send replay and drops no committed local updates
+ok 3 - saturated prepared socket pauses bounded send replay and drops no committed local updates
+  ---
+  duration_ms: 20.431959
+  type: 'test'
+  ...
+# Subtest: bounded exponential retry exhaustion detaches; explicit reconnect recovers without losing edits
+ok 4 - bounded exponential retry exhaustion detaches; explicit reconnect recovers without losing edits
+  ---
+  duration_ms: 3.567667
+  type: 'test'
+  ...
+# Subtest: receive frame/count/byte bounds reject before mutation and require a recoverable reconnect
+ok 5 - receive frame/count/byte bounds reject before mutation and require a recoverable reconnect
+  ---
+  duration_ms: 6.119875
+  type: 'test'
+  ...
+# Subtest: remote, restore and replay journal origins never become outbound update messages
+ok 6 - remote, restore and replay journal origins never become outbound update messages
+  ---
+  duration_ms: 3.494709
+  type: 'test'
+  ...
+# Subtest: generation fence prevents a delayed old outbox read from sending on a replacement attachment
+ok 7 - generation fence prevents a delayed old outbox read from sending on a replacement attachment
+  ---
+  duration_ms: 1.488083
+  type: 'test'
+  ...
+# Subtest: local commit during a replay read gets a second pass and concurrent pumps share bounded work
+ok 8 - local commit during a replay read gets a second pass and concurrent pumps share bounded work
+  ---
+  duration_ms: 2.489375
+  type: 'test'
+  ...
+# Subtest: transport failure and malformed frames expose errors while local recovery and history remain intact
+ok 9 - transport failure and malformed frames expose errors while local recovery and history remain intact
+  ---
+  duration_ms: 3.055084
+  type: 'test'
+  ...
+# Subtest: offline undo and redo updates replay as local edits and preserve selective history across attachments
+ok 10 - offline undo and redo updates replay as local edits and preserve selective history across attachments
+  ---
+  duration_ms: 8.359333
+  type: 'test'
+  ...
+# Subtest: synchronous detach during a refusing send cannot schedule retries on the replacement session
+ok 11 - synchronous detach during a refusing send cannot schedule retries on the replacement session
+  ---
+  duration_ms: 1.886416
+  type: 'test'
+  ...
+# Subtest: Rust receiver reconciles reverse causal deltas and duplicates across bounded pumps without idle retry or echo
+ok 12 - Rust receiver reconciles reverse causal deltas and duplicates across bounded pumps without idle retry or echo
+  ---
+  duration_ms: 7.101333
+  type: 'test'
+  ...
+# Subtest: Rust incomplete deltas recover through a step2 handshake without duplicate revisions
+ok 13 - Rust incomplete deltas recover through a step2 handshake without duplicate revisions
+  ---
+  duration_ms: 3.43
+  type: 'test'
+  ...
+# Subtest: retained incomplete deltas share receive count and byte budgets; overflow preserves offline edits
+ok 14 - retained incomplete deltas share receive count and byte budgets; overflow preserves offline edits
+  ---
+  duration_ms: 7.118834
+  type: 'test'
+  ...
+# Subtest: incomplete buffering never masks malformed binary or envelope failures
+ok 15 - incomplete buffering never masks malformed binary or envelope failures
+  ---
+  duration_ms: 5.642
+  type: 'test'
+  ...
+# Subtest: detach releases incomplete receive buffers and authorized reconnect recovers missing remote and retained local edits
+ok 16 - detach releases incomplete receive buffers and authorized reconnect recovers missing remote and retained local edits
+  ---
+  duration_ms: 2.90175
+  type: 'test'
+  ...
+# Subtest: frozen SYN-1.7 browser delta corpus converges at the real Rust receiver after predecessor replay
+ok 17 - frozen SYN-1.7 browser delta corpus converges at the real Rust receiver after predecessor replay
+  ---
+  duration_ms: 4.977625
+  type: 'test'
+  ...
+# Subtest: delete-before-insert reconciliation remains atomic and local revisions permit one bounded retry
+ok 18 - delete-before-insert reconciliation remains atomic and local revisions permit one bounded retry
+  ---
+  duration_ms: 3.686625
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 317.884583

@@ -1,0 +1,141 @@
+{
+  "gate": "WEB-1.1",
+  "children": [
+    "WEB-1.1-I1",
+    "WEB-1.1-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "../../progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "895c9f7fdf7d3a10192cead10ed16c8b13d0bd082dd9f35037f0599b381122ff",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseCommit": "3cea914c983233a091faeb70382865a335c85b40",
+  "architectureBaseCommit": "554509957c5d6b5f80318a8b430d9f2a2784d3e6",
+  "implementationRevision": "Uncommitted additive browser-entry boundary, exact source hashes and archived verified files",
+  "verifiedAtUtc": "2026-10-12T09:24:47.647098+00:00",
+  "prerequisites": "prerequisites.json",
+  "sources": "tested-source-hashes.json",
+  "checks": [
+    {
+      "command": "npm run build:wasm",
+      "log": "build-wasm.log",
+      "exit": 1,
+      "counts": null,
+      "logSha256": "c18cf970ee75f837781204b04aa3639b23f6358ce7717a33713b8918b036fe93",
+      "environment": "Homebrew Node 26.4.0/Rust"
+    },
+    {
+      "command": "npm run build",
+      "log": "build.log",
+      "exit": 0,
+      "counts": null,
+      "logSha256": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+      "environment": "Homebrew Node 26.4.0/Rust"
+    },
+    {
+      "command": "npm run build:wasm",
+      "log": "build-wasm-repair.log",
+      "exit": 0,
+      "counts": null,
+      "logSha256": "e7baabdaf3b764b45a3289d6d04c9daabee91e60b1e145c7d2e4b12b03a3d3df",
+      "environment": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.cargo/bin:$PATH"
+    },
+    {
+      "command": "node --test --test-name-pattern='packed core restores' tests/browser/entry.spec.ts",
+      "log": "narrow.log",
+      "exit": 1,
+      "counts": {
+        "executed": 1,
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "logSha256": "a940e4526a807fac3cb2f46be4fe948bfb449e70a8e613739662cccb01cc6969",
+      "environment": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.cargo/bin:$PATH"
+    },
+    {
+      "command": "node --test --test-name-pattern='packed core restores' tests/browser/entry.spec.ts",
+      "log": "narrow-repair.log",
+      "exit": 0,
+      "counts": {
+        "executed": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "logSha256": "08c3693dec6c6c004b4c0e87ad8a0dc13f5f17f92fe3ddfe9be1ef68b4cb8b81",
+      "environment": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.cargo/bin:$PATH"
+    },
+    {
+      "command": "npm run test:browser -- recovery",
+      "log": "recovery.log",
+      "exit": 0,
+      "counts": {
+        "executed": 11,
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "logSha256": "07aa1a002b63d280fc423dc5febf04f857d76b3b30fd0898b1e9a47fa88e1e4a",
+      "environment": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.cargo/bin:$PATH"
+    },
+    {
+      "command": "node --test --test-name-pattern='actual WASM initialization is pending' tests/browser/entry.spec.ts",
+      "log": "pending-strengthened.log",
+      "exit": 0,
+      "counts": {
+        "executed": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "logSha256": "12940766cfd40805d08eaf18f704cb28b2c302ca7d36e044bc9325e043619f97",
+      "environment": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:/Users/bpstr/.cargo/bin:$PATH"
+    }
+  ],
+  "canonical": {
+    "entryCases": 5,
+    "realProcessCrashCases": 6,
+    "executed": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "finalStrengthenedPendingWasm": {
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "testSourceAtCombinedRun": "full-verified-entry.spec.ts"
+  },
+  "facts": [
+    "full/facts.json",
+    "crash/facts.json",
+    "pending-strengthened/facts.json"
+  ],
+  "criterionMap": {
+    "packedCore": "full/facts.json packed, archived npm tarball, built WASM identical to qualified upstream artifact",
+    "engineAndPersistenceBeforeReady": "recoverLocalDocument returns only after authoritative restore and LocalStorageLifecycle subscription attachment; actual held WASM request blocks semantic edits",
+    "patchesAndAnchors": "checkpoint-tail case asserts one scoped patch and UTF-16 stable right-affinity anchor resolution",
+    "localFlush": "pending=1 before flush; localCommitted/pending=0/saved=true only after production IndexedDB transaction completion; second activation restores acknowledged content",
+    "missingPrerequisites": "missing checkpoint, Web Locks and WASM leave read-only accessible recovery status and reject commands; corrected prerequisites retry without host-content reimport",
+    "storageRecovery": "six real renderer-crash/browser-kill cases reuse production adapters; unchanged crash suite rerun because shared harness changed"
+  },
+  "preservedFailures": [
+    {
+      "log": "build-wasm.log",
+      "reason": "Homebrew Rust sysroot lacks WASM core despite rustup target being installed; repaired PATH selection without installing or changing toolchains"
+    },
+    {
+      "log": "narrow.log",
+      "source": "initial-entry.spec.ts",
+      "reason": "Incorrect test expected raw origin; engine emits qualified editac:local: prefix; assertion repaired"
+    }
+  ],
+  "cleanup": "cleanup.json",
+  "scope": "Entry prerequisite and pinned desktop Chromium process-crash integration only. Fixture projection is read-only; full DOM editor ready, IME/devices, wider browser support, release, deployment and publication remain later gates. No providers, credential loading or paid inference."
+}

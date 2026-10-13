@@ -1,0 +1,142 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs selection
+
+selection browser: chromium
+✔ forward and backward cross-block selections retain UTF-16 emoji endpoints (1994.515084ms)
+✔ left and right caret affinity survives real local and peer insertions (205.318625ms)
+✔ empty blocks hard breaks code newlines and mark boundaries map exactly (182.986541ms)
+✖ list and root boundaries exclude checklist markers and separator atoms (249.904167ms)
+✔ structural local and remote patches restore backward selection across replaced DOM (194.005166ms)
+✔ remote deleted owner returns explicit stale endpoint without redirecting selection (186.138791ms)
+✔ deleting selected characters collapses anchors to a surviving empty boundary (171.837709ms)
+✔ split and join resolve stable anchors to derived and surviving owners (188.735708ms)
+✔ native keyboard selectionchange captures navigation without mutating the replica (206.051417ms)
+✔ outside selection is preserved and dispose releases anchors and subscription (175.876209ms)
+✔ surrogate-interior capture fails explicitly and releases the previous selection (159.974166ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4304.566667
+
+✖ failing tests:
+
+test at tests/browser/selection.spec.ts:144:1
+✖ list and root boundaries exclude checklist markers and separator atoms (249.904167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  28 !== 26
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/selection.spec.ts:156:137
+      at async withContext (file:///Users/bpstr/Github/edit-ac/core/tests/browser/selection.spec.ts:86:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 28,
+    expected: 26,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+selection browser: firefox
+✔ forward and backward cross-block selections retain UTF-16 emoji endpoints (5222.394333ms)
+✔ left and right caret affinity survives real local and peer insertions (397.273458ms)
+✔ empty blocks hard breaks code newlines and mark boundaries map exactly (350.08025ms)
+✖ list and root boundaries exclude checklist markers and separator atoms (356.410459ms)
+✔ structural local and remote patches restore backward selection across replaced DOM (363.358084ms)
+✔ remote deleted owner returns explicit stale endpoint without redirecting selection (376.638666ms)
+✔ deleting selected characters collapses anchors to a surviving empty boundary (329.343666ms)
+✔ split and join resolve stable anchors to derived and surviving owners (355.800084ms)
+✖ native keyboard selectionchange captures navigation without mutating the replica (420.675709ms)
+✔ outside selection is preserved and dispose releases anchors and subscription (1137.461416ms)
+✔ surrogate-interior capture fails explicitly and releases the previous selection (432.167ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 9
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10264.706125
+
+✖ failing tests:
+
+test at tests/browser/selection.spec.ts:144:1
+✖ list and root boundaries exclude checklist markers and separator atoms (356.410459ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  28 !== 26
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/selection.spec.ts:156:137
+      at async withContext (file:///Users/bpstr/Github/edit-ac/core/tests/browser/selection.spec.ts:86:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 28,
+    expected: 26,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/selection.spec.ts:216:1
+✖ native keyboard selectionchange captures navigation without mutating the replica (420.675709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/selection.spec.ts:222:47
+      at async withContext (file:///Users/bpstr/Github/edit-ac/core/tests/browser/selection.spec.ts:86:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+selection browser: webkit
+✔ forward and backward cross-block selections retain UTF-16 emoji endpoints (9617.029208ms)
+✔ left and right caret affinity survives real local and peer insertions (877.950167ms)
+✔ empty blocks hard breaks code newlines and mark boundaries map exactly (421.9765ms)
+✖ list and root boundaries exclude checklist markers and separator atoms (322.422042ms)
+✔ structural local and remote patches restore backward selection across replaced DOM (376.559291ms)
+✔ remote deleted owner returns explicit stale endpoint without redirecting selection (383.878583ms)
+✔ deleting selected characters collapses anchors to a surviving empty boundary (302.909875ms)
+✔ split and join resolve stable anchors to derived and surviving owners (353.857666ms)
+✔ native keyboard selectionchange captures navigation without mutating the replica (363.034ms)
+✔ outside selection is preserved and dispose releases anchors and subscription (386.976375ms)
+✔ surrogate-interior capture fails explicitly and releases the previous selection (410.522291ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14213.733416
+
+✖ failing tests:
+
+test at tests/browser/selection.spec.ts:144:1
+✖ list and root boundaries exclude checklist markers and separator atoms (322.422042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  28 !== 26
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/selection.spec.ts:156:137
+      at async withContext (file:///Users/bpstr/Github/edit-ac/core/tests/browser/selection.spec.ts:86:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 28,
+    expected: 26,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

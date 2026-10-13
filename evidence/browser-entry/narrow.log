@@ -1,0 +1,32 @@
+✖ recovery entry packed core restores checkpoint and tail before semantic edits and local flush (1543.987584ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1870.24025
+
+✖ failing tests:
+
+test at tests/browser/entry.spec.ts:86:1
+✖ recovery entry packed core restores checkpoint and tail before semantic edits and local flush (1543.987584ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'editac:local:browser-entry'
+  - 'browser-entry'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/entry.spec.ts:103:12
+      at async withContext (file:///Users/bpstr/Github/edit-ac/core/tests/browser/entry.spec.ts:82:9)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/browser/entry.spec.ts:87:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'editac:local:browser-entry',
+    expected: 'browser-entry',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

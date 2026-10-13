@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending
+ok 1 - ordinary Rust sync handshake and absent capability leave remote durability unknown and outbox pending
+  ---
+  duration_ms: 892.397334
+  type: 'test'
+  ...
+# Subtest: negotiated actual relay commit prunes only pending membership and preserves recovery journal
+ok 2 - negotiated actual relay commit prunes only pending membership and preserves recovery journal
+  ---
+  duration_ms: 216.835459
+  type: 'test'
+  ...
+# Subtest: receipt documentId mismatch cannot prune or claim remoteCommitted
+ok 3 - receipt documentId mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 202.873375
+  type: 'test'
+  ...
+# Subtest: receipt epoch mismatch cannot prune or claim remoteCommitted
+ok 4 - receipt epoch mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 202.210458
+  type: 'test'
+  ...
+# Subtest: receipt schema mismatch cannot prune or claim remoteCommitted
+ok 5 - receipt schema mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 204.151833
+  type: 'test'
+  ...
+# Subtest: receipt writerId mismatch cannot prune or claim remoteCommitted
+ok 6 - receipt writerId mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 198.974542
+  type: 'test'
+  ...
+# Subtest: receipt sequence mismatch cannot prune or claim remoteCommitted
+ok 7 - receipt sequence mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 218.723084
+  type: 'test'
+  ...
+# Subtest: receipt checksum mismatch cannot prune or claim remoteCommitted
+ok 8 - receipt checksum mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 197.154583
+  type: 'test'
+  ...
+# Subtest: receipt updateId mismatch cannot prune or claim remoteCommitted
+ok 9 - receipt updateId mismatch cannot prune or claim remoteCommitted
+  ---
+  duration_ms: 191.860792
+  type: 'test'
+  ...
+# Subtest: denied authorization keeps offline commands editable and recovery export available without upload
+ok 10 - denied authorization keeps offline commands editable and recovery export available without upload
+  ---
+  duration_ms: 206.7775
+  type: 'test'
+  ...
+# Subtest: service revocation stops upload and baseline traffic while retaining edits for authorized reconnect
+ok 11 - service revocation stops upload and baseline traffic while retaining edits for authorized reconnect
+  ---
+  duration_ms: 205.241
+  type: 'test'
+  ...
+# Subtest: late committed response after revocation is fenced; reconnect resends idempotently
+ok 12 - late committed response after revocation is fenced; reconnect resends idempotently
+  ---
+  duration_ms: 218.879375
+  type: 'test'
+  ...
+# Subtest: receipt transaction abort cannot publish remoteCommitted or prune
+ok 13 - receipt transaction abort cannot publish remoteCommitted or prune
+  ---
+  duration_ms: 215.273708
+  type: 'test'
+  ...
+# Subtest: new local commit during durable upload restarts the bounded replay cursor
+ok 14 - new local commit during durable upload restarts the bounded replay cursor
+  ---
+  duration_ms: 202.437166
+  type: 'test'
+  ...
+# Subtest: unsupported negotiation and wrong peer identity fail before replacing an authorized connection
+ok 15 - unsupported negotiation and wrong peer identity fail before replacing an authorized connection
+  ---
+  duration_ms: 199.823375
+  type: 'test'
+  ...
+# Subtest: malformed non-durable receipts fail admission and capability absence ignores even a valid receipt
+ok 16 - malformed non-durable receipts fail admission and capability absence ignores even a valid receipt
+  ---
+  duration_ms: 193.097542
+  type: 'test'
+  ...
+# Subtest: durable replay is bounded to one page per event without dropping the remaining local backlog
+ok 17 - durable replay is bounded to one page per event without dropping the remaining local backlog
+  ---
+  duration_ms: 352.653083
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4572.395708

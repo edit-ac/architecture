@@ -1,0 +1,10 @@
+--- pre-repair test
++++ final test
+@@ -74,6 +74,6 @@
+ }));
+ test('unknown labels copy as plain text and internal clipboard round-trip keeps host identity',()=>probe('clipboard-fallback',async(page,fact)=>{
+  await open(page);await respond(page,0,fresh);await page.getByRole('menuitem').click();
+- const copied=await page.evaluate(()=>{const f=window.inputFixture,atom=f.engine.read().visible.find(n=>n.blockAttributes?.[0]==='module:editac.reference');f.select(atom.id,0,atom.runs[0].text.length);const data={};f.root.dispatchEvent(preparedClipboardEvent('copy',{setData:(m,v)=>data[m]=v,getData:m=>data[m]??''}));return data;});assert.equal(copied['text/plain'],fresh[0].label);assert.deepEqual(JSON.parse(copied['application/x-editac-fragment+json']).blocks[0].attributes.tuple,['module:editac.reference',1,fresh[0]]);
++ const copied=await page.evaluate(()=>{const f=window.inputFixture,atom=f.engine.read().visible.find(n=>n.blockAttributes?.[0]==='module:editac.reference');f.select(atom.id,0,atom.runs[0].text.length);const data={};f.root.dispatchEvent(preparedClipboardEvent('copy',{setData:(m,v)=>data[m]=v,getData:m=>data[m]??''}));return data;});assert.equal(copied['text/plain'],fresh[0].label);assert.deepEqual(JSON.parse(copied['application/x-edit-ac-fragment+json']).blocks[0].attributes.tuple,['module:editac.reference',1,fresh[0]]);
+  await page.evaluate(data=>{const f=window.inputFixture;f.select(f.ids[1],0);f.root.dispatchEvent(preparedClipboardEvent('paste',{getData:m=>data[m]??''}));},copied);const s=await state(page,fact);assert.equal(atoms(s).length,2);for(const atom of atoms(s)){assert.deepEqual(atom.blockAttributes,['module:editac.reference',1,fresh[0]]);assert.equal(atom.runs[0].text,fresh[0].label);}assert.equal(s.requests.length,1);
+ }));

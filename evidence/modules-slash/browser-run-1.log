@@ -1,0 +1,319 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs slash
+
+slash browser: chromium
+✔ eligible start/whitespace typing opens bounded named menu; literal query persists (13021.522959ms)
+✔ ineligible boundary "word" stays literal (875.890584ms)
+✔ ineligible boundary "https:" stays literal (398.579917ms)
+✔ ineligible boundary "path/" stays literal (451.726333ms)
+✔ ineligible boundary "\\" stays literal (334.831875ms)
+✖ whitespace boundary and expanded selection exclusions (401.145416ms)
+✔ imported, pasted, unclassified replacement and remote slash never auto-open (712.635875ms)
+✖ code/link contexts exclude automatic slash (474.726958ms)
+✔ keyboard skips disabled entries; successful command commits once and undo restores query/caret (445.125333ms)
+✔ touch/pointer item activation survives editor blur and matches keyboard dispatch (713.268375ms)
+✔ assistive composite focus and explicit command access preserve anchored query (467.026959ms)
+✔ Escape retains query without reopening; Backspace filters/deletes trigger (334.05525ms)
+✖ zero/all-disabled results consume Enter without splitting; Shift+Enter hard breaks (400.321292ms)
+✔ Tab dismisses without accepting, focus exit/caret movement/read-only dismiss (519.455125ms)
+✔ IME owns commit Enter before popup; composing/direct ambiguous events never trigger (653.688792ms)
+✖ async errors retain query; query changes cancel stale/out-of-order results (514.83725ms)
+✔ remote/read-only/destruction abort in-flight actions and release popup resources (581.788208ms)
+✔ editor command removes only query and performs semantic conversion atomically (264.604666ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 14
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23155.291042
+
+✖ failing tests:
+
+test at tests/browser/slash.spec.ts:17:1
+✖ whitespace boundary and expanded selection exclusions (401.145416ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '//' !== '/'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:18:217
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '//',
+    expected: '/',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/slash.spec.ts:27:1
+✖ code/link contexts exclude automatic slash (474.726958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:29:547
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/slash.spec.ts:46:1
+✖ zero/all-disabled results consume Enter without splitting; Shift+Enter hard breaks (400.321292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:48:154
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/slash.spec.ts:61:1
+✖ async errors retain query; query changes cancel stale/out-of-order results (514.83725ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   false
+  - ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:63:148
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ false ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+slash browser: firefox
+✔ eligible start/whitespace typing opens bounded named menu; literal query persists (13549.838458ms)
+✔ ineligible boundary "word" stays literal (1838.791666ms)
+✔ ineligible boundary "https:" stays literal (1846.919709ms)
+✔ ineligible boundary "path/" stays literal (1928.348958ms)
+✔ ineligible boundary "\\" stays literal (1264.014916ms)
+✖ whitespace boundary and expanded selection exclusions (1207.40475ms)
+✔ imported, pasted, unclassified replacement and remote slash never auto-open (2223.102833ms)
+✖ code/link contexts exclude automatic slash (3711.717042ms)
+✔ keyboard skips disabled entries; successful command commits once and undo restores query/caret (1829.430292ms)
+✔ touch/pointer item activation survives editor blur and matches keyboard dispatch (3563.751834ms)
+✔ assistive composite focus and explicit command access preserve anchored query (1765.933584ms)
+✔ Escape retains query without reopening; Backspace filters/deletes trigger (2674.437458ms)
+✖ zero/all-disabled results consume Enter without splitting; Shift+Enter hard breaks (3854.401042ms)
+✔ Tab dismisses without accepting, focus exit/caret movement/read-only dismiss (1428.129666ms)
+✔ IME owns commit Enter before popup; composing/direct ambiguous events never trigger (2050.682625ms)
+✖ async errors retain query; query changes cancel stale/out-of-order results (1705.435625ms)
+✔ remote/read-only/destruction abort in-flight actions and release popup resources (2314.085833ms)
+✔ editor command removes only query and performs semantic conversion atomically (1653.660542ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 14
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 51725.164042
+
+✖ failing tests:
+
+test at tests/browser/slash.spec.ts:17:1
+✖ whitespace boundary and expanded selection exclusions (1207.40475ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '//' !== '/'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:18:217
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '//',
+    expected: '/',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/slash.spec.ts:27:1
+✖ code/link contexts exclude automatic slash (3711.717042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:29:547
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/slash.spec.ts:46:1
+✖ zero/all-disabled results consume Enter without splitting; Shift+Enter hard breaks (3854.401042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:48:154
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/slash.spec.ts:61:1
+✖ async errors retain query; query changes cancel stale/out-of-order results (1705.435625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   false
+  - ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:63:148
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ false ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+slash browser: webkit
+✔ eligible start/whitespace typing opens bounded named menu; literal query persists (8882.011292ms)
+✔ ineligible boundary "word" stays literal (2428.249333ms)
+✔ ineligible boundary "https:" stays literal (1765.366959ms)
+✔ ineligible boundary "path/" stays literal (593.404166ms)
+✔ ineligible boundary "\\" stays literal (578.854208ms)
+✖ whitespace boundary and expanded selection exclusions (463.68775ms)
+✔ imported, pasted, unclassified replacement and remote slash never auto-open (388.577667ms)
+✖ code/link contexts exclude automatic slash (478.769584ms)
+✔ keyboard skips disabled entries; successful command commits once and undo restores query/caret (640.957292ms)
+✔ touch/pointer item activation survives editor blur and matches keyboard dispatch (756.476042ms)
+✔ assistive composite focus and explicit command access preserve anchored query (590.6535ms)
+✔ Escape retains query without reopening; Backspace filters/deletes trigger (899.202584ms)
+✖ zero/all-disabled results consume Enter without splitting; Shift+Enter hard breaks (492.303166ms)
+✔ Tab dismisses without accepting, focus exit/caret movement/read-only dismiss (688.282042ms)
+✔ IME owns commit Enter before popup; composing/direct ambiguous events never trigger (544.696417ms)
+✖ async errors retain query; query changes cancel stale/out-of-order results (623.394292ms)
+✔ remote/read-only/destruction abort in-flight actions and release popup resources (686.748209ms)
+✔ editor command removes only query and performs semantic conversion atomically (593.817833ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 14
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22894.83275
+
+✖ failing tests:
+
+test at tests/browser/slash.spec.ts:17:1
+✖ whitespace boundary and expanded selection exclusions (463.68775ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '//' !== '/'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:18:217
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '//',
+    expected: '/',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/slash.spec.ts:27:1
+✖ code/link contexts exclude automatic slash (478.769584ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:29:547
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/slash.spec.ts:46:1
+✖ zero/all-disabled results consume Enter without splitting; Shift+Enter hard breaks (492.303166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:48:154
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/slash.spec.ts:61:1
+✖ async errors retain query; query changes cancel stale/out-of-order results (623.394292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   false
+  - ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/slash.spec.ts:63:148
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ false ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,234 @@
+✖ both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits (54.600417ms)
+✖ update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo (4.34375ms)
+✖ deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent (6.599125ms)
+✖ reject malformed frames and state vectors before any engine mutation (3.746458ms)
+✖ malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes (2.861417ms)
+✔ inbound and outbound byte bounds include headers; no input buffers are aliased (2.639292ms)
+✔ metadata must match every immutable field before adapter construction or outbound update (5.966917ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 2
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 591.903959
+
+✖ failing tests:
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits (54.600417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    Uint8Array(10) [
+      2,
+  +   148,
+  +   3,
+  +   3,
+      139,
+      133,
+      190,
+      157,
+      5,
+      29,
+  -   148,
+  -   3,
+  -   3
+    ]
+  
+      at assertConverged (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:59:10)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:91:5
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:109)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Uint8Array(10) [
+        2, 148,   3, 3, 139,
+      133, 190, 157, 5,  29
+    ],
+    expected: Uint8Array(10) [
+      2, 139, 133, 190, 157,
+      5,  29, 148,   3,   3
+    ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo (4.34375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'editac:local:local:sync-fixture'
+  - 'local:sync-fixture'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:100:42
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:115)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'editac:local:local:sync-fixture',
+    expected: 'local:sync-fixture',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent (6.599125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:1113528397:1'
+  -   ],
+      identity: {
+        documentId: '00000003-4567-4567-8567-45678901abcd',
+        epoch: '56789012-5678-4678-8678-56789012abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  ...
+      revision: 1,
+  +   touchedRanges: [],
+  -   touchedRanges: [
+  -     {
+  -       newEnd: 3,
+  -       newStart: 3,
+  -       oldEnd: 4,
+  -       source: 'n:1113528397:1',
+  -       start: 3
+  -     }
+  -   ],
+      visible: [
+        {
+          blockAttributes: [
+            'paragraph'
+          ],
+  
+      at unchanged (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:67:10)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:124:89
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:115)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '00000003-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 1, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:1113528397:1' ], identity: { documentId: '00000003-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 1, touchedRanges: [ [Object] ], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ reject malformed frames and state vectors before any engine mutation (3.746458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:4084239338:1'
+  -   ],
+      identity: {
+        documentId: '00000004-4567-4567-8567-45678901abcd',
+        epoch: '56789012-5678-4678-8678-56789012abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  ...
+      revision: 1,
+  +   touchedRanges: [],
+  -   touchedRanges: [
+  -     {
+  -       newEnd: 4,
+  -       newStart: 3,
+  -       oldEnd: 3,
+  -       source: 'n:4084239338:1',
+  -       start: 3
+  -     }
+  -   ],
+      visible: [
+        {
+          blockAttributes: [
+            'paragraph'
+          ],
+  
+      at unchanged (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:67:10)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:138:102
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:115)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '00000004-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 1, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:4084239338:1' ], identity: { documentId: '00000004-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 1, touchedRanges: [ [Object] ], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes (2.861417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+  +   changedNodes: [],
+  -   changedNodes: [
+  -     'n:3580235657:1'
+  -   ],
+      identity: {
+        documentId: '00000005-4567-4567-8567-45678901abcd',
+        epoch: '56789012-5678-4678-8678-56789012abcd',
+        offsets: 'utf16',
+        profile: 'editac.yrs-yjs.editor.v5',
+  ...
+      revision: 1,
+  +   touchedRanges: [],
+  -   touchedRanges: [
+  -     {
+  -       newEnd: 4,
+  -       newStart: 3,
+  -       oldEnd: 3,
+  -       source: 'n:3580235657:1',
+  -       start: 3
+  -     }
+  -   ],
+      visible: [
+        {
+          blockAttributes: [
+            'paragraph'
+          ],
+  
+      at unchanged (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:67:10)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:152:58
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:115)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { changedNodes: [], identity: { documentId: '00000005-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 1, touchedRanges: [], visible: [ [Object], [Object] ] },
+    expected: { changedNodes: [ 'n:3580235657:1' ], identity: { documentId: '00000005-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', offsets: 'utf16', profile: 'editac.yrs-yjs.editor.v5', protocolVersion: 1, schema: 'editac.registry.editor.v5', updateEncoding: 1 }, recovery: [], retainedStructure: { checks: {}, containers: {}, controls: {}, deleted: [], intentions: {}, outcomes: {}, retained: [Object], sources: [Object], visible: [Array] }, revision: 1, touchedRanges: [ [Object] ], visible: [ [Object], [Object] ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

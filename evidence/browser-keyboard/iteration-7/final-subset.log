@@ -1,0 +1,156 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs keyboard --test-skip-pattern=native-heading-end
+
+keyboard browser: chromium
+✔ native-paragraph-enter splits and moves caret once (1928.543208ms)
+✔ native-selected-enter-false (118.297417ms)
+✔ native-selected-enter-true (126.794042ms)
+✔ native-code-Enter (192.882709ms)
+✔ native-code-Shift+Enter (155.43025ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (118.407041ms)
+✔ native-heading-middle retains level (118.142125ms)
+✔ native-empty-heading becomes paragraph (131.530334ms)
+✔ native-boundary-Backspace (120.244625ms)
+✔ native-boundary-Delete (134.88775ms)
+✔ native-cross-block-Enter (115.258666ms)
+✔ native-cross-block-Shift+Enter (114.805791ms)
+✔ native-cross-block-Backspace (113.353459ms)
+✔ native-unordered-enter (132.245708ms)
+✔ native-checklist-enter (150.678625ms)
+✔ native-quote-enter (117.985458ms)
+✔ native-list-tab indentation and outdent preserve backward selection (132.460167ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (133.384125ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (189.198875ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (119.290208ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (111.064375ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (152.105791ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (113.6495ms)
+✔ native-navigation and modified host Enter retain ownership (115.40025ms)
+✔ native-empty-unordered exits one level (139.86625ms)
+✔ native-empty-quote exits one level (132.187375ms)
+✔ prepared-toolbar across blocks retains direction and supported marks (111.843208ms)
+✔ prepared-toolbar deleted target rejects instead of using current caret (110.586833ms)
+✔ prepared-nonkeyboard Enter and break have semantic selection results (126.450333ms)
+✔ native-code-multiline Tab preserves backward range and existing whitespace (166.684833ms)
+✔ prepared-read-only structural and history commands never mutate (97.741ms)
+✔ prepared-composition owns Enter before structural routing (132.835959ms)
+✔ native-selected-hard-break-false (114.100792ms)
+✔ native-selected-hard-break-true (153.071125ms)
+✔ native-inapplicable-list-Tab follows focus (139.89975ms)
+✔ prepared-host-owned structural events are not consumed (137.436708ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6940.888875
+keyboard browser: firefox
+✔ native-paragraph-enter splits and moves caret once (4496.649125ms)
+✔ native-selected-enter-false (283.340083ms)
+✔ native-selected-enter-true (246.627917ms)
+✔ native-code-Enter (294.539166ms)
+✔ native-code-Shift+Enter (309.946125ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (311.209542ms)
+✔ native-heading-middle retains level (301.331625ms)
+✔ native-empty-heading becomes paragraph (425.290459ms)
+✔ native-boundary-Backspace (277.0765ms)
+✔ native-boundary-Delete (845.680583ms)
+✔ native-cross-block-Enter (272.687792ms)
+✔ native-cross-block-Shift+Enter (235.512375ms)
+✔ native-cross-block-Backspace (226.760709ms)
+✔ native-unordered-enter (245.497417ms)
+✔ native-checklist-enter (251.802333ms)
+✔ native-quote-enter (257.369125ms)
+✔ native-list-tab indentation and outdent preserve backward selection (264.985292ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (264.171083ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (267.884875ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (851.6575ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (671.973542ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (248.687125ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (235.424458ms)
+✔ native-navigation and modified host Enter retain ownership (225.213375ms)
+✔ native-empty-unordered exits one level (246.150959ms)
+✔ native-empty-quote exits one level (250.659709ms)
+✔ prepared-toolbar across blocks retains direction and supported marks (231.290459ms)
+✔ prepared-toolbar deleted target rejects instead of using current caret (268.692625ms)
+✔ prepared-nonkeyboard Enter and break have semantic selection results (270.292958ms)
+✖ native-code-multiline Tab preserves backward range and existing whitespace (840.0695ms)
+✔ prepared-read-only structural and history commands never mutate (265.18775ms)
+✔ prepared-composition owns Enter before structural routing (248.267292ms)
+✔ native-selected-hard-break-false (233.536959ms)
+✔ native-selected-hard-break-true (249.094458ms)
+✔ native-inapplicable-list-Tab follows focus (248.372667ms)
+✔ prepared-host-owned structural events are not consumed (212.278541ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 35
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16419.11725
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:77:1
+✖ native-code-multiline Tab preserves backward range and existing whitespace (840.0695ms)
+  page.evaluate: can't access property "node", a is undefined
+  @debugger eval code line 370 > eval:1:309
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at position (/Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:46:79)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:77:232
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141) {
+    name: 'Error',
+    log: []
+  }
+keyboard browser: webkit
+✔ native-paragraph-enter splits and moves caret once (3065.908125ms)
+✔ native-selected-enter-false (288.001167ms)
+✔ native-selected-enter-true (269.165625ms)
+✔ native-code-Enter (267.085917ms)
+✔ native-code-Shift+Enter (251.54625ms)
+✔ native-hard-break stays in paragraph including repeated trailing breaks (267.864709ms)
+✔ native-heading-middle retains level (271.35675ms)
+✔ native-empty-heading becomes paragraph (329.248917ms)
+✔ native-boundary-Backspace (250.294959ms)
+✔ native-boundary-Delete (253.478541ms)
+✔ native-cross-block-Enter (245.667209ms)
+✔ native-cross-block-Shift+Enter (335.491833ms)
+✔ native-cross-block-Backspace (306.831875ms)
+✔ native-unordered-enter (301.858334ms)
+✔ native-checklist-enter (276.706042ms)
+✔ native-quote-enter (294.706334ms)
+✔ native-list-tab indentation and outdent preserve backward selection (308.375791ms)
+✔ native-prose-tab and Escape-Tab leave focus without updates (277.345375ms)
+✔ native-code-tab inserts literal tab; selection indents and outdents lines (273.181958ms)
+✔ prepared-toolbar retains backward captured selection after focus moves (264.823917ms)
+✔ prepared-toolbar read-only and disposed targets reject without mutation (267.720666ms)
+✔ native-keyboard and prepared-menu undo redo preserve remote text (299.93975ms)
+✔ prepared-key-beforeinput duplicates retain a second deliberate Enter (313.052458ms)
+✔ native-navigation and modified host Enter retain ownership (262.8895ms)
+✔ native-empty-unordered exits one level (310.107292ms)
+✔ native-empty-quote exits one level (286.147208ms)
+✔ prepared-toolbar across blocks retains direction and supported marks (286.727666ms)
+✔ prepared-toolbar deleted target rejects instead of using current caret (340.823125ms)
+✔ prepared-nonkeyboard Enter and break have semantic selection results (307.334708ms)
+✔ native-code-multiline Tab preserves backward range and existing whitespace (306.895375ms)
+✔ prepared-read-only structural and history commands never mutate (243.942292ms)
+✔ prepared-composition owns Enter before structural routing (335.685875ms)
+✔ native-selected-hard-break-false (370.403834ms)
+✔ native-selected-hard-break-true (313.356958ms)
+✔ native-inapplicable-list-Tab follows focus (495.730875ms)
+✔ prepared-host-owned structural events are not consumed (245.14925ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13744.092042

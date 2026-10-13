@@ -1,0 +1,35 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs offline-collaboration
+
+(node:17997) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ two browser processes recover acknowledged offline edits and converge with reordered duplicate Yjs messages (2502.878875ms)
+✔ before-commit: lost relay response retains browser outbox, restart replay and duplicate receipt preserve local recovery (1632.119334ms)
+✔ after-commit: lost relay response retains browser outbox, restart replay and duplicate receipt preserve local recovery (1392.860959ms)
+✔ before-receipt: lost relay response retains browser outbox, restart replay and duplicate receipt preserve local recovery (1487.735583ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7597.665583
+
+✖ failing tests:
+
+test at tests/browser/offline-collaboration.spec.ts:68:3
+✖ two browser processes recover acknowledged offline edits and converge with reordered duplicate Yjs messages (2502.878875ms)
+  page.evaluate: EngineError: IncompleteRestore
+      at invoke (http://127.0.0.1:51788/core/engine.js:22:27)
+      at use (http://127.0.0.1:51788/core/engine.js:132:40)
+      at mutate (http://127.0.0.1:51788/core/engine.js:185:24)
+      at Object.applyUpdate (http://127.0.0.1:51788/core/engine.js:281:34)
+      at window.start (http://127.0.0.1:51788/fixture/session.mjs:16:40)
+      at async <anonymous>:396:30
+      at browser (/Users/bpstr/Github/edit-ac/core/tests/browser/offline-collaboration.spec.ts:95:31)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/offline-collaboration.spec.ts:186:9
+      at async TestContext.<anonymous> (/Users/bpstr/Github/edit-ac/core/tests/browser/offline-collaboration.spec.ts:70:11) {
+    log: []
+  }

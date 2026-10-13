@@ -1,0 +1,64 @@
+✔ shared production engine fixture: unicode-replace (70.249792ms)
+✔ shared production engine fixture: text-insert-delete (5.9705ms)
+✔ shared production engine fixture: rich-marks (11.561083ms)
+✔ shared production engine fixture: heading-levels (4.660084ms)
+✔ shared production engine fixture: split-start (8.390416ms)
+✔ shared production engine fixture: split-middle (5.696709ms)
+✔ shared production engine fixture: split-end (7.915583ms)
+✔ shared production engine fixture: split-empty (6.001208ms)
+✔ shared production engine fixture: retained-join (9.219292ms)
+✔ shared production engine fixture: literal-code (4.239458ms)
+✔ shared production engine fixture: list-quote-nesting (26.77025ms)
+✔ shared production engine fixture: list-enter-backspace (4.650708ms)
+✔ shared production engine fixture: empty-item-exit (2.633625ms)
+✔ shared production engine fixture: separator-access (4.411292ms)
+✔ shared production engine fixture: separator-insert (3.113875ms)
+✔ shared production engine fixture: semantic-move (4.566167ms)
+✔ shared production engine fixture: history-grouping (2.803084ms)
+✔ malformed JS shapes, unsafe numeric input and unknown fields reject before mutation (5.055ms)
+✔ mixed valid and invalid command/format batches reject atomically (1.63125ms)
+✔ plans and anchors are scoped, single-use, explicitly releasable and stale-safe (2.46675ms)
+✔ can validates silently and disposal is explicit/idempotent for all operations (1.00275ms)
+✔ raw built-WASM JSON errors are structured, byte bounded, and disposal rejects use (7.039333ms)
+✔ bounded anchor and plan tables reclaim released capacity (110.348041ms)
+✔ parity normalization preserves literal content and opaque attributes (0.2ms)
+✔ explicitly empty creation adds no defaults and snapshots are detached values (0.455917ms)
+✔ headingEnd packed command preserves heading/marks, stable UTF-16 caret and one update/history group (9.352875ms)
+✔ headingEnd selected suffix deletion resolves the retained cut after one atomic batch (5.036917ms)
+✔ headingEnd cross-block selected replacement stages deletes/join and preserves authored caret/history (9.352167ms)
+✔ headingEnd rejects empty/interior/nonheading/malformed targets and mixed batches without any effects (15.013375ms)
+✔ headingEnd stale/released/foreign anchors and disposed plans use the existing packed boundary (6.125417ms)
+✔ headingEnd peer-preserving undo/redo and replay retain the original heading with unrelated remote edits (9.687125ms)
+✔ headingEnd keeps the parent under quote and admission failures cannot change its packed result (4.990916ms)
+✔ headingEnd deleted remote target rejects rather than redirecting the retained anchor (5.395375ms)
+✔ headingEnd admission honors the existing host read-only guard before preparation (2.982166ms)
+✔ headingEnd stable caret selects the new paragraph before an existing shared-source sibling (6.485791ms)
+✖ headingEnd result reservations share anchor capacity and release on stale or released plans (167.940333ms)
+✔ ordinary packed commands omit result carets and can does not consume token IDs (19.771708ms)
+✔ headingEnd result caret and pending reservations expire with their owning engine (2.791917ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 37
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 710.434708
+
+✖ failing tests:
+
+test at tests/wasm-commands.test.mjs:449:1
+✖ headingEnd result reservations share anchor capacity and release on stale or released plans (167.940333ms)
+  Error [EngineError]: release unused anchors
+      at invoke (file:///Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/decision-005-run-1/consumer/node_modules/@edit-ac/core/dist/engine.js:22:27)
+      at use (file:///Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/decision-005-run-1/consumer/node_modules/@edit-ac/core/dist/engine.js:124:40)
+      at Object.anchor (file:///Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/decision-005-run-1/consumer/node_modules/@edit-ac/core/dist/engine.js:183:41)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:454:58
+      at Array.from (<anonymous>)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:454:27)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'ResourceLimit',
+    operation: 'anchor'
+  }

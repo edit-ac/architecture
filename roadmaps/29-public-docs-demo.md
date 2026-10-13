@@ -66,11 +66,11 @@ Purpose: Complete reader navigation and guide templates as one bounded integrati
 Context: `docs/`; `navigation.json`; `tests/navigation.test.mjs`; `../architecture/specs/public-docs-demo.md`.
 Dependencies: DOC-1.2.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Web/React/native/CLI paths, concepts, recipes and references are discoverable; current versus planned support is visible on entry pages.
+Acceptance: Getting started, Core concepts, Extensions, API reference, Guides, Examples, Migrate, Compare and Troubleshooting are discoverable under the reader structure in public-docs-demo.md. Web/React/native/CLI paths and current versus planned support are visible on entry pages; existing canonical guides and redirects remain valid.
 
 Implementation:
 
-- [ ] DOC-1.3-I1 Map the public information architecture to real pages; add consistent prerequisites, tested-version labels, failure/recovery sections and migration links without copying architecture roadmaps.
+- [ ] DOC-1.3-I1 Map the Tiptap-informed reader structure in public-docs-demo.md to canonical Zola content sections, explicit weights, navigation and search; link existing guides rather than duplicating them. Record tested-version/prerequisite/example/failure/recovery template fields; reserve planned DOC-1.31–1.38 entries without broken links. Map the public information architecture to real pages; add consistent prerequisites, tested-version labels, failure/recovery sections and migration links without copying architecture roadmaps. Reserve discoverable Migrate to edit.ac and Compare editors entries for DOC-1.15/1.28/1.29, with links from the docs landing page, getting started, import/export and compatibility.
 
 Validation:
 
@@ -88,11 +88,11 @@ Purpose: Generate versioned API and capability references as one bounded integra
 Context: `scripts/generate-reference.mjs`; `releases/`; `docs/reference/`; `../architecture/specs/public-docs-demo.md`.
 Dependencies: DOC-1.3.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Generated signatures match named qualified artifacts; absent/unqualified APIs never receive install-ready examples. Capability tables derive from core profiles.
+Acceptance: Generated signatures match named qualified artifacts; absent/unqualified APIs never receive install-ready examples. Capability tables derive from core profiles. Public lifecycle/document/commands/selection/events/storage/sync and extension entries link to qualified examples and core concepts, with parameters, outcomes, errors, platform limits and version history.
 
 Implementation:
 
-- [ ] DOC-1.4-I1 Consume immutable core public exports/binding metadata and roadmap30 profile schema; record external entry evidence from08 and30 before claiming executable API coverage. Create generation drift checks.
+- [ ] DOC-1.4-I1 Consume immutable core public exports/binding metadata and roadmap30 profile schema; record external entry evidence from08 and30 before claiming executable API coverage. Generate only real exported public APIs/binding metadata; include per-entry example/source-manifest links and prerequisite profiles. Create generation drift checks.
 
 Validation:
 
@@ -110,11 +110,11 @@ Purpose: Publish executable web and React quickstarts as one bounded integration
 Context: `examples/web/`; `examples/react/`; `examples/releases.json`; `../architecture/specs/public-docs-demo.md`.
 Dependencies: DOC-1.4.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Tutorials install real pinned registry artifacts, demonstrate lifecycle/read-only/save errors and dispose cleanly without workspace aliases.
+Acceptance: Tutorials install real pinned registry artifacts, demonstrate lifecycle/read-only/save errors and dispose cleanly without workspace aliases. Both browser and React consumers use the Project kickoff corpus and show create/mount, actual edit/readback, a formatting action, save/reopen, read-only and teardown; React also demonstrates qualified SSR/client-boundary and mount/unmount behavior.
 
 Implementation:
 
-- [ ] DOC-1.5-I1 Require08 and10 release-consumer evidence and the qualified package version; create plain browser and React/SSR consumers and derive snippets from tested files.
+- [ ] DOC-1.5-I1 Require08 and10 release-consumer evidence and the qualified package version; create complete plain browser and React/SSR consumers and derive snippets from tested files. Name required JS/WASM/CSS assets, loading failure handling, independently expected edit/readback/save states and lifecycle cleanup. Register sources, snippet ranges, exact versions, fixtures and capability status in examples/manifest.json; unsupported framework/native bindings remain clearly planned.
 
 Validation:
 
@@ -136,7 +136,7 @@ Acceptance: Recipes show public and permission-scoped internal resolution, cance
 
 Implementation:
 
-- [ ] DOC-1.6-I1 External task gate: require EQL-1.9 immutable candidate publication receipts plus25/26 evidence for enhanced features; build prepared-host examples from public extension entry points. Clearly separate auto-paste metadata policy from permission or document-open fetch.
+- [ ] DOC-1.6-I1 External task gate: require EQL-1.9 immutable candidate publication receipts plus25/26 evidence for enhanced features; build prepared-host examples from public extension entry points. Show a safe fixture link resolving to preview metadata, an internal-link permission denial, a cancelled asset upload and recovery; record before/action/after outcomes and source-manifest links. Clearly separate auto-paste metadata policy from permission or document-open fetch.
 
 Validation:
 
@@ -158,7 +158,7 @@ Acceptance: Every supported direction/platform links its version and fidelity ev
 
 Implementation:
 
-- [ ] DOC-1.7-I1 Require27 and each claimed platform’s31–35 package-consumer evidence for runnable examples. Unavailable platforms retain explicitly conceptual guides and no executable-support claim; this documentation task does not require every native platform to qualify. Generate the support table and author short file-picker/preview/cancel/import/export recipes per qualified host.
+- [ ] DOC-1.7-I1 Require27 and each claimed platform’s31–35 package-consumer evidence for runnable examples. Unavailable platforms retain explicitly conceptual guides and no executable-support claim; this documentation task does not require every native platform to qualify. Generate the support table and author short file-picker/preview/cancel/import/export recipes per qualified host. Include concrete pinned Swift/Kotlin/desktop/CLI consumers only for qualified bindings; compare source input, conversion report, resulting document, cancellation and restore rather than only listing API names.
 
 Validation:
 
@@ -180,7 +180,7 @@ Acceptance: The reference service guide covers tenancy, auth, durable receipts, 
 
 Implementation:
 
-- [ ] DOC-1.8-I1 Require14 and28 evidence for runnable service instructions. Provide a local reference deployment and operational checklist without provisioning paid services or adding credentials.
+- [ ] DOC-1.8-I1 Require14 and28 evidence for runnable service instructions. Provide a local reference deployment and operational checklist without provisioning paid services or adding credentials. Add a prepared two-client save/reconnect/durable-receipt transcript and a fixed host-app MCP document proposal with acceptance, stale-target rejection and recovery; keep provider/model transports mocked.
 
 Validation:
 
@@ -268,7 +268,7 @@ Acceptance: Keyboard/touch/screen-reader paths, responsive tables/code, search, 
 
 Implementation:
 
-- [ ] DOC-1.12-I1 Use actual production build; fix navigation, long-content and interaction failures. Record manual accessibility evidence, generator/search indexes, redistributable asset licenses and raw load samples.
+- [ ] DOC-1.12-I1 Use actual production build; fix navigation, long-content and interaction failures. Include published concept/API/extension/example/migration/comparison sections, source links, code overflow, example reset controls and optional interactive embed teardown in the accessibility/search/mobile audit; later content releases reuse these checks. Record manual accessibility evidence, generator/search indexes, redistributable asset licenses and raw load samples.
 
 Validation:
 
@@ -308,11 +308,11 @@ Purpose: Gate future documentation releases against SDK drift as one bounded int
 Context: `scripts/check-release-links.mjs`; `.github/workflows/ci.yml`; `docs/reference/releases.md`; `../architecture/specs/public-docs-demo.md`.
 Dependencies: DOC-1.13.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: SDK/profile references resolve to immutable releases and docs cannot silently advertise unqualified or removed capabilities.
+Acceptance: SDK/profile references resolve to immutable releases and docs cannot silently advertise unqualified or removed capabilities. Published migration fixtures, feature cells and benchmark data retain source versions, review dates and immutable evidence; drift checks cover DOC-1.15–1.38 as those pages become available, including examples/manifest.json, derived snippet ranges and independently expected semantic outcomes.
 
 Implementation:
 
-- [ ] DOC-1.14-I1 Add release-note/migration/update procedure with owner and exact profile inputs; make snippet/reference drift fail CI. Keep internal architecture tasks out of public navigation.
+- [ ] DOC-1.14-I1 Add release-note/migration/update procedure with owner and exact profile inputs; make snippet/reference drift fail CI. Keep internal architecture tasks out of public navigation. Include migration converter/source version drift, competitor feature evidence review and benchmark artifact/provenance checks; never refresh measured results from a newer unmeasured build. Gate every newly published concept/API/extension/example/recipe/troubleshooting page against its source manifest, exact qualified artifacts, navigation and applicable DOC-1.12 checks; planned pages retain maturity labels.
 
 Validation:
 
@@ -321,3 +321,531 @@ Validation:
 Evidence: Separate progress entry `DOC-1.14` links changed paths, immutable inputs and focused check artifacts; retain failed evidence.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `DOC-1.14` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.15 — Create the migration overview and shared example contract
+
+- [ ] DOC-1.15 Create the migration overview and shared example contract.
+
+Purpose: Create the migration overview and shared example contract as one reviewable documentation boundary.
+Context: `content/docs/migrate/_index.md`; `navigation.json`; `examples/migrations/manifest.json`; `tests/migration-contract.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.3.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The source-editor inventory, safe migration sequence, fidelity/status labels and shared fixture format are discoverable without claiming an available converter. Overview explicitly covers collaborative cutover, assets, IDs/permissions, batch recovery and rollback.
+
+Implementation:
+
+- [ ] DOC-1.15-I1 Create the migration section and versioned source/schema/converter fixture manifest; specify native source export, independent expected target semantics, rendered output and source-located diagnostics. Provide shared equivalent Tiptap/Quill bold-paragraph fixtures, unsupported/custom-content cases and corpus coverage; no fabricated target API or converter-generated oracle. Link planned editor pages only once their owning task creates them.
+
+Validation:
+
+- [ ] DOC-1.15-V1 Create and run `node --test tests/migration-contract.test.mjs` for manifest/version/status rules and independent semantic expectations; run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.15` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.15` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.16 — Write the Tiptap migration guide
+
+- [ ] DOC-1.16 Write the Tiptap migration guide.
+
+Purpose: Write the Tiptap migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/tiptap.md`; `examples/migrations/tiptap/`; `examples/migrations/manifest.json`; `tests/migration-tiptap.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The Tiptap route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.16-I1 Document JSON from the pinned source exporter; supported node/mark/attribute mappings, custom extensions/mentions and HTML fallback. Require SDK-1.5 immutable converter evidence before executable target snippets; explain new collaborative epoch/session rather than reuse of Tiptap Yjs bytes. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.16-V1 Create and run `node --test tests/migration-tiptap.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.16` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.16` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.17 — Write the ProseMirror migration guide
+
+- [ ] DOC-1.17 Write the ProseMirror migration guide.
+
+Purpose: Write the ProseMirror migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/prosemirror.md`; `examples/migrations/prosemirror/`; `examples/migrations/manifest.json`; `tests/migration-prosemirror.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The ProseMirror route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.17-I1 Document JSON together with the exact source schema; custom node/mark names, attributes, nested lists and tables. Tiptap adapter evidence is not general ProseMirror-schema compatibility; plugins, decorations, steps/history and collaborative state need explicit independent handling. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.17-V1 Create and run `node --test tests/migration-prosemirror.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.17` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.17` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.18 — Write the Lexical migration guide
+
+- [ ] DOC-1.18 Write the Lexical migration guide.
+
+Purpose: Write the Lexical migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/lexical.md`; `examples/migrations/lexical/`; `examples/migrations/manifest.json`; `tests/migration-lexical.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The Lexical route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.18-I1 Serialized editor-state JSON with exact node versions/configuration; formatting, nested nodes, custom/decorator nodes and embeds. Separate source content from plugins, selection/history and collaborative state; document HTML fallback losses. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.18-V1 Create and run `node --test tests/migration-lexical.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.18` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.18` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.19 — Write the Slate and Plate migration guide
+
+- [ ] DOC-1.19 Write the Slate and Plate migration guide.
+
+Purpose: Write the Slate and Plate migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/slate-plate.md`; `examples/migrations/slate-plate/`; `examples/migrations/manifest.json`; `tests/migration-slate-plate.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The Slate and Plate route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.19-I1 Application-defined node JSON with exact Slate/Plate versions and application/plugin schema; text leaves/marks, inline/void elements and custom properties. Show distinct Slate and Plate fixtures where schemas differ; do not assume a universal Slate schema. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.19-V1 Create and run `node --test tests/migration-slate-plate.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.19` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.19` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.20 — Write the Quill migration guide
+
+- [ ] DOC-1.20 Write the Quill migration guide.
+
+Purpose: Write the Quill migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/quill.md`; `examples/migrations/quill/`; `examples/migrations/manifest.json`; `tests/migration-quill.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The Quill route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.20-I1 Full-document Delta from an authoritative snapshot, not an isolated change Delta; newline-owned block attributes, terminal newline, inline formatting, embeds and custom blots. Preserve UTF-16/range semantics and demonstrate the shared bold-paragraph fixture. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.20-V1 Create and run `node --test tests/migration-quill.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.20` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.20` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.21 — Write the Draft.js migration guide
+
+- [ ] DOC-1.21 Write the Draft.js migration guide.
+
+Purpose: Write the Draft.js migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/draftjs.md`; `examples/migrations/draftjs/`; `examples/migrations/manifest.json`; `tests/migration-draftjs.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The Draft.js route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.21-I1 Raw content state with block data, inline-style ranges, entity ranges and entity map; links, entity mutability and atomic blocks. Preserve Unicode range interpretation and report unmapped entities or styles without flattening away recovery data. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.21-V1 Create and run `node --test tests/migration-draftjs.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.21` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.21` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.22 — Write the Editor.js migration guide
+
+- [ ] DOC-1.22 Write the Editor.js migration guide.
+
+Purpose: Write the Editor.js migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/editorjs.md`; `examples/migrations/editorjs/`; `examples/migrations/manifest.json`; `tests/migration-editorjs.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The Editor.js route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.22-I1 Saved block JSON with exact editor/tool versions and tool keys; block IDs, per-tool data, inline HTML and custom tools. Use declared safe HTML handling for inline data and distinguish unknown tool payloads from supported semantic blocks. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.22-V1 Create and run `node --test tests/migration-editorjs.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.22` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.22` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.23 — Write the BlockNote migration guide
+
+- [ ] DOC-1.23 Write the BlockNote migration guide.
+
+Purpose: Write the BlockNote migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/blocknote.md`; `examples/migrations/blocknote/`; `examples/migrations/manifest.json`; `tests/migration-blocknote.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The BlockNote route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.23-I1 Native block JSON with exact block/inline/style schemas; nested children, block properties, tables, media and custom blocks. Explain HTML/Markdown fallback losses and avoid claiming native BlockNote JSON is interchangeable with Tiptap JSON. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.23-V1 Create and run `node --test tests/migration-blocknote.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.23` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.23` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.24 — Write the CKEditor 4 migration guide
+
+- [ ] DOC-1.24 Write the CKEditor 4 migration guide.
+
+Purpose: Write the CKEditor 4 migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/ckeditor4.md`; `examples/migrations/ckeditor4/`; `examples/migrations/manifest.json`; `tests/migration-ckeditor4.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The CKEditor 4 route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.24-I1 Pinned CKEditor 4 exported HTML with plugin/configuration metadata; styles, tables, images, widgets and application-managed attachments. Declare sanitation and unsupported markup behavior; migrate comments/history/application metadata separately rather than implying HTML contains them. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.24-V1 Create and run `node --test tests/migration-ckeditor4.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.24` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.24` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.25 — Write the CKEditor 5 migration guide
+
+- [ ] DOC-1.25 Write the CKEditor 5 migration guide.
+
+Purpose: Write the CKEditor 5 migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/ckeditor5.md`; `examples/migrations/ckeditor5/`; `examples/migrations/manifest.json`; `tests/migration-ckeditor5.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The CKEditor 5 route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.25-I1 Pinned CKEditor 5 data processor/export configuration, commonly HTML; tables, images, custom widgets and multi-root content. Separate content export from comments, suggestions and revision history; show declared processor/plugin differences and conversion diagnostics. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.25-V1 Create and run `node --test tests/migration-ckeditor5.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.25` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.25` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.26 — Write the TinyMCE migration guide
+
+- [ ] DOC-1.26 Write the TinyMCE migration guide.
+
+Purpose: Write the TinyMCE migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/tinymce.md`; `examples/migrations/tinymce/`; `examples/migrations/manifest.json`; `tests/migration-tinymce.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The TinyMCE route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.26-I1 Pinned TinyMCE exported HTML with enabled plugins/configuration; inline/block styles, tables, media and custom plugin markup. Show sanitation, media asset remapping and HTML fidelity limits; treat plugin behavior and application metadata separately. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.26-V1 Create and run `node --test tests/migration-tinymce.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.26` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.26` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.27 — Write the shared HTML, Markdown and plain-text routes migration guide
+
+- [ ] DOC-1.27 Write the shared HTML, Markdown and plain-text routes migration guide.
+
+Purpose: Write the shared HTML, Markdown and plain-text routes migration guide as one reviewable documentation boundary.
+Context: `content/docs/migrate/other-editors.md`; `examples/migrations/other-editors/`; `examples/migrations/manifest.json`; `tests/migration-other-editors.test.mjs`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The shared HTML, Markdown and plain-text routes route records source/target versions, mapping and fidelity, fixtures, diagnostics and recovery under the shared contract. Source-only/planned examples are clearly distinct from qualified conversion.
+
+Implementation:
+
+- [ ] DOC-1.27-I1 Separate HTML, Markdown dialect and plain-text fixtures, with entry points for Froala, Summernote, CodeMirror and Monaco. Verify exact source exporters/configuration against primary docs; distinguish rich HTML editors from code/text buffers, document fallback losses and identify when a custom adapter is necessary. Apply the shared overview sequence: export, map, preview/review, commit, asset/metadata handling, interrupted/idempotent batch migration and rollback. Include baseline and unsupported/custom-content examples; pin redistributable fixtures and primary-source export references. Register the page and cross-link applicable format/comparison pages when available.
+
+Validation:
+
+- [ ] DOC-1.27-V1 Create and run `node --test tests/migration-other-editors.test.mjs` for pinned source export and documented fixture/mapping/diagnostic contracts; for available immutable converters execute the corresponding packaged target consumer and compare independently authored expected semantics/diagnostics. Missing target runs stay unqualified with separate counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.27` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.27` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.28 — Create the versioned editor feature comparison
+
+- [ ] DOC-1.28 Create the versioned editor feature comparison.
+
+Purpose: Create the versioned editor feature comparison as one reviewable documentation boundary.
+Context: `content/docs/compare/_index.md`; `content/docs/compare/features.md`; `comparisons/features.json`; `tests/comparison-features.test.mjs`; `navigation.json`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: The complete migration editor set is compared by content/interchange, collaboration/offline/durability, integration, platforms/accessibility/mobile/IME, licensing/services and migration effort. Every cell carries a precise support label, version, evidence and review date; edit.ac maturity follows qualified profiles.
+
+Implementation:
+
+- [ ] DOC-1.28-I1 Create a primary-source-backed feature data schema and accessible comparison table; distinguish built-in, official extension, third-party, custom implementation, planned, unsupported and not verified. Explain workload tradeoffs without an overall winner; link existing migration guides and explicitly pending routes without broken links. Missing evidence cannot become an unsupported claim. Add Compare editors to navigation and relevant entry/format/compatibility pages.
+
+Validation:
+
+- [ ] DOC-1.28-V1 Create and run `node --test tests/comparison-features.test.mjs` for version/provenance/status and unknown-evidence rules; run `npm run check`, `zola check --skip-external-links` and `zola build`; inspect keyboard/mobile table use in a local preview, then close task tabs and stop the preview. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.28` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.28` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.29 — Document reproducible editor benchmark methodology
+
+- [ ] DOC-1.29 Document reproducible editor benchmark methodology.
+
+Purpose: Document reproducible editor benchmark methodology as one reviewable documentation boundary.
+Context: `content/docs/compare/methodology.md`; `comparisons/benchmark-profile.schema.json`; `tests/comparison-methodology.test.mjs`; `../architecture/specs/verification.md`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.15.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: A reader can reproduce the declared REL-1.2/1.3/1.4 profiles. Minimal/full configurations, fixture sizes, cold/warm states, visible/edit-ready endpoints, sample sufficiency, input limitations and unavailable measurements are explicit; no numbers are invented.
+
+Implementation:
+
+- [ ] DOC-1.29-I1 Document optimized Tiptap/Lexical/edit.ac profiles and the limited plain-contenteditable reference from the existing core harness. Define version/build/feature/durability parity, hardware/OS/browser/network, seeds/hashes, warmup/order/counts, percentiles and raw artifact metadata; reuse Task/Long/Large/Aged definitions. Cover startup, input, HTML/Markdown paste, large edits, remote bursts, bytes/memory/teardown, save/restore and reconnect. Show Not yet measured/Inconclusive states and separate targets; do not execute or duplicate the harness in docs.
+
+Validation:
+
+- [ ] DOC-1.29-V1 Create and run `node --test tests/comparison-methodology.test.mjs` with prepared profile/results fixtures that reject missing provenance, insufficient samples represented as passes and target/result confusion; run `npm run check`, `zola check --skip-external-links` and `zola build`. No benchmark measurement or provider call is authorized by this documentation check. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.29` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.29` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.30 — Publish evidence-backed editor benchmark comparisons
+
+- [ ] DOC-1.30 Publish evidence-backed editor benchmark comparisons.
+
+Purpose: Publish evidence-backed editor benchmark comparisons as one reviewable documentation boundary.
+Context: `content/docs/compare/benchmarks.md`; `comparisons/results/`; `scripts/check-comparison-evidence.mjs`; `tests/comparison-results.test.mjs`; `../architecture/specs/verification.md`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.28, DOC-1.29.
+Session scope: One named guide or comparison surface, normally 15–45 minutes plus focused checks; propose a controller-reviewed split if necessary. Source documentation may proceed before target artifacts qualify; runnable target examples require the exact converter/SDK evidence.
+Acceptance: Accessible tables/charts and sanitized downloadable samples reference exact immutable REL-1.2/1.3/1.4 builds/profiles, retaining regressions, failures/skips and supported envelopes. Unmeasured editors/metrics and insufficient evidence have explicit states; feature coverage is not benchmark coverage.
+
+Implementation:
+
+- [ ] DOC-1.30-I1 Consume reviewed core benchmark artifacts only; external gate for numeric publication is exact passing REL-1.2/1.3/1.4 provenance at immutable artifact revisions. Before evidence exists, create the page with Not yet measured entries, without claiming measured acceptance. Publish minimal/full results separately with raw data and reproduction commands; expose limitations and link methodology/features/migration. Integrate evidence/link drift checks with DOC-1.14 and the next named docs publication task; do not deploy or rerun benchmarks here.
+
+Validation:
+
+- [ ] DOC-1.30-V1 Create and run `node scripts/check-comparison-evidence.mjs` and `node --test tests/comparison-results.test.mjs` using prepared positive/negative report fixtures; reject mismatched builds/profiles, missing raw samples, fabricated measurements and hidden failures. Validate imported actual evidence separately before numeric acceptance. Run `npm run check`, `zola check --skip-external-links` and `zola build`; inspect charts/tables on desktop/mobile and close task tabs/preview. Record commands/exits, nonzero executed/passed/failed/skipped counts where checks have cases, source/artifact/profile revisions and preserved failures. Missing converter/device/measurement evidence remains unqualified.
+
+Evidence: Separate progress entry `DOC-1.30` links changed paths, immutable inputs and focused check artifacts.
+Handoff: Last completed substep, current page/fixture, exact failure or missing evidence, and next bounded action.
+Blocked behavior: Leave `DOC-1.30` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.31 — Explain core concepts through one document fixture
+
+- [ ] DOC-1.31 Explain core concepts through one document fixture.
+
+Purpose: Explain core concepts through one document fixture as one bounded reader-facing documentation surface.
+Context: `content/docs/concepts/`; `examples/concepts/`; `tests/docs-concepts.test.mjs`; `examples/manifest.json`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.3.
+Session scope: One named section or example family, normally 15–45 minutes plus focused validation. Reuse owning-task consumers rather than implement editor features; propose a controller-reviewed split if needed. Conceptual source material may proceed before qualified artifacts; executable/support acceptance requires its exact profile evidence.
+Acceptance: Document structure/schema, blocks and inline formatting, commands/selection/history, local-first persistence and collaboration are explained through one versioned Project kickoff fixture with independently expected states. Diagrams/transcripts distinguish conceptual semantics from public API/runtime evidence.
+
+Implementation:
+
+- [ ] DOC-1.31-I1 Create short linked concept pages and semantic tree/state diagrams. Trace selecting Friday, applying/removing bold, splitting/joining a paragraph, undo/redo, local save/reopen and a prepared remote insertion; show rejected/stale operations and localCommitted versus remoteCommitted outcomes. Reuse qualified engine/profile evidence where available without inventing API/schema shapes. Register original fixture IDs, expected outcomes, maturity and source-manifest links.
+
+Validation:
+
+- [ ] DOC-1.31-V1 Create/run `node --test tests/docs-concepts.test.mjs` for fixture identities, independent transcript expectations, status labels and concept/reference links; for any executable claim use the named immutable consumer. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Create named checks before use; record command exits, nonzero case counts, failures/skips, source/fixture/profile/artifact hashes and retained failure evidence. Planned material cannot pass runtime qualification.
+
+Evidence: Separate progress entry `DOC-1.31` links canonical pages, source/example manifest and focused artifacts.
+Handoff: Last completed page/fixture/check, exact unresolved dependency and next bounded action.
+Blocked behavior: Leave `DOC-1.31` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.32 — Document commands and selection with before-and-after examples
+
+- [ ] DOC-1.32 Document commands and selection with before-and-after examples.
+
+Purpose: Document commands and selection with before-and-after examples as one bounded reader-facing documentation surface.
+Context: `content/docs/reference/commands/`; `content/docs/reference/selection.md`; `examples/commands/`; `tests/docs-commands.test.mjs`; `examples/manifest.json`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.4, DOC-1.31.
+Session scope: One named section or example family, normally 15–45 minutes plus focused validation. Reuse owning-task consumers rather than implement editor features; propose a controller-reviewed split if needed. Conceptual source material may proceed before qualified artifacts; executable/support acceptance requires its exact profile evidence.
+Acceptance: Documented public commands include parameter/return/error contracts, selection requirements, capability/profile limits, history grouping and before/action/after outcomes; no unsupported chain/helper API is implied by the Tiptap reference.
+
+Implementation:
+
+- [ ] DOC-1.32-I1 Use generated real signatures to explain format toggles on Friday, heading/list changes where supported, paragraph split/join, undo/redo and rejected read-only/stale/protected operations. Pair API pages with complete consumers and independent semantic/selection snapshots; distinguish ordinary and collaboration-aware history. Show multi-command atomicity only when the public contract qualifies it.
+
+Validation:
+
+- [ ] DOC-1.32-V1 Create/run `node --test tests/docs-commands.test.mjs` against the exact packaged command/selection consumer; compare independent semantic/selection/history/error snapshots and verify generated signatures/snippet ranges. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Create named checks before use; record command exits, nonzero case counts, failures/skips, source/fixture/profile/artifact hashes and retained failure evidence. Planned material cannot pass runtime qualification.
+
+Evidence: Separate progress entry `DOC-1.32` links canonical pages, source/example manifest and focused artifacts.
+Handoff: Last completed page/fixture/check, exact unresolved dependency and next bounded action.
+Blocked behavior: Leave `DOC-1.32` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.33 — Document lifecycle and events through a saving example
+
+- [ ] DOC-1.33 Document lifecycle and events through a saving example.
+
+Purpose: Document lifecycle and events through a saving example as one bounded reader-facing documentation surface.
+Context: `content/docs/reference/lifecycle.md`; `content/docs/reference/events.md`; `examples/lifecycle/`; `tests/docs-lifecycle.test.mjs`; `examples/manifest.json`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.4, DOC-1.31.
+Session scope: One named section or example family, normally 15–45 minutes plus focused validation. Reuse owning-task consumers rather than implement editor features; propose a controller-reviewed split if needed. Conceptual source material may proceed before qualified artifacts; executable/support acceptance requires its exact profile evidence.
+Acceptance: A complete lifecycle/subscription example distinguishes ready, document changes, selection, errors, local commits and qualified remote receipts, with tested cleanup and no event-equals-durability claim.
+
+Implementation:
+
+- [ ] DOC-1.33-I1 Show mount/open, subscribe, edit Friday, refresh a save indicator from actual commit receipts, switch read-only, unsubscribe/dispose and remount. Include asset-load/save failure, cancellation and recovery with prepared local transports; document actual event ordering/reentrancy/lifetime from exported contracts. Explain React effect cleanup and SSR/client-boundary constraints through the existing consumer.
+
+Validation:
+
+- [ ] DOC-1.33-V1 Create/run `node --test tests/docs-lifecycle.test.mjs` with qualified artifact events and prepared storage/transport failures; verify independent event/commit timelines, unsubscribe/dispose and remount resource counts. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Create named checks before use; record command exits, nonzero case counts, failures/skips, source/fixture/profile/artifact hashes and retained failure evidence. Planned material cannot pass runtime qualification.
+
+Evidence: Separate progress entry `DOC-1.33` links canonical pages, source/example manifest and focused artifacts.
+Handoff: Last completed page/fixture/check, exact unresolved dependency and next bounded action.
+Blocked behavior: Leave `DOC-1.33` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.34 — Build the extension catalog with configuration examples
+
+- [ ] DOC-1.34 Build the extension catalog with configuration examples.
+
+Purpose: Build the extension catalog with configuration examples as one bounded reader-facing documentation surface.
+Context: `content/docs/extensions/`; `examples/extension-configurations/`; `tests/docs-extension-catalog.test.mjs`; `examples/manifest.json`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.4.
+Session scope: One named section or example family, normally 15–45 minutes plus focused validation. Reuse owning-task consumers rather than implement editor features; propose a controller-reviewed split if needed. Conceptual source material may proceed before qualified artifacts; executable/support acceptance requires its exact profile evidence.
+Acceptance: Catalog pages distinguish semantic blocks/nodes, inline marks and optional behavior/modules; each named extension/preset shows exact versions, options, dependencies/conflicts, costs, platform presenters and qualification limits.
+
+Implementation:
+
+- [ ] DOC-1.34-I1 Generate or check catalog metadata against owning descriptors/profiles for headings/lists, code highlighting, tables, assets/links, menus/drag handles and supported first-party presets. Each page includes a small original input/action/output configuration example, shortcut/command links, serialization/import behavior, accessibility/cancellation and teardown. Separate portable semantic support from browser/native/terminal presenters; unavailable profiles retain planned labels.
+
+Validation:
+
+- [ ] DOC-1.34-V1 Create/run `node --test tests/docs-extension-catalog.test.mjs` for descriptor/profile/options/version drift and complete qualified configuration consumers; validate source links and independent expected outputs. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Create named checks before use; record command exits, nonzero case counts, failures/skips, source/fixture/profile/artifact hashes and retained failure evidence. Planned material cannot pass runtime qualification.
+
+Evidence: Separate progress entry `DOC-1.34` links canonical pages, source/example manifest and focused artifacts.
+Handoff: Last completed page/fixture/check, exact unresolved dependency and next bounded action.
+Blocked behavior: Leave `DOC-1.34` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.35 — Teach custom extensions with block, mark and behavior examples
+
+- [ ] DOC-1.35 Teach custom extensions with block, mark and behavior examples.
+
+Purpose: Teach custom extensions with block, mark and behavior examples as one bounded reader-facing documentation surface.
+Context: `content/docs/extensions/custom/`; `examples/custom-extensions/`; `tests/docs-custom-extensions.test.mjs`; `examples/manifest.json`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.34.
+Session scope: One named section or example family, normally 15–45 minutes plus focused validation. Reuse owning-task consumers rather than implement editor features; propose a controller-reviewed split if needed. Conceptual source material may proceed before qualified artifacts; executable/support acceptance requires its exact profile evidence.
+Acceptance: Original callout-block, highlight-mark and command/menu examples explain portable semantics, versioned descriptors, serialization and host presenters. Unsupported editing/rendering remains explicit; examples do not promise Tiptap runtime/plugin compatibility.
+
+Implementation:
+
+- [ ] DOC-1.35-I1 Reuse qualified public extension entry points and owning extension fixtures to build a callout containing Project kickoff content, highlight Friday and add a local command/menu action. Show configuration, validation, Markdown/semantic interchange, unknown-extension preservation, history, cancellation and disposal. Use qualified web presenters; native/terminal recipes consume their actual binding evidence or stay conceptual. Require EQL-1.9 immutable candidate identities for enhanced executable examples.
+
+Validation:
+
+- [ ] DOC-1.35-V1 Create/run `node --test tests/docs-custom-extensions.test.mjs` from the exact immutable extension consumer; compare independent validation/serialization/history/unknown-data expectations and cleanup. Do not rerun absent platform qualification. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Create named checks before use; record command exits, nonzero case counts, failures/skips, source/fixture/profile/artifact hashes and retained failure evidence. Planned material cannot pass runtime qualification.
+
+Evidence: Separate progress entry `DOC-1.35` links canonical pages, source/example manifest and focused artifacts.
+Handoff: Last completed page/fixture/check, exact unresolved dependency and next bounded action.
+Blocked behavior: Leave `DOC-1.35` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.36 — Create an examples gallery backed by complete consumers
+
+- [ ] DOC-1.36 Create an examples gallery backed by complete consumers.
+
+Purpose: Create an examples gallery backed by complete consumers as one bounded reader-facing documentation surface.
+Context: `content/docs/examples/`; `examples/gallery/`; `tests/docs-example-gallery.test.mjs`; `examples/manifest.json`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.5.
+Session scope: One named section or example family, normally 15–45 minutes plus focused validation. Reuse owning-task consumers rather than implement editor features; propose a controller-reviewed split if needed. Conceptual source material may proceed before qualified artifacts; executable/support acceptance requires its exact profile evidence.
+Acceptance: Gallery entries expose full source/downloads, immutable artifacts, capability labels, fixture inputs, expected outcomes and cleanup for ticket description, collaborative note and structured report. Optional interactive embeds use the actual editor and no hidden backend/model calls.
+
+Implementation:
+
+- [ ] DOC-1.36-I1 Curate existing task-owned consumers rather than duplicate them: browser/React basic editor, toolbar, ticket description, prepared local collaborative note and structured report with qualified code/table/asset profiles. Add filters for task/platform/feature/status, links to concepts/API/extension/migration pages and copyable checked snippets. Include loading, read-only, reset/export and dispose paths; reuse the real playground for optional live examples, and expose unavailable profiles without fake working demos.
+
+Validation:
+
+- [ ] DOC-1.36-V1 Create/run `node --test tests/docs-example-gallery.test.mjs` for manifest/source-range/download/profile link integrity and expected scenario outcomes; execute applicable packaged consumers only. Run `npm run check`, `zola check --skip-external-links` and `zola build`; inspect keyboard/mobile navigation and live reset/cleanup where available, then close test tabs and stop task previews. Create named checks before use; record command exits, nonzero case counts, failures/skips, source/fixture/profile/artifact hashes and retained failure evidence. Planned material cannot pass runtime qualification.
+
+Evidence: Separate progress entry `DOC-1.36` links canonical pages, source/example manifest and focused artifacts.
+Handoff: Last completed page/fixture/check, exact unresolved dependency and next bounded action.
+Blocked behavior: Leave `DOC-1.36` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.37 — Publish task recipes using qualified example sources
+
+- [ ] DOC-1.37 Publish task recipes using qualified example sources.
+
+Purpose: Publish task recipes using qualified example sources as one bounded reader-facing documentation surface.
+Context: `content/docs/guides/recipes/`; `examples/recipes/`; `tests/docs-recipes.test.mjs`; `examples/manifest.json`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.5, DOC-1.31.
+Session scope: One named section or example family, normally 15–45 minutes plus focused validation. Reuse owning-task consumers rather than implement editor features; propose a controller-reviewed split if needed. Conceptual source material may proceed before qualified artifacts; executable/support acceptance requires its exact profile evidence.
+Acceptance: Recipes explain a reader task through concrete input/action/output, errors and recovery, with source-manifest links rather than copied divergent snippets. Optional upstream features use their independent evidence gates.
+
+Implementation:
+
+- [ ] DOC-1.37-I1 Build the recipe index and checked walkthroughs from existing consumer sources: an accessible bold/heading/undo toolbar, Markdown paste with expected semantic output, a quota/save-failure recovery path and a prepared two-view reconnect scenario. Link DOC-1.6/1.7/1.8 sources for import preview/cancel, cancelled upload, internal-link denial and host operations when qualified; pending recipes remain labeled. Do not reimplement those features or conceal missing profile evidence.
+
+Validation:
+
+- [ ] DOC-1.37-V1 Create/run `node --test tests/docs-recipes.test.mjs` for source-range/fixture consistency and independent success/error/cancel outcomes in qualified consumers; missing advanced capability runs remain unqualified. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Create named checks before use; record command exits, nonzero case counts, failures/skips, source/fixture/profile/artifact hashes and retained failure evidence. Planned material cannot pass runtime qualification.
+
+Evidence: Separate progress entry `DOC-1.37` links canonical pages, source/example manifest and focused artifacts.
+Handoff: Last completed page/fixture/check, exact unresolved dependency and next bounded action.
+Blocked behavior: Leave `DOC-1.37` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task DOC-1.38 — Add reproducible troubleshooting and recovery guides
+
+- [ ] DOC-1.38 Add reproducible troubleshooting and recovery guides.
+
+Purpose: Add reproducible troubleshooting and recovery guides as one bounded reader-facing documentation surface.
+Context: `content/docs/troubleshooting/`; `examples/troubleshooting/`; `tests/docs-troubleshooting.test.mjs`; `examples/manifest.json`; `../architecture/specs/public-docs-demo.md`.
+Dependencies: DOC-1.5, DOC-1.31.
+Session scope: One named section or example family, normally 15–45 minutes plus focused validation. Reuse owning-task consumers rather than implement editor features; propose a controller-reviewed split if needed. Conceptual source material may proceed before qualified artifacts; executable/support acceptance requires its exact profile evidence.
+Acceptance: Each troubleshooting page starts with an observable symptom, exact diagnostic and bounded deterministic reproduction, then preserves data through a tested recovery; unsupported versions/platforms and destructive recovery boundaries are explicit.
+
+Implementation:
+
+- [ ] DOC-1.38-I1 Reuse prepared failure fixtures for mismatched JS/WASM assets, unsupported schema/custom content, loading/SSR boundaries, quota/save failure, revoked permission and stale command targets. Show expected diagnostics and recovery through retry, preserved backup/export or compatible reopen; distinguish transport sync from durable save. Link compatibility, migration, versioned APIs and DOC-1.14 upgrade/rollback procedure; never recommend silently clearing documents or downgrading schemas.
+
+Validation:
+
+- [ ] DOC-1.38-V1 Create/run `node --test tests/docs-troubleshooting.test.mjs` with prepared failure transports and exact qualified consumers; assert independent diagnostic and preservation/recovery outcomes. Run `npm run check`, `zola check --skip-external-links` and `zola build`. Create named checks before use; record command exits, nonzero case counts, failures/skips, source/fixture/profile/artifact hashes and retained failure evidence. Planned material cannot pass runtime qualification.
+
+Evidence: Separate progress entry `DOC-1.38` links canonical pages, source/example manifest and focused artifacts.
+Handoff: Last completed page/fixture/check, exact unresolved dependency and next bounded action.
+Blocked behavior: Leave `DOC-1.38` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.

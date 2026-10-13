@@ -44,3 +44,11 @@ Use the existing verification envelope plus feature-specific fixtures from roadm
 Require keyboard, touch, screen-reader and non-drag pointer paths where relevant. Platform appearance can differ while semantic capability remains test-equivalent. Record real device/OS input separately from deterministic fixtures.
 
 Observability records bounded operation IDs, error codes, queue/durability state and timings. Redact document text, titles, URLs with credentials, tokens and keys. No live LLM/provider calls or synthetic paid inference are necessary for architecture fitness checks.
+
+## Mobile web overhead boundary
+
+[Mobile web](mobile-web.md) freezes an incremental baseline allocation within existing total limits; MWB-1.9 and MWX-1.8 own packed baseline/disabled/enabled cost evidence. FIT loading and budget checks consume these receipts where the mobile profile is claimed. The engine remains platform-neutral, optional APIs/dependencies load on demand, idle work is event-driven and per-frame geometry work is bounded. Budget failures require decomposition or an explicit recorded budget decision while preserving essential accessible editing.
+
+## Editing boundary fitness
+
+Track 42 tests [fourteen regression guards](editing-regression-suite.md) at existing command, input, renderer, history, normalization and lifecycle boundaries. Compound preparation, resulting selection and post-transaction notification are explicit capability gates; existing separate primitives cannot be silently composed into a purportedly atomic edit. Reuse production public boundaries with test-only instrumentation, maintain independent oracles and keep the harness out of shipped SDK bundles.

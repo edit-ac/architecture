@@ -1,0 +1,6568 @@
+{
+  "suite": "reorder",
+  "engine": "chromium",
+  "cases": [
+    {
+      "name": "keyboard-parity",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1055638567:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1055638567#2>",
+                  "source": "n:1055638567:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1055638567:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1055638567#12>",
+                  "source": "n:1055638567:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1055638567:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1055638567#21>",
+                  "source": "n:1055638567:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1055638567:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:1055638567:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1055638567:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1055638567#12>",
+                  "source": "n:1055638567:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:365059343:1"
+              },
+              "id": "n:1055638567:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1055638567#2>",
+                  "source": "n:1055638567:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1055638567:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1055638567#21>",
+                  "source": "n:1055638567:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 115,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:1055638567:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:1055638567:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1055638567:1",
+              "offset": 1
+            },
+            "focus": {
+              "node": "n:1055638567:1",
+              "offset": 4
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:365059343:2"
+              },
+              "id": "n:1055638567:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1055638567#2>",
+                  "source": "n:1055638567:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1055638567:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1055638567#12>",
+                  "source": "n:1055638567:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1055638567:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1055638567#21>",
+                  "source": "n:1055638567:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 239,
+            "revision": 2,
+            "undoGroups": 2
+          },
+          "journal": [
+            "editac:local:module-reorder",
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:1055638567:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:1055638567:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:1055638567:1",
+                    "version": "o:365059343:1"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:1055638567:2",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1055638567:1",
+              "offset": 1
+            },
+            "focus": {
+              "node": "n:1055638567:1",
+              "offset": 4
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "button-parity",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3320819030:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3320819030#2>",
+                  "source": "n:3320819030:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3320819030:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3320819030#12>",
+                  "source": "n:3320819030:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3320819030:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3320819030#21>",
+                  "source": "n:3320819030:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3320819030:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3320819030:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3320819030:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3320819030#12>",
+                  "source": "n:3320819030:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2599445901:1"
+              },
+              "id": "n:3320819030:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3320819030#2>",
+                  "source": "n:3320819030:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3320819030:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3320819030#21>",
+                  "source": "n:3320819030:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 116,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:3320819030:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:3320819030:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3320819030:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3320819030:1",
+              "offset": 2
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "concurrent-before",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4087452272:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4087452272#2>",
+                  "source": "n:4087452272:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4087452272:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<4087452272#12>",
+                  "source": "n:4087452272:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4087452272:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4087452272#21>",
+                  "source": "n:4087452272:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:4087452272:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:4087452272:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4087452272:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<4087452272#12>",
+                  "source": "n:4087452272:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4173567548:1"
+              },
+              "id": "n:4087452272:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "aPEER😀lpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<4087452272#2>",
+                  "source": "n:4087452272:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4087452272:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4087452272#21>",
+                  "source": "n:4087452272:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "aPEER😀lpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "aPEER😀lpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 116,
+            "revision": 2,
+            "undoGroups": 1
+          },
+          "journal": [
+            "remote",
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:4087452272:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:4087452272:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:4087452272:1",
+              "offset": 8
+            },
+            "focus": {
+              "node": "n:4087452272:1",
+              "offset": 8
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "concurrent-after",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4144480833:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4144480833#2>",
+                  "source": "n:4144480833:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4144480833:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<4144480833#12>",
+                  "source": "n:4144480833:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4144480833:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4144480833#21>",
+                  "source": "n:4144480833:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:4144480833:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:4144480833:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4144480833:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<4144480833#12>",
+                  "source": "n:4144480833:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:49739515:1"
+              },
+              "id": "n:4144480833:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "aPEER😀lpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<4144480833#2>",
+                  "source": "n:4144480833:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4144480833:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4144480833#21>",
+                  "source": "n:4144480833:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "aPEER😀lpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "aPEER😀lpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 113,
+            "revision": 2,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:module-reorder",
+            "remote"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:4144480833:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:4144480833:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:4144480833:1",
+              "offset": 8
+            },
+            "focus": {
+              "node": "n:4144480833:1",
+              "offset": 8
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "invalid-self",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:1659333018:1"
+              },
+              "id": "c:1659333018:1",
+              "kind": "quote",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:1659333018:4"
+              },
+              "id": "c:1659333018:2",
+              "kind": "quote",
+              "order": 1,
+              "parent": "c:1659333018:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1659333018:5"
+              },
+              "id": "n:3846689732:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "c:1659333018:2",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3846689732#2>",
+                  "source": "n:3846689732:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1659333018:3"
+              },
+              "id": "n:3846689732:2",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:1659333018:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3846689732#12>",
+                  "source": "n:3846689732:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3846689732:3",
+              "kind": "block",
+              "order": 4,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3846689732#21>",
+                  "source": "n:3846689732:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "",
+            "",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alphabeta",
+            "alpha",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 2,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:fixture-wrap",
+            "editac:local:fixture-wrap"
+          ],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3846689732:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3846689732:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:1659333018:1"
+              },
+              "id": "c:1659333018:1",
+              "kind": "quote",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:1659333018:4"
+              },
+              "id": "c:1659333018:2",
+              "kind": "quote",
+              "order": 1,
+              "parent": "c:1659333018:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1659333018:5"
+              },
+              "id": "n:3846689732:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "c:1659333018:2",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3846689732#2>",
+                  "source": "n:3846689732:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1659333018:3"
+              },
+              "id": "n:3846689732:2",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:1659333018:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3846689732#12>",
+                  "source": "n:3846689732:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3846689732:3",
+              "kind": "block",
+              "order": 4,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3846689732#21>",
+                  "source": "n:3846689732:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "",
+            "",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alphabeta",
+            "alpha",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 2,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:fixture-wrap",
+            "editac:local:fixture-wrap"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "c:1659333018:1",
+                    "version": "o:1659333018:1"
+                  },
+                  "parent": {
+                    "id": "c:1659333018:1",
+                    "version": "o:1659333018:1"
+                  },
+                  "before": null
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3846689732:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3846689732:1",
+              "offset": 2
+            }
+          },
+          "status": "Block could not be moved. Document unchanged.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "invalid-descendant",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:1247511822:1"
+              },
+              "id": "c:1247511822:1",
+              "kind": "quote",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:1247511822:4"
+              },
+              "id": "c:1247511822:2",
+              "kind": "quote",
+              "order": 1,
+              "parent": "c:1247511822:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1247511822:5"
+              },
+              "id": "n:259830964:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "c:1247511822:2",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<259830964#2>",
+                  "source": "n:259830964:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1247511822:3"
+              },
+              "id": "n:259830964:2",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:1247511822:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<259830964#12>",
+                  "source": "n:259830964:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:259830964:3",
+              "kind": "block",
+              "order": 4,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<259830964#21>",
+                  "source": "n:259830964:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "",
+            "",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alphabeta",
+            "alpha",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 2,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:fixture-wrap",
+            "editac:local:fixture-wrap"
+          ],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:259830964:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:259830964:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:1247511822:1"
+              },
+              "id": "c:1247511822:1",
+              "kind": "quote",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:1247511822:4"
+              },
+              "id": "c:1247511822:2",
+              "kind": "quote",
+              "order": 1,
+              "parent": "c:1247511822:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1247511822:5"
+              },
+              "id": "n:259830964:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "c:1247511822:2",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<259830964#2>",
+                  "source": "n:259830964:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1247511822:3"
+              },
+              "id": "n:259830964:2",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:1247511822:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<259830964#12>",
+                  "source": "n:259830964:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:259830964:3",
+              "kind": "block",
+              "order": 4,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<259830964#21>",
+                  "source": "n:259830964:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "",
+            "",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alphabeta",
+            "alpha",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 2,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:fixture-wrap",
+            "editac:local:fixture-wrap"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "c:1247511822:1",
+                    "version": "o:1247511822:1"
+                  },
+                  "parent": {
+                    "id": "c:1247511822:2",
+                    "version": "o:1247511822:4"
+                  },
+                  "before": null
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:259830964:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:259830964:1",
+              "offset": 2
+            }
+          },
+          "status": "Block could not be moved. Document unchanged.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "invalid-non-container",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:3938520381:1"
+              },
+              "id": "c:3938520381:1",
+              "kind": "quote",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:3938520381:4"
+              },
+              "id": "c:3938520381:2",
+              "kind": "quote",
+              "order": 1,
+              "parent": "c:3938520381:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3938520381:5"
+              },
+              "id": "n:1238801240:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "c:3938520381:2",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1238801240#2>",
+                  "source": "n:1238801240:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3938520381:3"
+              },
+              "id": "n:1238801240:2",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:3938520381:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1238801240#12>",
+                  "source": "n:1238801240:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1238801240:3",
+              "kind": "block",
+              "order": 4,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1238801240#21>",
+                  "source": "n:1238801240:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "",
+            "",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alphabeta",
+            "alpha",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 2,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:fixture-wrap",
+            "editac:local:fixture-wrap"
+          ],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1238801240:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:1238801240:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:3938520381:1"
+              },
+              "id": "c:3938520381:1",
+              "kind": "quote",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:3938520381:4"
+              },
+              "id": "c:3938520381:2",
+              "kind": "quote",
+              "order": 1,
+              "parent": "c:3938520381:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3938520381:5"
+              },
+              "id": "n:1238801240:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "c:3938520381:2",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1238801240#2>",
+                  "source": "n:1238801240:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3938520381:3"
+              },
+              "id": "n:1238801240:2",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:3938520381:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1238801240#12>",
+                  "source": "n:1238801240:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1238801240:3",
+              "kind": "block",
+              "order": 4,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1238801240#21>",
+                  "source": "n:1238801240:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "",
+            "",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alphabeta",
+            "alpha",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 2,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:fixture-wrap",
+            "editac:local:fixture-wrap"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "c:3938520381:1",
+                    "version": "o:3938520381:1"
+                  },
+                  "parent": {
+                    "id": "n:1238801240:1",
+                    "version": "o:3938520381:5"
+                  },
+                  "before": null
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1238801240:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:1238801240:1",
+              "offset": 2
+            }
+          },
+          "status": "Block could not be moved. Document unchanged.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "invalid-non-sibling",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:2994627603:1"
+              },
+              "id": "c:2994627603:1",
+              "kind": "quote",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:2994627603:4"
+              },
+              "id": "c:2994627603:2",
+              "kind": "quote",
+              "order": 1,
+              "parent": "c:2994627603:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2994627603:5"
+              },
+              "id": "n:1412218670:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "c:2994627603:2",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1412218670#2>",
+                  "source": "n:1412218670:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2994627603:3"
+              },
+              "id": "n:1412218670:2",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:2994627603:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1412218670#12>",
+                  "source": "n:1412218670:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1412218670:3",
+              "kind": "block",
+              "order": 4,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1412218670#21>",
+                  "source": "n:1412218670:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "",
+            "",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alphabeta",
+            "alpha",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 2,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:fixture-wrap",
+            "editac:local:fixture-wrap"
+          ],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1412218670:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:1412218670:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:2994627603:1"
+              },
+              "id": "c:2994627603:1",
+              "kind": "quote",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:2994627603:4"
+              },
+              "id": "c:2994627603:2",
+              "kind": "quote",
+              "order": 1,
+              "parent": "c:2994627603:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2994627603:5"
+              },
+              "id": "n:1412218670:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "c:2994627603:2",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1412218670#2>",
+                  "source": "n:1412218670:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2994627603:3"
+              },
+              "id": "n:1412218670:2",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:2994627603:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1412218670#12>",
+                  "source": "n:1412218670:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1412218670:3",
+              "kind": "block",
+              "order": 4,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1412218670#21>",
+                  "source": "n:1412218670:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "",
+            "",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alphabeta",
+            "alpha",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 2,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:fixture-wrap",
+            "editac:local:fixture-wrap"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "c:2994627603:1",
+                    "version": "o:2994627603:1"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:1412218670:2",
+                    "version": "o:2994627603:3"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1412218670:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:1412218670:1",
+              "offset": 2
+            }
+          },
+          "status": "Block could not be moved. Document unchanged.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "stale-target",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3150039471:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3150039471#12>",
+                  "source": "n:3150039471:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3150039471:3",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3150039471#21>",
+                  "source": "n:3150039471:3",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1489870541:1"
+              },
+              "id": "n:3150039471:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3150039471#2>",
+                  "source": "n:3150039471:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "gamma",
+            "alpha"
+          ],
+          "dom": [
+            "beta",
+            "gamma",
+            "alpha"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 96,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:external-move"
+          ],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3150039471:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3150039471:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3150039471:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3150039471#12>",
+                  "source": "n:3150039471:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3150039471:3",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3150039471#21>",
+                  "source": "n:3150039471:3",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1489870541:1"
+              },
+              "id": "n:3150039471:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3150039471#2>",
+                  "source": "n:3150039471:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "gamma",
+            "alpha"
+          ],
+          "dom": [
+            "beta",
+            "gamma",
+            "alpha"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 96,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:external-move"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:3150039471:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:3150039471:2",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3150039471:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3150039471:1",
+              "offset": 2
+            }
+          },
+          "status": "Block could not be moved. Document unchanged.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "boundary",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:737543148:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<737543148#2>",
+                  "source": "n:737543148:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:737543148:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<737543148#12>",
+                  "source": "n:737543148:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:737543148:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<737543148#21>",
+                  "source": "n:737543148:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:737543148:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:737543148:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:737543148:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<737543148#2>",
+                  "source": "n:737543148:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:737543148:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<737543148#12>",
+                  "source": "n:737543148:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:737543148:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<737543148#21>",
+                  "source": "n:737543148:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:737543148:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:737543148:1",
+              "offset": 2
+            }
+          },
+          "status": "Block is already at the boundary.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "tab-enter",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:213754157:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<213754157#12>",
+                  "source": "n:213754157:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1727711608:1"
+              },
+              "id": "n:213754157:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<213754157#2>",
+                  "source": "n:213754157:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:213754157:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<213754157#21>",
+                  "source": "n:213754157:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 114,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:213754157:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:213754157:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:213754157:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:213754157:1",
+              "offset": 2
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "readonly-ime",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3099410450#2>",
+                  "source": "n:3099410450:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3099410450#12>",
+                  "source": "n:3099410450:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3099410450#21>",
+                  "source": "n:3099410450:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3099410450:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3099410450:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3099410450#2>",
+                  "source": "n:3099410450:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3099410450#12>",
+                  "source": "n:3099410450:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3099410450#21>",
+                  "source": "n:3099410450:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3099410450:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3099410450:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3099410450#2>",
+                  "source": "n:3099410450:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3099410450#12>",
+                  "source": "n:3099410450:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3099410450#21>",
+                  "source": "n:3099410450:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3099410450:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3099410450:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3099410450#12>",
+                  "source": "n:3099410450:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3611239491:1"
+              },
+              "id": "n:3099410450:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3099410450#2>",
+                  "source": "n:3099410450:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3099410450:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3099410450#21>",
+                  "source": "n:3099410450:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 116,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:3099410450:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:3099410450:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3099410450:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3099410450:1",
+              "offset": 2
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "cancel",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:801099625:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<801099625#2>",
+                  "source": "n:801099625:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:801099625:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<801099625#12>",
+                  "source": "n:801099625:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:801099625:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<801099625#21>",
+                  "source": "n:801099625:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": false,
+          "selection": {
+            "anchor": {
+              "node": "n:801099625:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:801099625:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "history",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4250573333:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "aPEER😀lpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<4250573333#2>",
+                  "source": "n:4250573333:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4250573333:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<4250573333#12>",
+                  "source": "n:4250573333:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4250573333:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4250573333#21>",
+                  "source": "n:4250573333:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "aPEER😀lpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "aPEER😀lpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 1,
+            "retainedUpdateBytes": 116,
+            "revision": 3,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:module-reorder",
+            "remote",
+            "history:undo"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:4250573333:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:4250573333:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:4250573333:1",
+              "offset": 8
+            },
+            "focus": {
+              "node": "n:4250573333:1",
+              "offset": 8
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4250573333:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<4250573333#12>",
+                  "source": "n:4250573333:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3357231660:1"
+              },
+              "id": "n:4250573333:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "aPEER😀lpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<4250573333#2>",
+                  "source": "n:4250573333:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4250573333:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4250573333#21>",
+                  "source": "n:4250573333:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "aPEER😀lpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "aPEER😀lpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 116,
+            "revision": 4,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:module-reorder",
+            "remote",
+            "history:undo",
+            "history:redo"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:4250573333:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:4250573333:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:4250573333:1",
+              "offset": 8
+            },
+            "focus": {
+              "node": "n:4250573333:1",
+              "offset": 8
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "recovery-disposal",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1800971199:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1800971199#12>",
+                  "source": "n:1800971199:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:108643852:1"
+              },
+              "id": "n:1800971199:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1800971199#2>",
+                  "source": "n:1800971199:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1800971199:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1800971199#21>",
+                  "source": "n:1800971199:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 114,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:1800971199:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:1800971199:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1800971199:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:1800971199:1",
+              "offset": 2
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1800971199:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1800971199#12>",
+                  "source": "n:1800971199:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:108643852:1"
+              },
+              "id": "n:1800971199:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1800971199#2>",
+                  "source": "n:1800971199:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1800971199:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1800971199#21>",
+                  "source": "n:1800971199:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:1800971199:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:1800971199:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "offset": 0
+            },
+            "focus": {
+              "offset": 0
+            }
+          },
+          "controls": 0
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1800971199:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1800971199#12>",
+                  "source": "n:1800971199:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:108643852:1"
+              },
+              "id": "n:1800971199:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1800971199#2>",
+                  "source": "n:1800971199:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1800971199:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1800971199#21>",
+                  "source": "n:1800971199:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:1800971199:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:1800971199:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1800971199:1",
+              "offset": 5
+            },
+            "focus": {
+              "node": "n:1800971199:1",
+              "offset": 5
+            }
+          },
+          "controls": 0
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1800971199:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1800971199#12>",
+                  "source": "n:1800971199:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:108643852:1"
+              },
+              "id": "n:1800971199:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1800971199#2>",
+                  "source": "n:1800971199:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1800971199:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1800971199#21>",
+                  "source": "n:1800971199:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:1800971199:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:1800971199:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "offset": 0
+            },
+            "focus": {
+              "offset": 0
+            }
+          },
+          "status": "",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "nested-valid",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:699084726:1"
+              },
+              "id": "c:699084726:1",
+              "kind": "quote",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:699084726:4"
+              },
+              "id": "c:699084726:2",
+              "kind": "quote",
+              "order": 1,
+              "parent": "c:699084726:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:699084726:5"
+              },
+              "id": "n:3600065409:1",
+              "kind": "block",
+              "order": 2,
+              "parent": "c:699084726:2",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3600065409#2>",
+                  "source": "n:3600065409:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:699084726:3"
+              },
+              "id": "n:3600065409:2",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:699084726:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3600065409#12>",
+                  "source": "n:3600065409:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3600065409:3",
+              "kind": "block",
+              "order": 4,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3600065409#21>",
+                  "source": "n:3600065409:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "",
+            "",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alphabeta",
+            "alpha",
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 2,
+            "undoGroups": 0
+          },
+          "journal": [
+            "editac:local:fixture-wrap",
+            "editac:local:fixture-wrap"
+          ],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3600065409:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:3600065409:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:699084726:1"
+              },
+              "id": "c:699084726:1",
+              "kind": "quote",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:699084726:6"
+              },
+              "id": "n:3600065409:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "c:699084726:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<3600065409#12>",
+                  "source": "n:3600065409:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:699084726:4"
+              },
+              "id": "c:699084726:2",
+              "kind": "quote",
+              "order": 2,
+              "parent": "c:699084726:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:699084726:5"
+              },
+              "id": "n:3600065409:1",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:699084726:2",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3600065409#2>",
+                  "source": "n:3600065409:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:3600065409:3",
+              "kind": "block",
+              "order": 4,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<3600065409#21>",
+                  "source": "n:3600065409:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "",
+            "beta",
+            "",
+            "alpha",
+            "gamma"
+          ],
+          "dom": [
+            "betaalpha",
+            "beta",
+            "alpha",
+            "alpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 149,
+            "revision": 3,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:fixture-wrap",
+            "editac:local:fixture-wrap",
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:3600065409:2",
+                    "version": "o:699084726:3"
+                  },
+                  "parent": {
+                    "id": "c:699084726:1",
+                    "version": "o:699084726:1"
+                  },
+                  "before": {
+                    "id": "c:699084726:2",
+                    "version": "o:699084726:4"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:3600065409:2",
+              "offset": 1
+            },
+            "focus": {
+              "node": "n:3600065409:2",
+              "offset": 1
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "backward-selection",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4207807482:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4207807482#2>",
+                  "source": "n:4207807482:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4207807482:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<4207807482#12>",
+                  "source": "n:4207807482:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4207807482:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4207807482#21>",
+                  "source": "n:4207807482:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:4207807482:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:4207807482:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4207807482:2",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<4207807482#12>",
+                  "source": "n:4207807482:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2918216889:1"
+              },
+              "id": "n:4207807482:1",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4207807482#2>",
+                  "source": "n:4207807482:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:4207807482:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4207807482#21>",
+                  "source": "n:4207807482:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "dom": [
+            "beta",
+            "alpha",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 116,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:module-reorder"
+          ],
+          "commands": [
+            {
+              "kind": "editor",
+              "origin": "module-reorder",
+              "commands": [
+                {
+                  "type": "move",
+                  "target": {
+                    "id": "n:4207807482:1",
+                    "version": "base"
+                  },
+                  "parent": {
+                    "id": "@root",
+                    "version": "base"
+                  },
+                  "before": {
+                    "id": "n:4207807482:3",
+                    "version": "base"
+                  }
+                }
+              ]
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:4207807482:1",
+              "offset": 4
+            },
+            "focus": {
+              "node": "n:4207807482:1",
+              "offset": 1
+            }
+          },
+          "status": "Block moved.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "embedded-control",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:97965644:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<97965644#2>",
+                  "source": "n:97965644:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:97965644:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<97965644#12>",
+                  "source": "n:97965644:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:97965644:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<97965644#21>",
+                  "source": "n:97965644:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:97965644:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:97965644:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:97965644:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<97965644#2>",
+                  "source": "n:97965644:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:97965644:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<97965644#12>",
+                  "source": "n:97965644:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:97965644:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<97965644#21>",
+                  "source": "n:97965644:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": false,
+          "selection": {
+            "anchor": {
+              "offset": 3
+            },
+            "focus": {
+              "offset": 3
+            }
+          },
+          "status": "",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "slash-priority",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1594234408:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "/"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 1,
+                  "identity": "<1594234408#2>",
+                  "source": "n:1594234408:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1594234408:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1594234408#7>",
+                  "source": "n:1594234408:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1594234408:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1594234408#16>",
+                  "source": "n:1594234408:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "/",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "/",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 19,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:text-input:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+          ],
+          "commands": [
+            {
+              "kind": "text",
+              "origin": "text-input:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1594234408:1",
+              "offset": 1
+            },
+            "focus": {
+              "node": "n:1594234408:1",
+              "offset": 1
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1594234408:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "/"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 1,
+                  "identity": "<1594234408#2>",
+                  "source": "n:1594234408:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1594234408:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1594234408#7>",
+                  "source": "n:1594234408:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1594234408:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1594234408#16>",
+                  "source": "n:1594234408:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "/",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "/",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 19,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:text-input:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+          ],
+          "commands": [
+            {
+              "kind": "text",
+              "origin": "text-input:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1594234408:2",
+              "offset": 4
+            },
+            "focus": {
+              "node": "n:1594234408:2",
+              "offset": 4
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1594234408:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "/"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 1,
+                  "identity": "<1594234408#2>",
+                  "source": "n:1594234408:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1594234408:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<1594234408#7>",
+                  "source": "n:1594234408:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1594234408:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1594234408#16>",
+                  "source": "n:1594234408:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "/",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "/",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 19,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            "editac:local:text-input:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+          ],
+          "commands": [
+            {
+              "kind": "text",
+              "origin": "text-input:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            }
+          ],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:1594234408:1",
+              "offset": 1
+            },
+            "focus": {
+              "node": "n:1594234408:1",
+              "offset": 1
+            }
+          },
+          "status": "",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "malformed-destination",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:282225819:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<282225819#2>",
+                  "source": "n:282225819:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:282225819:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<282225819#12>",
+                  "source": "n:282225819:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:282225819:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<282225819#21>",
+                  "source": "n:282225819:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:282225819:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:282225819:1",
+              "offset": 2
+            }
+          },
+          "status": "",
+          "controls": 1
+        },
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:282225819:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<282225819#2>",
+                  "source": "n:282225819:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:282225819:2",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "beta"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 4,
+                  "identity": "<282225819#12>",
+                  "source": "n:282225819:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:282225819:3",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "gamma"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<282225819#21>",
+                  "source": "n:282225819:3",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "text": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "dom": [
+            "alpha",
+            "beta",
+            "gamma"
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 0,
+            "revision": 0,
+            "undoGroups": 0
+          },
+          "journal": [],
+          "commands": [],
+          "errors": [],
+          "focus": true,
+          "selection": {
+            "anchor": {
+              "node": "n:282225819:1",
+              "offset": 2
+            },
+            "focus": {
+              "node": "n:282225819:1",
+              "offset": 2
+            }
+          },
+          "status": "Block could not be moved. Document unchanged.",
+          "controls": 1
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "processes": [
+    {
+      "pid": 27835,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "reorder",
+      "log": "/Users/bpstr/Github/edit-ac/core/evidence/modules-reorder/complete-browser/chromium"
+    }
+  ],
+  "packs": [
+    {
+      "name": "core",
+      "file": "edit-ac-core-0.0.0.tgz",
+      "bytes": 941286,
+      "sha256": "7834438682d2e980be1abb21cbf770b89f9e811737c69ba7d06c528d8c99f777"
+    },
+    {
+      "name": "web",
+      "file": "edit-ac-web-0.0.0.tgz",
+      "bytes": 89748,
+      "sha256": "fc236b9bee00c2f937b91a170b9a194d1d222ce819ac73db8e7d468e73befb31"
+    }
+  ],
+  "cleanup": {
+    "browserExited": true,
+    "serverClosed": true,
+    "consumerRemoved": true
+  },
+  "revision": "6edb83432468e44083740b586f973fb44f623352",
+  "sources": {
+    "packages/web/src/clipboard/fragment.ts": "ecd352616d5da03bbbac8162825b45723d543069f17014801f9fee0673062e47",
+    "packages/web/src/clipboard/html.ts": "de9b4265d2cc60dc85da1daf0cd3f3f8dc817a006e9b5712df6bc676556ed880",
+    "packages/web/src/clipboard/markdown.ts": "21cadac434ca183fee40195c61e69ce72fab10aafd1f3cbc6228c3bc2ad98771",
+    "packages/web/src/clipboard/pending.ts": "eda3d054d1c0e45916bea110c0e4dcb7ec55294dc3d683605c5a8751db5e7165",
+    "tests/browser/format-helpers.ts": "0a097c4a7638f1ba746a9490486331c4e4fd1e97f0fa0f8daead584f6735a504",
+    "crates/editac-markdown/src/extensions.rs": "5f7d8f3a8aba33cd50356aa08850ae9e392a196197e669b7dbe8ed0e27f1e3e1",
+    "crates/editac-markdown/src/optional.rs": "75d4cfe43ec524b0531a500116ef0c30ebb5cfa0c9b5e54a32b7b78b8ce9ed1c",
+    "crates/editac-core/src/modules/content.rs": "704c0f98a54b170287e19ebecc50e3801b999528f9c76600ba943850472e2fdd",
+    "packages/web/src/input/text.ts": "63c0bcf61add0b3459975cb7c781edc826e8f4a870ef1a55796304e069e01542",
+    "packages/web/src/input/shortcuts.ts": "453638df12f18e7a7a87d268dc0c75129d867352dea08ae2ee0803bd5a6cf118",
+    "packages/core/src/engine.ts": "554a99f1ae46ae26992acf17e8a782cfbe9c8dcdba695dd4ff94b150a3c80093",
+    "crates/editac-core/src/commands/editor.rs": "dfdb4afef4bd88863fdca20a12cace4c621724a197c1443c1b2b042c43b9363b",
+    "crates/editac-wasm/src/bridge.rs": "a2dfdcbe6bf6af7d94dea6f6a44e3aaf393f90425a3726666e87415aa647894e",
+    "scripts/test-browser.mjs": "38142c8cedc9420a067588a62b53e945595aee5794b7c3c680ac13122f968e0e",
+    "tests/browser/reorder.spec.ts": "cfbeb782163a33e5c502a5b5487d379876fc2a4b0d6b151481f2d635fef7324a",
+    "tests/browser/browser-harness.ts": "f2b3bf33272b47ffb2dd9f5d2d18924bdeb3a3f31dd1d772c92bc5e04f34bcbf",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+    "packages/web/src/modules/reorder.ts": "2de953d37f1192b1825ae1e952ab0f84a87787c041d6088ce83c43a622c0d927",
+    "packages/web/src/dom/selection.ts": "60f8793d8996e229d3f75cc73f5096b3beaa57c964f360c08bd9e4247c9717a5",
+    "packages/web/src/surface.ts": "6412b405965c65c02d945eb31c0d8bd6fd2f59a2604797d7b6e759f966d44056",
+    "packages/web/src/editor.ts": "ebec1b099b39dcfe7124c6d17a17947424ad1a1de46434ff22bfeaf2ac3eae9b",
+    "packages/web/src/index.ts": "acdc077b85ab297513bfbd38bf2628e59389ab8d092f5ae878b0646ebcf2088b",
+    "fixtures/browser-reorder/session.mjs": "2d2b24489d955e2933a2975af3cf87ad10b5d01f6265d84e716702332538dda1",
+    "fixtures/browser-reorder/index.html": "5f170032c28d7b42fd0f706c0638a2818de7814056d0853f75d4d0e6d911caa8"
+  },
+  "server": {
+    "pid": 27773,
+    "port": 49666,
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "reorder",
+    "log": "/Users/bpstr/Github/edit-ac/core/evidence/modules-reorder/complete-browser/chromium"
+  },
+  "browser": {
+    "version": "156.0.8078.4",
+    "engine": "chromium",
+    "playwright": "1.64.0",
+    "node": "v24.19.0"
+  },
+  "counts": {
+    "executed": 20,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0
+  }
+}

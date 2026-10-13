@@ -1,0 +1,112 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs module-contract
+
+module-contract browser: chromium
+✔ enabled: packed public mount preserves generic mark/atom data and renders text safely (1937.541167ms)
+✔ absent-renderers: packed public mount preserves generic mark/atom data and renders text safely (123.617625ms)
+✔ disabled: packed public mount preserves generic mark/atom data and renders text safely (127.578958ms)
+✔ known malformed attributes reject before mount touches DOM or document (135.17ms)
+✖ real engine edits retain custom attributes and disabled remount retains the changed label (130.651166ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2775.703208
+
+✖ failing tests:
+
+test at tests/browser/module-contract.spec.ts:73:1
+✖ real engine edits retain custom attributes and disabled remount retains the changed label (130.651166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'committed'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/module-contract.spec.ts:96:39
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'committed',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+module-contract browser: firefox
+✔ enabled: packed public mount preserves generic mark/atom data and renders text safely (3487.852959ms)
+✔ absent-renderers: packed public mount preserves generic mark/atom data and renders text safely (275.653084ms)
+✔ disabled: packed public mount preserves generic mark/atom data and renders text safely (279.265625ms)
+✔ known malformed attributes reject before mount touches DOM or document (261.181833ms)
+✖ real engine edits retain custom attributes and disabled remount retains the changed label (268.326042ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5072.038916
+
+✖ failing tests:
+
+test at tests/browser/module-contract.spec.ts:73:1
+✖ real engine edits retain custom attributes and disabled remount retains the changed label (268.326042ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'committed'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/module-contract.spec.ts:96:39
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'committed',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+module-contract browser: webkit
+✔ enabled: packed public mount preserves generic mark/atom data and renders text safely (3210.943541ms)
+✔ absent-renderers: packed public mount preserves generic mark/atom data and renders text safely (348.917875ms)
+✔ disabled: packed public mount preserves generic mark/atom data and renders text safely (292.414416ms)
+✔ known malformed attributes reject before mount touches DOM or document (380.161875ms)
+✖ real engine edits retain custom attributes and disabled remount retains the changed label (356.771708ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4952.513334
+
+✖ failing tests:
+
+test at tests/browser/module-contract.spec.ts:73:1
+✖ real engine edits retain custom attributes and disabled remount retains the changed label (356.771708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'committed'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/module-contract.spec.ts:96:39
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'committed',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

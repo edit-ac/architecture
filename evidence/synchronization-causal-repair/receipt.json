@@ -1,0 +1,231 @@
+{
+  "gate": "SYN-1.3",
+  "children": [
+    "SYN-1.3-I1",
+    "SYN-1.3-V1",
+    "SYN-1.3-R1"
+  ],
+  "state": "implemented and locally verified",
+  "verifiedAtUtc": "2026-10-13T01:54:36.295744+00:00",
+  "sourceSnapshot": "../progress/.roadmap-runner/06-synchronization-049784b4c224/source-63e8bc8b7f65.md",
+  "sourceRevision": "9fb151bc16cc567c2c66700209baff239d192e1893ab4746d98f4c8dc329a17d",
+  "promptRevision": "2e18a98412c7",
+  "iteration": 8,
+  "node": "v24.19.0",
+  "coreBaseCommit": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseCommit": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementationRevision": "Uncommitted working-tree source and compiled SHA-256 hashes, with archived exact copies; no commit or publication",
+  "changedPaths": [
+    "packages/web/src/sync/session.ts",
+    "tests/reconnect.test.mjs",
+    "tests/fixtures/causal-replay/fixture.json",
+    "tests/fixtures/causal-replay/initial.bin",
+    "tests/fixtures/causal-replay/frame-13.bin",
+    "tests/fixtures/causal-replay/frame-12.bin"
+  ],
+  "implementation": "Retain exact atomic EngineRejected/applyUpdate/IncompleteRestore frames in the shared receive budget. Retry only when live replica revision changes, with bounded pump work and generation fences. All other errors remain strict; detach clears retained receive bytes, authorized handshake recovers remote work, local outbox remains intact. No Rust/schema/wire/API changes.",
+  "checks": [
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH npm run build",
+      "log": "build-final.log",
+      "exitCode": 0
+    },
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_RECONNECT_OUTPUT=../architecture/evidence/synchronization-causal-repair/reconnect-final node --test --test-reporter=tap tests/reconnect.test.mjs",
+      "log": "reconnect-final.log",
+      "exitCode": 0,
+      "counts": {
+        "executed": 19,
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_SYNC_PROTOCOL_OUTPUT=../architecture/evidence/synchronization-causal-repair/protocol-final EDITAC_OUTBOX_OUTPUT=../architecture/evidence/synchronization-causal-repair/outbox-final EDITAC_AWARENESS_OUTPUT=../architecture/evidence/synchronization-causal-repair/awareness-final EDITAC_RECEIPTS_OUTPUT=../architecture/evidence/synchronization-causal-repair/receipts-final node --test --test-reporter=tap tests/sync-protocol.test.mjs tests/outbox.test.mjs tests/awareness.test.mjs tests/receipts.test.mjs tests/server-receipts.test.mjs",
+      "log": "integration-final.log",
+      "exitCode": 0,
+      "counts": {
+        "executed": 71,
+        "passed": 71,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "families": {
+        "protocol": 7,
+        "outbox": 23,
+        "awareness": 13,
+        "receipts": 17,
+        "relay": 11
+      }
+    }
+  ],
+  "finalDistinctCounts": {
+    "executed": 90,
+    "passed": 90,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "criterionMap": {
+    "shuffle/duplicates": "19 reconnect cases including reverse 3-delta chain, duplicate idempotence, pending delete-set recovery, handshake recovery, frozen SYN-1.7 frame-12/frame-13 exact corpus",
+    "no echo/dropped local updates": "Original persisted outbox replay/backpressure/undo-redo cases plus retained-frame overflow and offline reconnect; explicit outbox membership and transmitted-update counts",
+    "bounded retry/backpressure": "Existing exponential retry/exhaustion; incomplete frames share receive count/bytes; maxWorkPerPump=1 crosses reconciliation pumps; idle and unchanged-vector pumps do not retry; synchronous remote-observer attachment replacement preserves new queues",
+    "offline detach": "Retained frames released on detach/error; unauthorized edits stay recoverable; authorized reconnect converges with selective history preserved"
+  },
+  "preservedFailures": [
+    {
+      "log": "integration.log",
+      "exitCode": 1,
+      "counts": {
+        "executed": 71,
+        "passed": 54,
+        "failed": 17,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "reason": "New value import of EngineError cannot resolve in directly loaded browser modules",
+      "repair": "Remove runtime import and inspect exact tagged error envelope; receipts-repaired.log 17/17, final complete integration 71/71"
+    },
+    {
+      "log": "../../../core/evidence/synchronization-offline/feature-2.log",
+      "reason": "Prior SYN-1.7 canonical 3-pass/1-fail retained unchanged; exact frozen causal frames now pass real Rust reconnect regression; full browser convergence not rerun in this one-parent session"
+    }
+  ],
+  "intermediateChecks": [
+    {
+      "log": "reconnect-initial.log",
+      "executed": 17,
+      "passed": 17
+    },
+    {
+      "log": "reconnect.log",
+      "executed": 18,
+      "passed": 18
+    },
+    {
+      "log": "receipts-repaired.log",
+      "executed": 17,
+      "passed": 17
+    }
+  ],
+  "sourceHashes": {
+    "packages/web/src/sync/session.ts": "4f169cf042521e2e6ca17fc03ed4996bd46e9af762f6680aafffc009e00af11e",
+    "tests/reconnect.test.mjs": "1ae070e2a340ab767a08be8cdb8eccb2042e120ddc786654276cd15df6dcb350",
+    "packages/web/src/sync/protocol.ts": "13246ca889ac65a2d774bbfdd1e2c40db84f3bf70ec7b5f4a869617118141563",
+    "packages/web/src/sync/receipts.ts": "b70944bac9704168ec7b75435ca7e9f8e2cde607c70fc5877174eee9bf701714",
+    "packages/web/src/sync/awareness.ts": "94de097c7fb519f45875d837627c783b6b5a2777dab58a553cc785120bde176a",
+    "packages/web/src/storage/journal.ts": "53d45abc5c323683512470d41ada3941edfb4c249bd84a6dfca6d892b867c2a1",
+    "packages/web/src/storage/outbox.ts": "c743105f738f459c584ce70f62ed0abaea50684060d1954f245c24198061f0e4",
+    "packages/core/src/engine.ts": "554a99f1ae46ae26992acf17e8a782cfbe9c8dcdba695dd4ff94b150a3c80093",
+    "packages/core/src/index.ts": "ada305085e940ce18ba27166fa3dcbd1343a24dd43f99f09021997a14cb3f85a",
+    "packages/web/dist/sync/session.js": "ae371529dcffeb55bb011a4b964f6e2c2b9af27377931ee747deed2429087f7f",
+    "packages/web/dist/sync/protocol.js": "cac453293d7ce6a2a9cbad1592f6dac6033f2f28b6d9c6e0fc4f394ca320a09e",
+    "packages/web/dist/sync/receipts.js": "72d0e3c154e7e18971e6e41b8036db7f507bff4bd939c0dff5f6008a67bc9acc",
+    "packages/web/dist/storage/outbox.js": "ddecd3f7a3950be340a081a6a5cf5f4519f378e8ec85dfa5705f1999e261773c",
+    "packages/core/dist/engine.js": "72df078844fb8ee441e0f58220fba02c51e1b647105cf4ac7a8bf9530c9c586b",
+    "packages/core/dist/index.js": "db9945040f82be675b6b2626158b44db26c9fb704b42bfa5929077819a90bf1e",
+    "packages/core/dist/wasm/editac_wasm_bg.wasm": "c16438269e3b69d53da19969fdff6dfb7d1531c9a7e5eb4e6244e617ed52704d",
+    "tests/helpers/prepared-socket.mjs": "448c3110beb2521103d69745de5c85d4d8c3709fab6db84c16e46a0631e19b01",
+    "tests/helpers/checkpoint-storage.mjs": "2fd0bebf97d3c059149b7ebbda0b4ad663cb3b713008592a23ab7b1ef9dc68c7",
+    "fixtures/schema-v5/mapping.mjs": "54617d4cebf52f60dea937c41f4aa53c2f143ef9bce033390c2ee9820bef9f33",
+    "tests/fixtures/relay-grants.json": "551418ecbfb0cc1c912a40e74c028f6756568e4a4d8276d5f4a46aeffb307fdf",
+    "tests/receipts.test.mjs": "789b0d2f0e3537a52f0fcb563dfa890d26a2a2d5c128f9ff99ac7a19fb914d84",
+    "tests/outbox.test.mjs": "8db7a32453dfb498b4fe45ec314a8b0706136da5bd4d3856bb6fcb7e4e42ff91",
+    "tests/awareness.test.mjs": "42ec661cb8ce2759552dc34fa21ea8a008f5b0d7d25a9a40bd551baf95d0146b",
+    "tests/sync-protocol.test.mjs": "92c32cf98c618ca9007cce0629155abffb5c2f391924b7fb27a8876c20590bd8",
+    "tests/server-receipts.test.mjs": "38ab400a3b891b162444f3d68efa0bfc333f93a082958df2ad9f0eaaacf77564",
+    "examples/sync-server/relay.mjs": "c118eb199edade097ca9f79c599bd21406b7d5d63fb37c53af4105e98669d377",
+    "tests/fixtures/causal-replay/fixture.json": "30cc5370cc3a5419df447023bd02e47b55ffcfafc16f0f8a2cee574e95de20c3",
+    "tests/fixtures/causal-replay/initial.bin": "a8d3ea30e00352c15110d791013e8fb16fc05d4099f1617c9df243145cbfc60c",
+    "tests/fixtures/causal-replay/frame-13.bin": "7a10358c07732ef3046c49902a80c3ecaa55b6165be21082c5009794a047d445",
+    "tests/fixtures/causal-replay/frame-12.bin": "d6e56e8522e415fd8dc0816fd5335609fdfe26a8d00bb10959bb5b631f95cb5e"
+  },
+  "upstreamEvidence": "Source roadmap hashes match COMPLETE engine/storage revisions. Nine unchanged original SYN-1.3 dependency sources match prior reconnect receipt; final engine receipt drift set is exactly the previously recorded SYN-1.1 drift (prior-source-audit.json). Current real-engine/storage integrations pass; no new full upstream qualification claim.",
+  "scope": "Prepared-only tests; real Rust WASM and pinned Yjs, prepared IndexedDB/socket in reconnect; real Chromium IndexedDB/loopback SQLite in integration. No credentials, paid inference, production auth, deployment or full SYN-1.7 two-browser/crash convergence claim.",
+  "cleanup": "cleanup.json: 8 recorded PIDs gone, 56 recorded listeners gone, 3 recorded scratch roots gone, no remaining core server candidates, no manual signals or unrelated deletion",
+  "disk": "disk.json; no session-created large artifact cleanup needed; qualification sources/logs preserved",
+  "artifactHashes": {
+    "whitespace.json": "33ce143df472cf06eecf408bd8485adc2a6471ecb07c6a5a8d94198d7a4dc8fd",
+    "reconnect-initial.log": "b64da46aa2594d1204bad8ddf198aa904add4cb56590113d817b2ca161a39472",
+    "architecture-status.log": "1bff125e45370e2dc321a2156d1f52fea12e6a9f5b4461710a45f0a903c6ab59",
+    "core-status.log": "d8de19262bb59cba10c9c5e75237c292a4a524d017352f8079540d7d0bc98e84",
+    "reconnect.log": "9e936e0ed12ccde99da38296a0f7b69efdabbfebb3419bcea6a9539e6496cec5",
+    "prior-source-audit.json": "1d7be595941eeee7bdc4d3e8ba2bedc793f6b5b164d4b7cb4bd4667d9f219107",
+    "tests-whitespace.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-initial.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "build-final.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "integration.log": "69dcba8ae71cb8af6dfaee1ce9230ec3ab3bfc83ee63a52a94df186d6cfeb9cd",
+    "cleanup.json": "52dafd6a30b4aec98f29b39ec3f8714f06690b308ea512ceddd5693553e7db19",
+    "receipts-repaired.log": "216942d56e2decf6fc61239e7496a16a8c084b9402dd6d600df3c933d854e67f",
+    "reconnect-final.log": "36ccc44457a5b58cbb9e781da94935e0c8f1c3ceb444fb8d97852e19315bf745",
+    "process-snapshot.log": "a17f5fb5e0d1e2b1208a98c063d350c52a97e5632b45ac208c2dbac89f15ac07",
+    "runtime.log": "b7677d3ec37ee1897ba07dc2cfe8292fe421c9ac93396cca5bbece486d1a2a41",
+    "disk.json": "1a2ee641275f78112ecc7b0babc7b410b31a600a6e020b1a9df7d3d00215ca39",
+    "listeners.log": "4ec18fb96439bc46dd83f1b622b260616d05a5e8df80c5e87b3f41cd3c55d9f2",
+    "integration-final.log": "cb3e074202dcf779d73104f273409b2eae24feef413f96f02570a54498032a62",
+    "build.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "session-whitespace.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receipts/facts.json": "1cbbf4613b91d74f141f97c7b7bc296e5c53c6d78b101b02a82958560aec01e8",
+    "outbox/harness.json": "83e613bcd98c0ff0d5d7b92f6a8bcfc8779a5683f05b5534fd39fbab53ec4ce1",
+    "reconnect/harness.json": "f3b1b22ced7a4963bd7f6e2f6704976e99b2c94b97335a782a1791d64342192f",
+    "awareness/harness.json": "5f1805beb08c9f4b6cb174f39649ffe8c6ae4d4a2112e7941281f20907921a86",
+    "awareness/rust-awareness.bin": "ba27aef016ab6f0daa4c298f8d71386957efd283d96c7a2a7a56cba156924147",
+    "awareness/js-awareness.bin": "888f2514944c9d9a6eb0303bd93442bc9f22bce444654473ad5a1e1f68011e9f",
+    "protocol/4-rust-update.bin": "ca5020195d88f0c6e32f4a51ad027ee0ef6ad4fe01a85fab5d36dfe97b8a27a8",
+    "protocol/harness.json": "65b8878b0e4e2bfca7d56d438faacebd6ab58529a04002fc03e81ec4d6c57c55",
+    "protocol/3-js-step2.bin": "863af76022acd08ce03138efdbcd923208dc78aa83757b7c1e7aefabf09bc78f",
+    "protocol/1-js-step1.bin": "12364a6b13fc5eaac504740858899935906a97522fd858dd2792de22edc195c3",
+    "protocol/5-js-update.bin": "971a4394dc3f571f78a722eb6cc62f0400d149c781e2a6f855143c6ee7175b28",
+    "protocol/2-rust-step2.bin": "5206b1f58df004cd7efb2f2e159a9dc072a65a186b7b67a10e621731c3d535e3",
+    "protocol/0-rust-step1.bin": "a7ced7de30240b3504f86b68eac79c04a9a3e6e4e89b9a76d0c8fc76a19f9506",
+    "awareness-final/harness.json": "7cecc6a2a5b0181da23cd0e4cac8d4d753b4a151628324df8a216278cab033c7",
+    "awareness-final/rust-awareness.bin": "12e53a522738ff4fe0e7b910499395d1a2aa6b1fa5a51e236a1de0cb2afa9096",
+    "awareness-final/js-awareness.bin": "6e52c444759ba243cbaccccb5a3357d81149eabbe2caa6541e185483978707fd",
+    "receipts-final/facts.json": "3c5bbcd3cafbc4adeeddbf3144c0f124be9f866f8913d77aef8d82cad3f6b165",
+    "reconnect-initial/harness.json": "f0b486b3e7970a60e02fd0200c89a5aa85b0eeb404150d72c0b3fa5b406f72b2",
+    "protocol-final/4-rust-update.bin": "f73c56117e62d6af1f0f3967c6b625bf9a52416060ca5e58bd8dff7de820328c",
+    "protocol-final/harness.json": "527fdfda34e78db5b86078c40427d08553de518ea42b82d466bdb8ab37d273b8",
+    "protocol-final/3-js-step2.bin": "152384824eb41f27a8b0d0ab5a44fe04852371d00e51cff8c270d0dbe82b37eb",
+    "protocol-final/1-js-step1.bin": "59bc1f20d191a9a166df7f302639b944e7c136c1d23b0677e66f9274824f102d",
+    "protocol-final/5-js-update.bin": "bb0cde9283d01b2c6690f1cde41d71c25f98e02eadac930ad6c0063f66f9c612",
+    "protocol-final/2-rust-step2.bin": "d4bc20687c3b67e4ffc8d21f50e7f45990ef2339fadb9bce440f0c0e8fa31608",
+    "protocol-final/0-rust-step1.bin": "7a44ff1c86b5d52bd08d6977cc07a75c9a8e6c4d83a0ed316edcf27be3eae60f",
+    "outbox-final/harness.json": "bb5a36b7c3113106547cbef34f142b77ffb58a60773c1e36c611890f6d8ba8c2",
+    "receipts-repaired/facts.json": "7d30009059aa7bb37a8690e099deb2e9260fccd19b1cf0295698f76b9fffd706",
+    "reconnect-final/harness.json": "10997604bacb9074686964ccb4794d181d6e6b0147282a6245e8944ca5e93079",
+    "sources/tests/reconnect.test.mjs": "1ae070e2a340ab767a08be8cdb8eccb2042e120ddc786654276cd15df6dcb350",
+    "sources/tests/outbox.test.mjs": "8db7a32453dfb498b4fe45ec314a8b0706136da5bd4d3856bb6fcb7e4e42ff91",
+    "sources/tests/server-receipts.test.mjs": "38ab400a3b891b162444f3d68efa0bfc333f93a082958df2ad9f0eaaacf77564",
+    "sources/tests/receipts.test.mjs": "789b0d2f0e3537a52f0fcb563dfa890d26a2a2d5c128f9ff99ac7a19fb914d84",
+    "sources/tests/sync-protocol.test.mjs": "92c32cf98c618ca9007cce0629155abffb5c2f391924b7fb27a8876c20590bd8",
+    "sources/tests/awareness.test.mjs": "42ec661cb8ce2759552dc34fa21ea8a008f5b0d7d25a9a40bd551baf95d0146b",
+    "sources/fixtures/schema-v5/mapping.mjs": "54617d4cebf52f60dea937c41f4aa53c2f143ef9bce033390c2ee9820bef9f33",
+    "sources/packages/web/src/storage/outbox.ts": "c743105f738f459c584ce70f62ed0abaea50684060d1954f245c24198061f0e4",
+    "sources/packages/web/src/storage/journal.ts": "53d45abc5c323683512470d41ada3941edfb4c249bd84a6dfca6d892b867c2a1",
+    "sources/packages/web/src/sync/awareness.ts": "94de097c7fb519f45875d837627c783b6b5a2777dab58a553cc785120bde176a",
+    "sources/packages/web/src/sync/session.ts": "4f169cf042521e2e6ca17fc03ed4996bd46e9af762f6680aafffc009e00af11e",
+    "sources/packages/web/src/sync/protocol.ts": "13246ca889ac65a2d774bbfdd1e2c40db84f3bf70ec7b5f4a869617118141563",
+    "sources/packages/web/src/sync/receipts.ts": "b70944bac9704168ec7b75435ca7e9f8e2cde607c70fc5877174eee9bf701714",
+    "sources/packages/web/dist/storage/outbox.js": "ddecd3f7a3950be340a081a6a5cf5f4519f378e8ec85dfa5705f1999e261773c",
+    "sources/packages/web/dist/sync/protocol.js": "cac453293d7ce6a2a9cbad1592f6dac6033f2f28b6d9c6e0fc4f394ca320a09e",
+    "sources/packages/web/dist/sync/session.js": "ae371529dcffeb55bb011a4b964f6e2c2b9af27377931ee747deed2429087f7f",
+    "sources/packages/web/dist/sync/receipts.js": "72d0e3c154e7e18971e6e41b8036db7f507bff4bd939c0dff5f6008a67bc9acc",
+    "sources/packages/core/dist/index.js": "db9945040f82be675b6b2626158b44db26c9fb704b42bfa5929077819a90bf1e",
+    "sources/packages/core/dist/engine.js": "72df078844fb8ee441e0f58220fba02c51e1b647105cf4ac7a8bf9530c9c586b",
+    "sources/packages/core/src/engine.ts": "554a99f1ae46ae26992acf17e8a782cfbe9c8dcdba695dd4ff94b150a3c80093",
+    "sources/packages/core/src/index.ts": "ada305085e940ce18ba27166fa3dcbd1343a24dd43f99f09021997a14cb3f85a",
+    "sources/packages/core/dist/wasm/editac_wasm_bg.wasm": "c16438269e3b69d53da19969fdff6dfb7d1531c9a7e5eb4e6244e617ed52704d",
+    "sources/examples/sync-server/relay.mjs": "c118eb199edade097ca9f79c599bd21406b7d5d63fb37c53af4105e98669d377",
+    "sources/tests/fixtures/relay-grants.json": "551418ecbfb0cc1c912a40e74c028f6756568e4a4d8276d5f4a46aeffb307fdf",
+    "sources/tests/helpers/checkpoint-storage.mjs": "2fd0bebf97d3c059149b7ebbda0b4ad663cb3b713008592a23ab7b1ef9dc68c7",
+    "sources/tests/helpers/prepared-socket.mjs": "448c3110beb2521103d69745de5c85d4d8c3709fab6db84c16e46a0631e19b01",
+    "sources/tests/fixtures/causal-replay/fixture.json": "30cc5370cc3a5419df447023bd02e47b55ffcfafc16f0f8a2cee574e95de20c3",
+    "sources/tests/fixtures/causal-replay/initial.bin": "a8d3ea30e00352c15110d791013e8fb16fc05d4099f1617c9df243145cbfc60c",
+    "sources/tests/fixtures/causal-replay/frame-13.bin": "7a10358c07732ef3046c49902a80c3ecaa55b6165be21082c5009794a047d445",
+    "sources/tests/fixtures/causal-replay/frame-12.bin": "d6e56e8522e415fd8dc0816fd5335609fdfe26a8d00bb10959bb5b631f95cb5e"
+  }
+}

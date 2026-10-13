@@ -1,0 +1,156 @@
+{
+  "suite": "history-selection",
+  "engine": "webkit",
+  "cases": [
+    {
+      "name": "heading-end-history-selection",
+      "passed": false,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                2
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "base"
+              },
+              "id": "n:1017940956:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alpha"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<1017940956#2>",
+                  "source": "n:1017940956:1",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:2357513107:1"
+              },
+              "id": "c:2357513107:1",
+              "kind": "list",
+              "order": 1,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2357513107:2"
+              },
+              "id": "n:1017940956:2",
+              "kind": "block",
+              "order": 2,
+              "parent": "c:2357513107:1",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "independent"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<1017940956#12>",
+                  "source": "n:1017940956:2",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "anchor": null,
+          "focus": null
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "processes": [
+    {
+      "pid": 11317,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/webkit-2370/pw_run.sh",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "history-selection",
+      "log": "../architecture/evidence/baseline-typing/history-selection-red/webkit"
+    }
+  ],
+  "packs": [
+    {
+      "name": "core",
+      "file": "edit-ac-core-0.0.0.tgz",
+      "bytes": 765738,
+      "sha256": "a2d30e1b8aceabf2d53f345402ff9a0ad789eb5cc07e53f0a52baafdef7d3372"
+    },
+    {
+      "name": "web",
+      "file": "edit-ac-web-0.0.0.tgz",
+      "bytes": 52979,
+      "sha256": "8f5ede64189b22a420beefebe6bde2b1745d9fbc9b999853afe2284d4da782a2"
+    }
+  ],
+  "cleanup": {
+    "browserExited": true,
+    "serverClosed": true,
+    "consumerRemoved": true
+  },
+  "revision": "6edb83432468e44083740b586f973fb44f623352",
+  "sources": {
+    "packages/web/src/clipboard/fragment.ts": "2d9718e4f37f9ac91c8cd8afec1a85d581adce3fa6a678aaae288fe87ef19385",
+    "packages/web/src/clipboard/html.ts": "de4c520df34bb334cad7a3ec1eeeb81f84dacb3d35fab388d634b410a0d8c2d5",
+    "packages/web/src/input/text.ts": "e9d1e0d36867f00b7235c690c13457c9d71a5eb1082cc347abec5ef14fb30b47",
+    "packages/core/src/engine.ts": "8b3ef74cf8fd7c44f9fa1bba9c8c315274db70d97fb2bfb521abc98e7579ecf8",
+    "crates/editac-core/src/commands/editor.rs": "f8822ab2b7f8d00fdae4eca5ee9817037aaafb9c814dc399f330356e7f224ebc",
+    "crates/editac-wasm/src/bridge.rs": "98d6a5ed2efd32316a25cc8af5f8c6d10aca3b9bfe4547f2370e1d859ad43725",
+    "scripts/test-browser.mjs": "c9572b26117e0371315a7112f3eb3fea77dcec105ecbda5a295e33867d4b8ed0",
+    "tests/browser/history-selection.spec.ts": "cd91b170829d09ff2dad3cd8b4330d25900188d0f5b6bb0ca64acb72e29677ac",
+    "tests/browser/browser-harness.ts": "d061d677bd8c0db93bad5fa251fb22a4c424a0ccc870f8f21b21d4bf47bfbe15",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+  },
+  "server": {
+    "pid": 11047,
+    "port": 64805,
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "history-selection",
+    "log": "../architecture/evidence/baseline-typing/history-selection-red/webkit"
+  },
+  "browser": {
+    "version": "27.2",
+    "engine": "webkit",
+    "playwright": "1.64.0",
+    "node": "v26.4.0"
+  },
+  "counts": {
+    "executed": 1,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0
+  }
+}

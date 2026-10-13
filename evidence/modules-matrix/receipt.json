@@ -1,0 +1,162 @@
+{
+  "gate": "MOD-1.9",
+  "children": [
+    "MOD-1.9-I1",
+    "MOD-1.9-V1"
+  ],
+  "state": "implemented and verified; evidence recorded locally, not deployed or published",
+  "verifiedAtUtc": "2026-10-13T05:07:06.497245+00:00",
+  "sourceSnapshot": "../progress/.roadmap-runner/07-extension-modules-00ea1c5d56ea/source-32abd5cd6b3f.md",
+  "sourceRevision": "621cbff280187a584cd0ceb5b9ac66d176b916c16f99ba34a48e6fd74c08c294",
+  "promptRevision": "2e18a98412c7",
+  "iteration": 9,
+  "coreBaseCommit": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseCommit": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementationRevision": "Uncommitted changes over preserved workspace work; exact source snapshots and hashes supplied.",
+  "changedPaths": [
+    "tests/module-bundles.test.mjs",
+    "../architecture/evidence/modules.md",
+    "../architecture/evidence/modules-matrix/",
+    "../architecture/progress/07-extension-modules.md"
+  ],
+  "sourceHashes": {
+    "tests/module-bundles.test.mjs": {
+      "sha256": "e132c6f1f5e2f4c5e26ca4956b531b2f5b6c38197fa6f6845db59ad2f2426c41",
+      "snapshot": "sources/core/tests/module-bundles.test.mjs"
+    },
+    "package.json": {
+      "sha256": "34440158cfeee9ed1ee04159d4633c001babe085bbe0149a73978883503df66c",
+      "snapshot": "sources/core/package.json"
+    },
+    "package-lock.json": {
+      "sha256": "a304a54f28c26c9e1e3124c5c5a626f354e28b5c63026b4f5f33f745675ae8ef",
+      "snapshot": "sources/core/package-lock.json"
+    },
+    "packages/core/package.json": {
+      "sha256": "fdddd0d837af30e1baf994d8a1236f01fcb5d1d909c891e1f5bc66c2cc35908e",
+      "snapshot": "sources/core/packages/core/package.json"
+    },
+    "packages/web/package.json": {
+      "sha256": "0ffd246674846c598810670c7aea406043594214d84a47278a0284e675d0eaf9",
+      "snapshot": "sources/core/packages/web/package.json"
+    },
+    "packages/web/src/index.ts": {
+      "sha256": "e2ab78de9fc60f36061f1c0c4554cbef5c767cde3acbd0a38e7785f964d4670a",
+      "snapshot": "sources/core/packages/web/src/index.ts"
+    },
+    "scripts/build-math-assets.mjs": {
+      "sha256": "9e3092088f338aef11bcbb37ff499068f4f7b3e4b4142724bc73b1668fa72a69",
+      "snapshot": "sources/core/scripts/build-math-assets.mjs"
+    },
+    "packages/web/src/modules/slash.ts": {
+      "sha256": "8f116c22e247cfca693d2a4bc950ed100065debfd85b09f37d223540a52c36e6",
+      "snapshot": "sources/core/packages/web/src/modules/slash.ts"
+    },
+    "packages/web/src/modules/references.ts": {
+      "sha256": "3603c9d59e0319294c16a46e47d29e040866657a724afa93bb2809038e3ab8bd",
+      "snapshot": "sources/core/packages/web/src/modules/references.ts"
+    },
+    "packages/web/src/modules/reorder.ts": {
+      "sha256": "2de953d37f1192b1825ae1e952ab0f84a87787c041d6088ce83c43a622c0d927",
+      "snapshot": "sources/core/packages/web/src/modules/reorder.ts"
+    },
+    "packages/web/src/modules/content.ts": {
+      "sha256": "270980980d8040d1501eb216cfcfa3d2640f64e1df20e8733082b92e79e93553",
+      "snapshot": "sources/core/packages/web/src/modules/content.ts"
+    },
+    "packages/web/src/modules/math.ts": {
+      "sha256": "3acd59796c36f36a2c248561ad08a047e067cc65f22bac2372e2f6c0bf50eb48",
+      "snapshot": "sources/core/packages/web/src/modules/math.ts"
+    },
+    "../architecture/evidence/modules.md": {
+      "sha256": "3b58d0571f59d9002602d9c22e18b5c3b6f51721a926344778321d4a28cd0341",
+      "snapshot": "sources/architecture/evidence/modules.md"
+    },
+    "../architecture/specs/modules-native.md": {
+      "sha256": "46649448c27e6b76a5b7271be6f16cd38516545c22ae67696481dc1c629f37b7",
+      "snapshot": "sources/architecture/specs/modules-native.md"
+    },
+    "../architecture/specs/verification.md": {
+      "sha256": "2ec9f0b75f6a1858f6bb0d8ef547aa7e5e44b5a53928dcc6bca216a980515cb8",
+      "snapshot": "sources/architecture/specs/verification.md"
+    }
+  },
+  "buildHashes": "build-hashes.json",
+  "checks": [
+    {
+      "command": "npm run build",
+      "log": "build.log",
+      "exitCode": 0
+    },
+    {
+      "command": "node --test tests/module-bundles.test.mjs",
+      "log": "module-bundles.log",
+      "exitCode": 0,
+      "counts": {
+        "executed": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "git diff --check",
+      "log": "core-diff-check.log",
+      "exitCode": 0
+    },
+    {
+      "command": "git -C ../architecture diff --check -- evidence/modules.md progress/07-extension-modules.md",
+      "log": "architecture-diff-check.log",
+      "exitCode": 0
+    },
+    {
+      "command": "New-file trailing-whitespace inspection; immutable snapshot SHA-256 check; temporary consumer existence check",
+      "exitCode": 0
+    },
+    {
+      "command": "Final original-gate/state, snapshot and source/build/artifact SHA-256 reconciliation",
+      "log": "tracking-check.log",
+      "exitCode": 0,
+      "gatesAndChildrenChecked": 27
+    }
+  ],
+  "preservedFailures": [
+    {
+      "log": "module-bundles-initial.log",
+      "exitCode": 1,
+      "counts": {
+        "executed": 9,
+        "passed": 8,
+        "failed": 1,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "source": "sources-initial/module-bundles.test.mjs",
+      "artifacts": "bundles-initial/",
+      "repair": "Compare basename of resolved packed consumer entryPoint instead of exact relative string; strengthen packed KaTeX hash, capability completeness, and separately account generated glue. Full named check rerun only after repair."
+    }
+  ],
+  "criteria": {
+    "capabilities": "Six module rows, complete read/edit/copy/Markdown/platform cells; 144 qualified passing case references across 21 hashed original browser receipts, all three engines. Current presenter source hashes match each proof. Unqualified operations explicitly marked. Original failed clipboard/math peer proofs are superseded only by their final repaired cases.",
+    "footprint": "Eight packed production profiles; minimal/disabled graphs emit no optional presenters/math assets; individually enabled reachability and unrelated exclusion; all-enabled positive control; lazy KaTeX pin and no CSS/fonts; raw/Brotli costs and WASM/glue separately recorded.",
+    "native": "Portable semantic preparation/source fallback explicitly separated from unqualified native UI/editing/clipboard/typesetting/device parity."
+  },
+  "environment": {
+    "node": "24.19.0",
+    "npm": "11.17.0",
+    "esbuild": "0.25.12",
+    "katex": "0.19.0"
+  },
+  "limits": [
+    "Reuses original passing browser integration at recorded builds; new checks inspect bundles and evidence, not a fresh browser release qualification.",
+    "Minimal common payload 658095 Brotli bytes exceeds provisional 400 KiB target; no target waiver or Task preset qualification.",
+    "No publication, native/device support, external provider, paid inference, credentials or dogfood."
+  ],
+  "cleanup": "cleanup.json",
+  "timing": "Approximately 3 minutes discovery, 5 minutes implementation/evidence, 1 minute verification and repair; original parent outcome complete.",
+  "artifactHashes": {
+    "file": "artifact-hashes.json",
+    "sha256": "efb01dc7526d7907f69b705934c82ee9632eb0fa79e8695220494b2eab993b6e"
+  }
+}

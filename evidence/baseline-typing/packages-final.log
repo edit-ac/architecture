@@ -1,0 +1,39 @@
+
+> edit-ac-workspace@0.0.0 check:packages
+> npm run typecheck && npm run build && node scripts/check-package-exports.mjs
+
+
+> edit-ac-workspace@0.0.0 typecheck
+> npm run typecheck --workspaces
+
+
+> @edit-ac/core@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/web@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/react@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> edit-ac-workspace@0.0.0 build
+> npm run build --workspaces
+
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+
+> @edit-ac/web@0.0.0 build
+> tsc --project tsconfig.json
+
+
+> @edit-ac/react@0.0.0 build
+> tsc --project tsconfig.json
+
+Imported compiled scaffold: @edit-ac/core
+Imported compiled scaffold: @edit-ac/web
+Imported compiled scaffold: @edit-ac/react

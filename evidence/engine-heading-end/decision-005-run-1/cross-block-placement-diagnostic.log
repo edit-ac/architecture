@@ -1,0 +1,21 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.87s
+     Running tests/heading_end.rs (target/debug/deps/heading_end-05c0722e416c35a2)
+
+running 1 test
+temporary before fresh join: owner=n:4219122343:1, fresh=n:4219122343:4, before=Some("n:4219122343:3"), owners=[("n:4219122343:1", "base", "@root", false, 1), ("n:4219122343:2", "base", "@root", false, 1), ("n:4219122343:4", "o:4219122343:2", "@root", false, 1), ("n:4219122343:3", "base", "@root", false, 1)]
+temporary preparation failure: nonadjacent-target
+
+thread 'heading_end_cross_block_selected_replacement_stages_deletions_join_and_destination' (161187051) panicked at crates/editac-core/tests/heading_end.rs:21:54:
+called `Result::unwrap()` on an `Err` value: InvalidCommand
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test heading_end_cross_block_selected_replacement_stages_deletions_join_and_destination ... FAILED
+
+failures:
+
+failures:
+    heading_end_cross_block_selected_replacement_stages_deletions_join_and_destination
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 15 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `-p editac-core --test heading_end`

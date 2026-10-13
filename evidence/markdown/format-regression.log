@@ -1,0 +1,62 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.99s
+     Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)
+
+running 41 tests
+test blocks::absent_default_and_already_applied_ordinary_metadata_do_not_emit_updates ... ok
+test backward_cross_node_toggle_uses_one_global_state_and_utf16_ranges ... ok
+test applicability_does_not_consume_pending_projection_changes ... ok
+test blocks::inherited_toggle_observes_prior_planned_first_owner_change ... ok
+test blocks::invalid_last_block_rejects_all_marks_and_blocks_without_mutation ... ok
+test blocks::joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable ... ok
+test blocks::intervening_block_only_local_or_remote_change_rejects_mixed_and_text_plans ... ok
+test blocks::invalid_marks_code_and_urls_reject_valid_blocks_atomically ... ok
+test blocks::metadata_only_projection_is_observable_without_text_reads_and_can_is_nonconsuming ... ok
+test blocks::empty_blocks_keep_every_heading_level_and_paragraph_through_restore ... ok
+test blocks::mixed_block_toggle_is_global_deduplicated_and_sequential ... ok
+test blocks::mixed_marks_blocks_and_unicode_preserve_sources_unknown_marks_and_anchors ... ok
+test blocks::mixed_batch_resource_bounds_and_wrong_replica_are_nonmutating ... ok
+test blocks::legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject ... ok
+test code_clears_known_rich_marks_but_retains_unknown_attributes ... ok
+test collapsed_empty_and_already_applied_commands_do_not_emit_updates ... ok
+test cross_node_apply_and_remove_preserve_unselected_suffixes ... ok
+test invalid_attribute_shapes_and_url_length_reject_without_mutation ... ok
+test invalid_link_as_last_command_cannot_partially_apply_first_command ... ok
+test deleted_target_and_unknown_kind_reject_entire_batch ... ok
+test joined_owner_formats_both_original_shared_texts ... ok
+test blocks::beginning_middle_end_and_empty_production_splits_inherit_then_override ... ok
+test mixed_selection_toggle_applies_globally_then_removes_globally ... ok
+test mailto_links_and_ordinary_query_ampersands_are_allowed ... ok
+test ordinary_nodes_and_intermediate_empty_nodes_are_supported ... ok
+test normalized_url_admission_and_mixed_link_toggle ... ok
+test overlapping_batch_ranges_preserve_different_marks ... ok
+test remote_insert_before_preparation_rebases_selection_and_preserves_text ... ok
+test remove_code_then_apply_rich_is_valid_in_one_batch ... ok
+test rich_mark_over_code_rejects_entire_batch_before_mutation ... ok
+test sequential_batch_toggles_observe_prior_planned_marks ... ok
+test split_owner_and_original_share_source_without_formatting_other_owners ... ok
+test three_real_replicas_converge_under_duplicate_reordered_format_delivery ... ok
+test six_marks_apply_and_remove_without_changing_text_or_source_identity ... ok
+test unsafe_malformed_relative_and_obfuscated_urls_are_rejected ... ok
+test wrong_replica_and_intervening_local_change_reject_plans ... ok
+test unicode_graphemes_and_rtl_format_with_utf16_source_ranges ... ok
+test blocks::prepared_mixed_conflicts_converge_with_actual_reordered_duplicate_updates ... ok
+test pinned_yjs_reads_all_six_marks_and_rust_restores_js_formatting ... ok
+test blocks::pinned_yjs_exchanges_real_prepared_mixed_mark_block_commands_both_directions ... FAILED
+test command_and_fragment_limits_reject_before_mutation ... ok
+
+failures:
+
+---- blocks::pinned_yjs_exchanges_real_prepared_mixed_mark_block_commands_both_directions stdout ----
+
+thread 'blocks::pinned_yjs_exchanges_real_prepared_mixed_mark_block_commands_both_directions' (162361800) panicked at crates/editac-core/tests/format_commands.rs:1565:9:
+Yjs mixed exchange failed: /Users/bpstr/Github/edit-ac/core/crates/editac-core/../../target/format-block-interop/node.log
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    blocks::pinned_yjs_exchanges_real_prepared_mixed_mark_block_commands_both_directions
+
+test result: FAILED. 40 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 7.50s
+
+error: test failed, to rerun pass `-p editac-core --test format_commands`

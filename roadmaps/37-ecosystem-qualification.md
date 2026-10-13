@@ -6,7 +6,7 @@ Status: IN_PROGRESS
 
 Workspace: `core`; paths below are workspace-relative unless prefixed `../architecture/` or another explicit sibling. Read `../architecture/specs/ecosystem-maintainability.md` and only the active task's named context. Planned paths and commands are created by their owning task. This source describes delivery; it is not a capability claim or live progress.
 
-Required upstream tracks: `20-product-scenarios.md`, `25-rich-content-extensions.md`, `26-link-resolution.md`, `27-document-conversion.md`, `28-cloud-document-store.md`, `30-architecture-fitness.md`, `31-ios-extension-integration.md`, `32-android-extension-integration.md`, `33-macos-extension-integration.md`, `34-windows-extension-integration.md`, `35-linux-extension-integration.md`, `36-terminal-extension-integration.md` at reviewed immutable source/implementation revisions with passing evidence.  Local Dependencies fields refer only to this file.
+Required upstream tracks: `20-product-scenarios.md`, `25-rich-content-extensions.md`, `26-link-resolution.md`, `27-document-conversion.md`, `28-cloud-document-store.md`, `30-architecture-fitness.md`, `31-ios-extension-integration.md`, `32-android-extension-integration.md`, `33-macos-extension-integration.md`, `34-windows-extension-integration.md`, `35-linux-extension-integration.md`, `36-terminal-extension-integration.md`, `39-assistive-input.md`, `41-mobile-web-extensions.md` at reviewed immutable source/implementation revisions with passing evidence.  Local Dependencies fields refer only to this file.
 
 ## Execution rules
 
@@ -19,10 +19,10 @@ The controller owns this source. Keep checkmarks, evidence and interruption hand
 - [ ] EQL-1.1 Freeze the expanded release matrix.
 
 Purpose: Freeze the expanded release matrix as one bounded integration or qualification boundary.
-Context: `contracts/profiles/expanded.json`; `tests/scenarios/run.mjs`; `../architecture/specs/ecosystem-maintainability.md`.
+Context: `contracts/profiles/expanded.json`; `tests/scenarios/run.mjs`; `../architecture/specs/ecosystem-maintainability.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: none.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Every requested feature maps to an actual package/client/direction and upstream evidence revision; unknown or skipped mandatory cells fail.
+Acceptance: Every requested feature maps to an actual package/client/direction and upstream evidence revision; unknown or skipped mandatory cells fail. Review the additional desktop/native/official-preset case inventory and bind applicable release profiles; source-only cases remain planned.
 
 Implementation:
 

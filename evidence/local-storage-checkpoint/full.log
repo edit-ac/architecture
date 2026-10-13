@@ -1,0 +1,23 @@
+✔ publication and coverage remain invisible until transaction completion; owned bytes survive reopen (9.13125ms)
+✔ aborted publication before-write-success recovers all locally committed real engine edits (3.092208ms)
+✔ aborted publication after-write-success recovers all locally committed real engine edits (1.204417ms)
+✔ after-complete publication recovers covered and later committed tail without loss (0.985125ms)
+✔ corrupt latest bytes falls back to previous point and full committed tail (1.03475ms)
+✔ corrupt latest coverage falls back to previous point and full committed tail (0.963875ms)
+✔ corrupt latest version falls back to previous point and full committed tail (0.909708ms)
+✔ corrupt latest identity falls back to previous point and full committed tail (0.932375ms)
+✔ corrupt latest semantic falls back to previous point and full committed tail (1.116167ms)
+✔ both corrupt checkpoints, corrupt journal, missing and incompatible identity fail explicitly (0.801208ms)
+✔ uncommitted/foreign coverage rejected without publishing; quota and permission failure preserve prior state (1.230667ms)
+✔ strict durability fallback is reported and repeated checkpoint publication retains journal/outbox identities (0.944542ms)
+✔ publication transaction-creation and put failures never acknowledge or replace recoverable state (1.371791ms)
+✔ replacement of checksum-corrupt latest retains previous valid fallback and detached recovery state (1.670458ms)
+✔ actual Chromium atomic publication, abort boundaries, reopen and corrupt-latest fallback restore real Rust content (1159.330541ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1567.154917

@@ -1,0 +1,223 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs keyboard --test-name-pattern=heading
+
+keyboard browser: chromium
+✔ native-heading-middle retains level (2022.795583ms)
+✔ native-heading-end creates paragraph (original acceptance) (140.894708ms)
+✔ native-heading-selected-tail-false (157.031417ms)
+✔ native-heading-cross-block-end-false (136.535916ms)
+✔ native-heading-selected-all-false (134.108708ms)
+✔ native-heading-selected-tail-true (149.732209ms)
+✔ native-heading-cross-block-end-true (148.353916ms)
+✔ native-heading-selected-all-true (117.326041ms)
+✔ native-heading cross-block suffix retains heading split (121.128083ms)
+✔ native-heading-end undo redo preserves remote sibling and result caret (157.696542ms)
+✖ prepared-heading result caret releases when DOM restoration throws (139.116667ms)
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (132.663875ms)
+✔ prepared-menu heading-end uses the same result and read-only rejects (137.987208ms)
+✔ native-empty-heading becomes paragraph (125.81475ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 12
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4176.717459
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:163:1
+✖ prepared-heading result caret releases when DOM restoration throws (139.116667ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   {
+  +     message: 'prepared-selection-failure',
+  +     subscriptionId: 4
+  +   }
+  + ]
+  - []
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:45:408)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:171:16
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { subscriptionId: 4, message: 'prepared-selection-failure' } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:174:1
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (132.663875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'o:1648108902:2'
+  - 'o:1648108902:1'
+                  ^
+  
+      at caret (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:52:102)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:178:66
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'o:1648108902:2',
+    expected: 'o:1648108902:1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+keyboard browser: firefox
+✔ native-heading-middle retains level (4145.122041ms)
+✔ native-heading-end creates paragraph (original acceptance) (285.799666ms)
+✔ native-heading-selected-tail-false (305.31225ms)
+✔ native-heading-cross-block-end-false (267.935042ms)
+✔ native-heading-selected-all-false (238.593083ms)
+✔ native-heading-selected-tail-true (266.856292ms)
+✔ native-heading-cross-block-end-true (255.325209ms)
+✔ native-heading-selected-all-true (252.982959ms)
+✔ native-heading cross-block suffix retains heading split (266.059875ms)
+✔ native-heading-end undo redo preserves remote sibling and result caret (890.954125ms)
+✖ prepared-heading result caret releases when DOM restoration throws (436.687166ms)
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (367.85975ms)
+✔ prepared-menu heading-end uses the same result and read-only rejects (254.606125ms)
+✔ native-empty-heading becomes paragraph (289.777291ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 12
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9054.692417
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:163:1
+✖ prepared-heading result caret releases when DOM restoration throws (436.687166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   {
+  +     message: 'prepared-selection-failure',
+  +     subscriptionId: 4
+  +   }
+  + ]
+  - []
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:45:408)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:171:16
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { subscriptionId: 4, message: 'prepared-selection-failure' } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:174:1
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (367.85975ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'o:548364230:2'
+  - 'o:548364230:1'
+                 ^
+  
+      at caret (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:52:102)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:178:66
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'o:548364230:2',
+    expected: 'o:548364230:1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+keyboard browser: webkit
+✔ native-heading-middle retains level (3197.370167ms)
+✔ native-heading-end creates paragraph (original acceptance) (357.66625ms)
+✔ native-heading-selected-tail-false (348.278792ms)
+✔ native-heading-cross-block-end-false (288.909084ms)
+✔ native-heading-selected-all-false (240.509ms)
+✔ native-heading-selected-tail-true (325.921666ms)
+✔ native-heading-cross-block-end-true (251.57325ms)
+✔ native-heading-selected-all-true (250.419542ms)
+✔ native-heading cross-block suffix retains heading split (259.570166ms)
+✔ native-heading-end undo redo preserves remote sibling and result caret (253.473209ms)
+✖ prepared-heading result caret releases when DOM restoration throws (266.762ms)
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (319.131ms)
+✔ prepared-menu heading-end uses the same result and read-only rejects (296.843834ms)
+✔ native-empty-heading becomes paragraph (274.338ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 12
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7302.234
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:163:1
+✖ prepared-heading result caret releases when DOM restoration throws (266.762ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   {
+  +     message: 'prepared-selection-failure',
+  +     subscriptionId: 4
+  +   }
+  + ]
+  - []
+  
+      at observe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:45:408)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:171:16
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { subscriptionId: 4, message: 'prepared-selection-failure' } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:174:1
+✖ native-heading-end shared-source sibling keeps identity through follow-up typing (319.131ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'o:49560062:2'
+  - 'o:49560062:1'
+                ^
+  
+      at caret (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:52:102)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:178:66
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'o:49560062:2',
+    expected: 'o:49560062:1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

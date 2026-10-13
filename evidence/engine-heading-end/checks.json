@@ -1,0 +1,257 @@
+[
+  {
+    "name": "versions",
+    "command": [
+      "node",
+      "--version"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 0.06,
+    "log": "versions.log",
+    "bytes": 9
+  },
+  {
+    "name": "build-wasm",
+    "command": [
+      "npm",
+      "run",
+      "build:wasm"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 14.91,
+    "log": "build-wasm.log",
+    "bytes": 632
+  },
+  {
+    "name": "build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 0.65,
+    "log": "build.log",
+    "bytes": 243
+  },
+  {
+    "name": "typecheck",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 0.58,
+    "log": "typecheck.log",
+    "bytes": 290
+  },
+  {
+    "name": "native-wasm-fixtures",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-wasm",
+      "--lib",
+      "--locked",
+      "--offline"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 10.62,
+    "log": "native-wasm-fixtures.log",
+    "bytes": 1799
+  },
+  {
+    "name": "pack",
+    "command": [
+      "npm",
+      "pack",
+      "--workspace",
+      "@edit-ac/core",
+      "--pack-destination",
+      "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end",
+      "--json"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 0.77,
+    "log": "pack.log",
+    "bytes": 1497
+  },
+  {
+    "name": "packed-types",
+    "command": [
+      "node",
+      "/Users/bpstr/Github/edit-ac/core/node_modules/typescript/bin/tsc",
+      "--strict",
+      "--noEmit",
+      "--target",
+      "ES2022",
+      "--module",
+      "NodeNext",
+      "--moduleResolution",
+      "NodeNext",
+      "wasm-command-types.ts"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/consumer",
+    "exit": 0,
+    "seconds": 0.3,
+    "log": "packed-types.log",
+    "bytes": 0
+  },
+  {
+    "name": "wasm-commands",
+    "command": [
+      "node",
+      "--test",
+      "tests/wasm-commands.test.mjs"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 1,
+    "seconds": 0.51,
+    "log": "wasm-commands.log",
+    "bytes": 4154
+  },
+  {
+    "name": "wasm-deleted-repaired",
+    "command": [
+      "node",
+      "--test",
+      "--test-name-pattern",
+      "headingEnd deleted remote target",
+      "tests/wasm-commands.test.mjs"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 0.41,
+    "log": "wasm-deleted-repaired.log",
+    "bytes": 218
+  },
+  {
+    "name": "editor-history-regressions",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--test",
+      "editor_profile",
+      "--test",
+      "stable_editor_profile",
+      "--test",
+      "history",
+      "--test",
+      "blocks",
+      "--locked",
+      "--offline"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 101,
+    "seconds": 40.46,
+    "log": "editor-history-regressions.log",
+    "bytes": 3098
+  },
+  {
+    "name": "blocks-exchange-repaired",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--test",
+      "blocks",
+      "bidirectional_pinned_yjs",
+      "--locked",
+      "--offline"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 0.95,
+    "log": "blocks-exchange-repaired.log",
+    "bytes": 419,
+    "exchange_environment": {
+      "EDITAC_BLOCK_COMMAND_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/blocks-exchange",
+      "EDITAC_STABLE_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/joined-exchange",
+      "EDITAC_HISTORY_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/history-exchange",
+      "EDITAC_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/editor-exchange",
+      "EDITAC_STABLE_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/stable-editor-exchange"
+    }
+  },
+  {
+    "name": "editor-history-ready",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "editac-core",
+      "--test",
+      "editor_profile",
+      "--test",
+      "stable_editor_profile",
+      "--test",
+      "history",
+      "--locked",
+      "--offline"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 5.98,
+    "log": "editor-history-ready.log",
+    "bytes": 7002,
+    "exchange_environment": {
+      "EDITAC_BLOCK_COMMAND_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/blocks-exchange",
+      "EDITAC_STABLE_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/joined-exchange",
+      "EDITAC_HISTORY_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/history-exchange",
+      "EDITAC_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/editor-exchange",
+      "EDITAC_STABLE_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/stable-editor-exchange"
+    }
+  },
+  {
+    "name": "format-check",
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--",
+      "--check"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 0.86,
+    "log": "format-check.log",
+    "bytes": 0,
+    "exchange_environment": {
+      "EDITAC_BLOCK_COMMAND_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/blocks-exchange",
+      "EDITAC_STABLE_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/joined-exchange",
+      "EDITAC_HISTORY_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/history-exchange",
+      "EDITAC_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/editor-exchange",
+      "EDITAC_STABLE_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/stable-editor-exchange"
+    }
+  },
+  {
+    "name": "diff-check",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "cwd": "/Users/bpstr/Github/edit-ac/core",
+    "exit": 0,
+    "seconds": 0.02,
+    "log": "diff-check.log",
+    "bytes": 0,
+    "exchange_environment": {
+      "EDITAC_BLOCK_COMMAND_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/blocks-exchange",
+      "EDITAC_STABLE_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/joined-exchange",
+      "EDITAC_HISTORY_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/history-exchange",
+      "EDITAC_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/editor-exchange",
+      "EDITAC_STABLE_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/stable-editor-exchange"
+    }
+  }
+]

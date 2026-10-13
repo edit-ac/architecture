@@ -1,0 +1,24 @@
+✔ deterministic acknowledgment waits for completion, not enqueue or request success (4.521666ms)
+✔ deterministic duplicate identity is idempotent and independently waits for completion (0.864375ms)
+✔ deterministic journal takes immutable ownership before asynchronous hashing (0.626916ms)
+✔ deterministic bytes collision aborts without overwriting (0.604209ms)
+✔ deterministic origin collision aborts without overwriting (0.361458ms)
+✔ deterministic profile collision aborts without overwriting (0.293833ms)
+✔ deterministic quota/abort failure at lookup rejects and rolls back (0.286209ms)
+✔ deterministic quota/abort failure at write rejects and rolls back (0.228292ms)
+✔ deterministic quota/abort failure at after-request rejects and rolls back (0.306708ms)
+✔ deterministic explicit abort without an error still rejects (0.247458ms)
+✔ deterministic unsupported strict option falls back and reports observed capability (0.278458ms)
+✔ deterministic transaction creation quota/permission/closed errors are not retried (0.293667ms)
+✔ deterministic document/epoch/schema/writer/sequence keys are isolated (0.526125ms)
+✔ deterministic invalid identity/sequence/bytes fail before creating a transaction (0.163333ms)
+✔ deterministic read rejects corrupt bytes/checksum/receipt/schema instead of returning replay (0.596209ms)
+✔ actual Chromium journal persists production engine patches and admits duplicate/concurrent writers (1240.643708ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1544.066292

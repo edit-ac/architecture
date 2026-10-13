@@ -1,0 +1,106 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs slash
+
+slash browser: chromium
+✔ eligible start/whitespace typing opens bounded named menu; literal query persists (1672.250916ms)
+✔ ineligible boundary "word" stays literal (110.911708ms)
+✔ ineligible boundary "https:" stays literal (113.329542ms)
+✔ ineligible boundary "path/" stays literal (115.75975ms)
+✔ ineligible boundary "\\" stays literal (115.031625ms)
+✔ whitespace boundary and expanded selection exclusions (128.202958ms)
+✔ imported, pasted, unclassified replacement and remote slash never auto-open (144.554333ms)
+✔ code/link contexts exclude automatic slash (145.677375ms)
+✔ keyboard skips disabled entries; successful command commits once and undo restores query/caret (184.782167ms)
+✔ touch/pointer item activation survives editor blur and matches keyboard dispatch (219.19675ms)
+✔ assistive composite focus and explicit command access preserve anchored query (200.737625ms)
+✔ Escape retains query without reopening; Backspace filters/deletes trigger (202.608958ms)
+✔ zero/all-disabled results consume Enter without splitting; Shift+Enter hard breaks (252.959583ms)
+✔ Tab dismisses without accepting, focus exit/caret movement/read-only dismiss (185.387208ms)
+✔ IME owns commit Enter before popup; composing/direct ambiguous events never trigger (181.573958ms)
+✔ async errors retain query; query changes cancel stale/out-of-order results (248.754ms)
+✔ remote/read-only/destruction abort in-flight actions and release popup resources (201.316833ms)
+✔ editor command removes only query and performs semantic conversion atomically (187.649917ms)
+✔ bounded query, paste and incompatible caret cancel without deleting source (393.919125ms)
+✔ invalid prepared action retains source and creates no command/history update (168.196417ms)
+✔ focused enabled/disabled items determine Enter action (167.404417ms)
+✔ focused menu Backspace returns to native query filtering; Shift+Enter keeps same block (145.317875ms)
+✔ visible command button remains keyboard reachable for ambiguous input (134.793166ms)
+✔ literal configuration excludes auto/explicit triggers without changing source (160.347958ms)
+✔ popup Escape arms the next Tab focus escape in a list without indentation (142.928875ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6251.157834
+slash browser: firefox
+✔ eligible start/whitespace typing opens bounded named menu; literal query persists (3650.914334ms)
+✔ ineligible boundary "word" stays literal (259.624ms)
+✔ ineligible boundary "https:" stays literal (245.788333ms)
+✔ ineligible boundary "path/" stays literal (254.410917ms)
+✔ ineligible boundary "\\" stays literal (274.29975ms)
+✔ whitespace boundary and expanded selection exclusions (280.377375ms)
+✔ imported, pasted, unclassified replacement and remote slash never auto-open (295.435709ms)
+✔ code/link contexts exclude automatic slash (299.171167ms)
+✔ keyboard skips disabled entries; successful command commits once and undo restores query/caret (292.676667ms)
+✔ touch/pointer item activation survives editor blur and matches keyboard dispatch (795.53225ms)
+✔ assistive composite focus and explicit command access preserve anchored query (303.247792ms)
+✔ Escape retains query without reopening; Backspace filters/deletes trigger (295.081708ms)
+✔ zero/all-disabled results consume Enter without splitting; Shift+Enter hard breaks (342.423875ms)
+✔ Tab dismisses without accepting, focus exit/caret movement/read-only dismiss (285.727292ms)
+✔ IME owns commit Enter before popup; composing/direct ambiguous events never trigger (254.156125ms)
+✔ async errors retain query; query changes cancel stale/out-of-order results (387.695459ms)
+✔ remote/read-only/destruction abort in-flight actions and release popup resources (323.398833ms)
+✔ editor command removes only query and performs semantic conversion atomically (288.565208ms)
+✔ bounded query, paste and incompatible caret cancel without deleting source (560.103291ms)
+✔ invalid prepared action retains source and creates no command/history update (850.376167ms)
+✔ focused enabled/disabled items determine Enter action (767.259375ms)
+✔ focused menu Backspace returns to native query filtering; Shift+Enter keeps same block (280.023ms)
+✔ visible command button remains keyboard reachable for ambiguous input (255.268541ms)
+✔ literal configuration excludes auto/explicit triggers without changing source (328.052ms)
+✔ popup Escape arms the next Tab focus escape in a list without indentation (284.849667ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12956.565375
+slash browser: webkit
+✔ eligible start/whitespace typing opens bounded named menu; literal query persists (2799.381208ms)
+✔ ineligible boundary "word" stays literal (255.231375ms)
+✔ ineligible boundary "https:" stays literal (253.776292ms)
+✔ ineligible boundary "path/" stays literal (230.925209ms)
+✔ ineligible boundary "\\" stays literal (226.066ms)
+✔ whitespace boundary and expanded selection exclusions (245.33775ms)
+✔ imported, pasted, unclassified replacement and remote slash never auto-open (262.74275ms)
+✔ code/link contexts exclude automatic slash (264.032958ms)
+✔ keyboard skips disabled entries; successful command commits once and undo restores query/caret (263.319375ms)
+✔ touch/pointer item activation survives editor blur and matches keyboard dispatch (317.7405ms)
+✔ assistive composite focus and explicit command access preserve anchored query (320.765083ms)
+✔ Escape retains query without reopening; Backspace filters/deletes trigger (283.053042ms)
+✔ zero/all-disabled results consume Enter without splitting; Shift+Enter hard breaks (331.708125ms)
+✔ Tab dismisses without accepting, focus exit/caret movement/read-only dismiss (252.762917ms)
+✔ IME owns commit Enter before popup; composing/direct ambiguous events never trigger (247.06225ms)
+✔ async errors retain query; query changes cancel stale/out-of-order results (342.140375ms)
+✔ remote/read-only/destruction abort in-flight actions and release popup resources (314.765916ms)
+✔ editor command removes only query and performs semantic conversion atomically (268.490417ms)
+✔ bounded query, paste and incompatible caret cancel without deleting source (489.808542ms)
+✔ invalid prepared action retains source and creates no command/history update (256.31175ms)
+✔ focused enabled/disabled items determine Enter action (260.812041ms)
+✔ focused menu Backspace returns to native query filtering; Shift+Enter keeps same block (264.184917ms)
+✔ visible command button remains keyboard reachable for ambiguous input (246.680083ms)
+✔ literal configuration excludes auto/explicit triggers without changing source (286.818125ms)
+✔ popup Escape arms the next Tab focus escape in a list without indentation (262.020792ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9883.396125

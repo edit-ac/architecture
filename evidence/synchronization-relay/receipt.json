@@ -1,0 +1,778 @@
+{
+  "gate": "SYN-1.5",
+  "state": "implemented-and-locally-verified",
+  "sourceRevision": "9fb151bc16cc567c2c66700209baff239d192e1893ab4746d98f4c8dc329a17d",
+  "promptRevision": "2e18a98412c7",
+  "recordedAt": "2026-10-13T01:13:45.804366+00:00",
+  "coreBaseRevision": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseRevision": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementationRevision": "uncommitted source hashes and archived copies; unrelated work preserved",
+  "sources": [
+    {
+      "path": "examples/sync-server/relay.mjs",
+      "sha256": "c118eb199edade097ca9f79c599bd21406b7d5d63fb37c53af4105e98669d377",
+      "archive": "evidence/synchronization-relay/sources/examples/sync-server/relay.mjs",
+      "bytes": 12253
+    },
+    {
+      "path": "examples/sync-server/serve.mjs",
+      "sha256": "9c5db8187ff9c9e6ae44d3af0f8263e04bbd677b2023fd31d910cb0c87f34e3c",
+      "archive": "evidence/synchronization-relay/sources/examples/sync-server/serve.mjs",
+      "bytes": 788
+    },
+    {
+      "path": "examples/sync-server/README.md",
+      "sha256": "c7b7c0e32a4cf821c0824f74eda4c8d33c4ba43e4c68296c82676609699a296b",
+      "archive": "evidence/synchronization-relay/sources/examples/sync-server/README.md",
+      "bytes": 4184
+    },
+    {
+      "path": "tests/server-receipts.test.mjs",
+      "sha256": "38ab400a3b891b162444f3d68efa0bfc333f93a082958df2ad9f0eaaacf77564",
+      "archive": "evidence/synchronization-relay/sources/tests/server-receipts.test.mjs",
+      "bytes": 19644
+    },
+    {
+      "path": "tests/helpers/relay-worker.mjs",
+      "sha256": "7a4dc4ce1a3b45902780d81fe11d12ac8eef6a22bad779220c40f9cc2333f0b3",
+      "archive": "evidence/synchronization-relay/sources/tests/helpers/relay-worker.mjs",
+      "bytes": 1420
+    },
+    {
+      "path": "tests/fixtures/relay-grants.json",
+      "sha256": "551418ecbfb0cc1c912a40e74c028f6756568e4a4d8276d5f4a46aeffb307fdf",
+      "archive": "evidence/synchronization-relay/sources/tests/fixtures/relay-grants.json",
+      "bytes": 738
+    },
+    {
+      "path": "fixtures/schema-v5/mapping.mjs",
+      "sha256": "54617d4cebf52f60dea937c41f4aa53c2f143ef9bce033390c2ee9820bef9f33",
+      "archive": "evidence/synchronization-relay/sources/fixtures/schema-v5/mapping.mjs",
+      "bytes": 21083
+    },
+    {
+      "path": "packages/core/dist/index.js",
+      "sha256": "db9945040f82be675b6b2626158b44db26c9fb704b42bfa5929077819a90bf1e",
+      "archive": "evidence/synchronization-relay/sources/packages/core/dist/index.js",
+      "bytes": 1624
+    },
+    {
+      "path": "packages/core/dist/engine.js",
+      "sha256": "72df078844fb8ee441e0f58220fba02c51e1b647105cf4ac7a8bf9530c9c586b",
+      "archive": "evidence/synchronization-relay/sources/packages/core/dist/engine.js",
+      "bytes": 16202
+    },
+    {
+      "path": "packages/core/dist/wasm/editac_wasm_bg.wasm",
+      "sha256": "c16438269e3b69d53da19969fdff6dfb7d1531c9a7e5eb4e6244e617ed52704d",
+      "archive": "evidence/synchronization-relay/sources/packages/core/dist/wasm/editac_wasm_bg.wasm",
+      "bytes": 3652505
+    }
+  ],
+  "commands": [
+    {
+      "command": "node --test tests/server-receipts.test.mjs",
+      "log": "feature-1.log",
+      "tests": 11,
+      "passed": 1,
+      "failed": 10,
+      "skipped": 0,
+      "cancelled": 0,
+      "suiteExit": 1,
+      "wrapperExit": 1,
+      "repair": "Correct prepared editor-v5 profile/schema; dispose on assertion failure. Wrapper used read-only zsh status variable; suite result preserved.",
+      "outputEnvironment": {
+        "EDITAC_RELAY_OUTPUT": "../architecture/evidence/synchronization-relay"
+      }
+    },
+    {
+      "command": "node --test --test-reporter=tap tests/server-receipts.test.mjs",
+      "log": "feature-2.log",
+      "tests": 11,
+      "passed": 2,
+      "failed": 9,
+      "skipped": 0,
+      "cancelled": 0,
+      "exit": 1,
+      "repair": "Seed one prepared checkpoint and restore each replica; no repeated lineage initialization.",
+      "outputEnvironment": {
+        "EDITAC_RELAY_OUTPUT": "../architecture/evidence/synchronization-relay/run-2"
+      }
+    },
+    {
+      "command": "node --test --test-reporter=tap tests/server-receipts.test.mjs",
+      "log": "feature-3.log",
+      "tests": 11,
+      "passed": 10,
+      "failed": 1,
+      "skipped": 0,
+      "cancelled": 0,
+      "exit": 1,
+      "repair": "Convert decoded Buffer to owned Uint8Array for strict engine boundary in convergence test; all ten other cases unchanged.",
+      "outputEnvironment": {
+        "EDITAC_RELAY_OUTPUT": "../architecture/evidence/synchronization-relay/run-3"
+      }
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-name-pattern='Rust and JS updates converge' tests/server-receipts.test.mjs",
+      "log": "feature-repair.log",
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exit": 0,
+      "outputEnvironment": {
+        "EDITAC_RELAY_OUTPUT": "../architecture/evidence/synchronization-relay/run-4"
+      }
+    },
+    {
+      "command": "node --test --test-reporter=tap tests/sync-protocol.test.mjs tests/reconnect.test.mjs",
+      "log": "integration.log",
+      "tests": 18,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exit": 0,
+      "outputEnvironment": {
+        "EDITAC_SYNC_PROTOCOL_OUTPUT": "../architecture/evidence/synchronization-relay/protocol-regression",
+        "EDITAC_RECONNECT_OUTPUT": "../architecture/evidence/synchronization-relay/reconnect-regression"
+      }
+    },
+    {
+      "command": "git diff --check",
+      "log": "diff-check.log",
+      "exit": 0
+    }
+  ],
+  "acceptance": {
+    "receiptOnlyAfterCommit": "Paused precommit operation has no receipt and independent read connection sees zero rows; commit exception rolls back; after-commit/before-receipt process kills persist byte identity with no delivered receipt.",
+    "restartReplay": "Real child restart restores transactionally committed bytes; actual Rust and Yjs semantic snapshots converge after shuffled duplicate replay.",
+    "duplicateIdempotence": "Unique document/epoch/writer/sequence and exact content identity return stable stored cursor/receipt; conflicting reuse rejected.",
+    "noProductionAuthClaim": "Loopback enforced; prepared grants only; receipt capability is explicitly negotiated and absent capability reports unknown. No deployment or client-outbox integration claim."
+  },
+  "distinctFeatureCoverage": {
+    "explicit capability is separate from ordinary accepted delivery": {
+      "harness": "evidence/synchronization-relay/run-3/harness.json",
+      "state": "verified"
+    },
+    "prepared authorization, complete metadata and revocation isolate stored identities": {
+      "harness": "evidence/synchronization-relay/run-3/harness.json",
+      "state": "verified"
+    },
+    "receipt waits for commit completion; failed commit rolls back and permits retry": {
+      "harness": "evidence/synchronization-relay/run-3/harness.json",
+      "state": "verified"
+    },
+    "process crash at before-transaction preserves only committed bytes and retry identity": {
+      "harness": "evidence/synchronization-relay/run-3/harness.json",
+      "state": "verified"
+    },
+    "process crash at before-commit preserves only committed bytes and retry identity": {
+      "harness": "evidence/synchronization-relay/run-3/harness.json",
+      "state": "verified"
+    },
+    "process crash at after-commit preserves only committed bytes and retry identity": {
+      "harness": "evidence/synchronization-relay/run-3/harness.json",
+      "state": "verified"
+    },
+    "process crash at before-receipt preserves only committed bytes and retry identity": {
+      "harness": "evidence/synchronization-relay/run-3/harness.json",
+      "state": "verified"
+    },
+    "content identity, writer/sequence conflicts and request/replay limits fail before mutation": {
+      "harness": "evidence/synchronization-relay/run-3/harness.json",
+      "state": "verified"
+    },
+    "bounded queue returns backpressure while pending updates remain retryable": {
+      "harness": "evidence/synchronization-relay/run-3/harness.json",
+      "state": "verified"
+    },
+    "reference relay refuses non-loopback binding and persistent metadata reinterpretation": {
+      "harness": "evidence/synchronization-relay/run-3/harness.json",
+      "state": "verified"
+    },
+    "Rust and JS updates converge after shuffled duplicates, pagination and service restart": {
+      "harness": "evidence/synchronization-relay/run-4/harness.json",
+      "state": "verified"
+    }
+  },
+  "featureDistinctExecutedPassed": 11,
+  "remainingFeatureFailures": 0,
+  "preparedBoundaries": [
+    "prepared authorization grants",
+    "harness-only fault injection",
+    "opaque bytes for admission-limit tests"
+  ],
+  "actualBoundaries": [
+    "loopback HTTP",
+    "persistent SQLite FULL WAL transactions",
+    "independent read connection",
+    "child process termination and restart",
+    "Rust WASM editor-v5 and Yjs 13.6.33 peer"
+  ],
+  "cleanup": {
+    "checkedProcesses": [
+      {
+        "pid": 27507,
+        "url": "http://127.0.0.1:57229",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 27508,
+        "url": "http://127.0.0.1:57230",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 27510,
+        "url": "http://127.0.0.1:57231",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 27511,
+        "url": "http://127.0.0.1:57232",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 27512,
+        "url": "http://127.0.0.1:57233",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 27513,
+        "url": "http://127.0.0.1:57234",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 27514,
+        "url": "http://127.0.0.1:57235",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 27515,
+        "url": "http://127.0.0.1:57236",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 27517,
+        "url": "http://127.0.0.1:57237",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 27521,
+        "url": "http://127.0.0.1:57238",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 28265,
+        "url": "http://127.0.0.1:57276",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 28273,
+        "url": "http://127.0.0.1:57280",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 28274,
+        "url": "http://127.0.0.1:57281",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 28275,
+        "url": "http://127.0.0.1:57282",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 28276,
+        "url": "http://127.0.0.1:57283",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 28277,
+        "url": "http://127.0.0.1:57284",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 28278,
+        "url": "http://127.0.0.1:57285",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 28280,
+        "url": "http://127.0.0.1:57286",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 28282,
+        "url": "http://127.0.0.1:57287",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 28289,
+        "url": "http://127.0.0.1:57288",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29440,
+        "url": "http://127.0.0.1:57458",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29447,
+        "url": "http://127.0.0.1:57462",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29454,
+        "url": "http://127.0.0.1:57466",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29461,
+        "url": "http://127.0.0.1:57470",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29468,
+        "url": "http://127.0.0.1:57474",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29475,
+        "url": "http://127.0.0.1:57479",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29483,
+        "url": "http://127.0.0.1:57483",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29490,
+        "url": "http://127.0.0.1:57487",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29497,
+        "url": "http://127.0.0.1:57491",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29506,
+        "url": "http://127.0.0.1:57495",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29522,
+        "url": "http://127.0.0.1:57500",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29530,
+        "url": "http://127.0.0.1:57504",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29537,
+        "url": "http://127.0.0.1:57508",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29544,
+        "url": "http://127.0.0.1:57512",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 29551,
+        "url": "http://127.0.0.1:57516",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 30351,
+        "url": "http://127.0.0.1:57584",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      },
+      {
+        "pid": 30359,
+        "url": "http://127.0.0.1:57588",
+        "ownedProcessGone": true,
+        "listenerGone": true
+      }
+    ],
+    "removedTemporaryDirectories": [
+      "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-Dwzpi1",
+      "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-ZFObBm",
+      "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-gh1o0p",
+      "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-oFU1Z2"
+    ],
+    "additionalCleanupPaths": [],
+    "additionalCleanupBytes": 0,
+    "temporaryDatabaseBytesReclaimed": "not measured; harness removes inactive session-only databases",
+    "protectedListeners": [
+      "4321",
+      "5173"
+    ],
+    "dataVolumeFreeApproxGiB": 17
+  },
+  "sourceSnapshot": "progress/.roadmap-runner/06-synchronization-049784b4c224/source-63e8bc8b7f65.md",
+  "artifacts": [
+    {
+      "path": "evidence/synchronization-relay/diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/feature-1.log",
+      "bytes": 12804,
+      "sha256": "f82bfb56ec5a94ff3145a7d60d754186a6bb881cf8c5a4dc39f912a0a814b4a3"
+    },
+    {
+      "path": "evidence/synchronization-relay/feature-2.log",
+      "bytes": 11814,
+      "sha256": "9a18374af89f52c5756b56b303201ebc7357fd6638b48dbb07592de321dfa2cc"
+    },
+    {
+      "path": "evidence/synchronization-relay/feature-3.log",
+      "bytes": 3966,
+      "sha256": "9f390641481e2cad187d8d664e54c50ef7617d4a6d32205f4c6b3935a3495c69"
+    },
+    {
+      "path": "evidence/synchronization-relay/feature-repair.log",
+      "bytes": 550,
+      "sha256": "8ae84917d3edecd66e549c2a04a8ecbd87e999e6b0c219fb5c761447c5cf301b"
+    },
+    {
+      "path": "evidence/synchronization-relay/final-listeners.txt",
+      "bytes": 4500,
+      "sha256": "49333fcd652920a21dc519b216f5e1a232df82e25dc5b70bea6a5fd1709b5f78"
+    },
+    {
+      "path": "evidence/synchronization-relay/final-process-scan.txt",
+      "bytes": 169737,
+      "sha256": "21351371b7593c49af77f1269097ce7c83091b3fa5a920a522455eade7afaa3e"
+    },
+    {
+      "path": "evidence/synchronization-relay/harness.json",
+      "bytes": 5862,
+      "sha256": "bc96a7f8b44e3239cc52940f65f55d40e9f09117e39fcc8adfd498185c75df60"
+    },
+    {
+      "path": "evidence/synchronization-relay/integration.log",
+      "bytes": 5139,
+      "sha256": "c2a879fc436bd141080f968c091312aa2d7c51e9d382921b56067fd2b259c867"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-0.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-3.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-4.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-5.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-6.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-7.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-8.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-9.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/process-scan-1.txt",
+      "bytes": 151123,
+      "sha256": "e2eb755b743b383d67f82870a9db98e39e816b9a16258871c2c6311416fd9247"
+    },
+    {
+      "path": "evidence/synchronization-relay/protocol-regression/0-rust-step1.bin",
+      "bytes": 9,
+      "sha256": "35a49928ef1094f9e423fc048004dc585525406dc6d589f2875477752a5fab18"
+    },
+    {
+      "path": "evidence/synchronization-relay/protocol-regression/1-js-step1.bin",
+      "bytes": 12,
+      "sha256": "b7e728013ee314f47814b57c9c0aed4eb5fddc8d8fa59743dab305e2d7e548a7"
+    },
+    {
+      "path": "evidence/synchronization-relay/protocol-regression/2-rust-step2.bin",
+      "bytes": 26,
+      "sha256": "07529c5f84045ed7d941244f43cf76565777513169a1559464d0c0d5600587fe"
+    },
+    {
+      "path": "evidence/synchronization-relay/protocol-regression/3-js-step2.bin",
+      "bytes": 67,
+      "sha256": "e71bcfdff3fdb41d099f76b40278aef63458576c1d7db5897a8f3db530a13d18"
+    },
+    {
+      "path": "evidence/synchronization-relay/protocol-regression/4-rust-update.bin",
+      "bytes": 26,
+      "sha256": "a6c62368d4532f372ad99f8edf53f6bcba6f97880d36c2f261df382f81c7b580"
+    },
+    {
+      "path": "evidence/synchronization-relay/protocol-regression/5-js-update.bin",
+      "bytes": 23,
+      "sha256": "d301c9be98ad6fae066da1a8f592fb346060eabc0894b049b12a6a9edf2253b3"
+    },
+    {
+      "path": "evidence/synchronization-relay/protocol-regression/harness.json",
+      "bytes": 2142,
+      "sha256": "c21913195a798ac360b311e64835a57377ce27007f1e1fe324456e20f41150ed"
+    },
+    {
+      "path": "evidence/synchronization-relay/reconnect-regression/harness.json",
+      "bytes": 2216,
+      "sha256": "2730e9dfd4db25ff103029ae4411ed0c9c5df72cd4a023e3fac379b2aeffdd82"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/0-rust-initial.bin",
+      "bytes": 491,
+      "sha256": "5e3b88407dcf31a38183602f56ba4fd15755eb05cbfbdcbf25eb874e76b5754b"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/harness.json",
+      "bytes": 6811,
+      "sha256": "a5e2a362be9cfc2c52dea52fd98c7146a491dd6368284deeceef520928e0190f"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/process-0.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/process-1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/process-2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/process-3.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/process-4.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/process-5.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/process-6.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/process-7.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/process-8.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-2/process-9.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/0-rust-initial.bin",
+      "bytes": 491,
+      "sha256": "bbce9d35a2ba33c3b6ed4c0bad1d65e9dcb092664a4a6b82b59425241dfe16b6"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/1-rust-delta.bin",
+      "bytes": 27,
+      "sha256": "04ffe020c84801dfcbfb5088479c2e01db95477795bae03e6a12758ab29fc187"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/2-js-delta.bin",
+      "bytes": 22,
+      "sha256": "f2e913d961ccfa370de32f35fe779c34f707afba60f101ec7304aaf47a0b4630"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/harness.json",
+      "bytes": 12203,
+      "sha256": "326be812d0d6637feca4315e3cbbef50c9f9ba1b8a4c1c83877d1ff5be9e7bdf"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-0.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-10.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-11.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-12.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-13.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-14.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-3.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-4.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-5.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-6.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-7.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-8.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-3/process-9.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-4/0-rust-delta.bin",
+      "bytes": 27,
+      "sha256": "1c87deff8b8fd375d194f7493a98286f4cda4413d9ef8ee7840e707c52b89939"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-4/1-js-delta.bin",
+      "bytes": 22,
+      "sha256": "863963332fc14ebf7ae4a1492a4e8c456bbecd9640032ea0ec9d7d5da0e9ad81"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-4/harness.json",
+      "bytes": 3043,
+      "sha256": "d309077e2a820e572e8e4b98ef6d96a643bdd1673908cb25322575756f16738b"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-4/process-0.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/synchronization-relay/run-4/process-1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

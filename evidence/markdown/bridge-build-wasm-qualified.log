@@ -1,0 +1,40 @@
+
+> edit-ac-workspace@0.0.0 build:wasm
+> node scripts/build-wasm.mjs
+
+wasm-bindgen 0.2.129
+/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/cargo
+/Users/bpstr/.rustup/toolchains/1.97.1-aarch64-apple-darwin/bin/rustc
+   Compiling memchr v2.8.3
+   Compiling pulldown-cmark v0.13.4
+   Compiling unicase v2.10.0
+   Compiling bitflags v2.13.2
+   Compiling pulldown-cmark-escape v0.11.0
+   Compiling serde_json v1.0.152
+   Compiling yrs v0.28.0
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+   Compiling editac-wasm v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-wasm)
+    Finished `release` profile [optimized] target(s) in 47.59s
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+src/engine.ts(281,22): error TS7006: Parameter 'source' implicitly has an 'any' type.
+src/engine.ts(282,21): error TS7006: Parameter 'blocks' implicitly has an 'any' type.
+npm error Lifecycle script `build` failed with error:
+npm error code 2
+npm error path /Users/bpstr/Github/edit-ac/core/packages/core
+npm error workspace @edit-ac/core@0.0.0
+npm error location /Users/bpstr/Github/edit-ac/core/packages/core
+npm error command failed
+npm error command sh -c tsc --project tsconfig.json
+file:///Users/bpstr/Github/edit-ac/core/scripts/build-wasm.mjs:15
+  if (result.error || result.status !== 0) throw result.error || new Error(`${command} exited ${result.status}`);
+                                                                 ^
+
+Error: npm exited 2
+    at run (file:///Users/bpstr/Github/edit-ac/core/scripts/build-wasm.mjs:15:66)
+    at file:///Users/bpstr/Github/edit-ac/core/scripts/build-wasm.mjs:32:3
+
+Node.js v26.4.0

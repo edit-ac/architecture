@@ -1,0 +1,66 @@
+{
+  "boundary": "Actual Rust WASM engine-v5 / JS same-schema peer; in-memory copied socket; no credentials or application network",
+  "wasmSha256": "265a6896c0962bbfc8e3cc07f8ac12043654df9d22443ccb840db173995dbdd2",
+  "cases": [
+    {
+      "name": "both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits",
+      "passed": true
+    },
+    {
+      "name": "update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo",
+      "passed": true
+    },
+    {
+      "name": "deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent",
+      "passed": true
+    },
+    {
+      "name": "reject malformed frames and state vectors before any engine mutation",
+      "passed": true
+    },
+    {
+      "name": "malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes",
+      "passed": true
+    },
+    {
+      "name": "inbound and outbound byte bounds include headers; no input buffers are aliased",
+      "passed": true
+    },
+    {
+      "name": "metadata must match every immutable field before adapter construction or outbound update",
+      "passed": true
+    }
+  ],
+  "frames": [
+    {
+      "name": "0-rust-step1.bin",
+      "bytes": 9,
+      "sha256": "19037c6253dc9e5acec5223d8c46613feca92771bcaffd61e6cc2331c522195b"
+    },
+    {
+      "name": "1-js-step1.bin",
+      "bytes": 12,
+      "sha256": "8d41c85f9094721a843a1c3b2ac2c5c6e11e790a4543238312e6c1ba75f9506c"
+    },
+    {
+      "name": "2-rust-step2.bin",
+      "bytes": 26,
+      "sha256": "d675fb0c2bcce3c8f7146ad1f1a0c48e32041204aa2ac70da48b13c2af450a5f"
+    },
+    {
+      "name": "3-js-step2.bin",
+      "bytes": 67,
+      "sha256": "c2a1b6196a2a29085a612cd9f9c15b4cbb0948ed57bcd71f1b86714c8ae40794"
+    },
+    {
+      "name": "4-rust-update.bin",
+      "bytes": 26,
+      "sha256": "e2e025fc0f8f18a8bd9935ff7bea64e77125dc1b7ebc4d4acea9cfda90ee7771"
+    },
+    {
+      "name": "5-js-update.bin",
+      "bytes": 23,
+      "sha256": "3e080e634577996f840e558742b80e16758dd6308619fe825c8f90d92f74841e"
+    }
+  ]
+}

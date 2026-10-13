@@ -1,0 +1,108 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs references
+
+references browser: chromium
+✔ opening and typing a document make no implicit host resolver or network calls (1836.370875ms)
+✔ out-of-order replies from a host ignoring abort cannot insert or replace current suggestions (273.993708ms)
+✔ old query results are cleared immediately while the new request is pending (212.799042ms)
+✔ escape invalidates pending replies without mutation (187.913542ms)
+✔ readonly invalidates pending replies without mutation (186.662791ms)
+✔ dispose invalidates pending replies without mutation (201.019917ms)
+✔ remote invalidates pending replies without mutation (221.468542ms)
+✔ target-edit invalidates pending replies without mutation (193.152042ms)
+✔ composition invalidates pending replies without mutation (177.564084ms)
+✔ named menu supports keyboard selection, literal safe labels and one undo/redo group (180.428542ms)
+✔ unknown ID/label survive checkpoint recovery with enabled and disabled presenter without resolving (255.863458ms)
+✔ host errors, oversized/duplicate/invalid targets and no results retain source (282.974167ms)
+✔ unrelated edits preserve the anchored target; selected text is replaced only after explicit choice (214.248417ms)
+✔ Tab dismisses without accepting and new sessions reject old-session replies (324.378959ms)
+✔ invalid persisted descriptor or mismatched fallback rejects atomically before mutation (122.322125ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5227.021
+references browser: firefox
+✔ opening and typing a document make no implicit host resolver or network calls (4929.212583ms)
+✖ out-of-order replies from a host ignoring abort cannot insert or replace current suggestions (30372.931125ms)
+✖ old query results are cleared immediately while the new request is pending (31107.925291ms)
+✔ escape invalidates pending replies without mutation (1180.503583ms)
+✔ readonly invalidates pending replies without mutation (319.6335ms)
+✔ dispose invalidates pending replies without mutation (299.992709ms)
+✔ remote invalidates pending replies without mutation (301.424833ms)
+✔ target-edit invalidates pending replies without mutation (298.769333ms)
+✔ composition invalidates pending replies without mutation (300.061584ms)
+✔ named menu supports keyboard selection, literal safe labels and one undo/redo group (829.05725ms)
+✔ unknown ID/label survive checkpoint recovery with enabled and disabled presenter without resolving (473.130083ms)
+✖ host errors, oversized/duplicate/invalid targets and no results retain source (30400.710958ms)
+✔ unrelated edits preserve the anchored target; selected text is replaced only after explicit choice (1234.981333ms)
+✔ Tab dismisses without accepting and new sessions reject old-session replies (480.155291ms)
+✔ invalid persisted descriptor or mismatched fallback rejects atomically before mutation (231.680917ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 12
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103420.048958
+
+✖ failing tests:
+
+test at tests/browser/references.spec.ts:14:1
+✖ out-of-order replies from a host ignoring abort cannot insert or replace current suggestions (30372.931125ms)
+  page.waitForFunction: Timeout 30000ms exceeded.
+      at respond (/Users/bpstr/Github/edit-ac/core/tests/browser/references.spec.ts:8:154)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/references.spec.ts:16:2
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:7) {
+    name: 'TimeoutError',
+    log: []
+  }
+
+test at tests/browser/references.spec.ts:20:1
+✖ old query results are cleared immediately while the new request is pending (31107.925291ms)
+  page.waitForFunction: Timeout 30000ms exceeded.
+      at respond (/Users/bpstr/Github/edit-ac/core/tests/browser/references.spec.ts:8:154)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/references.spec.ts:21:291
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:7) {
+    name: 'TimeoutError',
+    log: []
+  }
+
+test at tests/browser/references.spec.ts:49:1
+✖ host errors, oversized/duplicate/invalid targets and no results retain source (30400.710958ms)
+  page.waitForFunction: Timeout 30000ms exceeded.
+      at respond (/Users/bpstr/Github/edit-ac/core/tests/browser/references.spec.ts:8:154)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/references.spec.ts:52:87
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:7) {
+    name: 'TimeoutError',
+    log: []
+  }
+references browser: webkit
+✔ opening and typing a document make no implicit host resolver or network calls (3080.117042ms)
+✔ out-of-order replies from a host ignoring abort cannot insert or replace current suggestions (2351.103666ms)
+✔ old query results are cleared immediately while the new request is pending (637.168875ms)
+✔ escape invalidates pending replies without mutation (399.744292ms)
+✔ readonly invalidates pending replies without mutation (307.569ms)
+✔ dispose invalidates pending replies without mutation (281.134416ms)
+✔ remote invalidates pending replies without mutation (292.052625ms)
+✔ target-edit invalidates pending replies without mutation (296.5465ms)
+✔ composition invalidates pending replies without mutation (630.946291ms)
+✔ named menu supports keyboard selection, literal safe labels and one undo/redo group (668.004208ms)
+✔ unknown ID/label survive checkpoint recovery with enabled and disabled presenter without resolving (365.624208ms)
+✔ host errors, oversized/duplicate/invalid targets and no results retain source (313.115292ms)
+✔ unrelated edits preserve the anchored target; selected text is replaced only after explicit choice (367.867084ms)
+✔ Tab dismisses without accepting and new sessions reject old-session replies (455.737333ms)
+✔ invalid persisted descriptor or mismatched fallback rejects atomically before mutation (358.402417ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11151.958917

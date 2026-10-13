@@ -1,0 +1,718 @@
+{
+  "suite": "module-runtime",
+  "engine": "chromium",
+  "cases": [
+    {
+      "name": "scope-stability-disposal",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "decorationReleased": true,
+          "original": {
+            "blockAttributes": [
+              "heading",
+              1
+            ],
+            "editor": {
+              "checked": null,
+              "containerAttributes": null,
+              "number": 7,
+              "version": "base"
+            },
+            "id": "n:11:1",
+            "kind": "block",
+            "order": 1,
+            "parent": "c:11:1",
+            "runs": [
+              {
+                "attributes": {
+                  "module:demo.highlight": [
+                    1,
+                    {
+                      "active": true,
+                      "label": "important",
+                      "rank": 3
+                    }
+                  ]
+                },
+                "text": "Marked 😀"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    1,
+                    {
+                      "label": "badge"
+                    }
+                  ]
+                },
+                "text": "<img src=x onerror=alert(1)>"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    2,
+                    {
+                      "opaque": {
+                        "keep": [
+                          "original",
+                          7
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "text": "Future version"
+              },
+              {
+                "attributes": {
+                  "module:other.label": [
+                    1,
+                    {
+                      "target": "host-id"
+                    }
+                  ]
+                },
+                "text": "Unknown label"
+              }
+            ],
+            "spans": [
+              {
+                "end": 64,
+                "identity": "<11#1>",
+                "source": "n:11:1",
+                "start": 0
+              }
+            ]
+          },
+          "changed": {
+            "blockAttributes": [
+              "heading",
+              1
+            ],
+            "editor": {
+              "checked": null,
+              "containerAttributes": null,
+              "number": 7,
+              "version": "base"
+            },
+            "id": "n:11:1",
+            "kind": "block",
+            "order": 1,
+            "parent": "c:11:1",
+            "runs": [
+              {
+                "attributes": {
+                  "module:demo.highlight": [
+                    1,
+                    {
+                      "active": true,
+                      "label": "important",
+                      "rank": 3
+                    }
+                  ]
+                },
+                "text": "Marked 😀"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    1,
+                    {
+                      "label": "badge"
+                    }
+                  ]
+                },
+                "text": "<!img src=x onerror=alert(1)>"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    2,
+                    {
+                      "opaque": {
+                        "keep": [
+                          "original",
+                          7
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "text": "Future version"
+              },
+              {
+                "attributes": {
+                  "module:other.label": [
+                    1,
+                    {
+                      "target": "host-id"
+                    }
+                  ]
+                },
+                "text": "Unknown label"
+              }
+            ],
+            "spans": [
+              {
+                "end": 65,
+                "identity": "<11#1>",
+                "source": "n:11:1",
+                "start": 0
+              }
+            ]
+          },
+          "projectedText": "Marked 😀<img src=x onerror=alert(1)>Future versionUnknown label",
+          "dom": "Marked 😀<!img src=x onerror=alert(1)>Future versionUnknown label",
+          "afterUnrelated": {
+            "mount": 1,
+            "update": 0,
+            "dispose": 0,
+            "resources": 1,
+            "scoped": 0,
+            "selection": 0,
+            "good": 1,
+            "ownedEvents": 0
+          },
+          "afterSelection": {
+            "mount": 1,
+            "update": 0,
+            "dispose": 0,
+            "resources": 1,
+            "scoped": 0,
+            "selection": 2,
+            "good": 1,
+            "ownedEvents": 0
+          },
+          "afterEdit": {
+            "mount": 1,
+            "update": 1,
+            "dispose": 0,
+            "resources": 1,
+            "scoped": 1,
+            "selection": 2,
+            "good": 2,
+            "ownedEvents": 0
+          },
+          "afterDispose": {
+            "mount": 1,
+            "update": 1,
+            "dispose": 1,
+            "resources": 0,
+            "scoped": 1,
+            "selection": 2,
+            "good": 2,
+            "ownedEvents": 0
+          },
+          "afterLaterCommit": {
+            "mount": 1,
+            "update": 1,
+            "dispose": 1,
+            "resources": 0,
+            "scoped": 1,
+            "selection": 2,
+            "good": 2,
+            "ownedEvents": 0
+          },
+          "retainedSelection": true,
+          "retainedEdit": true,
+          "errors": [
+            {
+              "phase": "subscription",
+              "message": "one module failed"
+            },
+            {
+              "phase": "subscription",
+              "message": "one module failed"
+            }
+          ],
+          "engineErrors": [],
+          "active": false
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "failure-mount",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "counts": {
+            "badDispose": 0,
+            "goodUpdate": 1,
+            "goodDispose": 1
+          },
+          "dom": "M!arked 😀<!img src=x onerror=alert(1)>Future versionUnknown label",
+          "changed": {
+            "blockAttributes": [
+              "heading",
+              1
+            ],
+            "editor": {
+              "checked": null,
+              "containerAttributes": null,
+              "number": 7,
+              "version": "base"
+            },
+            "id": "n:11:1",
+            "kind": "block",
+            "order": 1,
+            "parent": "c:11:1",
+            "runs": [
+              {
+                "attributes": {
+                  "module:demo.highlight": [
+                    1,
+                    {
+                      "active": true,
+                      "label": "important",
+                      "rank": 3
+                    }
+                  ]
+                },
+                "text": "M!arked 😀"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    1,
+                    {
+                      "label": "badge"
+                    }
+                  ]
+                },
+                "text": "<!img src=x onerror=alert(1)>"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    2,
+                    {
+                      "opaque": {
+                        "keep": [
+                          "original",
+                          7
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "text": "Future version"
+              },
+              {
+                "attributes": {
+                  "module:other.label": [
+                    1,
+                    {
+                      "target": "host-id"
+                    }
+                  ]
+                },
+                "text": "Unknown label"
+              }
+            ],
+            "spans": [
+              {
+                "end": 66,
+                "identity": "<11#1>",
+                "source": "n:11:1",
+                "start": 0
+              }
+            ]
+          },
+          "fallback": "text",
+          "decorationGone": true,
+          "errors": [
+            {
+              "phase": "mount",
+              "message": "bad mount"
+            }
+          ],
+          "engineErrors": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "failure-update",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "counts": {
+            "badDispose": 1,
+            "goodUpdate": 1,
+            "goodDispose": 1
+          },
+          "dom": "M!arked 😀<!img src=x onerror=alert(1)>Future versionUnknown label",
+          "changed": {
+            "blockAttributes": [
+              "heading",
+              1
+            ],
+            "editor": {
+              "checked": null,
+              "containerAttributes": null,
+              "number": 7,
+              "version": "base"
+            },
+            "id": "n:11:1",
+            "kind": "block",
+            "order": 1,
+            "parent": "c:11:1",
+            "runs": [
+              {
+                "attributes": {
+                  "module:demo.highlight": [
+                    1,
+                    {
+                      "active": true,
+                      "label": "important",
+                      "rank": 3
+                    }
+                  ]
+                },
+                "text": "M!arked 😀"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    1,
+                    {
+                      "label": "badge"
+                    }
+                  ]
+                },
+                "text": "<!img src=x onerror=alert(1)>"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    2,
+                    {
+                      "opaque": {
+                        "keep": [
+                          "original",
+                          7
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "text": "Future version"
+              },
+              {
+                "attributes": {
+                  "module:other.label": [
+                    1,
+                    {
+                      "target": "host-id"
+                    }
+                  ]
+                },
+                "text": "Unknown label"
+              }
+            ],
+            "spans": [
+              {
+                "end": 66,
+                "identity": "<11#1>",
+                "source": "n:11:1",
+                "start": 0
+              }
+            ]
+          },
+          "fallback": "text",
+          "decorationGone": true,
+          "errors": [
+            {
+              "phase": "update",
+              "message": "bad update"
+            },
+            {
+              "phase": "dispose",
+              "message": "bad cleanup"
+            }
+          ],
+          "engineErrors": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "replace-remount",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "replaced": {
+            "mount": 2,
+            "dispose": 1
+          },
+          "removed": {
+            "mount": 6,
+            "dispose": 6
+          },
+          "final": {
+            "mount": 6,
+            "dispose": 6
+          },
+          "knownAtomAbsent": true,
+          "remainingKnownRuns": 0
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "attribute-only-remote",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "original": {
+            "blockAttributes": [
+              "heading",
+              1
+            ],
+            "editor": {
+              "checked": null,
+              "containerAttributes": null,
+              "number": 7,
+              "version": "base"
+            },
+            "id": "n:11:1",
+            "kind": "block",
+            "order": 1,
+            "parent": "c:11:1",
+            "runs": [
+              {
+                "attributes": {
+                  "module:demo.highlight": [
+                    1,
+                    {
+                      "active": true,
+                      "label": "important",
+                      "rank": 3
+                    }
+                  ]
+                },
+                "text": "Marked 😀"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    1,
+                    {
+                      "label": "badge"
+                    }
+                  ]
+                },
+                "text": "<img src=x onerror=alert(1)>"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    2,
+                    {
+                      "opaque": {
+                        "keep": [
+                          "original",
+                          7
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "text": "Future version"
+              },
+              {
+                "attributes": {
+                  "module:other.label": [
+                    1,
+                    {
+                      "target": "host-id"
+                    }
+                  ]
+                },
+                "text": "Unknown label"
+              }
+            ],
+            "spans": [
+              {
+                "end": 64,
+                "identity": "<11#1>",
+                "source": "n:11:1",
+                "start": 0
+              }
+            ]
+          },
+          "changed": {
+            "blockAttributes": [
+              "heading",
+              1
+            ],
+            "editor": {
+              "checked": null,
+              "containerAttributes": null,
+              "number": 7,
+              "version": "base"
+            },
+            "id": "n:11:1",
+            "kind": "block",
+            "order": 1,
+            "parent": "c:11:1",
+            "runs": [
+              {
+                "attributes": {
+                  "module:demo.highlight": [
+                    1,
+                    {
+                      "active": true,
+                      "label": "important",
+                      "rank": 3
+                    }
+                  ]
+                },
+                "text": "Marked 😀"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    1,
+                    {
+                      "label": "Changed attribute only"
+                    }
+                  ]
+                },
+                "text": "<img src=x onerror=alert(1)>"
+              },
+              {
+                "attributes": {
+                  "module:demo.badge": [
+                    2,
+                    {
+                      "opaque": {
+                        "keep": [
+                          "original",
+                          7
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "text": "Future version"
+              },
+              {
+                "attributes": {
+                  "module:other.label": [
+                    1,
+                    {
+                      "target": "host-id"
+                    }
+                  ]
+                },
+                "text": "Unknown label"
+              }
+            ],
+            "spans": [
+              {
+                "end": 64,
+                "identity": "<11#1>",
+                "source": "n:11:1",
+                "start": 0
+              }
+            ]
+          },
+          "retained": true,
+          "dom": "Marked 😀<img src=x onerror=alert(1)>Future versionUnknown label",
+          "counts": {
+            "mount": 1,
+            "update": 1,
+            "dispose": 1,
+            "atomRange": 1,
+            "disjoint": 0
+          },
+          "content": {
+            "type": "demo.badge",
+            "version": 1,
+            "kind": "inline-atom",
+            "text": "<img src=x onerror=alert(1)>",
+            "attributes": {
+              "label": "Changed attribute only"
+            }
+          }
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "processes": [
+    {
+      "pid": 97207,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "module-runtime",
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/modules-math/regression-module-runtime/chromium"
+    }
+  ],
+  "packs": [
+    {
+      "name": "core",
+      "file": "edit-ac-core-0.0.0.tgz",
+      "bytes": 948265,
+      "sha256": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0"
+    },
+    {
+      "name": "web",
+      "file": "edit-ac-web-0.0.0.tgz",
+      "bytes": 246002,
+      "sha256": "7893f92cb37c33504569175385e381225e996740f48bc8dc2dd5abb91cac86cd"
+    }
+  ],
+  "cleanup": {
+    "browserExited": true,
+    "serverClosed": true,
+    "consumerRemoved": true
+  },
+  "revision": "6edb83432468e44083740b586f973fb44f623352",
+  "sources": {
+    "packages/web/src/clipboard/fragment.ts": "ecd352616d5da03bbbac8162825b45723d543069f17014801f9fee0673062e47",
+    "packages/web/src/clipboard/html.ts": "de9b4265d2cc60dc85da1daf0cd3f3f8dc817a006e9b5712df6bc676556ed880",
+    "packages/web/src/clipboard/markdown.ts": "21cadac434ca183fee40195c61e69ce72fab10aafd1f3cbc6228c3bc2ad98771",
+    "packages/web/src/clipboard/pending.ts": "eda3d054d1c0e45916bea110c0e4dcb7ec55294dc3d683605c5a8751db5e7165",
+    "tests/browser/format-helpers.ts": "0a097c4a7638f1ba746a9490486331c4e4fd1e97f0fa0f8daead584f6735a504",
+    "crates/editac-markdown/src/extensions.rs": "5f7d8f3a8aba33cd50356aa08850ae9e392a196197e669b7dbe8ed0e27f1e3e1",
+    "crates/editac-markdown/src/optional.rs": "75d4cfe43ec524b0531a500116ef0c30ebb5cfa0c9b5e54a32b7b78b8ce9ed1c",
+    "crates/editac-core/src/modules/content.rs": "216e1c7fa3971b0f287374199c890ccf999d85c6311e4d839d0f600c8e7c2859",
+    "packages/web/src/input/text.ts": "afd6d6684dd5c8ae8b2941ec4b29f9b22b645ea0ae5a05cd3742d7c99092eeb7",
+    "packages/web/src/input/shortcuts.ts": "453638df12f18e7a7a87d268dc0c75129d867352dea08ae2ee0803bd5a6cf118",
+    "packages/core/src/engine.ts": "b08259428e01beecb16f56f4dd08146eafa438f661eab8b6dc4eb8d0a5cadfc0",
+    "crates/editac-core/src/commands/editor.rs": "a2f6318ad58bfb07bcc68efe2f289f7c7f42a61d79412332edbcbc17b705809b",
+    "crates/editac-wasm/src/bridge.rs": "eade939b868ca046317050ec41cb52e5804e12dc05ad068ed03784885821db0c",
+    "scripts/test-browser.mjs": "2b7cc96011b253875f583eb44d56b98d6c9dac3ede6d857df8b846de26db7c3b",
+    "tests/browser/module-runtime.spec.ts": "663099c0a1ad8af4f630fd07e31165e7ff130b190137e9a7648050a86196ab66",
+    "tests/browser/browser-harness.ts": "8d4e0aac904331f79c4e1ba78cc00b54e6c51e9f86b537a597fb9626fafe0595",
+    "package-lock.json": "a304a54f28c26c9e1e3124c5c5a626f354e28b5c63026b4f5f33f745675ae8ef"
+  },
+  "server": {
+    "pid": 97150,
+    "port": 61297,
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "module-runtime",
+    "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/modules-math/regression-module-runtime/chromium"
+  },
+  "browser": {
+    "version": "156.0.8078.4",
+    "engine": "chromium",
+    "playwright": "1.64.0",
+    "node": "v26.4.0"
+  },
+  "counts": {
+    "executed": 5,
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0
+  }
+}

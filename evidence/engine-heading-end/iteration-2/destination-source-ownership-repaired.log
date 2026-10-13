@@ -1,0 +1,24 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 10.17s
+     Running tests/heading_end.rs (target/debug/deps/heading_end-05c0722e416c35a2)
+
+running 1 test
+test heading_end_destination_source_owns_insert_before_shared_source_sibling ... FAILED
+
+failures:
+
+---- heading_end_destination_source_owns_insert_before_shared_source_sibling stdout ----
+
+thread 'heading_end_destination_source_owns_insert_before_shared_source_sibling' (160474867) panicked at crates/editac-core/tests/heading_end.rs:578:5:
+assertion `left == right` failed: correct source insertion must belong to the new paragraph, independently of caret routing
+  left: ["A😀Z", "", "Xtail", "peer"]
+ right: ["A😀Z", "X", "tail", "peer"]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    heading_end_destination_source_owns_insert_before_shared_source_sibling
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 11 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p editac-core --test heading_end`

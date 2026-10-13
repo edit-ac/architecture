@@ -1,0 +1,80 @@
+{
+  "boundary": "Actual loopback HTTP / child-process SQLite FULL WAL commit / actual Rust WASM and pinned Yjs schema-v5 updates; prepared auth only",
+  "wasmSha256": "c16438269e3b69d53da19969fdff6dfb7d1531c9a7e5eb4e6244e617ed52704d",
+  "cases": [
+    {
+      "name": "Rust and JS updates converge after shuffled duplicates, pagination and service restart",
+      "passed": true
+    }
+  ],
+  "processes": [
+    {
+      "pid": 30351,
+      "launcher": 30343,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-gh1o0p/database-0.sqlite",
+      "url": "http://127.0.0.1:57584",
+      "logPath": "../architecture/evidence/synchronization-relay/run-4/process-0.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 30359,
+      "launcher": 30343,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-gh1o0p/database-0.sqlite",
+      "url": "http://127.0.0.1:57588",
+      "logPath": "../architecture/evidence/synchronization-relay/run-4/process-1.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    }
+  ],
+  "updates": [
+    {
+      "file": "0-rust-delta.bin",
+      "bytes": 27,
+      "sha256": "1c87deff8b8fd375d194f7493a98286f4cda4413d9ef8ee7840e707c52b89939",
+      "identity": {
+        "profile": "editac.yrs-yjs.editor.v5",
+        "schema": "editac.registry.editor.v5",
+        "documentId": "12345678-1234-4234-8234-123456789abc",
+        "epoch": "23456789-2345-4345-8345-23456789abcd",
+        "protocolVersion": 1,
+        "updateEncoding": 1,
+        "offsets": "utf16"
+      },
+      "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",101,2,\"1c87deff8b8fd375d194f7493a98286f4cda4413d9ef8ee7840e707c52b89939\"]"
+    },
+    {
+      "file": "1-js-delta.bin",
+      "bytes": 22,
+      "sha256": "863963332fc14ebf7ae4a1492a4e8c456bbecd9640032ea0ec9d7d5da0e9ad81",
+      "identity": {
+        "profile": "editac.yrs-yjs.editor.v5",
+        "schema": "editac.registry.editor.v5",
+        "documentId": "12345678-1234-4234-8234-123456789abc",
+        "epoch": "23456789-2345-4345-8345-23456789abcd",
+        "protocolVersion": 1,
+        "updateEncoding": 1,
+        "offsets": "utf16"
+      },
+      "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",202,1,\"863963332fc14ebf7ae4a1492a4e8c456bbecd9640032ea0ec9d7d5da0e9ad81\"]"
+    }
+  ],
+  "cleanup": [
+    {
+      "pid": 30351,
+      "listenerGone": true
+    },
+    {
+      "pid": 30359,
+      "listenerGone": true
+    }
+  ]
+}

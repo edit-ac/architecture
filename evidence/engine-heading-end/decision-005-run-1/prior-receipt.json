@@ -1,0 +1,706 @@
+{
+  "gate": "WEB-1.14",
+  "children": [
+    "WEB-1.14-I1",
+    "WEB-1.14-V1"
+  ],
+  "state": "PARTIAL: atomic command/bindings delivered; original stable-caret requirement fails for a shared-source sibling",
+  "sourceSnapshot": "progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "1ac3554ab8716b8c5268f89580952b7de09d3bb4220cef4f2d090e453b99e92c",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseRevision": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseRevision": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementationRevision": "0f7365e64fb1578c74201805e14845015da4eb85ed488c262abf6491fcef7634",
+  "implementationRevisionKind": "Content-addressed dirty-worktree source manifest; no commit created",
+  "verifiedAtUtc": "2026-10-12T14:49:21.815942+00:00",
+  "prerequisites": {
+    "02-engine": "COMPLETE; current source SHA matches tracked 83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+    "03-local-storage": "COMPLETE; current source SHA matches tracked de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+    "WEB-1.7": "Preserved browser-composition-remote/receipt.json: canonical 69/69; no browser adapter source change in this gate"
+  },
+  "toolchain": {
+    "node": "24.19.0",
+    "rust": "1.97.1 rustup",
+    "wasmBindgen": "0.2.129",
+    "providerCalls": 0
+  },
+  "sourceHashes": {
+    "Cargo.lock": "2f1f79f14e37c342dfd91e99a7d27e207591725352b9f5e24a7f651f4994ba3c",
+    "Cargo.toml": "651ea6a2637ad2c528ddcd2c1731dbea2e4ea30a2976a87dc2e3836e702c14d7",
+    "crates/editac-core/src/anchors.rs": "a28e864a1228881f26a8e3458fc95da17f59db38284c82e6188ee23ff35ceaa5",
+    "crates/editac-core/src/commands/blocks.rs": "7f9f2650ff4bd124b6ce39bd2b6988693fc375cb1a44bb48195b065f092747da",
+    "crates/editac-core/src/commands/editor.rs": "33d9ec9a3790990f6895573a100833ddc60e746f5908c0e608953cabf10ec162",
+    "crates/editac-core/src/commands/format.rs": "892e0e5bdf9dc2fa4f073e8da4eb4418930ff43aa48256dedf9a848dba4a4044",
+    "crates/editac-core/src/commands/lists.rs": "515e7c64a017b5661125fcfed5d2ed46354a6af84319cfb52dedf456719bdc63",
+    "crates/editac-core/src/commands/mod.rs": "4eeb5722c4d4c6771cd63f35f023d70b0379297c2e0d522a8fea6fe4717b19d7",
+    "crates/editac-core/src/commands/move.rs": "805da87a781a8e7c905771eef3f69388156c5009b5af25a47f39692092c3679f",
+    "crates/editac-core/src/commands/structure.rs": "ebb57364ff821e66f7d27026545a351cd85bf02b6d4ff48b725832adf33bcc1e",
+    "crates/editac-core/src/commands/text.rs": "db968a920f4fbc4137621d9c9e6e4468b4e07ee6caf8e879e283aa83b05912ec",
+    "crates/editac-core/src/document.rs": "e1a6f3cba71199d538c7e8d6edd0b8c1c68a1ffd124128d042a6766875da8a14",
+    "crates/editac-core/src/editor.rs": "f10d349738f12ed8c63aaa52d7d0c74aca105c418d094e655944a9e389fcbbd1",
+    "crates/editac-core/src/history.rs": "ca9d8b0c670060382ba6ea4b99109cd7397dd36cfe54fcceeb8ff9a954cd7f40",
+    "crates/editac-core/src/lib.rs": "3f88b8a18b422507cf9c462a246f78070ecec59e9ef39347407973a720b5df53",
+    "crates/editac-core/src/ownership.rs": "a997e077966557128e9539eb130afdc5fd5d54766611b92673ed82a0d712db58",
+    "crates/editac-core/src/ownership/bounded_decoder.rs": "505ebf69cf61f7e8e9e6007a30e730bf2d93478788a60cd6b002b447769e233b",
+    "crates/editac-core/src/patches.rs": "5b194f1c003d20e2c8446e3d4202476da50ce3f1fddc143edac9b499e3bc29b1",
+    "crates/editac-core/src/projection.rs": "f3dd6fecd0738d73d35c97e35ea120dcd277c461dc28d9c7db23b25414f07f71",
+    "crates/editac-core/tests/heading_end.rs": "8b9d0311d6992db218430f51b4043f8e6f8d27adbb0809dfd2d0e973973f3ad5",
+    "crates/editac-wasm/src/bridge.rs": "60669bf78db3b8f852c6877d723e8cb42e99c727d0159c836a4430664e9217f8",
+    "crates/editac-wasm/src/cases.rs": "987b092499bf5b9740f75dddde123e3e71684e1dc0d779272bd55e6086c1dd8a",
+    "crates/editac-wasm/src/engine.rs": "cab3f0993442882d4971c71cd86025de113596c3805cb67b28a04df911d43c2a",
+    "crates/editac-wasm/src/lib.rs": "27b5a063703d98acca066fd9a86bc7361b928552ffe372b2659435f463299d6f",
+    "crates/editac-wasm/src/updates.rs": "944a9ea3482dbdb3c4f4eba7d7de94c563bc203ffda3a21fb5888463774823a4",
+    "fixtures/schema-v4/block-kinds-exchange.mjs": "f370fc68147c0d1cb1191af6ffeba23cc0abcadf9218c0df0edae2949ca515c6",
+    "fixtures/schema-v4/blocks-contract-probe.mjs": "3d2fcdc61bcbb18811cf887386ee858a68f25bfb993b1537072caaa341ae2207",
+    "fixtures/schema-v4/blocks-exchange.mjs": "2cc1ea569fbfc8a1760db4e1ed958e9c004c9f112ce53d61fdd80183396bd81c",
+    "fixtures/schema-v4/bounded_decoder.rs": "5679118322620c056a3bc84109327c8b4e8e332393681351affe90f8fe2e07d8",
+    "fixtures/schema-v4/editor-exchange.mjs": "b359b78348dbde66d4260d7201bcaca48ce5b16d5f45d6a86a1505d7cab8fff8",
+    "fixtures/schema-v4/exchange.mjs": "e7e08490a6eb9ac02df8d54789bd98b4c62a8aee449285eecfc04561002a9e21",
+    "fixtures/schema-v4/lists-exchange.mjs": "0394e11a0305f6641a06e9c09fc0c10c3dd180b658de42998b32eb78fd8da09c",
+    "fixtures/schema-v4/mapping.mjs": "5183d3090b15f379c8fe6fc11b4e8cda594b882162a0896c081ea0508ff05c9a",
+    "fixtures/schema-v4/mapping.rs": "e0c5e0d7e78113baff5d6061e870ec0810071f2537139cf0620d9efc1052f595",
+    "fixtures/schema-v4/moves-exchange.mjs": "4d038a0d8979e47fce7f7c0a2a842a136929d534b5bcbb85ba5fb3ee86dc5ceb",
+    "fixtures/schema-v4/policy.mjs": "4df1be1808804248cc687c4fcf5d150fc4b170d60345e0d86c8f8ab39a174153",
+    "fixtures/schema-v4/policy.rs": "4f0c71162a05e24c199a6b1e2594aa9890bdcb12db523ce3b8e0081a17640dd0",
+    "fixtures/schema-v4/profile.json": "ac4f02362e7d726a3314e127486129e4f65584031ab51e5e76f188e80760a21a",
+    "fixtures/schema-v4/seed.json": "39aac7215b7e28b056bab5f008ab9a5594b15d9e53e692926fe87cd68f808705",
+    "fixtures/schema-v5/README.md": "98b25c2a52afdc4e1d6ba9bd547f7ae3e39deb39d50d80f696cb086026634701",
+    "fixtures/schema-v5/blocks-exchange.mjs": "f5b079f37e5aeabb2028804c7075c75ac5d1125ad13f2b08e763b7b7945fb748",
+    "fixtures/schema-v5/bounded_decoder.rs": "5679118322620c056a3bc84109327c8b4e8e332393681351affe90f8fe2e07d8",
+    "fixtures/schema-v5/editor-exchange.mjs": "7e982d29d19938ba051235f427e04c3e02e3723ba925f74b9c6f5ca1dcf6ad1c",
+    "fixtures/schema-v5/exchange.mjs": "62a0f8a854a6aacbc8c4dbb66057d9b507688d77414d6ecb30805b5a0af51487",
+    "fixtures/schema-v5/joined-exchange.mjs": "412cdc1edc022c6caca0d478b397f6a8c64b0958cd17f1ee97198699dd9d99ee",
+    "fixtures/schema-v5/mapping.mjs": "54617d4cebf52f60dea937c41f4aa53c2f143ef9bce033390c2ee9820bef9f33",
+    "fixtures/schema-v5/mapping.rs": "47f3ac42dc1ba97b06b33f1f0e1b717e37cb18082bdc586f9ee2376c30ba3025",
+    "fixtures/schema-v5/policy.mjs": "dd5279c1e637df57600b0030a261f5623daa7af9c164591e5264b84d516265d8",
+    "fixtures/schema-v5/policy.rs": "f4a04487801421fd677de311b5ddd9e72a0cc42ffe552313153177255ac3c38f",
+    "fixtures/schema-v5/profile.json": "d0a68db300d2953de29ff8208a4d1208d6ec13cba0544cbf7302ee24acd6b5f9",
+    "fixtures/schema-v5/seed.json": "5248ce5b2ab27b8ae5b281933eb6a5882e3fb8e865489282450d1be19d31bf4d",
+    "fixtures/wasm-commands/cases.json": "066f986a528cf033c6b983b348e8614860f7136ded07c019aa2e9b0fd8da30d0",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+    "packages/core/package.json": "fdddd0d837af30e1baf994d8a1236f01fcb5d1d909c891e1f5bc66c2cc35908e",
+    "packages/core/src/engine.ts": "0e5923bc6e54f32710114faae20ae56c1e51849f43f0a83f81dda04c5592cf8f",
+    "packages/core/src/index.ts": "08c277b8628d968d8957d971798936690c2205ae72e10f82373246397da4754d",
+    "packages/web/src/input/keyboard.ts": "71a00ba829415f92cd0638ea16329bce6d86e01a75e5b6a0c7a41a6c7c99d92f",
+    "rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b",
+    "scripts/build-wasm.mjs": "7ca07827c665ba81bc8f0bd0a4b797001083dd3d58d6a8ed54de6689996b2028",
+    "tests/wasm-command-types.ts": "1356524ed8c3c20251b625d6be26ffaff5d4230a661873edc27a84bf034d8edb",
+    "tests/wasm-commands.test.mjs": "a226745ba620b02aa5d13466639badba91dc50a9df933c70351acf565b7a408e"
+  },
+  "sourceManifest": "source-hashes.json",
+  "testedSource": "tested-source/ (nine-case native and 34-case packed implementation prerequisite); current-source/ (added failing native and pending packed guard)",
+  "packedArtifact": {
+    "path": "edit-ac-core-0.0.0.tgz",
+    "sha256": "d00f6544c017d69225476fe4a4b6545c3c6bbbbe0d3a7241895fdf629be87382",
+    "wasmSha256": "d30075f5309fa00b6071693b8f98b15cc478f851aa942a5c56d3b9295a9d08b3",
+    "wasmBytes": 3035268,
+    "bindingSha256": "846d86197125ef4ddf3159085f866c847e4de70d631a7dd70e00a893558ea139",
+    "consumer": "independently unpacked npm tarball loaded via EDITAC_WASM_COMMAND_PACKAGE; temporary consumer removed after qualification; package retained"
+  },
+  "counts": {
+    "rustHeadingEnd": {
+      "distinctExecuted": 10,
+      "distinctPassed": 9,
+      "unresolvedFailed": 1,
+      "requiredSkipped": 0,
+      "basis": "Nine previously passing cases retained; added shared-source caret guard executes 1/1 and fails. Parent acceptance incomplete; nine other cases are filtered out in diagnostic run."
+    },
+    "packedWasmCommands": {
+      "distinctExecuted": 34,
+      "distinctPassed": 34,
+      "newHeadingEndCases": 9,
+      "unresolvedFailed": 0,
+      "requiredSkipped": 0,
+      "basis": "34 previously executed checks have passing combined evidence; newly authored shared-source sibling guard is pending and was not rerun against unchanged failing Rust semantics.",
+      "authoredChecks": 35,
+      "unexecutedRequiredChecks": 1,
+      "newHeadingEndCasesAuthored": 10
+    },
+    "nativeWasmFixtures": {
+      "executed": 28,
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0
+    },
+    "editorHistoryRegressions": {
+      "distinctExecuted": 94,
+      "distinctPassed": 94,
+      "unresolvedFailed": 0,
+      "requiredSkipped": 0,
+      "suites": {
+        "blocks": 22,
+        "editor_profile": 22,
+        "history": 28,
+        "stable_editor_profile": 22
+      },
+      "basis": "20 unchanged blocks passes plus two environment-repaired exchange passes; editor/history suites 72/72. Targeted blocks run filters out 20 previously passing cases."
+    }
+  },
+  "checks": [
+    {
+      "name": "versions",
+      "command": [
+        "node",
+        "--version"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 0.06,
+      "log": "versions.log",
+      "bytes": 9
+    },
+    {
+      "name": "build-wasm",
+      "command": [
+        "npm",
+        "run",
+        "build:wasm"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 14.91,
+      "log": "build-wasm.log",
+      "bytes": 632
+    },
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 0.65,
+      "log": "build.log",
+      "bytes": 243
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 0.58,
+      "log": "typecheck.log",
+      "bytes": 290
+    },
+    {
+      "name": "native-wasm-fixtures",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-wasm",
+        "--lib",
+        "--locked",
+        "--offline"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 10.62,
+      "log": "native-wasm-fixtures.log",
+      "bytes": 1799,
+      "suites": [
+        {
+          "passed": 28,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filteredOut": 0,
+          "executed": 28
+        }
+      ]
+    },
+    {
+      "name": "pack",
+      "command": [
+        "npm",
+        "pack",
+        "--workspace",
+        "@edit-ac/core",
+        "--pack-destination",
+        "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end",
+        "--json"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 0.77,
+      "log": "pack.log",
+      "bytes": 1497
+    },
+    {
+      "name": "packed-types",
+      "command": [
+        "node",
+        "/Users/bpstr/Github/edit-ac/core/node_modules/typescript/bin/tsc",
+        "--strict",
+        "--noEmit",
+        "--target",
+        "ES2022",
+        "--module",
+        "NodeNext",
+        "--moduleResolution",
+        "NodeNext",
+        "wasm-command-types.ts"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/consumer",
+      "exit": 0,
+      "seconds": 0.3,
+      "log": "packed-types.log",
+      "bytes": 0
+    },
+    {
+      "name": "wasm-commands",
+      "command": [
+        "node",
+        "--test",
+        "tests/wasm-commands.test.mjs"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 1,
+      "seconds": 0.51,
+      "log": "wasm-commands.log",
+      "bytes": 4154,
+      "nodeSummary": {
+        "tests": 34,
+        "pass": 33,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "name": "wasm-deleted-repaired",
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern",
+        "headingEnd deleted remote target",
+        "tests/wasm-commands.test.mjs"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 0.41,
+      "log": "wasm-deleted-repaired.log",
+      "bytes": 218,
+      "nodeSummary": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "name": "editor-history-regressions",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "editor_profile",
+        "--test",
+        "stable_editor_profile",
+        "--test",
+        "history",
+        "--test",
+        "blocks",
+        "--locked",
+        "--offline"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 101,
+      "seconds": 40.46,
+      "log": "editor-history-regressions.log",
+      "bytes": 3098,
+      "suites": [
+        {
+          "passed": 20,
+          "failed": 2,
+          "skipped": 0,
+          "measured": 0,
+          "filteredOut": 0,
+          "executed": 22
+        }
+      ]
+    },
+    {
+      "name": "blocks-exchange-repaired",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "blocks",
+        "bidirectional_pinned_yjs",
+        "--locked",
+        "--offline"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 0.95,
+      "log": "blocks-exchange-repaired.log",
+      "bytes": 419,
+      "exchange_environment": {
+        "EDITAC_BLOCK_COMMAND_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/blocks-exchange",
+        "EDITAC_STABLE_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/joined-exchange",
+        "EDITAC_HISTORY_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/history-exchange",
+        "EDITAC_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/editor-exchange",
+        "EDITAC_STABLE_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/stable-editor-exchange"
+      },
+      "suites": [
+        {
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filteredOut": 20,
+          "executed": 2
+        }
+      ]
+    },
+    {
+      "name": "editor-history-ready",
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "editor_profile",
+        "--test",
+        "stable_editor_profile",
+        "--test",
+        "history",
+        "--locked",
+        "--offline"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 5.98,
+      "log": "editor-history-ready.log",
+      "bytes": 7002,
+      "exchange_environment": {
+        "EDITAC_BLOCK_COMMAND_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/blocks-exchange",
+        "EDITAC_STABLE_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/joined-exchange",
+        "EDITAC_HISTORY_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/history-exchange",
+        "EDITAC_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/editor-exchange",
+        "EDITAC_STABLE_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/stable-editor-exchange"
+      },
+      "suites": [
+        {
+          "passed": 22,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filteredOut": 0,
+          "executed": 22
+        },
+        {
+          "passed": 28,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filteredOut": 0,
+          "executed": 28
+        },
+        {
+          "passed": 22,
+          "failed": 0,
+          "skipped": 0,
+          "measured": 0,
+          "filteredOut": 0,
+          "executed": 22
+        }
+      ]
+    },
+    {
+      "name": "format-check",
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 0.86,
+      "log": "format-check.log",
+      "bytes": 0,
+      "exchange_environment": {
+        "EDITAC_BLOCK_COMMAND_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/blocks-exchange",
+        "EDITAC_STABLE_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/joined-exchange",
+        "EDITAC_HISTORY_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/history-exchange",
+        "EDITAC_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/editor-exchange",
+        "EDITAC_STABLE_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/stable-editor-exchange"
+      }
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "/Users/bpstr/Github/edit-ac/core",
+      "exit": 0,
+      "seconds": 0.02,
+      "log": "diff-check.log",
+      "bytes": 0,
+      "exchange_environment": {
+        "EDITAC_BLOCK_COMMAND_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/blocks-exchange",
+        "EDITAC_STABLE_JOIN_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/joined-exchange",
+        "EDITAC_HISTORY_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/history-exchange",
+        "EDITAC_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/editor-exchange",
+        "EDITAC_STABLE_EDITOR_EXCHANGE": "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/stable-editor-exchange"
+      }
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "tests/wasm-commands.test.mjs"
+      ],
+      "exit": 0,
+      "log": "fixture-syntax.log",
+      "kind": "syntax check, not feature execution"
+    },
+    {
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exit": 0,
+      "log": "final-format-check.log"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "log": "final-diff-check.log"
+    }
+  ],
+  "nativeHeadingEndChecks": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "heading_end",
+        "--locked",
+        "--offline"
+      ],
+      "log": "rust-heading-end-initial.log",
+      "exit": 101,
+      "result": [
+        "Compilation failed; zero tests executed"
+      ],
+      "recordedAtUtc": "2026-10-12T14:29:34.991533+00:00"
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "heading_end",
+        "--locked",
+        "--offline"
+      ],
+      "log": "rust-heading-end-repaired.log",
+      "exit": 101,
+      "result": [
+        "test result: FAILED. 1 passed; 8 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s"
+      ],
+      "recordedAtUtc": "2026-10-12T14:30:05.273299+00:00"
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "heading_end",
+        "--locked",
+        "--offline"
+      ],
+      "log": "rust-heading-end-unique-fixtures.log",
+      "exit": 101,
+      "result": [
+        "test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s"
+      ],
+      "recordedAtUtc": "2026-10-12T14:30:47.172731+00:00"
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "heading_end",
+        "heading_end_undo_redo_preserves_unrelated_remote_text_and_peer_convergence",
+        "--locked",
+        "--offline"
+      ],
+      "log": "rust-heading-end-peer-repaired.log",
+      "exit": 0,
+      "result": [
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.02s"
+      ],
+      "recordedAtUtc": "2026-10-12T14:31:36.895814+00:00"
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "-p",
+        "editac-core",
+        "--test",
+        "heading_end",
+        "heading_end_caret_identifies_new_paragraph_before_existing_shared_source_sibling",
+        "--locked",
+        "--offline"
+      ],
+      "exit": 101,
+      "log": "rust-heading-end-shared-source.log",
+      "executed": 1,
+      "passed": 0,
+      "failed": 1,
+      "ignored": 0,
+      "filteredOut": 9
+    }
+  ],
+  "criteria": {
+    "stagedAtomicOperation": "EditorCommand::HeadingEnd shares existing disposable-replica split preparation, writes generated destination paragraph presentation only on stage, then existing full schema/resource/immutable admission and one commit_editor update",
+    "nonemptyEndOnly": "Rust heading_end_ineligible_targets_and_resource_rejection_are_atomic and packed headingEnd rejects empty/interior/nonheading/malformed targets; UTF-16 emoji boundary checks",
+    "identityLevelTextMarksParentAndUnrelatedBlocks": "Rust heading_end_preserves_heading_marks_and_one_update_history_with_stable_utf16_caret; packed headingEnd packed command preserves heading/marks; quote parent cases",
+    "selectedReplacement": "Rust heading_end_selected_suffix_replacement_is_one_prepared_batch and packed selected suffix case: authored A/H + empty paragraph + peer; undo/redo authored full original/replacement",
+    "crossBlockSelectedReplacement": "Rust heading_end_cross_block_selected_replacement_stages_deletions_join_and_destination and packed cross-block case: per-owner deletion, join, headingEnd in one prepared batch; one update/history and stable resulting caret",
+    "stableResult": "INCOMPLETE: original right-biased cut works in nine qualified ordinary/selected fixtures but redirects to the existing sibling at a shared-source boundary. New named native guard fails. No guessed owner, alternate absolute target, schema or anchor-policy change was made.",
+    "silentCanAndRejection": "Checkpoint bytes, state vector, revision, history and update-subscription assertions cover can, invalid/later-invalid/empty-after-delete/resource/stale/foreign/released/deleted/disposed cases; update subscribers have zero events on preparation/rejection (therefore no journal enqueue through the existing subscriber port)",
+    "readOnlyPolicy": "New packed test headingEnd admission honors the existing host read-only guard before preparation uses production KeyboardInput.execute with blocked=true, real packed EngineHandle and prepared inert host boundaries. Zero prepare/commit dispatch, unchanged engine. This is guard evidence, not writable heading-end browser integration; the engine has no platform read-only property.",
+    "admission": "Wrong-epoch remote update rejected atomically after headingEnd; final stage admission remains production validation; existing native/WASM malformed/admission checks pass",
+    "oneExplicitHistoryGroupAndPeerUndoRedo": "Native and packed peer schedules edit unrelated paragraph on independent restored peer, exchange real updates, undo/redo headingEnd with authored heading/paragraph/peerR content and presentation on both replicas; local group count exactly one",
+    "existingContextPolicies": "34 packed canonical cases include original interior split, code, list/quote, empty-item and history fixtures. 94 editor/block/history Rust regressions pass. Browser routing source unchanged; empty-heading browser conversion remains its existing host command."
+  },
+  "preservedFailures": [
+    {
+      "log": "rust-heading-end-initial.log",
+      "reason": "Fixture helper compilation: Arc node projection and private read access; repaired helper with clone and public state_vector_v1."
+    },
+    {
+      "log": "rust-heading-end-repaired.log",
+      "reason": "8 fixture failures: reused initialization document/epoch; unique deterministic per-fixture identities repaired."
+    },
+    {
+      "log": "rust-heading-end-unique-fixtures.log",
+      "reason": "8 passes/1 fixture failure: empty bytes are not a valid v1 state vector; repaired peer exchange to use peer.state_vector_v1(). Only failed case rerun."
+    },
+    {
+      "log": "wasm-commands.log",
+      "reason": "33 passes/1 fixture failure: raw deletion control used bool instead of schema enabled tuple; repaired exact test to use [enabled,false]. Only failed case rerun."
+    },
+    {
+      "log": "editor-history-regressions.log",
+      "reason": "20 blocks passes/2 exchange tests failed on missing isolated-directory env; named env paths supplied, failed exchange tests rerun, then remaining previously unexecuted suites run."
+    },
+    {
+      "log": "rust-heading-end-shared-source.log",
+      "reason": "Actual semantic failure: new paragraph exists, but the original right-biased cut resolves to the following shared-source sibling. Unresolved; WEB-1.14/I1/V1 remain open."
+    }
+  ],
+  "qualificationLimits": [
+    "The headingEnd command is not qualified for browser integration. Original WEB-1.14 remains incomplete on the shared-source stable-caret criterion; prior nine/34-case passing prerequisite evidence is not full acceptance.",
+    "Actual Rust and independently unpacked built-WASM plus prepared host guard checks; no browser writable heading-end integration or OS/device evidence in WEB-1.14.",
+    "No full-suite passing exit is claimed for the retained initial failed runs; final distinct acceptance combines unchanged passing cases with targeted repairs.",
+    "Update-subscription effects prove dispatch/enqueue cardinality; existing storage evidence remains upstream. No new storage durability claim.",
+    "No publication, deployment, paid inference or provider transports; packages remain private.",
+    "WEB-1.8/I2/C2 and unfiltered keyboard browser matrix remain the next parent."
+  ],
+  "teardown": {
+    "removedFilePrefix": "/Users/bpstr/Github/edit-ac/core/target/debug/deps/heading_end-05c0722e416c35a2",
+    "removedFileCount": 227,
+    "removedDirectories": [
+      "/Users/bpstr/Github/edit-ac/core/target/debug/incremental/heading_end-2igo8ffz30ep6",
+      "/Users/bpstr/Github/edit-ac/core/target/debug/.fingerprint/editac-core-05c0722e416c35a2",
+      "/Users/bpstr/Github/edit-ac/architecture/evidence/engine-heading-end/consumer"
+    ],
+    "targetBytesReclaimed": 26411008,
+    "dataVolumeFreeBytesBefore": 9567207424,
+    "dataVolumeFreeBytesAfter": 9572388864,
+    "preserved": "Source, unrelated targets/caches/services, packed artifact, tested source snapshots and logs",
+    "taskServer": {
+      "pid": 62209,
+      "port": 51326,
+      "exited": true,
+      "listenerGone": true
+    },
+    "diagnosticCleanup": {
+      "reason": "Inactive rebuilt shared-source diagnostic artifacts",
+      "removedFilePrefix": "/Users/bpstr/Github/edit-ac/core/target/debug/deps/heading_end-05c0722e416c35a2",
+      "removedFileCount": 78,
+      "removedDirectories": [
+        "/Users/bpstr/Github/edit-ac/core/target/debug/incremental/heading_end-2igo8ffz30ep6",
+        "/Users/bpstr/Github/edit-ac/core/target/debug/.fingerprint/editac-core-05c0722e416c35a2"
+      ],
+      "targetBytesReclaimed": 21176320,
+      "dataVolumeFreeBytesBefore": 10642100224,
+      "dataVolumeFreeBytesAfter": 10663170048
+    }
+  },
+  "passingSourceManifest": "passing-source-hashes.json",
+  "passingSourceManifestSha256": "a359f77e7196f58c5480506037cf99de3c7807b0c42d31b4e6185505d8093b94",
+  "pendingCriteria": {
+    "WEB-1.14-C2": {
+      "originalParent": "WEB-1.14",
+      "criterion": "Resolve the right-biased cut to the resulting paragraph at offset zero through a stable result without guessed generated IDs",
+      "nativeGuard": "heading_end_caret_identifies_new_paragraph_before_existing_shared_source_sibling",
+      "failureLog": "rust-heading-end-shared-source.log",
+      "packedGuard": "headingEnd stable caret selects the new paragraph before an existing shared-source sibling",
+      "packedGuardState": "Authored, syntax checked, not executed",
+      "unblock": "Implement and qualify a source-disambiguated stable result/destination ownership repair while preserving v5 schema and existing anchor policies",
+      "retry": "Relevant semantic implementation/qualified source-contract change; do not repeat unchanged guard",
+      "controllerSplit": "controller-split.md"
+    }
+  },
+  "trackingReconciliation": {
+    "originalCheckboxesMapped": 43,
+    "criterionTextDrift": 0,
+    "state": "IN_PROGRESS",
+    "nextReady": "WEB-1.14-C2"
+  },
+  "constructionDecision": {
+    "receipt": "iteration-6/receipt.json",
+    "decision": "iteration-6/construction-decision.md",
+    "state": "BLOCKED_UNQUALIFIED_RESULT_CONTRACT",
+    "diagnosticCounts": {
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 12
+    },
+    "productionChanged": false,
+    "originalCutCriterionClosed": false
+  }
+}

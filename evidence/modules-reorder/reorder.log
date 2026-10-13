@@ -1,0 +1,318 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs reorder
+
+reorder browser: chromium
+✖ keyboard down and up use one semantic move and retain selected identity/range (2455.654834ms)
+✔ explicit accessible button is equivalent to keyboard control (188.584834ms)
+✔ concurrent peer edit delivered before move retains source identity and converges (146.3355ms)
+✔ concurrent peer edit delivered after move retains source identity and converges (125.994875ms)
+✖ invalid nested self destination is atomic (133.39225ms)
+✖ invalid nested descendant destination is atomic (117.751042ms)
+✖ invalid nested non-container destination is atomic (109.583125ms)
+✖ invalid nested non-sibling destination is atomic (107.563542ms)
+✔ captured structural version rejects a stale target without retargeting (119.777333ms)
+✔ boundary buttons and keyboard do not create empty history or journal entries (116.719959ms)
+✔ native Tab reaches controls and Enter restores editor selection (134.560333ms)
+✔ read-only and composition suppress reorder without taking composition keys (159.788958ms)
+✔ Escape and focus exit cancel retained targets (130.086417ms)
+✔ undo restores order while preserving remote content, redo moves again (162.514709ms)
+✔ disabled recovery retains reordered data and disposal removes controls/listeners (149.574333ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 10
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4727.069667
+
+✖ failing tests:
+
+test at tests/browser/reorder.spec.ts:8:1
+✖ keyboard down and up use one semantic move and retain selected identity/range (2455.654834ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'editac:local:module-reorder'
+  - 'module-reorder'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:9:591
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'editac:local:module-reorder',
+    expected: 'module-reorder',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested self destination is atomic (133.39225ms)
+  page.evaluate: TypeError: Cannot read properties of undefined (reading 'id')
+      at Object.nested (http://127.0.0.1:61718/fixture/session.mjs:22:245)
+      at eval (eval at evaluate (:370:30), <anonymous>:1:25)
+      at UtilityScript.evaluate (<anonymous>:372:16)
+      at UtilityScript.<anonymous> (<anonymous>:1:44)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    log: []
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested descendant destination is atomic (117.751042ms)
+  page.evaluate: TypeError: Cannot read properties of undefined (reading 'id')
+      at Object.nested (http://127.0.0.1:61718/fixture/session.mjs:22:245)
+      at eval (eval at evaluate (:370:30), <anonymous>:1:25)
+      at UtilityScript.evaluate (<anonymous>:372:16)
+      at UtilityScript.<anonymous> (<anonymous>:1:44)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    log: []
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested non-container destination is atomic (109.583125ms)
+  page.evaluate: TypeError: Cannot read properties of undefined (reading 'id')
+      at Object.nested (http://127.0.0.1:61718/fixture/session.mjs:22:245)
+      at eval (eval at evaluate (:370:30), <anonymous>:1:25)
+      at UtilityScript.evaluate (<anonymous>:372:16)
+      at UtilityScript.<anonymous> (<anonymous>:1:44)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    log: []
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested non-sibling destination is atomic (107.563542ms)
+  page.evaluate: TypeError: Cannot read properties of undefined (reading 'id')
+      at Object.nested (http://127.0.0.1:61718/fixture/session.mjs:22:245)
+      at eval (eval at evaluate (:370:30), <anonymous>:1:25)
+      at UtilityScript.evaluate (<anonymous>:372:16)
+      at UtilityScript.<anonymous> (<anonymous>:1:44)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    log: []
+  }
+reorder browser: firefox
+✖ keyboard down and up use one semantic move and retain selected identity/range (4528.911792ms)
+✔ explicit accessible button is equivalent to keyboard control (374.58075ms)
+✔ concurrent peer edit delivered before move retains source identity and converges (287.166666ms)
+✔ concurrent peer edit delivered after move retains source identity and converges (268.341917ms)
+✖ invalid nested self destination is atomic (244.520667ms)
+✖ invalid nested descendant destination is atomic (247.655625ms)
+✖ invalid nested non-container destination is atomic (255.440375ms)
+✖ invalid nested non-sibling destination is atomic (258.135167ms)
+✔ captured structural version rejects a stale target without retargeting (264.962667ms)
+✔ boundary buttons and keyboard do not create empty history or journal entries (718.346666ms)
+✔ native Tab reaches controls and Enter restores editor selection (295.127834ms)
+✔ read-only and composition suppress reorder without taking composition keys (282.417167ms)
+✔ Escape and focus exit cancel retained targets (265.832917ms)
+✔ undo restores order while preserving remote content, redo moves again (286.568417ms)
+✔ disabled recovery retains reordered data and disposal removes controls/listeners (278.953333ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 10
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9324.93925
+
+✖ failing tests:
+
+test at tests/browser/reorder.spec.ts:8:1
+✖ keyboard down and up use one semantic move and retain selected identity/range (4528.911792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'editac:local:module-reorder'
+  - 'module-reorder'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:9:591
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'editac:local:module-reorder',
+    expected: 'module-reorder',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested self destination is atomic (244.520667ms)
+  page.evaluate: can't access property "id", e.read().visible.find(...) is undefined
+  nested@http://127.0.0.1:61869/fixture/session.mjs:22:216
+  @debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested descendant destination is atomic (247.655625ms)
+  page.evaluate: can't access property "id", e.read().visible.find(...) is undefined
+  nested@http://127.0.0.1:61869/fixture/session.mjs:22:216
+  @debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested non-container destination is atomic (255.440375ms)
+  page.evaluate: can't access property "id", e.read().visible.find(...) is undefined
+  nested@http://127.0.0.1:61869/fixture/session.mjs:22:216
+  @debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested non-sibling destination is atomic (258.135167ms)
+  page.evaluate: can't access property "id", e.read().visible.find(...) is undefined
+  nested@http://127.0.0.1:61869/fixture/session.mjs:22:216
+  @debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    name: 'Error',
+    log: []
+  }
+reorder browser: webkit
+✖ keyboard down and up use one semantic move and retain selected identity/range (3477.518833ms)
+✔ explicit accessible button is equivalent to keyboard control (1305.132334ms)
+✔ concurrent peer edit delivered before move retains source identity and converges (319.430875ms)
+✔ concurrent peer edit delivered after move retains source identity and converges (283.56425ms)
+✖ invalid nested self destination is atomic (339.097792ms)
+✖ invalid nested descendant destination is atomic (251.326167ms)
+✖ invalid nested non-container destination is atomic (229.397ms)
+✖ invalid nested non-sibling destination is atomic (228.160458ms)
+✔ captured structural version rejects a stale target without retargeting (264.948375ms)
+✔ boundary buttons and keyboard do not create empty history or journal entries (246.885625ms)
+✖ native Tab reaches controls and Enter restores editor selection (241.684ms)
+✔ read-only and composition suppress reorder without taking composition keys (259.922625ms)
+✖ Escape and focus exit cancel retained targets (257.456125ms)
+✔ undo restores order while preserving remote content, redo moves again (277.048833ms)
+✔ disabled recovery retains reordered data and disposal removes controls/listeners (269.304917ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 8
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8598.723375
+
+✖ failing tests:
+
+test at tests/browser/reorder.spec.ts:8:1
+✖ keyboard down and up use one semantic move and retain selected identity/range (3477.518833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'editac:local:module-reorder'
+  - 'module-reorder'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:9:591
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'editac:local:module-reorder',
+    expected: 'module-reorder',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested self destination is atomic (339.097792ms)
+  page.evaluate: TypeError: undefined is not an object (evaluating 'e.read().visible.find(n=>n.kind==='container').id')
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    log: []
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested descendant destination is atomic (251.326167ms)
+  page.evaluate: TypeError: undefined is not an object (evaluating 'e.read().visible.find(n=>n.kind==='container').id')
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    log: []
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested non-container destination is atomic (229.397ms)
+  page.evaluate: TypeError: undefined is not an object (evaluating 'e.read().visible.find(n=>n.kind==='container').id')
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    log: []
+  }
+
+test at tests/browser/reorder.spec.ts:20:78
+✖ invalid nested non-sibling destination is atomic (228.160458ms)
+  page.evaluate: TypeError: undefined is not an object (evaluating 'e.read().visible.find(n=>n.kind==='container').id')
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:21:29
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:13) {
+    log: []
+  }
+
+test at tests/browser/reorder.spec.ts:29:1
+✖ native Tab reaches controls and Enter restores editor selection (241.684ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:30:106
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/reorder.spec.ts:35:1
+✖ Escape and focus exit cancel retained targets (257.456125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/reorder.spec.ts:36:142
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:75:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

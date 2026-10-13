@@ -1,0 +1,121 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs reconcile
+
+reconcile browser: chromium
+✔ prepared spellcheck input-first reconciles exactly once (1269.218209ms)
+✔ prepared spellcheck observer-first reconciles exactly once (118.02575ms)
+✔ prepared spellcheck observer-only reconciles exactly once (109.778833ms)
+✔ prepared autocorrect input-first reconciles exactly once (111.221ms)
+✔ prepared autocorrect observer-first reconciles exactly once (105.147792ms)
+✔ prepared autocorrect observer-only reconciles exactly once (118.476875ms)
+✔ prepared paste-like input-first reconciles exactly once (112.711583ms)
+✔ prepared paste-like observer-first reconciles exactly once (103.007083ms)
+✔ prepared paste-like observer-only reconciles exactly once (101.772583ms)
+✔ prepared input without any beforeinput admits an existing text-node mutation (101.715375ms)
+✔ prepared unusable cancelable beforeinput falls back to native text (104.27375ms)
+✔ prepared plain-text child replacement canonicalizes only the affected block (102.064708ms)
+✔ prepared observer-owned duplicates retain a deliberate identical second edit (122.939833ms)
+✔ prepared multiple mutations in one owned batch commit final text once (105.126917ms)
+✔ prepared Unicode replacement preserves UTF-16 scalar boundaries and native caret (125.318667ms)
+✔ prepared no-op child replacement rebuilds mappings without a semantic update (105.930625ms)
+✔ prepared renderer echo cannot consume an unprompted native mutation in the same turn (104.311583ms)
+✔ prepared pure renderer patches and input-only notifications produce zero local effects (105.725834ms)
+✔ prepared pasted markup exposes recovery and leaves authoritative text unchanged (94.173667ms)
+✔ prepared unknown root mutation exposes recovery and stops editing without root diff (93.959333ms)
+✔ prepared multi-block mutation is explicit unsupported recovery, never partial commit (104.203209ms)
+✔ prepared affected-block resource limit retains bounded recovery and no semantic effect (146.978125ms)
+✔ prepared same-block remote patch rejects a changed baseline with captured recovery (123.290709ms)
+✔ prepared read-only unprompted native text is restored with observable recovery (102.811958ms)
+✔ prepared dispose invalidates queued observer-owned edit (99.866209ms)
+✔ prepared removed root block retains removed text and disables editing (118.891875ms)
+✔ prepared record limit stops editing and preserves bounded final text (121.673834ms)
+✔ prepared correction preserves independently navigated caret in another block (117.321333ms)
+✔ prepared multiline pasted text uses semantic LF rather than textContent omission (115.043042ms)
+✔ prepared unknown root recovery preserves selection outside this editor (96.912083ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4758.191291
+reconcile browser: firefox
+✔ prepared spellcheck input-first reconciles exactly once (4389.282292ms)
+✔ prepared spellcheck observer-first reconciles exactly once (271.827541ms)
+✔ prepared spellcheck observer-only reconciles exactly once (272.941333ms)
+✔ prepared autocorrect input-first reconciles exactly once (241.1545ms)
+✔ prepared autocorrect observer-first reconciles exactly once (245.826833ms)
+✔ prepared autocorrect observer-only reconciles exactly once (230.261084ms)
+✔ prepared paste-like input-first reconciles exactly once (245.31675ms)
+✔ prepared paste-like observer-first reconciles exactly once (295.59275ms)
+✔ prepared paste-like observer-only reconciles exactly once (274.494125ms)
+✔ prepared input without any beforeinput admits an existing text-node mutation (693.081459ms)
+✔ prepared unusable cancelable beforeinput falls back to native text (257.08025ms)
+✔ prepared plain-text child replacement canonicalizes only the affected block (240.712208ms)
+✔ prepared observer-owned duplicates retain a deliberate identical second edit (275.069917ms)
+✔ prepared multiple mutations in one owned batch commit final text once (256.829459ms)
+✔ prepared Unicode replacement preserves UTF-16 scalar boundaries and native caret (276.000833ms)
+✔ prepared no-op child replacement rebuilds mappings without a semantic update (245.898125ms)
+✔ prepared renderer echo cannot consume an unprompted native mutation in the same turn (247.381458ms)
+✔ prepared pure renderer patches and input-only notifications produce zero local effects (290.786375ms)
+✔ prepared pasted markup exposes recovery and leaves authoritative text unchanged (247.131667ms)
+✔ prepared unknown root mutation exposes recovery and stops editing without root diff (835.915792ms)
+✔ prepared multi-block mutation is explicit unsupported recovery, never partial commit (603.702417ms)
+✔ prepared affected-block resource limit retains bounded recovery and no semantic effect (260.033666ms)
+✔ prepared same-block remote patch rejects a changed baseline with captured recovery (307.216ms)
+✔ prepared read-only unprompted native text is restored with observable recovery (301.820292ms)
+✔ prepared dispose invalidates queued observer-owned edit (239.860417ms)
+✔ prepared removed root block retains removed text and disables editing (227.603875ms)
+✔ prepared record limit stops editing and preserves bounded final text (245.97175ms)
+✔ prepared correction preserves independently navigated caret in another block (255.709959ms)
+✔ prepared multiline pasted text uses semantic LF rather than textContent omission (262.398458ms)
+✔ prepared unknown root recovery preserves selection outside this editor (840.075167ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14504.386708
+reconcile browser: webkit
+✔ prepared spellcheck input-first reconciles exactly once (3467.820333ms)
+✔ prepared spellcheck observer-first reconciles exactly once (262.715541ms)
+✔ prepared spellcheck observer-only reconciles exactly once (241.337458ms)
+✔ prepared autocorrect input-first reconciles exactly once (238.035125ms)
+✔ prepared autocorrect observer-first reconciles exactly once (239.286875ms)
+✔ prepared autocorrect observer-only reconciles exactly once (244.020459ms)
+✔ prepared paste-like input-first reconciles exactly once (286.140291ms)
+✔ prepared paste-like observer-first reconciles exactly once (234.47525ms)
+✔ prepared paste-like observer-only reconciles exactly once (251.041ms)
+✔ prepared input without any beforeinput admits an existing text-node mutation (255.877917ms)
+✔ prepared unusable cancelable beforeinput falls back to native text (223.306916ms)
+✔ prepared plain-text child replacement canonicalizes only the affected block (235.300875ms)
+✔ prepared observer-owned duplicates retain a deliberate identical second edit (251.475667ms)
+✔ prepared multiple mutations in one owned batch commit final text once (222.1375ms)
+✔ prepared Unicode replacement preserves UTF-16 scalar boundaries and native caret (292.671542ms)
+✔ prepared no-op child replacement rebuilds mappings without a semantic update (242.072375ms)
+✔ prepared renderer echo cannot consume an unprompted native mutation in the same turn (232.792667ms)
+✔ prepared pure renderer patches and input-only notifications produce zero local effects (249.272292ms)
+✔ prepared pasted markup exposes recovery and leaves authoritative text unchanged (241.161791ms)
+✔ prepared unknown root mutation exposes recovery and stops editing without root diff (240.207375ms)
+✔ prepared multi-block mutation is explicit unsupported recovery, never partial commit (237.92625ms)
+✔ prepared affected-block resource limit retains bounded recovery and no semantic effect (347.474208ms)
+✔ prepared same-block remote patch rejects a changed baseline with captured recovery (266.122791ms)
+✔ prepared read-only unprompted native text is restored with observable recovery (249.46575ms)
+✔ prepared dispose invalidates queued observer-owned edit (270.678041ms)
+✔ prepared removed root block retains removed text and disables editing (228.695458ms)
+✔ prepared record limit stops editing and preserves bounded final text (260.776333ms)
+✔ prepared correction preserves independently navigated caret in another block (266.029542ms)
+✔ prepared multiline pasted text uses semantic LF rather than textContent omission (285.439542ms)
+✔ prepared unknown root recovery preserves selection outside this editor (244.438792ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11183.20975

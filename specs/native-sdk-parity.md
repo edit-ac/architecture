@@ -140,3 +140,22 @@ screen-reader qualification against those source/artifact revisions. Until that
 evidence passes, support remains unqualified. Full native delivery is incomplete
 while any mandatory platform/capability is blocked, unsupported, untested or
 represented only by a binding demonstration.
+
+## Everyday interactions and optional assistance
+
+Reuse [editor interactions](editor-interactions.md) and its [case catalog](../tests/editor-interaction-cases.md) for shared semantic expectations while retaining native visual navigation, text-input and accessibility policy. Browser event replays do not qualify a native adapter. Track 39 adds [assistive input](assistive-input.md) presenters in independently gated iOS, Android, macOS, Windows, Linux and terminal tasks; baseline OS dictation and screen-reader editing stay required without the extension.
+
+
+## Native editing protocol qualification
+
+Apply the additional NAT cases in the [desktop/native catalog](../tests/desktop-editing-cases.md) with [platform research](../evidence/native-editing-research.md). Shared content outcomes are portable; selection geometry, text services, clipboard ownership and OS command routing remain platform responsibilities. Each relevant SDK task binds its protocol cases before the platform qualification task passes. Manual OS/IME/assistive observations remain distinct from deterministic fake-protocol tests.
+
+Android InputConnection adapters distinguish UTF-16 deletion from code-point deletion, exclude the selection where the API requires it, bracket batch edits, handle nullable/bounded surrounding text and report selection updates without echo commits. Stylus gesture preview is transient; apply/cancel/fallback results and supported/unsupported gesture capabilities are explicit. Apple controls expose marked/selected ranges, responder Edit commands, find and text-checking/replacement only through captured semantic targets; an asynchronous item provider or writing tool cannot apply to a different session after focus changes. API availability is not permission to call an external AI service; validation uses prepared replacements only. Windows text services qualify selection/lock/reentrant update and composition behavior in the chosen native text stack; UI Automation text ranges remain mapped after edits. GTK adapters convert UTF-8 byte indices and character counts at their actual API boundaries into public UTF-16 positions, and distinguish PRIMARY selection from the clipboard on the qualified display backend. Invalid, stale or unavailable ranges reject without guessing.
+
+All platforms qualify native Edit/context-menu enablement, physical keyboards, multiple editor instances, external/internal text transfer, permission loss during async delivery, accessibility text geometry after zoom/scroll and selection/history after OS replacement. iOS/Android additionally cover selection handles during viewport changes and drag from another app where supported. Native drag metadata alone does not establish a cross-document durable move. Clipboard providers must remain valid for their promised lifetime or fail explicitly without source loss.
+
+Measure keystroke/IME-to-visible response, candidate/caret geometry, text-service queries, selection autoscroll, large logical lines, mixed extensions and repeated mount/dispose on real supported hardware. Record frame scheduling, main-thread work, memory growth and exact OS/IME/display configuration. Keep layout and OS callbacks outside the Rust semantic kernel; expensive analysis must not synchronously reenter native input locks. Unavailable devices and unmeasured profiles remain blocked/unsupported evidence, never a browser-derived native pass.
+
+## Planned native clipboard qualification
+
+[NCL cases](../tests/native-clipboard-cases.md) separate simulator/emulator/VM mechanics from physical-device and actual OS pasteboard evidence. IOS/AND/DSK/WIN/LNX-2.4 own deterministic native OS-host fixtures; DEL-1.9 and DEL-1.10 own physical-device/platform qualification. Native menu paste, rich/plain format precedence, optional match-style shortcuts, failed cut, delayed provider lifetime, cross-app transfer, tables/extension formatting, undo, read-only and disposal must be tested on their stated environment. These additions create future tasks only; no native support is established by authoring them.

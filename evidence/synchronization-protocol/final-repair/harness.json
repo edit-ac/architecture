@@ -1,0 +1,46 @@
+{
+  "boundary": "Actual Rust WASM engine-v5 / JS same-schema peer; in-memory copied socket; no credentials or application network",
+  "wasmSha256": "265a6896c0962bbfc8e3cc07f8ac12043654df9d22443ccb840db173995dbdd2",
+  "cases": [
+    {
+      "name": "both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits",
+      "passed": true
+    },
+    {
+      "name": "update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo",
+      "passed": true
+    }
+  ],
+  "frames": [
+    {
+      "name": "0-rust-step1.bin",
+      "bytes": 9,
+      "sha256": "58c9dac21a1da44aba81e5b215c1c614fef9f2a4d8a0497e5e9d83c596f50567"
+    },
+    {
+      "name": "1-js-step1.bin",
+      "bytes": 12,
+      "sha256": "572c2230c94ada93599a326dff31dc33bba04f1b2f0944e74d86926d816c793b"
+    },
+    {
+      "name": "2-rust-step2.bin",
+      "bytes": 26,
+      "sha256": "89b89ddaa62b2144d2f92e881ae557315ca03fc63c99bb3dbc215c85b54b9ef5"
+    },
+    {
+      "name": "3-js-step2.bin",
+      "bytes": 67,
+      "sha256": "ee5ddddb7e276cab13072665223b8cb33e09368bb254e0595e37c089ae4296ef"
+    },
+    {
+      "name": "4-rust-update.bin",
+      "bytes": 26,
+      "sha256": "133c773f89bb28a16282fe35afed1bc2520c652f1273c872576c69c125d65269"
+    },
+    {
+      "name": "5-js-update.bin",
+      "bytes": 23,
+      "sha256": "cbaf74ed868c745b3dcdb2ec726d364d641151594ac154283b4da7abba45a58b"
+    }
+  ]
+}

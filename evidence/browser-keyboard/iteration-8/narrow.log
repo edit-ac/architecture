@@ -1,0 +1,70 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs keyboard --test-name-pattern=native-focus-escape
+
+keyboard browser: chromium
+(node:55188) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-focus-escape expires after shortcut (2012.036875ms)
+✔ native-focus-escape expires after beforeinput (181.671708ms)
+✔ native-focus-escape expires after blur (138.361959ms)
+✔ native-focus-escape expires after composition (168.165208ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2901.514875
+keyboard browser: firefox
+(node:55247) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-focus-escape expires after shortcut (4707.542958ms)
+✔ native-focus-escape expires after beforeinput (401.492625ms)
+✔ native-focus-escape expires after blur (339.023917ms)
+✔ native-focus-escape expires after composition (263.767209ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6273.707583
+keyboard browser: webkit
+(node:55456) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-focus-escape expires after shortcut (2746.265208ms)
+✔ native-focus-escape expires after beforeinput (366.96625ms)
+✖ native-focus-escape expires after blur (295.658333ms)
+✔ native-focus-escape expires after composition (279.86725ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4034.562833
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:85:2
+✖ native-focus-escape expires after blur (295.658333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 2
+  
+      at caret (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:52:207)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:100:3
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

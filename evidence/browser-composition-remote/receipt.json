@@ -1,0 +1,223 @@
+{
+  "gate": "WEB-1.7",
+  "children": [
+    "WEB-1.7-I1",
+    "WEB-1.7-V1"
+  ],
+  "state": "implemented and locally mechanically verified; prepared composition and peer deletion probe, no OS/device/release/deployment claim",
+  "sourceSnapshot": "../../progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "78ed60d4dd3fa0c8055ffe2dbc957703e144f2e69172c0e26e1cb112e953c2ab",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseRevision": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseRevision": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementationRevision": "c3c5e489d24ff79ef3de681d30f93ee38025872a0767e6f4cb5e61d0eb693cbe",
+  "verifiedAtUtc": "2026-10-12T12:37:11.767618+00:00",
+  "sourceHashes": "tested-source-hashes.json",
+  "sourceManifestSha256": "3ffd2098031a11c4b68323ace74f4aa30b3be9b7fe6ab0c9fba2308924293be4",
+  "testedSources": "run-1/tested-sources/",
+  "changedPaths": [
+    "packages/web/src/input/composition.ts",
+    "fixtures/browser-input/session.mjs",
+    "tests/browser/composition-remote.spec.ts",
+    "scripts/test-browser.mjs",
+    "fixtures/browser-input/README.md"
+  ],
+  "checks": [
+    {
+      "command": "EDITAC_COMPOSITION_REMOTE_OUTPUT=../evidence/browser-composition-remote/run-1/narrow node --test --test-name-pattern=collapsed-at tests/browser/composition-remote.spec.ts",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "canceled": 0,
+      "log": "run-1/narrow.log"
+    },
+    {
+      "command": "EDITAC_COMPOSITION_REMOTE_OUTPUT=../evidence/browser-composition-remote/run-1/canonical npm run test:browser -- composition-remote",
+      "exit": 0,
+      "log": "run-1/canonical.log",
+      "executed": 69,
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0,
+      "canceled": 0,
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "156.0.8078.4",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "canceled": 0,
+          "facts": "run-1/canonical/chromium/facts.json",
+          "factsSha256": "d4e1796f7b689c67e9e772cc39e5777bb2da650ca79e1def0a18ea178bb23a0c",
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 748138,
+            "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "version": "157.0",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "canceled": 0,
+          "facts": "run-1/canonical/firefox/facts.json",
+          "factsSha256": "081f494d0fd04c30c61b98a8ea1f8aa7560b097deb46c874aa066dd1d23b1eb2",
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 748138,
+            "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "version": "27.2",
+          "executed": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "canceled": 0,
+          "facts": "run-1/canonical/webkit/facts.json",
+          "factsSha256": "736c80e63fba0856d36f11fca5ac86f0f2d3c4778c8b442c3b56b6fac5de0578",
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 748138,
+            "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+            "includesWasm": true
+          }
+        }
+      ]
+    },
+    {
+      "command": "EDITAC_COMPOSITION_OUTPUT=../evidence/browser-composition-remote/run-1/composition npm run test:browser -- composition",
+      "exit": 0,
+      "log": "run-1/composition.log",
+      "executed": 114,
+      "passed": 114,
+      "failed": 0,
+      "skipped": 0,
+      "canceled": 0,
+      "engines": [
+        {
+          "engine": "chromium",
+          "version": "156.0.8078.4",
+          "executed": 38,
+          "passed": 38,
+          "failed": 0,
+          "skipped": 0,
+          "canceled": 0,
+          "facts": "run-1/composition/chromium/facts.json",
+          "factsSha256": "632be8ead925c9697651479e318b6454604d0e175c7a056e3265ece079434468",
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 748138,
+            "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "firefox",
+          "version": "157.0",
+          "executed": 38,
+          "passed": 38,
+          "failed": 0,
+          "skipped": 0,
+          "canceled": 0,
+          "facts": "run-1/composition/firefox/facts.json",
+          "factsSha256": "53cc812ab1beb0d55d128216a0f075d026ddde9781ed4dbf8392dad0547932e8",
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 748138,
+            "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+            "includesWasm": true
+          }
+        },
+        {
+          "engine": "webkit",
+          "version": "27.2",
+          "executed": 38,
+          "passed": 38,
+          "failed": 0,
+          "skipped": 0,
+          "canceled": 0,
+          "facts": "run-1/composition/webkit/facts.json",
+          "factsSha256": "31b707d2fa6961b18bc9b1b93dc7ddb78f8b588f056905d7386af2329131306c",
+          "packed": {
+            "filename": "edit-ac-core-0.0.0.tgz",
+            "bytes": 748138,
+            "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+            "includesWasm": true
+          }
+        }
+      ]
+    }
+  ],
+  "nonSuiteChecks": [
+    {
+      "command": "npm run build --workspace @edit-ac/web",
+      "exit": 0,
+      "log": "run-1/build.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exit": 0,
+      "log": "run-1/typecheck.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "run-1/diff-check.log"
+    },
+    {
+      "command": "node --check fixtures/browser-input/session.mjs",
+      "exit": 0,
+      "log": "run-1/fixture-syntax.log"
+    }
+  ],
+  "adr": {
+    "version": 1,
+    "path": "../../decisions/004-browser-input-composition.md",
+    "sha256": "2b611e46a5aa2527209189706a216d6d9894a2e3b72f4e34d31642b870f578c4"
+  },
+  "prerequisites": {
+    "engineSourceRevision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+    "storageSourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+    "comparison": "run-1/prerequisite-hashes.json",
+    "compositionReceipt": "../browser-composition/receipt.json",
+    "unchangedProduction": "Core/storage/DOM/selection/TextInput/reconcile sources and artifacts retain passing upstream evidence. Composition change fully regressed; fixture replacement helper is additive."
+  },
+  "acceptance": {
+    "remoteInsertions": "Before/at/after collapsed targets and directional replacement boundaries: held native text/node/caret, admitted peer state, authored final text/caret, exactly one local update/history/journal per composition. Selected-range insertion/deletion/replacement rejects remote-overlap and retains composed recovery text.",
+    "targetDeleted": "Real admitted Yjs deletion-probe updates hold the native owner until terminal boundary; final/blur reject stale-target, preserve captured text, remove deleted projection and clear selection without inserting into an adjacent block. Cancel/read-only retain text in canceled result.",
+    "independentPatches": "Independent peer block projection proceeds while composing owner remains held; burst updates project latest peer state. Local undo/redo affects composition only and retains peer updates.",
+    "ownership": "Duplicate terminal notifications do not repeat edits. Rejected target releases ownership for deliberate ordinary input; identical consecutive compositions remain distinct. UTF-16 and forward/backward replacements are authored."
+  },
+  "fixtureSeed": "Fresh alpha/independent recovered real packed engine, peer checkpoint/update and isolated IndexedDB per case; explicit a\ud83d\ude00b UTF-16 baseline.",
+  "qualificationLimits": "Composition replay is prepared real DOM through production handlers; remote text operations use second real engine and real update admission; target deletion uses existing Yjs deletion-probe tombstones, not a public semantic delete API. No provider/network/OS IME/device/release qualification.",
+  "cleanup": {
+    "browserControllersExited": 7,
+    "allBrowserPidsAbsent": true,
+    "allFixtureListenersRemoved": true,
+    "allTemporaryPackedConsumersRemoved": true,
+    "additionalPathsRemoved": [],
+    "additionalBytesReclaimed": 0,
+    "remainingFreeBytes": 17930649600,
+    "protectedListeners": [
+      4321,
+      5173,
+      5432,
+      8001,
+      8081
+    ],
+    "details": "run-1/processes-after.txt and listeners-after.txt; narrow controller also exited in facts. No unrelated processes stopped; qualification artifacts retained."
+  },
+  "evidenceRelocation": "Commands used /Users/bpstr/Github/edit-ac/evidence/browser-composition-remote during execution; after all teardown, artifacts relocated intact to architecture/evidence/browser-composition-remote. Original facts/log paths remain unedited."
+}

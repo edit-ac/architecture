@@ -1,0 +1,297 @@
+{
+  "gate": "MOD-1.1",
+  "children": [
+    "MOD-1.1-I1",
+    "MOD-1.1-V1"
+  ],
+  "state": "implemented and verified",
+  "verifiedAtUtc": "2026-10-13T02:24:28.784991+00:00",
+  "sourceSnapshot": "source-32abd5cd6b3f.md",
+  "sourceRevision": "621cbff280187a584cd0ceb5b9ac66d176b916c16f99ba34a48e6fd74c08c294",
+  "promptRevision": "2e18a98412c7",
+  "coreBaseCommit": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseCommit": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementationRevision": "Uncommitted workspace; exact files identified by sourceHashes and archived changed-file snapshots. Pre-existing changes preserved.",
+  "changedPaths": [
+    "fixtures/modules/entry.json",
+    "crates/editac-core/tests/support/extension_entry.rs",
+    "crates/editac-core/tests/patches.rs",
+    "tests/browser/extension-entry.spec.ts",
+    "scripts/test-browser.mjs"
+  ],
+  "sourceHashes": {
+    "fixtures/modules/entry.json": "4e4daf223a85a06bc9f70b2c21dd758de1a60fa77e98e45b764c51bccf334a34",
+    "crates/editac-core/tests/support/extension_entry.rs": "68c67a2e0265af14eeb3c1e98ea8d539053246e3cb0c61f6254bb70486cdb86f",
+    "crates/editac-core/tests/patches.rs": "9fcb615aaebecca7e75320d9b12453a63eb1bd60b095f6ae08ba7e6d5e688b10",
+    "crates/editac-core/tests/moves.rs": "40281ac90402967b0adc258698c76967c4d9dac4062979c377dd68d356348f07",
+    "tests/browser/extension-entry.spec.ts": "a8dc3132eba0bc3f3b91548556c36579342773cf4db09f75dbfa0b9deeed6d70",
+    "scripts/test-browser.mjs": "f7fbb1223df4362b951923b8984e14c84b51364257d9f278d2285bdea7e6b5d2",
+    "tests/browser/browser-harness.ts": "5c428e8fec3bfd29367c3356e795c71cdddce6a5a71e46add6b0a098f3ba45fe",
+    "tests/browser/format-helpers.ts": "0a097c4a7638f1ba746a9490486331c4e4fd1e97f0fa0f8daead584f6735a504",
+    "fixtures/browser-input/session.mjs": "fa6027f6fedd5bd92c3a0a34386367724774c9fca552937e781b7caf37c5d09a",
+    "fixtures/schema-v5/mapping.rs": "47f3ac42dc1ba97b06b33f1f0e1b717e37cb18082bdc586f9ee2376c30ba3025",
+    "fixtures/schema-v5/seed.json": "5248ce5b2ab27b8ae5b281933eb6a5882e3fb8e865489282450d1be19d31bf4d",
+    "crates/editac-core/src/document.rs": "e1a6f3cba71199d538c7e8d6edd0b8c1c68a1ffd124128d042a6766875da8a14",
+    "crates/editac-core/src/commands/editor.rs": "cdf48fad1e731a64c9c5ef4312aea9c0c38e85c411bfd9289a0cfa440164e09d",
+    "crates/editac-core/src/commands/move.rs": "805da87a781a8e7c905771eef3f69388156c5009b5af25a47f39692092c3679f",
+    "crates/editac-core/src/modules/content.rs": "3e773ec32c798b11dbcca42b4d9c35a741928f10fa75ac211cac289800f27f90",
+    "crates/editac-core/src/patches.rs": "5b194f1c003d20e2c8446e3d4202476da50ce3f1fddc143edac9b499e3bc29b1",
+    "crates/editac-core/src/projection.rs": "f3dd6fecd0738d73d35c97e35ea120dcd277c461dc28d9c7db23b25414f07f71",
+    "crates/editac-markdown/src/optional.rs": "9c77a438909573f9f40e485c17a9c0dee82a8ffff01b651ad24bae5ed1e8bd11",
+    "packages/core/src/engine.ts": "554a99f1ae46ae26992acf17e8a782cfbe9c8dcdba695dd4ff94b150a3c80093",
+    "packages/web/src/dom/render.ts": "5bc7addccdf05e4b900a0f071526946a4b2bd4322996a8275d39dbc6e50a6558",
+    "packages/web/src/clipboard/fragment.ts": "a8ea0095bd8f4ea7c5dd6f557d86b07ef33ced49ff630f2046204ab4220d5408",
+    "crates/editac-wasm/src/bridge.rs": "a2dfdcbe6bf6af7d94dea6f6a44e3aaf393f90425a3726666e87415aa647894e",
+    "Cargo.lock": "1d8c3e26a50a9e8d8e799032b905aaaf668bf46082beaa4992d6463f220ef3a6",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+    "packages/core/dist/wasm/editac_wasm_bg.wasm": "c16438269e3b69d53da19969fdff6dfb7d1531c9a7e5eb4e6244e617ed52704d"
+  },
+  "checks": [
+    {
+      "command": "EDITAC_EXTENSION_ENTRY_OUTPUT=<evidence> EDITAC_MOVE_EXCHANGE=<evidence>/moves cargo test -p editac-core --test patches --test moves --locked",
+      "log": "rust-final.log",
+      "exitCode": 0,
+      "counts": {
+        "executed": 66,
+        "passed": 66,
+        "failed": 0,
+        "skipped": 0
+      },
+      "suites": {
+        "moves": 35,
+        "patches": 31
+      },
+      "nestedYjs": {
+        "executed": 11,
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "log": "moves/node.log"
+      }
+    },
+    {
+      "command": "npm run build",
+      "log": "build.log",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build:wasm",
+      "log": "wasm-build.log",
+      "exitCode": 0
+    },
+    {
+      "command": "EDITAC_EXTENSION_ENTRY_FIXTURES=<evidence> EDITAC_EXTENSION_ENTRY_OUTPUT=<evidence>/browser-final npm run test:browser -- extension-entry",
+      "log": "browser-final.log",
+      "exitCode": 0,
+      "counts": {
+        "executed": 15,
+        "passed": 15,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "browsers": [
+        "chromium",
+        "firefox",
+        "webkit"
+      ]
+    },
+    {
+      "command": "git diff --check",
+      "log": "diff-check.log",
+      "exitCode": 0
+    }
+  ],
+  "preservedFailures": [
+    {
+      "log": "browser-run-1.log",
+      "counts": {
+        "executed": 5,
+        "passed": 2,
+        "failed": 3,
+        "skipped": 0
+      },
+      "repair": "Correct the known fallback display oracle; raw Markdown remains in tuple.source."
+    },
+    {
+      "log": "browser-run-2.log",
+      "counts": {
+        "executed": 5,
+        "passed": 3,
+        "failed": 2,
+        "skipped": 0
+      },
+      "repair": "Account for BRs in rendered logical text and preserve disabled callout quote containers."
+    }
+  ],
+  "criteria": {
+    "descriptors": "Same JSON corpus parsed and serialized by Rust Content, then produced by real web clipboard -> storage -> WASM -> patch -> DOM commands. Known types/version/shapes and future tuple/custom mark checkpoint preservation.",
+    "noCallbacks": "Rust descriptors contain only Any/typed inert data; web rejects function-valued request before mutation. HTML-like unknown label becomes text only.",
+    "patches": "Prepared content changes emit one owned semantic patch; invalid mixed batch emits no update/patch.",
+    "movePolicy": "Complete production moves suite, including invalid opaque/container/nested destinations, identity-preserving concurrent edits and pinned Yjs exchange.",
+    "fallbackImport": "Disabled image/table/callout codecs retain source and expected ordinary text/container semantics. Enabled descriptors retain exact source through one history group and undo/redo."
+  },
+  "upstream": {
+    "05": "Accepted by explicit source/user baseline; FMT-1.15 actual-device qualification not claimed.",
+    "06": "Current source hash matches COMPLETE receipt sourceRevision, canonical 4/4 zero skipped."
+  },
+  "scope": "Deterministic native and real packed browser integration only. No registration claim for MOD-1.2, native/device qualification, deployment, publication or paid inference.",
+  "cleanup": {
+    "browser": {
+      "firefox": {
+        "receipt": {
+          "browserExited": true,
+          "serverClosed": true,
+          "consumerRemoved": true
+        },
+        "remainingProcesses": []
+      },
+      "webkit": {
+        "receipt": {
+          "browserExited": true,
+          "serverClosed": true,
+          "consumerRemoved": true
+        },
+        "remainingProcesses": []
+      },
+      "chromium": {
+        "receipt": {
+          "browserExited": true,
+          "serverClosed": true,
+          "consumerRemoved": true
+        },
+        "remainingProcesses": []
+      }
+    },
+    "removed": [
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/deps/patches-195beb64aa1388b8",
+        "bytes": 15016440,
+        "sha256": "c366989f2a0835d152956598b8695e70fa4e2c654020d8e57e7518f1a049762f"
+      }
+    ],
+    "freeBytesAfter": 20576022528,
+    "scope": "Only task-produced inactive test executable removed; shared services and pre-existing target cache preserved."
+  },
+  "artifactHashes": {
+    "rust-final.log": "38bccf73ef8b0d091bf53441560a7565a14fe1a4673059dcecff7d37452ee42a",
+    "fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "unknown-identity.json": "084b329799c30b0fe149c74eca53fcd67627da69b220d8872bf650419206fedf",
+    "wasm-build.log": "a2ec2d7bd1a5fa44c2e3095e57f10233062defa3ef98d503302fe0453f518e4b",
+    "diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "README.md": "2baaf7c98330bda72dfe9ba919c66bf333630c0d91319c3d16de216b76f7d757",
+    "cleanup.json": "d884115791c5bee02e732b05db7c579baad559ae878a03febce43301268108ca",
+    "browser-final.log": "c12cf429469551e80c850237e7560aec7d740bc54a8ba96cd45242fffd7bd1e1",
+    "rust.log": "a5ee4b16a749df344197b9eba09fdd27e1bb1ef8ffe998f8c620b88d94ec85d1",
+    "browser-run-1.log": "8322927c709c4e0ca97a532704b381ec0770e6233a5fe30c8cce174f0b707fc8",
+    "browser-run-2.log": "1adad157b2857e3698bd39ee6e95c79d60f2fb7e8e4d421b450ca2a4844c65d2",
+    "unknown-checkpoint.bin": "6779a52f8b82a056b3e2840e6969792229eac6abed6bfbb4b9741f6810a52e5c",
+    "build.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "moves/yjs-final.bin": "f3b3d1a10330bd3fc42e20f1337269807756590bd4d3cf505f132e730092fa35",
+    "moves/disabled-destination-final.json": "4c53b8bdcd87b8de7d617a46dcbf5adaec9dcd8711ca056cd1979ad26cf0e4f8",
+    "moves/same-target-final.json": "0ffea86c8083b09c8ae5eb03f1c38eb47c3c1390fa90df260548d9788fb3639c",
+    "moves/deleted-destination-1.bin": "e4a866996adbb7df2d017fe224735657c292102f9fead38b262f987f239e3269",
+    "moves/node.log": "2f9a25b7b3e2525df20978ed32308ced77a1fb926b8d204e8dace515986ab0b4",
+    "moves/deleted-destination-0.bin": "37401fff0919ee626c2b0518ea706b29f2fc15130f47345961b9ad2788bfd0a5",
+    "moves/deleted-destination-2.bin": "975bd9652ad0aa289de651a5a3803e70043e2489171889ccadbdddb458e01e74",
+    "moves/parent-version-final.json": "72837cdf17aaff16d1d39ec47922c9cfa55f12ae18f089d06f7057217c64f92b",
+    "moves/cycle-2.bin": "bc4b1f6cfceac6d7b05a26a3a2490be48012a0c9b8174fbcaf7fe68cd3811419",
+    "moves/yjs-race-0.bin": "e3756925c896a0a9389968c32f09420923c0d41450c57b1c473f137b717de94b",
+    "moves/yjs-final.json": "0afd56da690cd6eb4ef2587e19bafc4a0c5bbdda58155fd58ae9ac6f16fdaa33",
+    "moves/yjs-race-1.bin": "09c94c8846430d822630e3401e9116f69ead0600258921a7998321258d2d0795",
+    "moves/cycle-1.bin": "2a59d2f73c952eb4ebfbcc759032721ccfb688db13e3cc7b0b4bf9a45edb51d1",
+    "moves/rust-seed.bin": "c3c7ed457d674e50910985a47bdb756df95f61caf903e2c55460da8c507c3aec",
+    "moves/yjs-race-2.bin": "7b1c8127ece6c3a68ef8b3692fb8bd3e345d4a72e2d243c52fc386f9558c22d4",
+    "moves/cycle-0.bin": "4e6cd898380d27aa99004c78540eb1641eb7519aea0a8681bf01b948a7dd44f6",
+    "moves/disjoint-final.json": "06a0a9ae7af114c16aacdc2a7ec057fbbbfeabef6fd33e44a408194cf02f26e3",
+    "moves/same-target-2.bin": "b0cff4e7c9faba36c387545eb746115052f33e01c179ec7c4834cc8855ecb4db",
+    "moves/rust-final.bin": "0fc49184d0de57d4b352480a59877374b104a18f96cae7c7d88329b203c1aa56",
+    "moves/deleted-destination-final.json": "56a634d7178f3216c7f20b0cc0a847d6883256fdf2b7e87b06288c7cf23d9da8",
+    "moves/same-target-0.bin": "f79fc7e9b7d79dfc3d6753c8726f5b81241815c3f7af9b881e09bee7fc3d09c3",
+    "moves/same-target-1.bin": "4a64b8d37aec9ad9fb5594142f15804b46caac745c2a169b881a21e7327507f1",
+    "moves/rust-final.json": "384aed0f2db2ee9e7695210d358114a3f211bbbfdde070ff9373d5c1044281d6",
+    "moves/disabled-destination-0.bin": "3fa933c65ff239602281554e190cff27ed6fa455774264061085105265b86c53",
+    "moves/disabled-destination-1.bin": "a929bc689cd61827bebae7c28277c5d73be1dfb7fbc64e2b42a0e74b5eaef317",
+    "moves/before-version-2.bin": "6c5c7d80faf22f0f84ae3114a5156f8b585b3ef0fffd52657cc7e058bcf60d70",
+    "moves/before-version-0.bin": "13fe49dc7cd110178f792bbca6189199a0563f68565e56dc79e8852d33ee0f97",
+    "moves/disabled-destination-2.bin": "19d7dc26c9c81f3598b737de89ba1f22abd4bc1182007d5c28e2c9d1702c8e89",
+    "moves/before-version-1.bin": "c6bfbb70aecdc7bb90a0f6b465f211bd90868a309af31bfa66df4f82b0be5b09",
+    "moves/parent-version-1.bin": "b3980b6b73829dbc6f16f7649046c945ce179f2d1537442a424c32abdb746cc3",
+    "moves/disjoint-2.bin": "2f2daee9e53671035be7ec56e1a8a14bc3039ee2a80319d401a82ffbc09d43c7",
+    "moves/before-version-final.json": "4d70a37904f589e8532dd6978d99cf76387fc8e57bf7fcc80da6b8e89ef61ddd",
+    "moves/yjs-race-final.json": "691936ec6fd0cb14b2893f0501a94ea05568c08bd388fe28681971963d60fadc",
+    "moves/parent-version-0.bin": "1c5e1ce5972b6ebf09b1351a1226195fdfb4f0feef1eb4737074f2197556d194",
+    "moves/parent-version-2.bin": "a7a42fa4e8e4615ca159b158353a354547c6267753b1a8f8ebca526f966289d1",
+    "moves/disjoint-1.bin": "1b85b1d95d39edf8184f5ee21b321f336eef243cbf27562f77344d2ca0ca89db",
+    "moves/cycle-final.json": "ce55813d916c30d701687d3b7fb0766774a6826c76f636a333cae77ca2b6e468",
+    "moves/disjoint-0.bin": "8bd93fe744ed617396ed09e49c9996129ea58f08c2187cdcf4ba19267004c335",
+    "browser-final/firefox/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-final/firefox/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-final/firefox/edit-ac-core-0.0.0.tgz": "22af1732ce90c182886aedb586151444b1c03ba9a5578e46c0ed6424786897b6",
+    "browser-final/firefox/pack-web.log": "2eb78992cd3a0ae3dc9b1478daab24ad1b12a697c7281e0e4651febdc1f1a096",
+    "browser-final/firefox/edit-ac-web-0.0.0.tgz": "5bd1e7fd243c7c1e468d6bc5205fdbb9ee16e90edd8f44595ea2c2916485f90a",
+    "browser-final/firefox/receipt.json": "321b55f35adb2ddcd55918203a7de6b173f4a7b41326fb04bdd57a8cefa2a8e1",
+    "browser-final/firefox/pack-core.log": "cb2b939f51cf1b0531ef9308b3ef5f2595ccb97930da1892f7d40f1090baf87e",
+    "browser-final/webkit/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-final/webkit/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-final/webkit/edit-ac-core-0.0.0.tgz": "22af1732ce90c182886aedb586151444b1c03ba9a5578e46c0ed6424786897b6",
+    "browser-final/webkit/pack-web.log": "2eb78992cd3a0ae3dc9b1478daab24ad1b12a697c7281e0e4651febdc1f1a096",
+    "browser-final/webkit/edit-ac-web-0.0.0.tgz": "5bd1e7fd243c7c1e468d6bc5205fdbb9ee16e90edd8f44595ea2c2916485f90a",
+    "browser-final/webkit/receipt.json": "5cced56e8e20a1d0b9a30ce3b8ba9b1af89e9c8edbef317f753abfccbd68b785",
+    "browser-final/webkit/pack-core.log": "cb2b939f51cf1b0531ef9308b3ef5f2595ccb97930da1892f7d40f1090baf87e",
+    "browser-final/chromium/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-final/chromium/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-final/chromium/edit-ac-core-0.0.0.tgz": "22af1732ce90c182886aedb586151444b1c03ba9a5578e46c0ed6424786897b6",
+    "browser-final/chromium/pack-web.log": "2eb78992cd3a0ae3dc9b1478daab24ad1b12a697c7281e0e4651febdc1f1a096",
+    "browser-final/chromium/edit-ac-web-0.0.0.tgz": "5bd1e7fd243c7c1e468d6bc5205fdbb9ee16e90edd8f44595ea2c2916485f90a",
+    "browser-final/chromium/receipt.json": "5d1eee5fbfc6c8a93807d9163cdb18189f1779697127a7b7e4d81caa122fe06d",
+    "browser-final/chromium/pack-core.log": "cb2b939f51cf1b0531ef9308b3ef5f2595ccb97930da1892f7d40f1090baf87e",
+    "browser-run-1/firefox/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-1/firefox/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-1/firefox/edit-ac-core-0.0.0.tgz": "22af1732ce90c182886aedb586151444b1c03ba9a5578e46c0ed6424786897b6",
+    "browser-run-1/firefox/pack-web.log": "2eb78992cd3a0ae3dc9b1478daab24ad1b12a697c7281e0e4651febdc1f1a096",
+    "browser-run-1/firefox/edit-ac-web-0.0.0.tgz": "5bd1e7fd243c7c1e468d6bc5205fdbb9ee16e90edd8f44595ea2c2916485f90a",
+    "browser-run-1/firefox/receipt.json": "6a75bd87656995df18b107842d2e0f7ed25e21006c4de84d9cc354495946d4b3",
+    "browser-run-1/firefox/pack-core.log": "cb2b939f51cf1b0531ef9308b3ef5f2595ccb97930da1892f7d40f1090baf87e",
+    "browser-run-1/webkit/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-1/webkit/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-1/webkit/edit-ac-core-0.0.0.tgz": "22af1732ce90c182886aedb586151444b1c03ba9a5578e46c0ed6424786897b6",
+    "browser-run-1/webkit/pack-web.log": "2eb78992cd3a0ae3dc9b1478daab24ad1b12a697c7281e0e4651febdc1f1a096",
+    "browser-run-1/webkit/edit-ac-web-0.0.0.tgz": "5bd1e7fd243c7c1e468d6bc5205fdbb9ee16e90edd8f44595ea2c2916485f90a",
+    "browser-run-1/webkit/receipt.json": "4f7a575a3130cc9095bbc05543f133f60d23d88f8c585296692c48e20aafe70f",
+    "browser-run-1/webkit/pack-core.log": "cb2b939f51cf1b0531ef9308b3ef5f2595ccb97930da1892f7d40f1090baf87e",
+    "browser-run-1/chromium/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-1/chromium/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-1/chromium/edit-ac-core-0.0.0.tgz": "22af1732ce90c182886aedb586151444b1c03ba9a5578e46c0ed6424786897b6",
+    "browser-run-1/chromium/pack-web.log": "2eb78992cd3a0ae3dc9b1478daab24ad1b12a697c7281e0e4651febdc1f1a096",
+    "browser-run-1/chromium/edit-ac-web-0.0.0.tgz": "5bd1e7fd243c7c1e468d6bc5205fdbb9ee16e90edd8f44595ea2c2916485f90a",
+    "browser-run-1/chromium/receipt.json": "9783663931babfb16ce3530c9bc90ccf28a6239e75f9d3f507493c21526fc1ab",
+    "browser-run-1/chromium/pack-core.log": "cb2b939f51cf1b0531ef9308b3ef5f2595ccb97930da1892f7d40f1090baf87e",
+    "browser-run-2/firefox/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-2/firefox/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-2/firefox/edit-ac-core-0.0.0.tgz": "22af1732ce90c182886aedb586151444b1c03ba9a5578e46c0ed6424786897b6",
+    "browser-run-2/firefox/pack-web.log": "2eb78992cd3a0ae3dc9b1478daab24ad1b12a697c7281e0e4651febdc1f1a096",
+    "browser-run-2/firefox/edit-ac-web-0.0.0.tgz": "5bd1e7fd243c7c1e468d6bc5205fdbb9ee16e90edd8f44595ea2c2916485f90a",
+    "browser-run-2/firefox/receipt.json": "d44278ec4de7ab17f571ec83694806951d6a48c7c6ef3fae149dbfcfb30f2de9",
+    "browser-run-2/firefox/pack-core.log": "cb2b939f51cf1b0531ef9308b3ef5f2595ccb97930da1892f7d40f1090baf87e",
+    "browser-run-2/webkit/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-2/webkit/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-2/webkit/edit-ac-core-0.0.0.tgz": "22af1732ce90c182886aedb586151444b1c03ba9a5578e46c0ed6424786897b6",
+    "browser-run-2/webkit/pack-web.log": "2eb78992cd3a0ae3dc9b1478daab24ad1b12a697c7281e0e4651febdc1f1a096",
+    "browser-run-2/webkit/edit-ac-web-0.0.0.tgz": "5bd1e7fd243c7c1e468d6bc5205fdbb9ee16e90edd8f44595ea2c2916485f90a",
+    "browser-run-2/webkit/receipt.json": "25f20e2faae8d0de6ab77b310ec6c941f813da0eeb0b59904bc97f276fda9dad",
+    "browser-run-2/webkit/pack-core.log": "cb2b939f51cf1b0531ef9308b3ef5f2595ccb97930da1892f7d40f1090baf87e",
+    "browser-run-2/chromium/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-2/chromium/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-run-2/chromium/edit-ac-core-0.0.0.tgz": "22af1732ce90c182886aedb586151444b1c03ba9a5578e46c0ed6424786897b6",
+    "browser-run-2/chromium/pack-web.log": "2eb78992cd3a0ae3dc9b1478daab24ad1b12a697c7281e0e4651febdc1f1a096",
+    "browser-run-2/chromium/edit-ac-web-0.0.0.tgz": "5bd1e7fd243c7c1e468d6bc5205fdbb9ee16e90edd8f44595ea2c2916485f90a",
+    "browser-run-2/chromium/receipt.json": "a5a204b5b096222279f59299905b30ab206203e49217a6007e27adf2b78efed2",
+    "browser-run-2/chromium/pack-core.log": "cb2b939f51cf1b0531ef9308b3ef5f2595ccb97930da1892f7d40f1090baf87e",
+    "sources/crates/editac-core/tests/patches.rs": "9fcb615aaebecca7e75320d9b12453a63eb1bd60b095f6ae08ba7e6d5e688b10",
+    "sources/crates/editac-core/tests/support/extension_entry.rs": "68c67a2e0265af14eeb3c1e98ea8d539053246e3cb0c61f6254bb70486cdb86f",
+    "sources/tests/browser/extension-entry.spec.ts": "a8dc3132eba0bc3f3b91548556c36579342773cf4db09f75dbfa0b9deeed6d70",
+    "sources/scripts/test-browser.mjs": "f7fbb1223df4362b951923b8984e14c84b51364257d9f278d2285bdea7e6b5d2",
+    "sources/fixtures/modules/entry.json": "4e4daf223a85a06bc9f70b2c21dd758de1a60fa77e98e45b764c51bccf334a34"
+  }
+}

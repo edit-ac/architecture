@@ -1,0 +1,95 @@
+{
+  "task": "WEB-1.14-C2",
+  "sourceRevision": "6fed2016c7ca49b14c374ff211c9850ac5726ce44570f42d2c69f4d0a0cdd06d",
+  "loadedPromptRevision": "7eaa063f3629",
+  "recordedAtUtc": "2026-10-12T15:01:48.200789+00:00",
+  "implementationState": "Diagnostic guards only; semantic repair not implemented; original parent unchecked",
+  "implementationRevisionKind": "Uncommitted content-addressed guard source; unrelated changes preserved",
+  "sourceHashes": {
+    "crates/editac-core/tests/heading_end.rs": "a794e6e039329e8781aa91d1740773d98fe59e6cc04bab93035de020819cf5be",
+    "crates/editac-core/src/commands/editor.rs": "33d9ec9a3790990f6895573a100833ddc60e746f5908c0e608953cabf10ec162",
+    "crates/editac-core/src/editor.rs": "f10d349738f12ed8c63aaa52d7d0c74aca105c418d094e655944a9e389fcbbd1",
+    "crates/editac-core/src/anchors.rs": "a28e864a1228881f26a8e3458fc95da17f59db38284c82e6188ee23ff35ceaa5",
+    "fixtures/schema-v5/mapping.rs": "47f3ac42dc1ba97b06b33f1f0e1b717e37cb18082bdc586f9ee2376c30ba3025",
+    "../architecture/specs/engine.md": "fe1f30bd8a104b3d11ace79dbac24228b00e02e7302b0be0ef8d5873cb1d4179",
+    "../architecture/specs/schema-v5.md": "c4d7ac0e108335bb24b592dff4b7fcea18121fd4c6525061735f9b824e41ab84",
+    "../architecture/progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md": "6fed2016c7ca49b14c374ff211c9850ac5726ce44570f42d2c69f4d0a0cdd06d"
+  },
+  "checks": [
+    {
+      "name": "destination-typing",
+      "command": "cargo test -p editac-core --test heading_end heading_end_destination_typing_preserves_existing_shared_source_sibling --locked --offline",
+      "exit": 101,
+      "executed": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "filteredOut": 10,
+      "log": "destination-typing.log",
+      "logSha256": "95f312007573e7c9b672d39a3f73a8f6fe15e29c2f598b3ebdd83c0be0cc77f0"
+    },
+    {
+      "name": "destination-source-ownership",
+      "command": "cargo test -p editac-core --test heading_end heading_end_destination_source_owns_insert_before_shared_source_sibling --locked --offline",
+      "exit": 101,
+      "executed": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "filteredOut": 11,
+      "log": "destination-source-ownership-repaired.log",
+      "logSha256": "23c3e513b901f7240cbb39758afd82f2dde8399c655652eea7d671c2cca7faf6"
+    },
+    {
+      "name": "initial-source-ownership-compile",
+      "command": "cargo test -p editac-core --test heading_end heading_end_destination_source_owns_insert_before_shared_source_sibling --locked --offline",
+      "exit": 101,
+      "executed": 0,
+      "log": "destination-source-ownership.log",
+      "reason": "ClientID constructor type mismatch, repaired before diagnostic execution"
+    },
+    {
+      "name": "rustfmt",
+      "command": "rustfmt --check --edition 2024 crates/editac-core/tests/heading_end.rs",
+      "exit": 0,
+      "log": "format-final.log"
+    },
+    {
+      "name": "whitespace",
+      "command": "git diff --no-index --check /dev/null crates/editac-core/tests/heading_end.rs",
+      "exit": 1,
+      "meaning": "Expected no-index difference exit; empty log means no whitespace errors",
+      "log": "whitespace.log"
+    }
+  ],
+  "currentDiagnosticCounts": {
+    "executed": 2,
+    "passed": 0,
+    "failed": 2,
+    "skipped": 0
+  },
+  "priorEvidence": "../receipt.json; unchanged production implementation and packed artifact; prior caret failure preserved, not rerun",
+  "actualExpectedContent": [
+    "A😀Z",
+    "X",
+    "tail",
+    "peer"
+  ],
+  "actualContent": [
+    "A😀Z",
+    "",
+    "Xtail",
+    "peer"
+  ],
+  "controllerProposal": "controller-reconciliation.md",
+  "cleanup": "cleanup.json",
+  "scope": "Only WEB-1.14; no paid inference, providers, browser/server startup, publication or schema/anchor changes",
+  "dependencyScan": {
+    "WEB-1.14": "Shared semantic contract reconciliation required before repair",
+    "WEB-1.8": "Depends on qualified WEB-1.14; explicit I3 is now tracked",
+    "WEB-1.9": "Depends on WEB-1.8",
+    "WEB-1.10": "Depends on WEB-1.9",
+    "WEB-1.11": "Depends on WEB-1.10",
+    "WEB-1.12": "Depends on WEB-1.11"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "boundary": "Actual Rust WASM engine-v5 / JS same-schema peer; in-memory copied socket; no credentials or application network",
+  "wasmSha256": "265a6896c0962bbfc8e3cc07f8ac12043654df9d22443ccb840db173995dbdd2",
+  "cases": [
+    {
+      "name": "both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits",
+      "passed": false
+    },
+    {
+      "name": "update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo",
+      "passed": false
+    },
+    {
+      "name": "deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent",
+      "passed": false
+    },
+    {
+      "name": "reject malformed frames and state vectors before any engine mutation",
+      "passed": false
+    },
+    {
+      "name": "malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes",
+      "passed": false
+    },
+    {
+      "name": "inbound and outbound byte bounds include headers; no input buffers are aliased",
+      "passed": true
+    },
+    {
+      "name": "metadata must match every immutable field before adapter construction or outbound update",
+      "passed": true
+    }
+  ],
+  "frames": [
+    {
+      "name": "0-rust-step1.bin",
+      "bytes": 9,
+      "sha256": "724c9f4d169ecadaf6116904a80bc0a974cb9c414da54f7a87feed9c8d5a4b1a"
+    },
+    {
+      "name": "1-js-step1.bin",
+      "bytes": 12,
+      "sha256": "ed37ed336706de89e79268bd27dc708e07cfaf2d3cd7118ec8d4dc93b28959e5"
+    },
+    {
+      "name": "2-rust-step2.bin",
+      "bytes": 26,
+      "sha256": "a9a7bce9ee87e46c00d9be8dbc80a0dd10342efb00e9071d0320a403ff5201ea"
+    },
+    {
+      "name": "3-js-step2.bin",
+      "bytes": 67,
+      "sha256": "c98108909088b713bad73ee1a284ae05a3cf63da73f931ebe1345d6fdcd5b97b"
+    }
+  ]
+}

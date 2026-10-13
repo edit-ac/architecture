@@ -1,0 +1,162 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs reconcile
+
+reconcile browser: chromium
+✔ prepared spellcheck input-first reconciles exactly once (10872.612417ms)
+✔ prepared spellcheck observer-first reconciles exactly once (4126.185416ms)
+✔ prepared spellcheck observer-only reconciles exactly once (776.828708ms)
+✔ prepared autocorrect input-first reconciles exactly once (351.242ms)
+✔ prepared autocorrect observer-first reconciles exactly once (420.106333ms)
+✔ prepared autocorrect observer-only reconciles exactly once (381.252458ms)
+✔ prepared paste-like input-first reconciles exactly once (360.528375ms)
+✔ prepared paste-like observer-first reconciles exactly once (258.2095ms)
+✔ prepared paste-like observer-only reconciles exactly once (278.444541ms)
+✔ prepared input without any beforeinput admits an existing text-node mutation (761.588667ms)
+✔ prepared unusable cancelable beforeinput falls back to native text (13265.041625ms)
+✔ prepared plain-text child replacement canonicalizes only the affected block (8594.161833ms)
+✔ prepared observer-owned duplicates retain a deliberate identical second edit (6913.612333ms)
+✔ prepared multiple mutations in one owned batch commit final text once (11921.732667ms)
+✔ prepared Unicode replacement preserves UTF-16 scalar boundaries and native caret (15068.387417ms)
+✔ prepared no-op child replacement rebuilds mappings without a semantic update (1876.356917ms)
+✔ prepared renderer echo cannot consume an unprompted native mutation in the same turn (1090.680416ms)
+✔ prepared pure renderer patches and input-only notifications produce zero local effects (296.319708ms)
+✔ prepared pasted markup exposes recovery and leaves authoritative text unchanged (247.67925ms)
+✔ prepared unknown root mutation exposes recovery and stops editing without root diff (455.738542ms)
+✔ prepared multi-block mutation is explicit unsupported recovery, never partial commit (409.051375ms)
+✔ prepared affected-block resource limit retains bounded recovery and no semantic effect (546.305667ms)
+✔ prepared same-block remote patch rejects a changed baseline with captured recovery (417.195125ms)
+✔ prepared read-only unprompted native text is restored with observable recovery (287.599417ms)
+✔ prepared dispose invalidates queued observer-owned edit (422.339667ms)
+✖ prepared removed root block retains removed text and disables editing (484.278167ms)
+✔ prepared record limit stops editing and preserves bounded final text (2546.361625ms)
+✔ prepared correction preserves independently navigated caret in another block (4043.778167ms)
+✔ prepared multiline pasted text uses semantic LF rather than textContent omission (7932.500833ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 97510.458417
+
+✖ failing tests:
+
+test at tests/browser/reconcile.spec.ts:135:1
+✖ prepared removed root block retains removed text and disables editing (484.278167ms)
+  page.evaluate: WrongDocumentError: Failed to execute 'compareBoundaryPoints' on 'Range': The source range is in a different document than this range.
+      at DOMSelection.toModel (http://127.0.0.1:50959/web/dom/selection.js:62:38)
+      at Object.state (http://127.0.0.1:50959/fixture/session.mjs:37:695)
+      at async <anonymous>:396:30
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:44:73)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:137:20
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:41:141) {
+    log: []
+  }
+reconcile browser: firefox
+✔ prepared spellcheck input-first reconciles exactly once (47203.001167ms)
+✔ prepared spellcheck observer-first reconciles exactly once (3661.739375ms)
+✔ prepared spellcheck observer-only reconciles exactly once (14214.130667ms)
+✔ prepared autocorrect input-first reconciles exactly once (4245.082208ms)
+✔ prepared autocorrect observer-first reconciles exactly once (1819.581458ms)
+✔ prepared autocorrect observer-only reconciles exactly once (3176.521292ms)
+✔ prepared paste-like input-first reconciles exactly once (1620.569958ms)
+✔ prepared paste-like observer-first reconciles exactly once (1976.541541ms)
+✔ prepared paste-like observer-only reconciles exactly once (8143.909209ms)
+✔ prepared input without any beforeinput admits an existing text-node mutation (7678.350125ms)
+✔ prepared unusable cancelable beforeinput falls back to native text (3746.361625ms)
+✔ prepared plain-text child replacement canonicalizes only the affected block (1742.292833ms)
+✔ prepared observer-owned duplicates retain a deliberate identical second edit (1858.600584ms)
+✔ prepared multiple mutations in one owned batch commit final text once (4166.555834ms)
+✔ prepared Unicode replacement preserves UTF-16 scalar boundaries and native caret (4129.600792ms)
+✔ prepared no-op child replacement rebuilds mappings without a semantic update (7410.124958ms)
+✔ prepared renderer echo cannot consume an unprompted native mutation in the same turn (7403.143333ms)
+✔ prepared pure renderer patches and input-only notifications produce zero local effects (9596.628208ms)
+✔ prepared pasted markup exposes recovery and leaves authoritative text unchanged (52289.716292ms)
+✔ prepared unknown root mutation exposes recovery and stops editing without root diff (3406.585792ms)
+✔ prepared multi-block mutation is explicit unsupported recovery, never partial commit (1633.355125ms)
+✔ prepared affected-block resource limit retains bounded recovery and no semantic effect (526.960542ms)
+✔ prepared same-block remote patch rejects a changed baseline with captured recovery (309.801167ms)
+✔ prepared read-only unprompted native text is restored with observable recovery (393.379542ms)
+✔ prepared dispose invalidates queued observer-owned edit (418.208042ms)
+✖ prepared removed root block retains removed text and disables editing (536.543375ms)
+✔ prepared record limit stops editing and preserves bounded final text (596.326875ms)
+✔ prepared correction preserves independently navigated caret in another block (460.078958ms)
+✔ prepared multiline pasted text uses semantic LF rather than textContent omission (433.750833ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 197320.358333
+
+✖ failing tests:
+
+test at tests/browser/reconcile.spec.ts:135:1
+✖ prepared removed root block retains removed text and disables editing (536.543375ms)
+  page.evaluate: Node cannot be used in a document other than the one in which it was created
+  toModel@http://127.0.0.1:51447/web/dom/selection.js:62:38
+  state@http://127.0.0.1:51447/fixture/session.mjs:37:695
+  async*@debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:44:73)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:137:20
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:41:141) {
+    name: 'Error',
+    log: []
+  }
+reconcile browser: webkit
+✔ prepared spellcheck input-first reconciles exactly once (4216.315875ms)
+✔ prepared spellcheck observer-first reconciles exactly once (1274.846958ms)
+✔ prepared spellcheck observer-only reconciles exactly once (740.9915ms)
+✔ prepared autocorrect input-first reconciles exactly once (324.350208ms)
+✔ prepared autocorrect observer-first reconciles exactly once (331.988667ms)
+✔ prepared autocorrect observer-only reconciles exactly once (322.61325ms)
+✔ prepared paste-like input-first reconciles exactly once (382.915875ms)
+✔ prepared paste-like observer-first reconciles exactly once (301.923ms)
+✔ prepared paste-like observer-only reconciles exactly once (247.272959ms)
+✔ prepared input without any beforeinput admits an existing text-node mutation (312.378667ms)
+✔ prepared unusable cancelable beforeinput falls back to native text (330.244166ms)
+✔ prepared plain-text child replacement canonicalizes only the affected block (333.772584ms)
+✔ prepared observer-owned duplicates retain a deliberate identical second edit (369.182041ms)
+✔ prepared multiple mutations in one owned batch commit final text once (331.148417ms)
+✔ prepared Unicode replacement preserves UTF-16 scalar boundaries and native caret (495.660625ms)
+✔ prepared no-op child replacement rebuilds mappings without a semantic update (258.949875ms)
+✔ prepared renderer echo cannot consume an unprompted native mutation in the same turn (285.72875ms)
+✔ prepared pure renderer patches and input-only notifications produce zero local effects (257.143291ms)
+✔ prepared pasted markup exposes recovery and leaves authoritative text unchanged (255.916541ms)
+✔ prepared unknown root mutation exposes recovery and stops editing without root diff (247.829292ms)
+✔ prepared multi-block mutation is explicit unsupported recovery, never partial commit (238.022333ms)
+✔ prepared affected-block resource limit retains bounded recovery and no semantic effect (392.766208ms)
+✔ prepared same-block remote patch rejects a changed baseline with captured recovery (249.341708ms)
+✔ prepared read-only unprompted native text is restored with observable recovery (259.790667ms)
+✔ prepared dispose invalidates queued observer-owned edit (289.788666ms)
+✖ prepared removed root block retains removed text and disables editing (247.411125ms)
+✔ prepared record limit stops editing and preserves bounded final text (318.234125ms)
+✔ prepared correction preserves independently navigated caret in another block (343.648ms)
+✔ prepared multiline pasted text uses semantic LF rather than textContent omission (332.03475ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14737.0755
+
+✖ failing tests:
+
+test at tests/browser/reconcile.spec.ts:135:1
+✖ prepared removed root block retains removed text and disables editing (247.411125ms)
+  page.evaluate: WrongDocumentError: The object is in the wrong document.
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:44:73)
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:137:20
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/reconcile.spec.ts:41:141) {
+    log: []
+  }

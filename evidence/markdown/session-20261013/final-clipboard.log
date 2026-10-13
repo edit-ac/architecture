@@ -1,0 +1,112 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs clipboard --test-concurrency=1
+
+clipboard browser: chromium
+✔ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (1749.591125ms)
+✔ cross-block fragment round-trips headings, marks and links atomically (187.476792ms)
+✔ native menu copy/cut/paste events require no keyboard and cut follows successful write (149.056083ms)
+✔ malformed fragment falls back safely (118.710416ms)
+✔ unsupported-version fragment falls back safely (139.685084ms)
+✔ schema fragment falls back safely (135.302458ms)
+✔ oversize fragment falls back safely (155.424417ms)
+✔ unsafe-link fragment falls back safely (147.945875ms)
+✔ kernel-url-rejection fragment falls back safely (143.346375ms)
+✔ HTML retains supported formatting and never installs source nodes or handlers (159.681292ms)
+✔ HTML lists and quotes preserve portable container formatting (181.354458ms)
+✔ direct quote text preserves quoted content and style (202.500917ms)
+✔ unsupported table codec keeps inert rich source and explicit fallback diagnostics (143.636708ms)
+✔ code target ignores rich flavors and keeps paste literal (128.780791ms)
+✔ inline-code literal paste retains destination code formatting (138.072167ms)
+✔ control-shift-v opts into paste without formatting (149.2375ms)
+✔ command-shift-v opts into paste without formatting (158.406208ms)
+✔ command-option-shift-v opts into paste without formatting (146.724333ms)
+✔ ordinary paste shortcut retains HTML formatting (157.916375ms)
+✔ mobile beforeinput-only paste is independent of keydown (160.032917ms)
+✔ mobile noncancelable paste repairs native DOM and commits once (226.51275ms)
+✔ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (142.424459ms)
+✔ clipboard write failure cannot cut content or add history (110.915042ms)
+✔ read-only and active composition reject paste with zero updates (108.976958ms)
+✔ empty/unavailable clipboard never erases a replacement selection (105.255291ms)
+✔ explicit plain command captures stable target before OS permission and preserves later selection (123.209667ms)
+✔ late plain paste after read-only transition is canceled (102.074875ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5925.408042
+clipboard browser: firefox
+✔ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (6379.790291ms)
+✔ cross-block fragment round-trips headings, marks and links atomically (475.0085ms)
+✔ native menu copy/cut/paste events require no keyboard and cut follows successful write (370.979875ms)
+✔ malformed fragment falls back safely (300.370291ms)
+✔ unsupported-version fragment falls back safely (300.493875ms)
+✔ schema fragment falls back safely (272.605125ms)
+✔ oversize fragment falls back safely (271.01725ms)
+✔ unsafe-link fragment falls back safely (317.161208ms)
+✔ kernel-url-rejection fragment falls back safely (313.776667ms)
+✔ HTML retains supported formatting and never installs source nodes or handlers (1375.302125ms)
+✔ HTML lists and quotes preserve portable container formatting (3573.6865ms)
+✔ direct quote text preserves quoted content and style (1493.768209ms)
+✔ unsupported table codec keeps inert rich source and explicit fallback diagnostics (337.935916ms)
+✔ code target ignores rich flavors and keeps paste literal (325.442083ms)
+✔ inline-code literal paste retains destination code formatting (267.606208ms)
+✔ control-shift-v opts into paste without formatting (274.343625ms)
+✔ command-shift-v opts into paste without formatting (305.7715ms)
+✔ command-option-shift-v opts into paste without formatting (294.411041ms)
+✔ ordinary paste shortcut retains HTML formatting (343.964ms)
+✔ mobile beforeinput-only paste is independent of keydown (954.407042ms)
+✔ mobile noncancelable paste repairs native DOM and commits once (337.002541ms)
+✔ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (301.317959ms)
+✔ clipboard write failure cannot cut content or add history (318.992792ms)
+✔ read-only and active composition reject paste with zero updates (250.888125ms)
+✔ empty/unavailable clipboard never erases a replacement selection (259.177625ms)
+✔ explicit plain command captures stable target before OS permission and preserves later selection (297.436792ms)
+✔ late plain paste after read-only transition is canceled (305.038292ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21346.012
+clipboard browser: webkit
+✔ literal preserves Markdown, whitespace, Unicode and newlines in one undo group (6089.847875ms)
+✔ cross-block fragment round-trips headings, marks and links atomically (1687.614833ms)
+✔ native menu copy/cut/paste events require no keyboard and cut follows successful write (860.630334ms)
+✔ malformed fragment falls back safely (511.775875ms)
+✔ unsupported-version fragment falls back safely (367.420958ms)
+✔ schema fragment falls back safely (501.117541ms)
+✔ oversize fragment falls back safely (1853.185833ms)
+✔ unsafe-link fragment falls back safely (343.519333ms)
+✔ kernel-url-rejection fragment falls back safely (411.260292ms)
+✔ HTML retains supported formatting and never installs source nodes or handlers (413.016958ms)
+✔ HTML lists and quotes preserve portable container formatting (391.119375ms)
+✔ direct quote text preserves quoted content and style (317.528791ms)
+✔ unsupported table codec keeps inert rich source and explicit fallback diagnostics (498.353958ms)
+✔ code target ignores rich flavors and keeps paste literal (329.296666ms)
+✔ inline-code literal paste retains destination code formatting (271.593709ms)
+✔ control-shift-v opts into paste without formatting (269.568458ms)
+✔ command-shift-v opts into paste without formatting (261.832292ms)
+✔ command-option-shift-v opts into paste without formatting (351.897375ms)
+✔ ordinary paste shortcut retains HTML formatting (256.936125ms)
+✔ mobile beforeinput-only paste is independent of keydown (325.199875ms)
+✔ mobile noncancelable paste repairs native DOM and commits once (272.582416ms)
+✔ paste plus beforeinput and input is deduplicated; repeated same payload stays deliberate (301.476083ms)
+✔ clipboard write failure cannot cut content or add history (284.163416ms)
+✔ read-only and active composition reject paste with zero updates (283.457458ms)
+✔ empty/unavailable clipboard never erases a replacement selection (278.156209ms)
+✔ explicit plain command captures stable target before OS permission and preserves later selection (321.199167ms)
+✔ late plain paste after read-only transition is canceled (262.261666ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18707.256791

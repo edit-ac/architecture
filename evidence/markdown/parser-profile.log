@@ -1,0 +1,34 @@
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.20s
+     Running tests/parser_profile.rs (target/debug/deps/parser_profile-758fc51695bcbb1a)
+
+running 5 tests
+test required_extensions_have_actual_events ... ok
+test extended_autolinks_candidate_gap_is_explicit ... ok
+test autolinks_exclude_code_existing_links_and_bad_boundaries ... FAILED
+test complete_required_gfm_corpus_is_qualified ... FAILED
+test official_commonmark_0312_raw_parser_conformance ... ok
+
+failures:
+
+---- autolinks_exclude_code_existing_links_and_bad_boundaries stdout ----
+
+thread 'autolinks_exclude_code_existing_links_and_bad_boundaries' (162310999) panicked at crates/editac-markdown/tests/parser_profile.rs:56:5:
+assertion `left == right` failed
+  left: ["https://other.test", "http://www.bad", "https://example.com/a(b)", "mailto:foo+bar@example.com"]
+ right: ["https://other.test", "https://example.com/a(b)", "mailto:foo+bar@example.com"]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- complete_required_gfm_corpus_is_qualified stdout ----
+
+thread 'complete_required_gfm_corpus_is_qualified' (162311000) panicked at crates/editac-markdown/tests/parser_profile.rs:49:5:
+GFM failures: [(0, "<table><thead><tr><th>foo</th><th>bar</th></tr></thead><tbody>\n<tr><td>baz</td><td>bim</td></tr>\n</tbody></table>\n", String("<table>\n<thead>\n<tr>\n<th>foo</th>\n<th>bar</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>baz</td>\n<td>bim</td>\n</tr>\n</tbody>\n</table>\n")), (1, "<table><thead><tr><th style=\"text-align: center\">abc</th><th style=\"text-align: right\">defghi</th></tr></thead><tbody>\n<tr><td style=\"text-align: center\">bar</td><td style=\"text-align: right\">baz</td></tr>\n</tbody></table>\n", String("<table>\n<thead>\n<tr>\n<th align=\"center\">abc</th>\n<th align=\"right\">defghi</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td align=\"center\">bar</td>\n<td align=\"right\">baz</td>\n</tr>\n</tbody>\n</table>\n")), (2, "<table><thead><tr><th>f|oo</th></tr></thead><tbody>\n<tr><td>b <code>|</code> az</td></tr>\n<tr><td>b <strong>|</strong> im</td></tr>\n</tbody></table>\n", String("<table>\n<thead>\n<tr>\n<th>f|oo</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>b <code>|</code> az</td>\n</tr>\n<tr>\n<td>b <strong>|</strong> im</td>\n</tr>\n</tbody>\n</table>\n")), (3, "<table><thead><tr><th>abc</th><th>def</th></tr></thead><tbody>\n<tr><td>bar</td><td>baz</td></tr>\n</tbody></table>\n<blockquote>\n<p>bar</p>\n</blockquote>\n", String("<table>\n<thead>\n<tr>\n<th>abc</th>\n<th>def</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>bar</td>\n<td>baz</td>\n</tr>\n</tbody>\n</table>\n<blockquote>\n<p>bar</p>\n</blockquote>\n")), (4, "<table><thead><tr><th>abc</th><th>def</th></tr></thead><tbody>\n<tr><td>bar</td><td>baz</td></tr>\n<tr><td>bar</td><td></td></tr>\n</tbody></table>\n<p>bar</p>\n", String("<table>\n<thead>\n<tr>\n<th>abc</th>\n<th>def</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>bar</td>\n<td>baz</td>\n</tr>\n<tr>\n<td>bar</td>\n<td></td>\n</tr>\n</tbody>\n</table>\n<p>bar</p>\n")), (6, "<table><thead><tr><th>abc</th><th>def</th></tr></thead><tbody>\n<tr><td>bar</td><td></td></tr>\n<tr><td>bar</td><td>baz</td></tr>\n</tbody></table>\n", String("<table>\n<thead>\n<tr>\n<th>abc</th>\n<th>def</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>bar</td>\n<td></td>\n</tr>\n<tr>\n<td>bar</td>\n<td>baz</td>\n</tr>\n</tbody>\n</table>\n")), (7, "<table><thead><tr><th>abc</th><th>def</th></tr></thead><tbody>\n</tbody></table>\n", String("<table>\n<thead>\n<tr>\n<th>abc</th>\n<th>def</th>\n</tr>\n</thead>\n</table>\n")), (8, "<ul>\n<li><input disabled=\"\" type=\"checkbox\"/>\nfoo</li>\n<li><input disabled=\"\" type=\"checkbox\" checked=\"\"/>\nbar</li>\n</ul>\n", String("<ul>\n<li><input disabled=\"\" type=\"checkbox\"> foo</li>\n<li><input checked=\"\" disabled=\"\" type=\"checkbox\"> bar</li>\n</ul>\n")), (9, "<ul>\n<li><input disabled=\"\" type=\"checkbox\" checked=\"\"/>\nfoo\n<ul>\n<li><input disabled=\"\" type=\"checkbox\"/>\nbar</li>\n<li><input disabled=\"\" type=\"checkbox\" checked=\"\"/>\nbaz</li>\n</ul>\n</li>\n<li><input disabled=\"\" type=\"checkbox\"/>\nbim</li>\n</ul>\n", String("<ul>\n<li><input checked=\"\" disabled=\"\" type=\"checkbox\"> foo\n<ul>\n<li><input disabled=\"\" type=\"checkbox\"> bar</li>\n<li><input checked=\"\" disabled=\"\" type=\"checkbox\"> baz</li>\n</ul>\n</li>\n<li><input disabled=\"\" type=\"checkbox\"> bim</li>\n</ul>\n")), (22, "<p><a href=\"mailto:a.b-c_d@a.b\">a.b-c_d@a.b</a></p>\n<p><a href=\"mailto:a.b-c_d@a.b\">a.b-c_d@a.b</a>.</p>\n<p>a.b-c_d@a.b-</p>\n<p><a href=\"mailto:a.b-c_d@a.b\">a.b-c_d@a.b</a>_</p>\n", String("<p><a href=\"mailto:a.b-c_d@a.b\">a.b-c_d@a.b</a></p>\n<p><a href=\"mailto:a.b-c_d@a.b\">a.b-c_d@a.b</a>.</p>\n<p>a.b-c_d@a.b-</p>\n<p>a.b-c_d@a.b_</p>\n"))]
+
+
+failures:
+    autolinks_exclude_code_existing_links_and_bad_boundaries
+    complete_required_gfm_corpus_is_qualified
+
+test result: FAILED. 3 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+error: test failed, to rerun pass `-p editac-markdown --test parser_profile`

@@ -1,0 +1,15 @@
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+error[E0599]: no method named `is_none_or` found for enum `Result<T, E>` in the current scope
+   --> crates/editac-markdown/src/export.rs:102:63
+    |
+102 |     if !blocks.is_empty() && crate::import::import(&markdown).is_none_or(|p|semantics(&p.blocks)!=semantics(blocks)) {
+    |                                                               ^^^^^^^^^^
+    |
+help: there is a method `is_err` with a similar name, but with different arguments
+   --> /opt/homebrew/Cellar/rust/1.97.1/lib/rustlib/src/rust/library/core/src/result.rs:646:5
+    |
+646 |     pub const fn is_err(&self) -> bool {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `editac-markdown` (lib) due to 1 previous error

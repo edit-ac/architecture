@@ -1,0 +1,422 @@
+{
+  "gate": "WEB-1.5",
+  "children": [
+    "WEB-1.5-I1",
+    "WEB-1.5-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "../architecture/progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "78ed60d4dd3fa0c8055ffe2dbc957703e144f2e69172c0e26e1cb112e953c2ab",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseRevision": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseRevision": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementationRevision": "96a3f93c367274de1f82ddfc9c90dd79020da2ea93bfc96b6627962746983ec0",
+  "sourceHashes": "tested-source-hashes.json",
+  "fixtureSeed": "Recovered real packed-WASM paragraphs alpha / independent; fixed document/epoch; fresh browser context/IndexedDB per authored case",
+  "canonical": {
+    "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_RECONCILE_OUTPUT=../architecture/evidence/browser-reconcile/run-1/pinned npm run test:browser -- reconcile",
+    "exit": 0,
+    "log": "run-1/pinned-reconcile.log",
+    "perEngine": [
+      {
+        "engine": "chromium",
+        "profile": {
+          "engine": "chromium",
+          "version": "156.0.8078.4",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "executed": 30,
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "canceled": 0,
+        "facts": "run-1/pinned/chromium/facts.json",
+        "factsSha256": "52cf584a71ffde8f9bfa290a288a99fd60ae952ee513600d2ec5a7305aa62cc1",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        },
+        "sourcesUnchanged": true,
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "profile": {
+          "engine": "firefox",
+          "version": "157.0",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "executed": 30,
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "canceled": 0,
+        "facts": "run-1/pinned/firefox/facts.json",
+        "factsSha256": "32b2045598144b42c0eac9a8dba7efc6583a3abee3089cd886fc4e5f9df01417",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        },
+        "sourcesUnchanged": true,
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "profile": {
+          "engine": "webkit",
+          "version": "27.2",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "executed": 30,
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "canceled": 0,
+        "facts": "run-1/pinned/webkit/facts.json",
+        "factsSha256": "1e61cdc6dc28c1d4f1aec3b9d2312f659688c151ac9926df844fd16c65425f45",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        },
+        "sourcesUnchanged": true,
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      }
+    ],
+    "executed": 90,
+    "passed": 90,
+    "failed": 0,
+    "skipped": 0,
+    "canceled": 0
+  },
+  "ordinaryInputRegression": {
+    "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_INPUT_OUTPUT=../architecture/evidence/browser-reconcile/run-1/pinned-input npm run test:browser -- input",
+    "exit": 0,
+    "log": "run-1/pinned-input.log",
+    "perEngine": [
+      {
+        "engine": "chromium",
+        "profile": {
+          "engine": "chromium",
+          "version": "156.0.8078.4",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "executed": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "canceled": 0,
+        "facts": "run-1/pinned-input/chromium/facts.json",
+        "factsSha256": "d04757ebe449efcb5aaafe2875083f9c105201d9a796d0006ea26e1c6066e13b",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        },
+        "sourcesUnchanged": true,
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "profile": {
+          "engine": "firefox",
+          "version": "157.0",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "executed": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "canceled": 0,
+        "facts": "run-1/pinned-input/firefox/facts.json",
+        "factsSha256": "8aeb0972cc2d532cfa42c39bea9bb2833ca72c97fd09e391154bfe3c38d1f133",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        },
+        "sourcesUnchanged": true,
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "profile": {
+          "engine": "webkit",
+          "version": "27.2",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "executed": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "canceled": 0,
+        "facts": "run-1/pinned-input/webkit/facts.json",
+        "factsSha256": "ad3697e736d661e8eff72100830519c4d3ff28dfe32560cba0a185ca91222483",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        },
+        "sourcesUnchanged": true,
+        "cleanup": {
+          "browserExited": true,
+          "listenerRemoved": true,
+          "consumerRemoved": true
+        }
+      }
+    ],
+    "executed": 51,
+    "passed": 51,
+    "failed": 0,
+    "skipped": 0,
+    "canceled": 0
+  },
+  "staticChecks": {
+    "build": {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH npm run build",
+      "exit": 0,
+      "log": "run-1/build-pinned.log"
+    },
+    "typecheck": {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH npm run typecheck",
+      "exit": 0,
+      "log": "run-1/pinned-typecheck.log"
+    },
+    "trackedDiffCheck": {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "run-1/diff-check.log"
+    },
+    "newFileWhitespaceErrors": 0
+  },
+  "prerequisites": {
+    "engineSourceRevision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+    "storageSourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+    "qualifiedADR": {
+      "version": 1,
+      "receipt": "../browser-input-policy/receipt.json"
+    },
+    "hashComparison": "run-1/prerequisite-hashes.json",
+    "unchangedHashes": 15,
+    "renderSelectionEvidence": "Render/selection and packed engine/storage source/artifacts unchanged; reuse WEB-1.2/1.3 evidence. Changed ordinary input route/fixture gets 51/51 final regression."
+  },
+  "preservedFailures": [
+    {
+      "command": "npm run build",
+      "exit": 2,
+      "log": "run-1/build.log",
+      "reason": "MutationRecord NodeList typing repaired before browser checks"
+    },
+    {
+      "command": "EDITAC_RECONCILE_OUTPUT=.../matrix npm run test:browser -- reconcile",
+      "exit": 1,
+      "executed": 75,
+      "passed": 72,
+      "failed": 3,
+      "skipped": 0,
+      "canceled": 0,
+      "log": "run-1/reconcile.log",
+      "reason": "Incorrect multi-block recovery identity oracle; implementation preserved identity"
+    },
+    {
+      "command": "EDITAC_RECONCILE_OUTPUT=.../repaired npm run test:browser -- reconcile",
+      "exit": 1,
+      "executed": 87,
+      "passed": 84,
+      "failed": 3,
+      "skipped": 0,
+      "canceled": 0,
+      "log": "run-1/reconcile-repaired.log",
+      "reason": "Removed root block left detached selection mapping; repair clears only editor-owned selection in unknown-scope/limit recovery",
+      "preRepairSources": "run-1/pre-recovery-repair/"
+    }
+  ],
+  "earlierPassingEvidence": {
+    "narrow": {
+      "command": "EDITAC_RECONCILE_OUTPUT=.../narrow node --test --test-name-pattern='prepared input without any beforeinput' tests/browser/reconcile.spec.ts",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "canceled": 0,
+      "log": "run-1/narrow.log",
+      "note": "Exit status was not durably captured; case counts/facts are prerequisite evidence only. The final canonical matrix includes the same case and has captured exit 0."
+    },
+    "postRecoveryRepair": {
+      "command": "EDITAC_RECONCILE_OUTPUT=.../recovery-repair npm run test:browser -- reconcile --test-name-pattern='root|multi-block|limit'",
+      "exit": 0,
+      "executed": 90,
+      "passed": 90,
+      "failed": 0,
+      "skipped": 0,
+      "canceled": 0,
+      "log": "run-1/recovery-repair.log",
+      "note": "Observed Node 26.4.0 executed all 30 cases/engine, despite intended narrow filter; counts record actual execution, superseded by final pinned full matrix"
+    },
+    "ordinaryInputRegression": {
+      "exit": 0,
+      "executed": 51,
+      "passed": 51,
+      "failed": 0,
+      "skipped": 0,
+      "log": "run-1/input-regression.log",
+      "note": "Observed Node 26.4.0; superseded by final pinned ordinary-input regression"
+    }
+  },
+  "runtime": {
+    "finalNode": "v24.19.0",
+    "npm": "11.17.0",
+    "facts": "run-1/runtime.json",
+    "environmentChange": "System /opt/homebrew/bin/node changed from Node 24.19.0 to 26.4.0 during execution. Final build/typecheck/full reconcile/input commands explicitly select existing NVM 24.19.0 without changing global configuration."
+  },
+  "acceptanceProof": {
+    "ownership": "One production TextInput observer; missing/noncancelable/unusable beforeinput uses an affected mutation-batch owner. Independent deliberate identical mutations get distinct intent IDs. Duplicate input-only notifications produce no new commit. Renderer echoes drained only within synchronous patch boundary.",
+    "scope": "Known single mapped text block, no HTML serialization/import or whole-document diff; at most 64 records, 2048 nodes, 256 Ki UTF-16 code units. Semantic LF/BR projection and native caret are preserved.",
+    "preparedCases": "Spellcheck/autocorrect/paste-like input-first, observer-first and observer-only; absent/unusable beforeinput; child replacement; multiple records; Unicode; deliberate identical edits; no-op; renderer echoes; pure input-only notifications; unsupported markup/root/multi-block; removed root block; record/text limits; remote changed baseline; independent/outside selection; multiline text; read-only and disposed generation.",
+    "effects": "Authored model/semantic DOM/caret, attributable real update/history/journal counts, one prepared semantic command per committed intent; unsupported/rejected mutations produce zero local semantic effects, bounded explicit recovery text, authoritative known-block restoration or disabled unknown scope. Unrelated DOM identity is asserted.",
+    "target": "Owned edit ranges are stable engine anchors; queued jobs reject a changed baseline rather than redirecting captured text."
+  },
+  "qualificationLimits": [
+    "All fallback replacement fixtures are prepared actual-DOM mechanics, not OS spellcheck/autocorrect/paste or IME/device support.",
+    "Ordinary regression includes recorded actual browser keyboard traces, separately labeled from prepared permutations.",
+    "Private internal adapter; composition/remote composition, structural clipboard/keyboard, full editor lifecycle, accessibility/device and release/deployment retain their own roadmap gates.",
+    "No paid inference, secrets loading, external provider transport, publication or background runner."
+  ],
+  "cleanup": {
+    "artifact": "run-1/cleanup.json",
+    "probeFacts": 19,
+    "allOwnedBrowserPIDsExited": true,
+    "allOwnedListenersAndConsumersRemoved": true,
+    "removed": [
+      {
+        "path": "/Users/bpstr/Library/Caches/ms-playwright/firefox-1555",
+        "allocatedBytes": 308649984
+      },
+      {
+        "path": "/Users/bpstr/Library/Caches/ms-playwright/webkit-2370",
+        "allocatedBytes": 313614336
+      }
+    ],
+    "reclaimedAllocatedBytes": 622264320,
+    "remainingFreeBytes": 23921889280,
+    "protectedServices": [
+      {
+        "pid": 4945,
+        "listeners": [
+          "[::1]:5432",
+          "127.0.0.1:5432"
+        ],
+        "command": "postgres",
+        "cwd": [
+          "/opt/homebrew/var/postgresql@18"
+        ]
+      },
+      {
+        "pid": 15659,
+        "listeners": [
+          "*:4321"
+        ],
+        "command": "node",
+        "cwd": [
+          "/Users/bpstr/Github/assign/assign-web-astro"
+        ]
+      },
+      {
+        "pid": 72858,
+        "listeners": [
+          "127.0.0.1:8001"
+        ],
+        "command": "Python",
+        "cwd": [
+          "/Users/bpstr/Github/assign/assign-knowledge"
+        ]
+      },
+      {
+        "pid": 74918,
+        "listeners": [
+          "*:8081"
+        ],
+        "command": "assign",
+        "cwd": [
+          "/Users/bpstr/Github/assign/assign-core"
+        ]
+      },
+      {
+        "pid": 86207,
+        "listeners": [
+          "[::1]:5173"
+        ],
+        "command": "node",
+        "cwd": [
+          "/Users/bpstr/Github/assign/assign-web"
+        ]
+      },
+      {
+        "pid": 88299,
+        "listeners": [
+          "127.0.0.1:55447"
+        ],
+        "command": "postgres",
+        "cwd": [
+          "/Users/bpstr/Github/assign/.codex/tmp/knowledge-status-ki01e-pg"
+        ]
+      },
+      {
+        "pid": 88924,
+        "listeners": [
+          "127.0.0.1:55433"
+        ],
+        "command": "postgres",
+        "cwd": [
+          "/Users/bpstr/Github/assign/.codex/roadmap-runners/knowledge-reliability/postgres-setup/pgdata"
+        ]
+      }
+    ]
+  }
+}

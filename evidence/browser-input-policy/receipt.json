@@ -1,0 +1,1337 @@
+{
+  "gate": "WEB-1.13",
+  "children": [
+    "WEB-1.13-I1",
+    "WEB-1.13-V1"
+  ],
+  "state": "implemented and mechanically verified; not deployed or OS/device qualified",
+  "sourceSnapshot": "../architecture/progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "78ed60d4dd3fa0c8055ffe2dbc957703e144f2e69172c0e26e1cb112e953c2ab",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseRevision": "3cea914c983233a091faeb70382865a335c85b40",
+  "architectureBaseRevision": "554509957c5d6b5f80318a8b430d9f2a2784d3e6",
+  "implementationRevision": {
+    "kind": "uncommitted content manifest SHA-256",
+    "sha256": "b6b139abb6c95fc6f1ffe9f2bd454f4292d50633a86aad11a42cecad3745604e",
+    "manifest": "implementation-hashes.json"
+  },
+  "adr": {
+    "path": "../../decisions/004-browser-input-composition.md",
+    "version": 1,
+    "sha256": "2b611e46a5aa2527209189706a216d6d9894a2e3b72f4e34d31642b870f578c4"
+  },
+  "fixtureSeed": "Authored alpha / independent paragraphs; initial collapsed UTF-16 caret 5; no provider/recording transport",
+  "prerequisites": {
+    "engineSourceRevision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+    "storageSourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+    "currentLiveSourceHashesMatch": true,
+    "browserGates": [
+      "../browser-entry/receipt.json",
+      "../browser-render/receipt.json",
+      "../browser-selection/receipt.json"
+    ]
+  },
+  "canonical": {
+    "command": "npm run test:browser -- input-policy",
+    "exit": 0,
+    "log": "checks/canonical.log",
+    "perEngine": [
+      {
+        "engine": "chromium",
+        "counts": {
+          "executed": 27,
+          "passed": 27,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0
+        },
+        "profile": {
+          "engine": "chromium",
+          "version": "156.0.8078.4",
+          "playwright": "1.64.0",
+          "node": "v26.4.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "canonical/chromium/facts.json",
+        "factsSha256": "18c976c0a5112b18aca03296d142d91653cb5b89d1d1815323c99615b02fd135",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 740614,
+          "sha256": "48e1581709c34991918187f86ccd34e0f3c90ae6ff42388822aac43b56a7fd79",
+          "includesWasm": true
+        },
+        "cases": [
+          {
+            "id": "native-typing-delete",
+            "provenance": "actual Playwright browser keyboard",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "keydown",
+                "beforeinput",
+                "keyup",
+                "input"
+              ],
+              "preparedEventTypes": [],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "missing-input-first",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "missing-observer-first",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "missing-missing-input",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "noncancelable",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "cancelable-duplicates",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "renderer-echo",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "native-before-render",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-sessions",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "beforeinput",
+                "input",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-cancel",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-blur",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "blur",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-readonly",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "blur"
+              ],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-dispose",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-before",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-after",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-independent",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-overlap",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-deleted-target",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-commit-key",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "keydown",
+                "keyup"
+              ],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend",
+                "keydown",
+                "beforeinput",
+                "keyup"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "read-only-disposed",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "blur"
+              ],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "native-wrapper-replacement",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "read-only-native-mutation",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "blur"
+              ],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-keydown-first",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "keydown",
+                "input",
+                "compositionend",
+                "beforeinput",
+                "keyup"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-key-turn-expiry",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "keydown",
+                "keyup"
+              ],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-preceding-key",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "keydown",
+                "beforeinput",
+                "compositionstart",
+                "compositionend",
+                "input",
+                "keyup"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-backward-selection",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-at-anchor",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          }
+        ]
+      },
+      {
+        "engine": "firefox",
+        "counts": {
+          "executed": 27,
+          "passed": 27,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0
+        },
+        "profile": {
+          "engine": "firefox",
+          "version": "157.0",
+          "playwright": "1.64.0",
+          "node": "v26.4.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "canonical/firefox/facts.json",
+        "factsSha256": "f8186d2e8799d4cc6e25f75b5b60f60fbd18c3b687df84f9e469cf162bd4ccb4",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 740614,
+          "sha256": "48e1581709c34991918187f86ccd34e0f3c90ae6ff42388822aac43b56a7fd79",
+          "includesWasm": true
+        },
+        "cases": [
+          {
+            "id": "native-typing-delete",
+            "provenance": "actual Playwright browser keyboard",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "keydown",
+                "beforeinput",
+                "keyup",
+                "input"
+              ],
+              "preparedEventTypes": [],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "missing-input-first",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "missing-observer-first",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "missing-missing-input",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "noncancelable",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "cancelable-duplicates",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "renderer-echo",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "native-before-render",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-sessions",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "beforeinput",
+                "input",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-cancel",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-blur",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "blur",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-readonly",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "blur"
+              ],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-dispose",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-before",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-after",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-independent",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-overlap",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-deleted-target",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-commit-key",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "keydown",
+                "keyup"
+              ],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend",
+                "keydown",
+                "beforeinput",
+                "keyup"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "read-only-disposed",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "native-wrapper-replacement",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "read-only-native-mutation",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "blur"
+              ],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-keydown-first",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "keydown",
+                "input",
+                "compositionend",
+                "beforeinput",
+                "keyup"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-key-turn-expiry",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "keydown",
+                "keyup"
+              ],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-preceding-key",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "keydown",
+                "beforeinput",
+                "compositionstart",
+                "compositionend",
+                "input",
+                "keyup"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-backward-selection",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-at-anchor",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          }
+        ]
+      },
+      {
+        "engine": "webkit",
+        "counts": {
+          "executed": 27,
+          "passed": 27,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0
+        },
+        "profile": {
+          "engine": "webkit",
+          "version": "27.2",
+          "playwright": "1.64.0",
+          "node": "v26.4.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "canonical/webkit/facts.json",
+        "factsSha256": "a44c04862abc4ad82f1c0bb94b15fc3ff2ed793c0535dbbe73bfdfd21e37b859",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 740614,
+          "sha256": "48e1581709c34991918187f86ccd34e0f3c90ae6ff42388822aac43b56a7fd79",
+          "includesWasm": true
+        },
+        "cases": [
+          {
+            "id": "native-typing-delete",
+            "provenance": "actual Playwright browser keyboard",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "keydown",
+                "beforeinput",
+                "keyup",
+                "input"
+              ],
+              "preparedEventTypes": [],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "missing-input-first",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "missing-observer-first",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "missing-missing-input",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "noncancelable",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "cancelable-duplicates",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "renderer-echo",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "native-before-render",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-sessions",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "beforeinput",
+                "input",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-cancel",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-blur",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "blur",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-readonly",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "blur"
+              ],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-dispose",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionupdate"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-before",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-after",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-independent",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-overlap",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-deleted-target",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-commit-key",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "keydown",
+                "keyup"
+              ],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend",
+                "keydown",
+                "beforeinput",
+                "keyup"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "read-only-disposed",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "native-wrapper-replacement",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "read-only-native-mutation",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "beforeinput",
+                "input"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-keydown-first",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "keydown",
+                "input",
+                "compositionend",
+                "beforeinput",
+                "keyup"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-key-turn-expiry",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [
+                "keydown",
+                "keyup"
+              ],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-preceding-key",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "keydown",
+                "beforeinput",
+                "compositionstart",
+                "compositionend",
+                "input",
+                "keyup"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-backward-selection",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          },
+          {
+            "id": "composition-remote-at-anchor",
+            "provenance": "prepared real-DOM event replay",
+            "traceProvenance": {
+              "nativeTrustedEventTypes": [],
+              "preparedEventTypes": [
+                "compositionstart",
+                "compositionend"
+              ],
+              "composition": "prepared event replay; no OS IME"
+            }
+          }
+        ]
+      }
+    ],
+    "total": {
+      "executed": 81,
+      "passed": 81,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
+  },
+  "regressions": [
+    {
+      "command": "npm run test:browser -- render",
+      "exit": 0,
+      "perEngine": [
+        {
+          "engine": "chromium",
+          "executed": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "facts": "render-regression/chromium/facts.json",
+          "factsSha256": "1390c410b0dbbe857ae37138c009e0c463c232ae49ed4a96ace1d81440b71f9f"
+        },
+        {
+          "engine": "firefox",
+          "executed": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "facts": "render-regression/firefox/facts.json",
+          "factsSha256": "c029fffc7054c2d6de64877c52b40295c5b80312fef15ccbec4b9768d95c7737"
+        },
+        {
+          "engine": "webkit",
+          "executed": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "facts": "render-regression/webkit/facts.json",
+          "factsSha256": "7dd16f4867f3eda084336d19d0bdd9e09edb20a1e4ddb11fd9236592b63b397f"
+        }
+      ],
+      "log": "checks/render-regression.log",
+      "reuse": "DOMRenderer/DOMSelection are unchanged since this passing run; later protocol-only repairs do not invalidate these results."
+    },
+    {
+      "command": "npm run test:browser -- selection",
+      "exit": 0,
+      "perEngine": [
+        {
+          "engine": "chromium",
+          "executed": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "facts": "selection-regression/chromium/facts.json",
+          "factsSha256": "dbc7a936e14f4f3d2067ab6e73fd8666bdafa32aeeb590fc36a010349abd3cdd"
+        },
+        {
+          "engine": "firefox",
+          "executed": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "facts": "selection-regression/firefox/facts.json",
+          "factsSha256": "4d2123d504bf1b739485628e41a702bc2cbf471a058d6354c103ecbb27c3f246"
+        },
+        {
+          "engine": "webkit",
+          "executed": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "facts": "selection-regression/webkit/facts.json",
+          "factsSha256": "4c7a9df0913304f859d177344ff1e23cdd2c27e68d13c505009d48b041b1f6f6"
+        }
+      ],
+      "log": "checks/selection-regression.log",
+      "reuse": "DOMRenderer/DOMSelection are unchanged since this passing run; later protocol-only repairs do not invalidate these results."
+    }
+  ],
+  "buildAndTypes": [
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "log": "checks/build-receipt.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exit": 0,
+      "log": "checks/typecheck.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "checks/diff-check.log"
+    },
+    {
+      "command": "git -C ../architecture diff --check",
+      "exit": 0,
+      "log": "checks/architecture-diff-check.log"
+    }
+  ],
+  "sourceHashes": "tested-source-hashes.json",
+  "browserProfileHashes": {
+    "path": "browser-profiles.json",
+    "sha256": "a10b0ee96b555c7eff548785dc95a91f778602c7995dc29dd66e5882133fb453"
+  },
+  "criteria": {
+    "G01": "Physical key/Event/mutation/session owners correlate duplicates; deliberate identical edits retained; preceding key adopted by composition; terminal statuses and per-intent update/history/journal asserted.",
+    "G05": "Native DOM ownership; no intermediate/canceled commits; separate sessions, forward/backward ranges, blur/read-only/dispose, both commit-key orderings, next deliberate Enter and dispatcher expiry.",
+    "G09": "Only synchronous renderer-boundary records suppressed; actual native mutation before/after independent renderer patch retained; affected-block wrapper repair preserves unrelated identity.",
+    "stableTargets": "Real peer insertion before/after/at anchor, selected overlap rejection, deletion-probe update admission, preserved recovery text and cleared conflicting selection.",
+    "integration": "Packed WASM + production renderer/selection/recovered engine + actual IndexedDB journal; each admitted local intent has one update, one history group and one durable journal record.",
+    "settlement": "Generation-aware bounded eight-turn observer/job drain and actual local flush; no fixed sleeps."
+  },
+  "preservedFailures": [
+    {
+      "log": "checks/matrix.log",
+      "chromium": {
+        "executed": 20,
+        "passed": 1,
+        "failed": 19,
+        "skipped": 0
+      },
+      "firefoxAndWebkit": "20 runner-reported hook failures per engine; zero actual case bodies because pinned binaries absent. Installation in checks/browser-install.log changed the environment.",
+      "repairs": "Namespaced effect attribution and affected-block DOM canonicalization."
+    },
+    {
+      "log": "checks/matrix-repaired.log",
+      "perEngine": {
+        "executed": 20,
+        "passed": 19,
+        "failed": 1,
+        "skipped": 0
+      },
+      "repair": "Use paragraph split rather than list-only enter; focused 1/1 per engine in checks/key-repaired.log."
+    }
+  ],
+  "qualificationLimits": [
+    "Trusted browser keyboard actions cover physical typing/deletion and deliberate paragraph Enter; composition and fallback permutations are prepared real-DOM replay.",
+    "Prepared owner deletion uses the existing admitted Yjs deletion-probe tombstone, not a production block-deletion API.",
+    "No actual OS IME/dead-key/mobile/Safari device/screen-reader/dictation evidence, release qualification, paid inference or publication.",
+    "Minimal single-paragraph qualification protocol only; production ordinary routing WEB-1.4 and production composition/remote WEB-1.6/1.7 remain unchanged gates."
+  ],
+  "cleanup": {
+    "removed": [
+      {
+        "path": "/Users/bpstr/Library/Caches/ms-playwright/chromium-1248",
+        "allocatedBytes": 383918080,
+        "logicalBytes": 382785075
+      },
+      {
+        "path": "/Users/bpstr/Library/Caches/ms-playwright/firefox-1555",
+        "allocatedBytes": 308649984,
+        "logicalBytes": 308413369
+      },
+      {
+        "path": "/Users/bpstr/Library/Caches/ms-playwright/webkit-2370",
+        "allocatedBytes": 313614336,
+        "logicalBytes": 299531327
+      }
+    ],
+    "allocatedBytesRemoved": 1006182400,
+    "freeBytesBefore": 27156103168,
+    "freeBytesAfter": 27091767296,
+    "observedFreeBytesIncrease": -64335872,
+    "preserved": "All qualification artifacts, source/uncommitted work, existing chromium_headless_shell and unrelated caches/services. No processes signaled."
+  },
+  "processEvidence": [
+    "process-audit.txt",
+    "listeners-after.txt",
+    "cache-cleanup-preflight.json"
+  ],
+  "verifiedAtUtc": "2026-10-12T10:49:02.071726+00:00",
+  "finalState": "final-state.json"
+}

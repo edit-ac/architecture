@@ -1,0 +1,150 @@
+{
+  "gate": "SYN-1.1",
+  "children": [
+    "SYN-1.1-I1",
+    "SYN-1.1-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/06-synchronization-049784b4c224/source-63e8bc8b7f65.md",
+  "sourceRevision": "9fb151bc16cc567c2c66700209baff239d192e1893ab4746d98f4c8dc329a17d",
+  "promptRevision": "2e18a98412c7",
+  "coreBaseCommit": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseCommit": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementationRevision": "Additive uncommitted fixture/check changes captured by source SHA-256 and archived source copies; unrelated changes preserved",
+  "changedPaths": [
+    "tests/helpers/prepared-socket.mjs",
+    "tests/fixtures/synchronization-entry.json",
+    "tests/outbox.test.mjs",
+    "tests/interop.test.mjs"
+  ],
+  "sourceHashes": {
+    "tests/helpers/prepared-socket.mjs": "448c3110beb2521103d69745de5c85d4d8c3709fab6db84c16e46a0631e19b01",
+    "tests/fixtures/synchronization-entry.json": "b82550dd7e54cd05b0a7ec018d7765d3873604de27837c87fb1a4a7f1a72c736",
+    "tests/outbox.test.mjs": "f1cd1e6121526315e09be91e68daba721d6f1cd05daf9d42fb526c9eef21cfe7",
+    "tests/interop.test.mjs": "7c328c34670263310707b07df4b48f35c2ab50572c6eee9dd14ba712a9f0571c",
+    "packages/web/src/storage/outbox.ts": "660a34984825fca07570c2605000515f22d6eb352ec7d1fb760e81e1f0b75437",
+    "packages/web/src/storage/journal.ts": "53d45abc5c323683512470d41ada3941edfb4c249bd84a6dfca6d892b867c2a1",
+    "fixtures/interop/bridge.mjs": "2d0c60fc33a3b6eb5e2d8084d90107bc3574d3a3c02c00e511436f9f8885d17a",
+    "Cargo.lock": "1d8c3e26a50a9e8d8e799032b905aaaf668bf46082beaa4992d6463f220ef3a6",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+  },
+  "compiledHashes": {
+    "packages/web/dist/storage/outbox.js": "858775d88d32a013270706f7eefaed79e5a53b3442a696fbd063a835bc0db777",
+    "packages/web/dist/storage/journal.js": "d4fe1e43fbb1861e385d4ec33466d897b8882c50f2bdaea0b7356a0d3fb92192",
+    "packages/core/dist/engine.js": "c060f0e182189cd1b9ffa75fd93fd31ca61db45da77f7d5562f2b4f449991fd2",
+    "packages/core/dist/wasm/editac_wasm_bg.wasm": "265a6896c0962bbfc8e3cc07f8ac12043654df9d22443ccb840db173995dbdd2"
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "log": "build.log",
+      "exit": 0
+    },
+    {
+      "command": "node --test --test-name-pattern=\"prepared socket|synchronization entry\" tests/outbox.test.mjs tests/interop.test.mjs",
+      "log": "narrow.log",
+      "exit": 0,
+      "executed": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "node --test tests/outbox.test.mjs tests/interop.test.mjs",
+      "log": "full.log",
+      "exit": 0,
+      "executed": 27,
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "node --test tests/protocol-toolchain.test.mjs",
+      "log": "profile-pins.log",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "node --test --test-name-pattern=\"actual Chromium\" tests/outbox.test.mjs",
+      "log": "teardown-probe.log",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "cargo test -p editac-core --test interop --locked --offline (nested Node before hook)",
+      "log": "interop/rust.log",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0
+    },
+    {
+      "command": "git diff --check -- tests/outbox.test.mjs tests/interop.test.mjs tests/helpers/prepared-socket.mjs tests/fixtures/synchronization-entry.json",
+      "log": "diff-check.log",
+      "exit": 0
+    }
+  ],
+  "upstream": {
+    "currentRoadmapRevisionMatches": true,
+    "engine": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+    "storage": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+    "artifactAudit": "upstream-artifact-audit.json",
+    "implementationDrift": "upstream-audit.json",
+    "scope": "Prior COMPLETE source-revision evidence retained; entry checks exercise current interoperability/outbox paths, not full upstream requalification"
+  },
+  "criterionMap": {
+    "fixedProfile": "tests/fixtures/synchronization-entry.json; named production identity/pin checks; four independent update/sync/awareness/schema contracts",
+    "explicitReceiptSchema": "Production DurableReceipt and full JournalIdentity fields checked against prepared descriptor; application receipt capability and service-commit requirement explicit",
+    "preparedSocket": "Owned bounded byte queues with explicit shuffle/duplicate/disconnect/reconnect/teardown; real Rust XML update oracle and production outbox matching",
+    "noCredentialsOrApplicationNetwork": "Pure in-memory socket pair; offline Cargo; actual browser application requests fully fulfilled from local files (8 prepared routes, zero unexpected/external requests); loopback Playwright is control infrastructure only"
+  },
+  "preparedBoundary": "Receipts are prepared fixtures, not evidence of service durable commit. No production socket/session/relay or authentication implementation; SYN-1.2..1.7 remain open. XML interoperability is not editor-schema qualification.",
+  "cleanup": "cleanup.json",
+  "verifiedAtUtc": "2026-10-13T00:17:11.086618+00:00",
+  "artifactHashes": {
+    "disk-inspection.json": "4423d47291dd7394c2284255bcfbd1b64bb36be4cdf86ff231f0fae22a3fa8ee",
+    "upstream-audit.json": "4f282cd2bd6ea1394e0e8223c4eea2124b95b270bc17b756de712fe1678320d2",
+    "full.log": "165eb0c61bcdc47a4ab2d167c707e00ee77b49a944748a11f10feaf8a7210d8e",
+    "diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "cleanup.json": "a82713158be49991e37a16e9727283b54566317e9079ef2e7456d6996e44f3b8",
+    "teardown-probe.log": "a092a54ee17f136d2804b24f304e843db0cd811cec7a54df96ac5afb0b71bacf",
+    "profile-pins.log": "5ffd02d15c79e596e8eba8799b946ba7fd350d4bc5c8d858f599907bd0bed07a",
+    "upstream-artifact-audit.json": "6f4ce26ac0e0e0a902288804488476472730780fc9d79125b5ee99fd9dfca002",
+    "narrow.log": "e2d2ef8eb5f5ffdb121cdae7e62cad747c0bd1d71d11e9cdac8553c829631429",
+    "build.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "full/harness.json": "c02fc90e54750ebbb46792b943967e04d0cccd8fcdab54212f8a21d4d6b2fd14",
+    "interop/js-for-rust-sv.bin": "4b8cc6261208db78b2c33d1a2bc6cc2d04175754a3a1256f563768a1530e6daa",
+    "interop/rust-2.bin": "e4505af3501c36faf5d418900953d0204794b8f2f65b2133f0fe5ab9a5b59822",
+    "interop/js-full.bin": "283340f86c2db20da9d54677ebeeb3bfcd7ab84bb617a8f51153a68470d1d48b",
+    "interop/rust-1.bin": "c0c0f00345fdc0bb120a69c79b0da7b2f15f138be00ccd66f1ba4ea5412e2502",
+    "interop/rust-0.bin": "9db2cc07a73514f4c21feb4a79aa0b3a0536515c03c9375a0461a4c9eeeb6505",
+    "interop/rust.log": "32690964dd0c0156a650306812a56377e42caf9f0d018c68659ef8d6b221f4cd",
+    "interop/js-1.bin": "dc3a74413e11fb7762765d93332934634e7c5e5be87f02d3c3a40d238e1d2a80",
+    "interop/rust-for-js.bin": "776e6ee129a7e8fd1ea5bbcc0ffa9feafc864e93c76acbcef1d1b7b23e57e0c3",
+    "interop/js-sv-1.bin": "d195c30580b6cbcc3942798d25379716f33e7756c08097a9731a16c21f2da2b8",
+    "interop/js-sv-0.bin": "9fefc65ae3d2443eeb04e8b092f96ab6ebaba12a07450500585f3847bc61b392",
+    "interop/js-0.bin": "a81dd584362024d63957337c6865e2a7bfbfc011f9cb161e0699beb512fe662f",
+    "interop/js-2.bin": "4b32457230f02755f029d847271f4b23122140f0a582dccdee1ba49761ac1145",
+    "interop/js-sv-2.bin": "14bff0290fc4d3180b03d410bf85b53eba425667b67d60683af9e776753bba6e",
+    "interop/js-for-rust.bin": "3f74735fdd50c10c4c881549a4c8afb832093217c9727f097c2e3c3a6ba48e1b",
+    "interop/rust-sv-0.bin": "04cef3cc2ae6f00503c0fb20a94624c148ca0f0e884ab36d5e670b9ab911f25a",
+    "narrow/harness.json": "f9e5ff99ba035003086d003c1d70a3f0916f5383cf16140f1fb82fc6f7e4700b",
+    "teardown-probe/harness.json": "a890b224a31054fc00f4a7195a46362fc90e4971a41cb9b3aa5ce72a0f5c9d30",
+    "sources/tests/outbox.test.mjs": "f1cd1e6121526315e09be91e68daba721d6f1cd05daf9d42fb526c9eef21cfe7",
+    "sources/tests/interop.test.mjs": "7c328c34670263310707b07df4b48f35c2ab50572c6eee9dd14ba712a9f0571c",
+    "sources/tests/fixtures/synchronization-entry.json": "b82550dd7e54cd05b0a7ec018d7765d3873604de27837c87fb1a4a7f1a72c736",
+    "sources/tests/helpers/prepared-socket.mjs": "448c3110beb2521103d69745de5c85d4d8c3709fab6db84c16e46a0631e19b01"
+  }
+}

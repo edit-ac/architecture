@@ -1,0 +1,88 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs history-selection
+
+history-selection browser: chromium
+✖ undo paragraph creation restores the stored heading-end selection (2139.099209ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2520.764541
+
+✖ failing tests:
+
+test at tests/browser/history-selection.spec.ts:8:1
+✖ undo paragraph creation restores the stored heading-end selection (2139.099209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 5
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/history-selection.spec.ts:29:97
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+history-selection browser: firefox
+✖ undo paragraph creation restores the stored heading-end selection (8076.452666ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8965.532
+
+✖ failing tests:
+
+test at tests/browser/history-selection.spec.ts:8:1
+✖ undo paragraph creation restores the stored heading-end selection (8076.452666ms)
+  AssertionError [ERR_ASSERTION]: Undo must retain a mapped heading-end caret
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/history-selection.spec.ts:28:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+history-selection browser: webkit
+✖ undo paragraph creation restores the stored heading-end selection (4843.701208ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5671.472375
+
+✖ failing tests:
+
+test at tests/browser/history-selection.spec.ts:8:1
+✖ undo paragraph creation restores the stored heading-end selection (4843.701208ms)
+  AssertionError [ERR_ASSERTION]: Undo must retain a mapped heading-end caret
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/history-selection.spec.ts:28:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

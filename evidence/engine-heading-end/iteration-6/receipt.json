@@ -1,0 +1,122 @@
+{
+  "task": "WEB-1.14",
+  "child": "WEB-1.14-C2",
+  "state": "BLOCKED_UNQUALIFIED_RESULT_CONTRACT",
+  "sourceSnapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "6fed2016c7ca49b14c374ff211c9850ac5726ce44570f42d2c69f4d0a0cdd06d",
+  "loadedPromptRevision": "7eaa063f3629",
+  "recordedAtUtc": "2026-10-12T15:30:29.864015+00:00",
+  "coreBaseRevision": "6edb83432468e44083740b586f973fb44f623352",
+  "implementationRevisionKind": "existing dirty tree; diagnostic test snapshot plus exact production hashes; no production edits this iteration",
+  "sourceHashes": {
+    "crates/editac-core/tests/heading_end.rs": "0caa8cd927b2758082c04583e7ee6ef37673f6b36e1ff9ea962137007f4b74d8",
+    "crates/editac-core/src/commands/editor.rs": "33d9ec9a3790990f6895573a100833ddc60e746f5908c0e608953cabf10ec162",
+    "crates/editac-core/src/editor.rs": "f10d349738f12ed8c63aaa52d7d0c74aca105c418d094e655944a9e389fcbbd1",
+    "crates/editac-core/src/anchors.rs": "a28e864a1228881f26a8e3458fc95da17f59db38284c82e6188ee23ff35ceaa5",
+    "fixtures/schema-v5/mapping.rs": "47f3ac42dc1ba97b06b33f1f0e1b717e37cb18082bdc586f9ee2376c30ba3025",
+    "crates/editac-wasm/src/bridge.rs": "60669bf78db3b8f852c6877d723e8cb42e99c727d0159c836a4430664e9217f8",
+    "packages/core/src/engine.ts": "0e5923bc6e54f32710114faae20ae56c1e51849f43f0a83f81dda04c5592cf8f",
+    "tests/wasm-commands.test.mjs": "a226745ba620b02aa5d13466639badba91dc50a9df933c70351acf565b7a408e",
+    "tests/wasm-command-types.ts": "1356524ed8c3c20251b625d6be26ffaff5d4230a661873edc27a84bf034d8edb"
+  },
+  "testedSource": "heading_end.rs",
+  "packedArtifact": {
+    "path": "packages/core/dist/wasm/editac_wasm_bg.wasm",
+    "sha256": "d30075f5309fa00b6071693b8f98b15cc478f851aa942a5c56d3b9295a9d08b3",
+    "state": "unchanged, not executed this iteration"
+  },
+  "command": "cargo test -p editac-core --test heading_end heading_end_v5_construction --locked --offline",
+  "checks": [
+    {
+      "log": "constructions.log",
+      "exit": null,
+      "exitNote": "launcher result not captured; log reports success",
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 12
+    },
+    {
+      "log": "constructions-final.log",
+      "exit": 101,
+      "executed": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "compileFailure": true
+    },
+    {
+      "log": "constructions-repaired.log",
+      "exit": 101,
+      "executed": 2,
+      "passed": 1,
+      "failed": 1,
+      "skipped": 0,
+      "filtered": 12,
+      "reason": "probe oracle wrongly treated disabling split operation as tombstoning owner"
+    },
+    {
+      "log": "constructions-qualified-diagnostic.log",
+      "exit": 0,
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 12,
+      "classification": "construction diagnostics; not HeadingEnd qualification"
+    }
+  ],
+  "decision": "construction-decision.md",
+  "criteria": {
+    "freshSourceDestinationTyping": "demonstrated by both admitted constructions",
+    "originalRightBiasedCut": "conflict remains: both resolve existing sibling",
+    "headingIdentityLevelMarksSiblingSources": "diagnostic probes pass",
+    "checkpointResultAndOriginalRouting": "diagnostic probes pass",
+    "oneLocalSemanticUpdateHistoryGroup": "original gate not qualified; probes use disposable steps plus one aggregate replay update",
+    "selectedCrossBlockRejectionPeerUndoRedoPackedTypes": "prior partial evidence preserved; no new acceptance claim"
+  },
+  "priorEvidence": [
+    "../receipt.json",
+    "../iteration-2/receipt.json",
+    "../iteration-2/controller-reconciliation.md"
+  ],
+  "dependencyScan": {
+    "WEB-1.14": "requires controller result/ownership reconciliation",
+    "WEB-1.8": "depends on WEB-1.14",
+    "WEB-1.9": "depends on WEB-1.8",
+    "WEB-1.10": "depends on WEB-1.9",
+    "WEB-1.11": "depends on WEB-1.10",
+    "WEB-1.12": "depends on WEB-1.11"
+  },
+  "nextAction": "controller supplies revised next immutable source/spec distinguishing input cut from explicit stable result anchor, or versioned ownership/routing construction; then production command and full original V1 qualification",
+  "cleanup": {
+    "removed": [
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/incremental/heading_end-2igo8ffz30ep6/s-hn5a5lznwj-0coh8vd-9d29rzw4mqq1o88al2eqvul0k",
+        "bytes": 7538944
+      },
+      {
+        "path": "/Users/bpstr/Github/edit-ac/core/target/debug/incremental/heading_end-2igo8ffz30ep6/s-hn5a6lrlpi-1o49kbn-bnc060vgp43vu2b45lc2pgujx",
+        "bytes": 7472220
+      }
+    ],
+    "reclaimed_bytes": 15011164,
+    "active_build_processes": [],
+    "preserved": [
+      "target/debug binaries and pre-existing incremental state",
+      "qualification evidence",
+      "Assign supervised server PID 15659 port 4321"
+    ]
+  },
+  "qualificationLimits": [
+    "no original gate/child closed",
+    "no unchanged acceptance test rerun",
+    "no paid provider calls, publication, browser/server startup or source/spec edit",
+    "final diagnostics filtered 12 original cases; these remain unqualified"
+  ],
+  "maintenanceChecks": {
+    "format": 0,
+    "diff-check": 0
+  }
+}

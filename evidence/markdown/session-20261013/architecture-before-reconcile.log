@@ -1,0 +1,23 @@
+
+> @edit-ac/architecture@0.0.0 check
+> npm run validate:roadmaps && npm run validate:editing-suite && npm run test:editing-suite-contract
+
+
+> @edit-ac/architecture@0.0.0 validate:roadmaps
+> node scripts/validate-roadmaps.mjs
+
+{
+  "runnerVersion": "0.8.0",
+  "files": 42,
+  "tasks": 568,
+  "checkboxes": 1709,
+  "contextLinks": 196,
+  "errors": [
+    "05-markdown-content.md: FMT-1.14: missing Context",
+    "05-markdown-content.md: FMT-1.14: missing Session scope",
+    "05-markdown-content.md: FMT-1.14: missing Evidence",
+    "05-markdown-content.md: FMT-1.14: missing Handoff",
+    "05-markdown-content.md: FMT-1.14: missing Blocked behavior",
+    "05-markdown-content.md: FMT-1.14: implementation must precede validation"
+  ]
+}

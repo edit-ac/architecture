@@ -1,0 +1,25 @@
+✔ detached and unauthorized local edits remain recoverable; attachment preserves stable anchors and history (34.986917ms)
+✔ disconnect and authorized reconnect replay all local bytes through shuffled duplicate messages without echo (10.042875ms)
+✔ saturated prepared socket pauses bounded send replay and drops no committed local updates (18.8155ms)
+✔ bounded exponential retry exhaustion detaches; explicit reconnect recovers without losing edits (3.027958ms)
+✔ receive frame/count/byte bounds reject before mutation and require a recoverable reconnect (6.406792ms)
+✔ remote, restore and replay journal origins never become outbound update messages (4.109209ms)
+✔ generation fence prevents a delayed old outbox read from sending on a replacement attachment (1.501334ms)
+✔ local commit during a replay read gets a second pass and concurrent pumps share bounded work (2.522ms)
+✔ transport failure and malformed frames expose errors while local recovery and history remain intact (3.276208ms)
+✔ offline undo and redo updates replay as local edits and preserve selective history across attachments (8.154833ms)
+✔ synchronous detach during a refusing send cannot schedule retries on the replacement session (1.916959ms)
+✔ Rust receiver reconciles reverse causal deltas and duplicates across bounded pumps without idle retry or echo (7.0945ms)
+✔ Rust incomplete deltas recover through a step2 handshake without duplicate revisions (3.568ms)
+✔ retained incomplete deltas share receive count and byte budgets; overflow preserves offline edits (7.235209ms)
+✔ incomplete buffering never masks malformed binary or envelope failures (5.563125ms)
+✔ detach releases incomplete receive buffers and authorized reconnect recovers missing remote and retained local edits (2.853458ms)
+✔ frozen SYN-1.7 browser delta corpus converges at the real Rust receiver after predecessor replay (4.433333ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 352.31525

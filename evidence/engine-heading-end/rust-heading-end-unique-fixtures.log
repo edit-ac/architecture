@@ -1,0 +1,30 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.63s
+     Running tests/heading_end.rs (target/debug/deps/heading_end-05c0722e416c35a2)
+
+running 9 tests
+test heading_end_deleted_stable_target_is_rejected_without_redirect ... ok
+test heading_end_later_invalid_command_rolls_back_entire_preparation ... ok
+test heading_end_preserves_heading_marks_and_one_update_history_with_stable_utf16_caret ... ok
+test heading_end_stale_and_wrong_replica_plans_are_silent ... ok
+test heading_end_selected_suffix_replacement_is_one_prepared_batch ... ok
+test heading_end_undo_redo_preserves_unrelated_remote_text_and_peer_convergence ... FAILED
+test heading_end_under_quote_keeps_parent_and_does_not_change_context_commands ... ok
+test heading_end_cross_block_selected_replacement_stages_deletions_join_and_destination ... ok
+test heading_end_ineligible_targets_and_resource_rejection_are_atomic ... ok
+
+failures:
+
+---- heading_end_undo_redo_preserves_unrelated_remote_text_and_peer_convergence stdout ----
+
+thread 'heading_end_undo_redo_preserves_unrelated_remote_text_and_peer_convergence' (160223483) panicked at crates/editac-core/tests/heading_end.rs:359:33:
+called `Result::unwrap()` on an `Err` value: InvalidUpdate
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    heading_end_undo_redo_preserves_unrelated_remote_text_and_peer_convergence
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+error: test failed, to rerun pass `-p editac-core --test heading_end`

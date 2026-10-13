@@ -1,0 +1,248 @@
+{
+  "gate": "MOD-1.5",
+  "state": "implemented and verified; not deployed",
+  "sourceSnapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/07-extension-modules-00ea1c5d56ea/source-32abd5cd6b3f.md",
+  "sourceRevision": "621cbff280187a584cd0ceb5b9ac66d176b916c16f99ba34a48e6fd74c08c294",
+  "promptRevision": "2e18a98412c7",
+  "iteration": 5,
+  "coreBaseCommit": "6edb83432468e44083740b586f973fb44f623352",
+  "implementationRevision": "uncommitted working tree; exact source/build snapshots and SHA-256 below",
+  "scope": "Explicit host resolver and bounded reference block atom, stable target range, cancellation/request IDs, safe label preservation, keyboard menu, atomic history and actual IndexedDB/clipboard recovery. No inline/native/device parity claim or publication. Prepared resolver transport only.",
+  "hashes": {
+    "crates/editac-core/src/modules/content.rs": "704c0f98a54b170287e19ebecc50e3801b999528f9c76600ba943850472e2fdd",
+    "crates/editac-core/src/commands/editor.rs": "dfdb4afef4bd88863fdca20a12cace4c621724a197c1443c1b2b042c43b9363b",
+    "crates/editac-core/tests/reference_content.rs": "adb63e926f35e342f6efa4c0f3478d83467288d1f32e84ea0a1b0dbbb3dbc28b",
+    "crates/editac-markdown/src/export.rs": "51d3e731ff4abaf7d3a8dce86e288397e017220b1d721ae5e4980d4c96087658",
+    "crates/editac-markdown/src/optional.rs": "75d4cfe43ec524b0531a500116ef0c30ebb5cfa0c9b5e54a32b7b78b8ce9ed1c",
+    "crates/editac-markdown/tests/optional_content.rs": "b1e9bfd1c21e37ee5c3ef65593549701470a70f891cd2d6e55c643f17a6a91d0",
+    "packages/web/src/modules/references.ts": "3603c9d59e0319294c16a46e47d29e040866657a724afa93bb2809038e3ab8bd",
+    "packages/web/src/input/text.ts": "5059aa8faec3acc647c7e1f3de5c95de910c1f3ffd0aa04cba542fca508fa1d9",
+    "packages/web/src/surface.ts": "80cf2ad3dd80da25b6b03ae28d465cfdb587663b94e5a891ea508656a7f4c4f3",
+    "packages/web/src/editor.ts": "31b1eb777c26459b70ef52b35d90e6b2c502378f715f7f433d6c457ee4910534",
+    "packages/web/src/index.ts": "8409b3e513a97edefca4b5b0d8992eaf37e91009dc05bccf31d78e25d3620784",
+    "packages/web/src/clipboard/fragment.ts": "ecd352616d5da03bbbac8162825b45723d543069f17014801f9fee0673062e47",
+    "scripts/test-browser.mjs": "1c30f1d92a56ed5ad895b1cc167e5eaf21839a4600b9fa1a3a34ddcf5599d8be",
+    "tests/browser/browser-harness.ts": "f5655ca7eba0ac2cd4627e29187c78dc4700e23b672d2c141e98130dd145f44f",
+    "tests/browser/references.spec.ts": "dbaa5c1223f88169e7826d96388f47a6611c2e90e2ef2fdee1aa674bc7f22aed",
+    "fixtures/browser-references/session.mjs": "231509f81152386b119b4c8693204a463a336cb1b47a06169b22eed4bd49045f",
+    "fixtures/browser-references/index.html": "cf8c2c66a36deba7e214c68f15f8e852be8fbcc5f97f48785791464e352dcab5",
+    "packages/core/dist/wasm/editac_wasm_bg.wasm": "0db65e2f883eadc3ae5eeded8b6c1473dbb9ca7cca436380202c62eff1cb1af8",
+    "packages/core/dist/wasm/editac_wasm.js": "ef26054ec4c44c92160bad2f4b3fc29507a3f7db88142c62bceba39a93c57e74",
+    "packages/web/dist/modules/references.js": "cbda6fad8277686d9d88157da7b9ce9bad0db6f76b38a31c1df3e60839911171",
+    "packages/web/dist/modules/references.d.ts": "bec555feac53df463313542bbbef4da6b41bdcf2480918efa70f03870a7d5cd2",
+    "packages/web/dist/input/text.js": "b28e31aea0f6149c1d523d14c370b3b6d993d994ea48844ad257daf9bb2c3bb8",
+    "packages/web/dist/surface.js": "9b4fac331bae0051d91b8a99be69733e066bee563e76cb4e03bcf3783d01da8f",
+    "packages/web/dist/editor.js": "663f5cb7bf7271e5836112517775ed928e50cbf1543854dee257d63108e365b2",
+    "packages/web/dist/index.js": "421de9eb2642ef6429516fc588d87b283733d99a80e59ad0e39291c413db3ad4",
+    "packages/web/dist/clipboard/fragment.js": "4544da4bd4e34e4c28f5f78e4d53b7f32017bc411c0aba2b9b71ea705388e44d",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+    "rust-toolchain.toml": "e1568c54938cd7f2cb298b9236c90d2d37913b0b4cf85501055414755abce85b",
+    "../architecture/specs/modules-native.md": "80f96d8438af2f90d4a32c56da023c283b9ae45644dc4d01f9c2c743d41d78eb"
+  },
+  "referenceCoverage": [
+    {
+      "engine": "chromium",
+      "cases": [
+        "anchored-selection",
+        "cancel-composition",
+        "cancel-dispose",
+        "cancel-escape",
+        "cancel-readonly",
+        "cancel-remote",
+        "cancel-target-edit",
+        "clear-results",
+        "clipboard-fallback",
+        "invalid-descriptor",
+        "invalid-results",
+        "keyboard-history",
+        "no-implicit",
+        "query-notifications",
+        "recovery-fallback",
+        "session-generation",
+        "stale-query"
+      ],
+      "executed": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "evidence": [
+        "browser-pre-clipboard-repair/chromium/receipt.json",
+        "browser-clipboard-repair/chromium/receipt.json"
+      ],
+      "reuse": "16 passing cases unchanged; repair changes only clipboard test MIME literal. Runtime/source/build unchanged across these two runs."
+    },
+    {
+      "engine": "firefox",
+      "cases": [
+        "anchored-selection",
+        "cancel-composition",
+        "cancel-dispose",
+        "cancel-escape",
+        "cancel-readonly",
+        "cancel-remote",
+        "cancel-target-edit",
+        "clear-results",
+        "clipboard-fallback",
+        "invalid-descriptor",
+        "invalid-results",
+        "keyboard-history",
+        "no-implicit",
+        "query-notifications",
+        "recovery-fallback",
+        "session-generation",
+        "stale-query"
+      ],
+      "executed": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "evidence": [
+        "browser-pre-clipboard-repair/firefox/receipt.json",
+        "browser-clipboard-repair/firefox/receipt.json"
+      ],
+      "reuse": "16 passing cases unchanged; repair changes only clipboard test MIME literal. Runtime/source/build unchanged across these two runs."
+    },
+    {
+      "engine": "webkit",
+      "cases": [
+        "anchored-selection",
+        "cancel-composition",
+        "cancel-dispose",
+        "cancel-escape",
+        "cancel-readonly",
+        "cancel-remote",
+        "cancel-target-edit",
+        "clear-results",
+        "clipboard-fallback",
+        "invalid-descriptor",
+        "invalid-results",
+        "keyboard-history",
+        "no-implicit",
+        "query-notifications",
+        "recovery-fallback",
+        "session-generation",
+        "stale-query"
+      ],
+      "executed": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "evidence": [
+        "browser-pre-clipboard-repair/webkit/receipt.json",
+        "browser-clipboard-repair/webkit/receipt.json"
+      ],
+      "reuse": "16 passing cases unchanged; repair changes only clipboard test MIME literal. Runtime/source/build unchanged across these two runs."
+    }
+  ],
+  "counts": {
+    "executed": 222,
+    "passed": 222,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "checks": [
+    {
+      "command": "cargo test -p editac-core --test reference_content --locked --offline",
+      "log": "reference-content.log",
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    {
+      "command": "npm run build:wasm",
+      "log": "build-wasm.log",
+      "exitCode": 0,
+      "note": "Rust toolchain pinned by build script; initial Node v26.4.0 orchestration, retained artifact hashes. Final package build/browser qualification uses pinned Node v24.19.0."
+    },
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH npm run build",
+      "log": "build-final.log",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:browser -- references",
+      "log": "references-final.log",
+      "executed": 51,
+      "passed": 48,
+      "failed": 3,
+      "skipped": 0,
+      "cancelled": 0,
+      "exitCode": 1,
+      "note": "All semantic cases pass; only new clipboard test MIME typo fails. Preserved pre-repair source and receipts."
+    },
+    {
+      "command": "npm run test:browser -- references --test-name-pattern='unknown labels copy'",
+      "log": "references-clipboard-repair.log",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exitCode": 0,
+      "note": "Corrected documented application/x-edit-ac-fragment+json test literal. Reuse 48 unchanged passing cases; combined reference acceptance is 51/51."
+    },
+    {
+      "command": "npm run test:browser -- slash",
+      "log": "integration-slash.log",
+      "executed": 75,
+      "passed": 75,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test:browser -- input",
+      "log": "integration-input.log",
+      "executed": 51,
+      "passed": 51,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exitCode": 0
+    },
+    {
+      "command": "cargo test -p editac-markdown --test optional_content --locked --offline",
+      "log": "optional-content.log",
+      "executed": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    {
+      "command": "cargo test -p editac-wasm --lib --locked --offline",
+      "log": "wasm-lib.log",
+      "executed": 35,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0,
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "log": "diff-check.log",
+      "exitCode": 0
+    }
+  ],
+  "preservedFailures": [
+    {
+      "log": "references-first.log",
+      "executed": 45,
+      "passed": 42,
+      "failed": 3,
+      "skipped": 0,
+      "cancelled": 0,
+      "runtime": "Node v26.4.0 diagnostic only",
+      "repair": "Deduplicate unchanged search input notifications; explicit composition guard. Repaired implementation verified with pinned Node v24.19.0."
+    }
+  ],
+  "cleanup": "cleanup.json",
+  "provenance": "Local deterministic prepared host promises, real packed Rust/WASM engine + production DOM/input/IndexedDB storage; no external resolver fetch, AI transport, secrets, publishing or paid inference."
+}

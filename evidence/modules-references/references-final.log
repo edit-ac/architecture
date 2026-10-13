@@ -1,0 +1,115 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs references
+
+references browser: chromium
+✔ opening and typing a document make no implicit host resolver or network calls (1933.244667ms)
+✔ out-of-order replies from a host ignoring abort cannot insert or replace current suggestions (240.439833ms)
+✔ old query results are cleared immediately while the new request is pending (197.947125ms)
+✔ escape invalidates pending replies without mutation (175.286167ms)
+✔ readonly invalidates pending replies without mutation (167.719917ms)
+✔ dispose invalidates pending replies without mutation (167.257625ms)
+✔ remote invalidates pending replies without mutation (175.176208ms)
+✔ target-edit invalidates pending replies without mutation (175.491833ms)
+✔ composition invalidates pending replies without mutation (177.629333ms)
+✔ named menu supports keyboard selection, literal safe labels and one undo/redo group (164.715666ms)
+✔ unknown ID/label survive checkpoint recovery with enabled and disabled presenter without resolving (204.629417ms)
+✔ host errors, oversized/duplicate/invalid targets and no results retain source (260.110417ms)
+✔ unrelated edits preserve the anchored target; selected text is replaced only after explicit choice (192.91975ms)
+✔ Tab dismisses without accepting and new sessions reject old-session replies (292.189334ms)
+✔ invalid persisted descriptor or mismatched fallback rejects atomically before mutation (106.437833ms)
+✔ duplicate native input notifications reuse one request and composition delays host search (242.21575ms)
+✖ unknown labels copy as plain text and internal clipboard round-trip keeps host identity (203.648875ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 16
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5378.512667
+
+✖ failing tests:
+
+test at tests/browser/references.spec.ts:75:1
+✖ unknown labels copy as plain text and internal clipboard round-trip keeps host identity (203.648875ms)
+  SyntaxError: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/references.spec.ts:77:406
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+references browser: firefox
+✔ opening and typing a document make no implicit host resolver or network calls (3240.563792ms)
+✔ out-of-order replies from a host ignoring abort cannot insert or replace current suggestions (386.9795ms)
+✔ old query results are cleared immediately while the new request is pending (316.637042ms)
+✔ escape invalidates pending replies without mutation (302.1375ms)
+✔ readonly invalidates pending replies without mutation (316.605833ms)
+✔ dispose invalidates pending replies without mutation (297.797208ms)
+✔ remote invalidates pending replies without mutation (300.722917ms)
+✔ target-edit invalidates pending replies without mutation (294.6625ms)
+✔ composition invalidates pending replies without mutation (320.110458ms)
+✔ named menu supports keyboard selection, literal safe labels and one undo/redo group (758.011375ms)
+✔ unknown ID/label survive checkpoint recovery with enabled and disabled presenter without resolving (395.5515ms)
+✔ host errors, oversized/duplicate/invalid targets and no results retain source (342.667167ms)
+✔ unrelated edits preserve the anchored target; selected text is replaced only after explicit choice (357.609ms)
+✔ Tab dismisses without accepting and new sessions reject old-session replies (462.249916ms)
+✔ invalid persisted descriptor or mismatched fallback rejects atomically before mutation (235.833333ms)
+✔ duplicate native input notifications reuse one request and composition delays host search (374.863541ms)
+✖ unknown labels copy as plain text and internal clipboard round-trip keeps host identity (345.880167ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 16
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9513.891458
+
+✖ failing tests:
+
+test at tests/browser/references.spec.ts:75:1
+✖ unknown labels copy as plain text and internal clipboard round-trip keeps host identity (345.880167ms)
+  SyntaxError: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/references.spec.ts:77:406
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+references browser: webkit
+✔ opening and typing a document make no implicit host resolver or network calls (2849.519417ms)
+✔ out-of-order replies from a host ignoring abort cannot insert or replace current suggestions (498.235458ms)
+✔ old query results are cleared immediately while the new request is pending (348.425417ms)
+✔ escape invalidates pending replies without mutation (313.31925ms)
+✔ readonly invalidates pending replies without mutation (262.937458ms)
+✔ dispose invalidates pending replies without mutation (266.533583ms)
+✔ remote invalidates pending replies without mutation (279.977958ms)
+✔ target-edit invalidates pending replies without mutation (272.820125ms)
+✔ composition invalidates pending replies without mutation (264.56375ms)
+✔ named menu supports keyboard selection, literal safe labels and one undo/redo group (341.337792ms)
+✔ unknown ID/label survive checkpoint recovery with enabled and disabled presenter without resolving (362.918666ms)
+✔ host errors, oversized/duplicate/invalid targets and no results retain source (310.009209ms)
+✔ unrelated edits preserve the anchored target; selected text is replaced only after explicit choice (319.936792ms)
+✔ Tab dismisses without accepting and new sessions reject old-session replies (417.204833ms)
+✔ invalid persisted descriptor or mismatched fallback rejects atomically before mutation (228.007375ms)
+✔ duplicate native input notifications reuse one request and composition delays host search (340.828083ms)
+✖ unknown labels copy as plain text and internal clipboard round-trip keeps host identity (334.551708ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 16
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8331.088834
+
+✖ failing tests:
+
+test at tests/browser/references.spec.ts:75:1
+✖ unknown labels copy as plain text and internal clipboard round-trip keeps host identity (334.551708ms)
+  SyntaxError: "undefined" is not valid JSON
+      at JSON.parse (<anonymous>)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/references.spec.ts:77:406
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

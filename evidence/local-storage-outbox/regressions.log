@@ -1,0 +1,39 @@
+✔ publication and coverage remain invisible until transaction completion; owned bytes survive reopen (12.735333ms)
+✔ aborted publication before-write-success recovers all locally committed real engine edits (2.63425ms)
+✔ aborted publication after-write-success recovers all locally committed real engine edits (1.712458ms)
+✔ after-complete publication recovers covered and later committed tail without loss (1.355041ms)
+✔ corrupt latest bytes falls back to previous point and full committed tail (1.259208ms)
+✔ corrupt latest coverage falls back to previous point and full committed tail (1.183125ms)
+✔ corrupt latest version falls back to previous point and full committed tail (1.611083ms)
+✔ corrupt latest identity falls back to previous point and full committed tail (1.288083ms)
+✔ corrupt latest semantic falls back to previous point and full committed tail (1.514375ms)
+✔ both corrupt checkpoints, corrupt journal, missing and incompatible identity fail explicitly (1.07975ms)
+✔ uncommitted/foreign coverage rejected without publishing; quota and permission failure preserve prior state (1.425542ms)
+✔ strict durability fallback is reported and repeated checkpoint publication retains journal/outbox identities (1.085ms)
+✔ publication transaction-creation and put failures never acknowledge or replace recoverable state (3.38075ms)
+✔ replacement of checksum-corrupt latest retains previous valid fallback and detached recovery state (2.406792ms)
+✔ actual Chromium atomic publication, abort boundaries, reopen and corrupt-latest fallback restore real Rust content (2088.548875ms)
+✔ deterministic acknowledgment waits for completion, not enqueue or request success (6.607208ms)
+✔ deterministic duplicate identity is idempotent and independently waits for completion (2.175541ms)
+✔ deterministic journal takes immutable ownership before asynchronous hashing (2.848375ms)
+✔ deterministic bytes collision aborts without overwriting (1.566875ms)
+✔ deterministic origin collision aborts without overwriting (2.281ms)
+✔ deterministic profile collision aborts without overwriting (0.453416ms)
+✔ deterministic quota/abort failure at lookup rejects and rolls back (0.360208ms)
+✔ deterministic quota/abort failure at write rejects and rolls back (0.361959ms)
+✔ deterministic quota/abort failure at after-request rejects and rolls back (0.393834ms)
+✔ deterministic explicit abort without an error still rejects (0.345833ms)
+✔ deterministic unsupported strict option falls back and reports observed capability (0.282792ms)
+✔ deterministic transaction creation quota/permission/closed errors are not retried (0.287708ms)
+✔ deterministic document/epoch/schema/writer/sequence keys are isolated (0.547875ms)
+✔ deterministic invalid identity/sequence/bytes fail before creating a transaction (0.174959ms)
+✔ deterministic read rejects corrupt bytes/checksum/receipt/schema instead of returning replay (0.580542ms)
+✔ actual Chromium journal persists production engine patches and admits duplicate/concurrent writers (2256.926333ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2682.176875

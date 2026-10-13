@@ -1,0 +1,79 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs keyboard --test-name-pattern=escape-shift-tab
+
+keyboard browser: chromium
+✔ native-escape-shift-tab leaves code backward without updates (2639.779458ms)
+✔ native-escape-shift-tab leaves unordered backward without updates (158.407625ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3275.924792
+keyboard browser: firefox
+✔ native-escape-shift-tab leaves code backward without updates (4032.3395ms)
+✔ native-escape-shift-tab leaves unordered backward without updates (312.456042ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4902.468458
+keyboard browser: webkit
+✖ native-escape-shift-tab leaves code backward without updates (2820.850584ms)
+✖ native-escape-shift-tab leaves unordered backward without updates (291.049292ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3460.547167
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:81:2
+✖ native-escape-shift-tab leaves code backward without updates (2820.850584ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - 'before-editor'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:90:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'before-editor',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/keyboard.spec.ts:81:2
+✖ native-escape-shift-tab leaves unordered backward without updates (291.049292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + ''
+  - 'before-editor'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:90:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:188)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: 'before-editor',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

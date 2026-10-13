@@ -1,0 +1,143 @@
+{
+  "gate": "LOC-1.3",
+  "children": [
+    "LOC-1.3-I1",
+    "LOC-1.3-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "source-4b0b018a0077.md",
+  "sourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+  "promptRevision": "7eaa063f3629",
+  "iteration": 3,
+  "coreBaseCommit": "3cea914c983233a091faeb70382865a335c85b40",
+  "architectureBaseCommit": "554509957c5d6b5f80318a8b430d9f2a2784d3e6",
+  "uncommittedSources": {
+    "packages/web/src/storage/checkpoint.ts": "f0d975ab0b72507ae71d0d1422241ef46efee66de74d61e64942d385016e7020",
+    "packages/web/src/storage/journal.ts": "86d78d5cc026b7d847f6d0c0b4b03ec3c920512ac9146263a3ee717f26f5cdf1",
+    "tests/checkpoint.test.mjs": "ec7d4d5916d32581abd2757f53a23cf2a2872bc33ae4c2dc210b06536966c449",
+    "tests/helpers/checkpoint-storage.mjs": "9ada3d57e9b8c80ff8fd684fa36b6aed083e21109bffa118811c6f844cdaa26f",
+    "tests/helpers/journal-storage.mjs": "c8eb0288432b437aca5331c86fcc80b2fb1bcc5181018c2e95edf6fed9c68349",
+    "packages/core/dist/wasm/editac_wasm_bg.wasm": "06c32af7cf876512e25fb75ce681b5590b1e81cab6945d04cb08206e48ffca6c",
+    "packages/core/dist/wasm/editac_wasm.js": "846d86197125ef4ddf3159085f866c847e4de70d631a7dd70e00a893558ea139",
+    "../architecture/specs/storage-sync.md": "d27cfad28429b1e02fcefa2b909bd8c784f625c4cd543b923a0338bb31c985fa",
+    "../architecture/specs/verification.md": "56a82adc7f23df2d75c1827cea12e123652b010a31375e455e461516db748dc0",
+    "compiled/storage/checkpoint.d.ts": "9080da7dffe3298dd1e83804fa666e6f817f8196e7f5a1d2542fb920c26981e0",
+    "compiled/storage/checkpoint.js": "9b79fbde896b79f05cdbc2a386c8311c0410093d5d6746c4386d04b1d61edd91",
+    "compiled/storage/journal.js": "c7e36dfc764f39208230acdef22f09fc7fbb3c351a557b1bbf42511a42f961a8",
+    "compiled/storage/journal.d.ts": "d652231fd6f19c8663fa6d9d7d0ad330125ac3fd110bdebcf3ec91c234675e1e"
+  },
+  "fixtureArtifactHashes": {
+    "full/harness.json": "b34c4710b80b64558a48f5973321d64da857a26d51eeead3539695dea94d5edb",
+    "added-narrow/harness.json": "664de8206c1361ff5a8be9ed539a8d1770f9c8a4f75cb469cabadabe29faacc4",
+    "narrow/harness.json": "5c85afdede70b157a0f6fad17fbfb60980e322f5e9b93e12a71da9b10f7bdfe8",
+    "deterministic/harness.json": "b9199b36c711e4f4e9e74817e6e39ef54c4b2f5baa7900803ca493402c1cf15f",
+    "journal-regression/harness.json": "a25faa421a99180316a8e7747abdafc8397c6d8d27c25a3845439864b4eb663a"
+  },
+  "node": "v26.4.0",
+  "acceptance": {
+    "atomicPublication": "Single checkpoint record includes CRDT bytes, exact coverage and integrity manifest; completion-only acknowledgment. Previous valid checksum/version point retained.",
+    "recovery": "All immutable journal entries retained and verified, replayed idempotently by real Rust/WASM; wrong/corrupt state rejected explicitly.",
+    "boundaries": "Before write success, after request success/before completion, after completion, reopen; transaction-creation and put errors. Deterministic plus native Chromium transactions.",
+    "fallback": "Latest bytes, coverage, version, identity and Rust semantic rejection fallback to previous plus full committed tail; expected a😀CBb.",
+    "limits": "No actual browser process-termination qualification (LOC-1.7), concurrent checkpoint replacement (LOC-1.5), outbox pruning (LOC-1.4), publication or deployment claim."
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "exit": 2,
+      "log": "build.log",
+      "failure": "Misspelled @editac/core type import; repaired to @edit-ac/core."
+    },
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "log": "build-repaired.log"
+    },
+    {
+      "command": "node --test --test-name-pattern='publication and coverage|aborted publication|after-complete publication|corrupt latest|both corrupt|uncommitted/foreign|strict durability' tests/checkpoint.test.mjs",
+      "exit": 0,
+      "executed": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "deterministic.log"
+    },
+    {
+      "command": "node --test --test-name-pattern='publication transaction-creation|replacement of checksum-corrupt' tests/checkpoint.test.mjs",
+      "exit": 0,
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "added-narrow.log"
+    },
+    {
+      "command": "node --test tests/checkpoint.test.mjs",
+      "env": {
+        "EDITAC_CHECKPOINT_OUTPUT": "../architecture/evidence/local-storage-checkpoint/full"
+      },
+      "exit": 0,
+      "executed": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "full.log",
+      "scope": "14 deterministic built-WASM checks plus one actual Chromium IndexedDB integration"
+    },
+    {
+      "command": "node --test tests/journal.test.mjs",
+      "env": {
+        "EDITAC_JOURNAL_OUTPUT": "../architecture/evidence/local-storage-checkpoint/journal-regression"
+      },
+      "exit": 0,
+      "executed": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "journal-regression.log"
+    },
+    {
+      "command": "node scripts/check-package-exports.mjs",
+      "exit": 0,
+      "log": "package-exports.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "diff-check.log"
+    }
+  ],
+  "additionalCheck": {
+    "command": "node --test --test-name-pattern='^(?!actual Chromium)' tests/checkpoint.test.mjs",
+    "exit": 0,
+    "executed": 13,
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "log": "narrow.log",
+    "note": "Filter also matched browser check; not counted as deterministic-only evidence. Exact deterministic selection separately executed."
+  },
+  "provenance": [
+    "../local-storage-boundary/receipt.json",
+    "../local-storage-journal/receipt.json",
+    "../engine-wasm-updates/receipt.json"
+  ],
+  "browser": {
+    "version": "156.0.8078.4",
+    "playwright": "1.64.0"
+  },
+  "teardown": {
+    "ownedControllersExited": [
+      33974,
+      35262,
+      37078
+    ],
+    "fixtureServersStarted": 0,
+    "otherServicesPreserved": true,
+    "audit": "process-audit.log"
+  }
+}

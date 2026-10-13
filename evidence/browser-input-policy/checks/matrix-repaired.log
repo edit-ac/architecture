@@ -1,0 +1,172 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs input-policy
+
+input-policy browser: chromium
+(node:51851) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (2488.675958ms)
+✔ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (159.112417ms)
+✔ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (113.011375ms)
+✔ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (111.715042ms)
+✔ noncancelable beforeinput remains native-pending until the actual DOM mutation (112.287834ms)
+✔ cancelable event identity prevents duplicate command replay while an identical new intent commits (103.046459ms)
+✔ identified renderer echo and independent native mutation in the same turn retain only the real input (110.859459ms)
+✔ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (129.280458ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (178.683041ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (115.626792ms)
+✔ composition blur has one explicit terminal result and zero intermediate commits (138.504791ms)
+✔ composition readonly has one explicit terminal result and zero intermediate commits (109.670458ms)
+✔ composition dispose has one explicit terminal result and zero intermediate commits (106.120542ms)
+✔ remote before preserves the browser-owned subtree and resolves the captured composition anchor (110.497375ms)
+✔ remote after preserves the browser-owned subtree and resolves the captured composition anchor (114.960542ms)
+✔ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (166.420958ms)
+✔ remote overlap rejects finalization with captured recovery text instead of deleting peer content (110.640459ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (124.888375ms)
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (123.45225ms)
+✔ read-only ordinary input is rejected and disposed queued generations cannot commit (100.569208ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 19
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5362.076
+
+✖ failing tests:
+
+test at tests/browser/input-policy.spec.ts:88:1
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (123.45225ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'alpha語',
+  -   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:90:81
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha語', 'independent' ],
+    expected: [ 'alpha語', '', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+input-policy browser: firefox
+(node:52043) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (8996.870959ms)
+✔ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (525.581458ms)
+✔ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (330.1385ms)
+✔ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (287.999291ms)
+✔ noncancelable beforeinput remains native-pending until the actual DOM mutation (266.318875ms)
+✔ cancelable event identity prevents duplicate command replay while an identical new intent commits (264.696875ms)
+✔ identified renderer echo and independent native mutation in the same turn retain only the real input (270.020875ms)
+✔ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (307.57375ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (362.477541ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (1215.7135ms)
+✔ composition blur has one explicit terminal result and zero intermediate commits (1240.026875ms)
+✔ composition readonly has one explicit terminal result and zero intermediate commits (1236.346ms)
+✔ composition dispose has one explicit terminal result and zero intermediate commits (943.173458ms)
+✔ remote before preserves the browser-owned subtree and resolves the captured composition anchor (297.627833ms)
+✔ remote after preserves the browser-owned subtree and resolves the captured composition anchor (316.905875ms)
+✔ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (283.78575ms)
+✔ remote overlap rejects finalization with captured recovery text instead of deleting peer content (322.75925ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (337.731375ms)
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (600.184959ms)
+✔ read-only ordinary input is rejected and disposed queued generations cannot commit (1327.913042ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 19
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20380.804333
+
+✖ failing tests:
+
+test at tests/browser/input-policy.spec.ts:88:1
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (600.184959ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'alpha語',
+  -   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:90:81
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha語', 'independent' ],
+    expected: [ 'alpha語', '', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+input-policy browser: webkit
+(node:52580) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (12517.212208ms)
+✔ missing-beforeinput input-first: duplicates preserve a deliberate identical second edit (5034.139125ms)
+✔ missing-beforeinput observer-first: duplicates preserve a deliberate identical second edit (1943.043625ms)
+✔ missing-beforeinput missing-input: duplicates preserve a deliberate identical second edit (3278.1625ms)
+✔ noncancelable beforeinput remains native-pending until the actual DOM mutation (2010.1645ms)
+✔ cancelable event identity prevents duplicate command replay while an identical new intent commits (6096.823459ms)
+✔ identified renderer echo and independent native mutation in the same turn retain only the real input (587.511167ms)
+✔ native mutation queued before a renderer patch is retained rather than mislabeled as an echo (1308.05975ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (2226.696375ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (1379.862334ms)
+✔ composition blur has one explicit terminal result and zero intermediate commits (1993.280208ms)
+✔ composition readonly has one explicit terminal result and zero intermediate commits (2798.227625ms)
+✔ composition dispose has one explicit terminal result and zero intermediate commits (1838.552167ms)
+✔ remote before preserves the browser-owned subtree and resolves the captured composition anchor (305.600333ms)
+✔ remote after preserves the browser-owned subtree and resolves the captured composition anchor (284.684792ms)
+✔ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (290.022583ms)
+✔ remote overlap rejects finalization with captured recovery text instead of deleting peer content (242.523541ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (284.682625ms)
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (320.06825ms)
+✔ read-only ordinary input is rejected and disposed queued generations cannot commit (235.084625ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 19
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 45439.747041
+
+✖ failing tests:
+
+test at tests/browser/input-policy.spec.ts:88:1
+✖ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (320.06825ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'alpha語',
+  -   '',
+      'independent'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:90:81
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input-policy.spec.ts:38:143)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha語', 'independent' ],
+    expected: [ 'alpha語', '', 'independent' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

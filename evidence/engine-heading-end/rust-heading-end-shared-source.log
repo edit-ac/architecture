@@ -1,0 +1,22 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 35.19s
+     Running tests/heading_end.rs (target/debug/deps/heading_end-05c0722e416c35a2)
+
+running 1 test
+test heading_end_caret_identifies_new_paragraph_before_existing_shared_source_sibling ... FAILED
+
+failures:
+
+---- heading_end_caret_identifies_new_paragraph_before_existing_shared_source_sibling stdout ----
+
+thread 'heading_end_caret_identifies_new_paragraph_before_existing_shared_source_sibling' (160336848) panicked at crates/editac-core/tests/heading_end.rs:473:5:
+heading-end cut must identify the new paragraph, not its shared-source sibling
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    heading_end_caret_identifies_new_paragraph_before_existing_shared_source_sibling
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.04s
+
+error: test failed, to rerun pass `-p editac-core --test heading_end`

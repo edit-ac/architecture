@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "name": "deterministic acknowledgment waits for completion, not enqueue or request success",
+      "passed": true
+    },
+    {
+      "name": "deterministic duplicate identity is idempotent and independently waits for completion",
+      "passed": true
+    },
+    {
+      "name": "deterministic journal takes immutable ownership before asynchronous hashing",
+      "passed": true
+    },
+    {
+      "name": "deterministic bytes collision aborts without overwriting",
+      "passed": true
+    },
+    {
+      "name": "deterministic origin collision aborts without overwriting",
+      "passed": true
+    },
+    {
+      "name": "deterministic profile collision aborts without overwriting",
+      "passed": true
+    },
+    {
+      "name": "deterministic quota/abort failure at lookup rejects and rolls back",
+      "passed": true
+    },
+    {
+      "name": "deterministic quota/abort failure at write rejects and rolls back",
+      "passed": true
+    },
+    {
+      "name": "deterministic quota/abort failure at after-request rejects and rolls back",
+      "passed": true
+    },
+    {
+      "name": "deterministic explicit abort without an error still rejects",
+      "passed": true
+    },
+    {
+      "name": "deterministic unsupported strict option falls back and reports observed capability",
+      "passed": true
+    },
+    {
+      "name": "deterministic transaction creation quota/permission/closed errors are not retried",
+      "passed": true
+    },
+    {
+      "name": "deterministic document/epoch/schema/writer/sequence keys are isolated",
+      "passed": true
+    },
+    {
+      "name": "deterministic invalid identity/sequence/bytes fail before creating a transaction",
+      "passed": true
+    },
+    {
+      "name": "deterministic read rejects corrupt bytes/checksum/receipt/schema instead of returning replay",
+      "passed": true
+    }
+  ],
+  "processes": [],
+  "fixture": {
+    "identity": {
+      "profile": "v5",
+      "schema": "editac/5",
+      "documentId": "45678901-4567-4567-8567-45678901abcd",
+      "epoch": "56789012-5678-4678-8678-56789012abcd",
+      "protocolVersion": 1,
+      "updateEncoding": 1,
+      "offsets": "utf16"
+    },
+    "writerId": 11,
+    "sequence": 1,
+    "bytes": [
+      1,
+      2,
+      3
+    ]
+  },
+  "teardown": {
+    "browserClosed": true,
+    "browserProcessExited": true,
+    "fixtureServersStarted": 0
+  }
+}

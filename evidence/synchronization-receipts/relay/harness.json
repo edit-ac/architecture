@@ -1,0 +1,356 @@
+{
+  "boundary": "Actual loopback HTTP / child-process SQLite FULL WAL commit / actual Rust WASM and pinned Yjs schema-v5 updates; prepared auth only",
+  "wasmSha256": "c16438269e3b69d53da19969fdff6dfb7d1531c9a7e5eb4e6244e617ed52704d",
+  "cases": [
+    {
+      "name": "explicit capability is separate from ordinary accepted delivery",
+      "passed": true
+    },
+    {
+      "name": "prepared authorization, complete metadata and revocation isolate stored identities",
+      "passed": true
+    },
+    {
+      "name": "receipt waits for commit completion; failed commit rolls back and permits retry",
+      "passed": true
+    },
+    {
+      "name": "process crash at before-transaction preserves only committed bytes and retry identity",
+      "passed": true
+    },
+    {
+      "name": "process crash at before-commit preserves only committed bytes and retry identity",
+      "passed": true
+    },
+    {
+      "name": "process crash at after-commit preserves only committed bytes and retry identity",
+      "passed": true
+    },
+    {
+      "name": "process crash at before-receipt preserves only committed bytes and retry identity",
+      "passed": true
+    },
+    {
+      "name": "Rust and JS updates converge after shuffled duplicates, pagination and service restart",
+      "passed": true
+    },
+    {
+      "name": "content identity, writer/sequence conflicts and request/replay limits fail before mutation",
+      "passed": true
+    },
+    {
+      "name": "bounded queue returns backpressure while pending updates remain retryable",
+      "passed": true
+    },
+    {
+      "name": "reference relay refuses non-loopback binding and persistent metadata reinterpretation",
+      "passed": true
+    }
+  ],
+  "processes": [
+    {
+      "pid": 62212,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-0.sqlite",
+      "url": "http://127.0.0.1:61786",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-0.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 62244,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-1.sqlite",
+      "url": "http://127.0.0.1:61790",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-1.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 62267,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-2.sqlite",
+      "url": "http://127.0.0.1:61794",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-2.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 62291,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-3.sqlite",
+      "url": "http://127.0.0.1:61799",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-3.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": null,
+        "signal": "SIGKILL"
+      }
+    },
+    {
+      "pid": 62314,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-3.sqlite",
+      "url": "http://127.0.0.1:61803",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-4.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 62336,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-4.sqlite",
+      "url": "http://127.0.0.1:61807",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-5.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": null,
+        "signal": "SIGKILL"
+      }
+    },
+    {
+      "pid": 62358,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-4.sqlite",
+      "url": "http://127.0.0.1:61811",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-6.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 62380,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-5.sqlite",
+      "url": "http://127.0.0.1:61815",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-7.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": null,
+        "signal": "SIGKILL"
+      }
+    },
+    {
+      "pid": 62406,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-5.sqlite",
+      "url": "http://127.0.0.1:61819",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-8.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 62429,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-6.sqlite",
+      "url": "http://127.0.0.1:61823",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-9.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": null,
+        "signal": "SIGKILL"
+      }
+    },
+    {
+      "pid": 62452,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-6.sqlite",
+      "url": "http://127.0.0.1:61827",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-10.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 62474,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-7.sqlite",
+      "url": "http://127.0.0.1:61831",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-11.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 62500,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-7.sqlite",
+      "url": "http://127.0.0.1:61837",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-12.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 62524,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-8.sqlite",
+      "url": "http://127.0.0.1:61842",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-13.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "pid": 62548,
+      "launcher": 62208,
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "databasePath": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-relay-databases-hXEf5c/database-9.sqlite",
+      "url": "http://127.0.0.1:61846",
+      "logPath": "/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-receipts/relay/process-14.log",
+      "purpose": "SYN-1.5 prepared relay integration",
+      "exit": {
+        "code": 0,
+        "signal": null
+      }
+    }
+  ],
+  "updates": [
+    {
+      "file": "0-rust-initial.bin",
+      "bytes": 491,
+      "sha256": "859b1040af94a37d68e8599ac9a7dc6b482fd02bc64330a64b943c7215f89cc3",
+      "identity": {
+        "profile": "editac.yrs-yjs.editor.v5",
+        "schema": "editac.registry.editor.v5",
+        "documentId": "12345678-1234-4234-8234-123456789abc",
+        "epoch": "23456789-2345-4345-8345-23456789abcd",
+        "protocolVersion": 1,
+        "updateEncoding": 1,
+        "offsets": "utf16"
+      },
+      "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",101,1,\"859b1040af94a37d68e8599ac9a7dc6b482fd02bc64330a64b943c7215f89cc3\"]"
+    },
+    {
+      "file": "1-rust-delta.bin",
+      "bytes": 27,
+      "sha256": "8aaa5a7afac196ef336561531769a5a8437fa4e14157aa60035e3148f6c70a16",
+      "identity": {
+        "profile": "editac.yrs-yjs.editor.v5",
+        "schema": "editac.registry.editor.v5",
+        "documentId": "12345678-1234-4234-8234-123456789abc",
+        "epoch": "23456789-2345-4345-8345-23456789abcd",
+        "protocolVersion": 1,
+        "updateEncoding": 1,
+        "offsets": "utf16"
+      },
+      "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",101,2,\"8aaa5a7afac196ef336561531769a5a8437fa4e14157aa60035e3148f6c70a16\"]"
+    },
+    {
+      "file": "2-js-delta.bin",
+      "bytes": 22,
+      "sha256": "f74739b0c324934bc3ef0381023a3c467bf80f3d9d977dcf21b45eb7ad30c528",
+      "identity": {
+        "profile": "editac.yrs-yjs.editor.v5",
+        "schema": "editac.registry.editor.v5",
+        "documentId": "12345678-1234-4234-8234-123456789abc",
+        "epoch": "23456789-2345-4345-8345-23456789abcd",
+        "protocolVersion": 1,
+        "updateEncoding": 1,
+        "offsets": "utf16"
+      },
+      "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"12345678-1234-4234-8234-123456789abc\\\",\\\"23456789-2345-4345-8345-23456789abcd\\\",1,1,\\\"utf16\\\"]\",202,1,\"f74739b0c324934bc3ef0381023a3c467bf80f3d9d977dcf21b45eb7ad30c528\"]"
+    }
+  ],
+  "cleanup": [
+    {
+      "pid": 62212,
+      "listenerGone": true
+    },
+    {
+      "pid": 62244,
+      "listenerGone": true
+    },
+    {
+      "pid": 62267,
+      "listenerGone": true
+    },
+    {
+      "pid": 62291,
+      "listenerGone": true
+    },
+    {
+      "pid": 62314,
+      "listenerGone": true
+    },
+    {
+      "pid": 62336,
+      "listenerGone": true
+    },
+    {
+      "pid": 62358,
+      "listenerGone": true
+    },
+    {
+      "pid": 62380,
+      "listenerGone": true
+    },
+    {
+      "pid": 62406,
+      "listenerGone": true
+    },
+    {
+      "pid": 62429,
+      "listenerGone": true
+    },
+    {
+      "pid": 62452,
+      "listenerGone": true
+    },
+    {
+      "pid": 62474,
+      "listenerGone": true
+    },
+    {
+      "pid": 62500,
+      "listenerGone": true
+    },
+    {
+      "pid": 62524,
+      "listenerGone": true
+    },
+    {
+      "pid": 62548,
+      "listenerGone": true
+    }
+  ]
+}

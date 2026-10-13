@@ -1,0 +1,255 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs clipboard-formats
+
+clipboard-formats browser: chromium
+✖ text/markdown supports the portable full palette without a raw frame (2095.2855ms)
+✖ text/x-markdown supports the portable full palette without a raw frame (347.807541ms)
+✖ text/plain supports the portable full palette without a raw frame (283.848625ms)
+✔ reserved MIME codecs cannot bypass the qualified parser and fragments are preflighted (161.947417ms)
+✔ word processor style vocabulary imports while unsupported assets keep source (328.907583ms)
+✔ prepared mobile paste-pair routing commits once (163.954083ms)
+✔ prepared mobile beforeinput-only routing commits once (146.863334ms)
+✖ prepared mobile quotation routing commits once (123.245791ms)
+✔ prepared Control+Shift+V routes literal text (134.270875ms)
+✔ prepared Meta+Shift+V routes literal text (131.609875ms)
+✔ public recovered editor honors minimal/task policy and registered content options (151.535875ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 7
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4377.448958
+
+✖ failing tests:
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/markdown supports the portable full palette without a raw frame (2095.2855ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.runs.some(r=>r.attributes.link==='https://example.com')))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:662
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/x-markdown supports the portable full palette without a raw frame (347.807541ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.runs.some(r=>r.attributes.link==='https://example.com')))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:662
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/plain supports the portable full palette without a raw frame (283.848625ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.runs.some(r=>r.attributes.link==='https://example.com')))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:662
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:21:68
+✖ prepared mobile quotation routing commits once (123.245791ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'alpha',
+  +   'independent'
+  -   'mobile 😀'
+    ]
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:22:594
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'alpha', 'independent' ],
+    expected: [ 'mobile 😀' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+clipboard-formats browser: firefox
+✖ text/markdown supports the portable full palette without a raw frame (8051.954708ms)
+✖ text/x-markdown supports the portable full palette without a raw frame (590.108417ms)
+✖ text/plain supports the portable full palette without a raw frame (471.607375ms)
+✔ reserved MIME codecs cannot bypass the qualified parser and fragments are preflighted (293.481417ms)
+✔ word processor style vocabulary imports while unsupported assets keep source (518.093959ms)
+✔ prepared mobile paste-pair routing commits once (277.91975ms)
+✔ prepared mobile beforeinput-only routing commits once (267.752625ms)
+✔ prepared mobile quotation routing commits once (285.556041ms)
+✔ prepared Control+Shift+V routes literal text (297.781375ms)
+✔ prepared Meta+Shift+V routes literal text (747.581792ms)
+✔ public recovered editor honors minimal/task policy and registered content options (331.512625ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 8
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12613.195333
+
+✖ failing tests:
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/markdown supports the portable full palette without a raw frame (8051.954708ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.runs.some(r=>r.attributes.link==='https://example.com')))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:662
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/x-markdown supports the portable full palette without a raw frame (590.108417ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.runs.some(r=>r.attributes.link==='https://example.com')))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:662
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/plain supports the portable full palette without a raw frame (471.607375ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.runs.some(r=>r.attributes.link==='https://example.com')))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:662
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+clipboard-formats browser: webkit
+✖ text/markdown supports the portable full palette without a raw frame (4488.156958ms)
+✖ text/x-markdown supports the portable full palette without a raw frame (1110.592042ms)
+✖ text/plain supports the portable full palette without a raw frame (566.720833ms)
+✔ reserved MIME codecs cannot bypass the qualified parser and fragments are preflighted (358.656792ms)
+✔ word processor style vocabulary imports while unsupported assets keep source (560.551625ms)
+✔ prepared mobile paste-pair routing commits once (429.772458ms)
+✔ prepared mobile beforeinput-only routing commits once (293.521625ms)
+✔ prepared mobile quotation routing commits once (386.469ms)
+✔ prepared Control+Shift+V routes literal text (446.1475ms)
+✔ prepared Meta+Shift+V routes literal text (295.920375ms)
+✔ public recovered editor honors minimal/task policy and registered content options (339.87775ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 8
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9638.712333
+
+✖ failing tests:
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/markdown supports the portable full palette without a raw frame (4488.156958ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.runs.some(r=>r.attributes.link==='https://example.com')))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:662
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/x-markdown supports the portable full palette without a raw frame (1110.592042ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.runs.some(r=>r.attributes.link==='https://example.com')))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:662
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/browser/clipboard-formats.spec.ts:7:68
+✖ text/plain supports the portable full palette without a raw frame (566.720833ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.runs.some(r=>r.attributes.link==='https://example.com')))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/clipboard-formats.spec.ts:8:662
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

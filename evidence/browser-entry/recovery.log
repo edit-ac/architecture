@@ -1,0 +1,23 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs recovery
+
+✔ recovery entry packed core restores checkpoint and tail before semantic edits and local flush (1347.822459ms)
+✔ recovery entry cannot accept edits while actual WASM initialization is pending (218.679625ms)
+✔ recovery entry missing-checkpoint leaves recovery view and rejects edits (93.851042ms)
+✔ recovery entry missing-writer-isolation leaves recovery view and rejects edits (219.017125ms)
+✔ recovery entry missing-wasm leaves recovery view and rejects edits (214.532709ms)
+✔ recovery renderer-crash journal-ack (1744.872ms)
+✔ recovery renderer-crash checkpoint-tail-ack (750.35475ms)
+✔ recovery renderer-crash pre-ack-request-success (677.79625ms)
+✔ recovery browser-kill journal-ack (652.280667ms)
+✔ recovery browser-kill checkpoint-tail-ack (617.2095ms)
+✔ recovery browser-kill pre-ack-request-success (633.891125ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5431.910875

@@ -1,0 +1,118 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs markdown-collaboration
+
+markdown-collaboration browser: chromium
+✖ 10240 byte paste preparation, application and formatted-frame budget (1910.132208ms)
+✖ 102400 byte paste preparation, application and formatted-frame budget (305.722084ms)
+✔ concurrent second replica paste exchange preserves independent edits and selective history (164.3315ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2671.902958
+
+✖ failing tests:
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 10240 byte paste preparation, application and formatted-frame budget (1910.132208ms)
+  page.evaluate: Error: Storage lifecycle destroyed
+      at LocalStorageLifecycle.requireLive (http://127.0.0.1:58542/web/storage/index.js:135:15)
+      at LocalStorageLifecycle.destroy (http://127.0.0.1:58542/web/storage/index.js:112:14)
+      at Object.destroy (http://127.0.0.1:58542/fixture/session.mjs:47:106)
+      at eval (eval at evaluate (:370:30), <anonymous>:1:150)
+      at UtilityScript.evaluate (<anonymous>:372:16)
+      at UtilityScript.<anonymous> (<anonymous>:1:44)
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:24) {
+    log: []
+  }
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 102400 byte paste preparation, application and formatted-frame budget (305.722084ms)
+  page.evaluate: Error: Storage lifecycle destroyed
+      at LocalStorageLifecycle.requireLive (http://127.0.0.1:58542/web/storage/index.js:135:15)
+      at LocalStorageLifecycle.destroy (http://127.0.0.1:58542/web/storage/index.js:112:14)
+      at Object.destroy (http://127.0.0.1:58542/fixture/session.mjs:47:106)
+      at eval (eval at evaluate (:370:30), <anonymous>:1:150)
+      at UtilityScript.evaluate (<anonymous>:372:16)
+      at UtilityScript.<anonymous> (<anonymous>:1:44)
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:24) {
+    log: []
+  }
+markdown-collaboration browser: firefox
+✖ 10240 byte paste preparation, application and formatted-frame budget (3191.2805ms)
+✖ 102400 byte paste preparation, application and formatted-frame budget (468.803041ms)
+✔ concurrent second replica paste exchange preserves independent edits and selective history (288.214167ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4396.153791
+
+✖ failing tests:
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 10240 byte paste preparation, application and formatted-frame budget (3191.2805ms)
+  page.evaluate: Storage lifecycle destroyed
+  requireLive@http://127.0.0.1:58565/web/storage/index.js:135:15
+  destroy@http://127.0.0.1:58565/web/storage/index.js:112:14
+  destroy@http://127.0.0.1:58565/fixture/session.mjs:47:106
+  @debugger eval code line 370 > eval:1:157
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:24) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 102400 byte paste preparation, application and formatted-frame budget (468.803041ms)
+  page.evaluate: Storage lifecycle destroyed
+  requireLive@http://127.0.0.1:58565/web/storage/index.js:135:15
+  destroy@http://127.0.0.1:58565/web/storage/index.js:112:14
+  destroy@http://127.0.0.1:58565/fixture/session.mjs:47:106
+  @debugger eval code line 370 > eval:1:157
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:24) {
+    name: 'Error',
+    log: []
+  }
+markdown-collaboration browser: webkit
+✖ 10240 byte paste preparation, application and formatted-frame budget (2306.842333ms)
+✖ 102400 byte paste preparation, application and formatted-frame budget (496.687875ms)
+✔ concurrent second replica paste exchange preserves independent edits and selective history (374.26075ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3422.806834
+
+✖ failing tests:
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 10240 byte paste preparation, application and formatted-frame budget (2306.842333ms)
+  page.evaluate: Error: Storage lifecycle destroyed
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:24) {
+    log: []
+  }
+
+test at tests/browser/markdown-collaboration.spec.ts:8:35
+✖ 102400 byte paste preparation, application and formatted-frame budget (496.687875ms)
+  page.evaluate: Error: Storage lifecycle destroyed
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:74:24) {
+    log: []
+  }

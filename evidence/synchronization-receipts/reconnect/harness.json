@@ -1,0 +1,66 @@
+{
+  "boundary": "Real Rust WASM engine-v5, pinned same-schema JS peer, actual journal/outbox adapters; prepared IndexedDB transactions and copied socket frames; no network or credentials",
+  "wasmSha256": "c16438269e3b69d53da19969fdff6dfb7d1531c9a7e5eb4e6244e617ed52704d",
+  "cases": [
+    {
+      "name": "detached and unauthorized local edits remain recoverable; attachment preserves stable anchors and history",
+      "passed": true
+    },
+    {
+      "name": "disconnect and authorized reconnect replay all local bytes through shuffled duplicate messages without echo",
+      "passed": true
+    },
+    {
+      "name": "saturated prepared socket pauses bounded send replay and drops no committed local updates",
+      "passed": true
+    },
+    {
+      "name": "bounded exponential retry exhaustion detaches; explicit reconnect recovers without losing edits",
+      "passed": true
+    },
+    {
+      "name": "receive frame/count/byte bounds reject before mutation and require a recoverable reconnect",
+      "passed": true
+    },
+    {
+      "name": "remote, restore and replay journal origins never become outbound update messages",
+      "passed": true
+    },
+    {
+      "name": "generation fence prevents a delayed old outbox read from sending on a replacement attachment",
+      "passed": true
+    },
+    {
+      "name": "local commit during a replay read gets a second pass and concurrent pumps share bounded work",
+      "passed": true
+    },
+    {
+      "name": "transport failure and malformed frames expose errors while local recovery and history remain intact",
+      "passed": true
+    },
+    {
+      "name": "offline undo and redo updates replay as local edits and preserve selective history across attachments",
+      "passed": true
+    },
+    {
+      "name": "synchronous detach during a refusing send cannot schedule retries on the replacement session",
+      "passed": true
+    }
+  ],
+  "traces": [
+    {
+      "scenario": "disconnect/shuffle/duplicate",
+      "sent": 6,
+      "remotePatches": 1,
+      "pendingLocal": 3
+    },
+    {
+      "scenario": "backpressure",
+      "committed": 20,
+      "sentUpdates": 20,
+      "refusals": 21,
+      "queueBound": 2,
+      "byteBound": 2048
+    }
+  ]
+}

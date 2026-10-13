@@ -1,0 +1,110 @@
+{
+  "boundary": "Real Rust WASM engine-v5, pinned same-schema JS peer, actual journal/outbox adapters; prepared IndexedDB transactions and copied socket frames; no network or credentials",
+  "wasmSha256": "c16438269e3b69d53da19969fdff6dfb7d1531c9a7e5eb4e6244e617ed52704d",
+  "cases": [
+    {
+      "name": "detached and unauthorized local edits remain recoverable; attachment preserves stable anchors and history",
+      "passed": true
+    },
+    {
+      "name": "disconnect and authorized reconnect replay all local bytes through shuffled duplicate messages without echo",
+      "passed": true
+    },
+    {
+      "name": "saturated prepared socket pauses bounded send replay and drops no committed local updates",
+      "passed": true
+    },
+    {
+      "name": "bounded exponential retry exhaustion detaches; explicit reconnect recovers without losing edits",
+      "passed": true
+    },
+    {
+      "name": "receive frame/count/byte bounds reject before mutation and require a recoverable reconnect",
+      "passed": true
+    },
+    {
+      "name": "remote, restore and replay journal origins never become outbound update messages",
+      "passed": true
+    },
+    {
+      "name": "generation fence prevents a delayed old outbox read from sending on a replacement attachment",
+      "passed": true
+    },
+    {
+      "name": "local commit during a replay read gets a second pass and concurrent pumps share bounded work",
+      "passed": true
+    },
+    {
+      "name": "transport failure and malformed frames expose errors while local recovery and history remain intact",
+      "passed": true
+    },
+    {
+      "name": "offline undo and redo updates replay as local edits and preserve selective history across attachments",
+      "passed": true
+    },
+    {
+      "name": "synchronous detach during a refusing send cannot schedule retries on the replacement session",
+      "passed": true
+    },
+    {
+      "name": "Rust receiver reconciles reverse causal deltas and duplicates across bounded pumps without idle retry or echo",
+      "passed": true
+    },
+    {
+      "name": "Rust incomplete deltas recover through a step2 handshake without duplicate revisions",
+      "passed": true
+    },
+    {
+      "name": "retained incomplete deltas share receive count and byte budgets; overflow preserves offline edits",
+      "passed": true
+    },
+    {
+      "name": "incomplete buffering never masks malformed binary or envelope failures",
+      "passed": true
+    },
+    {
+      "name": "detach releases incomplete receive buffers and authorized reconnect recovers missing remote and retained local edits",
+      "passed": true
+    },
+    {
+      "name": "frozen SYN-1.7 browser delta corpus converges at the real Rust receiver after predecessor replay",
+      "passed": true
+    },
+    {
+      "name": "delete-before-insert reconciliation remains atomic and local revisions permit one bounded retry",
+      "passed": true
+    }
+  ],
+  "traces": [
+    {
+      "scenario": "disconnect/shuffle/duplicate",
+      "sent": 6,
+      "remotePatches": 1,
+      "pendingLocal": 3
+    },
+    {
+      "scenario": "backpressure",
+      "committed": 20,
+      "sentUpdates": 20,
+      "refusals": 21,
+      "queueBound": 2,
+      "byteBound": 2048
+    },
+    {
+      "scenario": "reverse-causal/duplicate",
+      "admissions": 12,
+      "maxWorkPerPump": 1,
+      "pendingLocal": 1
+    },
+    {
+      "scenario": "frozen-SYN-1.7-corpus",
+      "hashes": {
+        "initial.bin": "a8d3ea30e00352c15110d791013e8fb16fc05d4099f1617c9df243145cbfc60c",
+        "frame-12.bin": "d6e56e8522e415fd8dc0816fd5335609fdfe26a8d00bb10959bb5b631f95cb5e",
+        "frame-13.bin": "7a10358c07732ef3046c49902a80c3ecaa55b6165be21082c5009794a047d445"
+      },
+      "browserWriter": 3685986909,
+      "expectedClock": 2
+    }
+  ]
+}

@@ -1,0 +1,4638 @@
+{
+  "suite": "clipboard-formats",
+  "engine": "firefox",
+  "cases": [
+    {
+      "name": "text/markdown",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:2220095704:1",
+            "n:2220095704:2"
+          ],
+          "blocks": [
+            "n:2220095704:1",
+            "c:2200896713:1",
+            "c:2200896713:2",
+            "n:2200896713:3",
+            "c:2200896713:3",
+            "c:2200896713:4",
+            "n:2200896713:4",
+            "n:2200896713:5",
+            "n:2200896713:6",
+            "n:2200896713:7",
+            "n:2200896713:8"
+          ],
+          "text": [
+            "é😀",
+            "",
+            "",
+            "task link",
+            "",
+            "",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "dom": [
+            "é😀",
+            "☑task linkchild",
+            "☑task link",
+            "task link",
+            "child",
+            "child",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "boundDom": [
+            "é😀",
+            null
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 5467
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 5467,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 5467
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 0
+          },
+          "caret": {
+            "node": "n:2200896713:8",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2200896713:10"
+              },
+              "id": "n:2220095704:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "é😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<2220095704#2>",
+                  "source": "n:2220095704:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2220095704#12>",
+                  "source": "n:2220095704:2",
+                  "start": 0
+                },
+                {
+                  "end": 3,
+                  "identity": "<2200896713#9>",
+                  "source": "n:2200896713:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:2200896713:12"
+              },
+              "id": "c:2200896713:1",
+              "kind": "quote",
+              "order": 1,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "checklist"
+                ],
+                "number": null,
+                "version": "o:2200896713:15"
+              },
+              "id": "c:2200896713:2",
+              "kind": "list",
+              "order": 2,
+              "parent": "c:2200896713:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": true,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2200896713:16"
+              },
+              "id": "n:2200896713:3",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:2200896713:2",
+              "runs": [
+                {
+                  "attributes": {
+                    "strike": true
+                  },
+                  "text": "task"
+                },
+                {
+                  "attributes": {},
+                  "text": " "
+                },
+                {
+                  "attributes": {
+                    "link": "https://example.com/"
+                  },
+                  "text": "link"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 9,
+                  "identity": "<2200896713#20>",
+                  "source": "n:2200896713:3",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:2200896713:17"
+              },
+              "id": "c:2200896713:3",
+              "kind": "list",
+              "order": 4,
+              "parent": "c:2200896713:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:2200896713:19"
+              },
+              "id": "c:2200896713:4",
+              "kind": "list",
+              "order": 5,
+              "parent": "c:2200896713:3",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2200896713:20"
+              },
+              "id": "n:2200896713:4",
+              "kind": "block",
+              "order": 6,
+              "parent": "c:2200896713:4",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "child"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2200896713#39>",
+                  "source": "n:2200896713:4",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "code",
+                "js"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2200896713:6"
+              },
+              "id": "n:2200896713:5",
+              "kind": "block",
+              "order": 7,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "  literal\n"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 10,
+                  "identity": "<2200896713#50>",
+                  "source": "n:2200896713:5",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.image",
+                1,
+                {
+                  "alt": "alt",
+                  "source": "![alt](https://example.com/image.png)",
+                  "title": "",
+                  "url": "https://example.com/image.png"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2200896713:7"
+              },
+              "id": "n:2200896713:6",
+              "kind": "block",
+              "order": 8,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alt"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 3,
+                  "identity": "<2200896713#66>",
+                  "source": "n:2200896713:6",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.table",
+                1,
+                {
+                  "alignments": [
+                    "left",
+                    "center"
+                  ],
+                  "rows": [
+                    [
+                      [
+                        [
+                          "A",
+                          []
+                        ]
+                      ],
+                      [
+                        [
+                          "B",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          "cell",
+                          [
+                            [
+                              "bold"
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        [
+                          "😀",
+                          []
+                        ]
+                      ]
+                    ]
+                  ],
+                  "source": "| A | B |\n|:-|:-:|\n| **cell** | 😀 |\n"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2200896713:8"
+              },
+              "id": "n:2200896713:7",
+              "kind": "block",
+              "order": 9,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "A\tB\ncell\t😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2200896713#75>",
+                  "source": "n:2200896713:7",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2200896713:11"
+              },
+              "id": "n:2200896713:8",
+              "kind": "block",
+              "order": 10,
+              "parent": "@root",
+              "runs": [],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<2200896713#92>",
+                  "source": "n:2200896713:8",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2200896713#3>",
+                  "source": "n:2200896713:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        },
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:2220095704:1",
+            "n:2220095704:2"
+          ],
+          "blocks": [
+            "n:2220095704:1",
+            "c:4019596934:1",
+            "c:4019596934:2",
+            "n:4019596934:3",
+            "c:4019596934:3",
+            "c:4019596934:4",
+            "n:4019596934:4",
+            "n:4019596934:5",
+            "n:4019596934:6",
+            "n:4019596934:7",
+            "n:4019596934:8"
+          ],
+          "text": [
+            "é😀",
+            "",
+            "",
+            "task link",
+            "",
+            "",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "dom": [
+            "é😀",
+            "☑task linkchild",
+            "☑task link",
+            "task link",
+            "child",
+            "child",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "boundDom": [
+            "é😀",
+            null
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 5467
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 2404
+            },
+            {
+              "sequence": 3,
+              "revision": 3,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:2",
+              "update": true,
+              "bytes": 5507
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 5507,
+            "revision": 3,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 5467
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 2,
+              "bytes": 2404
+            },
+            {
+              "origin": "editac:local:clipboard:2",
+              "sequence": 3,
+              "bytes": 5507
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 0
+          },
+          "caret": {
+            "node": "n:4019596934:8",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4019596934:10"
+              },
+              "id": "n:2220095704:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "é😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<2220095704#2>",
+                  "source": "n:2220095704:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2220095704#12>",
+                  "source": "n:2220095704:2",
+                  "start": 0
+                },
+                {
+                  "end": 3,
+                  "identity": "<4019596934#9>",
+                  "source": "n:4019596934:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:4019596934:12"
+              },
+              "id": "c:4019596934:1",
+              "kind": "quote",
+              "order": 13,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "checklist"
+                ],
+                "number": null,
+                "version": "o:4019596934:15"
+              },
+              "id": "c:4019596934:2",
+              "kind": "list",
+              "order": 14,
+              "parent": "c:4019596934:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": true,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4019596934:16"
+              },
+              "id": "n:4019596934:3",
+              "kind": "block",
+              "order": 15,
+              "parent": "c:4019596934:2",
+              "runs": [
+                {
+                  "attributes": {
+                    "strike": true
+                  },
+                  "text": "task"
+                },
+                {
+                  "attributes": {},
+                  "text": " "
+                },
+                {
+                  "attributes": {
+                    "link": "https://example.com/"
+                  },
+                  "text": "link"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 9,
+                  "identity": "<4019596934#20>",
+                  "source": "n:4019596934:3",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:4019596934:17"
+              },
+              "id": "c:4019596934:3",
+              "kind": "list",
+              "order": 16,
+              "parent": "c:4019596934:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:4019596934:19"
+              },
+              "id": "c:4019596934:4",
+              "kind": "list",
+              "order": 17,
+              "parent": "c:4019596934:3",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4019596934:20"
+              },
+              "id": "n:4019596934:4",
+              "kind": "block",
+              "order": 18,
+              "parent": "c:4019596934:4",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "child"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4019596934#39>",
+                  "source": "n:4019596934:4",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "code",
+                "js"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4019596934:6"
+              },
+              "id": "n:4019596934:5",
+              "kind": "block",
+              "order": 19,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "  literal\n"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 10,
+                  "identity": "<4019596934#50>",
+                  "source": "n:4019596934:5",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.image",
+                1,
+                {
+                  "alt": "alt",
+                  "source": "![alt](https://example.com/image.png)",
+                  "title": "",
+                  "url": "https://example.com/image.png"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4019596934:7"
+              },
+              "id": "n:4019596934:6",
+              "kind": "block",
+              "order": 20,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alt"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 3,
+                  "identity": "<4019596934#66>",
+                  "source": "n:4019596934:6",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.table",
+                1,
+                {
+                  "alignments": [
+                    "left",
+                    "center"
+                  ],
+                  "rows": [
+                    [
+                      [
+                        [
+                          "A",
+                          []
+                        ]
+                      ],
+                      [
+                        [
+                          "B",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          "cell",
+                          [
+                            [
+                              "bold"
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        [
+                          "😀",
+                          []
+                        ]
+                      ]
+                    ]
+                  ],
+                  "source": "| A | B |\n|:-|:-:|\n| **cell** | 😀 |\n"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4019596934:8"
+              },
+              "id": "n:4019596934:7",
+              "kind": "block",
+              "order": 21,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "A\tB\ncell\t😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<4019596934#75>",
+                  "source": "n:4019596934:7",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4019596934:11"
+              },
+              "id": "n:4019596934:8",
+              "kind": "block",
+              "order": 22,
+              "parent": "@root",
+              "runs": [],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<4019596934#92>",
+                  "source": "n:4019596934:8",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<4019596934#3>",
+                  "source": "n:4019596934:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "text/x-markdown",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:4066346876:1",
+            "n:4066346876:2"
+          ],
+          "blocks": [
+            "n:4066346876:1",
+            "c:4090040450:1",
+            "c:4090040450:2",
+            "n:4090040450:3",
+            "c:4090040450:3",
+            "c:4090040450:4",
+            "n:4090040450:4",
+            "n:4090040450:5",
+            "n:4090040450:6",
+            "n:4090040450:7",
+            "n:4090040450:8"
+          ],
+          "text": [
+            "é😀",
+            "",
+            "",
+            "task link",
+            "",
+            "",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "dom": [
+            "é😀",
+            "☑task linkchild",
+            "☑task link",
+            "task link",
+            "child",
+            "child",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "boundDom": [
+            "é😀",
+            null
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 5467
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 5467,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 5467
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 0
+          },
+          "caret": {
+            "node": "n:4090040450:8",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4090040450:10"
+              },
+              "id": "n:4066346876:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "é😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<4066346876#2>",
+                  "source": "n:4066346876:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<4066346876#12>",
+                  "source": "n:4066346876:2",
+                  "start": 0
+                },
+                {
+                  "end": 3,
+                  "identity": "<4090040450#9>",
+                  "source": "n:4090040450:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:4090040450:12"
+              },
+              "id": "c:4090040450:1",
+              "kind": "quote",
+              "order": 1,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "checklist"
+                ],
+                "number": null,
+                "version": "o:4090040450:15"
+              },
+              "id": "c:4090040450:2",
+              "kind": "list",
+              "order": 2,
+              "parent": "c:4090040450:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": true,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4090040450:16"
+              },
+              "id": "n:4090040450:3",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:4090040450:2",
+              "runs": [
+                {
+                  "attributes": {
+                    "strike": true
+                  },
+                  "text": "task"
+                },
+                {
+                  "attributes": {},
+                  "text": " "
+                },
+                {
+                  "attributes": {
+                    "link": "https://example.com/"
+                  },
+                  "text": "link"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 9,
+                  "identity": "<4090040450#20>",
+                  "source": "n:4090040450:3",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:4090040450:17"
+              },
+              "id": "c:4090040450:3",
+              "kind": "list",
+              "order": 4,
+              "parent": "c:4090040450:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:4090040450:19"
+              },
+              "id": "c:4090040450:4",
+              "kind": "list",
+              "order": 5,
+              "parent": "c:4090040450:3",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4090040450:20"
+              },
+              "id": "n:4090040450:4",
+              "kind": "block",
+              "order": 6,
+              "parent": "c:4090040450:4",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "child"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<4090040450#39>",
+                  "source": "n:4090040450:4",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "code",
+                "js"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4090040450:6"
+              },
+              "id": "n:4090040450:5",
+              "kind": "block",
+              "order": 7,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "  literal\n"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 10,
+                  "identity": "<4090040450#50>",
+                  "source": "n:4090040450:5",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.image",
+                1,
+                {
+                  "alt": "alt",
+                  "source": "![alt](https://example.com/image.png)",
+                  "title": "",
+                  "url": "https://example.com/image.png"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4090040450:7"
+              },
+              "id": "n:4090040450:6",
+              "kind": "block",
+              "order": 8,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alt"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 3,
+                  "identity": "<4090040450#66>",
+                  "source": "n:4090040450:6",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.table",
+                1,
+                {
+                  "alignments": [
+                    "left",
+                    "center"
+                  ],
+                  "rows": [
+                    [
+                      [
+                        [
+                          "A",
+                          []
+                        ]
+                      ],
+                      [
+                        [
+                          "B",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          "cell",
+                          [
+                            [
+                              "bold"
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        [
+                          "😀",
+                          []
+                        ]
+                      ]
+                    ]
+                  ],
+                  "source": "| A | B |\n|:-|:-:|\n| **cell** | 😀 |\n"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4090040450:8"
+              },
+              "id": "n:4090040450:7",
+              "kind": "block",
+              "order": 9,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "A\tB\ncell\t😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<4090040450#75>",
+                  "source": "n:4090040450:7",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4090040450:11"
+              },
+              "id": "n:4090040450:8",
+              "kind": "block",
+              "order": 10,
+              "parent": "@root",
+              "runs": [],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<4090040450#92>",
+                  "source": "n:4090040450:8",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<4090040450#3>",
+                  "source": "n:4090040450:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        },
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:4066346876:1",
+            "n:4066346876:2"
+          ],
+          "blocks": [
+            "n:4066346876:1",
+            "c:2954759541:1",
+            "c:2954759541:2",
+            "n:2954759541:3",
+            "c:2954759541:3",
+            "c:2954759541:4",
+            "n:2954759541:4",
+            "n:2954759541:5",
+            "n:2954759541:6",
+            "n:2954759541:7",
+            "n:2954759541:8"
+          ],
+          "text": [
+            "é😀",
+            "",
+            "",
+            "task link",
+            "",
+            "",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "dom": [
+            "é😀",
+            "☑task linkchild",
+            "☑task link",
+            "task link",
+            "child",
+            "child",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "boundDom": [
+            "é😀",
+            null
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 5467
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 2404
+            },
+            {
+              "sequence": 3,
+              "revision": 3,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:2",
+              "update": true,
+              "bytes": 5507
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 5507,
+            "revision": 3,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 5467
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 2,
+              "bytes": 2404
+            },
+            {
+              "origin": "editac:local:clipboard:2",
+              "sequence": 3,
+              "bytes": 5507
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 0
+          },
+          "caret": {
+            "node": "n:2954759541:8",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2954759541:10"
+              },
+              "id": "n:4066346876:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "é😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<4066346876#2>",
+                  "source": "n:4066346876:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<4066346876#12>",
+                  "source": "n:4066346876:2",
+                  "start": 0
+                },
+                {
+                  "end": 3,
+                  "identity": "<2954759541#9>",
+                  "source": "n:2954759541:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:2954759541:12"
+              },
+              "id": "c:2954759541:1",
+              "kind": "quote",
+              "order": 13,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "checklist"
+                ],
+                "number": null,
+                "version": "o:2954759541:15"
+              },
+              "id": "c:2954759541:2",
+              "kind": "list",
+              "order": 14,
+              "parent": "c:2954759541:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": true,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2954759541:16"
+              },
+              "id": "n:2954759541:3",
+              "kind": "block",
+              "order": 15,
+              "parent": "c:2954759541:2",
+              "runs": [
+                {
+                  "attributes": {
+                    "strike": true
+                  },
+                  "text": "task"
+                },
+                {
+                  "attributes": {},
+                  "text": " "
+                },
+                {
+                  "attributes": {
+                    "link": "https://example.com/"
+                  },
+                  "text": "link"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 9,
+                  "identity": "<2954759541#20>",
+                  "source": "n:2954759541:3",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:2954759541:17"
+              },
+              "id": "c:2954759541:3",
+              "kind": "list",
+              "order": 16,
+              "parent": "c:2954759541:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:2954759541:19"
+              },
+              "id": "c:2954759541:4",
+              "kind": "list",
+              "order": 17,
+              "parent": "c:2954759541:3",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2954759541:20"
+              },
+              "id": "n:2954759541:4",
+              "kind": "block",
+              "order": 18,
+              "parent": "c:2954759541:4",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "child"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2954759541#39>",
+                  "source": "n:2954759541:4",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "code",
+                "js"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2954759541:6"
+              },
+              "id": "n:2954759541:5",
+              "kind": "block",
+              "order": 19,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "  literal\n"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 10,
+                  "identity": "<2954759541#50>",
+                  "source": "n:2954759541:5",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.image",
+                1,
+                {
+                  "alt": "alt",
+                  "source": "![alt](https://example.com/image.png)",
+                  "title": "",
+                  "url": "https://example.com/image.png"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2954759541:7"
+              },
+              "id": "n:2954759541:6",
+              "kind": "block",
+              "order": 20,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alt"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 3,
+                  "identity": "<2954759541#66>",
+                  "source": "n:2954759541:6",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.table",
+                1,
+                {
+                  "alignments": [
+                    "left",
+                    "center"
+                  ],
+                  "rows": [
+                    [
+                      [
+                        [
+                          "A",
+                          []
+                        ]
+                      ],
+                      [
+                        [
+                          "B",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          "cell",
+                          [
+                            [
+                              "bold"
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        [
+                          "😀",
+                          []
+                        ]
+                      ]
+                    ]
+                  ],
+                  "source": "| A | B |\n|:-|:-:|\n| **cell** | 😀 |\n"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2954759541:8"
+              },
+              "id": "n:2954759541:7",
+              "kind": "block",
+              "order": 21,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "A\tB\ncell\t😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2954759541#75>",
+                  "source": "n:2954759541:7",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2954759541:11"
+              },
+              "id": "n:2954759541:8",
+              "kind": "block",
+              "order": 22,
+              "parent": "@root",
+              "runs": [],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<2954759541#92>",
+                  "source": "n:2954759541:8",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2954759541#3>",
+                  "source": "n:2954759541:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "text/plain",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:3060458625:1",
+            "n:3060458625:2"
+          ],
+          "blocks": [
+            "n:3060458625:1",
+            "c:602198915:1",
+            "c:602198915:2",
+            "n:602198915:3",
+            "c:602198915:3",
+            "c:602198915:4",
+            "n:602198915:4",
+            "n:602198915:5",
+            "n:602198915:6",
+            "n:602198915:7",
+            "n:602198915:8"
+          ],
+          "text": [
+            "é😀",
+            "",
+            "",
+            "task link",
+            "",
+            "",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "dom": [
+            "é😀",
+            "☑task linkchild",
+            "☑task link",
+            "task link",
+            "child",
+            "child",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "boundDom": [
+            "é😀",
+            null
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 5327
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 5327,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 5327
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 0
+          },
+          "caret": {
+            "node": "n:602198915:8",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:602198915:10"
+              },
+              "id": "n:3060458625:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "é😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<3060458625#2>",
+                  "source": "n:3060458625:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<3060458625#12>",
+                  "source": "n:3060458625:2",
+                  "start": 0
+                },
+                {
+                  "end": 3,
+                  "identity": "<602198915#9>",
+                  "source": "n:602198915:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:602198915:12"
+              },
+              "id": "c:602198915:1",
+              "kind": "quote",
+              "order": 1,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "checklist"
+                ],
+                "number": null,
+                "version": "o:602198915:15"
+              },
+              "id": "c:602198915:2",
+              "kind": "list",
+              "order": 2,
+              "parent": "c:602198915:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": true,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:602198915:16"
+              },
+              "id": "n:602198915:3",
+              "kind": "block",
+              "order": 3,
+              "parent": "c:602198915:2",
+              "runs": [
+                {
+                  "attributes": {
+                    "strike": true
+                  },
+                  "text": "task"
+                },
+                {
+                  "attributes": {},
+                  "text": " "
+                },
+                {
+                  "attributes": {
+                    "link": "https://example.com/"
+                  },
+                  "text": "link"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 9,
+                  "identity": "<602198915#20>",
+                  "source": "n:602198915:3",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:602198915:17"
+              },
+              "id": "c:602198915:3",
+              "kind": "list",
+              "order": 4,
+              "parent": "c:602198915:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:602198915:19"
+              },
+              "id": "c:602198915:4",
+              "kind": "list",
+              "order": 5,
+              "parent": "c:602198915:3",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:602198915:20"
+              },
+              "id": "n:602198915:4",
+              "kind": "block",
+              "order": 6,
+              "parent": "c:602198915:4",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "child"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<602198915#39>",
+                  "source": "n:602198915:4",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "code",
+                "js"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:602198915:6"
+              },
+              "id": "n:602198915:5",
+              "kind": "block",
+              "order": 7,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "  literal\n"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 10,
+                  "identity": "<602198915#50>",
+                  "source": "n:602198915:5",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.image",
+                1,
+                {
+                  "alt": "alt",
+                  "source": "![alt](https://example.com/image.png)",
+                  "title": "",
+                  "url": "https://example.com/image.png"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:602198915:7"
+              },
+              "id": "n:602198915:6",
+              "kind": "block",
+              "order": 8,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alt"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 3,
+                  "identity": "<602198915#66>",
+                  "source": "n:602198915:6",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.table",
+                1,
+                {
+                  "alignments": [
+                    "left",
+                    "center"
+                  ],
+                  "rows": [
+                    [
+                      [
+                        [
+                          "A",
+                          []
+                        ]
+                      ],
+                      [
+                        [
+                          "B",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          "cell",
+                          [
+                            [
+                              "bold"
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        [
+                          "😀",
+                          []
+                        ]
+                      ]
+                    ]
+                  ],
+                  "source": "| A | B |\n|:-|:-:|\n| **cell** | 😀 |\n"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:602198915:8"
+              },
+              "id": "n:602198915:7",
+              "kind": "block",
+              "order": 9,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "A\tB\ncell\t😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<602198915#75>",
+                  "source": "n:602198915:7",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:602198915:11"
+              },
+              "id": "n:602198915:8",
+              "kind": "block",
+              "order": 10,
+              "parent": "@root",
+              "runs": [],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<602198915#92>",
+                  "source": "n:602198915:8",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<602198915#3>",
+                  "source": "n:602198915:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        },
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:3060458625:1",
+            "n:3060458625:2"
+          ],
+          "blocks": [
+            "n:3060458625:1",
+            "c:2500220217:1",
+            "c:2500220217:2",
+            "n:2500220217:3",
+            "c:2500220217:3",
+            "c:2500220217:4",
+            "n:2500220217:4",
+            "n:2500220217:5",
+            "n:2500220217:6",
+            "n:2500220217:7",
+            "n:2500220217:8"
+          ],
+          "text": [
+            "é😀",
+            "",
+            "",
+            "task link",
+            "",
+            "",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "dom": [
+            "é😀",
+            "☑task linkchild",
+            "☑task link",
+            "task link",
+            "child",
+            "child",
+            "child",
+            "  literal\n",
+            "alt",
+            "A\tB\ncell\t😀",
+            ""
+          ],
+          "boundDom": [
+            "é😀",
+            null
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 13
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 5327
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 2372
+            },
+            {
+              "sequence": 3,
+              "revision": 3,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:2",
+              "update": true,
+              "bytes": 5507
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 5507,
+            "revision": 3,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 5327
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 2,
+              "bytes": 2372
+            },
+            {
+              "origin": "editac:local:clipboard:2",
+              "sequence": 3,
+              "bytes": 5507
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 0,
+            "focus": 0
+          },
+          "caret": {
+            "node": "n:2500220217:8",
+            "offset": 0,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2500220217:10"
+              },
+              "id": "n:3060458625:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "é😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<3060458625#2>",
+                  "source": "n:3060458625:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<3060458625#12>",
+                  "source": "n:3060458625:2",
+                  "start": 0
+                },
+                {
+                  "end": 3,
+                  "identity": "<2500220217#9>",
+                  "source": "n:2500220217:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "quote"
+                ],
+                "number": null,
+                "version": "o:2500220217:12"
+              },
+              "id": "c:2500220217:1",
+              "kind": "quote",
+              "order": 13,
+              "parent": "@root",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "checklist"
+                ],
+                "number": null,
+                "version": "o:2500220217:15"
+              },
+              "id": "c:2500220217:2",
+              "kind": "list",
+              "order": 14,
+              "parent": "c:2500220217:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": true,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2500220217:16"
+              },
+              "id": "n:2500220217:3",
+              "kind": "block",
+              "order": 15,
+              "parent": "c:2500220217:2",
+              "runs": [
+                {
+                  "attributes": {
+                    "strike": true
+                  },
+                  "text": "task"
+                },
+                {
+                  "attributes": {},
+                  "text": " "
+                },
+                {
+                  "attributes": {
+                    "link": "https://example.com/"
+                  },
+                  "text": "link"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 9,
+                  "identity": "<2500220217#20>",
+                  "source": "n:2500220217:3",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:2500220217:17"
+              },
+              "id": "c:2500220217:3",
+              "kind": "list",
+              "order": 16,
+              "parent": "c:2500220217:1",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": null,
+              "editor": {
+                "checked": null,
+                "containerAttributes": [
+                  "unordered"
+                ],
+                "number": null,
+                "version": "o:2500220217:19"
+              },
+              "id": "c:2500220217:4",
+              "kind": "list",
+              "order": 17,
+              "parent": "c:2500220217:3",
+              "runs": [],
+              "spans": []
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2500220217:20"
+              },
+              "id": "n:2500220217:4",
+              "kind": "block",
+              "order": 18,
+              "parent": "c:2500220217:4",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "child"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 5,
+                  "identity": "<2500220217#39>",
+                  "source": "n:2500220217:4",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "code",
+                "js"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2500220217:6"
+              },
+              "id": "n:2500220217:5",
+              "kind": "block",
+              "order": 19,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "  literal\n"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 10,
+                  "identity": "<2500220217#50>",
+                  "source": "n:2500220217:5",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.image",
+                1,
+                {
+                  "alt": "alt",
+                  "source": "![alt](https://example.com/image.png)",
+                  "title": "",
+                  "url": "https://example.com/image.png"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2500220217:7"
+              },
+              "id": "n:2500220217:6",
+              "kind": "block",
+              "order": 20,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alt"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 3,
+                  "identity": "<2500220217#66>",
+                  "source": "n:2500220217:6",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.table",
+                1,
+                {
+                  "alignments": [
+                    "left",
+                    "center"
+                  ],
+                  "rows": [
+                    [
+                      [
+                        [
+                          "A",
+                          []
+                        ]
+                      ],
+                      [
+                        [
+                          "B",
+                          []
+                        ]
+                      ]
+                    ],
+                    [
+                      [
+                        [
+                          "cell",
+                          [
+                            [
+                              "bold"
+                            ]
+                          ]
+                        ]
+                      ],
+                      [
+                        [
+                          "😀",
+                          []
+                        ]
+                      ]
+                    ]
+                  ],
+                  "source": "| A | B |\n|:-|:-:|\n| **cell** | 😀 |\n"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2500220217:8"
+              },
+              "id": "n:2500220217:7",
+              "kind": "block",
+              "order": 21,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "A\tB\ncell\t😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 11,
+                  "identity": "<2500220217#75>",
+                  "source": "n:2500220217:7",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2500220217:11"
+              },
+              "id": "n:2500220217:8",
+              "kind": "block",
+              "order": 22,
+              "parent": "@root",
+              "runs": [],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<2500220217#92>",
+                  "source": "n:2500220217:8",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2500220217#3>",
+                  "source": "n:2500220217:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "codec-routing",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:934439928:1",
+            "n:934439928:2"
+          ],
+          "blocks": [
+            "n:934439928:1"
+          ],
+          "text": [
+            "safe"
+          ],
+          "dom": [
+            "safe"
+          ],
+          "boundDom": [
+            "safe",
+            null
+          ],
+          "intents": [],
+          "recovery": [
+            {
+              "mime": "application/x-edit-ac-fragment+json",
+              "raw": "{\"version\":99}",
+              "reason": "fragment-schema"
+            }
+          ],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1098
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1098,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1098
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:934439928:1",
+            "offset": 4,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3787386797:5"
+              },
+              "id": "n:934439928:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "safe"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<934439928#2>",
+                  "source": "n:934439928:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<934439928#12>",
+                  "source": "n:934439928:2",
+                  "start": 0
+                },
+                {
+                  "end": 4,
+                  "identity": "<3787386797#9>",
+                  "source": "n:3787386797:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<3787386797#3>",
+                  "source": "n:3787386797:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "fragment-schema"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "producers",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:668595664:1",
+            "n:668595664:2"
+          ],
+          "blocks": [
+            "n:668595664:1"
+          ],
+          "text": [
+            "word 😀"
+          ],
+          "dom": [
+            "word 😀"
+          ],
+          "boundDom": [
+            "word 😀",
+            null
+          ],
+          "intents": [],
+          "recovery": [
+            {
+              "mime": "text/html",
+              "raw": "<p class=\"MsoNormal\"><span style=\"font-weight:700;font-style:italic\">word 😀</span></p>",
+              "reason": "html-attribute-dropped"
+            }
+          ],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1152
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1152,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1152
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 7,
+            "focus": 7
+          },
+          "caret": {
+            "node": "n:668595664:1",
+            "offset": 7,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:2274745706:5"
+              },
+              "id": "n:668595664:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true,
+                    "italic": true
+                  },
+                  "text": "word 😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<668595664#2>",
+                  "source": "n:668595664:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<668595664#12>",
+                  "source": "n:668595664:2",
+                  "start": 0
+                },
+                {
+                  "end": 7,
+                  "identity": "<2274745706#9>",
+                  "source": "n:2274745706:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2274745706#3>",
+                  "source": "n:2274745706:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "html-attribute-dropped",
+            "html-css-reduced-to-marks"
+          ],
+          "producer": "Word"
+        },
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:668595664:1",
+            "n:668595664:2"
+          ],
+          "blocks": [
+            "n:668595664:1"
+          ],
+          "text": [
+            "docs é"
+          ],
+          "dom": [
+            "docs é"
+          ],
+          "boundDom": [
+            "docs é",
+            null
+          ],
+          "intents": [],
+          "recovery": [
+            {
+              "mime": "text/html",
+              "raw": "<p class=\"MsoNormal\"><span style=\"font-weight:700;font-style:italic\">word 😀</span></p>",
+              "reason": "html-attribute-dropped"
+            },
+            {
+              "mime": "text/html",
+              "raw": "<b id=\"docs-internal\"><p><span style=\"text-decoration:underline\">docs é</span></p></b>",
+              "reason": "html-attribute-dropped"
+            }
+          ],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1152
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 488
+            },
+            {
+              "sequence": 3,
+              "revision": 3,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:2",
+              "update": true,
+              "bytes": 1174
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1174,
+            "revision": 3,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1152
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 2,
+              "bytes": 488
+            },
+            {
+              "origin": "editac:local:clipboard:2",
+              "sequence": 3,
+              "bytes": 1174
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 6,
+            "focus": 6
+          },
+          "caret": {
+            "node": "n:668595664:1",
+            "offset": 6,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:1713981188:5"
+              },
+              "id": "n:668595664:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true,
+                    "underline": true
+                  },
+                  "text": "docs é"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<668595664#2>",
+                  "source": "n:668595664:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<668595664#12>",
+                  "source": "n:668595664:2",
+                  "start": 0
+                },
+                {
+                  "end": 6,
+                  "identity": "<1713981188#9>",
+                  "source": "n:1713981188:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<1713981188#3>",
+                  "source": "n:1713981188:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "html-attribute-dropped",
+            "html-css-reduced-to-marks",
+            "html-attribute-dropped",
+            "html-css-reduced-to-marks"
+          ],
+          "producer": "Google Docs"
+        },
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:668595664:1",
+            "n:668595664:2"
+          ],
+          "blocks": [
+            "n:668595664:1"
+          ],
+          "text": [
+            "notes\nlink"
+          ],
+          "dom": [
+            "notes\nlink"
+          ],
+          "boundDom": [
+            "noteslink",
+            null
+          ],
+          "intents": [],
+          "recovery": [
+            {
+              "mime": "text/html",
+              "raw": "<p class=\"MsoNormal\"><span style=\"font-weight:700;font-style:italic\">word 😀</span></p>",
+              "reason": "html-attribute-dropped"
+            },
+            {
+              "mime": "text/html",
+              "raw": "<b id=\"docs-internal\"><p><span style=\"text-decoration:underline\">docs é</span></p></b>",
+              "reason": "html-attribute-dropped"
+            }
+          ],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 5
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1152
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 488
+            },
+            {
+              "sequence": 3,
+              "revision": 3,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:2",
+              "update": true,
+              "bytes": 1174
+            },
+            {
+              "sequence": 4,
+              "revision": 4,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 506
+            },
+            {
+              "sequence": 5,
+              "revision": 5,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:3",
+              "update": true,
+              "bytes": 1225
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1225,
+            "revision": 5,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1152
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 2,
+              "bytes": 488
+            },
+            {
+              "origin": "editac:local:clipboard:2",
+              "sequence": 3,
+              "bytes": 1174
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 4,
+              "bytes": 506
+            },
+            {
+              "origin": "editac:local:clipboard:3",
+              "sequence": 5,
+              "bytes": 1225
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 4,
+            "focus": 4
+          },
+          "caret": {
+            "node": "n:668595664:1",
+            "offset": 10,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3970572352:5"
+              },
+              "id": "n:668595664:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {
+                    "bold": true
+                  },
+                  "text": "notes"
+                },
+                {
+                  "attributes": {},
+                  "text": "\n"
+                },
+                {
+                  "attributes": {
+                    "link": "https://example.com/"
+                  },
+                  "text": "link"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<668595664#2>",
+                  "source": "n:668595664:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<668595664#12>",
+                  "source": "n:668595664:2",
+                  "start": 0
+                },
+                {
+                  "end": 10,
+                  "identity": "<3970572352#9>",
+                  "source": "n:3970572352:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<3970572352#3>",
+                  "source": "n:3970572352:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "html-attribute-dropped",
+            "html-css-reduced-to-marks",
+            "html-attribute-dropped",
+            "html-css-reduced-to-marks"
+          ],
+          "producer": "Apple Notes"
+        },
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:668595664:1",
+            "n:668595664:2"
+          ],
+          "blocks": [
+            "n:668595664:1"
+          ],
+          "text": [
+            "safe fallback"
+          ],
+          "dom": [
+            "safe fallback"
+          ],
+          "boundDom": [
+            "safe fallback",
+            null
+          ],
+          "intents": [],
+          "recovery": [
+            {
+              "mime": "text/html",
+              "raw": "<p class=\"MsoNormal\"><span style=\"font-weight:700;font-style:italic\">word 😀</span></p>",
+              "reason": "html-attribute-dropped"
+            },
+            {
+              "mime": "text/html",
+              "raw": "<b id=\"docs-internal\"><p><span style=\"text-decoration:underline\">docs é</span></p></b>",
+              "reason": "html-attribute-dropped"
+            },
+            {
+              "mime": "text/rtf",
+              "raw": "{\\rtf1 prepared}",
+              "reason": "text/rtf-codec-unavailable"
+            },
+            {
+              "mime": "text/tab-separated-values",
+              "raw": "A\tB",
+              "reason": "text/tab-separated-values-codec-unavailable"
+            }
+          ],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 5
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 5
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 2
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1152
+            },
+            {
+              "sequence": 2,
+              "revision": 2,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 488
+            },
+            {
+              "sequence": 3,
+              "revision": 3,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:2",
+              "update": true,
+              "bytes": 1174
+            },
+            {
+              "sequence": 4,
+              "revision": 4,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 506
+            },
+            {
+              "sequence": 5,
+              "revision": 5,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:3",
+              "update": true,
+              "bytes": 1225
+            },
+            {
+              "sequence": 6,
+              "revision": 6,
+              "operation": "Undo",
+              "origin": "history:undo",
+              "update": true,
+              "bytes": 518
+            },
+            {
+              "sequence": 7,
+              "revision": 7,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:4",
+              "update": true,
+              "bytes": 1099
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1099,
+            "revision": 7,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1152
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 2,
+              "bytes": 488
+            },
+            {
+              "origin": "editac:local:clipboard:2",
+              "sequence": 3,
+              "bytes": 1174
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 4,
+              "bytes": 506
+            },
+            {
+              "origin": "editac:local:clipboard:3",
+              "sequence": 5,
+              "bytes": 1225
+            },
+            {
+              "origin": "history:undo",
+              "sequence": 6,
+              "bytes": 518
+            },
+            {
+              "origin": "editac:local:clipboard:4",
+              "sequence": 7,
+              "bytes": 1099
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 13,
+            "focus": 13
+          },
+          "caret": {
+            "node": "n:668595664:1",
+            "offset": 13,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:255907341:5"
+              },
+              "id": "n:668595664:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "safe fallback"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<668595664#2>",
+                  "source": "n:668595664:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<668595664#12>",
+                  "source": "n:668595664:2",
+                  "start": 0
+                },
+                {
+                  "end": 13,
+                  "identity": "<255907341#9>",
+                  "source": "n:255907341:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<255907341#3>",
+                  "source": "n:255907341:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": [
+            "html-attribute-dropped",
+            "html-css-reduced-to-marks",
+            "html-attribute-dropped",
+            "html-css-reduced-to-marks",
+            "text/rtf-codec-unavailable",
+            "text/tab-separated-values-codec-unavailable"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "paste-pair",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:3003828455:1",
+            "n:3003828455:2"
+          ],
+          "blocks": [
+            "n:3003828455:1"
+          ],
+          "text": [
+            "mobile 😀"
+          ],
+          "dom": [
+            "mobile 😀"
+          ],
+          "boundDom": [
+            "mobile 😀",
+            null
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1084
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1084,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1084
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 9,
+            "focus": 9
+          },
+          "caret": {
+            "node": "n:3003828455:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:435659968:5"
+              },
+              "id": "n:3003828455:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "mobile 😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<3003828455#2>",
+                  "source": "n:3003828455:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<3003828455#12>",
+                  "source": "n:3003828455:2",
+                  "start": 0
+                },
+                {
+                  "end": 9,
+                  "identity": "<435659968#9>",
+                  "source": "n:435659968:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<435659968#3>",
+                  "source": "n:435659968:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "beforeinput-only",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:2865321183:1",
+            "n:2865321183:2"
+          ],
+          "blocks": [
+            "n:2865321183:1"
+          ],
+          "text": [
+            "mobile 😀"
+          ],
+          "dom": [
+            "mobile 😀"
+          ],
+          "boundDom": [
+            "mobile 😀",
+            null
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1084
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1084,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1084
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 9,
+            "focus": 9
+          },
+          "caret": {
+            "node": "n:2865321183:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:527696089:5"
+              },
+              "id": "n:2865321183:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "mobile 😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<2865321183#2>",
+                  "source": "n:2865321183:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2865321183#12>",
+                  "source": "n:2865321183:2",
+                  "start": 0
+                },
+                {
+                  "end": 9,
+                  "identity": "<527696089#9>",
+                  "source": "n:527696089:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<527696089#3>",
+                  "source": "n:527696089:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "quotation",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:463876758:1",
+            "n:463876758:2"
+          ],
+          "blocks": [
+            "n:463876758:1"
+          ],
+          "text": [
+            "mobile 😀"
+          ],
+          "dom": [
+            "mobile 😀"
+          ],
+          "boundDom": [
+            "mobile 😀",
+            null
+          ],
+          "intents": [],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 3
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1080
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1080,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1080
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 9,
+            "focus": 9
+          },
+          "caret": {
+            "node": "n:463876758:1",
+            "offset": 9,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "heading",
+                1
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:663089945:5"
+              },
+              "id": "n:463876758:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "mobile 😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<463876758#2>",
+                  "source": "n:463876758:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<463876758#12>",
+                  "source": "n:463876758:2",
+                  "start": 0
+                },
+                {
+                  "end": 9,
+                  "identity": "<663089945#9>",
+                  "source": "n:663089945:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<663089945#3>",
+                  "source": "n:663089945:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "Control",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:2413571973:1",
+            "n:2413571973:2"
+          ],
+          "blocks": [
+            "n:2413571973:1"
+          ],
+          "text": [
+            "# **literal** 😀"
+          ],
+          "dom": [
+            "# **literal** 😀"
+          ],
+          "boundDom": [
+            "# **literal** 😀",
+            null
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "key",
+              "disposition": "native-pending"
+            }
+          ],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "keydown",
+              "trusted": false,
+              "generation": 1,
+              "cancelable": true,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 2
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1093
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1093,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1093
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 16,
+            "focus": 16
+          },
+          "caret": {
+            "node": "n:2413571973:1",
+            "offset": 16,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4277680810:5"
+              },
+              "id": "n:2413571973:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "# **literal** 😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<2413571973#2>",
+                  "source": "n:2413571973:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2413571973#12>",
+                  "source": "n:2413571973:2",
+                  "start": 0
+                },
+                {
+                  "end": 16,
+                  "identity": "<4277680810#9>",
+                  "source": "n:4277680810:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<4277680810#3>",
+                  "source": "n:4277680810:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "Meta",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "unrelatedIdentity": false,
+          "ids": [
+            "n:1082681262:1",
+            "n:1082681262:2"
+          ],
+          "blocks": [
+            "n:1082681262:1"
+          ],
+          "text": [
+            "# **literal** 😀"
+          ],
+          "dom": [
+            "# **literal** 😀"
+          ],
+          "boundDom": [
+            "# **literal** 😀",
+            null
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "key",
+              "disposition": "native-pending"
+            }
+          ],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "keydown",
+              "trusted": false,
+              "generation": 1,
+              "cancelable": true,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 2
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Editor",
+              "origin": "editac:local:clipboard:1",
+              "update": true,
+              "bytes": 1093
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 1093,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:clipboard:1",
+              "sequence": 1,
+              "bytes": 1093
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 16,
+            "focus": 16
+          },
+          "caret": {
+            "node": "n:1082681262:1",
+            "offset": 16,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted",
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:3576640558:5"
+              },
+              "id": "n:1082681262:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "# **literal** 😀"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<1082681262#2>",
+                  "source": "n:1082681262:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<1082681262#12>",
+                  "source": "n:1082681262:2",
+                  "start": 0
+                },
+                {
+                  "end": 16,
+                  "identity": "<3576640558#9>",
+                  "source": "n:3576640558:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<3576640558#3>",
+                  "source": "n:3576640558:1",
+                  "start": 0
+                }
+              ]
+            }
+          ],
+          "result": {
+            "disposition": "committed"
+          },
+          "diagnostics": []
+        }
+      ],
+      "errors": []
+    },
+    {
+      "name": "public-host",
+      "passed": true,
+      "provenance": "deterministic browser fixture; no physical device or OS clipboard claim",
+      "snapshots": [
+        {
+          "outcome": {
+            "disposition": "committed"
+          },
+          "nodes": [
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4053486158:6"
+              },
+              "id": "n:2622621566:1",
+              "kind": "block",
+              "order": 0,
+              "parent": "@root",
+              "runs": [],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<2622621566#2>",
+                  "source": "n:2622621566:1",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<2622621566#12>",
+                  "source": "n:2622621566:2",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<4053486158#9>",
+                  "source": "n:4053486158:2",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "module:editac.image",
+                1,
+                {
+                  "alt": "alt",
+                  "source": "![alt](https://example.com/image.png)",
+                  "title": "",
+                  "url": "https://example.com/image.png"
+                }
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4053486158:4"
+              },
+              "id": "n:4053486158:3",
+              "kind": "block",
+              "order": 1,
+              "parent": "@root",
+              "runs": [
+                {
+                  "attributes": {},
+                  "text": "alt"
+                }
+              ],
+              "spans": [
+                {
+                  "end": 3,
+                  "identity": "<4053486158#15>",
+                  "source": "n:4053486158:3",
+                  "start": 0
+                }
+              ]
+            },
+            {
+              "blockAttributes": [
+                "paragraph"
+              ],
+              "editor": {
+                "checked": null,
+                "containerAttributes": null,
+                "number": null,
+                "version": "o:4053486158:7"
+              },
+              "id": "n:4053486158:4",
+              "kind": "block",
+              "order": 2,
+              "parent": "@root",
+              "runs": [],
+              "spans": [
+                {
+                  "end": 0,
+                  "identity": "<4053486158#24>",
+                  "source": "n:4053486158:4",
+                  "start": 0
+                },
+                {
+                  "end": 0,
+                  "identity": "<4053486158#3>",
+                  "source": "n:4053486158:1",
+                  "start": 0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "processes": [
+    {
+      "pid": 76423,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/firefox-1555/firefox/Nightly.app/Contents/MacOS/firefox",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "clipboard-formats",
+      "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/markdown/session-20261013/final-clipboard-formats/firefox"
+    }
+  ],
+  "packs": [
+    {
+      "name": "core",
+      "file": "edit-ac-core-0.0.0.tgz",
+      "bytes": 929064,
+      "sha256": "d50fc8dd2ae68ee57b776e1f935e0da788ffc769a6a54afa57ce830db6fa3b00"
+    },
+    {
+      "name": "web",
+      "file": "edit-ac-web-0.0.0.tgz",
+      "bytes": 58519,
+      "sha256": "bb969129e68f133b19f7279dc1efb204c5e68fcf0c2ed718266b0447aacc405d"
+    }
+  ],
+  "cleanup": {
+    "browserExited": true,
+    "serverClosed": true,
+    "consumerRemoved": true
+  },
+  "revision": "6edb83432468e44083740b586f973fb44f623352",
+  "sources": {
+    "packages/web/src/clipboard/fragment.ts": "a8ea0095bd8f4ea7c5dd6f557d86b07ef33ced49ff630f2046204ab4220d5408",
+    "packages/web/src/clipboard/html.ts": "de9b4265d2cc60dc85da1daf0cd3f3f8dc817a006e9b5712df6bc676556ed880",
+    "packages/web/src/clipboard/markdown.ts": "21cadac434ca183fee40195c61e69ce72fab10aafd1f3cbc6228c3bc2ad98771",
+    "packages/web/src/clipboard/pending.ts": "eda3d054d1c0e45916bea110c0e4dcb7ec55294dc3d683605c5a8751db5e7165",
+    "tests/browser/format-helpers.ts": "0a097c4a7638f1ba746a9490486331c4e4fd1e97f0fa0f8daead584f6735a504",
+    "crates/editac-markdown/src/extensions.rs": "5f7d8f3a8aba33cd50356aa08850ae9e392a196197e669b7dbe8ed0e27f1e3e1",
+    "crates/editac-markdown/src/optional.rs": "9c77a438909573f9f40e485c17a9c0dee82a8ffff01b651ad24bae5ed1e8bd11",
+    "crates/editac-core/src/modules/content.rs": "3e773ec32c798b11dbcca42b4d9c35a741928f10fa75ac211cac289800f27f90",
+    "packages/web/src/input/text.ts": "80645c045a1bc667f8cfd161113d15ff1861f17e32596dd07f1846d461121e24",
+    "packages/web/src/input/shortcuts.ts": "453638df12f18e7a7a87d268dc0c75129d867352dea08ae2ee0803bd5a6cf118",
+    "packages/core/src/engine.ts": "5d0d1cbefef19a8cffdfa214c348c4573151338f35d7c2458bf74db8bf2414b9",
+    "crates/editac-core/src/commands/editor.rs": "cdf48fad1e731a64c9c5ef4312aea9c0c38e85c411bfd9289a0cfa440164e09d",
+    "crates/editac-wasm/src/bridge.rs": "89198b5d611ca7f161bbe1d0f3042eef00cb761ed1da9e2e9538c5227b23f209",
+    "scripts/test-browser.mjs": "3136f93f0262baa8364434c864421c1387598b9d0a702dd72705559d50615880",
+    "tests/browser/clipboard-formats.spec.ts": "a023d92b42742b1199db5fbffc75325f0f3bb613a99df333e099b611ae731270",
+    "tests/browser/browser-harness.ts": "5c428e8fec3bfd29367c3356e795c71cdddce6a5a71e46add6b0a098f3ba45fe",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+  },
+  "server": {
+    "pid": 76282,
+    "port": 55004,
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "clipboard-formats",
+    "log": "/Users/bpstr/Github/edit-ac/architecture/evidence/markdown/session-20261013/final-clipboard-formats/firefox"
+  },
+  "browser": {
+    "version": "157.0",
+    "engine": "firefox",
+    "playwright": "1.64.0",
+    "node": "v24.19.0"
+  },
+  "counts": {
+    "executed": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0
+  }
+}

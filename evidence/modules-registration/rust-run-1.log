@@ -1,0 +1,82 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0599]: no method named `is_finite` found for reference `&yrs::Number` in the current scope
+  --> crates/editac-core/src/modules/registry.rs:61:18
+   |
+61 |             if n.is_finite() && n.fract() == 0.0 && *n >= 1.0 && *n <= f64::from(max) =>
+   |                  ^^^^^^^^^ method not found in `&yrs::Number`
+
+error[E0599]: no method named `fract` found for reference `&yrs::Number` in the current scope
+  --> crates/editac-core/src/modules/registry.rs:61:35
+   |
+61 |             if n.is_finite() && n.fract() == 0.0 && *n >= 1.0 && *n <= f64::from(max) =>
+   |                                   ^^^^^ method not found in `&yrs::Number`
+
+error[E0369]: binary operation `>=` cannot be applied to type `yrs::Number`
+   --> crates/editac-core/src/modules/registry.rs:61:56
+    |
+ 61 |             if n.is_finite() && n.fract() == 0.0 && *n >= 1.0 && *n <= f64::from(max) =>
+    |                                                     -- ^^ --- {float}
+    |                                                     |
+    |                                                     yrs::Number
+    |
+note: `yrs::Number` does not implement `PartialOrd<{float}>`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:280:1
+    |
+280 | pub enum Number {
+    | ^^^^^^^^^^^^^^^ `yrs::Number` is defined in another crate
+
+error[E0369]: binary operation `<=` cannot be applied to type `yrs::Number`
+   --> crates/editac-core/src/modules/registry.rs:61:69
+    |
+ 61 |             if n.is_finite() && n.fract() == 0.0 && *n >= 1.0 && *n <= f64::from(max) =>
+    |                                                                  -- ^^ -------------- f64
+    |                                                                  |
+    |                                                                  yrs::Number
+    |
+note: `yrs::Number` does not implement `PartialOrd<f64>`
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:280:1
+    |
+280 | pub enum Number {
+    | ^^^^^^^^^^^^^^^ `yrs::Number` is defined in another crate
+
+error[E0605]: non-primitive cast: `yrs::Number` as `u32`
+  --> crates/editac-core/src/modules/registry.rs:63:16
+   |
+63 |             Ok(*n as u32)
+   |                ^^^^^^^^^ an `as` expression can be used to convert enum types to numeric types only if the enum type is unit-only or field-less
+   |
+   = note: see https://doc.rust-lang.org/reference/items/enumerations.html#casting for more information
+
+error[E0599]: no method named `is_finite` found for reference `&yrs::Number` in the current scope
+  --> crates/editac-core/src/modules/registry.rs:90:29
+   |
+90 |         Any::Number(n) if n.is_finite() => {}
+   |                             ^^^^^^^^^ method not found in `&yrs::Number`
+
+error[E0308]: mismatched types
+   --> crates/editac-core/src/modules/registry.rs:237:50
+    |
+237 |         if envelope.first() != Some(&Any::Number(f64::from(d.version))) {
+    |                                      ----------- ^^^^^^^^^^^^^^^^^^^^ expected `Number`, found `f64`
+    |                                      |
+    |                                      arguments to this enum variant are incorrect
+    |
+note: tuple variant defined here
+   --> /Users/bpstr/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/yrs-0.28.0/src/any.rs:21:5
+    |
+ 21 |     Number(Number),
+    |     ^^^^^^
+help: try wrapping the expression in `yrs::Number::Float`
+    |
+237 |         if envelope.first() != Some(&Any::Number(yrs::Number::Float(f64::from(d.version)))) {
+    |                                                  +++++++++++++++++++                    +
+
+error[E0599]: no method named `is_finite` found for reference `&yrs::Number` in the current scope
+   --> crates/editac-core/src/modules/registry.rs:258:62
+    |
+258 |                 (AttributeType::Number, Any::Number(n)) => n.is_finite(),
+    |                                                              ^^^^^^^^^ method not found in `&yrs::Number`
+
+Some errors have detailed explanations: E0308, E0369, E0599, E0605.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `editac-core` (lib) due to 8 previous errors

@@ -1,0 +1,42 @@
+crates/editac-markdown/src/extensions.rs:56:            if Content::from_tuple(t)
+crates/editac-core/src/commands/editor.rs:184:                if let Ok(Some(crate::modules::content::Content::Reference { label, .. })) =
+crates/editac-core/src/commands/editor.rs:185:                    crate::modules::content::Content::from_tuple(tuple)
+crates/editac-core/src/commands/editor.rs:555:                        let content = crate::modules::content::Content::from_tuple(tuple)
+crates/editac-markdown/src/optional.rs:98:    let value = Content::Table {
+crates/editac-markdown/src/optional.rs:131:                Content::Image {
+crates/editac-markdown/src/optional.rs:176:            Content::Reference { label, .. } => label.clone(),
+crates/editac-markdown/src/optional.rs:177:            Content::Callout { kind, body, .. } => format!("{kind}\n{body}"),
+crates/editac-markdown/src/optional.rs:178:            Content::Image { alt, .. } => alt.clone(),
+crates/editac-markdown/src/optional.rs:179:            Content::Table { rows, .. } => rows
+crates/editac-markdown/src/optional.rs:260:        let tuple = Content::Callout {
+crates/editac-markdown/src/export.rs:147:                if let Ok(Some(mut content)) = Content::from_tuple(tuple) {
+crates/editac-markdown/src/export.rs:149:                        Content::Reference { .. } => {}
+crates/editac-markdown/src/export.rs:150:                        Content::Image { source, .. }
+crates/editac-markdown/src/export.rs:151:                        | Content::Table { source, .. }
+crates/editac-markdown/src/export.rs:152:                        | Content::Callout { source, .. } => source.clear(),
+crates/editac-markdown/src/export.rs:202:            BlockAttributes::Unknown(tuple) => match Content::from_tuple(tuple) {
+crates/editac-markdown/src/export.rs:203:                Ok(Some(Content::Reference { label, .. })) => {
+crates/editac-markdown/src/export.rs:210:                Ok(Some(Content::Callout { source, .. })) => source.trim_end().to_owned(),
+crates/editac-markdown/src/export.rs:211:                Ok(Some(Content::Image {
+crates/editac-markdown/src/export.rs:221:                Ok(Some(Content::Table {
+crates/editac-markdown/tests/extensions.rs:66:        let Some(Content::Callout {
+crates/editac-markdown/tests/extensions.rs:70:        }) = Content::from_tuple(t).unwrap()
+crates/editac-core/tests/support/extension_entry.rs:25:        let content = Content::from_tuple(tuple).unwrap().unwrap();
+crates/editac-core/tests/support/extension_entry.rs:78:        assert!(Content::from_tuple(tuple).is_err());
+crates/editac-core/tests/support/extension_entry.rs:83:    assert!(Content::from_tuple(&unknown["tuple"]).unwrap().is_none());
+crates/editac-core/tests/support/extension_entry.rs:148:            content: Content::Image {
+crates/editac-core/tests/reference_content.rs:5:    let value = Content::Reference {
+crates/editac-core/tests/reference_content.rs:10:    match Content::from_tuple(&tuple).unwrap().unwrap() {
+crates/editac-core/tests/reference_content.rs:11:        Content::Reference { target_id, label } => {
+crates/editac-core/tests/reference_content.rs:26:        assert!(Content::Reference { target_id, label }.tuple().is_err());
+crates/editac-core/tests/reference_content.rs:43:            Content::from_tuple(&Any::from_json(json).unwrap()).unwrap_err(),
+crates/editac-core/tests/reference_content.rs:48:        Content::Reference {
+crates/editac-markdown/tests/optional_content.rs:28:    Content::from_tuple(tuple).unwrap().unwrap()
+crates/editac-markdown/tests/optional_content.rs:73:    let Content::Image {
+crates/editac-markdown/tests/optional_content.rs:89:    let Content::Image { alt, .. } = content(&q.blocks[0]) else {
+crates/editac-markdown/tests/optional_content.rs:100:    let Content::Table {
+crates/editac-markdown/tests/optional_content.rs:117:    let Content::Table { rows: again, .. } = content(&q.blocks[0]) else {
+crates/editac-markdown/tests/optional_content.rs:147:    let bad = Content::Table {
+crates/editac-markdown/tests/optional_content.rs:158:    let mut tuple = Content::Image {
+crates/editac-markdown/tests/optional_content.rs:173:        Content::from_tuple(&tuple).unwrap_err(),
+crates/editac-wasm/src/bridge.rs:1032:                            let content = editac_core::modules::content::Content::from_tuple(&a)

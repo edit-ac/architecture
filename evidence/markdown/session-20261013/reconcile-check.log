@@ -1,0 +1,11 @@
+    Checking editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+error[E0605]: non-primitive cast: `yrs::Number` as `u32`
+   --> crates/editac-core/src/commands/editor.rs:730:54
+    |
+730 |                     ContainerStyle::Ordered { start: *start as u32 }
+    |                                                      ^^^^^^^^^^^^^ an `as` expression can be used to convert enum types to numeric types only if the enum type is unit-only or field-less
+    |
+    = note: see https://doc.rust-lang.org/reference/items/enumerations.html#casting for more information
+
+For more information about this error, try `rustc --explain E0605`.
+error: could not compile `editac-core` (lib) due to 1 previous error

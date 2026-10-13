@@ -1,0 +1,93 @@
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.35s
+     Running tests/reconcile.rs (target/debug/deps/reconcile-6d6df05c01c2d6d6)
+
+running 12 tests
+test checked_state_and_heading_presentation_are_portable_edits ... FAILED
+test late_second_target_failure_cannot_apply_a_first_delta ... FAILED
+test ambiguity_structural_change_limits_and_stale_commit_keep_current_state ... FAILED
+test lists_fences_and_reference_definitions_use_one_whole_document_parse ... FAILED
+test disjoint_unicode_and_mark_changes_are_one_update_and_keep_untouched_identity ... FAILED
+test core_atomic_batch_rejects_invalid_later_fragment_before_live_effects ... FAILED
+test deleted_and_moved_targets_conflict_without_redirect_or_partial_mutation ... FAILED
+test second_replica_disjoint_text_survives_original_anchors_and_undo ... FAILED
+test literal_mode_never_interprets_markdown_and_preserves_unicode_boundaries ... FAILED
+test overlapping_remote_text_rejects_with_base_draft_and_current_recoverable ... FAILED
+test unsupported_atom_is_preserved_by_unrelated_edit_and_changed_atom_rejects ... FAILED
+test exact_noop_and_spelling_only_keep_source_ids_and_state ... ok
+
+failures:
+
+---- checked_state_and_heading_presentation_are_portable_edits stdout ----
+
+thread 'checked_state_and_heading_presentation_are_portable_edits' (164906806) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- late_second_target_failure_cannot_apply_a_first_delta stdout ----
+
+thread 'late_second_target_failure_cannot_apply_a_first_delta' (164906811) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+
+---- ambiguity_structural_change_limits_and_stale_commit_keep_current_state stdout ----
+
+thread 'ambiguity_structural_change_limits_and_stale_commit_keep_current_state' (164906805) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+
+---- lists_fences_and_reference_definitions_use_one_whole_document_parse stdout ----
+
+thread 'lists_fences_and_reference_definitions_use_one_whole_document_parse' (164906812) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+
+---- disjoint_unicode_and_mark_changes_are_one_update_and_keep_untouched_identity stdout ----
+
+thread 'disjoint_unicode_and_mark_changes_are_one_update_and_keep_untouched_identity' (164906809) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+
+---- core_atomic_batch_rejects_invalid_later_fragment_before_live_effects stdout ----
+
+thread 'core_atomic_batch_rejects_invalid_later_fragment_before_live_effects' (164906807) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+
+---- deleted_and_moved_targets_conflict_without_redirect_or_partial_mutation stdout ----
+
+thread 'deleted_and_moved_targets_conflict_without_redirect_or_partial_mutation' (164906808) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+
+---- second_replica_disjoint_text_survives_original_anchors_and_undo stdout ----
+
+thread 'second_replica_disjoint_text_survives_original_anchors_and_undo' (164906815) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+
+---- literal_mode_never_interprets_markdown_and_preserves_unicode_boundaries stdout ----
+
+thread 'literal_mode_never_interprets_markdown_and_preserves_unicode_boundaries' (164906813) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+
+---- overlapping_remote_text_rejects_with_base_draft_and_current_recoverable stdout ----
+
+thread 'overlapping_remote_text_rejects_with_base_draft_and_current_recoverable' (164906814) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+
+---- unsupported_atom_is_preserved_by_unrelated_edit_and_changed_atom_rejects stdout ----
+
+thread 'unsupported_atom_is_preserved_by_unrelated_edit_and_changed_atom_rejects' (164906816) panicked at crates/editac-markdown/tests/reconcile.rs:7:69:
+called `Result::unwrap()` on an `Err` value: AlreadyInitialized
+
+
+failures:
+    ambiguity_structural_change_limits_and_stale_commit_keep_current_state
+    checked_state_and_heading_presentation_are_portable_edits
+    core_atomic_batch_rejects_invalid_later_fragment_before_live_effects
+    deleted_and_moved_targets_conflict_without_redirect_or_partial_mutation
+    disjoint_unicode_and_mark_changes_are_one_update_and_keep_untouched_identity
+    late_second_target_failure_cannot_apply_a_first_delta
+    lists_fences_and_reference_definitions_use_one_whole_document_parse
+    literal_mode_never_interprets_markdown_and_preserves_unicode_boundaries
+    overlapping_remote_text_rejects_with_base_draft_and_current_recoverable
+    second_replica_disjoint_text_survives_original_anchors_and_undo
+    unsupported_atom_is_preserved_by_unrelated_edit_and_changed_atom_rejects
+
+test result: FAILED. 1 passed; 11 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `-p editac-markdown --test reconcile`

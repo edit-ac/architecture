@@ -1,0 +1,207 @@
+{
+  "gate": "WEB-1.4",
+  "children": [
+    "WEB-1.4-I1",
+    "WEB-1.4-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "../architecture/progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "78ed60d4dd3fa0c8055ffe2dbc957703e144f2e69172c0e26e1cb112e953c2ab",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseRevision": "3cea914c983233a091faeb70382865a335c85b40",
+  "architectureBaseRevision": "554509957c5d6b5f80318a8b430d9f2a2784d3e6",
+  "implementationRevision": "61d0f647e19a21c1ff870ad07d99d5c21610df28a4cfc8bff327665c4cae66d9",
+  "sourceHashes": "tested-source-hashes.json",
+  "fixtureSeed": "two recovered paragraphs: alpha / independent; fixed document/epoch; fresh context per authored case",
+  "prerequisites": {
+    "engineSourceRevision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+    "storageSourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+    "qualifiedADR": "../browser-input-policy/receipt.json",
+    "adrRevision": 1,
+    "unchangedPrerequisiteHashes": 18,
+    "changedPrerequisitePaths": [
+      "scripts/test-browser.mjs"
+    ],
+    "changeReason": "Additive named input dispatch only; previous runner suites and renderer/selection/engine/storage artifacts unchanged."
+  },
+  "canonical": {
+    "command": "EDITAC_INPUT_OUTPUT=.../run-1/repaired npm run test:browser -- input",
+    "exit": 0,
+    "executed": 51,
+    "passed": 51,
+    "failed": 0,
+    "skipped": 0,
+    "canceled": 0,
+    "log": "run-1/input-repaired.log",
+    "perEngine": [
+      {
+        "engine": "chromium",
+        "profile": {
+          "engine": "chromium",
+          "version": "156.0.8078.4",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "executed": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "canceled": 0,
+        "facts": "run-1/repaired/chromium/facts.json",
+        "factsSha256": "870cef179511b5c32f7eeb81298c40836182ec14b37977eaf84b3736ae85be85",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "profile": {
+          "engine": "firefox",
+          "version": "157.0",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "executed": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "canceled": 0,
+        "facts": "run-1/repaired/firefox/facts.json",
+        "factsSha256": "3f7c4e207886f916a05b69243408c3e76c5e4c8d0b1d3b2358c019ebe531678f",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "profile": {
+          "engine": "webkit",
+          "version": "27.2",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "executed": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "canceled": 0,
+        "facts": "run-1/repaired/webkit/facts.json",
+        "factsSha256": "7cac6d0e72ce1094b6f6acc44865f8a4a610d2f2ef6df1d343bef5de1d975533",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      }
+    ]
+  },
+  "narrow": {
+    "command": "EDITAC_INPUT_OUTPUT=.../run-1/narrow node --test --test-name-pattern='native-typing:' tests/browser/input.spec.ts",
+    "exit": 0,
+    "executed": 1,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "log": "run-1/narrow.log",
+    "facts": "run-1/narrow/facts.json"
+  },
+  "buildAndTypes": [
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "log": "run-1/build-caret-repaired.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "exit": 0,
+      "log": "run-1/typecheck-caret-repaired.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "run-1/diff-check.log"
+    }
+  ],
+  "criteria": {
+    "exactlyOnce": "Physical typing/deletion, deliberate identical insertions, key repeats and prepared duplicate/observer-order cases assert one attributable update, history group and durable journal entry per real edit, no no-op/read-only/disposed effects.",
+    "agreement": "Authored model/DOM/caret assertions after each physical input, including selected forward/backward replacement/deletion, empty reuse and UTF-16 emoji native deletion.",
+    "unrelatedDOM": "Every observed case asserts original independent block and text-node identity, including same-turn remote renderer echo.",
+    "preparation": "One text replace request through LocalStorageLifecycle.commit; real engine prepare/commit remains authority. Deletion uses browser target ranges or known bounded native mutation; renderer echoes are drained only inside identified synchronous patches."
+  },
+  "preservedFailures": [
+    {
+      "commands": [
+        "npm run build",
+        "npm run typecheck"
+      ],
+      "exits": [
+        2,
+        1
+      ],
+      "logs": [
+        "run-1/build.log",
+        "run-1/typecheck.log"
+      ],
+      "repair": "Correct TypeScript control-flow narrowing after mutable intent disposition."
+    },
+    {
+      "command": "npm run test:browser -- input",
+      "exit": 1,
+      "executed": 51,
+      "passed": 44,
+      "failed": 7,
+      "skipped": 0,
+      "log": "run-1/input.log",
+      "facts": "run-1/matrix/{chromium,firefox,webkit}/facts.json",
+      "repair": "Restore caret via retained upper-endpoint right-affinity anchor; explicitly split Firefox composition-based automation from ordinary emoji insertion/native deletion. Original failed content/caret traces retained."
+    }
+  ],
+  "regressionReuse": {
+    "renderer": "../browser-input-policy/receipt.json: 21/21",
+    "selection": "../browser-input-policy/receipt.json: 36/36",
+    "reason": "No shared DOM/selection source or compiled artifact changed; all 18 non-runner prerequisite hashes match prior qualification."
+  },
+  "qualificationLimits": [
+    "Internal ordinary-input adapter; full lifecycle wiring remains later gates.",
+    "Prepared ordinary event/mutation replay is separate from physical keyboard actions; emoji insertion is prepared and its deletion native.",
+    "No missing-beforeinput/spellcheck/autocorrect/paste-like fallback, production composition, structural keyboard, OS IME/device, release, publication or deployment claim.",
+    "No paid inference, credential loading or provider transport."
+  ],
+  "cleanup": {
+    "removed": [
+      {
+        "path": "/Users/bpstr/Library/Caches/ms-playwright/firefox-1555",
+        "allocatedBytes": 308649984
+      },
+      {
+        "path": "/Users/bpstr/Library/Caches/ms-playwright/webkit-2370",
+        "allocatedBytes": 313614336
+      }
+    ],
+    "reclaimedAllocatedBytes": 622264320,
+    "remainingFreeBytes": 25895464960,
+    "preserved": "Existing caches, source, generated qualification artifacts, other-task processes including Assign Vite"
+  },
+  "processEvidence": {
+    "allOwnedBrowsersExited": true,
+    "allOwnedListenersRemoved": true,
+    "temporaryConsumersRemoved": true,
+    "review": "run-1/process-review.log",
+    "listeners": "run-1/listeners.log",
+    "protectedAssignVite": "PID 86207, [::1]:5173 remains listening"
+  },
+  "verifiedAtUtc": "2026-10-12T11:05:03.682967+00:00"
+}

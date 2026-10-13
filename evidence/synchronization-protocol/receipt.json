@@ -1,0 +1,254 @@
+{
+  "gate": "SYN-1.2",
+  "state": "implemented and locally verified",
+  "sourceRevision": "9fb151bc16cc567c2c66700209baff239d192e1893ab4746d98f4c8dc329a17d",
+  "promptRevision": "2e18a98412c7",
+  "implementationHead": "6edb83432468e44083740b586f973fb44f623352",
+  "implementationState": "Dirty checkout retained; only protocol.ts and sync-protocol.test.mjs added by this iteration. Archived current source/build hashes identify the tested artifact.",
+  "checks": [
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "log": "build.log"
+    },
+    {
+      "command": "node --test tests/sync-protocol.test.mjs (initial fixture)",
+      "log": "feature.log",
+      "exit": 1,
+      "counts": {
+        "tests": 7,
+        "pass": 0,
+        "fail": 7,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "node --test tests/sync-protocol.test.mjs (identity/run-shape repair)",
+      "log": "feature-repair.log",
+      "exit": 1,
+      "counts": {
+        "tests": 7,
+        "pass": 2,
+        "fail": 5,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "node --test --test-name-pattern='both-direction|reject malformed|malformed or unsupported' tests/sync-protocol.test.mjs",
+      "log": "feature-repair-2.log",
+      "exit": 0,
+      "counts": {
+        "tests": 3,
+        "pass": 3,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "node --test --test-name-pattern='update messages|deletion-only' tests/sync-protocol.test.mjs",
+      "log": "feature-repair-3.log",
+      "exit": 0,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "node --test tests/sync-protocol.test.mjs (preserved vector-order failure)",
+      "log": "final.log",
+      "exit": 1,
+      "counts": {
+        "tests": 7,
+        "pass": 5,
+        "fail": 2,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "node --test --test-name-pattern='both-direction|update messages' tests/sync-protocol.test.mjs",
+      "log": "final-repair.log",
+      "exit": 0,
+      "counts": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "node --test tests/sync-protocol.test.mjs",
+      "log": "verified.log",
+      "exit": 0,
+      "counts": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "node --test tests/outbox.test.mjs tests/interop.test.mjs (relative evidence path failed)",
+      "log": "integration.log",
+      "exit": 1,
+      "counts": {
+        "tests": 27,
+        "pass": 23,
+        "fail": 4,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "node --test --test-name-pattern='Rust XML|Rust delta|JS delta|prepared socket copies' tests/interop.test.mjs",
+      "log": "interop-repair.log",
+      "exit": 0,
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "command": "cargo test -p editac-core --test interop --locked --offline (nested)",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "log": "interop-repair/rust.log"
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "diff-check.log"
+    }
+  ],
+  "integrationResult": "27 distinct cases passed: 23 from original combined run, 4 failed path-dependent cases repaired with absolute EDITAC_INTEROP_OUTPUT and passed. Original failing log retained; unchanged passing outbox/browser evidence reused.",
+  "criterionMap": {
+    "baselineMessages": "verified/harness.json and both-direction step1/step2/update frames from real Rust WASM and pinned y-protocols same-schema JS peer",
+    "malformedAndOversized": "framing, varuint overflow/canonicality, vector bounds/trailing/duplicates, payload truncation/trailing, unsupported roots and Rust staged admission; committed projection/checkpoint/vector/history unchanged",
+    "duplicateConvergence": "concurrent overlapping Unicode/marked edits, reordered duplicate frames and deletion-only equal-vector exchange; full schema snapshot and decoded clocks equal",
+    "noMirror": "production adapter delegates to EngineHandle; Y.Doc exists only in oracle tests",
+    "entry": "Retained SYN-1.1 evidence/synchronization-entry/receipt.json; upstream audit and matching artifact evidence reused"
+  },
+  "boundaries": {
+    "updateEncoding": 1,
+    "syncOracle": "y-protocols 1.0.7",
+    "schema": "editac.registry.editor.v5",
+    "frameLimitBytes": 16777216,
+    "stateVectorLimitBytes": 65536,
+    "stateVectorClientLimit": 4096,
+    "scope": "No provider adapter, reconnect, awareness, auth, relay or durable acknowledgment claim"
+  },
+  "preservedFailures": "Fixture UUID reuse, mapper run shape, consumed read hints and prefixed origins corrected in tests; nonnormative state-vector serialization byte order corrected to decoded-clock comparison; relative Cargo output path corrected in invocation configuration.",
+  "cleanup": "cleanup.json",
+  "completedAtUtc": "2026-10-13T00:26:39.710158+00:00",
+  "artifactHashes": {
+    "build.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "cleanup.json": "4bce77338b9bb4c288a3b71708ab7137d736cbd48703dcbaf44d834c2d0374fd",
+    "diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "feature/0-rust-step1.bin": "82305b30764c1f8e490ac14b7a064216759cb709b6fa73f4373654441c5e25ab",
+    "feature/1-js-step1.bin": "644a46d9cf2856d9fe9ffea17a62544dd608e1681e3a69ffd0389a0d8a35bca8",
+    "feature/2-rust-step2.bin": "c197df479ef7c1f0cc4671b3dd4d335798223101514ef105bfa964df7fc32fe1",
+    "feature/3-js-step2.bin": "69b905f2121f66666292744287df226bc6bcaf434a84cbc12a8b957cefa6b4d2",
+    "feature/harness.json": "ea2ad96ee218c8520389876d4549ce59fc2e196a1417e8ce9f6ca774ed934987",
+    "feature-repair/0-rust-step1.bin": "724c9f4d169ecadaf6116904a80bc0a974cb9c414da54f7a87feed9c8d5a4b1a",
+    "feature-repair/1-js-step1.bin": "ed37ed336706de89e79268bd27dc708e07cfaf2d3cd7118ec8d4dc93b28959e5",
+    "feature-repair/2-rust-step2.bin": "a9a7bce9ee87e46c00d9be8dbc80a0dd10342efb00e9071d0320a403ff5201ea",
+    "feature-repair/3-js-step2.bin": "c98108909088b713bad73ee1a284ae05a3cf63da73f931ebe1345d6fdcd5b97b",
+    "feature-repair/harness.json": "464ab847dd8181ac009de7ee8f4df97892e077393ee3d93571d1408673cfc2b0",
+    "feature-repair-2/0-rust-step1.bin": "63648e137778024efd5d6a14a2bfcc0f438b357aa1b7abc2a9007da4fc52dcd6",
+    "feature-repair-2/1-js-step1.bin": "c474adf51aed84315d19304828ce35117070c3b5228237074406712e99bbba05",
+    "feature-repair-2/2-rust-step2.bin": "e7da87b1e356d08cb2e18114515ea32033185b7004b924e1472a031ce8173160",
+    "feature-repair-2/3-js-step2.bin": "da6c74352df8ce404cc8e06e8c2227b78325040764e13c2dac7728aec06c7c0a",
+    "feature-repair-2/harness.json": "66162206d291d6d7ac63e2829c90816a5ce8b9e30755cb0920fc6ba4b0aedd1c",
+    "feature-repair-2.log": "9a262b34fc86a7285fe840866c52799c538cecdefe55877c2d16705a3df67d3a",
+    "feature-repair-3/0-rust-update.bin": "41fc0c96a2827fd0c73532fedb533e7a4140c271c61f9474205f8639e42631a8",
+    "feature-repair-3/1-js-update.bin": "11722de9783bce0ec7bf7da238c7de13eedb6568568ed1c98db765efc7fe1d01",
+    "feature-repair-3/harness.json": "30f30468eaae9ed90289b7359873cdb8b7614242a0c1c4184e329c0ee4b257dc",
+    "feature-repair-3.log": "16e40a4c5786e2eaa7a96dc1638423f212cac1d2b2f2987f1b1177a07d422094",
+    "feature-repair.log": "8477aa957a6c5229760a4e30595f098824ad71d87fc081d3bced707a63392769",
+    "feature.log": "a78c7ca08dde1303d731b7b0ba447e5775c7cb935119709c6362a66e9527f78e",
+    "final/0-rust-step1.bin": "166a86c10ed1b1ba3cb288814eb9e36950cfa0ec58826a88c81c0ef91d3ef656",
+    "final/1-js-step1.bin": "f7386a16636edf86cd47dc102803db048b82ea9d744fc4efb6fe719bf9e7c9a6",
+    "final/2-rust-step2.bin": "8bfc8f87d0554c56440a24b9f884b98fec6be8418c6fe3415809cac8dc936ba0",
+    "final/3-js-step2.bin": "6085a29f08d85a7db5696ca2f29f780bb8b20ec6e672b0e322e91283f42d5b58",
+    "final/4-rust-update.bin": "aee523617cce0b66f86f82cfcd00a817c19df2485f9fd10b2384302058ebd9df",
+    "final/5-js-update.bin": "eaf7e666ed3dc648a12380afcc21bff729c313be3dcb2e30e8c3686814f0b97f",
+    "final/harness.json": "aa0589beb304b06d32ac1ce2df1024ab63a908af10f9e56088cc3f8b7dc5a89f",
+    "final-repair/0-rust-step1.bin": "58c9dac21a1da44aba81e5b215c1c614fef9f2a4d8a0497e5e9d83c596f50567",
+    "final-repair/1-js-step1.bin": "572c2230c94ada93599a326dff31dc33bba04f1b2f0944e74d86926d816c793b",
+    "final-repair/2-rust-step2.bin": "89b89ddaa62b2144d2f92e881ae557315ca03fc63c99bb3dbc215c85b54b9ef5",
+    "final-repair/3-js-step2.bin": "ee5ddddb7e276cab13072665223b8cb33e09368bb254e0595e37c089ae4296ef",
+    "final-repair/4-rust-update.bin": "133c773f89bb28a16282fe35afed1bc2520c652f1273c872576c69c125d65269",
+    "final-repair/5-js-update.bin": "cbaf74ed868c745b3dcdb2ec726d364d641151594ac154283b4da7abba45a58b",
+    "final-repair/harness.json": "fa2356c09a37b5a0a1072426ffb3ab32a0ddb2bf2f1435baa5a42e03ba014d85",
+    "final-repair.log": "15bc1a71fc6d12e94c1856782d6f78c4dcaea5b746250c6a43f3e3ef8184a3f5",
+    "final.log": "e30bf8c4f5e4696237fabec201ae2f7d41ac3851c4ef3c02e2cb3ef502f07b16",
+    "integration.log": "88278ed6f54ff4473460ca54bf3da56006b44fdb4214f5cb243fce3b842e2f14",
+    "interop/rust.log": "c4e1056e947841aa4b56c942df245b2189a54134d954d6d235ce7b1c5150d298",
+    "interop-repair/js-0.bin": "a81dd584362024d63957337c6865e2a7bfbfc011f9cb161e0699beb512fe662f",
+    "interop-repair/js-1.bin": "dc3a74413e11fb7762765d93332934634e7c5e5be87f02d3c3a40d238e1d2a80",
+    "interop-repair/js-2.bin": "4b32457230f02755f029d847271f4b23122140f0a582dccdee1ba49761ac1145",
+    "interop-repair/js-for-rust-sv.bin": "4b8cc6261208db78b2c33d1a2bc6cc2d04175754a3a1256f563768a1530e6daa",
+    "interop-repair/js-for-rust.bin": "3f74735fdd50c10c4c881549a4c8afb832093217c9727f097c2e3c3a6ba48e1b",
+    "interop-repair/js-full.bin": "283340f86c2db20da9d54677ebeeb3bfcd7ab84bb617a8f51153a68470d1d48b",
+    "interop-repair/js-sv-0.bin": "9fefc65ae3d2443eeb04e8b092f96ab6ebaba12a07450500585f3847bc61b392",
+    "interop-repair/js-sv-1.bin": "d195c30580b6cbcc3942798d25379716f33e7756c08097a9731a16c21f2da2b8",
+    "interop-repair/js-sv-2.bin": "14bff0290fc4d3180b03d410bf85b53eba425667b67d60683af9e776753bba6e",
+    "interop-repair/rust-0.bin": "9db2cc07a73514f4c21feb4a79aa0b3a0536515c03c9375a0461a4c9eeeb6505",
+    "interop-repair/rust-1.bin": "c0c0f00345fdc0bb120a69c79b0da7b2f15f138be00ccd66f1ba4ea5412e2502",
+    "interop-repair/rust-2.bin": "e4505af3501c36faf5d418900953d0204794b8f2f65b2133f0fe5ab9a5b59822",
+    "interop-repair/rust-for-js.bin": "776e6ee129a7e8fd1ea5bbcc0ffa9feafc864e93c76acbcef1d1b7b23e57e0c3",
+    "interop-repair/rust-sv-0.bin": "04cef3cc2ae6f00503c0fb20a94624c148ca0f0e884ab36d5e670b9ab911f25a",
+    "interop-repair/rust.log": "57b8676a992eb2efc1f157e95ed4fc9863fe35114f4240a47c0570a006b761c8",
+    "interop-repair.log": "01f4c3f1b4db8119ab62d26d1c7d39e5e73027d80e2f1bc44f41d5f3d0ef782d",
+    "misplaced-interop/js-0.bin": "a81dd584362024d63957337c6865e2a7bfbfc011f9cb161e0699beb512fe662f",
+    "misplaced-interop/js-1.bin": "dc3a74413e11fb7762765d93332934634e7c5e5be87f02d3c3a40d238e1d2a80",
+    "misplaced-interop/js-2.bin": "4b32457230f02755f029d847271f4b23122140f0a582dccdee1ba49761ac1145",
+    "misplaced-interop/js-for-rust-sv.bin": "4b8cc6261208db78b2c33d1a2bc6cc2d04175754a3a1256f563768a1530e6daa",
+    "misplaced-interop/js-for-rust.bin": "3f74735fdd50c10c4c881549a4c8afb832093217c9727f097c2e3c3a6ba48e1b",
+    "misplaced-interop/js-full.bin": "283340f86c2db20da9d54677ebeeb3bfcd7ab84bb617a8f51153a68470d1d48b",
+    "misplaced-interop/js-sv-0.bin": "9fefc65ae3d2443eeb04e8b092f96ab6ebaba12a07450500585f3847bc61b392",
+    "misplaced-interop/js-sv-1.bin": "d195c30580b6cbcc3942798d25379716f33e7756c08097a9731a16c21f2da2b8",
+    "misplaced-interop/js-sv-2.bin": "14bff0290fc4d3180b03d410bf85b53eba425667b67d60683af9e776753bba6e",
+    "misplaced-interop/rust-0.bin": "9db2cc07a73514f4c21feb4a79aa0b3a0536515c03c9375a0461a4c9eeeb6505",
+    "misplaced-interop/rust-1.bin": "c0c0f00345fdc0bb120a69c79b0da7b2f15f138be00ccd66f1ba4ea5412e2502",
+    "misplaced-interop/rust-2.bin": "e4505af3501c36faf5d418900953d0204794b8f2f65b2133f0fe5ab9a5b59822",
+    "misplaced-interop/rust-for-js.bin": "776e6ee129a7e8fd1ea5bbcc0ffa9feafc864e93c76acbcef1d1b7b23e57e0c3",
+    "misplaced-interop/rust-sv-0.bin": "04cef3cc2ae6f00503c0fb20a94624c148ca0f0e884ab36d5e670b9ab911f25a",
+    "outbox/harness.json": "e8687795509b4b4da7d3ce30a8af5399fccf47d4f489d1cdb73b1d1411fb97a4",
+    "sources/crates/editac-core/src/document.rs": "e1a6f3cba71199d538c7e8d6edd0b8c1c68a1ffd124128d042a6766875da8a14",
+    "sources/crates/editac-wasm/src/bridge.rs": "89198b5d611ca7f161bbe1d0f3042eef00cb761ed1da9e2e9538c5227b23f209",
+    "sources/crates/editac-wasm/src/engine.rs": "086234987360e838113a362ff8baa41794b39fd151e2cb89ddfac35cbecd2859",
+    "sources/fixtures/schema-v5/mapping.mjs": "54617d4cebf52f60dea937c41f4aa53c2f143ef9bce033390c2ee9820bef9f33",
+    "sources/fixtures/schema-v5/profile.json": "d0a68db300d2953de29ff8208a4d1208d6ec13cba0544cbf7302ee24acd6b5f9",
+    "sources/package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+    "sources/packages/core/dist/wasm/editac_wasm.js": "916c7c4d1b68a4d78a617337d0857419e62b9b93bc7af6837ce41e2e1f765cd2",
+    "sources/packages/core/dist/wasm/editac_wasm_bg.wasm": "265a6896c0962bbfc8e3cc07f8ac12043654df9d22443ccb840db173995dbdd2",
+    "sources/packages/core/src/engine.ts": "5d0d1cbefef19a8cffdfa214c348c4573151338f35d7c2458bf74db8bf2414b9",
+    "sources/packages/web/dist/sync/protocol.js": "cac453293d7ce6a2a9cbad1592f6dac6033f2f28b6d9c6e0fc4f394ca320a09e",
+    "sources/packages/web/src/sync/protocol.ts": "13246ca889ac65a2d774bbfdd1e2c40db84f3bf70ec7b5f4a869617118141563",
+    "sources/tests/helpers/prepared-socket.mjs": "448c3110beb2521103d69745de5c85d4d8c3709fab6db84c16e46a0631e19b01",
+    "sources/tests/sync-protocol.test.mjs": "92c32cf98c618ca9007cce0629155abffb5c2f391924b7fb27a8876c20590bd8",
+    "verified/0-rust-step1.bin": "52c58c79d4f6ea50f78f35d056e9e5bb489602e6a5893f321538518dcaba2003",
+    "verified/1-js-step1.bin": "68c1707f16c9a9e1156fc0190d042a90fb85d84eb86a8c7f00684466d71e5f81",
+    "verified/2-rust-step2.bin": "168c9f87f872b6ccded895a4b03f648981100545340850366a9d695bddb6be97",
+    "verified/3-js-step2.bin": "afa4300b4c15618998f1ec57f0623382b7ec9331273b49e75cdf7cdf5824c347",
+    "verified/4-rust-update.bin": "7af89e13b8e59104aafd4d721ae0681759492340375cfd845b8e18823c000a4e",
+    "verified/5-js-update.bin": "7f686366f98ad0fccabb7b59a6853071e37d784ea24f34b39c1f0bc7cbd1834f",
+    "verified/harness.json": "9c9dae5044ef0fc7e2eb18fc8e202004ca872d73f7453bed20e796d8e8db61ba",
+    "verified.log": "f4edf461d5d4add9eb9d70bc7640d1d30a15ac21a5a39e8325e712824ff72535"
+  }
+}

@@ -1,0 +1,39 @@
+
+> edit-ac-workspace@0.0.0 check:browser-baseline
+> npm run build:wasm && npm run build && node --test tests/browser/baseline-runner.test.mjs && npm run test:browser -- baseline
+
+
+> edit-ac-workspace@0.0.0 build:wasm
+> node scripts/build-wasm.mjs
+
+wasm-bindgen 0.2.129
+   Compiling stable_deref_trait v1.2.1
+   Compiling smallvec v1.16.3
+   Compiling writeable v0.6.4
+   Compiling litemap v0.8.3
+   Compiling quote v1.0.47
+   Compiling utf8_iter v1.0.4
+   Compiling icu_properties_data v2.3.0
+   Compiling cfg-if v1.0.5
+error[E0463]: can't find crate for `core`
+  |
+  = note: the `wasm32-unknown-unknown` target may not be installed
+  = help: consider downloading the target with `rustup target add wasm32-unknown-unknown`
+
+For more information about this error, try `rustc --explain E0463`.
+error: could not compile `cfg-if` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `utf8_iter` (lib) due to 1 previous error
+error: could not compile `litemap` (lib) due to 1 previous error
+error: could not compile `smallvec` (lib) due to 1 previous error
+error: could not compile `stable_deref_trait` (lib) due to 1 previous error
+error: could not compile `writeable` (lib) due to 1 previous error
+file:///Users/bpstr/Github/edit-ac/core/scripts/build-wasm.mjs:15
+  if (result.error || result.status !== 0) throw result.error || new Error(`${command} exited ${result.status}`);
+                                                                 ^
+
+Error: rustup exited 101
+    at run (file:///Users/bpstr/Github/edit-ac/core/scripts/build-wasm.mjs:15:66)
+    at file:///Users/bpstr/Github/edit-ac/core/scripts/build-wasm.mjs:22:1
+
+Node.js v26.4.0

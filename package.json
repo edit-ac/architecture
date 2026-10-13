@@ -9,7 +9,9 @@
   },
   "scripts": {
     "validate:roadmaps": "node scripts/validate-roadmaps.mjs",
-    "check": "npm run validate:roadmaps"
+    "check": "npm run validate:roadmaps && npm run validate:editing-suite && npm run test:editing-suite-contract",
+    "validate:editing-suite": "node scripts/validate-editing-suite.mjs",
+    "test:editing-suite-contract": "node --test tests/editing-suite-contract.test.mjs"
   },
   "devDependencies": {
     "@bpstr/roadmap-runner": "0.8.0"

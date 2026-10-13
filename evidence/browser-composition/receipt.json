@@ -1,0 +1,384 @@
+{
+  "gate": "WEB-1.6",
+  "children": [
+    "WEB-1.6-I1",
+    "WEB-1.6-V1"
+  ],
+  "state": "implemented and locally mechanically verified; no OS/device, release or deployed support claim",
+  "sourceSnapshot": "../../progress/.roadmap-runner/04-browser-input-2e7632377a71/source-e70e728e1701.md",
+  "sourceRevision": "78ed60d4dd3fa0c8055ffe2dbc957703e144f2e69172c0e26e1cb112e953c2ab",
+  "promptRevision": "7eaa063f3629",
+  "coreBaseRevision": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseRevision": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementationRevision": "64fd6ccff1ca78d73175c79588e2b81f03af00e099e3fcfbd546300b60e4ce7e",
+  "verifiedAtUtc": "2026-10-12T12:19:06.029847+00:00",
+  "sourceHashes": "tested-source-hashes.json",
+  "sourceManifestSha256": "516e3fb84c0477748bc5df91216064e99c07653f42a81a1446301b28ac0b296f",
+  "testedSources": "run-2/tested-sources/",
+  "adr": {
+    "version": 1,
+    "path": "../../decisions/004-browser-input-composition.md",
+    "sha256": "2b611e46a5aa2527209189706a216d6d9894a2e3b72f4e34d31642b870f578c4"
+  },
+  "fixtureSeed": "Fresh recovered real packed-WASM alpha/independent paragraph document and IndexedDB per authored browser context; explicit empty baseline case",
+  "prerequisites": {
+    "engineSourceRevision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+    "storageSourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+    "currentLiveUpstreamSourceHashesMatch": true,
+    "qualifiedADRReceipt": "../browser-input-policy/receipt.json",
+    "fallbackReceipt": "../browser-reconcile/receipt.json",
+    "hashComparison": "run-2/prerequisite-hashes.json",
+    "unchangedHashes": 19,
+    "changedPaths": [
+      "fixtures/browser-input/README.md",
+      "fixtures/browser-input/session.mjs",
+      "packages/web/dist/input/reconcile.js",
+      "packages/web/dist/input/text.js",
+      "packages/web/src/input/reconcile.ts",
+      "packages/web/src/input/text.ts",
+      "scripts/test-browser.mjs"
+    ],
+    "reuse": "Core/WASM/storage/render/selection code and compiled artifacts unchanged from prior qualified hashes. Reuse original upstream plus render 21/21 and selection 36/36 evidence. Changed shared text/reconcile paths get full ordinary and fallback regressions."
+  },
+  "canonical": {
+    "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_COMPOSITION_OUTPUT=../architecture/evidence/browser-composition/run-2/final npm run test:browser -- composition",
+    "exit": 0,
+    "log": "run-2/composition-final.log",
+    "logSha256": "28a649efe8396b012c3b37a7922cb2770486ffa683a191a4e28f9f9fbcb47bac",
+    "perEngine": [
+      {
+        "engine": "chromium",
+        "executed": 38,
+        "passed": 38,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "profile": {
+          "engine": "chromium",
+          "version": "156.0.8078.4",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "run-2/final/chromium/facts.json",
+        "factsSha256": "0727464abfc84ef3d86721930a91b333f09694e6d547d292c5f5863f964485b4",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "executed": 38,
+        "passed": 38,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "profile": {
+          "engine": "firefox",
+          "version": "157.0",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "run-2/final/firefox/facts.json",
+        "factsSha256": "d761409821977ffe78fca67bc82a268699c4317f9e50739363a865ade70634f2",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "executed": 38,
+        "passed": 38,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "profile": {
+          "engine": "webkit",
+          "version": "27.2",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "run-2/final/webkit/facts.json",
+        "factsSha256": "aa41699a3e2593389e8ba92db7f02fd02cf2ae2dad02909b171cc0ebed97293c",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      }
+    ]
+  },
+  "ordinaryInputRegression": {
+    "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_INPUT_OUTPUT=../architecture/evidence/browser-composition/run-2/input-regression npm run test:browser -- input",
+    "exit": 0,
+    "log": "run-2/input-regression.log",
+    "logSha256": "37641aaf66d17564af4aabf1d9955ba1c7c2fc1bd29ad4ac0e27aa9eb5a870c9",
+    "perEngine": [
+      {
+        "engine": "chromium",
+        "executed": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "profile": {
+          "engine": "chromium",
+          "version": "156.0.8078.4",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "run-2/input-regression/chromium/facts.json",
+        "factsSha256": "510a2c62cf426dfd5d851f063bb9138355172fa5befa19324e35114fc7cbae5e",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "executed": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "profile": {
+          "engine": "firefox",
+          "version": "157.0",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "run-2/input-regression/firefox/facts.json",
+        "factsSha256": "2f15f6dbb7579518ba9d24f60024f40670bdc4f2350e1f181698f440f07272c2",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "executed": 17,
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "profile": {
+          "engine": "webkit",
+          "version": "27.2",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "run-2/input-regression/webkit/facts.json",
+        "factsSha256": "e6c8ae99403035553fc172d26753065b9f97fb223a1336aacaf8ee32228b2823",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      }
+    ]
+  },
+  "fallbackRegression": {
+    "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_RECONCILE_OUTPUT=../architecture/evidence/browser-composition/run-2/reconcile-regression npm run test:browser -- reconcile",
+    "exit": 0,
+    "log": "run-2/reconcile-regression.log",
+    "logSha256": "23fe3b4927b370446f57a041ad57551f85bf11c3f5f9a7c4d8db36e1930f91ef",
+    "perEngine": [
+      {
+        "engine": "chromium",
+        "executed": 30,
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "profile": {
+          "engine": "chromium",
+          "version": "156.0.8078.4",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "run-2/reconcile-regression/chromium/facts.json",
+        "factsSha256": "956f496165b6de3b1068d07dd2b9538cf036b05ed89c3f080e7ce40a5dac4df9",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      },
+      {
+        "engine": "firefox",
+        "executed": 30,
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "profile": {
+          "engine": "firefox",
+          "version": "157.0",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "run-2/reconcile-regression/firefox/facts.json",
+        "factsSha256": "dd00596c6f2235b02e62955bd40756f176ab35a706205c598421238e10e4fe60",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      },
+      {
+        "engine": "webkit",
+        "executed": 30,
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "profile": {
+          "engine": "webkit",
+          "version": "27.2",
+          "playwright": "1.64.0",
+          "node": "v24.19.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        "facts": "run-2/reconcile-regression/webkit/facts.json",
+        "factsSha256": "7cc389cc459e64f8da60b2e8c266fb8ff0b2fee4c87f232bb6f72c59394f103a",
+        "packed": {
+          "filename": "edit-ac-core-0.0.0.tgz",
+          "bytes": 748138,
+          "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+          "includesWasm": true
+        }
+      }
+    ]
+  },
+  "narrow": [
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_COMPOSITION_OUTPUT=../architecture/evidence/browser-composition/run-2/narrow node --test --test-name-pattern='adopted-key-.*-then-ordinary' tests/browser/composition.spec.ts",
+      "exit": 0,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "run-2/narrow.log",
+      "facts": "run-2/narrow/facts.json",
+      "note": "Filtered narrow check; canonical final suite covers all 38 cases per engine."
+    },
+    {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH EDITAC_COMPOSITION_OUTPUT=../architecture/evidence/browser-composition/run-2/readonly-narrow node --test --test-name-pattern='adopted-key-readonly-resume' tests/browser/composition.spec.ts",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "run-2/readonly-narrow.log",
+      "facts": "run-2/readonly-narrow/facts.json",
+      "note": "Filtered narrow check; canonical final suite covers all 38 cases per engine."
+    }
+  ],
+  "staticChecks": {
+    "build": {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH npm run build",
+      "exit": 0,
+      "log": "run-2/final-build.log",
+      "logSha256": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+      "counts": null
+    },
+    "typecheck": {
+      "command": "PATH=/Users/bpstr/.nvm/versions/node/v24.19.0/bin:$PATH npm run typecheck",
+      "exit": 0,
+      "log": "run-2/typecheck.log",
+      "logSha256": "5c5703572ae144772416d52b2d5e6b9451106ca2996211743b15491e600fa620",
+      "counts": null
+    },
+    "diff-check": {
+      "command": "git diff --check",
+      "exit": 0,
+      "log": "run-2/diff-check.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counts": null
+    },
+    "newFileWhitespaceErrors": 0
+  },
+  "acceptanceCoverage": {
+    "buffering": "Japanese/Korean/Chinese, accent, emoji/ZWJ, multiline prepared intermediate sequences: zero local document update/history/journal, stable composing block/text identity, native caret with suspended model selection",
+    "finalization": "Forward/backward UTF-16 replacement and empty block; before/after/missing final input; duplicate end/input; one committed intent/update/history group/journal and independently authored content/caret",
+    "cancellation": "Empty end, unchanged edit, read-only and disposal restore authoritative DOM with zero semantic effects; late notifications retain terminal disposition",
+    "blur": "Both blur/end orderings finalize valid native text once and preserve admitted input; later notifications do not duplicate it",
+    "identity": "Two deliberate identical composition sessions retain separate owners; adopted native/Process/Dead ownership; owned Enter continuation/key release/dispatcher boundary",
+    "history": "Completed composition is one explicit undo step between two actual browser ordinary edits",
+    "repair": "Release adopted ordinary key/pending references on terminal end/blur and external read-only cancellation. Independent identical ordinary input without keydown commits after each boundary. Four new authored cases across all three engines.",
+    "recovery": "Bounded native shape/markup/resource rejection, retained recovery text, no partial edit, no stale caret or unrelated-page selection destruction"
+  },
+  "provenance": "All composition and interruption notifications are prepared real-DOM replay through actual production handlers. Real packed engine, renderer/selection and IndexedDB effects are asserted. Native keyboard events in history/ordinary regressions qualify only the tested ordinary actions. No OS Japanese/Korean/Chinese IME, dead-key keyboard, real Safari/mobile, screen reader or device support claim. WEB-1.7 remote composition remains open.",
+  "preservedRecoveryEvidence": [
+    {
+      "log": "run-1/composition.log",
+      "executed": 72,
+      "passed": 54,
+      "failed": 18,
+      "skipped": 0,
+      "note": "Interrupted predecessor initial harness/ownership failures retained; no unchanged failed feature check was rerun this session."
+    },
+    {
+      "log": "run-1/composition-repaired.log",
+      "executed": 102,
+      "passed": 99,
+      "failed": 3,
+      "skipped": 0
+    },
+    {
+      "log": "run-1/composition-final.log",
+      "executed": 102,
+      "passed": 102,
+      "failed": 0,
+      "skipped": 0,
+      "note": "Previous passing local suite lacked delivery receipt and interrupted regression; not used alone to close gate."
+    },
+    {
+      "log": "run-1/input-regression.log",
+      "executed": null,
+      "note": "Interrupted; no completed result and no pass claim."
+    },
+    {
+      "log": "run-2/composition.log",
+      "executed": 111,
+      "passed": 111,
+      "failed": 0,
+      "skipped": 0,
+      "note": "Successful first ownership repair check; superseded by final 114/114 after read-only repair."
+    }
+  ],
+  "cleanup": "run-2/cleanup.json",
+  "limits": "Internal adapter only. No publish/deploy, provider calls, credential loading, full public editor lifecycle or device/release qualification."
+}

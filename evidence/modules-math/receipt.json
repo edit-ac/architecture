@@ -1,0 +1,391 @@
+{
+  "gate": "MOD-1.8",
+  "children": [
+    "MOD-1.8-I1",
+    "MOD-1.8-V1"
+  ],
+  "state": "implemented and verified; not deployed",
+  "verifiedAtUtc": "2026-10-13T04:56:11.838933+00:00",
+  "sourceRevision": "621cbff280187a584cd0ceb5b9ac66d176b916c16f99ba34a48e6fd74c08c294",
+  "sourceSnapshot": "progress/.roadmap-runner/07-extension-modules-00ea1c5d56ea/source-32abd5cd6b3f.md",
+  "sourceSnapshotSha256": "621cbff280187a584cd0ceb5b9ac66d176b916c16f99ba34a48e6fd74c08c294",
+  "loadedPromptRevision": "2e18a98412c7",
+  "implementationBaseRevision": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseRevision": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementation": "Uncommitted changes over preserved workspace work; exact source snapshots/hashes supplied.",
+  "sources": {
+    "packages/web/src/modules/math.ts": {
+      "sha256": "3acd59796c36f36a2c248561ad08a047e067cc65f22bac2372e2f6c0bf50eb48",
+      "snapshot": "sources/packages/web/src/modules/math.ts"
+    },
+    "packages/web/src/modules/math-renderer.ts": {
+      "sha256": "97c29cf734f6932931ed0e1c85aa165976cbfac19eebe0311f074e7904b4b5fe",
+      "snapshot": "sources/packages/web/src/modules/math-renderer.ts"
+    },
+    "packages/web/src/modules/vendor/katex.d.mts": {
+      "sha256": "8da1b7af4f4c906f43bc3165b7fcd68088ad0f31b1f06177448c4977906fcb91",
+      "snapshot": "sources/packages/web/src/modules/vendor/katex.d.mts"
+    },
+    "packages/web/src/dom/render.ts": {
+      "sha256": "d100ad6f29721236e333575dffae94e5693b3056456ae2b9dd69d50303889e7f",
+      "snapshot": "sources/packages/web/src/dom/render.ts"
+    },
+    "packages/web/src/input/text.ts": {
+      "sha256": "afd6d6684dd5c8ae8b2941ec4b29f9b22b645ea0ae5a05cd3742d7c99092eeb7",
+      "snapshot": "sources/packages/web/src/input/text.ts"
+    },
+    "packages/web/package.json": {
+      "sha256": "0ffd246674846c598810670c7aea406043594214d84a47278a0284e675d0eaf9",
+      "snapshot": "sources/packages/web/package.json"
+    },
+    "packages/web/src/index.ts": {
+      "sha256": "e2ab78de9fc60f36061f1c0c4554cbef5c767cde3acbd0a38e7785f964d4670a",
+      "snapshot": "sources/packages/web/src/index.ts"
+    },
+    "package.json": {
+      "sha256": "34440158cfeee9ed1ee04159d4633c001babe085bbe0149a73978883503df66c",
+      "snapshot": "sources/package.json"
+    },
+    "package-lock.json": {
+      "sha256": "a304a54f28c26c9e1e3124c5c5a626f354e28b5c63026b4f5f33f745675ae8ef",
+      "snapshot": "sources/package-lock.json"
+    },
+    "scripts/build-math-assets.mjs": {
+      "sha256": "9e3092088f338aef11bcbb37ff499068f4f7b3e4b4142724bc73b1668fa72a69",
+      "snapshot": "sources/scripts/build-math-assets.mjs"
+    },
+    "scripts/test-browser.mjs": {
+      "sha256": "2b7cc96011b253875f583eb44d56b98d6c9dac3ede6d857df8b846de26db7c3b",
+      "snapshot": "sources/scripts/test-browser.mjs"
+    },
+    "tests/browser/browser-harness.ts": {
+      "sha256": "8d4e0aac904331f79c4e1ba78cc00b54e6c51e9f86b537a597fb9626fafe0595",
+      "snapshot": "sources/tests/browser/browser-harness.ts"
+    },
+    "tests/browser/math.spec.ts": {
+      "sha256": "794641ca432064f87790c54b93f139c897938a54f70850e5d78a0a3d3ec9be44",
+      "snapshot": "sources/tests/browser/math.spec.ts"
+    },
+    "tests/math-bundles.test.mjs": {
+      "sha256": "60b530c974ea2786ecc7351a0cecb877495d47476114fd748ab14406afc232b0",
+      "snapshot": "sources/tests/math-bundles.test.mjs"
+    },
+    "crates/editac-core/tests/math_atom.rs": {
+      "sha256": "99b90cc680b5aac57cf4db90c5bf83e0bd0d9e9b4302c38f9a81d1f6c36e927c",
+      "snapshot": "sources/crates/editac-core/tests/math_atom.rs"
+    },
+    "fixtures/modules/math.json": {
+      "sha256": "fb1519acb8332e31bdfc0ac85e5804f9544361d886fe96226a5cee343cc2ca88",
+      "snapshot": "sources/fixtures/modules/math.json"
+    },
+    "fixtures/browser-math/session.mjs": {
+      "sha256": "a636fba162fed12a354034c2b4606305b2a782eab2fb19bfa8410af6e94f68b9",
+      "snapshot": "sources/fixtures/browser-math/session.mjs"
+    },
+    "fixtures/browser-math/index.html": {
+      "sha256": "3da9c761496aaed0c2aac62614a319033c05e188a2dbf3446dd4fee6eeb1f08f",
+      "snapshot": "sources/fixtures/browser-math/index.html"
+    }
+  },
+  "artifacts": {
+    "processes-during-check.txt": "987a879f5c7810c288064eebe14ca7299445235de568b6e4fdeb22e4436881d1",
+    "browser.log": "77fec9973ff625252cacc6ce9cceaacfe256984be08769bde7fe3e1f940d5c16",
+    "browser.log-initial": "277a6877b22cb2b0da4c972b40a5068abe15425151774e993943dfa8d3a70cb3",
+    "initial-core-status.txt": "e2a653006a47a00b6f593ba9959da20ba09abc1f6691d5317cd7a57ecaf1cdac",
+    "disk-cleanup.json": "c4aadf5b32f7318ef40fce22c22d06daafe17272d57467a5fbda1a43b6a13e0d",
+    "regression-module-runtime.log": "dafd87cd5aa84a8064d9ed9d491de8f7659df5c035e8ed49b9df534de3ca27e1",
+    "regression-render.log": "332d42e372d0296c6b46af01b0b5c3d142de2841ff8a914b309e52094ff545b4",
+    "cache-users.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "install-bundler.log": "13665ec39f31386c50c7001cbef880728afdc7da578d47e90deeefa9f11c90cd",
+    "package-changes.diff": "b767a410f676850ce5970824299e464fac1a3d61a96f118c9adeeeaae43569bd",
+    "regression-input.log": "3b65808b7a2a256c4dfa055552cdfaa09d4f7dbc6a5c59f38ebe09b7da15e8c6",
+    "build-initial.log": "034784c31f53671b95345929b22cd34dfbf04fe84ea86f2a1a846ec2365aa610",
+    "build-repair.log": "034784c31f53671b95345929b22cd34dfbf04fe84ea86f2a1a846ec2365aa610",
+    "regression-reconcile.log": "719e13dbad1f8514c36573b46f65342ea571828d9c27dc87af6d0fc648d882d0",
+    "cleanup.json": "9132753bc95159037cb72456da344217687bef7a9dc56fea0f66f724e561abf4",
+    "registry.log": "2d207609e2b2e8fb1cd3e5f9163cb6f828913c3866d9f3b703ab436ffed8b95a",
+    "bundles-initial.log": "043ca68a7162b9412d26d23761e5f3a41931bbd815d8ab4d45f3375216b95eaa",
+    "rust.log": "a333e815bc5fe1f28a4b2965ee5f5b2ea687a8462a48156bcd6193c3339418e4",
+    "bundles.log": "4687fb9e7d8a5ec244d189e2115a89b61e97e86e853ac3082eda544659f71836",
+    "regressions.json": "2356cd8fe283a1bc9a242ef820de6e669e65782fc150235ffd89e9cc71629101",
+    "runtime.log": "b3ab9cee259a35f1e8c8d0255c16d133db55474633f7636cfe3eda21c1bc2625",
+    "rust-initial.log": "148b12a0814da1d829d6ebc4586d1ba0341277da7fd58ca04df4220a8660de72",
+    "diagnostic.log": "c9b1c789990f2736134c68802e54407da17f4177d79719861304badcf52329ed",
+    "disk-sizes.txt": "bb68c08a35c94953436b2529370d5acc603ae448d0a7eef2fa1c53824c98f974",
+    "render-diagnostic.log": "0d3dc911faaf7f362e1dc6a75300d9602bf922ee67cd95c89433e49906612144",
+    "bundles-pre-input-repair.log": "d2ffc91780803ba64bd3704425f886f3088ece50563113447cf2e156c3b8a6ce",
+    "peer-repair.log": "b0e6376918d3c6f2901017ff45c71c59489d3f156ffb4bcd490f357c86666358",
+    "install.log": "c5bfa84f826ab8974f5c4627ba4de42d4d39186f311ebf9204697eb667708c18",
+    "build.log": "034784c31f53671b95345929b22cd34dfbf04fe84ea86f2a1a846ec2365aa610",
+    "stop-verified-processes.txt": "d2d625a6df2e0633d954f96e517c72717471457ee2795f144f2f678da5c7177b",
+    "bundles-pre-input-repair/profiles.json": "b9be81072cdc47eb90a2fe89ccee7d5b06d731881da5736c29d1fa9267f5fcbe",
+    "bundles-pre-input-repair/enabled-manifest.json": "389e2c3bbf33f4f06fd4dad2de219605247396ffe9150c6eead69619190de49b",
+    "bundles-pre-input-repair/minimal-manifest.json": "2c4d7483b49a1e2bda7bb9f2daff4d7391e57dee6f3ff70884240b278b7f7441",
+    "fixtures/literal.bin": "6019025c6ed0cad2c7829371a793d84846592f744399beadd6895351ff941f02",
+    "fixtures/depth.bin": "465902429d5a2e61112ed50d1c5238a09b1110349e0e7824cef5b1d8255da17e",
+    "fixtures/macro.bin": "9e8a5129fe56204bc707c64fca2bb9398af31998be765f8d313bd1c83af0836f",
+    "fixtures/image.bin": "bae66f1078fc32a4976068f3d17a4ded62d071d3ea51d5e53f722b7ff38661d0",
+    "fixtures/invalid.bin": "51917d3780680779af1c747052f9084773804a25e90cdd09087a882ec0f1fb48",
+    "fixtures/url.bin": "e3311a351a6fb325c8bd237017a45c7b062dd5dc5d65ace2bbbc53036c91e617",
+    "fixtures/inline.bin": "e04183472342d36f44d1596073017150dd4ae355ce71caa4841d491df515cf27",
+    "fixtures/html.bin": "d2899d966f960acbb1457938b59d50d5c95b6386eb1d4d3d62a0107c273179ec",
+    "fixtures/display.bin": "30aea7ffa743166960ab3f8aca121b33ac76c000cafee9443a5c24c2c5cf8edf",
+    "bundles-initial/minimal-manifest.json": "3dca46808103162bb830e697c1a89941d5853a0b5781bee3918757ee61edac97",
+    "bundles/profiles.json": "096feb8e1b68a047ff611ab26e42193545519ad794191d8c8d183fa31f6a2996",
+    "bundles/enabled-manifest.json": "37f7d5f5773de3cedd5a2b5f3e9dc8d314ac1f38adc10ae809d6744f603ee444",
+    "bundles/minimal-manifest.json": "c4011bb5a7a323953c5e56f2bad7e4201e51f8f2431fbab60df15422e1cfcfe4",
+    "bundles/minimal/stdin.js": "6cd683b799e9e2ad0097df0394429e8b8aadf32ff63037f1892398d5057f6665",
+    "bundles/enabled/stdin.js": "d7ab700c1664bc908c5a0467f5c22aefb1e490124365839305dcf64f97be1481",
+    "bundles/enabled/math-renderer-IRDAIVRL.js": "8a43b35b1b5c867007588906a2bc1b5ce6ec651fd905b4015453b3ec03535eda",
+    "bundles-initial/minimal/stdin.js": "b87eb250e24f940d9f01ccbe0fe69e55858f9843de10bf74340cc3a028b17062",
+    "bundles-initial/minimal/math-renderer-IRDAIVRL.js": "8a43b35b1b5c867007588906a2bc1b5ce6ec651fd905b4015453b3ec03535eda",
+    "regression-render/firefox/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-render/firefox/pack.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-render/firefox/unpack.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-render/firefox/facts.json": "4b5de242f44358503075cd5f4a7512e58fa507186d71d1cc637e4c052114925c",
+    "regression-render/webkit/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-render/webkit/pack.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-render/webkit/unpack.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-render/webkit/facts.json": "4580dff87fc1dc900ff77a25f2410ca9440216c620ce705d71c0fc199b43bd6f",
+    "regression-render/chromium/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-render/chromium/pack.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-render/chromium/unpack.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-render/chromium/facts.json": "22a5144191379e71b5e2a92a10d7ac0ca5e18b0da12a56b2ca87a0e8d9878c95",
+    "regression-input/firefox/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-input/firefox/pack.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-input/firefox/unpack.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-input/firefox/facts.json": "f7a505a5cf360cfa6700844c27ba1fe1bb527a305f01a8d89ae4bb1c9ee13caa",
+    "regression-input/webkit/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-input/webkit/pack.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-input/webkit/unpack.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-input/webkit/facts.json": "1a36917304bb2e36cd0ff70c0876d6fb5995704e64bc307ca255f0fe8bb2eeed",
+    "regression-input/chromium/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-input/chromium/pack.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-input/chromium/unpack.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-input/chromium/facts.json": "c27d73a4102a8bfdd7114e2e39e6632adf87645ac126d247e1ff09477db743f6",
+    "peer-repair/firefox/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "peer-repair/firefox/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "peer-repair/firefox/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "peer-repair/firefox/pack-web.log": "0536b448b74114ee10339911df54c9da046bf5aa71eaa7a01f3b41aced717620",
+    "peer-repair/firefox/edit-ac-web-0.0.0.tgz": "7893f92cb37c33504569175385e381225e996740f48bc8dc2dd5abb91cac86cd",
+    "peer-repair/firefox/receipt.json": "49d60b46e19b674d02ac82944115e90a024c8f599b4c4bb8723b8ddb42cdb3d0",
+    "peer-repair/firefox/pack-core.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "peer-repair/webkit/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "peer-repair/webkit/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "peer-repair/webkit/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "peer-repair/webkit/pack-web.log": "0536b448b74114ee10339911df54c9da046bf5aa71eaa7a01f3b41aced717620",
+    "peer-repair/webkit/edit-ac-web-0.0.0.tgz": "7893f92cb37c33504569175385e381225e996740f48bc8dc2dd5abb91cac86cd",
+    "peer-repair/webkit/receipt.json": "7d5ca8154ed2bc087437a18b949b40519ee96f90406f030a9efdc4f759c0ad24",
+    "peer-repair/webkit/pack-core.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "peer-repair/chromium/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "peer-repair/chromium/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "peer-repair/chromium/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "peer-repair/chromium/pack-web.log": "0536b448b74114ee10339911df54c9da046bf5aa71eaa7a01f3b41aced717620",
+    "peer-repair/chromium/edit-ac-web-0.0.0.tgz": "7893f92cb37c33504569175385e381225e996740f48bc8dc2dd5abb91cac86cd",
+    "peer-repair/chromium/receipt.json": "e41e65d564f05d65633cc3764f58778399d05f095422d34d7bf8eab0495329b4",
+    "peer-repair/chromium/pack-core.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "bundles-pre-input-repair/minimal/stdin.js": "9b6de3468eb74fafdcd53cba77183779c435a85a98a6f1c794113f8505178ee0",
+    "bundles-pre-input-repair/enabled/stdin.js": "3cbe2289acbcda35142e0a8d5da11be9dffc4fe5d42016677c583366b2316a36",
+    "bundles-pre-input-repair/enabled/math-renderer-IRDAIVRL.js": "8a43b35b1b5c867007588906a2bc1b5ce6ec651fd905b4015453b3ec03535eda",
+    "browser/firefox/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser/firefox/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser/firefox/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "browser/firefox/pack-web.log": "0536b448b74114ee10339911df54c9da046bf5aa71eaa7a01f3b41aced717620",
+    "browser/firefox/edit-ac-web-0.0.0.tgz": "7893f92cb37c33504569175385e381225e996740f48bc8dc2dd5abb91cac86cd",
+    "browser/firefox/receipt.json": "681e0eb3eddc9e86c51dddf96ccb4864214b3ed9507b12716e309568473ad21e",
+    "browser/firefox/pack-core.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "browser/webkit/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser/webkit/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser/webkit/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "browser/webkit/pack-web.log": "0536b448b74114ee10339911df54c9da046bf5aa71eaa7a01f3b41aced717620",
+    "browser/webkit/edit-ac-web-0.0.0.tgz": "7893f92cb37c33504569175385e381225e996740f48bc8dc2dd5abb91cac86cd",
+    "browser/webkit/receipt.json": "69afc803e395c8a6690a3bc38d44248b5c6c476e1e5fde57d55324ce0c756f53",
+    "browser/webkit/pack-core.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "browser/chromium/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser/chromium/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser/chromium/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "browser/chromium/pack-web.log": "0536b448b74114ee10339911df54c9da046bf5aa71eaa7a01f3b41aced717620",
+    "browser/chromium/edit-ac-web-0.0.0.tgz": "7893f92cb37c33504569175385e381225e996740f48bc8dc2dd5abb91cac86cd",
+    "browser/chromium/receipt.json": "96bfc26269318ae6c302ab33f2c3bc299a7483688aaeb3249182106b1d1ce171",
+    "browser/chromium/pack-core.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-module-runtime/firefox/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-module-runtime/firefox/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-module-runtime/firefox/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-module-runtime/firefox/pack-web.log": "0536b448b74114ee10339911df54c9da046bf5aa71eaa7a01f3b41aced717620",
+    "regression-module-runtime/firefox/edit-ac-web-0.0.0.tgz": "7893f92cb37c33504569175385e381225e996740f48bc8dc2dd5abb91cac86cd",
+    "regression-module-runtime/firefox/receipt.json": "cafb72fb01dd15f5f14b0c30403d56e62ba32022708bb67d449113475777c7fc",
+    "regression-module-runtime/firefox/pack-core.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-module-runtime/webkit/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-module-runtime/webkit/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-module-runtime/webkit/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-module-runtime/webkit/pack-web.log": "0536b448b74114ee10339911df54c9da046bf5aa71eaa7a01f3b41aced717620",
+    "regression-module-runtime/webkit/edit-ac-web-0.0.0.tgz": "7893f92cb37c33504569175385e381225e996740f48bc8dc2dd5abb91cac86cd",
+    "regression-module-runtime/webkit/receipt.json": "4cc3a5ae987705af6ad7184a90cf27018cff0a32cf924bdb5095828cc81f8008",
+    "regression-module-runtime/webkit/pack-core.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-module-runtime/chromium/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-module-runtime/chromium/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-module-runtime/chromium/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-module-runtime/chromium/pack-web.log": "0536b448b74114ee10339911df54c9da046bf5aa71eaa7a01f3b41aced717620",
+    "regression-module-runtime/chromium/edit-ac-web-0.0.0.tgz": "7893f92cb37c33504569175385e381225e996740f48bc8dc2dd5abb91cac86cd",
+    "regression-module-runtime/chromium/receipt.json": "11fa9b15d8f1ead40ec5b3b2616d073decc3684a7b2f455197f9f051fd22c545",
+    "regression-module-runtime/chromium/pack-core.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-reconcile/firefox/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-reconcile/firefox/pack.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-reconcile/firefox/unpack.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-reconcile/firefox/facts.json": "d7050c4f16c88275d98790b82948a0236a73ae64f731f2c806c7bbf20225de3f",
+    "regression-reconcile/webkit/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-reconcile/webkit/pack.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-reconcile/webkit/unpack.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-reconcile/webkit/facts.json": "8013076dacbd863444ccb51b94f1f2cdd87f61026860994472b2f52558a467ba",
+    "regression-reconcile/chromium/edit-ac-core-0.0.0.tgz": "454d16e7768c073f6ac5f9068912a4c74f1c81372b1e33ec1363feedba86f6a0",
+    "regression-reconcile/chromium/pack.log": "6fd4eff36354d58c4f505a7e8152ce8b1a05a7d65764f0c9906fa9b797c7026e",
+    "regression-reconcile/chromium/unpack.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "regression-reconcile/chromium/facts.json": "529c741c92af7b08ae270f3aa53038fd016c2e06c14e2c15ea3101e7ba465fcd",
+    "browser-initial/chromium/unpack-core.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-initial/chromium/unpack-web.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "browser-initial/chromium/edit-ac-core-0.0.0.tgz": "a67bdad3ffd22dbb79ca380c8e0fc94fd04a23917788ad00a3f0d57aa49a01a2",
+    "browser-initial/chromium/pack-web.log": "18c2a8cdb88d93bbd5c45be824d911caf6ac9be7bf77d653c38ce9365ee7fe51",
+    "browser-initial/chromium/edit-ac-web-0.0.0.tgz": "14503e098809f67e56b3c4b0708284ae9aa88870e39bc9e53f18f4b8cce0c6f0",
+    "browser-initial/chromium/receipt.json": "656d444a23146209f4b63dd21fbd006ad900e9df68a0123be20c8d10d032853e",
+    "browser-initial/chromium/pack-core.log": "cf0cab67e97d8d2696b173306133718a94453981798ad9f92b30e38908dab71b"
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "log": "build-repair.log",
+      "exit": 0,
+      "state": "built final shared code"
+    },
+    {
+      "command": "EDITAC_MATH_FIXTURES=<evidence>/fixtures cargo test -p editac-core --test math_atom --locked --offline",
+      "log": "rust.log",
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0
+    },
+    {
+      "command": "cargo test -p editac-core --test module_registry --locked --offline",
+      "log": "registry.log",
+      "executed": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "filtered": 0
+    },
+    {
+      "command": "node --test tests/module-runtime.test.mjs",
+      "log": "runtime.log",
+      "executed": 11,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "EDITAC_MATH_BUNDLES=<evidence>/bundles node --test tests/math-bundles.test.mjs",
+      "log": "bundles.log",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "EDITAC_MATH_FIXTURES=<evidence>/fixtures EDITAC_MATH_OUTPUT=<evidence>/browser npm run test:browser -- math",
+      "log": "browser.log",
+      "executed": 57,
+      "passed": 54,
+      "failed": 3,
+      "skipped": 0,
+      "supersededFailure": "Only prepared peer identity-envelope fixture failed; 54 distinct cases remain unchanged and passing."
+    },
+    {
+      "command": "EDITAC_MATH_FIXTURES=<evidence>/fixtures EDITAC_MATH_OUTPUT=<evidence>/peer-repair npm run test:browser -- math --test-name-pattern='prepared peer'",
+      "log": "peer-repair.log",
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "reuse": "Final case coverage: 19 per engine, 57/57. Name filter selects only repaired cases; no passing case repeated."
+    },
+    {
+      "command": "npm run test:browser -- input",
+      "log": "regression-input.log",
+      "executed": 51,
+      "passed": 51,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "npm run test:browser -- reconcile",
+      "log": "regression-reconcile.log",
+      "executed": 90,
+      "passed": 90,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "npm run test:browser -- render",
+      "log": "regression-render.log",
+      "executed": 27,
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "npm run test:browser -- module-runtime",
+      "log": "regression-module-runtime.log",
+      "executed": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    }
+  ],
+  "counts": {
+    "executed": 259,
+    "passed": 259,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "method": "Final distinct acceptance/regression cases; reused 54 passing math cases + 3 repaired cases. Historical failed/interrupted runs separately preserved, not counted as passing."
+  },
+  "renderer": {
+    "name": "KaTeX",
+    "version": "0.19.0",
+    "sha256": "e5bc26598084ad869939ecaa262673814f26ed586312a409b5f8427c01e4f681",
+    "trust": false,
+    "output": "mathml",
+    "sourceMaxUtf16": 4096,
+    "fallbackMaxUtf16": 4110,
+    "maxExpand": 256,
+    "maxSize": 10,
+    "maxBraceDepth": 64,
+    "maxOutputUtf16": 262144,
+    "maxOutputNodes": 4096,
+    "macroPolicy": "No supplied macros; source definitions/external/HTML/URL commands denied; fresh renderer macro state per call.",
+    "documentation": "https://katex.org/docs/options.html",
+    "license": "MIT notice included in packed web dist/modules/vendor/LICENSE.katex"
+  },
+  "acceptance": {
+    "preservation": "Rust inline-atom definition, all nine valid/invalid/unsafe source fixtures, WASM projection and IndexedDB enabled/disabled recovery retain source/envelope.",
+    "safety": "Actual pinned renderer plus presenter cases reject executable DOM/URLs/macros, isolate load/parse errors, and cancel old/disposed results.",
+    "minimal": "Production esbuild splitting manifests omit math-renderer/KaTeX from minimal graph and retain dynamic renderer in enabled profile. No CSS/fonts required in MathML mode.",
+    "inputBoundary": "Adapter-owned WeakSet decoration targets excluded from native input reconciliation; source edits and forged attributes remain subject to native validation."
+  },
+  "preservedFailures": {
+    "rust-initial.log": "One-unit content bound; repaired definition and fixtures to 4110.",
+    "bundles-initial.log": "Main-entry re-export emitted renderer asset; repaired explicit optional @edit-ac/web/math entry.",
+    "browser.log-initial": "Interrupted 17/17 failures after confirmed async decoration/native observer loop; task processes terminated and teardown recorded.",
+    "browser.log": "3 prepared peer failures from incorrect public identity envelope; repaired and 3/3 retested."
+  },
+  "limitations": [
+    "Prepared Yrs/Yjs source fixtures and browser mechanics; no paid provider, OS/device, native typesetting or publication qualification.",
+    "Full editor/module capability matrix remains MOD-1.9."
+  ],
+  "cleanup": "cleanup.json",
+  "diskCleanup": "disk-cleanup.json"
+}

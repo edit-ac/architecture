@@ -1,0 +1,232 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs extension-entry
+
+extension-entry browser: chromium
+✖ image: shared tuple crosses the real clipboard command, patch and fallback (2459.591458ms)
+✖ callout: shared tuple crosses the real clipboard command, patch and fallback (146.632583ms)
+✖ table: shared tuple crosses the real clipboard command, patch and fallback (146.83425ms)
+✔ future tuple and mark from Rust remain inert in DOM and restored WASM (119.533542ms)
+✔ invalid or executable descriptor input rejects before mutation (99.199833ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 2
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3308.770083
+
+✖ failing tests:
+
+test at tests/browser/extension-entry.spec.ts:15:3
+✖ image: shared tuple crosses the real clipboard command, patch and fallback (2459.591458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alt 😀'
+  - '![alt 😀](https://example.com/image.png)'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/extension-entry.spec.ts:34:12
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alt 😀',
+    expected: '![alt 😀](https://example.com/image.png)',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/extension-entry.spec.ts:15:3
+✖ callout: shared tuple crosses the real clipboard command, patch and fallback (146.632583ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'NOTEhello 😀'
+  - '> [!NOTE]\n> hello 😀'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/extension-entry.spec.ts:34:12
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'NOTEhello 😀',
+    expected: '> [!NOTE]\n> hello 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/extension-entry.spec.ts:15:3
+✖ table: shared tuple crosses the real clipboard command, patch and fallback (146.83425ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'A😀'
+  - '| A |\n| --- |\n| 😀 |'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/extension-entry.spec.ts:34:12
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'A😀',
+    expected: '| A |\n| --- |\n| 😀 |',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+extension-entry browser: firefox
+✖ image: shared tuple crosses the real clipboard command, patch and fallback (4064.538167ms)
+✖ callout: shared tuple crosses the real clipboard command, patch and fallback (350.500208ms)
+✖ table: shared tuple crosses the real clipboard command, patch and fallback (379.726125ms)
+✔ future tuple and mark from Rust remain inert in DOM and restored WASM (398.432875ms)
+✔ invalid or executable descriptor input rejects before mutation (298.543458ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 2
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6060.16675
+
+✖ failing tests:
+
+test at tests/browser/extension-entry.spec.ts:15:3
+✖ image: shared tuple crosses the real clipboard command, patch and fallback (4064.538167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alt 😀'
+  - '![alt 😀](https://example.com/image.png)'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/extension-entry.spec.ts:34:12
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alt 😀',
+    expected: '![alt 😀](https://example.com/image.png)',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/extension-entry.spec.ts:15:3
+✖ callout: shared tuple crosses the real clipboard command, patch and fallback (350.500208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'NOTEhello 😀'
+  - '> [!NOTE]\n> hello 😀'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/extension-entry.spec.ts:34:12
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'NOTEhello 😀',
+    expected: '> [!NOTE]\n> hello 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/extension-entry.spec.ts:15:3
+✖ table: shared tuple crosses the real clipboard command, patch and fallback (379.726125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'A😀'
+  - '| A |\n| --- |\n| 😀 |'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/extension-entry.spec.ts:34:12
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'A😀',
+    expected: '| A |\n| --- |\n| 😀 |',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+extension-entry browser: webkit
+✖ image: shared tuple crosses the real clipboard command, patch and fallback (3925.75925ms)
+✖ callout: shared tuple crosses the real clipboard command, patch and fallback (579.128125ms)
+✖ table: shared tuple crosses the real clipboard command, patch and fallback (457.892375ms)
+✔ future tuple and mark from Rust remain inert in DOM and restored WASM (418.076584ms)
+✔ invalid or executable descriptor input rejects before mutation (803.97925ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 2
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6619.284209
+
+✖ failing tests:
+
+test at tests/browser/extension-entry.spec.ts:15:3
+✖ image: shared tuple crosses the real clipboard command, patch and fallback (3925.75925ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'alt 😀'
+  - '![alt 😀](https://example.com/image.png)'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/extension-entry.spec.ts:34:12
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'alt 😀',
+    expected: '![alt 😀](https://example.com/image.png)',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/extension-entry.spec.ts:15:3
+✖ callout: shared tuple crosses the real clipboard command, patch and fallback (579.128125ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'NOTEhello 😀'
+  - '> [!NOTE]\n> hello 😀'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/extension-entry.spec.ts:34:12
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'NOTEhello 😀',
+    expected: '> [!NOTE]\n> hello 😀',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/extension-entry.spec.ts:15:3
+✖ table: shared tuple crosses the real clipboard command, patch and fallback (457.892375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'A😀'
+  - '| A |\n| --- |\n| 😀 |'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/extension-entry.spec.ts:34:12
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'A😀',
+    expected: '| A |\n| --- |\n| 😀 |',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

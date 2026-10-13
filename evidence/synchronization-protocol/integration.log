@@ -1,0 +1,102 @@
+✖ Rust XML updates preserve semantic text and attributes in all six shuffled duplicate schedules (4.81375ms)
+✖ Rust delta against JS state vector completes the original JS writer (0.274625ms)
+✖ JS delta against Rust state vector retains both distinct writer identities and emoji marks (0.243625ms)
+✖ prepared socket copies Rust update frames and delivers all shuffled duplicate schedules offline (0.343875ms)
+✔ prepared socket bounds, explicit reorder and teardown do not require an endpoint (1.808625ms)
+✔ deterministic synchronization entry fixes separate update, sync, awareness and receipt profiles (15.590042ms)
+✔ deterministic prepared socket delivery preserves outbox until matching application receipts commit (3.146709ms)
+✔ deterministic checkpoint coverage retains every pending identity and retransmittable real update (4.565375ms)
+✔ deterministic sync events, socket delivery and state vectors cannot acknowledge updates (1.209667ms)
+✔ deterministic absent negotiated receipt capability reports unknown durability and retains updates (1.536125ms)
+✔ deterministic wrong receipt documentId cannot prune pending updates (1.234292ms)
+✔ deterministic wrong receipt epoch cannot prune pending updates (0.831125ms)
+✔ deterministic wrong receipt schema cannot prune pending updates (0.657791ms)
+✔ deterministic wrong receipt profile cannot prune pending updates (1.088ms)
+✔ deterministic wrong receipt writerId cannot prune pending updates (1.486833ms)
+✔ deterministic wrong receipt sequence cannot prune pending updates (0.861375ms)
+✔ deterministic wrong receipt checksum cannot prune pending updates (1.234625ms)
+✔ deterministic wrong receipt updateId cannot prune pending updates (1.033042ms)
+✔ deterministic receipt acknowledgment and pruning wait for completion, not request success (1.020625ms)
+✔ deterministic receipt abort before-lookup retains outbox and permits retry (1.277458ms)
+✔ deterministic receipt abort after-write-success retains outbox and permits retry (0.643709ms)
+✔ deterministic quota, permission and receipt write failures propagate without pruning (1.54625ms)
+✔ deterministic duplicate/reordered durable receipts survive reopen and duplicate append (2.707ms)
+✔ deterministic unknown receipt cannot pre-acknowledge a future journal append (0.848625ms)
+✔ deterministic corrupt receipt or journal fails explicitly instead of hiding pending work (0.67125ms)
+✔ deterministic detached pending bytes and unsupported strict durability preserve identity (0.713333ms)
+✔ actual Chromium v2 upgrade, receipt abort boundaries, checkpoint retention and restart preserve real Rust updates (1973.174958ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 23
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10396.980208
+
+✖ failing tests:
+
+test at tests/interop.test.mjs:25:1
+✖ Rust XML updates preserve semantic text and attributes in all six shuffled duplicate schedules (4.81375ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/synchronization-protocol/interop/rust-0.bin'
+      at Object.openSync (node:fs:622:18)
+      at readFileSync (node:fs:488:35)
+      at read (file:///Users/bpstr/Github/edit-ac/core/fixtures/interop/bridge.mjs:24:57)
+      at verifyRust (file:///Users/bpstr/Github/edit-ac/core/fixtures/interop/bridge.mjs:31:24)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/interop.test.mjs:26:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/synchronization-protocol/interop/rust-0.bin'
+  }
+
+test at tests/interop.test.mjs:28:1
+✖ Rust delta against JS state vector completes the original JS writer (0.274625ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/synchronization-protocol/interop/js-0.bin'
+      at Object.openSync (node:fs:622:18)
+      at readFileSync (node:fs:488:35)
+      at read (file:///Users/bpstr/Github/edit-ac/core/fixtures/interop/bridge.mjs:24:57)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/interop.test.mjs:31:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/synchronization-protocol/interop/js-0.bin'
+  }
+
+test at tests/interop.test.mjs:38:1
+✖ JS delta against Rust state vector retains both distinct writer identities and emoji marks (0.243625ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/synchronization-protocol/interop/rust-0.bin'
+      at Object.openSync (node:fs:622:18)
+      at readFileSync (node:fs:488:35)
+      at read (file:///Users/bpstr/Github/edit-ac/core/fixtures/interop/bridge.mjs:24:57)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/interop.test.mjs:41:24)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/synchronization-protocol/interop/rust-0.bin'
+  }
+
+test at tests/interop.test.mjs:54:1
+✖ prepared socket copies Rust update frames and delivers all shuffled duplicate schedules offline (0.343875ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/synchronization-protocol/interop/rust-0.bin'
+      at Object.openSync (node:fs:622:18)
+      at readFileSync (node:fs:488:35)
+      at read (file:///Users/bpstr/Github/edit-ac/core/fixtures/interop/bridge.mjs:24:57)
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/interop.test.mjs:60:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/synchronization-protocol/interop/rust-0.bin'
+  }

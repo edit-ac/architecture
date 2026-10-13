@@ -1,0 +1,25 @@
+
+> edit-ac-workspace@0.0.0 typecheck
+> npm run typecheck --workspaces
+
+
+> @edit-ac/core@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/web@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+
+src/input/text.ts(179,13): error TS2367: This comparison appears to be unintentional because the types '"native-pending"' and '"rejected"' have no overlap.
+npm error Lifecycle script `typecheck` failed with error:
+npm error code 1
+npm error path /Users/bpstr/Github/edit-ac/core/packages/web
+npm error workspace @edit-ac/web@0.0.0
+npm error location /Users/bpstr/Github/edit-ac/core/packages/web
+npm error command failed
+npm error command sh -c tsc --project tsconfig.json --noEmit
+
+
+> @edit-ac/react@0.0.0 typecheck
+> tsc --project tsconfig.json --noEmit
+

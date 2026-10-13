@@ -1,0 +1,193 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs composition --test-name-pattern=commit-Enter|commit-key-dispatch-expiry|keyup-before-end
+
+composition browser: chromium
+✖ commit-Enter-key-before-end: one composition owner until keyup (3453.576584ms)
+✖ commit-Enter-end-before-key: one composition owner until keyup (192.224375ms)
+✔ commit-key-dispatch-expiry: next deliberate Enter is independent (152.873458ms)
+✔ keyup-before-end: completed commit cycle does not suppress a later Enter (202.184583ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4525.364125
+
+✖ failing tests:
+
+test at tests/browser/composition.spec.ts:131:56
+✖ commit-Enter-key-before-end: one composition owner until keyup (3453.576584ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:141:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:131:56
+✖ commit-Enter-end-before-key: one composition owner until keyup (192.224375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:141:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+composition browser: firefox
+✖ commit-Enter-key-before-end: one composition owner until keyup (5566.125416ms)
+✖ commit-Enter-end-before-key: one composition owner until keyup (649.646583ms)
+✔ commit-key-dispatch-expiry: next deliberate Enter is independent (353.742333ms)
+✔ keyup-before-end: completed commit cycle does not suppress a later Enter (371.96775ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7579.655292
+
+✖ failing tests:
+
+test at tests/browser/composition.spec.ts:131:56
+✖ commit-Enter-key-before-end: one composition owner until keyup (5566.125416ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:141:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:131:56
+✖ commit-Enter-end-before-key: one composition owner until keyup (649.646583ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:141:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+composition browser: webkit
+✖ commit-Enter-key-before-end: one composition owner until keyup (3312.535875ms)
+✖ commit-Enter-end-before-key: one composition owner until keyup (306.973958ms)
+✔ commit-key-dispatch-expiry: next deliberate Enter is independent (345.897041ms)
+✔ keyup-before-end: completed commit cycle does not suppress a later Enter (266.157583ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4571.394
+
+✖ failing tests:
+
+test at tests/browser/composition.spec.ts:131:56
+✖ commit-Enter-key-before-end: one composition owner until keyup (3312.535875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:141:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/composition.spec.ts:131:56
+✖ commit-Enter-end-before-key: one composition owner until keyup (306.973958ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      before: true,
+  +   deliberate: true,
+  -   deliberate: false,
+      key: true
+    }
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:141:9
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:157)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: true, before: true, deliberate: true },
+    expected: { key: true, before: true, deliberate: false },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

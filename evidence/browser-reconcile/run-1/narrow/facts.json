@@ -1,0 +1,173 @@
+{
+  "cases": [
+    {
+      "name": "missing-beforeinput",
+      "passed": true,
+      "provenance": "prepared real-DOM event replay",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:204144380:1",
+            "n:204144380:2"
+          ],
+          "blocks": [
+            "n:204144380:1",
+            "n:204144380:2"
+          ],
+          "text": [
+            "alphaX",
+            "independent"
+          ],
+          "dom": [
+            "alphaX",
+            "independent"
+          ],
+          "boundDom": [
+            "alphaX",
+            "independent"
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "native",
+              "disposition": "committed",
+              "text": "X"
+            }
+          ],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "input",
+              "trusted": false,
+              "generation": 1,
+              "inputType": "insertText",
+              "cancelable": false,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "native-mutations",
+              "trusted": false,
+              "generation": 1,
+              "count": 1,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Text",
+              "origin": "editac:local:text-input:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "update": true,
+              "bytes": 17
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 17,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:text-input:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "sequence": 1,
+              "bytes": 17
+            }
+          ],
+          "caret": {
+            "node": "n:204144380:1",
+            "offset": 6,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted"
+        }
+      ],
+      "traceProvenance": {
+        "nativeTrustedEventTypes": [],
+        "preparedEventTypes": [
+          "input"
+        ],
+        "composition": "prepared event replay; no OS IME"
+      }
+    }
+  ],
+  "processes": [
+    {
+      "pid": 63615,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "WEB-1.5 pinned chromium",
+      "log": "../architecture/evidence/browser-reconcile/run-1/narrow"
+    }
+  ],
+  "packed": {
+    "filename": "edit-ac-core-0.0.0.tgz",
+    "bytes": 748138,
+    "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+    "includesWasm": true
+  },
+  "browser": {
+    "engine": "chromium",
+    "version": "156.0.8078.4",
+    "playwright": "1.64.0",
+    "node": "v24.19.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "server": {
+    "port": 49514,
+    "url": "http://127.0.0.1:49514",
+    "pid": 63556,
+    "launcher": "node --test tests/browser/reconcile.spec.ts",
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "WEB-1.5 real packed protocol probe",
+    "log": "../architecture/evidence/browser-reconcile/run-1/narrow"
+  },
+  "cleanup": {
+    "browserExited": true,
+    "listenerRemoved": true,
+    "consumerRemoved": true
+  },
+  "sources": {
+    "packages/web/src/input/reconcile.ts": "e850c994a253c6e68e00718d10bfaff5684e7d2d2988d760f46d6f7fd9deaf0c",
+    "packages/web/dist/input/reconcile.js": "b7ebed65f3483460766e259397253bff3721f5fb869e2c03b7720da723d1aa0e",
+    "packages/web/src/input/text.ts": "cd8b0986fbf88f3889bb7e7a377c47a595163135e06543e2dd048aed5ea3b1a7",
+    "packages/web/src/dom/render.ts": "113694785bd100fbc2fa1ee3a7121306631687d5755174ddccdc3e78d53239b1",
+    "packages/web/src/dom/selection.ts": "097692c5ba4e1c3e797d607cc77f23aa5286bb2807deec5d2a079311c1cefbb4",
+    "fixtures/browser-input/session.mjs": "9c2f2e934584a9ca63b3ac19ddc4dde392f8f4d3195e01da7ce9bd4d25337f95",
+    "fixtures/browser-input/index.html": "0c4080e23f06a8e867a211f89dd377df55519cedcfb15fc695789fc814f5154b",
+    "tests/browser/reconcile.spec.ts": "792786b1205afc7469b8ba2d8e603855b8f4265346cfda0a2cd3cd6e4087666b",
+    "scripts/test-browser.mjs": "accc93498d09814e89a6fc5b3d78943b12e9fcbe6ce930e4a83694941c4aef51",
+    "packages/core/src/engine.ts": "5b403551dbc6a7a559e03aec14aeb2f69f122f8832c0e6702a9100bffdb799f7",
+    "packages/core/dist/index.js": "db9945040f82be675b6b2626158b44db26c9fb704b42bfa5929077819a90bf1e",
+    "packages/core/dist/engine.js": "f3046a0bb71910d45fb2782fe5689d63afd855499d71ebbe7bd1efd2fdeb0935",
+    "packages/core/dist/wasm/editac_wasm_bg.wasm": "06c32af7cf876512e25fb75ce681b5590b1e81cab6945d04cb08206e48ffca6c",
+    "packages/web/dist/input/text.js": "5cf2105731cda4a5ff4c65e714fb67a94e25455b810d2c2f070e0303f4f23368",
+    "packages/web/dist/dom/render.js": "98ccad1c3d597816992a3d27dd5426d94ee15adca55da92ec09860a0ac904273",
+    "packages/web/dist/dom/selection.js": "f732bf4ab3fd6ee48fb10c1078ff190dc9b521a587722af202530fc94d53c585",
+    "packages/web/dist/entry.js": "ed8313c042cf4e6eed2139ac7800839b08bed925995c7c4104331b8da5deaae2",
+    "packages/web/dist/storage/index.js": "b83ecaaee0ba6100a477f67d3177c6985bfa64a3385c035a071f713c20464099",
+    "packages/web/dist/storage/journal.js": "d4fe1e43fbb1861e385d4ec33466d897b8882c50f2bdaea0b7356a0d3fb92192",
+    "packages/web/dist/storage/writer.js": "1f97adcfbb311d0e575c4ab6a6dc8a06f4bfc70bd5b78335a04e65ed6ea873c5",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+  },
+  "coreBaseRevision": "3cea914c983233a091faeb70382865a335c85b40",
+  "sourcesUnchanged": true
+}

@@ -1,0 +1,160 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.85s
+     Running tests/editor_profile.rs (target/debug/deps/editor_profile-6b187ec387ed6dc7)
+
+running 22 tests
+test cases::inaccessible_separator_neighbor_identity_overflow_and_nonempty_creation_are_atomic ... ok
+test cases::metadata_only_changes_rebuild_check_number_and_revision_and_stale_all_plans ... ok
+test cases::cycles_illegal_parents_and_incompatible_joins_reject_before_commit ... ok
+test cases::mixed_invalid_block_metadata_and_nonempty_separator_never_partially_write ... ok
+test cases::malformed_immutable_root_source_tuple_and_resource_updates_are_atomic ... ok
+test cases::opaque_immutable_source_and_container_admit_read_only_and_keep_children ... ok
+test cases::entity_controls_keep_immutable_rows_recovery_descendants_and_reactivate ... ok
+test cases::production_create_uses_exact_ten_roots_and_restored_empty_is_not_reseeded ... ok
+test cases::disabling_place_operation_replays_retained_intent_and_restores ... ok
+test cases::production_projection_matches_qualified_hierarchy_metadata_and_read_only_bytes ... ok
+test cases::nested_split_join_retains_checked_default_unicode_marks_and_original_identity ... ok
+test cases::prepared_nested_place_preserves_subtree_sources_marks_and_anchors ... ok
+test cases::separator_is_noneditable_and_last_editable_owner_reserves_adjacent_paragraph ... ok
+test cases::shared_formatting_crosses_nested_containers_and_empty_block_tuples_are_atomic ... ok
+test cases::rich_format_mixed_code_and_unknown_targets_reject_without_mark_changes ... ok
+test cases::create_container_and_original_atomically_then_place_and_check ... ok
+test cases::stale_and_cross_replica_plans_and_profile_epoch_fail_atomically ... ok
+test cases::explicit_code_split_join_and_literal_newlines_preserve_dormant_marks ... ok
+test cases::production_nested_endpoint_empty_and_repeated_split_after_multi_source_join ... ok
+test cases::real_production_three_replica_move_move_edit_six_orders_and_duplicate_restore ... ok
+test cases::depth_128_text_is_editable_and_whole_subtree_depth_overflow_rejects_atomically ... ok
+test cases::production_bidirectional_pinned_yjs_exchange_and_remote_unknown_recovery ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.62s
+
+     Running tests/format_commands.rs (target/debug/deps/format_commands-0e356abfcae4d368)
+
+running 41 tests
+test backward_cross_node_toggle_uses_one_global_state_and_utf16_ranges ... ok
+test blocks::intervening_block_only_local_or_remote_change_rejects_mixed_and_text_plans ... ok
+test applicability_does_not_consume_pending_projection_changes ... ok
+test blocks::inherited_toggle_observes_prior_planned_first_owner_change ... ok
+test blocks::invalid_last_block_rejects_all_marks_and_blocks_without_mutation ... ok
+test blocks::empty_blocks_keep_every_heading_level_and_paragraph_through_restore ... ok
+test blocks::absent_default_and_already_applied_ordinary_metadata_do_not_emit_updates ... ok
+test blocks::invalid_marks_code_and_urls_reject_valid_blocks_atomically ... ok
+test blocks::metadata_only_projection_is_observable_without_text_reads_and_can_is_nonconsuming ... ok
+test blocks::mixed_batch_resource_bounds_and_wrong_replica_are_nonmutating ... ok
+test blocks::joined_marks_span_both_sources_and_absorbed_metadata_stays_recoverable ... ok
+test blocks::mixed_block_toggle_is_global_deduplicated_and_sequential ... ok
+test blocks::mixed_marks_blocks_and_unicode_preserve_sources_unknown_marks_and_anchors ... ok
+test blocks::beginning_middle_end_and_empty_production_splits_inherit_then_override ... ok
+test blocks::legacy_profile_and_opaque_structural_deleted_and_dormant_targets_reject ... ok
+test code_clears_known_rich_marks_but_retains_unknown_attributes ... ok
+test collapsed_empty_and_already_applied_commands_do_not_emit_updates ... ok
+test cross_node_apply_and_remove_preserve_unselected_suffixes ... ok
+test invalid_attribute_shapes_and_url_length_reject_without_mutation ... ok
+test invalid_link_as_last_command_cannot_partially_apply_first_command ... ok
+test deleted_target_and_unknown_kind_reject_entire_batch ... ok
+test joined_owner_formats_both_original_shared_texts ... ok
+test mailto_links_and_ordinary_query_ampersands_are_allowed ... ok
+test mixed_selection_toggle_applies_globally_then_removes_globally ... ok
+test normalized_url_admission_and_mixed_link_toggle ... ok
+test ordinary_nodes_and_intermediate_empty_nodes_are_supported ... ok
+test overlapping_batch_ranges_preserve_different_marks ... ok
+test remote_insert_before_preparation_rebases_selection_and_preserves_text ... ok
+test rich_mark_over_code_rejects_entire_batch_before_mutation ... ok
+test remove_code_then_apply_rich_is_valid_in_one_batch ... ok
+test sequential_batch_toggles_observe_prior_planned_marks ... ok
+test split_owner_and_original_share_source_without_formatting_other_owners ... ok
+test unsafe_malformed_relative_and_obfuscated_urls_are_rejected ... ok
+test unicode_graphemes_and_rtl_format_with_utf16_source_ranges ... ok
+test six_marks_apply_and_remove_without_changing_text_or_source_identity ... ok
+test wrong_replica_and_intervening_local_change_reject_plans ... ok
+test three_real_replicas_converge_under_duplicate_reordered_format_delivery ... ok
+test blocks::prepared_mixed_conflicts_converge_with_actual_reordered_duplicate_updates ... ok
+test pinned_yjs_reads_all_six_marks_and_rust_restores_js_formatting ... ok
+test blocks::pinned_yjs_exchanges_real_prepared_mixed_mark_block_commands_both_directions ... ok
+test command_and_fragment_limits_reject_before_mutation ... ok
+
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 20.31s
+
+     Running tests/heading_end.rs (target/debug/deps/heading_end-05c0722e416c35a2)
+
+running 16 tests
+test heading_end_deleted_stable_target_is_rejected_without_redirect ... ok
+test heading_end_caret_identifies_new_paragraph_before_existing_shared_source_sibling ... ok
+test heading_end_later_invalid_command_rolls_back_entire_preparation ... ok
+test heading_end_ineligible_targets_and_resource_rejection_are_atomic ... ok
+test heading_end_batch_last_heading_owns_result ... ok
+test heading_end_destination_typing_preserves_existing_shared_source_sibling ... ok
+test heading_end_destination_source_owns_insert_before_shared_source_sibling ... ok
+test heading_end_cross_block_selected_replacement_stages_deletions_join_and_destination ... ok
+test heading_end_under_quote_keeps_parent_and_does_not_change_context_commands ... ok
+test heading_end_preserves_heading_marks_and_one_update_history_with_stable_utf16_caret ... ok
+test heading_end_stale_and_wrong_replica_plans_are_silent ... ok
+test heading_end_selected_suffix_replacement_is_one_prepared_batch ... ok
+test heading_end_result_survives_recovery_and_followup_typing ... ok
+test heading_end_v5_construction_fresh_create_place_requires_new_result_anchor ... ok
+test heading_end_undo_redo_preserves_unrelated_remote_text_and_peer_convergence ... ok
+test heading_end_v5_construction_fresh_join_split_requires_new_result_anchor ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running tests/history.rs (target/debug/deps/history-e951d579ef1ff375)
+
+running 28 tests
+test clear_and_invalid_configuration_are_nonmutating ... ok
+test distinct_typing_origins_and_composition_sessions_never_merge ... ok
+test deletion_replacement_unicode_undo_restores_original_identity_and_marks ... ok
+test container_control_undo_does_not_swallow_live_children ... ok
+test explicit_edits_are_separate_inside_capture_interval_and_clear_redo ... ok
+test deterministic_typing_capture_timeout_origin_and_reset_boundaries ... ok
+test dependent_remote_place_is_retained_dormant_and_anchor_reroutes_when_split_undone ... ok
+test initial_creation_rows_text_and_required_metadata_survive_undo_redo ... ok
+test concurrent_separator_presentation_blocks_incompatible_undo_before_live_mutation ... ok
+test local_undo_after_remote_insertion_keeps_remote_unicode_and_anchor ... ok
+test literal_code_history_keeps_dormant_marks_and_exact_whitespace ... ok
+test metadata_history_does_not_rewrite_established_v5_join_witnesses ... ok
+test one_mixed_prepared_operation_undoes_text_metadata_and_move_as_one_group ... ok
+test newly_created_text_enters_scope_for_later_typing_but_creation_content_is_retained ... ok
+test permanent_remote_tombstone_wins_over_structural_redo_and_keeps_recovery_bytes ... ok
+test rejected_and_stale_preparation_preserve_history_state_and_redo ... ok
+test rich_format_command_is_one_group_and_remote_text_survives ... ok
+test group_count_payload_and_commit_caps_evict_old_history_without_content_writes ... ok
+test remote_text_and_presentation_on_local_creation_survive_control_undo_redo ... ok
+test remote_replay_restore_and_selection_do_not_enter_history_or_clear_redo ... ok
+test structural_move_undo_retains_operation_and_remote_descendant_edits ... ok
+test split_join_history_keeps_multisource_ownership_marks_and_anchors ... ok
+test composition_group_is_explicit_and_paste_format_move_break_coalescing ... ok
+test v4_profile_uses_same_selective_controls_without_mutating_frozen_mapping ... ok
+test text_and_metadata_history_can_repeat_undo_redo_without_losing_deleted_payloads ... ok
+test history_updates_converge_under_six_three_writer_duplicate_reorder_schedules ... ok
+test pinned_bidirectional_yjs_history_exchange_and_remote_text_preservation ... ok
+test staged_history_resource_rejection_is_atomic_and_retry_requires_changed_remote_state ... ok
+
+test result: ok. 28 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.86s
+
+     Running tests/stable_editor_profile.rs (target/debug/deps/stable_editor_profile-68eabd73576613b1)
+
+running 22 tests
+test cases::inaccessible_separator_neighbor_identity_overflow_and_nonempty_creation_are_atomic ... ok
+test cases::malformed_immutable_root_source_tuple_and_resource_updates_are_atomic ... ok
+test cases::mixed_invalid_block_metadata_and_nonempty_separator_never_partially_write ... ok
+test cases::metadata_only_changes_rebuild_check_number_and_revision_and_stale_all_plans ... ok
+test cases::entity_controls_keep_immutable_rows_recovery_descendants_and_reactivate ... ok
+test cases::opaque_immutable_source_and_container_admit_read_only_and_keep_children ... ok
+test cases::nested_split_join_retains_checked_default_unicode_marks_and_original_identity ... ok
+test cases::production_create_uses_exact_ten_roots_and_restored_empty_is_not_reseeded ... ok
+test cases::explicit_code_split_join_and_literal_newlines_preserve_dormant_marks ... ok
+test cases::production_projection_matches_qualified_hierarchy_metadata_and_read_only_bytes ... ok
+test cases::prepared_nested_place_preserves_subtree_sources_marks_and_anchors ... ok
+test cases::create_container_and_original_atomically_then_place_and_check ... ok
+test cases::cycles_illegal_parents_and_incompatible_joins_reject_before_commit ... ok
+test cases::separator_is_noneditable_and_last_editable_owner_reserves_adjacent_paragraph ... ok
+test cases::disabling_place_operation_replays_retained_intent_and_restores ... ok
+test cases::shared_formatting_crosses_nested_containers_and_empty_block_tuples_are_atomic ... ok
+test cases::stale_and_cross_replica_plans_and_profile_epoch_fail_atomically ... ok
+test cases::rich_format_mixed_code_and_unknown_targets_reject_without_mark_changes ... ok
+test cases::production_nested_endpoint_empty_and_repeated_split_after_multi_source_join ... ok
+test cases::production_bidirectional_pinned_yjs_exchange_and_remote_unknown_recovery ... ok
+test cases::real_production_three_replica_move_move_edit_six_orders_and_duplicate_restore ... ok
+test cases::depth_128_text_is_editable_and_whole_subtree_depth_overflow_rejects_atomically ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.18s
+

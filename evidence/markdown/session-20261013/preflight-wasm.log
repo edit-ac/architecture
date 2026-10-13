@@ -1,0 +1,287 @@
+✖ shared production engine fixture: unicode-replace (67.498083ms)
+✖ shared production engine fixture: text-insert-delete (4.582708ms)
+✖ shared production engine fixture: rich-marks (11.742958ms)
+✖ shared production engine fixture: heading-levels (4.430375ms)
+✖ shared production engine fixture: split-start (8.081042ms)
+✖ shared production engine fixture: split-middle (3.9975ms)
+✖ shared production engine fixture: split-end (6.518416ms)
+✖ shared production engine fixture: split-empty (5.703209ms)
+✖ shared production engine fixture: retained-join (10.465875ms)
+✖ shared production engine fixture: literal-code (4.110958ms)
+✖ shared production engine fixture: list-quote-nesting (19.527792ms)
+✖ shared production engine fixture: list-enter-backspace (3.816666ms)
+✖ shared production engine fixture: empty-item-exit (1.740958ms)
+✖ shared production engine fixture: separator-access (3.462541ms)
+✖ shared production engine fixture: separator-insert (2.242333ms)
+✖ shared production engine fixture: semantic-move (3.459041ms)
+✖ shared production engine fixture: history-grouping (2.376334ms)
+✔ malformed JS shapes, unsafe numeric input and unknown fields reject before mutation (5.134667ms)
+✔ mixed valid and invalid command/format batches reject atomically (1.635209ms)
+✔ plans and anchors are scoped, single-use, explicitly releasable and stale-safe (2.49525ms)
+✔ can validates silently and disposal is explicit/idempotent for all operations (0.988917ms)
+✔ raw built-WASM JSON errors are structured, byte bounded, and disposal rejects use (7.909041ms)
+✔ bounded anchor and plan tables reclaim released capacity (108.369834ms)
+✔ parity normalization preserves literal content and opaque attributes (0.17875ms)
+✔ explicitly empty creation adds no defaults and snapshots are detached values (0.423167ms)
+✔ headingEnd packed command preserves heading/marks, stable UTF-16 caret and one update/history group (8.690459ms)
+✔ headingEnd selected suffix deletion resolves the retained cut after one atomic batch (4.794542ms)
+✔ headingEnd cross-block selected replacement stages deletes/join and preserves authored caret/history (8.962125ms)
+✔ headingEnd rejects empty/interior/nonheading/malformed targets and mixed batches without any effects (14.872458ms)
+✔ headingEnd stale/released/foreign anchors and disposed plans use the existing packed boundary (7.37575ms)
+✔ headingEnd peer-preserving undo/redo and replay retain the original heading with unrelated remote edits (9.15525ms)
+✔ headingEnd keeps the parent under quote and admission failures cannot change its packed result (5.920208ms)
+✔ headingEnd deleted remote target rejects rather than redirecting the retained anchor (7.07025ms)
+✔ headingEnd admission honors the existing host read-only guard before preparation (3.275667ms)
+✔ headingEnd stable caret selects the new paragraph before an existing shared-source sibling (6.553417ms)
+✔ headingEnd result reservations share anchor capacity and release on stale or released plans (175.294791ms)
+✔ ordinary packed commands omit result carets and can does not consume token IDs (20.192333ms)
+✔ headingEnd result caret and pending reservations expire with their owning engine (2.92925ms)
+✔ fragment preflight survives a history boundary and revalidates after replica mutation (11.095583ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 22
+ℹ fail 17
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 695.331541
+
+✖ failing tests:
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: unicode-replace (67.498083ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-unicode-replace.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-unicode-replace.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: text-insert-delete (4.582708ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-text-insert-delete.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-text-insert-delete.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: rich-marks (11.742958ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-rich-marks.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-rich-marks.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: heading-levels (4.430375ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-heading-levels.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-heading-levels.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: split-start (8.081042ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-split-start.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-split-start.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: split-middle (3.9975ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-split-middle.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-split-middle.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: split-end (6.518416ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-split-end.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-split-end.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: split-empty (5.703209ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-split-empty.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-split-empty.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: retained-join (10.465875ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-retained-join.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-retained-join.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: literal-code (4.110958ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-literal-code.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-literal-code.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: list-quote-nesting (19.527792ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-list-quote-nesting.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-list-quote-nesting.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: list-enter-backspace (3.816666ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-list-enter-backspace.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-list-enter-backspace.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: empty-item-exit (1.740958ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-empty-item-exit.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-empty-item-exit.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: separator-access (3.462541ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-separator-access.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-separator-access.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: separator-insert (2.242333ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-separator-insert.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-separator-insert.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: semantic-move (3.459041ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-semantic-move.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-semantic-move.json'
+  }
+
+test at tests/wasm-commands.test.mjs:92:37
+✖ shared production engine fixture: history-grouping (2.376334ms)
+  Error: ENOENT: no such file or directory, open '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-history-grouping.json'
+      at async open (node:internal/fs/promises:697:25)
+      at async writeFile (node:internal/fs/promises:1317:14)
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/wasm-commands.test.mjs:121:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '../architecture/evidence/markdown/session-20261013/preflight-wasm/wasm-raw-history-grouping.json'
+  }

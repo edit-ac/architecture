@@ -1,0 +1,37 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.90s
+     Running tests/heading_end.rs (target/debug/deps/heading_end-05c0722e416c35a2)
+
+running 16 tests
+test heading_end_deleted_stable_target_is_rejected_without_redirect ... ok
+test heading_end_later_invalid_command_rolls_back_entire_preparation ... ok
+test heading_end_cross_block_selected_replacement_stages_deletions_join_and_destination ... FAILED
+test heading_end_batch_last_heading_owns_result ... ok
+test heading_end_ineligible_targets_and_resource_rejection_are_atomic ... ok
+test heading_end_caret_identifies_new_paragraph_before_existing_shared_source_sibling ... ok
+test heading_end_destination_typing_preserves_existing_shared_source_sibling ... ok
+test heading_end_preserves_heading_marks_and_one_update_history_with_stable_utf16_caret ... ok
+test heading_end_destination_source_owns_insert_before_shared_source_sibling ... ok
+test heading_end_stale_and_wrong_replica_plans_are_silent ... ok
+test heading_end_under_quote_keeps_parent_and_does_not_change_context_commands ... ok
+test heading_end_result_survives_recovery_and_followup_typing ... ok
+test heading_end_selected_suffix_replacement_is_one_prepared_batch ... ok
+test heading_end_v5_construction_fresh_create_place_requires_new_result_anchor ... ok
+test heading_end_undo_redo_preserves_unrelated_remote_text_and_peer_convergence ... ok
+test heading_end_v5_construction_fresh_join_split_requires_new_result_anchor ... ok
+
+failures:
+
+---- heading_end_cross_block_selected_replacement_stages_deletions_join_and_destination stdout ----
+
+thread 'heading_end_cross_block_selected_replacement_stages_deletions_join_and_destination' (161157975) panicked at crates/editac-core/tests/heading_end.rs:21:54:
+called `Result::unwrap()` on an `Err` value: InvalidCommand
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    heading_end_cross_block_selected_replacement_stages_deletions_join_and_destination
+
+test result: FAILED. 15 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+error: test failed, to rerun pass `-p editac-core --test heading_end`

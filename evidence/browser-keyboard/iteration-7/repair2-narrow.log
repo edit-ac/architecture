@@ -1,0 +1,37 @@
+✔ native-list-tab indentation and outdent preserve backward selection (2981.362666ms)
+✖ native-empty-quote exits one level (346.200292ms)
+✔ native-code-multiline Tab preserves backward range and existing whitespace (589.623333ms)
+✔ native-selected-hard-break-false (283.575ms)
+✔ native-selected-hard-break-true (600.246792ms)
+✔ native-inapplicable-list-Tab follows focus (477.319125ms)
+✔ prepared-host-owned structural events are not consumed (161.518ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6150.623375
+
+✖ failing tests:
+
+test at tests/browser/keyboard.spec.ts:73:41
+✖ native-empty-quote exits one level (346.200292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'c:2198567936:1'
+  - '@root'
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:73:398
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/keyboard.spec.ts:42:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'c:2198567936:1',
+    expected: '@root',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

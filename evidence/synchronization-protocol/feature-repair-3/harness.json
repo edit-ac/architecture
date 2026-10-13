@@ -1,0 +1,26 @@
+{
+  "boundary": "Actual Rust WASM engine-v5 / JS same-schema peer; in-memory copied socket; no credentials or application network",
+  "wasmSha256": "265a6896c0962bbfc8e3cc07f8ac12043654df9d22443ccb840db173995dbdd2",
+  "cases": [
+    {
+      "name": "update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo",
+      "passed": true
+    },
+    {
+      "name": "deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent",
+      "passed": true
+    }
+  ],
+  "frames": [
+    {
+      "name": "0-rust-update.bin",
+      "bytes": 26,
+      "sha256": "41fc0c96a2827fd0c73532fedb533e7a4140c271c61f9474205f8639e42631a8"
+    },
+    {
+      "name": "1-js-update.bin",
+      "bytes": 23,
+      "sha256": "11722de9783bce0ec7bf7da238c7de13eedb6568568ed1c98db765efc7fe1d01"
+    }
+  ]
+}

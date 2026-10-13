@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "SEQ-01",
+  "layer": "semantic",
+  "covers": [
+    "BRK-01"
+  ],
+  "requires": [
+    "compound-edit",
+    "result-selection"
+  ],
+  "context": {
+    "document": "doc-a",
+    "editor": "editor-a",
+    "epoch": 1
+  },
+  "initial": {
+    "blocks": [
+      {
+        "id": "p1",
+        "kind": "paragraph",
+        "text": "abcd",
+        "hardBreaks": [],
+        "marks": []
+      }
+    ],
+    "selection": {
+      "anchor": {
+        "block": "p1",
+        "offset": 2
+      },
+      "focus": {
+        "block": "p1",
+        "offset": 2
+      },
+      "affinity": "forward"
+    },
+    "pendingMarks": null
+  },
+  "steps": [
+    {
+      "id": "split",
+      "action": {
+        "type": "insertParagraph",
+        "newBlockId": "p2"
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "ab",
+              "hardBreaks": [],
+              "marks": []
+            },
+            {
+              "id": "p2",
+              "kind": "paragraph",
+              "text": "cd",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p2",
+              "offset": 0
+            },
+            "focus": {
+              "block": "p2",
+              "offset": 0
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "sentinel",
+      "action": {
+        "type": "insertText",
+        "text": "X"
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "ab",
+              "hardBreaks": [],
+              "marks": []
+            },
+            {
+              "id": "p2",
+              "kind": "paragraph",
+              "text": "Xcd",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p2",
+              "offset": 1
+            },
+            "focus": {
+              "block": "p2",
+              "offset": 1
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    }
+  ]
+}

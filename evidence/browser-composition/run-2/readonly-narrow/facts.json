@@ -1,0 +1,244 @@
+{
+  "cases": [
+    {
+      "name": "adopted-key-readonly-resume",
+      "passed": true,
+      "provenance": "prepared real-DOM event replay",
+      "snapshots": [
+        {
+          "unrelatedIdentity": true,
+          "ids": [
+            "n:1172118721:1",
+            "n:1172118721:2"
+          ],
+          "blocks": [
+            "n:1172118721:1",
+            "n:1172118721:2"
+          ],
+          "text": [
+            "alphaé",
+            "independent"
+          ],
+          "dom": [
+            "alphaé",
+            "independent"
+          ],
+          "boundDom": [
+            "alphaé",
+            "independent"
+          ],
+          "intents": [
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1",
+              "generation": 1,
+              "origin": "composition",
+              "disposition": "canceled",
+              "text": "é"
+            },
+            {
+              "id": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/2",
+              "generation": 1,
+              "origin": "beforeinput",
+              "disposition": "committed",
+              "text": "é"
+            }
+          ],
+          "recovery": [],
+          "editable": "true",
+          "trace": [
+            {
+              "type": "keydown",
+              "trusted": false,
+              "generation": 1,
+              "cancelable": true,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "compositionstart",
+              "trusted": false,
+              "generation": 1,
+              "cancelable": false,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "input",
+              "trusted": false,
+              "generation": 1,
+              "inputType": "insertCompositionText",
+              "cancelable": false,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "composition-mutations",
+              "trusted": false,
+              "generation": 1,
+              "count": 1,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            },
+            {
+              "type": "blur",
+              "trusted": true,
+              "generation": 1,
+              "cancelable": false
+            },
+            {
+              "type": "compositionend",
+              "trusted": false,
+              "generation": 1,
+              "cancelable": false,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "input",
+              "trusted": false,
+              "generation": 1,
+              "inputType": "insertCompositionText",
+              "cancelable": false,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/1"
+            },
+            {
+              "type": "beforeinput",
+              "trusted": false,
+              "generation": 1,
+              "inputType": "insertText",
+              "cancelable": true,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/2"
+            },
+            {
+              "type": "renderer-echo",
+              "trusted": false,
+              "generation": 1,
+              "count": 1
+            },
+            {
+              "type": "input",
+              "trusted": false,
+              "generation": 1,
+              "inputType": "insertText",
+              "cancelable": false,
+              "intent": "45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/2"
+            }
+          ],
+          "patches": [
+            {
+              "sequence": 1,
+              "revision": 1,
+              "operation": "Text",
+              "origin": "editac:local:text-input:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/2",
+              "update": true,
+              "bytes": 19
+            }
+          ],
+          "history": {
+            "redoGroups": 0,
+            "retainedUpdateBytes": 19,
+            "revision": 1,
+            "undoGroups": 1
+          },
+          "journal": [
+            {
+              "origin": "editac:local:text-input:45678901-4567-4567-8567-45678901abcd/56789012-5678-4678-8678-56789012abcd/1/1/2",
+              "sequence": 1,
+              "bytes": 19
+            }
+          ],
+          "selectionSuspended": false,
+          "nativeCaret": {
+            "anchor": 6,
+            "focus": 6
+          },
+          "caret": {
+            "node": "n:1172118721:1",
+            "offset": 6,
+            "bias": "right"
+          },
+          "errors": [],
+          "storage": "localCommitted"
+        }
+      ],
+      "traceProvenance": {
+        "nativeTrustedEventTypes": [
+          "blur"
+        ],
+        "preparedEventTypes": [
+          "keydown",
+          "compositionstart",
+          "input",
+          "compositionend",
+          "beforeinput"
+        ],
+        "composition": "prepared event replay; no OS IME"
+      }
+    }
+  ],
+  "processes": [
+    {
+      "pid": 10053,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "purpose": "WEB-1.6 pinned chromium",
+      "log": "../architecture/evidence/browser-composition/run-2/readonly-narrow"
+    }
+  ],
+  "packed": {
+    "filename": "edit-ac-core-0.0.0.tgz",
+    "bytes": 748138,
+    "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+    "includesWasm": true
+  },
+  "browser": {
+    "engine": "chromium",
+    "version": "156.0.8078.4",
+    "playwright": "1.64.0",
+    "node": "v24.19.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "server": {
+    "port": 65521,
+    "url": "http://127.0.0.1:65521",
+    "pid": 9944,
+    "launcher": "node --test tests/browser/composition.spec.ts",
+    "workspace": "/Users/bpstr/Github/edit-ac/core",
+    "purpose": "WEB-1.6 real packed protocol probe",
+    "log": "../architecture/evidence/browser-composition/run-2/readonly-narrow"
+  },
+  "cleanup": {
+    "browserExited": true,
+    "listenerRemoved": true,
+    "consumerRemoved": true
+  },
+  "sources": {
+    "packages/web/src/input/composition.ts": "14e3b1d1c1a6a96857fec7b13acd7de7f4fc99a26405149befc3b91156628f0e",
+    "packages/web/dist/input/composition.js": "e710abe7d086a9174d1172f6e7fc0bfb837bd5bb56c0aa1295eb39a135a86fe9",
+    "packages/web/src/input/reconcile.ts": "8b08953d95799b0d4d4b1a27cd4ba3c54c5f839a1eaa85453e1261286c66987a",
+    "packages/web/dist/input/reconcile.js": "02636377a00348f3733758a1c041d449e77d62584078b3d9bb39570e4167c6e8",
+    "packages/web/src/input/text.ts": "d8c799f7a7d52347ea4c518cf0b9fc2f1ebd32169b441d34653e5aea76e94d74",
+    "packages/web/src/dom/render.ts": "113694785bd100fbc2fa1ee3a7121306631687d5755174ddccdc3e78d53239b1",
+    "packages/web/src/dom/selection.ts": "097692c5ba4e1c3e797d607cc77f23aa5286bb2807deec5d2a079311c1cefbb4",
+    "fixtures/browser-input/session.mjs": "44d661907a9d0b557bf25efa797d5a210b26090ef341024f581f721e61af9b2a",
+    "fixtures/browser-input/index.html": "0c4080e23f06a8e867a211f89dd377df55519cedcfb15fc695789fc814f5154b",
+    "tests/browser/composition.spec.ts": "3d5fd43555107f0ec37b8a17b045bdcb491c9e87d18087b3a16ba09d5880c721",
+    "scripts/test-browser.mjs": "b113c093fcbec005cbdb738334919c6e28c811d66b39050e1ecbb3fea4103b81",
+    "packages/core/src/engine.ts": "5b403551dbc6a7a559e03aec14aeb2f69f122f8832c0e6702a9100bffdb799f7",
+    "packages/core/dist/index.js": "db9945040f82be675b6b2626158b44db26c9fb704b42bfa5929077819a90bf1e",
+    "packages/core/dist/engine.js": "f3046a0bb71910d45fb2782fe5689d63afd855499d71ebbe7bd1efd2fdeb0935",
+    "packages/core/dist/wasm/editac_wasm_bg.wasm": "06c32af7cf876512e25fb75ce681b5590b1e81cab6945d04cb08206e48ffca6c",
+    "packages/web/dist/input/text.js": "2f419dc0f924859c299d46942c7f2d6c3bc4de7b7c627e9121ed24c78ba4936d",
+    "packages/web/dist/dom/render.js": "98ccad1c3d597816992a3d27dd5426d94ee15adca55da92ec09860a0ac904273",
+    "packages/web/dist/dom/selection.js": "f732bf4ab3fd6ee48fb10c1078ff190dc9b521a587722af202530fc94d53c585",
+    "packages/web/dist/entry.js": "ed8313c042cf4e6eed2139ac7800839b08bed925995c7c4104331b8da5deaae2",
+    "packages/web/dist/storage/index.js": "b83ecaaee0ba6100a477f67d3177c6985bfa64a3385c035a071f713c20464099",
+    "packages/web/dist/storage/journal.js": "d4fe1e43fbb1861e385d4ec33466d897b8882c50f2bdaea0b7356a0d3fb92192",
+    "packages/web/dist/storage/writer.js": "1f97adcfbb311d0e575c4ab6a6dc8a06f4bfc70bd5b78335a04e65ed6ea873c5",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+  },
+  "coreBaseRevision": "6edb83432468e44083740b586f973fb44f623352",
+  "sourcesUnchanged": true
+}

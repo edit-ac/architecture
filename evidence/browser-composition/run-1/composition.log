@@ -1,0 +1,353 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs composition
+
+composition browser: chromium
+✔ multi-event-japanese: buffered native ownership then one edit (20646.504792ms)
+✔ multi-event-korean: buffered native ownership then one edit (1194.374583ms)
+✔ multi-event-chinese: buffered native ownership then one edit (1820.640708ms)
+✔ multi-event-accent: buffered native ownership then one edit (2360.071458ms)
+✔ multi-event-emoji: buffered native ownership then one edit (2208.663834ms)
+✔ multi-event-multiline: buffered native ownership then one edit (4209.99825ms)
+✔ final-input-before: duplicate final notifications have one owner (1884.055083ms)
+✔ final-input-after: duplicate final notifications have one owner (1088.415375ms)
+✔ final-input-missing: duplicate final notifications have one owner (316.27475ms)
+✖ replacement-forward: retained UTF-16 target and caret (569.0585ms)
+✖ replacement-backward: retained UTF-16 target and caret (278.881458ms)
+✖ empty-block: placeholder contributes no composition text (311.103041ms)
+✖ cancel-empty-end: zero intermediate or canceled commits (505.835125ms)
+✔ cancel-unchanged: zero intermediate or canceled commits (557.978792ms)
+✖ cancel-readonly: zero intermediate or canceled commits (223.056208ms)
+✖ cancel-dispose: zero intermediate or canceled commits (212.011667ms)
+✔ blur-before-end: committed input survives late notifications (465.19575ms)
+✔ blur-after-end: committed input survives late notifications (435.362709ms)
+✔ identical-independent-sessions: duplicates do not swallow deliberate repeat (201.348084ms)
+✔ commit-Enter-key-before-end: one composition owner until keyup (150.472584ms)
+✔ commit-Enter-end-before-key: one composition owner until keyup (155.06675ms)
+✔ commit-key-dispatch-expiry: next deliberate Enter is independent (355.512083ms)
+✔ history-group: composition is one undo step between ordinary edits (255.551875ms)
+✔ unsupported-shape: recovery retains native text without partial commit (206.260417ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 18
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 41391.157792
+
+✖ failing tests:
+
+test at tests/browser/composition.spec.ts:79:36
+✖ replacement-forward: retained UTF-16 target and caret (569.0585ms)
+  page.evaluate: IndexSizeError: Failed to execute 'setStart' on 'Range': The offset 5 is larger than the node's length (4).
+      at DOMSelection.toModel (http://127.0.0.1:58500/web/dom/selection.js:65:24)
+      at Object.state (http://127.0.0.1:58500/fixture/session.mjs:37:695)
+      at async <anonymous>:396:30
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:80:46
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:79:36
+✖ replacement-backward: retained UTF-16 target and caret (278.881458ms)
+  page.evaluate: IndexSizeError: Failed to execute 'setStart' on 'Range': The offset 5 is larger than the node's length (4).
+      at DOMSelection.toModel (http://127.0.0.1:58500/web/dom/selection.js:65:24)
+      at Object.state (http://127.0.0.1:58500/fixture/session.mjs:37:695)
+      at async <anonymous>:396:30
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:80:46
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:83:1
+✖ empty-block: placeholder contributes no composition text (311.103041ms)
+  page.evaluate: EngineError: AlreadyInitialized
+      at invoke (http://127.0.0.1:58500/core/engine.js:22:27)
+      at createHandle (http://127.0.0.1:58500/core/engine.js:98:22)
+      at Object.createEngine (http://127.0.0.1:58500/core/index.js:24:40)
+      at Object.mount (http://127.0.0.1:58500/fixture/session.mjs:13:23)
+      at async <anonymous>:396:30
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:84:13
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:147) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:89:66
+✖ cancel-empty-end: zero intermediate or canceled commits (505.835125ms)
+  page.evaluate: IndexSizeError: Failed to execute 'setStart' on 'Range': The offset 5 is larger than the node's length (3).
+      at DOMSelection.toModel (http://127.0.0.1:58500/web/dom/selection.js:65:24)
+      at Object.state (http://127.0.0.1:58500/fixture/session.mjs:37:695)
+      at async <anonymous>:396:30
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:91:24
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:89:66
+✖ cancel-readonly: zero intermediate or canceled commits (223.056208ms)
+  page.evaluate: IndexSizeError: Failed to execute 'setStart' on 'Range': The offset 5 is larger than the node's length (3).
+      at DOMSelection.toModel (http://127.0.0.1:58500/web/dom/selection.js:65:24)
+      at Object.state (http://127.0.0.1:58500/fixture/session.mjs:37:695)
+      at async <anonymous>:396:30
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:91:24
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:89:66
+✖ cancel-dispose: zero intermediate or canceled commits (212.011667ms)
+  page.evaluate: IndexSizeError: Failed to execute 'setStart' on 'Range': The offset 5 is larger than the node's length (3).
+      at DOMSelection.toModel (http://127.0.0.1:58500/web/dom/selection.js:65:24)
+      at Object.state (http://127.0.0.1:58500/fixture/session.mjs:37:695)
+      at async <anonymous>:396:30
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:91:24
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    log: []
+  }
+composition browser: firefox
+✔ multi-event-japanese: buffered native ownership then one edit (30471.592083ms)
+✔ multi-event-korean: buffered native ownership then one edit (6665.783708ms)
+✔ multi-event-chinese: buffered native ownership then one edit (5587.250667ms)
+✔ multi-event-accent: buffered native ownership then one edit (4611.334542ms)
+✔ multi-event-emoji: buffered native ownership then one edit (7099.756917ms)
+✔ multi-event-multiline: buffered native ownership then one edit (7789.820208ms)
+✔ final-input-before: duplicate final notifications have one owner (4662.980292ms)
+✔ final-input-after: duplicate final notifications have one owner (9534.23775ms)
+✔ final-input-missing: duplicate final notifications have one owner (5250.760084ms)
+✖ replacement-forward: retained UTF-16 target and caret (7671.376375ms)
+✖ replacement-backward: retained UTF-16 target and caret (3172.082167ms)
+✖ empty-block: placeholder contributes no composition text (3909.224208ms)
+✖ cancel-empty-end: zero intermediate or canceled commits (4318.685041ms)
+✔ cancel-unchanged: zero intermediate or canceled commits (31099.21675ms)
+✖ cancel-readonly: zero intermediate or canceled commits (65673.845542ms)
+✖ cancel-dispose: zero intermediate or canceled commits (2976.632ms)
+✔ blur-before-end: committed input survives late notifications (6788.691125ms)
+✔ blur-after-end: committed input survives late notifications (7825.008666ms)
+✔ identical-independent-sessions: duplicates do not swallow deliberate repeat (2008.091667ms)
+✔ commit-Enter-key-before-end: one composition owner until keyup (3141.387917ms)
+✔ commit-Enter-end-before-key: one composition owner until keyup (3645.826833ms)
+✔ commit-key-dispatch-expiry: next deliberate Enter is independent (2666.926875ms)
+✔ history-group: composition is one undo step between ordinary edits (2277.458375ms)
+✔ unsupported-shape: recovery retains native text without partial commit (6383.535291ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 18
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 236302.860375
+
+✖ failing tests:
+
+test at tests/browser/composition.spec.ts:79:36
+✖ replacement-forward: retained UTF-16 target and caret (7671.376375ms)
+  page.evaluate: Index or size is negative or greater than the allowed amount
+  toModel@http://127.0.0.1:58757/web/dom/selection.js:65:24
+  state@http://127.0.0.1:58757/fixture/session.mjs:37:695
+  async*@debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:80:46
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:79:36
+✖ replacement-backward: retained UTF-16 target and caret (3172.082167ms)
+  page.evaluate: Index or size is negative or greater than the allowed amount
+  toModel@http://127.0.0.1:58757/web/dom/selection.js:65:24
+  state@http://127.0.0.1:58757/fixture/session.mjs:37:695
+  async*@debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:80:46
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:83:1
+✖ empty-block: placeholder contributes no composition text (3909.224208ms)
+  page.evaluate: AlreadyInitialized
+  EngineError@http://127.0.0.1:58757/core/engine.js:5:9
+  invoke@http://127.0.0.1:58757/core/engine.js:22:27
+  createHandle@http://127.0.0.1:58757/core/engine.js:98:22
+  createEngine@http://127.0.0.1:58757/core/index.js:24:52
+  mount@http://127.0.0.1:58757/fixture/session.mjs:13:23
+  async*@debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:84:13
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:147) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:89:66
+✖ cancel-empty-end: zero intermediate or canceled commits (4318.685041ms)
+  page.evaluate: Index or size is negative or greater than the allowed amount
+  toModel@http://127.0.0.1:58757/web/dom/selection.js:65:24
+  state@http://127.0.0.1:58757/fixture/session.mjs:37:695
+  async*@debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:91:24
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:89:66
+✖ cancel-readonly: zero intermediate or canceled commits (65673.845542ms)
+  page.evaluate: Index or size is negative or greater than the allowed amount
+  toModel@http://127.0.0.1:58757/web/dom/selection.js:65:24
+  state@http://127.0.0.1:58757/fixture/session.mjs:37:695
+  async*@debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:91:24
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    name: 'Error',
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:89:66
+✖ cancel-dispose: zero intermediate or canceled commits (2976.632ms)
+  page.evaluate: Index or size is negative or greater than the allowed amount
+  toModel@http://127.0.0.1:58757/web/dom/selection.js:65:24
+  state@http://127.0.0.1:58757/fixture/session.mjs:37:695
+  async*@debugger eval code line 370 > eval:1:25
+  evaluate@debugger eval code:372:16
+  @debugger eval code:1:44
+  @debugger eval code:1:62
+  
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:91:24
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    name: 'Error',
+    log: []
+  }
+composition browser: webkit
+✔ multi-event-japanese: buffered native ownership then one edit (13462.770459ms)
+✔ multi-event-korean: buffered native ownership then one edit (1211.764542ms)
+✔ multi-event-chinese: buffered native ownership then one edit (1037.572666ms)
+✔ multi-event-accent: buffered native ownership then one edit (2494.271791ms)
+✔ multi-event-emoji: buffered native ownership then one edit (1777.222667ms)
+✔ multi-event-multiline: buffered native ownership then one edit (1548.522084ms)
+✔ final-input-before: duplicate final notifications have one owner (769.484291ms)
+✔ final-input-after: duplicate final notifications have one owner (558.444875ms)
+✔ final-input-missing: duplicate final notifications have one owner (415.958958ms)
+✖ replacement-forward: retained UTF-16 target and caret (620.283916ms)
+✖ replacement-backward: retained UTF-16 target and caret (414.308875ms)
+✖ empty-block: placeholder contributes no composition text (815.258667ms)
+✖ cancel-empty-end: zero intermediate or canceled commits (419.580875ms)
+✔ cancel-unchanged: zero intermediate or canceled commits (572.617208ms)
+✖ cancel-readonly: zero intermediate or canceled commits (2274.489958ms)
+✖ cancel-dispose: zero intermediate or canceled commits (1672.645584ms)
+✔ blur-before-end: committed input survives late notifications (1789.464459ms)
+✔ blur-after-end: committed input survives late notifications (2195.51275ms)
+✔ identical-independent-sessions: duplicates do not swallow deliberate repeat (2373.078625ms)
+✔ commit-Enter-key-before-end: one composition owner until keyup (4018.821417ms)
+✔ commit-Enter-end-before-key: one composition owner until keyup (1991.098084ms)
+✔ commit-key-dispatch-expiry: next deliberate Enter is independent (1430.711959ms)
+✔ history-group: composition is one undo step between ordinary edits (930.524542ms)
+✔ unsupported-shape: recovery retains native text without partial commit (306.54225ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 18
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 47023.932875
+
+✖ failing tests:
+
+test at tests/browser/composition.spec.ts:79:36
+✖ replacement-forward: retained UTF-16 target and caret (620.283916ms)
+  page.evaluate: IndexSizeError: The index is not in the allowed range.
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:80:46
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:79:36
+✖ replacement-backward: retained UTF-16 target and caret (414.308875ms)
+  page.evaluate: IndexSizeError: The index is not in the allowed range.
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:80:46
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:83:1
+✖ empty-block: placeholder contributes no composition text (815.258667ms)
+  page.evaluate: EngineError: AlreadyInitialized
+      at /Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:84:13
+      at probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:147) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:89:66
+✖ cancel-empty-end: zero intermediate or canceled commits (419.580875ms)
+  page.evaluate: IndexSizeError: The index is not in the allowed range.
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:91:24
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:89:66
+✖ cancel-readonly: zero intermediate or canceled commits (2274.489958ms)
+  page.evaluate: IndexSizeError: The index is not in the allowed range.
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:91:24
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    log: []
+  }
+
+test at tests/browser/composition.spec.ts:89:66
+✖ cancel-dispose: zero intermediate or canceled commits (1672.645584ms)
+  page.evaluate: IndexSizeError: The index is not in the allowed range.
+      at observe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:44:58)
+      at intermediate (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:56:20)
+      at async file:///Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:91:24
+      at async probe (/Users/bpstr/Github/edit-ac/core/tests/browser/composition.spec.ts:41:141) {
+    log: []
+  }

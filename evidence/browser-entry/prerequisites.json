@@ -1,0 +1,50 @@
+{
+  "engine-wasm-updates": {
+    "receipt": "../architecture/evidence/engine-wasm-updates/receipt.json",
+    "sourceRevision": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+    "matched": 57,
+    "total": 59,
+    "mismatches": [
+      "crates/editac-core/tests/patches.rs",
+      "package.json"
+    ],
+    "laterDeltaEvidence": {
+      "crates/editac-core/tests/patches.rs": {
+        "receipt": "../local-storage-boundary/receipt.json",
+        "matchesQualifiedHash": true
+      },
+      "package.json": {
+        "receipt": "../local-storage-recovery/receipt.json",
+        "matchesQualifiedHash": true
+      }
+    },
+    "archivedArtifacts": {
+      "total": 8,
+      "mismatches": []
+    }
+  },
+  "local-storage-recovery": {
+    "receipt": "../architecture/evidence/local-storage-recovery/receipt.json",
+    "sourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+    "matched": 14,
+    "total": 16,
+    "mismatches": [
+      "scripts/test-browser.mjs",
+      "tests/browser/fixture-server.mjs"
+    ],
+    "compiledHashes": {
+      "total": 18,
+      "mismatches": []
+    },
+    "artifactHashes": {
+      "total": 49,
+      "mismatches": []
+    },
+    "beforeSessionEdits": {
+      "matchedSourceHashes": 16,
+      "totalSourceHashes": 16
+    },
+    "currentDelta": "Only this session\u2019s additive named runner and optional fixture-server mount configuration changed. Combined canonical recovery rerun required."
+  },
+  "rebuiltWasmMatchesQualifiedStorageArtifact": true
+}

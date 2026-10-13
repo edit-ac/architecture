@@ -1,0 +1,144 @@
+✖ both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits (51.061459ms)
+✖ update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo (1.314875ms)
+✖ deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent (0.136ms)
+✖ reject malformed frames and state vectors before any engine mutation (0.128458ms)
+✖ malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes (0.129875ms)
+✖ inbound and outbound byte bounds include headers; no input buffers are aliased (0.122292ms)
+✖ metadata must match every immutable field before adapter construction or outbound update (0.106542ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 315.78775
+
+✖ failing tests:
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ both-direction step1 and step2 match the pinned oracle and exchange concurrent same-schema edits (51.061459ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'a😀JRb é👩‍💻',
+  +   'second'
+  -   '',
+  -   ''
+    ]
+  
+      at assertConverged (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:55:10)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:89:5
+      at async TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:109)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'a😀JRb é👩‍💻', 'second' ],
+    expected: [ '', '' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ update messages use actual Rust bytes; duplicate and shuffled independent updates converge without echo (1.314875ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:30:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:94:13
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:115)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ deletion-only step2 exchange works when state vectors are equal and repeated messages are idempotent (0.136ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:30:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:117:13
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:115)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ reject malformed frames and state vectors before any engine mutation (0.128458ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:30:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:128:13
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:115)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ malformed or unsupported binary/schema updates are rejected by staged Rust admission without live changes (0.129875ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:30:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:141:13
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:115)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ inbound and outbound byte bounds include headers; no input buffers are aliased (0.122292ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:30:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:158:13
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:115)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }
+
+test at tests/sync-protocol.test.mjs:23:28
+✖ metadata must match every immutable field before adapter construction or outbound update (0.106542ms)
+  Error [EngineError]: AlreadyInitialized
+      at invoke (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:22:27)
+      at createHandle (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/engine.js:106:22)
+      at Object.createEngine (file:///Users/bpstr/Github/edit-ac/core/packages/core/dist/index.js:24:40)
+      at fixture (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:30:26)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:172:13
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/sync-protocol.test.mjs:23:115)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19) {
+    code: 'EngineRejected',
+    operation: 'create'
+  }

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "SEQ-06",
+  "layer": "semantic",
+  "covers": [
+    "MRK-02"
+  ],
+  "requires": [
+    "range-format",
+    "compound-edit"
+  ],
+  "context": {
+    "document": "doc-a",
+    "editor": "editor-a",
+    "epoch": 1
+  },
+  "initial": {
+    "blocks": [
+      {
+        "id": "p1",
+        "kind": "paragraph",
+        "text": "abcd",
+        "hardBreaks": [],
+        "marks": []
+      }
+    ],
+    "selection": {
+      "anchor": {
+        "block": "p1",
+        "offset": 3
+      },
+      "focus": {
+        "block": "p1",
+        "offset": 1
+      },
+      "affinity": "forward"
+    },
+    "pendingMarks": null
+  },
+  "steps": [
+    {
+      "id": "italic",
+      "action": {
+        "type": "toggleMark",
+        "mark": "italic"
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "abcd",
+              "hardBreaks": [],
+              "marks": [
+                {
+                  "from": 1,
+                  "to": 3,
+                  "type": "italic"
+                }
+              ]
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 3
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 1
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "replace",
+      "action": {
+        "type": "insertText",
+        "text": "X"
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "aXd",
+              "hardBreaks": [],
+              "marks": [
+                {
+                  "from": 1,
+                  "to": 2,
+                  "type": "italic"
+                }
+              ]
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 2
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 2
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    }
+  ]
+}

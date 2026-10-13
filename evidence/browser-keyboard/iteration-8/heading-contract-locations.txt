@@ -1,0 +1,35 @@
+crates/editac-wasm/src/bridge.rs:10:        lists::{ContainerStyle, ListCommand},
+crates/editac-wasm/src/bridge.rs:591:            Command::Wrap { targets, style } => EditorCommand::List(ListCommand::Wrap {
+crates/editac-wasm/src/bridge.rs:595:            Command::SetStyle { container, style } => EditorCommand::List(ListCommand::SetStyle {
+crates/editac-wasm/src/bridge.rs:600:                EditorCommand::List(ListCommand::SetChecked { owner, checked })
+crates/editac-wasm/src/bridge.rs:602:            Command::Enter { owner, at } => EditorCommand::List(ListCommand::Enter {
+crates/editac-wasm/src/bridge.rs:606:            Command::Backspace { owner, at } => EditorCommand::List(ListCommand::Backspace {
+crates/editac-wasm/src/bridge.rs:610:            Command::Indent { owner } => EditorCommand::List(ListCommand::Indent { owner }),
+crates/editac-wasm/src/bridge.rs:611:            Command::Outdent { owner } => EditorCommand::List(ListCommand::Outdent { owner }),
+crates/editac-core/src/commands/lists.rs:26:    UnsupportedTarget(String),
+crates/editac-core/src/commands/lists.rs:113:            return Err(HierarchyError::UnsupportedTarget(change.node.clone()));
+crates/editac-core/src/commands/lists.rs:185:pub enum ListCommand {
+crates/editac-core/src/commands/lists.rs:223:        commands: &[ListCommand],
+crates/editac-core/src/commands/lists.rs:235:        commands: &[ListCommand],
+crates/editac-core/src/commands/lists.rs:294:pub(crate) fn expand(
+crates/editac-core/src/commands/lists.rs:298:    c: &ListCommand,
+crates/editac-core/src/commands/lists.rs:307:            .ok_or(EditorError::UnsupportedTarget)
+crates/editac-core/src/commands/lists.rs:318:            return Err(EditorError::UnsupportedTarget);
+crates/editac-core/src/commands/lists.rs:322:            return Err(EditorError::UnsupportedTarget);
+crates/editac-core/src/commands/lists.rs:358:        ListCommand::Wrap { targets, style } => {
+crates/editac-core/src/commands/lists.rs:389:        ListCommand::SetStyle { container, style } => {
+crates/editac-core/src/commands/lists.rs:392:                return Err(EditorError::UnsupportedTarget);
+crates/editac-core/src/commands/lists.rs:399:        ListCommand::SetChecked { owner, checked } => Ok(vec![EditorCommand::Check {
+crates/editac-core/src/commands/lists.rs:403:        ListCommand::Outdent { owner } => outdent(owner),
+crates/editac-core/src/commands/lists.rs:404:        ListCommand::Indent { owner } => {
+crates/editac-core/src/commands/lists.rs:408:                return Err(EditorError::UnsupportedTarget);
+crates/editac-core/src/commands/lists.rs:439:        ListCommand::Enter { owner, at } | ListCommand::Backspace { owner, at } => {
+crates/editac-core/src/commands/lists.rs:443:                return Err(EditorError::UnsupportedTarget);
+crates/editac-core/src/commands/lists.rs:456:            if matches!(c, ListCommand::Enter { .. }) {
+crates/editac-core/src/commands/lists.rs:544:            ListCommand::Wrap {
+crates/editac-core/src/commands/lists.rs:548:            ListCommand::Outdent {
+crates/editac-core/src/commands/lists.rs:557:            ListCommand::Wrap {
+crates/editac-core/src/commands/lists.rs:561:            ListCommand::SetChecked {
+crates/editac-core/src/commands/lists.rs:565:            ListCommand::Enter {
+crates/editac-core/src/commands/lists.rs:569:            ListCommand::Indent {
+crates/editac-core/src/commands/lists.rs:572:            ListCommand::SetStyle {

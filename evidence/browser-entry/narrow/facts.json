@@ -1,0 +1,201 @@
+{
+  "cases": [
+    {
+      "name": "checkpoint-tail",
+      "passed": false,
+      "recovery": {
+        "phase": "ready",
+        "error": null,
+        "source": "latest",
+        "text": "a😀b tail",
+        "editable": false,
+        "events": [
+          "engine-recovered",
+          "persistence-attached",
+          "ready"
+        ]
+      },
+      "edit": {
+        "result": {
+          "revision": 1
+        },
+        "resolved": {
+          "bias": "right",
+          "node": "n:1272598036:1",
+          "offset": 13,
+          "source": "n:1272598036:1",
+          "sourceOffset": 13,
+          "type": "position"
+        },
+        "patches": [
+          {
+            "changedNodes": [
+              "n:1272598036:1"
+            ],
+            "changedSources": [
+              "n:1272598036:1"
+            ],
+            "identity": {
+              "documentId": "45678901-4567-4567-8567-45678901abcd",
+              "epoch": "56789012-5678-4678-8678-56789012abcd",
+              "offsets": "utf16",
+              "profile": "editac.yrs-yjs.editor.v5",
+              "protocolVersion": 1,
+              "schema": "editac.registry.editor.v5",
+              "updateEncoding": 1
+            },
+            "nodes": [
+              {
+                "node": {
+                  "blockAttributes": [
+                    "paragraph"
+                  ],
+                  "editor": {
+                    "checked": null,
+                    "containerAttributes": null,
+                    "number": null,
+                    "version": "base"
+                  },
+                  "id": "n:1272598036:1",
+                  "kind": "block",
+                  "order": 0,
+                  "parent": "@root",
+                  "runs": [
+                    {
+                      "attributes": {},
+                      "text": "a😀b tail α😀"
+                    }
+                  ],
+                  "spans": [
+                    {
+                      "end": 13,
+                      "identity": "<1272598036#2>",
+                      "source": "n:1272598036:1",
+                      "start": 0
+                    }
+                  ]
+                },
+                "type": "visible"
+              }
+            ],
+            "operation": "Text",
+            "origin": "editac:local:browser-entry",
+            "projectionError": null,
+            "revision": 1,
+            "selection": null,
+            "selectionChanged": false,
+            "sequence": 1,
+            "touchedRanges": [
+              {
+                "newEnd": 13,
+                "newStart": 9,
+                "oldEnd": 9,
+                "source": "n:1272598036:1",
+                "start": 9
+              }
+            ],
+            "update": {
+              "identity": {
+                "documentId": "45678901-4567-4567-8567-45678901abcd",
+                "epoch": "56789012-5678-4678-8678-56789012abcd",
+                "offsets": "utf16",
+                "profile": "editac.yrs-yjs.editor.v5",
+                "protocolVersion": 1,
+                "schema": "editac.registry.editor.v5",
+                "updateEncoding": 1
+              },
+              "bytes": {
+                "0": 1,
+                "1": 1,
+                "2": 242,
+                "3": 219,
+                "4": 159,
+                "5": 240,
+                "6": 14,
+                "7": 0,
+                "8": 132,
+                "9": 222,
+                "10": 182,
+                "11": 148,
+                "12": 218,
+                "13": 9,
+                "14": 4,
+                "15": 7,
+                "16": 32,
+                "17": 206,
+                "18": 177,
+                "19": 240,
+                "20": 159,
+                "21": 152,
+                "22": 128,
+                "23": 0
+              }
+            },
+            "version": 1,
+            "writerId": 3993497074
+          }
+        ],
+        "beforeFlush": {
+          "phase": "pending",
+          "pending": 1,
+          "localCommitted": null,
+          "error": null,
+          "saved": false,
+          "strictDurability": "unknown"
+        },
+        "afterFlush": {
+          "phase": "localCommitted",
+          "pending": 0,
+          "localCommitted": {
+            "state": "localCommitted",
+            "updateId": "[\"[\\\"editac.yrs-yjs.editor.v5\\\",\\\"editac.registry.editor.v5\\\",\\\"45678901-4567-4567-8567-45678901abcd\\\",\\\"56789012-5678-4678-8678-56789012abcd\\\",1,1,\\\"utf16\\\"]\",3993497074,1,\"74643b82592801e9b7decb26f0714fb7d2c2fb6db0687829e8cc6f2f4171b599\"]",
+            "durability": "strict"
+          },
+          "error": null,
+          "saved": true,
+          "strictDurability": "supported"
+        },
+        "text": "a😀b tail α😀"
+      }
+    }
+  ],
+  "processes": [
+    {
+      "pid": 34126,
+      "launcher": "/Users/bpstr/Library/Caches/ms-playwright/chromium_headless_shell-1248/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "workspace": "/Users/bpstr/Github/edit-ac/core",
+      "port": null,
+      "purpose": "WEB-1.1 pinned Chromium",
+      "log": "entry.log"
+    }
+  ],
+  "packed": {
+    "filename": "edit-ac-core-0.0.0.tgz",
+    "bytes": 748138,
+    "sha256": "fdf2826420d61d0ef24aa864b5e26d86a4ec2e77acd1ec674abb036592bc1d68",
+    "consumer": "/var/folders/6z/mkvyjszn7hq7x9r0df5zfyw80000gn/T/editac-entry-consumer-Oq76R5",
+    "includesWasm": true
+  },
+  "browser": {
+    "engine": "Chromium",
+    "version": "156.0.8078.4",
+    "playwright": "1.64.0",
+    "node": "v24.19.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "server": {
+    "url": "http://127.0.0.1:59334",
+    "pid": 34111,
+    "port": 59334,
+    "workspace": "/Users/bpstr/Github/edit-ac/core/",
+    "launcher": "node --test tests/browser/entry.spec.ts",
+    "purpose": "WEB-1.1 packed-core canonical entry",
+    "log": "entry.log"
+  },
+  "cleanup": {
+    "browserExited": true,
+    "listenerRemoved": true,
+    "consumerRemoved": true
+  }
+}

@@ -1,0 +1,145 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs composition
+
+composition browser: chromium
+✔ multi-event-japanese: buffered native ownership then one edit (2211.916875ms)
+✔ multi-event-korean: buffered native ownership then one edit (208.715875ms)
+✔ multi-event-chinese: buffered native ownership then one edit (177.918458ms)
+✔ multi-event-accent: buffered native ownership then one edit (162.242958ms)
+✔ multi-event-emoji: buffered native ownership then one edit (218.634458ms)
+✔ multi-event-multiline: buffered native ownership then one edit (172.038125ms)
+✔ final-input-before: duplicate final notifications have one owner (156.289458ms)
+✔ final-input-after: duplicate final notifications have one owner (189.911834ms)
+✔ final-input-missing: duplicate final notifications have one owner (214.598292ms)
+✔ replacement-forward: retained UTF-16 target and caret (192.636625ms)
+✔ replacement-backward: retained UTF-16 target and caret (170.714625ms)
+✔ empty-block: placeholder contributes no composition text (165.663542ms)
+✔ cancel-empty-end: zero intermediate or canceled commits (153.021625ms)
+✔ cancel-unchanged: zero intermediate or canceled commits (164.43675ms)
+✔ cancel-readonly: zero intermediate or canceled commits (171.300042ms)
+✔ cancel-dispose: zero intermediate or canceled commits (165.88525ms)
+✔ blur-before-end: committed input survives late notifications (172.836708ms)
+✔ blur-after-end: committed input survives late notifications (180.614459ms)
+✔ identical-independent-sessions: duplicates do not swallow deliberate repeat (137.054417ms)
+✔ commit-Enter-key-before-end: one composition owner until keyup (158.598792ms)
+✔ commit-Enter-end-before-key: one composition owner until keyup (151.300834ms)
+✔ commit-key-dispatch-expiry: next deliberate Enter is independent (163.653ms)
+✔ history-group: composition is one undo step between ordinary edits (201.038459ms)
+✔ unsupported-shape: recovery retains native text without partial commit (120.482833ms)
+✔ adopt-beforeinput: preceding native owner becomes the composition (140.458834ms)
+✔ adopt-Process: preceding native owner becomes the composition (137.33775ms)
+✔ adopt-Dead: preceding native owner becomes the composition (145.127958ms)
+✔ adopted-key-end-then-ordinary: later non-keyboard input is independent (140.38425ms)
+✔ adopted-key-keyup-then-ordinary: later non-keyboard input is independent (128.794958ms)
+✔ adopted-key-blur-then-ordinary: later non-keyboard input is independent (149.819542ms)
+✔ adopted-key-readonly-resume: canceled owner cannot swallow later ordinary input (200.859542ms)
+✔ observer-only-composition: native mutation remains buffered without input (141.316833ms)
+✔ keyup-before-end: completed commit cycle does not suppress a later Enter (177.229667ms)
+✔ after-final-readonly: transition preserves the admitted edit (149.709292ms)
+✔ after-final-blur: transition preserves the admitted edit (183.67125ms)
+✔ unsupported-markup: bounded recovery and no edit (137.118209ms)
+✔ unsupported-limit: bounded recovery and no edit (200.253167ms)
+✔ rejected-outside-selection: unrelated page selection survives cleanup (156.003459ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8807.490792
+composition browser: firefox
+✔ multi-event-japanese: buffered native ownership then one edit (4470.013666ms)
+✔ multi-event-korean: buffered native ownership then one edit (849.349709ms)
+✔ multi-event-chinese: buffered native ownership then one edit (474.505625ms)
+✔ multi-event-accent: buffered native ownership then one edit (462.250042ms)
+✔ multi-event-emoji: buffered native ownership then one edit (456.514959ms)
+✔ multi-event-multiline: buffered native ownership then one edit (402.631084ms)
+✔ final-input-before: duplicate final notifications have one owner (391.558584ms)
+✔ final-input-after: duplicate final notifications have one owner (484.053042ms)
+✔ final-input-missing: duplicate final notifications have one owner (520.45675ms)
+✔ replacement-forward: retained UTF-16 target and caret (1738.59825ms)
+✔ replacement-backward: retained UTF-16 target and caret (484.6285ms)
+✔ empty-block: placeholder contributes no composition text (878.249416ms)
+✔ cancel-empty-end: zero intermediate or canceled commits (556.011125ms)
+✔ cancel-unchanged: zero intermediate or canceled commits (377.972584ms)
+✔ cancel-readonly: zero intermediate or canceled commits (345.931417ms)
+✔ cancel-dispose: zero intermediate or canceled commits (405.520209ms)
+✔ blur-before-end: committed input survives late notifications (376.265958ms)
+✔ blur-after-end: committed input survives late notifications (371.587083ms)
+✔ identical-independent-sessions: duplicates do not swallow deliberate repeat (388.187666ms)
+✔ commit-Enter-key-before-end: one composition owner until keyup (1246.59ms)
+✔ commit-Enter-end-before-key: one composition owner until keyup (520.387416ms)
+✔ commit-key-dispatch-expiry: next deliberate Enter is independent (504.218083ms)
+✔ history-group: composition is one undo step between ordinary edits (715.79675ms)
+✔ unsupported-shape: recovery retains native text without partial commit (650.355209ms)
+✔ adopt-beforeinput: preceding native owner becomes the composition (539.563834ms)
+✔ adopt-Process: preceding native owner becomes the composition (820.919292ms)
+✔ adopt-Dead: preceding native owner becomes the composition (1170.61525ms)
+✔ adopted-key-end-then-ordinary: later non-keyboard input is independent (816.8475ms)
+✔ adopted-key-keyup-then-ordinary: later non-keyboard input is independent (1197.258375ms)
+✔ adopted-key-blur-then-ordinary: later non-keyboard input is independent (1439.204291ms)
+✔ adopted-key-readonly-resume: canceled owner cannot swallow later ordinary input (351.380625ms)
+✔ observer-only-composition: native mutation remains buffered without input (302.689208ms)
+✔ keyup-before-end: completed commit cycle does not suppress a later Enter (318.057375ms)
+✔ after-final-readonly: transition preserves the admitted edit (314.598875ms)
+✔ after-final-blur: transition preserves the admitted edit (316.473958ms)
+✔ unsupported-markup: bounded recovery and no edit (281.058584ms)
+✔ unsupported-limit: bounded recovery and no edit (313.038709ms)
+✔ rejected-outside-selection: unrelated page selection survives cleanup (276.592917ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 27141.822708
+composition browser: webkit
+✔ multi-event-japanese: buffered native ownership then one edit (2644.623958ms)
+✔ multi-event-korean: buffered native ownership then one edit (297.8925ms)
+✔ multi-event-chinese: buffered native ownership then one edit (263.214833ms)
+✔ multi-event-accent: buffered native ownership then one edit (264.152167ms)
+✔ multi-event-emoji: buffered native ownership then one edit (328.558084ms)
+✔ multi-event-multiline: buffered native ownership then one edit (264.965958ms)
+✔ final-input-before: duplicate final notifications have one owner (265.847291ms)
+✔ final-input-after: duplicate final notifications have one owner (265.952042ms)
+✔ final-input-missing: duplicate final notifications have one owner (285.541084ms)
+✔ replacement-forward: retained UTF-16 target and caret (280.971ms)
+✔ replacement-backward: retained UTF-16 target and caret (291.497292ms)
+✔ empty-block: placeholder contributes no composition text (271.464625ms)
+✔ cancel-empty-end: zero intermediate or canceled commits (273.19675ms)
+✔ cancel-unchanged: zero intermediate or canceled commits (243.152042ms)
+✔ cancel-readonly: zero intermediate or canceled commits (278.01825ms)
+✔ cancel-dispose: zero intermediate or canceled commits (258.015041ms)
+✔ blur-before-end: committed input survives late notifications (265.687625ms)
+✔ blur-after-end: committed input survives late notifications (264.194542ms)
+✔ identical-independent-sessions: duplicates do not swallow deliberate repeat (279.94425ms)
+✔ commit-Enter-key-before-end: one composition owner until keyup (302.925125ms)
+✔ commit-Enter-end-before-key: one composition owner until keyup (274.212ms)
+✔ commit-key-dispatch-expiry: next deliberate Enter is independent (280.820875ms)
+✔ history-group: composition is one undo step between ordinary edits (309.564334ms)
+✔ unsupported-shape: recovery retains native text without partial commit (248.893375ms)
+✔ adopt-beforeinput: preceding native owner becomes the composition (279.91125ms)
+✔ adopt-Process: preceding native owner becomes the composition (269.746583ms)
+✔ adopt-Dead: preceding native owner becomes the composition (259.031834ms)
+✔ adopted-key-end-then-ordinary: later non-keyboard input is independent (279.052417ms)
+✔ adopted-key-keyup-then-ordinary: later non-keyboard input is independent (279.761083ms)
+✔ adopted-key-blur-then-ordinary: later non-keyboard input is independent (254.450917ms)
+✔ adopted-key-readonly-resume: canceled owner cannot swallow later ordinary input (256.343292ms)
+✔ observer-only-composition: native mutation remains buffered without input (248.36575ms)
+✔ keyup-before-end: completed commit cycle does not suppress a later Enter (249.898333ms)
+✔ after-final-readonly: transition preserves the admitted edit (241.233541ms)
+✔ after-final-blur: transition preserves the admitted edit (249.528625ms)
+✔ unsupported-markup: bounded recovery and no edit (224.963959ms)
+✔ unsupported-limit: bounded recovery and no edit (442.376584ms)
+✔ rejected-outside-selection: unrelated page selection survives cleanup (221.697708ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13113.124875

@@ -1,0 +1,168 @@
+{
+  "gate": "LOC-1.4",
+  "children": [
+    "LOC-1.4-I1",
+    "LOC-1.4-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "source-4b0b018a0077.md",
+  "sourceRevision": "de87af3a7d5686a655adf8e338854b0130467cf14d2056652f4c979f6eab7e95",
+  "promptRevision": "7eaa063f3629",
+  "iteration": 4,
+  "verifiedAtUtc": "2026-10-12T08:23:41.264697+00:00",
+  "coreBaseCommit": "3cea914c983233a091faeb70382865a335c85b40",
+  "architectureBaseCommit": "554509957c5d6b5f80318a8b430d9f2a2784d3e6",
+  "upstream": {
+    "progress": "progress/02-engine.md",
+    "status": "COMPLETE",
+    "currentSourceSha256": "83adc7f7c82e9ffe593ac851fc6eca88ece43c7070cf5f18bea2c78c2158b677",
+    "receipt": "evidence/engine-wasm-updates/receipt.json"
+  },
+  "uncommittedSources": {
+    "packages/web/src/storage/outbox.ts": "660a34984825fca07570c2605000515f22d6eb352ec7d1fb760e81e1f0b75437",
+    "packages/web/src/storage/journal.ts": "53d45abc5c323683512470d41ada3941edfb4c249bd84a6dfca6d892b867c2a1",
+    "tests/outbox.test.mjs": "f7aead8b03faf59acb6aad8c3b10ff8172199b8dec26d6aa848deb987a98649f",
+    "tests/helpers/checkpoint-storage.mjs": "66a59dea4e145f9e0b8e68d5df5e39dd22f06d750d6a0952733ed6fb4d4d5a8b",
+    "tests/checkpoint.test.mjs": "798c7e7bbc0dbfe241dc5d4a348f35682ac0921f1f555e30f1877e88bd08f30c"
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "log": "build.log",
+      "exit": 0
+    },
+    {
+      "command": "EDITAC_OUTBOX_OUTPUT=../architecture/evidence/local-storage-outbox/narrow node --test --test-name-pattern=deterministic tests/outbox.test.mjs",
+      "log": "narrow.log",
+      "exit": 0,
+      "executed": 18,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_OUTBOX_OUTPUT=../architecture/evidence/local-storage-outbox/full node --test tests/outbox.test.mjs",
+      "log": "initial-full.log",
+      "exit": 0,
+      "executed": 19,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_OUTBOX_OUTPUT=../architecture/evidence/local-storage-outbox/future node --test --test-name-pattern=\"unknown receipt\" tests/outbox.test.mjs",
+      "log": "future.log",
+      "exit": 0,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_OUTBOX_OUTPUT=../architecture/evidence/local-storage-outbox/full node --test tests/outbox.test.mjs",
+      "log": "full.log",
+      "exit": 0,
+      "executed": 20,
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_JOURNAL_OUTPUT=../architecture/evidence/local-storage-outbox/journal EDITAC_CHECKPOINT_OUTPUT=../architecture/evidence/local-storage-outbox/checkpoint node --test tests/journal.test.mjs tests/checkpoint.test.mjs",
+      "log": "regressions.log",
+      "exit": 0,
+      "executed": 31,
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "node scripts/check-package-exports.mjs",
+      "log": "packages.log",
+      "exit": 0
+    },
+    {
+      "command": "git diff --check",
+      "log": "diff-check.log",
+      "exit": 0
+    }
+  ],
+  "acceptance": {
+    "independentRetention": "Pending outbox = verified immutable journal minus exact durable receipt markers; checkpoint publication never touches receipt membership. Journal bytes retained for corrupt-checkpoint fallback.",
+    "wrongSignals": "Sync/socket/state-vector inputs rejected; unknown receipt capability returns ignored; full identity/content mismatch ignored; unknown update cannot pre-acknowledge a future append.",
+    "duplicates": "Reordered/duplicate durable receipts are idempotent across reopen/duplicate journal append.",
+    "completionAndErrors": "Receipt acknowledged only after local IDB complete; abort before/after request success and quota/permission failures retain pending membership.",
+    "integration": "Actual Chromium IDB v2-to-v3 upgrade, production Rust/WASM updates, checkpoint retention, abort boundaries, duplicate receipt and reopen; expected a😀CBb recovered."
+  },
+  "browser": {
+    "version": "156.0.8078.4",
+    "playwright": "1.64.0"
+  },
+  "teardown": {
+    "browserClosed": true,
+    "browserProcessExited": true,
+    "fixtureServersStarted": 0
+  },
+  "fixtures": "full/harness.json",
+  "fixtureArtifactHashes": {
+    "full.log": "326e9be7037ec2eaf5b4812ff111dd6516b390b25e7a340930450740bb0b4edb",
+    "packages.log": "d145a3cb31a62bfd027cf6e79856b4d04f80f0c630978706316025a03d35b4e1",
+    "initial-full.log": "9bd0095dad634f7265aba7bdcbbe55af44c57e0467204d8e10038774af1dcf4f",
+    "diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "implementation.diff": "f13011d884009b2944e7193514593c366c9d232f9af0784d16f241d44f6ffa74",
+    "regressions.log": "aed3a3852f19f0d037f436092c02fb9199540d035c6393a2bdb339b2bfd65443",
+    "future.log": "fc88baa46c7fa334e92a34937ddd73ba31be4cef490e6b56ca6fcd5cfabd2afe",
+    "narrow.log": "356d6dbb8e2251e9538124741c7af7a6c2f80e926ecd04a1997088d01304d8f2",
+    "build.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "journal/harness.json": "b889086e0c383f659b26600ec2c15da0f91c3fc76df1899d704f07e3b142cea2",
+    "full/harness.json": "da77c46463a87ae431e80c4a10c57aa7eef84794ba3130973ed0e8003b54d14e",
+    "compiled-storage/checkpoint.d.ts": "9080da7dffe3298dd1e83804fa666e6f817f8196e7f5a1d2542fb920c26981e0",
+    "compiled-storage/outbox.d.ts": "110d8cb7e95ae9e1126bbae240830bba677d35babe6166fd8506fedf6f302dc2",
+    "compiled-storage/checkpoint.js": "9b79fbde896b79f05cdbc2a386c8311c0410093d5d6746c4386d04b1d61edd91",
+    "compiled-storage/journal.js": "d4fe1e43fbb1861e385d4ec33466d897b8882c50f2bdaea0b7356a0d3fb92192",
+    "compiled-storage/journal.d.ts": "5d96e9a86a4eb41b6019c8b924ed2a45024ba0386e666b648ec42fe53a2688ee",
+    "compiled-storage/outbox.js": "858775d88d32a013270706f7eefaed79e5a53b3442a696fbd063a835bc0db777",
+    "checkpoint/harness.json": "137b38d0bf6f84534a784e820f03b565f9369250e52a3826d1719444341ecd4a",
+    "narrow/harness.json": "172e60d2203f2a35080366cb5acdef88bfdcaf0a594b6a58b184004554833ad5",
+    "future/harness.json": "bbf6e264b5965146ec89105561bf24d4744423390dbfe37ecda8231e9ab17ac1",
+    "sources/tests/outbox.test.mjs": "f7aead8b03faf59acb6aad8c3b10ff8172199b8dec26d6aa848deb987a98649f",
+    "sources/tests/checkpoint.test.mjs": "798c7e7bbc0dbfe241dc5d4a348f35682ac0921f1f555e30f1877e88bd08f30c",
+    "sources/packages/web/src/storage/outbox.ts": "660a34984825fca07570c2605000515f22d6eb352ec7d1fb760e81e1f0b75437",
+    "sources/packages/web/src/storage/journal.ts": "53d45abc5c323683512470d41ada3941edfb4c249bd84a6dfca6d892b867c2a1",
+    "sources/tests/helpers/checkpoint-storage.mjs": "66a59dea4e145f9e0b8e68d5df5e39dd22f06d750d6a0952733ed6fb4d4d5a8b"
+  },
+  "scope": "No network service, process-crash qualification, publication, provider calls or paid inference. Receipt negotiation is an explicit host boundary; browser test supplies deterministic application receipts.",
+  "node": "v26.4.0",
+  "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "cleanup": {
+    "removedPath": "/Users/bpstr/Github/edit-ac/core/packages/web/dist/storage",
+    "removedFiles": [
+      "packages/web/dist/storage/checkpoint.d.ts",
+      "packages/web/dist/storage/outbox.d.ts",
+      "packages/web/dist/storage/checkpoint.js",
+      "packages/web/dist/storage/journal.js",
+      "packages/web/dist/storage/journal.d.ts",
+      "packages/web/dist/storage/outbox.js"
+    ],
+    "reclaimedBytes": 25976,
+    "remainingDataVolumeFreeBytes": 26774773760,
+    "evidencePreserved": "/Users/bpstr/Github/edit-ac/architecture/evidence/local-storage-outbox/compiled-storage",
+    "taskOwnedBrowserPidsExited": [
+      66482,
+      61905,
+      61915
+    ],
+    "serversStarted": 0,
+    "unrelatedServicesPreserved": [
+      "Assign Astro",
+      "Assign Vite",
+      "MCP servers"
+    ],
+    "scope": "Only session-regenerated inactive storage outputs removed; broader low-space cleanup outside session ownership."
+  }
+}

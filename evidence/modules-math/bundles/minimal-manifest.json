@@ -1,0 +1,392 @@
+{
+  "inputs": {
+    "packages/web/dist/storage/journal.js": {
+      "bytes": 8421,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/storage/checkpoint.js": {
+      "bytes": 7677,
+      "imports": [
+        {
+          "path": "packages/web/dist/storage/journal.js",
+          "kind": "import-statement",
+          "original": "./journal.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/web/dist/storage/writer.js": {
+      "bytes": 2289,
+      "imports": [
+        {
+          "path": "packages/web/dist/storage/journal.js",
+          "kind": "import-statement",
+          "original": "./journal.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/web/dist/storage/index.js": {
+      "bytes": 5787,
+      "imports": [
+        {
+          "path": "packages/web/dist/storage/journal.js",
+          "kind": "import-statement",
+          "original": "./journal.js"
+        },
+        {
+          "path": "packages/web/dist/storage/writer.js",
+          "kind": "import-statement",
+          "original": "./writer.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/web/dist/entry.js": {
+      "bytes": 1538,
+      "imports": [
+        {
+          "path": "@edit-ac/core",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "packages/web/dist/storage/checkpoint.js",
+          "kind": "import-statement",
+          "original": "./storage/checkpoint.js"
+        },
+        {
+          "path": "packages/web/dist/storage/journal.js",
+          "kind": "import-statement",
+          "original": "./storage/journal.js"
+        },
+        {
+          "path": "packages/web/dist/storage/writer.js",
+          "kind": "import-statement",
+          "original": "./storage/writer.js"
+        },
+        {
+          "path": "packages/web/dist/storage/index.js",
+          "kind": "import-statement",
+          "original": "./storage/index.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/web/dist/modules/registry.js": {
+      "bytes": 7003,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/modules/runtime.js": {
+      "bytes": 10924,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/dom/render.js": {
+      "bytes": 21611,
+      "imports": [
+        {
+          "path": "packages/web/dist/modules/registry.js",
+          "kind": "import-statement",
+          "original": "../modules/registry.js"
+        },
+        {
+          "path": "packages/web/dist/modules/runtime.js",
+          "kind": "import-statement",
+          "original": "../modules/runtime.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/web/dist/dom/selection.js": {
+      "bytes": 10043,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/input/shortcuts.js": {
+      "bytes": 3871,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/input/keyboard.js": {
+      "bytes": 16529,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/input/reconcile.js": {
+      "bytes": 6493,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/input/composition.js": {
+      "bytes": 8751,
+      "imports": [
+        {
+          "path": "packages/web/dist/input/reconcile.js",
+          "kind": "import-statement",
+          "original": "./reconcile.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/web/dist/clipboard/pending.js": {
+      "bytes": 2086,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/clipboard/markdown.js": {
+      "bytes": 195,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/clipboard/html.js": {
+      "bytes": 8484,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/clipboard/fragment.js": {
+      "bytes": 29442,
+      "imports": [
+        {
+          "path": "packages/web/dist/clipboard/pending.js",
+          "kind": "import-statement",
+          "original": "./pending.js"
+        },
+        {
+          "path": "packages/web/dist/clipboard/markdown.js",
+          "kind": "import-statement",
+          "original": "./markdown.js"
+        },
+        {
+          "path": "packages/web/dist/clipboard/html.js",
+          "kind": "import-statement",
+          "original": "./html.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/web/dist/input/text.js": {
+      "bytes": 26784,
+      "imports": [
+        {
+          "path": "packages/web/dist/input/shortcuts.js",
+          "kind": "import-statement",
+          "original": "./shortcuts.js"
+        },
+        {
+          "path": "packages/web/dist/input/keyboard.js",
+          "kind": "import-statement",
+          "original": "./keyboard.js"
+        },
+        {
+          "path": "packages/web/dist/input/composition.js",
+          "kind": "import-statement",
+          "original": "./composition.js"
+        },
+        {
+          "path": "packages/web/dist/input/reconcile.js",
+          "kind": "import-statement",
+          "original": "./reconcile.js"
+        },
+        {
+          "path": "packages/web/dist/clipboard/fragment.js",
+          "kind": "import-statement",
+          "original": "../clipboard/fragment.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/web/dist/surface.js": {
+      "bytes": 4515,
+      "imports": [
+        {
+          "path": "packages/web/dist/dom/render.js",
+          "kind": "import-statement",
+          "original": "./dom/render.js"
+        },
+        {
+          "path": "packages/web/dist/dom/selection.js",
+          "kind": "import-statement",
+          "original": "./dom/selection.js"
+        },
+        {
+          "path": "packages/web/dist/input/text.js",
+          "kind": "import-statement",
+          "original": "./input/text.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/web/dist/lifecycle.js": {
+      "bytes": 1532,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/editor.js": {
+      "bytes": 13270,
+      "imports": [
+        {
+          "path": "packages/web/dist/entry.js",
+          "kind": "import-statement",
+          "original": "./entry.js"
+        },
+        {
+          "path": "packages/web/dist/surface.js",
+          "kind": "import-statement",
+          "original": "./surface.js"
+        },
+        {
+          "path": "packages/web/dist/lifecycle.js",
+          "kind": "import-statement",
+          "original": "./lifecycle.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "packages/web/dist/modules/slash.js": {
+      "bytes": 18911,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/modules/references.js": {
+      "bytes": 13145,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/modules/reorder.js": {
+      "bytes": 10369,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/modules/content.js": {
+      "bytes": 12800,
+      "imports": [],
+      "format": "esm"
+    },
+    "packages/web/dist/index.js": {
+      "bytes": 537,
+      "imports": [
+        {
+          "path": "packages/web/dist/editor.js",
+          "kind": "import-statement",
+          "original": "./editor.js"
+        },
+        {
+          "path": "packages/web/dist/surface.js",
+          "kind": "import-statement",
+          "original": "./surface.js"
+        },
+        {
+          "path": "packages/web/dist/modules/registry.js",
+          "kind": "import-statement",
+          "original": "./modules/registry.js"
+        },
+        {
+          "path": "packages/web/dist/modules/runtime.js",
+          "kind": "import-statement",
+          "original": "./modules/runtime.js"
+        },
+        {
+          "path": "packages/web/dist/modules/slash.js",
+          "kind": "import-statement",
+          "original": "./modules/slash.js"
+        },
+        {
+          "path": "packages/web/dist/modules/references.js",
+          "kind": "import-statement",
+          "original": "./modules/references.js"
+        },
+        {
+          "path": "packages/web/dist/modules/reorder.js",
+          "kind": "import-statement",
+          "original": "./modules/reorder.js"
+        },
+        {
+          "path": "packages/web/dist/modules/content.js",
+          "kind": "import-statement",
+          "original": "./modules/content.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "minimal.mjs": {
+      "bytes": 66,
+      "imports": [
+        {
+          "path": "packages/web/dist/index.js",
+          "kind": "import-statement",
+          "original": "./packages/web/dist/index.js"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "../architecture/evidence/modules-math/bundles/minimal/stdin.js": {
+      "imports": [
+        {
+          "path": "@edit-ac/core",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "exports": [
+        "mountEditorSurface"
+      ],
+      "entryPoint": "minimal.mjs",
+      "inputs": {
+        "packages/web/dist/entry.js": {
+          "bytesInOutput": 38
+        },
+        "packages/web/dist/modules/runtime.js": {
+          "bytesInOutput": 4870
+        },
+        "packages/web/dist/dom/render.js": {
+          "bytesInOutput": 10194
+        },
+        "packages/web/dist/dom/selection.js": {
+          "bytesInOutput": 5146
+        },
+        "packages/web/dist/input/shortcuts.js": {
+          "bytesInOutput": 2284
+        },
+        "packages/web/dist/input/keyboard.js": {
+          "bytesInOutput": 7414
+        },
+        "packages/web/dist/input/reconcile.js": {
+          "bytesInOutput": 2797
+        },
+        "packages/web/dist/input/composition.js": {
+          "bytesInOutput": 4376
+        },
+        "packages/web/dist/clipboard/pending.js": {
+          "bytesInOutput": 1296
+        },
+        "packages/web/dist/clipboard/markdown.js": {
+          "bytesInOutput": 51
+        },
+        "packages/web/dist/clipboard/html.js": {
+          "bytesInOutput": 4217
+        },
+        "packages/web/dist/clipboard/fragment.js": {
+          "bytesInOutput": 16172
+        },
+        "packages/web/dist/input/text.js": {
+          "bytesInOutput": 13804
+        },
+        "packages/web/dist/surface.js": {
+          "bytesInOutput": 1931
+        },
+        "packages/web/dist/index.js": {
+          "bytesInOutput": 0
+        },
+        "minimal.mjs": {
+          "bytesInOutput": 0
+        }
+      },
+      "bytes": 74624
+    }
+  }
+}

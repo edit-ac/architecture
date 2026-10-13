@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "name": "publication and coverage remain invisible until transaction completion; owned bytes survive reopen",
+      "passed": true
+    },
+    {
+      "name": "aborted publication before-write-success recovers all locally committed real engine edits",
+      "passed": true
+    },
+    {
+      "name": "aborted publication after-write-success recovers all locally committed real engine edits",
+      "passed": true
+    },
+    {
+      "name": "after-complete publication recovers covered and later committed tail without loss",
+      "passed": true
+    },
+    {
+      "name": "corrupt latest bytes falls back to previous point and full committed tail",
+      "passed": true
+    },
+    {
+      "name": "corrupt latest coverage falls back to previous point and full committed tail",
+      "passed": true
+    },
+    {
+      "name": "corrupt latest version falls back to previous point and full committed tail",
+      "passed": true
+    },
+    {
+      "name": "corrupt latest identity falls back to previous point and full committed tail",
+      "passed": true
+    },
+    {
+      "name": "corrupt latest semantic falls back to previous point and full committed tail",
+      "passed": true
+    },
+    {
+      "name": "both corrupt checkpoints, corrupt journal, missing and incompatible identity fail explicitly",
+      "passed": true
+    },
+    {
+      "name": "uncommitted/foreign coverage rejected without publishing; quota and permission failure preserve prior state",
+      "passed": true
+    },
+    {
+      "name": "strict durability fallback is reported and repeated checkpoint publication retains journal/outbox identities",
+      "passed": true
+    }
+  ],
+  "processes": [],
+  "teardown": {
+    "browserClosed": true,
+    "browserProcessExited": true,
+    "fixtureServersStarted": 0
+  }
+}

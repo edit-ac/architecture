@@ -22,7 +22,7 @@ Purpose: Verify extension services and bind the native dispatchers as one bounde
 Context: `native/linux/`; `native/linux/capability.json`; `../architecture/specs/native-sdk-parity.md`; `../architecture/specs/ecosystem-maintainability.md`.
 Dependencies: none.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: The existing native SDK is qualified at a named revision; public service descriptors/FFI and platform thread ownership are fixed before feature wiring.
+Acceptance: The existing native SDK is qualified at a named revision; public service descriptors/FFI and platform thread ownership are fixed before feature wiring. Bind the published official profile and document-search/code-command capabilities; missing presenters are explicit, not an implied web parity pass.
 
 Implementation:
 
@@ -44,7 +44,7 @@ Purpose: Integrate incremental code-block presentation as one bounded integratio
 Context: `native/linux/`; `native/linux/capability.json`; `../architecture/specs/native-sdk-parity.md`; `native/linux/extensions/code/`; `../architecture/specs/ecosystem-maintainability.md`.
 Dependencies: NLX-1.1.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Code edits use shared text commands; syntax spans are derived, versioned, cancellable and composition-safe with supported fonts/contrast. Large block typing does not wait for full highlighting.
+Acceptance: Code edits use shared text commands; syntax spans are derived, versioned, cancellable and composition-safe with supported fonts/contrast. Large block typing does not wait for full highlighting. Bind IDE-01–IDE-06 where the code-tools profile is advertised, preserving native focus/IME and shared command history.
 
 Implementation:
 
@@ -154,7 +154,7 @@ Purpose: Complete slash and block-reorder interaction parity as one bounded inte
 Context: `native/linux/`; `native/linux/capability.json`; `../architecture/specs/native-sdk-parity.md`; `native/linux/extensions/interaction/`; `../architecture/specs/ecosystem-maintainability.md`.
 Dependencies: NLX-1.1.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Local slash suggestions and block movement work with keyboard/touch, screen readers and a non-drag single-pointer alternative; remote edits do not open menus.
+Acceptance: Local slash suggestions and block movement work with keyboard/touch, screen readers and a non-drag single-pointer alternative; remote edits do not open menus. Bind FND-01–FND-07 through native find/command surfaces when advertised; distinguish selected-text drag from block handles and preserve native text services.
 
 Implementation:
 
@@ -168,15 +168,37 @@ Evidence: Separate progress entry `NLX-1.7` links changed paths, immutable input
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `NLX-1.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
+### Task NLX-1.9 — Integrate formatted extension clipboard and literal paste
+
+- [ ] NLX-1.9 Integrate formatted extension clipboard and literal paste.
+
+Purpose: Deliver the named transfer boundary with reproducible evidence and explicit qualification status.
+Context: `native/`; [native clipboard cases](../tests/native-clipboard-cases.md); `../architecture/specs/extension-library.md`; `../architecture/specs/rich-content-extensions.md`
+Dependencies: NLX-1.6, NLX-1.7.
+Session scope: One named boundary; target 15–45 minutes plus focused validation. These are future tasks; this roadmap revision does not execute native tests or authorize device runs.
+Acceptance: Native table-cell, image-caption, reference and math transfer preserves every admitted format and structural field through the shared extension codecs. Native menu and keyboard plain-paste commands bypass formatting while remaining discoverable and accessible. Emulator/OS-host fixtures and physical-device runbooks have separate qualification labels; no native tests run during roadmap editing.
+
+Implementation:
+
+- [ ] NLX-1.9-I1 Wire EXT-1.13 codec capabilities and full-palette import/export into native transfer routing. Add formatted table cells, cross-app flavors, selected rich replacement, two editors, delayed providers, unavailable extension fallback and atomic undo/cancel fixtures; provide the real-device handoff to final ecosystem qualification.
+
+Validation:
+
+- [ ] NLX-1.9-V1 Run the platform extension dispatcher suite `clipboard-formatting` in the future task; validate package and fixture hashes and table/extension semantics. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+
+Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
+Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+
 ### Task NLX-1.8 — Qualify the packed native extension consumer
 
 - [ ] NLX-1.8 Qualify the packed native extension consumer.
 
 Purpose: Qualify the packed native extension consumer as one bounded integration or qualification boundary.
-Context: `native/linux/`; `native/linux/capability.json`; `../architecture/specs/native-sdk-parity.md`; `native/linux/examples/`; `../architecture/specs/ecosystem-maintainability.md`.
-Dependencies: NLX-1.2, NLX-1.3, NLX-1.4, NLX-1.5, NLX-1.6, NLX-1.7.
+Context: `native/linux/`; `native/linux/capability.json`; `../architecture/specs/native-sdk-parity.md`; `native/linux/examples/`; `../architecture/specs/ecosystem-maintainability.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
+Dependencies: NLX-1.2, NLX-1.3, NLX-1.4, NLX-1.5, NLX-1.6, NLX-1.7, NLX-1.9.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: A clean packaged consumer exposes the supported feature/direction profile with real native UI; missing actual OS evidence blocks its support claim.
+Acceptance: A clean packaged consumer exposes the supported feature/direction profile with real native UI; missing actual OS evidence blocks its support claim. Run advertised FND/IDE and relevant FPX combinations with PRF-07 actual-device evidence; required preset capabilities cannot be silently marked optional to pass.
 
 Implementation:
 

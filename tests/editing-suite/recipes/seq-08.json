@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "id": "SEQ-08",
+  "layer": "semantic",
+  "covers": [
+    "HIS-01",
+    "REG-02"
+  ],
+  "requires": [
+    "history-boundaries",
+    "fixed-clock"
+  ],
+  "context": {
+    "document": "doc-a",
+    "editor": "editor-a",
+    "epoch": 1
+  },
+  "initial": {
+    "blocks": [
+      {
+        "id": "p1",
+        "kind": "paragraph",
+        "text": "",
+        "hardBreaks": [],
+        "marks": []
+      }
+    ],
+    "selection": {
+      "anchor": {
+        "block": "p1",
+        "offset": 0
+      },
+      "focus": {
+        "block": "p1",
+        "offset": 0
+      },
+      "affinity": "forward"
+    },
+    "pendingMarks": null
+  },
+  "steps": [
+    {
+      "id": "type",
+      "action": {
+        "type": "insertText",
+        "text": "a",
+        "clockMs": 0
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "a",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 1
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 1
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "paste",
+      "action": {
+        "type": "pasteText",
+        "text": "X",
+        "clockMs": 10
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "aX",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 2
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 2
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "after",
+      "action": {
+        "type": "insertText",
+        "text": "d",
+        "clockMs": 20
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "aXd",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 3
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 3
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "undo-after",
+      "action": {
+        "type": "undo",
+        "clockMs": 30
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "aX",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 2
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 2
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "undo-paste",
+      "action": {
+        "type": "undo",
+        "clockMs": 40
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "a",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 1
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 1
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "undo-type",
+      "action": {
+        "type": "undo",
+        "clockMs": 50
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 0
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 0
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "redo-type",
+      "action": {
+        "type": "redo",
+        "clockMs": 60
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "a",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 1
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 1
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "redo-paste",
+      "action": {
+        "type": "redo",
+        "clockMs": 70
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "aX",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 2
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 2
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "redo-after",
+      "action": {
+        "type": "redo",
+        "clockMs": 80
+      },
+      "expect": {
+        "outcome": "applied",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "aXd",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 3
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 3
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 1,
+          "remoteCommits": 0
+        }
+      }
+    }
+  ]
+}

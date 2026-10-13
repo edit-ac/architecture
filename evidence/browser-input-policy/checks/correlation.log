@@ -1,0 +1,82 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs input-policy --test-name-pattern=composition|native-typing-delete
+
+input-policy browser: chromium
+(node:77591) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (3126.203041ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (439.187333ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (229.613625ms)
+✔ composition blur has one explicit terminal result and zero intermediate commits (221.525917ms)
+✔ composition readonly has one explicit terminal result and zero intermediate commits (276.173042ms)
+✔ composition dispose has one explicit terminal result and zero intermediate commits (298.016709ms)
+✔ remote before preserves the browser-owned subtree and resolves the captured composition anchor (194.466417ms)
+✔ remote after preserves the browser-owned subtree and resolves the captured composition anchor (296.375958ms)
+✔ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (203.110708ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (274.540208ms)
+✔ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (270.275708ms)
+✔ composition keydown before finalization and duplicate final input notifications commit once (565.532625ms)
+✔ composition adopts its preceding physical key intent instead of leaving an extra pending edit (235.195042ms)
+✔ composition preserves a backward replacement range and restores the resulting caret (247.946375ms)
+✔ composition remote insertion at the collapsed anchor precedes the final local text under right affinity (409.41175ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7860.034416
+input-policy browser: firefox
+(node:77924) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (22256.386625ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (10525.828625ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (2337.77875ms)
+✔ composition blur has one explicit terminal result and zero intermediate commits (2224.357208ms)
+✔ composition readonly has one explicit terminal result and zero intermediate commits (573.574166ms)
+✔ composition dispose has one explicit terminal result and zero intermediate commits (348.028875ms)
+✔ remote before preserves the browser-owned subtree and resolves the captured composition anchor (509.651625ms)
+✔ remote after preserves the browser-owned subtree and resolves the captured composition anchor (530.219292ms)
+✔ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (539.710584ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (1370.439625ms)
+✔ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (563.499417ms)
+✔ composition keydown before finalization and duplicate final input notifications commit once (305.122958ms)
+✔ composition adopts its preceding physical key intent instead of leaving an extra pending edit (337.970958ms)
+✔ composition preserves a backward replacement range and restores the resulting caret (288.371875ms)
+✔ composition remote insertion at the collapsed anchor precedes the final local text under right affinity (468.206583ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 44867.011958
+input-policy browser: webkit
+(node:79251) ExperimentalWarning: localStorage is not available because --localstorage-file was not provided.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-typing-delete: physical keyboard edits correlate real beforeinput/input/observer traces (7193.923709ms)
+✔ composition buffers all intermediate updates and commits one UTF-16 replacement per independent session (3947.749333ms)
+✔ composition cancel has one explicit terminal result and zero intermediate commits (1193.823208ms)
+✔ composition blur has one explicit terminal result and zero intermediate commits (569.046583ms)
+✔ composition readonly has one explicit terminal result and zero intermediate commits (420.337292ms)
+✔ composition dispose has one explicit terminal result and zero intermediate commits (326.249583ms)
+✔ remote before preserves the browser-owned subtree and resolves the captured composition anchor (387.0775ms)
+✔ remote after preserves the browser-owned subtree and resolves the captured composition anchor (445.533208ms)
+✔ remote independent preserves the browser-owned subtree and resolves the captured composition anchor (435.386833ms)
+✔ remote deletion of the composition owner reports stale-target without redirecting to another block (399.053ms)
+✔ compositionend before commit Enter does not split; keyup releases the next deliberate Enter (416.601834ms)
+✔ composition keydown before finalization and duplicate final input notifications commit once (282.5035ms)
+✔ composition adopts its preceding physical key intent instead of leaving an extra pending edit (302.120209ms)
+✔ composition preserves a backward replacement range and restores the resulting caret (269.9645ms)
+✔ composition remote insertion at the collapsed anchor precedes the final local text under right affinity (262.895666ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17772.785458

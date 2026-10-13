@@ -1,0 +1,259 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs input
+
+input browser: chromium
+✔ native-typing: agreement and attributable effects after every physical edit (2086.008916ms)
+✔ native-forward-delete: browser deletion range preserves caret and unrelated nodes (144.250041ms)
+✔ native-selected-forward replacement (113.472292ms)
+✔ native-selected-backward replacement (112.700458ms)
+✖ native-selected deletion Backspace (113.158166ms)
+✖ native-selected deletion Delete (113.145417ms)
+✖ native-empty-block: delete final character then type again (108.122875ms)
+✔ native-emoji: browser deletion never splits UTF-16 pairs (133.70225ms)
+✔ native-boundary: deletion no-op has no update/history/journal effect (125.70625ms)
+✔ prepared cancelable: event identity and duplicate input preserve a deliberate identical edit (114.86175ms)
+✔ prepared key-cycle: distinct duplicate notifications are owned once; repeat keydown is a new edit (110.540416ms)
+✔ prepared ordinary native input-first reconciles once (116.851958ms)
+✔ prepared ordinary native observer-first reconciles once (108.149833ms)
+✔ prepared cancelable target deletion uses the supplied mapped range (105.237541ms)
+✔ prepared renderer echo leaves an independent native edit in the same turn (109.008917ms)
+✔ prepared read-only rejects insertion/deletion without effects (101.006208ms)
+✔ prepared disposed generation cannot commit a pending native edit (97.53175ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 14
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4270.719333
+
+✖ failing tests:
+
+test at tests/browser/input.spec.ts:65:41
+✖ native-selected deletion Backspace (113.158166ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:45:222)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:66:171
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input.spec.ts:65:41
+✖ native-selected deletion Delete (113.145417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:45:222)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:66:171
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input.spec.ts:68:1
+✖ native-empty-block: delete final character then type again (108.122875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:45:222)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:69:175
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+input browser: firefox
+✔ native-typing: agreement and attributable effects after every physical edit (3679.285541ms)
+✔ native-forward-delete: browser deletion range preserves caret and unrelated nodes (274.563875ms)
+✔ native-selected-forward replacement (239.375791ms)
+✔ native-selected-backward replacement (241.559875ms)
+✖ native-selected deletion Backspace (258.42275ms)
+✖ native-selected deletion Delete (234.290333ms)
+✖ native-empty-block: delete final character then type again (290.2795ms)
+✔ native-emoji: browser deletion never splits UTF-16 pairs (310.293625ms)
+✔ native-boundary: deletion no-op has no update/history/journal effect (312.969083ms)
+✔ prepared cancelable: event identity and duplicate input preserve a deliberate identical edit (853.5335ms)
+✔ prepared key-cycle: distinct duplicate notifications are owned once; repeat keydown is a new edit (269.268042ms)
+✔ prepared ordinary native input-first reconciles once (277.309458ms)
+✔ prepared ordinary native observer-first reconciles once (238.300125ms)
+✔ prepared cancelable target deletion uses the supplied mapped range (244.642709ms)
+✔ prepared renderer echo leaves an independent native edit in the same turn (272.654833ms)
+✔ prepared read-only rejects insertion/deletion without effects (229.022167ms)
+✔ prepared disposed generation cannot commit a pending native edit (241.822667ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 14
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8958.987334
+
+✖ failing tests:
+
+test at tests/browser/input.spec.ts:65:41
+✖ native-selected deletion Backspace (258.42275ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:45:222)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:66:171
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input.spec.ts:65:41
+✖ native-selected deletion Delete (234.290333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:45:222)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:66:171
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input.spec.ts:68:1
+✖ native-empty-block: delete final character then type again (290.2795ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:45:222)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:69:175
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+input browser: webkit
+✔ native-typing: agreement and attributable effects after every physical edit (2714.188958ms)
+✔ native-forward-delete: browser deletion range preserves caret and unrelated nodes (262.687458ms)
+✔ native-selected-forward replacement (244.855584ms)
+✔ native-selected-backward replacement (222.44975ms)
+✖ native-selected deletion Backspace (223.369917ms)
+✖ native-selected deletion Delete (261.5845ms)
+✖ native-empty-block: delete final character then type again (226.917458ms)
+✔ native-emoji: browser deletion never splits UTF-16 pairs (282.642583ms)
+✔ native-boundary: deletion no-op has no update/history/journal effect (219.443292ms)
+✔ prepared cancelable: event identity and duplicate input preserve a deliberate identical edit (228.891042ms)
+✔ prepared key-cycle: distinct duplicate notifications are owned once; repeat keydown is a new edit (225.789292ms)
+✔ prepared ordinary native input-first reconciles once (229.836125ms)
+✔ prepared ordinary native observer-first reconciles once (228.434125ms)
+✔ prepared cancelable target deletion uses the supplied mapped range (215.544459ms)
+✔ prepared renderer echo leaves an independent native edit in the same turn (242.081625ms)
+✔ prepared read-only rejects insertion/deletion without effects (208.410125ms)
+✔ prepared disposed generation cannot commit a pending native edit (216.399875ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 14
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6839.402917
+
+✖ failing tests:
+
+test at tests/browser/input.spec.ts:65:41
+✖ native-selected deletion Backspace (223.369917ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:45:222)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:66:171
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input.spec.ts:65:41
+✖ native-selected deletion Delete (261.5845ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:45:222)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:66:171
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/browser/input.spec.ts:68:1
+✖ native-empty-block: delete final character then type again (226.917458ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at effects (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:45:222)
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:69:175
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/input.spec.ts:41:141)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

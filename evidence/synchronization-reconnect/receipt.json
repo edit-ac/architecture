@@ -1,0 +1,135 @@
+{
+  "gate": "SYN-1.3",
+  "children": [
+    "SYN-1.3-I1",
+    "SYN-1.3-V1"
+  ],
+  "state": "implemented and locally verified",
+  "sourceSnapshot": "/Users/bpstr/Github/edit-ac/architecture/progress/.roadmap-runner/06-synchronization-049784b4c224/source-63e8bc8b7f65.md",
+  "sourceRevision": "9fb151bc16cc567c2c66700209baff239d192e1893ab4746d98f4c8dc329a17d",
+  "promptRevision": "2e18a98412c7",
+  "coreBaseCommit": "6edb83432468e44083740b586f973fb44f623352",
+  "architectureBaseCommit": "ac4a539f1789cd5133f22313694e9d7964e5d986",
+  "implementationRevision": "Uncommitted additive implementation, source/compiled SHA-256 and archived copies; unrelated working changes preserved",
+  "changedPaths": [
+    "packages/web/src/sync/session.ts",
+    "packages/web/src/storage/outbox.ts",
+    "tests/reconnect.test.mjs",
+    "tests/helpers/checkpoint-storage.mjs",
+    "tests/outbox.test.mjs"
+  ],
+  "sourceHashes": {
+    "packages/web/src/sync/session.ts": "5a39c16cdb2ca909b378ce5c772025435058677763396b8b45f9bb4773c0bac6",
+    "packages/web/src/storage/outbox.ts": "c743105f738f459c584ce70f62ed0abaea50684060d1954f245c24198061f0e4",
+    "tests/reconnect.test.mjs": "fc4bba35c7d541ac569777dda68fb6280f963804c01859874b48245e2f2c02c1",
+    "tests/helpers/checkpoint-storage.mjs": "2fd0bebf97d3c059149b7ebbda0b4ad663cb3b713008592a23ab7b1ef9dc68c7",
+    "tests/outbox.test.mjs": "8db7a32453dfb498b4fe45ec314a8b0706136da5bd4d3856bb6fcb7e4e42ff91",
+    "packages/web/src/sync/protocol.ts": "13246ca889ac65a2d774bbfdd1e2c40db84f3bf70ec7b5f4a869617118141563",
+    "packages/web/src/storage/journal.ts": "53d45abc5c323683512470d41ada3941edfb4c249bd84a6dfca6d892b867c2a1",
+    "fixtures/schema-v5/mapping.mjs": "54617d4cebf52f60dea937c41f4aa53c2f143ef9bce033390c2ee9820bef9f33",
+    "tests/helpers/prepared-socket.mjs": "448c3110beb2521103d69745de5c85d4d8c3709fab6db84c16e46a0631e19b01",
+    "Cargo.lock": "1d8c3e26a50a9e8d8e799032b905aaaf668bf46082beaa4992d6463f220ef3a6",
+    "package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da"
+  },
+  "compiledHashes": {
+    "packages/web/dist/sync/session.js": "2b411dea083d3b55e0cba3966b2e1c15abcd9e27ce077c478b20630cb64ecb0f",
+    "packages/web/dist/storage/outbox.js": "ddecd3f7a3950be340a081a6a5cf5f4519f378e8ec85dfa5705f1999e261773c",
+    "packages/core/dist/wasm/editac_wasm_bg.wasm": "265a6896c0962bbfc8e3cc07f8ac12043654df9d22443ccb840db173995dbdd2"
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "log": "build-paged.log",
+      "exit": 0
+    },
+    {
+      "command": "EDITAC_RECONNECT_OUTPUT=/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-reconnect/feature-paged node --test tests/reconnect.test.mjs",
+      "log": "feature-paged.log",
+      "exit": 0,
+      "executed": 11,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_SYNC_PROTOCOL_OUTPUT=/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-reconnect/protocol node --test tests/sync-protocol.test.mjs",
+      "log": "protocol.log",
+      "exit": 0,
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "EDITAC_OUTBOX_OUTPUT=/Users/bpstr/Github/edit-ac/architecture/evidence/synchronization-reconnect/outbox-paged node --test tests/outbox.test.mjs",
+      "log": "outbox-paged.log",
+      "exit": 0,
+      "executed": 23,
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "command": "git diff --check",
+      "log": "diff-check.log",
+      "exit": 0
+    }
+  ],
+  "fixture": "Deterministic schema-v5 prepared commands and copied frame delivery; runtime gives each engine a fresh writer/client identity. Source fixture hashes captured above. Real Rust WASM and JS peer semantic oracle, real journal/outbox adapters; controlled IndexedDB transaction completions plus real Chromium cursor/receipt integration.",
+  "acceptance": {
+    "offline": "detached/denied editing, no replica/history/anchor replacement",
+    "convergence": "disconnect, authorized reconnect, shuffled duplicates and saturated socket converge",
+    "bounded": "one bounded pending page plus bounded receive/send queues; byte/frame/work caps and explicit exponential retry exhaustion",
+    "origins": "local commands and undo/redo replay; remote/restore/replay entries excluded; no echo at quiescence",
+    "durability": "pending identities retained; no baseline handshake/socket acknowledgment prunes; no service durable commit claim",
+    "async": "generation fences and local commit during pending read tested"
+  },
+  "upstreamEvidence": "SYN-1.1 upstream source/artifact audits retained; 02-engine and 03-local-storage current tracking remain COMPLETE at recorded revisions. Directly required outbox extension revalidated by current 23/23 suite including Chromium. No new full upstream requalification claim.",
+  "failures": [],
+  "intermediateChecks": "Initial 9/9 feature, then 11/11 after local undo/redo and synchronous detach repair; final paged 11/11. Initial 22/22 outbox superseded by 23/23 after bounded cursor work. All logs retained; protocol source unchanged after its 7/7 run.",
+  "cleanup": "cleanup.json",
+  "verifiedAtUtc": "2026-10-13T00:43:32.806301+00:00",
+  "artifactHashes": {
+    "feature-initial.log": "9e13f6376f403c3ccc9eecb15fc084ebe6d07ec61ff4f1000133b7de2adc049b",
+    "feature-final.log": "8534c62325873f347a31a9046cb12b31e41dfa81453df1ac0ca0b12758812c31",
+    "diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build-final.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "cleanup.json": "8ff9b657009cb5a1451305a5fb2d4595c3182a456723545b3cc933f142967414",
+    "build-paged.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "feature-paged.log": "5cbfb038e8034f2cb422323d227249168ede53319282f3615ab9cf80547373cf",
+    "outbox-paged.log": "4ec5d8127f7e229aed1b1e7b65b6bfc5ae5271361d5c5c928d861b15b44c5da7",
+    "protocol.log": "a51b057a0cd726c942198dc2c2ce7c87c4bb23ac075df83c4d5d3cceafff0612",
+    "outbox.log": "52a8589fe923ffaa268eb007e0068b50134fbdad3c87ceb2afa4325c30b1a59a",
+    "feature.log": "9e13f6376f403c3ccc9eecb15fc084ebe6d07ec61ff4f1000133b7de2adc049b",
+    "build.log": "513611f4d1cba39ef1f1b626e7fc55d50a94896a2794554a8146f08837cb6e2b",
+    "outbox/harness.json": "7f1f68d5e000d6c46cd203684dc8b642368bbdeee55ce7b25df6a399626ab1f4",
+    "feature-paged/harness.json": "9a8be9e578060abcd5d09f43759527effdcbcb7b1b4040a97093d76c9568115b",
+    "outbox-paged/harness.json": "b13491d627b17ab48aba98c14db256636daecec2451f647523491e9009a43060",
+    "protocol/4-rust-update.bin": "e2e025fc0f8f18a8bd9935ff7bea64e77125dc1b7ebc4d4acea9cfda90ee7771",
+    "protocol/harness.json": "18ac5f2e0c6fbccfa485dd987d11375b13fc5d8f3f39609b97e1841bec974fd0",
+    "protocol/3-js-step2.bin": "c2a1b6196a2a29085a612cd9f9c15b4cbb0948ed57bcd71f1b86714c8ae40794",
+    "protocol/1-js-step1.bin": "8d41c85f9094721a843a1c3b2ac2c5c6e11e790a4543238312e6c1ba75f9506c",
+    "protocol/5-js-update.bin": "3e080e634577996f840e558742b80e16758dd6308619fe825c8f90d92f74841e",
+    "protocol/2-rust-step2.bin": "d675fb0c2bcce3c8f7146ad1f1a0c48e32041204aa2ac70da48b13c2af450a5f",
+    "protocol/0-rust-step1.bin": "19037c6253dc9e5acec5223d8c46613feca92771bcaffd61e6cc2331c522195b",
+    "sources/Cargo.lock": "1d8c3e26a50a9e8d8e799032b905aaaf668bf46082beaa4992d6463f220ef3a6",
+    "sources/package-lock.json": "9a50303800c511a921a864d7842ede29de4f03adc40b6b6a9c9639dccbecc3da",
+    "feature-final/harness.json": "9a8be9e578060abcd5d09f43759527effdcbcb7b1b4040a97093d76c9568115b",
+    "feature/harness.json": "db59ebdc4eb65af13eac8fd6ac02bec536a79fdde2d6b773bb0c7e81d7148ef5",
+    "sources/tests/reconnect.test.mjs": "fc4bba35c7d541ac569777dda68fb6280f963804c01859874b48245e2f2c02c1",
+    "sources/tests/outbox.test.mjs": "8db7a32453dfb498b4fe45ec314a8b0706136da5bd4d3856bb6fcb7e4e42ff91",
+    "sources/fixtures/schema-v5/mapping.mjs": "54617d4cebf52f60dea937c41f4aa53c2f143ef9bce033390c2ee9820bef9f33",
+    "sources/packages/web/src/storage/outbox.ts": "c743105f738f459c584ce70f62ed0abaea50684060d1954f245c24198061f0e4",
+    "sources/packages/web/src/storage/journal.ts": "53d45abc5c323683512470d41ada3941edfb4c249bd84a6dfca6d892b867c2a1",
+    "sources/packages/web/src/sync/session.ts": "5a39c16cdb2ca909b378ce5c772025435058677763396b8b45f9bb4773c0bac6",
+    "sources/packages/web/src/sync/protocol.ts": "13246ca889ac65a2d774bbfdd1e2c40db84f3bf70ec7b5f4a869617118141563",
+    "sources/tests/helpers/checkpoint-storage.mjs": "2fd0bebf97d3c059149b7ebbda0b4ad663cb3b713008592a23ab7b1ef9dc68c7",
+    "sources/tests/helpers/prepared-socket.mjs": "448c3110beb2521103d69745de5c85d4d8c3709fab6db84c16e46a0631e19b01",
+    "compiled/packages/web/dist/storage/outbox.js": "ddecd3f7a3950be340a081a6a5cf5f4519f378e8ec85dfa5705f1999e261773c",
+    "compiled/packages/web/dist/sync/session.js": "2b411dea083d3b55e0cba3966b2e1c15abcd9e27ce077c478b20630cb64ecb0f",
+    "compiled/packages/core/dist/wasm/editac_wasm_bg.wasm": "265a6896c0962bbfc8e3cc07f8ac12043654df9d22443ccb840db173995dbdd2"
+  }
+}

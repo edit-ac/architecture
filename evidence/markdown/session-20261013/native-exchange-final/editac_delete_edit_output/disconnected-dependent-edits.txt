@@ -1,0 +1,170 @@
+fixture=a😀b; bold UTF-16 [1,3); all 120 permutations
+expected=Projection {
+    visible: None,
+    recovery: Some(
+        Projection {
+            block_id: "block-1",
+            parent: "left",
+            order: 0,
+            text_identity: "<11#2>",
+            runs: [
+                (
+                    "a",
+                    [],
+                ),
+                (
+                    "👩\u{200d}💻",
+                    [
+                        (
+                            "code",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "!",
+                    [
+                        (
+                            "italic",
+                            "true",
+                        ),
+                    ],
+                ),
+                (
+                    "b",
+                    [],
+                ),
+                (
+                    "אב",
+                    [
+                        (
+                            "underline",
+                            "true",
+                        ),
+                    ],
+                ),
+            ],
+            utf16_len: 10,
+        },
+    ),
+}
+[0, 1, 2, 3, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 1, 2, 4, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 1, 3, 2, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 1, 3, 4, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 1, 4, 2, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 1, 4, 3, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 2, 1, 3, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 2, 1, 4, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 2, 3, 1, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 2, 3, 4, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 2, 4, 1, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 2, 4, 3, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 3, 1, 2, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 3, 1, 4, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 3, 2, 1, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 3, 2, 4, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 3, 4, 1, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 3, 4, 2, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 4, 1, 2, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 4, 1, 3, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 4, 2, 1, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 4, 2, 3, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 4, 3, 1, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[0, 4, 3, 2, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 0, 2, 3, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 0, 2, 4, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 0, 3, 2, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 0, 3, 4, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 0, 4, 2, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 0, 4, 3, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 2, 0, 3, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 2, 0, 4, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 2, 3, 0, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 2, 3, 4, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 2, 4, 0, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 2, 4, 3, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 3, 0, 2, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 3, 0, 4, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 3, 2, 0, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 3, 2, 4, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 3, 4, 0, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 3, 4, 2, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 4, 0, 2, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 4, 0, 3, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 4, 2, 0, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 4, 2, 3, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 4, 3, 0, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[1, 4, 3, 2, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 0, 1, 3, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 0, 1, 4, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 0, 3, 1, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 0, 3, 4, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 0, 4, 1, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 0, 4, 3, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 1, 0, 3, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 1, 0, 4, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 1, 3, 0, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 1, 3, 4, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 1, 4, 0, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 1, 4, 3, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 3, 0, 1, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 3, 0, 4, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 3, 1, 0, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 3, 1, 4, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 3, 4, 0, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 3, 4, 1, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 4, 0, 1, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 4, 0, 3, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 4, 1, 0, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 4, 1, 3, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 4, 3, 0, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[2, 4, 3, 1, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 0, 1, 2, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 0, 1, 4, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 0, 2, 1, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 0, 2, 4, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 0, 4, 1, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 0, 4, 2, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 1, 0, 2, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 1, 0, 4, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 1, 2, 0, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 1, 2, 4, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 1, 4, 0, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 1, 4, 2, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 2, 0, 1, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 2, 0, 4, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 2, 1, 0, 4]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 2, 1, 4, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 2, 4, 0, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 2, 4, 1, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 4, 0, 1, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 4, 0, 2, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 4, 1, 0, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 4, 1, 2, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 4, 2, 0, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[3, 4, 2, 1, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 0, 1, 2, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 0, 1, 3, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 0, 2, 1, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 0, 2, 3, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 0, 3, 1, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 0, 3, 2, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 1, 0, 2, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 1, 0, 3, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 1, 2, 0, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 1, 2, 3, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 1, 3, 0, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 1, 3, 2, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 2, 0, 1, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 2, 0, 3, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 2, 1, 0, 3]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 2, 1, 3, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 2, 3, 0, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 2, 3, 1, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 3, 0, 1, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 3, 0, 2, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 3, 1, 0, 2]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 3, 1, 2, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 3, 2, 0, 1]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained
+[4, 3, 2, 1, 0]: duplicate delivery, reverse replay, restore: hidden; text/marks/identity retained

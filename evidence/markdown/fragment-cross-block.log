@@ -1,0 +1,23 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+   Compiling editac-markdown v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-markdown)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 15.02s
+     Running tests/optional_content.rs (target/debug/deps/optional_content-4aad1d0f438b0d5e)
+
+running 1 test
+test cross_block_rich_replacement_keeps_one_update_and_history ... FAILED
+
+failures:
+
+---- cross_block_rich_replacement_keeps_one_update_and_history stdout ----
+
+thread 'cross_block_rich_replacement_keeps_one_update_and_history' (162688894) panicked at crates/editac-markdown/tests/optional_content.rs:63:163:
+called `Result::unwrap()` on an `Err` value: InvalidCommand
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    cross_block_rich_replacement_keeps_one_update_and_history
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.04s
+
+error: test failed, to rerun pass `-p editac-markdown --test optional_content`

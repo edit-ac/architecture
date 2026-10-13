@@ -1,0 +1,109 @@
+
+> edit-ac-workspace@0.0.0 test:browser
+> node scripts/test-browser.mjs html-paste
+
+html-paste browser: chromium
+✖ safe headings, nested lists, marks, links and code import in one batch (2620.726459ms)
+✔ executable elements, handlers and CSS never execute or load (174.89ms)
+✔ decoded unsafe and relative URL attributes become inert text with recovery (158.832333ms)
+✔ optional resources and SVG stay recoverable and cannot load (137.864792ms)
+✔ byte, nesting and attribute limits reject before history or storage mutation (176.254542ms)
+✔ malformed HTML normalizes safely and explicit literal paste ignores it (189.594125ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3828.248583
+
+✖ failing tests:
+
+test at tests/browser/html-paste.spec.ts:6:1
+✖ safe headings, nested lists, marks, links and code import in one batch (2620.726459ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.editor?.containerAttributes?.[0]==='list'))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/html-paste.spec.ts:12:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+html-paste browser: firefox
+✖ safe headings, nested lists, marks, links and code import in one batch (6241.823292ms)
+✔ executable elements, handlers and CSS never execute or load (746.803292ms)
+✔ decoded unsafe and relative URL attributes become inert text with recovery (611.792333ms)
+✔ optional resources and SVG stay recoverable and cannot load (362.670709ms)
+✔ byte, nesting and attribute limits reject before history or storage mutation (312.331834ms)
+✔ malformed HTML normalizes safely and explicit literal paste ignores it (324.652ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9149.985959
+
+✖ failing tests:
+
+test at tests/browser/html-paste.spec.ts:6:1
+✖ safe headings, nested lists, marks, links and code import in one batch (6241.823292ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.editor?.containerAttributes?.[0]==='list'))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/html-paste.spec.ts:12:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+html-paste browser: webkit
+✖ safe headings, nested lists, marks, links and code import in one batch (3451.0715ms)
+✔ executable elements, handlers and CSS never execute or load (913.09075ms)
+✔ decoded unsafe and relative URL attributes become inert text with recovery (284.750625ms)
+✔ optional resources and SVG stay recoverable and cannot load (305.431334ms)
+✔ byte, nesting and attribute limits reject before history or storage mutation (292.933875ms)
+✔ malformed HTML normalizes safely and explicit literal paste ignores it (352.456834ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5958.378958
+
+✖ failing tests:
+
+test at tests/browser/html-paste.spec.ts:6:1
+✖ safe headings, nested lists, marks, links and code import in one batch (3451.0715ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.nodes.some(n=>n.editor?.containerAttributes?.[0]==='list'))
+  
+      at file:///Users/bpstr/Github/edit-ac/core/tests/browser/html-paste.spec.ts:12:10
+      at async probe (file:///Users/bpstr/Github/edit-ac/core/tests/browser/browser-harness.ts:72:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

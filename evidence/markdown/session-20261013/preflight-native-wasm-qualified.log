@@ -1,0 +1,42 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.22s
+     Running unittests src/lib.rs (target/debug/deps/editac_wasm-8829c4c09c1e5132)
+
+running 35 tests
+test bridge::markdown_bridge_tests::pure_import_export_has_no_semantic_effects ... ok
+test cases::explicitly_empty_creation_is_initialized_without_implicit_defaults ... ok
+test bridge::markdown_bridge_tests::registered_content_is_preserved_and_unknown_version_rejected ... ok
+test bridge::result_caret_tests::stale_result_plan_consumes_reservation_without_exposing_caret ... ok
+test bridge::result_caret_tests::result_removed_by_later_batch_command_is_rejected_during_prepare ... ok
+test cases::invalid_requests_preserve_exact_bytes_revision_and_history ... ok
+test cases::empty_item_exit ... ok
+test cases::heading_levels ... ok
+test cases::history_grouping ... ok
+test cases::malformed_creation_does_not_reserve_document_identity ... ok
+test cases::parity_normalization_preserves_literal_content_and_opaque_attributes ... ok
+test cases::literal_code ... ok
+test cases::plans_are_scoped_single_use_and_stale_commits_are_atomic ... ok
+test cases::list_enter_backspace ... ok
+test bridge::markdown_bridge_tests::malformed_and_oversized_inputs_leave_replica_untouched ... ok
+test cases::rich_marks ... ok
+test cases::semantic_move ... ok
+test cases::retained_join ... ok
+test cases::separator_access ... ok
+test cases::separator_insert ... ok
+test cases::split_end ... ok
+test cases::split_empty ... ok
+test cases::split_middle ... ok
+test cases::split_start ... ok
+test cases::unicode_replace ... ok
+test updates::native_updates_rejections_are_atomic ... ok
+test updates::native_updates_checkpoint_and_replay ... ok
+test updates::native_updates_patch_drain_is_once_per_commit ... ok
+test cases::text_insert_delete ... ok
+test cases::list_quote_nesting ... ok
+test updates::native_updates_vectors_diffs_and_delete_sets ... ok
+test updates::native_updates_reverse_replay ... ok
+test bridge::result_caret_tests::result_reservations_release_and_commit_cannot_fail_after_mutation ... ok
+test bridge::result_caret_tests::result_capacity_can_and_token_overflow_are_pre_mutation ... ok
+test cases::handle_tables_have_enforced_limits_and_reusable_capacity ... ok
+
+test result: ok. 35 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.73s
+

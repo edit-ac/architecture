@@ -1,0 +1,28 @@
+
+> edit-ac-workspace@0.0.0 build
+> npm run build --workspaces
+
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+
+> @edit-ac/web@0.0.0 build
+> tsc --project tsconfig.json
+
+src/input/shortcuts.ts(21,15): error TS7053: Element implicitly has an 'any' type because expression of type '0' can't be used to index type 'string | number | boolean | Json[] | { [key: string]: Json; }'.
+  Property '0' does not exist on type 'string | number | boolean | Json[] | { [key: string]: Json; }'.
+src/input/shortcuts.ts(26,292): error TS2532: Object is possibly 'undefined'.
+src/input/shortcuts.ts(30,68): error TS2532: Object is possibly 'undefined'.
+npm error Lifecycle script `build` failed with error:
+npm error code 2
+npm error path /Users/bpstr/Github/edit-ac/core/packages/web
+npm error workspace @edit-ac/web@0.0.0
+npm error location /Users/bpstr/Github/edit-ac/core/packages/web
+npm error command failed
+npm error command sh -c tsc --project tsconfig.json
+
+
+> @edit-ac/react@0.0.0 build
+> tsc --project tsconfig.json
+

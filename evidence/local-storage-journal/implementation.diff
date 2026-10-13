@@ -1,0 +1,441 @@
+diff --git a/packages/web/src/storage/journal.ts b/packages/web/src/storage/journal.ts
+new file mode 100644
+index 0000000..c8071a5
+--- /dev/null
++++ b/packages/web/src/storage/journal.ts
+@@ -0,0 +1,164 @@
++/** Browser storage only: engine semantics and replay remain owned by Rust. */
++export interface JournalIdentity {
++  profile: string;
++  schema: string;
++  documentId: string;
++  epoch: string;
++  protocolVersion: number;
++  updateEncoding: number;
++  offsets: "utf16";
++}
++
++export interface JournalUpdate {
++  identity: JournalIdentity;
++  writerId: number;
++  sequence: number;
++  origin: string;
++  bytes: Uint8Array;
++}
++
++export interface JournalEntry extends JournalUpdate {
++  checksum: string;
++  /** Stable pending-receipt identity; checkpoints must not erase it. */
++  updateId: string;
++}
++
++export interface LocalCommit {
++  state: "localCommitted";
++  updateId: string;
++  durability: IDBTransactionDurability | "unknown";
++}
++
++export class JournalIntegrityError extends Error {
++  constructor(message: string) { super(message); this.name = "JournalIntegrityError"; }
++}
++
++const storeName = "updates";
++const keyPath = ["identity.documentId", "identity.epoch", "identity.schema", "writerId", "sequence"];
++const identityFields = ["profile", "schema", "documentId", "epoch", "protocolVersion", "updateEncoding", "offsets"] as const;
++
++function identityKey(identity: JournalIdentity): string {
++  return JSON.stringify(identityFields.map(field => identity[field]));
++}
++
++function ownIdentity(identity: JournalIdentity): JournalIdentity {
++  if (!identity || [identity.profile, identity.schema, identity.documentId, identity.epoch].some(v => typeof v !== "string" || v.length === 0)
++    || identity.offsets !== "utf16" || identity.protocolVersion !== 1 || identity.updateEncoding !== 1) {
++    throw new JournalIntegrityError("Missing or unsupported document identity/schema/encoding");
++  }
++  return { profile: identity.profile, schema: identity.schema, documentId: identity.documentId, epoch: identity.epoch,
++    protocolVersion: identity.protocolVersion, updateEncoding: identity.updateEncoding, offsets: identity.offsets };
++}
++
++function ownUpdate(update: JournalUpdate): JournalUpdate {
++  const identity = ownIdentity(update.identity);
++  if (!Number.isSafeInteger(update.writerId) || update.writerId <= 0 || !Number.isSafeInteger(update.sequence) || update.sequence <= 0
++    || typeof update.origin !== "string" || !update.origin || !(update.bytes instanceof Uint8Array) || update.bytes.length === 0) {
++    throw new JournalIntegrityError("Invalid writer/sequence/origin/update bytes");
++  }
++  return { identity, writerId: update.writerId, sequence: update.sequence, origin: update.origin, bytes: new Uint8Array(update.bytes) };
++}
++
++async function checksum(bytes: Uint8Array): Promise<string> {
++  const hash = await globalThis.crypto.subtle.digest("SHA-256", new Uint8Array(bytes).buffer);
++  return Array.from(new Uint8Array(hash), b => b.toString(16).padStart(2, "0")).join("");
++}
++
++function updateId(update: JournalUpdate, hash: string): string {
++  return JSON.stringify([identityKey(update.identity), update.writerId, update.sequence, hash]);
++}
++
++function equalEntry(a: JournalEntry, b: JournalEntry): boolean {
++  return identityKey(a.identity) === identityKey(b.identity) && a.writerId === b.writerId && a.sequence === b.sequence
++    && a.origin === b.origin && a.checksum === b.checksum && a.updateId === b.updateId
++    && a.bytes instanceof Uint8Array && a.bytes.length === b.bytes.length && a.bytes.every((v, i) => v === b.bytes[i]);
++}
++
++/** Internal adapter, not yet a published editor API. No unload handler or enqueue acknowledgment. */
++export class UpdateJournal {
++  private constructor(private readonly database: IDBDatabase) {}
++
++  static open(factory: IDBFactory, name = "editac-local-storage"): Promise<UpdateJournal> {
++    return new Promise((resolve, reject) => {
++      const request = factory.open(name, 1);
++      let rejected = false;
++      request.onupgradeneeded = () => {
++        const store = request.result.createObjectStore(storeName, { keyPath });
++        store.createIndex("documentEpochSchema", ["identity.documentId", "identity.epoch", "identity.schema"]);
++      };
++      request.onerror = () => reject(request.error);
++      request.onblocked = () => { rejected = true; reject(new Error("Journal database upgrade blocked")); };
++      request.onsuccess = () => {
++        const database = request.result;
++        if (rejected) { database.close(); return; }
++        database.onversionchange = () => database.close();
++        resolve(new UpdateJournal(database));
++      };
++    });
++  }
++
++  close(): void { this.database.close(); }
++
++  /** Captures owned input before the first await. Repeated identity is a no-op; collisions abort. */
++  async append(input: JournalUpdate): Promise<LocalCommit> {
++    const update = ownUpdate(input);
++    const hash = await checksum(update.bytes);
++    const entry: JournalEntry = { ...update, checksum: hash, updateId: updateId(update, hash) };
++    let transaction: IDBTransaction;
++    try {
++      transaction = this.database.transaction(storeName, "readwrite", { durability: "strict" });
++    } catch (error) {
++      // Only unsupported options permit a fallback. Quota, permission and closed-DB errors remain errors.
++      if (!(error instanceof TypeError) && !(error instanceof DOMException && error.name === "NotSupportedError")) throw error;
++      transaction = this.database.transaction(storeName, "readwrite");
++    }
++    return new Promise((resolve, reject) => {
++      let failure: unknown;
++      transaction.oncomplete = () => resolve({ state: "localCommitted", updateId: entry.updateId, durability: transaction.durability ?? "unknown" });
++      transaction.onabort = () => reject(failure ?? transaction.error ?? new DOMException("Journal transaction aborted", "AbortError"));
++      transaction.onerror = () => { failure ??= transaction.error; };
++      const abort = (error: unknown) => {
++        failure = error;
++        try { transaction.abort(); } catch { reject(error); }
++      };
++      try {
++        const store = transaction.objectStore(storeName);
++        const request = store.get([entry.identity.documentId, entry.identity.epoch, entry.identity.schema, entry.writerId, entry.sequence]);
++        request.onerror = () => { failure = request.error; };
++        request.onsuccess = () => {
++          try {
++            if (request.result !== undefined) {
++              if (!equalEntry(request.result as JournalEntry, entry)) throw new JournalIntegrityError("Journal key collision or corrupt existing update");
++            } else {
++              const write = store.add(entry);
++              write.onerror = () => { failure = write.error; };
++            }
++          } catch (error) { abort(error); }
++        };
++      } catch (error) { abort(error); }
++    });
++  }
++
++  /** Returns detached, verified entries for one trusted document/epoch/schema. */
++  async read(identity: JournalIdentity): Promise<JournalEntry[]> {
++    const expected = ownIdentity(identity);
++    const entries = await new Promise<JournalEntry[]>((resolve, reject) => {
++      const transaction = this.database.transaction(storeName, "readonly");
++      let result: JournalEntry[] = [];
++      let failure: unknown;
++      transaction.oncomplete = () => resolve(result);
++      transaction.onabort = () => reject(failure ?? transaction.error ?? new DOMException("Journal read aborted", "AbortError"));
++      transaction.onerror = () => { failure ??= transaction.error; };
++      const request = transaction.objectStore(storeName).index("documentEpochSchema").getAll([expected.documentId, expected.epoch, expected.schema]);
++      request.onerror = () => { failure = request.error; };
++      request.onsuccess = () => { result = request.result as JournalEntry[]; };
++    });
++    return Promise.all(entries.map(async entry => {
++      const update = ownUpdate(entry);
++      if (identityKey(update.identity) !== identityKey(expected)) throw new JournalIntegrityError("Stored identity does not match trusted document");
++      const hash = await checksum(update.bytes);
++      if (hash !== entry.checksum || entry.updateId !== updateId(update, hash)) throw new JournalIntegrityError("Corrupt journal checksum or receipt identity");
++      return { ...update, checksum: hash, updateId: entry.updateId };
++    }));
++  }
++}
+diff --git a/packages/web/tsconfig.json b/packages/web/tsconfig.json
+index 086b4f6..9fedec2 100644
+--- a/packages/web/tsconfig.json
++++ b/packages/web/tsconfig.json
+@@ -1,6 +1,7 @@
+ {
+   "extends": "../../tsconfig.base.json",
+   "compilerOptions": {
++    "lib": ["ES2022", "DOM"],
+     "rootDir": "./src",
+     "outDir": "./dist"
+   },
+diff --git a/tests/helpers/journal-storage.mjs b/tests/helpers/journal-storage.mjs
+new file mode 100644
+index 0000000..7b46d55
+--- /dev/null
++++ b/tests/helpers/journal-storage.mjs
+@@ -0,0 +1,69 @@
++/** Controllable IndexedDB-shaped boundary. Only complete publishes staged writes. */
++export class PreparedIndexedDB {
++  records = new Map();
++  transactions = [];
++  strictSupported = true;
++  durability = 'strict';
++  creationError = null;
++  waiters = [];
++  consumed = 0;
++  closed = false;
++  open() {
++    const request = {};
++    queueMicrotask(() => {
++      request.result = this;
++      request.onupgradeneeded?.();
++      request.onsuccess?.();
++    });
++    return request;
++  }
++  createObjectStore() { return { createIndex() {} }; }
++  close() { this.closed = true; }
++  transaction(store, mode, options) {
++    if (this.creationError) throw this.creationError;
++    if (this.closed) throw new DOMException('Closed', 'InvalidStateError');
++    if (options && !this.strictSupported) throw new TypeError('Unsupported durability options');
++    const tx = new PreparedTransaction(this, mode, options ? this.durability : 'default');
++    this.transactions.push(tx);
++    this.waiters.shift()?.(tx);
++    return tx;
++  }
++  nextTransaction() {
++    const tx = this.transactions[this.consumed++];
++    return tx ? Promise.resolve(tx) : new Promise(resolve => this.waiters.push(resolve));
++  }
++}
++
++class PreparedTransaction {
++  staged = new Map();
++  error = null;
++  request = null;
++  write = null;
++  constructor(database, mode, durability) { Object.assign(this, { database, mode, durability }); }
++  objectStore() { return this; }
++  index() { return this; }
++  get(key) { this.key = JSON.stringify(key); return this.request = {}; }
++  getAll(scope) { this.scope = scope; return this.request = {}; }
++  add(entry) { this.entry = structuredClone(entry); return this.write = {}; }
++  lookupSuccess() {
++    this.request.result = this.scope
++      ? [...this.database.records.values()].filter(e => [e.identity.documentId, e.identity.epoch, e.identity.schema].every((v, i) => v === this.scope[i])).map(e => structuredClone(e))
++      : structuredClone(this.database.records.get(this.key));
++    this.request.onsuccess?.();
++  }
++  writeSuccess() { this.staged.set(this.key, this.entry); this.write.onsuccess?.(); }
++  requestFailure(error, write = true) {
++    const request = write ? this.write : this.request;
++    request.error = error;
++    request.onerror?.();
++    this.error = error;
++    this.onerror?.();
++    this.abort();
++  }
++  abort() { this.staged.clear(); this.aborted = true; queueMicrotask(() => this.onabort?.()); }
++  complete() {
++    if (this.aborted) throw new Error('Cannot complete aborted transaction');
++    for (const [key, value] of this.staged) this.database.records.set(key, structuredClone(value));
++    this.oncomplete?.();
++  }
++}
+diff --git a/tests/journal.test.mjs b/tests/journal.test.mjs
+new file mode 100644
+index 0000000..c1c7850
+--- /dev/null
++++ b/tests/journal.test.mjs
+@@ -0,0 +1,178 @@
++import assert from 'node:assert/strict';
++import { test, after } from 'node:test';
++import { readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
++import { tmpdir } from 'node:os';
++import { join } from 'node:path';
++import { chromium } from 'playwright';
++import { UpdateJournal, JournalIntegrityError } from '../packages/web/dist/storage/journal.js';
++import { PreparedIndexedDB } from './helpers/journal-storage.mjs';
++
++const identity = Object.freeze({ profile: 'v5', schema: 'editac/5', documentId: '45678901-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', protocolVersion: 1, updateEncoding: 1, offsets: 'utf16' });
++const fixture = (overrides = {}) => ({ identity: { ...identity }, writerId: 11, sequence: 1, origin: 'local:test', bytes: Uint8Array.of(1, 2, 3), ...overrides });
++const evidence = process.env.EDITAC_JOURNAL_OUTPUT ?? await mkdtemp(join(tmpdir(), 'editac-journal-'));
++await mkdir(evidence, { recursive: true });
++const facts = { cases: [], processes: [], fixture: { identity, writerId: 11, sequence: 1, bytes: [1, 2, 3] } };
++let controller, browser;
++function check(name, fn) { test(name, async () => { const c = { name, passed: false }; facts.cases.push(c); await fn(); c.passed = true; }); }
++function track(promise) { const state = { settled: false }; promise.then(value => Object.assign(state, { settled: true, value }), error => Object.assign(state, { settled: true, error })); return state; }
++async function setup() { const database = new PreparedIndexedDB(); return { database, journal: await UpdateJournal.open(database) }; }
++async function commit(journal, database, update = fixture()) {
++  const promise = journal.append(update); const tx = await database.nextTransaction();
++  tx.lookupSuccess(); if (tx.write) tx.writeSuccess(); tx.complete(); return promise;
++}
++async function read(journal, database, scope = identity) {
++  const promise = journal.read(scope); const tx = await database.nextTransaction(); tx.lookupSuccess(); tx.complete(); return promise;
++}
++
++check('deterministic acknowledgment waits for completion, not enqueue or request success', async () => {
++  const { journal, database } = await setup();
++  const promise = journal.append(fixture()); const state = track(promise);
++  assert.equal(state.settled, false);
++  const tx = await database.nextTransaction(); tx.lookupSuccess(); tx.writeSuccess();
++  await Promise.resolve(); assert.equal(state.settled, false); assert.equal(database.records.size, 0);
++  tx.complete(); const result = await promise;
++  assert.equal(result.state, 'localCommitted'); assert.equal(result.durability, 'strict'); assert.equal(database.records.size, 1);
++});
++
++check('deterministic duplicate identity is idempotent and independently waits for completion', async () => {
++  const { journal, database } = await setup(); const first = await commit(journal, database);
++  const promise = journal.append(fixture()); const state = track(promise); const tx = await database.nextTransaction();
++  tx.lookupSuccess(); assert.equal(tx.write, null); await Promise.resolve(); assert.equal(state.settled, false);
++  tx.complete(); assert.deepEqual(await promise, first); assert.equal(database.records.size, 1);
++});
++
++check('deterministic journal takes immutable ownership before asynchronous hashing', async () => {
++  const { journal, database } = await setup(); const update = fixture(); const promise = journal.append(update);
++  update.bytes.fill(9); update.identity.documentId = 'changed'; update.sequence = 99;
++  const tx = await database.nextTransaction(); tx.lookupSuccess(); tx.writeSuccess(); tx.complete(); await promise;
++  const entries = await read(journal, database); assert.deepEqual([...entries[0].bytes], [1, 2, 3]);
++  entries[0].bytes.fill(8); entries[0].identity.epoch = 'changed';
++  assert.deepEqual([...((await read(journal, database))[0].bytes)], [1, 2, 3]);
++});
++
++for (const field of ['bytes', 'origin', 'profile']) check(`deterministic ${field} collision aborts without overwriting`, async () => {
++  const { journal, database } = await setup(); await commit(journal, database);
++  const update = fixture(field === 'bytes' ? { bytes: Uint8Array.of(4) } : field === 'origin' ? { origin: 'different' } : { identity: { ...identity, profile: 'v1' } });
++  const promise = journal.append(update); const rejection = assert.rejects(promise, JournalIntegrityError); const tx = await database.nextTransaction(); tx.lookupSuccess();
++  await rejection; assert.equal(tx.aborted, true); assert.equal(database.records.size, 1);
++  assert.deepEqual([...((await read(journal, database))[0].bytes)], [1, 2, 3]);
++});
++
++for (const boundary of ['lookup', 'write', 'after-request']) check(`deterministic quota/abort failure at ${boundary} rejects and rolls back`, async () => {
++  const { journal, database } = await setup(); const promise = journal.append(fixture());
++  const error = new DOMException('prepared failure', boundary === 'after-request' ? 'AbortError' : 'QuotaExceededError');
++  const rejection = assert.rejects(promise, e => e === error); const tx = await database.nextTransaction();
++  if (boundary === 'lookup') tx.requestFailure(error, false);
++  else { tx.lookupSuccess(); if (boundary === 'write') tx.requestFailure(error); else { tx.writeSuccess(); tx.error = error; tx.abort(); } }
++  await rejection; assert.equal(database.records.size, 0);
++  await commit(journal, database); assert.equal(database.records.size, 1);
++});
++
++check('deterministic explicit abort without an error still rejects', async () => {
++  const { journal, database } = await setup(); const promise = journal.append(fixture());
++  const rejection = assert.rejects(promise, { name: 'AbortError' }); const tx = await database.nextTransaction(); tx.abort(); await rejection;
++});
++
++check('deterministic unsupported strict option falls back and reports observed capability', async () => {
++  const { journal, database } = await setup(); database.strictSupported = false;
++  assert.equal((await commit(journal, database)).durability, 'default');
++  database.strictSupported = true; database.durability = 'relaxed';
++  assert.equal((await commit(journal, database, fixture({ sequence: 2 }))).durability, 'relaxed');
++});
++
++check('deterministic transaction creation quota/permission/closed errors are not retried', async () => {
++  const { journal, database } = await setup();
++  for (const name of ['QuotaExceededError', 'SecurityError', 'InvalidStateError']) {
++    const error = new DOMException('prepared failure', name); database.creationError = error;
++    await assert.rejects(journal.append(fixture()), e => e === error); assert.equal(database.transactions.length, 0);
++  }
++});
++
++check('deterministic document/epoch/schema/writer/sequence keys are isolated', async () => {
++  const { journal, database } = await setup();
++  const updates = [fixture(), fixture({ writerId: 12 }), fixture({ sequence: 2 }), ...['documentId', 'epoch', 'schema'].map(field => fixture({ identity: { ...identity, [field]: 'different' } }))];
++  for (const update of updates) await commit(journal, database, update);
++  assert.equal(database.records.size, 6); assert.equal((await read(journal, database)).length, 3);
++  for (const update of updates.slice(3)) assert.equal((await read(journal, database, update.identity)).length, 1);
++});
++
++check('deterministic invalid identity/sequence/bytes fail before creating a transaction', async () => {
++  const { journal, database } = await setup();
++  for (const update of [fixture({ identity: { ...identity, documentId: '' } }), fixture({ identity: { ...identity, protocolVersion: 2 } }), fixture({ sequence: 0 }), fixture({ sequence: Number.MAX_SAFE_INTEGER + 1 }), fixture({ bytes: new Uint8Array() })]) {
++    await assert.rejects(journal.append(update), JournalIntegrityError);
++  }
++  assert.equal(database.transactions.length, 0);
++});
++
++check('deterministic read rejects corrupt bytes/checksum/receipt/schema instead of returning replay', async () => {
++  for (const mutation of [e => e.bytes.fill(9), e => e.checksum = 'bad', e => e.updateId = 'bad', e => e.identity.protocolVersion = 2]) {
++    const { journal, database } = await setup(); await commit(journal, database);
++    mutation([...database.records.values()][0]); await assert.rejects(read(journal, database), JournalIntegrityError);
++  }
++});
++
++check('actual Chromium journal persists production engine patches and admits duplicate/concurrent writers', async () => {
++  controller = await chromium.launchServer({ headless: true }); const child = controller.process();
++  facts.processes.push({ pid: child.pid, launcher: child.spawnfile, workspace: process.cwd(), purpose: 'journal IndexedDB qualification', log: 'journal.log' });
++  browser = await chromium.connect(controller.wsEndpoint()); facts.browser = { version: browser.version(), playwright: JSON.parse(await readFile(new URL('../node_modules/playwright/package.json', import.meta.url))).version };
++  const context = await browser.newContext();
++  try {
++    await context.route('https://journal.test/**', async route => {
++      const path = new URL(route.request().url()).pathname;
++      if (path === '/') return route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>Journal qualification</title>' });
++      const prefix = path.startsWith('/core/') ? '../packages/core/dist/' : '../packages/web/dist/';
++      const relative = path.replace(/^\/(core|web)\//, '');
++      if (relative.includes('..') || !/^\/(core|web)\//.test(path)) return route.abort();
++      await route.fulfill({ contentType: path.endsWith('.wasm') ? 'application/wasm' : 'text/javascript', body: await readFile(new URL(prefix + relative, import.meta.url)) });
++    });
++    const page = await context.newPage(); await page.goto('https://journal.test/');
++    const result = await page.evaluate(async () => {
++      const { UpdateJournal } = await import('/web/storage/journal.js'); const { init } = await import('/core/index.js');
++      const runtime = await init('/core/wasm/editac_wasm_bg.wasm');
++      const engine = runtime.createEngine({ profile: 'v5', documentId: '45678901-4567-4567-8567-45678901abcd', epoch: '56789012-5678-4678-8678-56789012abcd', nodes: [{ text: 'a😀b' }] });
++      const checkpoint = engine.checkpoint(); const updates = []; const subscription = engine.subscribe({ type: 'updates' }, patch => { if (patch.update) updates.push({ identity: patch.identity, writerId: patch.writerId, sequence: patch.sequence, origin: patch.origin, bytes: patch.update.bytes }); });
++      const anchor = engine.anchor(engine.read().visible[0].id, 3, 'right'); engine.commit(engine.prepare({ kind: 'text', origin: 'journal:edit', command: { type: 'insert', at: anchor, text: 'B' } })); engine.releaseAnchor(anchor);
++      const expected = engine.read().visible[0].runs.map(r => r.text).join(''); subscription.dispose(); engine.dispose();
++      let journal = await UpdateJournal.open(indexedDB, 'real-journal'); let second, restored;
++      const nativeTransaction = IDBDatabase.prototype.transaction;
++      const nativeAdd = IDBObjectStore.prototype.add;
++      let completed = 0, abortAfterWrite = false, abortName = '';
++      IDBDatabase.prototype.transaction = function (...args) {
++        const tx = nativeTransaction.apply(this, args);
++        if (args[1] === 'readwrite') tx.addEventListener('complete', () => completed++);
++        return tx;
++      };
++      IDBObjectStore.prototype.add = function (...args) {
++        const request = nativeAdd.apply(this, args);
++        if (abortAfterWrite) request.addEventListener('success', () => this.transaction.abort());
++        return request;
++      };
++      try {
++        second = await UpdateJournal.open(indexedDB, 'real-journal');
++        const concurrent = await Promise.all([journal.append(updates[0]), second.append(updates[0])]);
++        if (completed !== 2) throw Error('Acknowledgment preceded native transaction completion');
++        const writer = { ...updates[0], writerId: updates[0].writerId + 1 };
++        const results = await Promise.all([journal.append(writer), second.append({ ...writer, sequence: writer.sequence + 1 })]);
++        let collision = ''; try { await journal.append({ ...updates[0], bytes: Uint8Array.of(0) }); } catch (e) { collision = e.name; }
++        abortAfterWrite = true;
++        try { await journal.append({ ...writer, sequence: writer.sequence + 2 }); } catch (e) { abortName = e.name; }
++        abortAfterWrite = false;
++        journal.close(); second.close(); journal = await UpdateJournal.open(indexedDB, 'real-journal');
++        const entries = await journal.read(checkpoint.identity); restored = runtime.restoreEngine(checkpoint.identity, checkpoint, entries.map(e => ({ identity: e.identity, bytes: e.bytes })));
++        return { expected, actual: restored.read().visible[0].runs.map(r => r.text).join(''), count: entries.length, duplicate: concurrent[0].updateId === concurrent[1].updateId, states: [...concurrent, ...results].map(r => r.state), durability: concurrent[0].durability, collision, abortName, completed, bytes: entries[0].bytes.length,
++          fixtures: { checkpoint: { ...checkpoint, bytes: Array.from(checkpoint.bytes) }, entries: entries.map(e => ({ ...e, bytes: Array.from(e.bytes) })) } };
++      } finally { IDBDatabase.prototype.transaction = nativeTransaction; IDBObjectStore.prototype.add = nativeAdd; journal.close(); second?.close(); restored?.dispose(); }
++    });
++    assert.equal(result.expected, 'a😀Bb'); assert.equal(result.actual, result.expected); assert.equal(result.count, 3); assert.equal(result.duplicate, true); assert.ok(result.bytes > 0);
++    assert.ok(result.states.every(s => s === 'localCommitted')); assert.equal(result.collision, 'JournalIntegrityError'); assert.equal(result.abortName, 'AbortError'); assert.equal(result.completed, 4); assert.equal(result.durability, 'strict'); facts.integration = result;
++  } finally { await context.close(); }
++});
++
++after(async () => {
++  try { await browser?.close(); } finally {
++    await controller?.close();
++    facts.teardown = { browserClosed: !browser?.isConnected(), browserProcessExited: !controller || controller.process().exitCode !== null, fixtureServersStarted: 0 };
++    await writeFile(join(evidence, 'harness.json'), JSON.stringify(facts, null, 2));
++    if (!process.env.EDITAC_JOURNAL_OUTPUT && facts.cases.every(c => c.passed)) await rm(evidence, { recursive: true });
++  }
++});

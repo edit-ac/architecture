@@ -1,0 +1,32 @@
+
+> edit-ac-workspace@0.0.0 build
+> npm run build --workspaces
+
+
+> @edit-ac/core@0.0.0 build
+> tsc --project tsconfig.json
+
+
+> @edit-ac/web@0.0.0 build
+> tsc --project tsconfig.json
+
+src/input/reconcile.ts(77,62): error TS2345: Argument of type 'NodeList' is not assignable to parameter of type 'NodeListOf<ChildNode>'.
+  The types returned by 'item(...)' are incompatible between these types.
+    Type 'Node | null' is not assignable to type 'ChildNode'.
+      Type 'null' is not assignable to type 'ChildNode'.
+src/input/reconcile.ts(85,96): error TS2345: Argument of type 'NodeList' is not assignable to parameter of type 'NodeListOf<ChildNode>'.
+  The types returned by 'item(...)' are incompatible between these types.
+    Type 'Node | null' is not assignable to type 'ChildNode'.
+      Type 'null' is not assignable to type 'ChildNode'.
+npm error Lifecycle script `build` failed with error:
+npm error code 2
+npm error path /Users/bpstr/Github/edit-ac/core/packages/web
+npm error workspace @edit-ac/web@0.0.0
+npm error location /Users/bpstr/Github/edit-ac/core/packages/web
+npm error command failed
+npm error command sh -c tsc --project tsconfig.json
+
+
+> @edit-ac/react@0.0.0 build
+> tsc --project tsconfig.json
+

@@ -1,0 +1,80 @@
+   Compiling editac-core v0.0.0 (/Users/bpstr/Github/edit-ac/core/crates/editac-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.33s
+     Running tests/moves.rs (target/debug/deps/moves-14c61dd1e83b3747)
+
+running 35 tests
+test absorbed_target_has_explicit_result ... ok
+test captured_structural_versions_survive_text_edits_and_selection_affinity ... ok
+test code_and_separator_moves_are_structural_and_do_not_modify_presentation_or_marks ... ok
+test container_move_retains_subtree_order_check_state_and_cross_subtree_selection ... ok
+test deleted_destination_rejects_preparation_and_retains_target_content ... ok
+test deleted_target_has_explicit_result ... ok
+test concurrent_move_and_destination_disable_keep_losing_move_and_recover_children_at_root ... ok
+test concurrent_before_version_change_makes_later_move_recoverable_in_six_orders ... ok
+test concurrent_container_cycle_keeps_losing_intention_and_all_content_in_six_orders ... ok
+test concurrent_same_target_move_move_and_edit_have_ranked_winner_in_six_orders ... ok
+test concurrent_disjoint_nested_moves_and_descendant_edit_coexist_in_six_orders ... ok
+test disabled_before_has_explicit_result ... ok
+test derived_multi_source_owner_moves_and_anchors_follow_the_same_sources ... ok
+test legacy_profile_never_acquires_v4_move_roots ... ok
+test disabled_destination_rejects_without_silently_moving_to_root ... ok
+test malformed_root_version_rejects ... ok
+test empty_owner_moves_without_replacing_its_empty_source ... ok
+test foreign_or_deleted_selection_rejects_before_mutation ... ok
+test mixed_batch_cycle_and_stale_version_reject_every_staged_move ... ok
+test concurrent_parent_version_change_makes_later_move_recoverable_in_six_orders ... ok
+test missing_targets_and_noncontainer_destination_are_rejected ... ok
+test leaf_reordering_before_sibling_and_append_preserve_sources ... ok
+test multiple_versioned_moves_commit_as_one_prepared_batch ... ok
+test opaque_target_and_destination_never_gain_a_guessed_structural_role ... ok
+test nested_leaf_move_preserves_unicode_marks_and_original_text_identity ... ok
+test self_and_descendant_cycles_reject_before_live_mutation ... ok
+test tombstoned_before_sibling_rejects_without_falling_back_to_append ... ok
+test stale_before_version_rejects_even_when_sibling_stays_under_parent ... ok
+test stale_parent_version_rejects_even_when_destination_stays_visible ... ok
+test stale_target_version_rejects_without_retargeting ... ok
+test concurrent_move_and_destination_tombstone_retain_all_live_sources_at_explicit_parents ... ok
+test wrong_parent_and_self_before_are_rejected ... ok
+test prepared_move_rejects_intervening_text_or_deletion_and_wrong_replica ... ok
+test depth_limit_accounts_for_every_descendant_and_rejects_whole_batch ... ok
+test production_moves_exchange_with_pinned_yjs_and_restore_concurrent_schedules ... ok
+
+test result: ok. 35 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.62s
+
+     Running tests/patches.rs (target/debug/deps/patches-195beb64aa1388b8)
+
+running 31 tests
+test block_only_batch_has_changed_node_without_text_range ... ok
+test dispose_during_callback_suppresses_later_listener_in_same_batch ... ok
+test document_drop_invalidates_outstanding_subscription_and_owned_patch_survives ... ok
+test disposal_is_idempotent_releases_capture_and_drop_unsubscribes ... ok
+test legacy_profile_text_format_and_structure_commits_also_publish_once ... ok
+test direct_structure_commit_has_one_batch_with_derived_owner_nodes ... ok
+test each_commit_excludes_older_pending_ranges_without_consuming_snapshot_evidence ... ok
+test extension_entry::invalid_content_in_a_mixed_command_batch_emits_no_patch_or_update ... ok
+test deleted_selection_endpoint_is_explicit_and_node_scopes_see_recovery ... ok
+test extension_entry::invalid_extension_descriptors_reject_and_future_data_survives_checkpoint ... ok
+test irrelevant_node_source_selection_listeners_are_silent ... ok
+test production_mixed_editor_batch_emits_once_with_all_touched_families ... ok
+test preparation_applicability_invalid_stale_and_noop_do_not_emit ... ok
+test new_listener_excludes_batches_already_queued_before_subscription ... ok
+test nested_commit_callbacks_can_read_prepare_commit_and_preserve_delivery_order ... ok
+test self_disposal_is_safe_and_subscription_after_commit_does_not_receive_old_batch ... ok
+test rich_and_block_format_are_single_batches_with_fixed_ranges ... ok
+test replay_is_one_remote_batch_and_duplicate_rejected_input_are_silent ... ok
+test storage_contract::storage_contract_frozen_v1_marks_and_original_source_identities_survive ... ok
+test extension_entry::extension_descriptors_commit_as_owned_patches_and_restore_without_callbacks ... ok
+test returned_errors_and_unwinding_panics_do_not_corrupt_commit_or_other_observers ... ok
+test selection_events_have_no_content_update_or_history_and_commit_resolves_anchor ... ok
+test split_join_batches_preserve_source_identity_and_report_visibility_changes ... ok
+test storage_contract::storage_contract_identity_failures_preserve_checkpoint_and_tail_for_recovery ... ok
+test text_batch_has_exact_version_origin_bytes_node_and_utf16_range ... ok
+test storage_contract::storage_contract_checkpoint_coverage_and_repeated_tail_are_idempotent ... ok
+test storage_contract::storage_contract_corrupt_or_incomplete_tail_never_publishes_partial_content ... ok
+test structural_history_multitransaction_work_is_one_batch_per_undo_redo ... ok
+test storage_contract::storage_contract_owned_patch_tail_survives_engine_disposal_and_reordering ... ok
+test undo_redo_emit_one_semantic_batch_and_preserve_remote_edits ... ok
+test reordered_duplicate_three_replica_batches_converge_with_fixed_distinct_counts ... ok
+
+test result: ok. 31 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+

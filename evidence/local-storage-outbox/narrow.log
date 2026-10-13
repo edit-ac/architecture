@@ -1,0 +1,26 @@
+✔ deterministic checkpoint coverage retains every pending identity and retransmittable real update (10.693584ms)
+✔ deterministic sync events, socket delivery and state vectors cannot acknowledge updates (2.755792ms)
+✔ deterministic absent negotiated receipt capability reports unknown durability and retains updates (0.791167ms)
+✔ deterministic wrong receipt documentId cannot prune pending updates (0.681792ms)
+✔ deterministic wrong receipt epoch cannot prune pending updates (0.573917ms)
+✔ deterministic wrong receipt schema cannot prune pending updates (0.456333ms)
+✔ deterministic wrong receipt profile cannot prune pending updates (0.466125ms)
+✔ deterministic wrong receipt writerId cannot prune pending updates (0.46ms)
+✔ deterministic wrong receipt sequence cannot prune pending updates (0.471458ms)
+✔ deterministic wrong receipt checksum cannot prune pending updates (0.533125ms)
+✔ deterministic wrong receipt updateId cannot prune pending updates (0.489583ms)
+✔ deterministic receipt acknowledgment and pruning wait for completion, not request success (0.582042ms)
+✔ deterministic receipt abort before-lookup retains outbox and permits retry (0.618375ms)
+✔ deterministic receipt abort after-write-success retains outbox and permits retry (0.478875ms)
+✔ deterministic quota, permission and receipt write failures propagate without pruning (0.58725ms)
+✔ deterministic duplicate/reordered durable receipts survive reopen and duplicate append (1.647375ms)
+✔ deterministic corrupt receipt or journal fails explicitly instead of hiding pending work (0.609792ms)
+✔ deterministic detached pending bytes and unsupported strict durability preserve identity (0.573708ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 407.433375

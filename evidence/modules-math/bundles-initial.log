@@ -1,0 +1,33 @@
+✖ production minimal graph omits renderer assets; enabled graph keeps pinned KaTeX lazy (742.852208ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 808.739209
+
+✖ failing tests:
+
+test at tests/math-bundles.test.mjs:8:1
+✖ production minimal graph omits renderer assets; enabled graph keeps pinned KaTeX lazy (742.852208ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'packages/web/dist/modules/vendor/katex.mjs',
+  +   'packages/web/dist/modules/math-renderer.js'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///Users/bpstr/Github/edit-ac/core/tests/math-bundles.test.mjs:14:33)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'packages/web/dist/modules/vendor/katex.mjs', 'packages/web/dist/modules/math-renderer.js' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
