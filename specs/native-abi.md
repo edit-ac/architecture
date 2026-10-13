@@ -1,0 +1,33 @@
+# Native preparation ABI v1
+
+NAT-1.2 defines a preparation bridge, not an iOS/Android SDK. It wraps the existing v5 semantic bridge in `core/crates/editac-ffi`, compiling the same `editac-wasm/src/bridge.rs` translation code against the portable engine. It exposes no Yrs document, borrowed slice, transaction, Rust pointer or mutable projection. The existing engine contracts are unchanged; native controls, IME, clipboard, accessibility, packaging and device support remain later gates.
+
+## Version and wire contract
+
+Pin UniFFI runtime and generator to **0.32.2** in the same Cargo dependency and lock. Generate Swift and Kotlin from the exact compiled native library metadata with the crate's configuration; never combine hand-written signatures with a different generator. `abiVersion()` reports ABI 1, `editac.registry.editor.v5`, `editac.yrs-yjs.editor.v5`, `utf16`, update encoding 1 and the UniFFI version. Creation accepts only v5 and canonical host-assigned document/epoch UUIDs. Restore and update validate the complete existing identity envelope before mutation. No migration is executed.
+
+`AnchorInput.offsetUtf16` is unsigned 32-bit UTF-16 code units (Swift `UInt32`, Kotlin `UInt`). It is not a byte/scalar count; the engine rejects surrogate splits. Committed ranges and detached patches retain existing UTF-16 units, patch version 1 and relative anchor semantics. Strings are owned Unicode values, transported by UniFFI's UTF-8 string encoding without changing the meaning of offset fields. Checkpoints, state vectors and updates are owned binary buffers (Rust `Vec<u8>`, Swift `Data`, Kotlin `ByteArray`); all 256 byte values must survive lowering/lifting. Handles/tokens are replica-scoped. Portable exported anchors carry version, document identity and relative position; import allocates a new local token.
+
+## Lifetime and executor
+
+Every `NativeEngine` is opaque and reference-counted. Creation/restoration constructs the sole document on its private named Rust worker. All operations on every foreign alias serialize on that executor. Callers may use different threads, but must avoid blocking a UI thread for expensive operations. This synchronous preparation ABI does not promise an async UI scheduler. The submission lock bounds accepted work to one synchronous caller; the worker channel has capacity one. No foreign callback interface is exported. No foreign code runs under a Rust transaction or submission lock; outputs are detached before returning.
+
+`dispose()` is idempotent, waits for an accepted in-flight operation, drops pending plans/anchors/history/document on the owning worker, closes its channel and joins it. Every other call after disposal returns typed `Disposed`, including cancellation. Dropping the final foreign reference also closes/joins the worker through Rust ownership. Owned results remain usable after disposal. Swift ARC and Kotlin's generated `close`/`destroy` release foreign references; hosts should explicitly dispose first. Aliases do not create independent writers.
+
+## Command, patch and cancellation boundary
+
+`executeBatch(commandsJson)` prepares and commits one existing bounded semantic batch in one FFI call. Editor command arrays are all validated before live mutation; no per-character method exists. Text insertion transports the whole string. The existing command/fragment/resource limits apply (2 MiB request JSON, 128 retained plans, 4,096 anchors, bounded commands/content). Failure in any preparation step leaves the committed document unchanged.
+
+`prepareBatch` returns an opaque plan token without mutation. `commitBatch` consumes that token once and returns `BatchResult { resultJson, patchJson }`; stale/released/canceled tokens fail before commit. `cancelBatch` releases an uncommitted plan; unknown/already released tokens are an idempotent no-op. Cancellation is ordered on the same executor and never interrupts or rolls back an accepted commit. Async host work must retain relative anchors and cancel its prepared plan before requesting commit. `releaseAnchor` releases local anchor ownership.
+
+Detached patch batches are returned with commits/updates/history; `takePatch` drains the latest unread patch once (`null` when empty). Hosts must consume every synchronous result; this ABI is not an unbounded patch event queue. The bridge's snapshots/projection deltas remain observational read data, not a second writable model. Remote update bytes and checkpoint metadata are admitted by the real engine, not a prepared replacement engine.
+
+## Errors, copies and checks
+
+UniFFI errors distinguish `InvalidInput`, `EngineRejected`, `InvalidHandle`, `ResourceLimit`, `Disposed` and `ExecutorUnavailable`. Underlying engine rejection preserves operation/reason in an owned message; unsupported identity/profile is rejected, never silently converted. Worker failures return `ExecutorUnavailable`; there are no success fallbacks.
+
+UniFFI copies owned input strings/bytes into Rust and owned results out to hosts; the existing restore/update boundary may make further staging copies. Actor submission moves owned payloads, not borrowed references. One two-command batch produces one FFI call and one detached patch, rather than character calls. NAT-1.2 checks the Rust lower/lift record encoding and audits both generated signatures. Actual per-host copy/call measurement belongs to NAT-1.3/1.4; no zero-copy or timing claim is made here.
+
+Named deterministic checks: `cargo +1.97.1 test -p editac-ffi --test native_abi --locked`, then `cargo +1.97.1 test -p editac-ffi --locked`; `tests/native/bounded-bindings.py` builds the native library, runs its pinned generator, audits language signatures and records hashes/counts. Shared fixed Unicode corpus: `tests/native/fixtures/bounded-abi.json`. Generated outputs are reproducible preparation artifacts; Swift/Kotlin host execution remains NAT-1.3/1.4.
+
+UniFFI is MPL-2.0; the project's source remains Apache-2.0. Do not modify vendor sources. Retain dependency attribution and upstream license in `crates/editac-ffi/THIRD_PARTY_NOTICES.md`. The generator procedure follows the [UniFFI library metadata guide](https://mozilla.github.io/uniffi-rs/latest/tutorial/foreign_language_bindings.html).
