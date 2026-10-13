@@ -132,7 +132,7 @@ Purpose: Check independent consumer and optional-loading boundaries as one bound
 Context: `tests/consumers/`; `tests/architecture/loading/`; `../architecture/specs/ecosystem-maintainability.md`.
 Dependencies: FIT-1.1, FIT-1.2.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Packed consumers work without workspace aliases; disabled heavy format/highlighting/cloud dependencies stay outside minimal loading. Default Task browser artifacts pass verification.md's 512 KB total / 32 KB editor JS gzip hard caps, including required lazy code, WASM glue and runtime dependencies; missing measurements or either overrun fail qualification. Report preferred-size results against 256 KB total / 16 KB JS and enabled optional costs separately (KB = 1,000 bytes).
+Acceptance: Packed consumers work without workspace aliases; disabled heavy format/highlighting/cloud dependencies stay outside minimal loading. Default Task browser artifacts pass verification.md's 512 KiB total / 32 KiB editor JS gzip hard caps, including required lazy code, WASM glue and runtime dependencies; missing measurements or either overrun fail qualification. Report preferred-size results against 256 KB total / 16 KB JS and enabled optional costs separately (KB = 1,000 bytes).
 
 Implementation:
 

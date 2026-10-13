@@ -8,6 +8,8 @@ The document never contains executable callbacks, downloaded plugins or renderer
 
 Subscriptions filter changed kind/range/selection. Stable renderer views receive patches and dispose all owned resources. Asynchronous resolver results carry request identity and cancellation; a stale response cannot mutate the document. Modules do not scan the entire document on each transaction.
 
+Markdown is an optional conversion/input capability over existing semantic nodes and marks, rather than a new CRDT content type. Its parser prepares validated interchange data and semantic commands for the same document owner. Hosts opt in explicitly; absent registration cannot trigger Markdown loading or shortcut interpretation. Capability reporting, disabled literal behavior, enabled grammar/fidelity and independent asset qualification follow formats.md and packages-release.md. Native and CLI consumers may include the shared Rust implementation without changing their platform semantics.
+
 ## First-party modules
 
 | Module | Required behavior | Boundary |

@@ -139,9 +139,9 @@ Baseline keyboard access, screen-reader editing and OS dictation work without th
 | [40 Mobile web](roadmaps/40-mobile-web.md) | 11 | 08, 38 | Touch/keyboard/viewport/API fallback and actual-device evidence; required by 10 |
 | [41 Mobile extensions](roadmaps/41-mobile-web-extensions.md) | 9 | 40, 25, 26, 27, 30; web assistance gates per task | Touch-accessible rich presenters, capability fallbacks and measured optional costs; required by 37 |
 
-Browser release qualification uses [gzip bundle budgets](specs/verification.md#browser-bundle-size-budgets): 512 KB total / 32 KB editor JS hard caps, with 256 KB total / 16 KB editor JS preferred sizes (KB = 1,000 bytes). Required WASM glue, runtime dependencies and lazy required code count toward the caps.
+Browser release qualification uses [gzip bundle budgets](specs/verification.md#browser-bundle-size-budgets): 512 KiB total / 32 KiB editor JS hard caps, with 256 KB total / 16 KB editor JS preferred sizes (KB = 1,000 bytes). Required WASM glue, runtime dependencies and lazy required code count toward the caps.
 
-Mobile baseline support does not load optional rich-content, converter, gesture or assistance packages. The proposed incremental baseline JS allowance is 5 KB gzip within the 32 KB JS hard cap, with event-driven idle behavior and bounded geometry work. Exact costs and support require real measurements; browser API presence alone is insufficient.
+Mobile baseline support does not load optional rich-content, converter, gesture or assistance packages. The proposed incremental baseline JS allowance is 5 KB gzip within the 32 KiB JS hard cap, with event-driven idle behavior and bounded geometry work. Exact costs and support require real measurements; browser API presence alone is insufficient.
 
 ## Editing regression suite
 
