@@ -21,6 +21,18 @@ Subscriptions filter changed kind/range/selection. Stable renderer views receive
 
 Publish capabilities separately for read/edit/copy/Markdown/native. A source fallback is preservation, not a claim of native rendering parity. Disabled UI modules must be absent from minimal bundles; their data remains recoverable.
 
+### Bounded reference descriptor
+
+The first reference presenter uses the existing opaque content-block envelope: `["module:editac.reference", 1, {"targetId": string, "label": string}]`. The host owns the opaque target identity; it is never interpreted as a URL or fetched on mount, recovery, render or export. Both fields are nonempty, single-line strings of at most 512 UTF-16 units; target IDs exclude control characters. The atom's committed text is the label fallback. Disabled or unknown renderers preserve tuple and text; Markdown exports the escaped label with an explicit identity-loss diagnostic. This bounded module provides block insertion; inline reference editing is a later extension-library boundary.
+
+The explicit presenter retains a stable range, stores its query outside the document and invokes only the configured host resolver after user activation. Every query owns an AbortSignal and monotonically increasing request identity. Query changes, target changes, composition, read-only, focus exit and disposal invalidate pending work. Only a current result may prepare/commit one atomic fragment through the engine and host commit port. Failed, canceled or invalid results preserve source.
+
+### Bounded image and table presenters
+
+The optional browser `contentModules` factory renders existing v1 opaque image/table tuples. A synchronous host image policy supplies an absolute HTTP(S) asset URL or denies loading; absent policy never loads the authored URL. Alt/title and original source remain inert metadata. Credential-bearing, executable and control-bearing URLs are rejected. Uploads and authentication remain host services.
+
+Simple table cells use labeled native controls for temporary text, selection, copy and composition. The portable prepared `tableCell` editor command carries owner ID, exact expected descriptor, zero-based row/column and bounded single-line text. Rust rejects stale/non-table/out-of-range/invalid edits before live mutation, retains marks on surviving text runs and unaffected cells, and updates the tuple plus inert tab/newline fallback in one atomic history group. The original source field remains import provenance; export uses the current rows. Disabled presenters preserve the tuple and fallback through storage recovery. Merged cells, nested blocks, spreadsheets and full native table editing are outside this boundary.
+
 ## Native preparation output
 
 The first browser release does not require native SDK parity. The native roadmap proves the portable boundary and estimates the remaining work with evidence. Use a pinned UniFFI runtime/generator initially; measure copies and call count before freezing it. MPL-2.0 dependency licensing does not change the project's Apache-2.0 source license; retain required notices and review any modifications to dependency files.
@@ -36,3 +48,7 @@ Sources: [UniFFI](https://mozilla.github.io/uniffi-rs/latest/), [UIKit TextKit](
 ## Full native and library follow-ups
 
 The preparation-only scope above applies to roadmap 09. Full requested SDK parity is delivered by [native-sdk-parity](native-sdk-parity.md) and roadmaps 16/17/18/22/23 for iOS, Android, macOS, Windows and Linux. [Extension-library](extension-library.md) and roadmap 21 supply portable public contracts and presenter conformance. Browser release remains independent, but the full-client milestone requires genuine mandatory native editing capabilities.
+
+## Interaction and assistance follow-ups
+
+The slash module follows [editor interactions](editor-interactions.md), qualified by INT-1.9 before browser release. Rich-content catalog-scale behavior remains in RCH-1.16. [Assistive input](assistive-input.md) defines an optional portable assistance descriptor and platform presenters in track 39; baseline accessible editing and native OS dictation remain required when it is absent.

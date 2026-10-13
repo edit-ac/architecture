@@ -91,10 +91,10 @@ Blocked behavior: Unchecked; name owner/unblock condition.
 - [ ] WIN-1.4 Project patches and map native selection.
 
 Purpose: projection.
-Context: `native/windows/src/Editac.Windows/projection/`.
+Context: `native/windows/src/Editac.Windows/projection/`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: WIN-1.2, WIN-1.3.
 Session scope: 15–45m; split if larger.
-Acceptance: Incremental patches preserve stable identity and selection across Unicode, bidi text and attachment boundaries.
+Acceptance: Incremental patches preserve stable identity and selection across Unicode, bidi text and attachment boundaries. The coordinate/range-mapping portion of NAT-04 covers selection direction and stale target rejection; full protocol sequences stay with the input owner.
 
 Implementation:
 
@@ -135,10 +135,10 @@ Blocked behavior: Unchecked; name owner/unblock condition.
 - [ ] WIN-1.6 Integrate composition and OS replacements.
 
 Purpose: composition.
-Context: `native/windows/src/Editac.Windows/input/`.
+Context: `native/windows/src/Editac.Windows/input/`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: WIN-1.5.
 Session scope: 15–45m; split if larger.
-Acceptance: Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs.
+Acceptance: Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs. Qualify NAT-04 through deterministic native protocol fixtures; preserve captured targets/composition and supply OS/IME runbooks and preliminary observations for DEL-1.7 actual-device qualification.
 
 Implementation:
 
@@ -157,10 +157,10 @@ Blocked behavior: Unchecked; name owner/unblock condition.
 - [ ] WIN-1.7 Route commands, history and read-only state.
 
 Purpose: commands.
-Context: `native/windows/src/Editac.Windows/commands/`.
+Context: `native/windows/src/Editac.Windows/commands/`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: WIN-1.5, WIN-1.6.
 Session scope: 15–45m; split if larger.
-Acceptance: Existing native actions honor shared history/capabilities and read-only state; later adapters must use this same mutation gate.
+Acceptance: Existing native actions honor shared history/capabilities and read-only state; later adapters must use this same mutation gate. NAT-07 command enablement/routing uses the appropriate first-party profile and injected transfer/service ports; unavailable optional services are explicit. Full NAT-10/NAT-11 transfer behavior remains with the clipboard owner, not an entry prerequisite here.
 
 Implementation:
 
@@ -289,10 +289,10 @@ Blocked behavior: Unchecked; name owner/unblock condition.
 - [ ] WIN-1.13 Adapt native clipboard and drop formats.
 
 Purpose: clipboard.
-Context: `native/windows/src/Editac.Windows/clipboard/`.
+Context: `native/windows/src/Editac.Windows/clipboard/`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: WIN-1.7, WIN-1.10, WIN-1.11, WIN-1.12.
 Session scope: 15–45m; split if larger.
-Acceptance: Rich copy/cut/paste preserves supported structure; hostile data is diagnosed, while read-only/cancelled drops cannot mutate.
+Acceptance: Rich copy/cut/paste preserves supported structure; hostile data is diagnosed, while read-only/cancelled drops cannot mutate. NAT-10/NAT-11 adds multiple views, delayed providers, cross-app copy/move and source preservation under the shared transfer contract; qualify platform clipboard lifetime.
 
 Implementation:
 
@@ -355,10 +355,10 @@ Blocked behavior: Unchecked; name owner/unblock condition.
 - [ ] WIN-1.16 Expose accessible text and editor actions.
 
 Purpose: accessibility-text.
-Context: `native/windows/src/Editac.Windows/accessibility/`.
+Context: `native/windows/src/Editac.Windows/accessibility/`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: WIN-1.6, WIN-1.7, WIN-1.8.
 Session scope: 15–45m; split if larger.
-Acceptance: Native accessibility exposes text, selection, command/read-only state and keyboard focus at declared scaling settings.
+Acceptance: Native accessibility exposes text, selection, command/read-only state and keyboard focus at declared scaling settings. NAT-13/NAT-14 checks current accessible text geometry and safe text-service lock/reentrancy behavior; record actual platform evidence.
 
 Implementation:
 
@@ -462,15 +462,37 @@ Evidence: Commands/counts/revisions in progress.
 Handoff: Last substep and next action.
 Blocked behavior: Unchecked; name owner/unblock condition.
 
+### Task WIN-2.4 — Add simulator or OS-host clipboard format regressions
+
+- [ ] WIN-2.4 Add simulator or OS-host clipboard format regressions.
+
+Purpose: Deliver the named transfer boundary with reproducible evidence and explicit qualification status.
+Context: `native/`; [native clipboard cases](../tests/native-clipboard-cases.md); `../architecture/specs/native-sdk-parity.md`
+Dependencies: WIN-1.13, WIN-1.16, WIN-2.2.
+Session scope: One named boundary; target 15–45 minutes plus focused validation. These are future tasks; this roadmap revision does not execute native tests or authorize device runs.
+Acceptance: Windows test host/VM runs NCL-01–NCL-20 against the installed native control and OS clipboard, with declared unsupported OS features. Exercise actual menu/shortcut APIs, rich and literal flavors, formatting, two views/apps, delayed providers, denial, read-only, undo and disposal. Headless/mock transport checks remain separately labeled; emulator/VM success is not real-device, IME or accessibility qualification.
+
+Implementation:
+
+- [ ] WIN-2.4-I1 Create the named dispatcher suite and deterministic fixture app on Windows test host/VM. Seed and read the OS pasteboard/clipboard through documented test APIs, record selected virtual device/OS image and native SDK package hash, and author a step-by-step physical-device handoff for NCL-21–NCL-28. Include platform plain-paste shortcuts and reachable touch commands; do not run this future task during roadmap editing.
+
+Validation:
+
+- [ ] WIN-2.4-V1 `powershell -NoProfile -File native/windows/scripts/check.ps1 -Suite clipboard-host`. Record virtual versus physical provenance and each unsupported/failed clipboard flavor. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+
+Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
+Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+
 ### Task WIN-2.3 — Hand off exact platform qualification inputs
 
 - [ ] WIN-2.3 Hand off exact platform qualification inputs.
 
 Purpose: qualification-readiness.
-Context: `native/windows/qualification/`; `native/windows/capability.json`.
-Dependencies: WIN-2.2.
+Context: `native/windows/qualification/`; `native/windows/capability.json`. [additional interaction cases](../tests/desktop-editing-cases.md).
+Dependencies: WIN-2.2, WIN-2.4.
 Session scope: 15–45m; split if larger.
-Acceptance: Every mandatory capability links implemented tests/artifacts; real device, IME, accessibility and OS-support claims await roadmap 20.
+Acceptance: Every mandatory capability links implemented tests/artifacts; real device, IME, accessibility and OS-support claims await roadmap 20. Hand off the owned NAT/SEL/MOV/CMD fixtures, PRF-07 device runbooks and any preliminary observations with unqualified status. DEL-1.7 owns mandatory actual-device/IME/performance qualification; this readiness handoff cannot claim support from synthetic or unmeasured inputs. Include NCL simulator/host receipts and an unchecked physical-device transfer matrix; DEL-1.9 and DEL-1.10 own the actual hardware runs.
 
 Implementation:
 

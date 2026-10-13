@@ -10,6 +10,8 @@ Upstream entry gates: `02-engine.md` complete at current source revision with pa
 
 ## Execution rules
 
+Exit gate: retain all task-specific checks and pass the unfiltered [baseline typing/rendering gate](../specs/web.md#baseline-typing-and-rendering-guarantees), `npm run check:browser-baseline`, against current built artifacts. WEB-1.2 owns whitespace/presentation and shared mounting; WEB-1.8 owns heading-end destination/caret. Planned tracks 38/42 do not postpone these guarantees.
+
 Each iteration may implement at most one parent task, including all its implementation and validation substeps. Target 15–45 minutes plus validation; if a boundary is too large, stop with a precise proposed split for the controller. Pick a task only when every named dependency is implemented and validated. Other ready tasks are permitted independent work; a roadmap entry gate remains mandatory for its dependents. Do not launch this roadmap while its upstream gate is unavailable.
 
 Create named checks before invoking them. Record nonzero executed/passed/failed/skipped counts; missing tests and zero-match Rust filters fail acceptance. Run the narrow check, then relevant integration checks. Use prepared fixtures and transports only. No model API tests, live dogfood, background runner startup or publication outside an explicit release task.
@@ -43,14 +45,14 @@ Blocked behavior: Leave `WEB-1.1` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO w
 - [ ] WEB-1.2 Render and map a single contenteditable root.
 
 Purpose: Deliver render and map a single contenteditable root as one reviewable boundary.
-Context: `packages/web/src/dom/render.ts`; `tests/browser/render.spec.ts`; `../architecture/specs/web.md`.
+Context: `packages/web/src/dom/render.ts`; `packages/web/src/surface.ts`; `tests/browser/render.spec.ts`; `tests/browser/web-example.test.mjs`; `../architecture/specs/web.md`.
 Dependencies: WEB-1.1.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Text/heading/marks/lists render; a one-character edit does not replace unrelated nodes; read-only rendering uses safe text/attributes.
+Acceptance: Text/heading/marks/lists render; a one-character edit does not replace unrelated nodes; read-only rendering uses safe text/attributes. Enforce the baseline typing/rendering guarantees in specs/web.md: exact leading/trailing/repeated authored spaces have visible advance across paragraphs, headings, marked runs, list items and code, including incremental updates and heading tag replacement under ordinary host CSS. Both public mount paths and examples share adapter assembly/defaults, reject duplicate root ownership and release adapters without disposing a borrowed engine.
 
 Implementation:
 
-- [ ] WEB-1.2-I1 Render semantic blocks/marks in one contenteditable root, with stable node-to-DOM mapping and explicit noneditable atoms. Patch only changed spans.
+- [ ] WEB-1.2-I1 Render semantic blocks/marks in one contenteditable root, with stable node-to-DOM mapping and explicit noneditable atoms. Patch only changed spans. Own whitespace presentation in the renderer and reuse the shared surface binding in persistent mounts and host-owned examples.
 
 Validation:
 
@@ -82,13 +84,35 @@ Evidence: Progress entry `WEB-1.3` with changed paths, exact command/result, sou
 Handoff: Record the last completed substep, changed symbols/files, exact failing fixture or missing fact, and next bounded action for `WEB-1.3`.
 Blocked behavior: Leave `WEB-1.3` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with reason, owner/unblock condition and retry trigger. Select another dependency-ready task in this track; if none exists, report the gate and stop instead of polling.
 
+### Task WEB-1.13 — Qualify the input and composition protocol before routing
+
+- [ ] WEB-1.13 Qualify the input and composition protocol before routing.
+
+Purpose: Resolve the pre-input qualification boundary using the delivered engine, storage, DOM renderer and selection bridge.
+Context: `tests/browser/input-policy.spec.ts`; `fixtures/browser-input-policy/`; `packages/web/src/input/protocol.ts`; `packages/web/src/dom/`; `scripts/test-browser.mjs`; `../architecture/decisions/004-browser-input-composition.md`; `../architecture/specs/web.md`; `../architecture/specs/editing-regression-suite.md` (G01/G05/G09 and Input and command protocol).
+Dependencies: WEB-1.3.
+Session scope: One protocol and qualification probe; reuse the packed-WASM/storage/selection fixture. Create only the named paths and directly required test/configuration glue. Production text routing remains WEB-1.4; production composition/remote routing remains WEB-1.6/1.7. Track 42's shared recipe driver is a later integration boundary and is not an entry prerequisite here.
+Acceptance: A versioned ADR fixes native temporary composition ownership, buffered intermediate updates, finalization/cancellation, blur/read-only/dispose handling, stable-target remote overlap/deletion policy, intent identity/terminal disposition, commit-key handling and identified renderer-echo suppression. Its implementation basis is nonzero passing real-DOM/real-engine protocol probes, including duplicate notifications followed by a deliberate identical edit. Drafting the ADR alone does not pass. Qualified browser mechanics and prepared event replay are explicitly separated from actual OS/IME/device support evidence.
+
+Implementation:
+
+- [ ] WEB-1.13-I1 Build a minimal input-protocol probe around real packed engine commands, production renderer/selection/storage, real DOM mutations and actual protocol handlers. Capture native browser key/input/observer traces; exercise prepared missing/noncancelable/observer-first/duplicate permutations, separate composition sessions and commit keys, buffered finalization/cancel, remote insertion/deleted stable targets and disposed generations. Define the ADR from the observed outcomes before production routing changes. Track attributable commit/update/history/journal effects and use bounded generation-aware settling without fixed sleeps; identity cannot be text equality or a blanket debounce.
+
+Validation:
+
+- [ ] WEB-1.13-V1 Create and run npm run test:browser -- input-policy against pinned Chromium/Firefox/WebKit with the real packed WASM; assert authored content/caret expectations, final disposition, one commit per real intent, zero intermediate/canceled commits, retained independent deliberate edits and identified echo suppression. Record exact command/exit, nonzero executed/passed/failed/skipped counts per engine, source/fixture/artifact hashes and native-versus-prepared trace provenance. Run relevant render/selection regressions for changed shared paths. Missing engines/checks or skipped required mechanics remain incomplete; actual OS IME/device runs remain final qualification work.
+
+Evidence: Progress entry `WEB-1.13` and `../architecture/evidence/browser-input-policy/receipt.json` identify the ADR revision, probe/engine revisions, passing case/guard coverage, actual browser profiles, retained traces and qualification limits.
+Handoff: Record last completed substep, missing proof or minimal failing trace, exact changed paths and next bounded action for `WEB-1.13`.
+Blocked behavior: Leave `WEB-1.13` unchecked with owner/unblock condition/retry trigger. Propose a controller split if the probe exceeds the session boundary; preserve its acceptance. WEB-1.4 remains dependent on passing qualification.
+
 ### Task WEB-1.4 — Reconcile ordinary input exactly once
 
 - [ ] WEB-1.4 Reconcile ordinary input exactly once.
 
 Purpose: Deliver reconcile ordinary input exactly once as one reviewable boundary.
 Context: `packages/web/src/input/text.ts`; `tests/browser/input.spec.ts`; `../architecture/specs/web.md`.
-Dependencies: WEB-1.3.
+Dependencies: WEB-1.13.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
 Acceptance: Typing/deleting never double-applies, model and DOM agree after each input, and unrelated DOM remains intact.
 
@@ -170,19 +194,44 @@ Evidence: Progress entry `WEB-1.7` with changed paths, exact command/result, sou
 Handoff: Record the last completed substep, changed symbols/files, exact failing fixture or missing fact, and next bounded action for `WEB-1.7`.
 Blocked behavior: Leave `WEB-1.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with reason, owner/unblock condition and retry trigger. Select another dependency-ready task in this track; if none exists, report the gate and stop instead of polling.
 
+### Task WEB-1.14 — Add atomic heading-end Enter to the packed engine
+
+- [ ] WEB-1.14 Add atomic heading-end Enter to the packed engine.
+
+Purpose: Deliver the missing engine/WASM prerequisite for context-appropriate heading-end Enter without separate live split/format transactions.
+Context: `crates/editac-core/src/commands/editor.rs`; `crates/editac-core/src/editor.rs`; `crates/editac-core/tests/heading_end.rs`; `crates/editac-wasm/src/bridge.rs`; `packages/core/src/engine.ts`; `packages/core/src/index.ts`; `tests/wasm-commands.test.mjs`; `tests/wasm-command-types.ts`; `crates/editac-core/src/anchors.rs` (reuse existing routing); `../architecture/specs/engine.md` (Atomic heading-end Enter); `../architecture/decisions/005-engine-command-result-caret.md`; `../architecture/evidence/browser-keyboard/iteration-8/controller-split.md`.
+Dependencies: WEB-1.7.
+Session scope: One additive prepared command and packed binding, including named Rust/WASM checks and directly required glue. The user/controller authorizes these engine and command-API changes here; this is prerequisite implementation within this track, not an external authorization wait. WEB-1.8 owns the subsequent browser adapter continuation. Preserve current v5 schema, source contracts and prior evidence.
+Acceptance: Rust `HeadingEnd { owner, at }` and packed `{ type: "headingEnd", owner, at }` stage the entire operation before one live commit. A nonempty heading's end cut preserves its identity/level/text/marks, creates one following empty paragraph and returns a separate engine-owned fresh-source result caret at offset zero there; input-cut routing stays unchanged. Native prepared/commit result_caret and packed CommitResult.caret obey Decision 005 reservation, resource, release and lifetime rules. Selected and cross-block replacement work in the same prepared batch. `can`, stale/invalid/read-only/disposed rejection are side-effect free under the existing boundary policies. One local update/history group and peer-preserving undo/redo pass. Interior/empty headings and list/quote/code behavior remain with their existing commands.
+
+Implementation:
+
+- [ ] WEB-1.14-I1 Implement and export the additive headingEnd command under the authoritative engine contract, including staged destination attributes, real prepared-batch selected replacement, stable resulting caret, admission/resource checks and selective history. Create independently authored deterministic Rust and packed-WASM/type cases; use real engine updates and fixed peer schedules. Adapters must not guess generated owner IDs or emulate the operation using two live commits.
+- [ ] WEB-1.14-I2 Complete the open C2 under Decision 005: stage admitted fresh-source Create + Place + Join + Split; retain PreparedEditorEdit.result_caret and return EditorCommit.result_caret, expose optional branded CommitResult.caret, and reserve its token/anchor capacity before live mutation. Qualify the shared-source sibling, follow-up typing, selected/cross-block, recovery and reservation/lifetime guards with unchanged original input-anchor behavior. This assignment authorizes the new result fields and construction; preserve historical failures rather than treating old input cuts as output carets.
+
+Validation:
+
+- [ ] WEB-1.14-V1 Run cargo test -p editac-core --test heading_end --locked --offline; npm run build:wasm; npm run build; node --test tests/wasm-commands.test.mjs; npm run typecheck. Every new Rust/WASM heading-end case must execute and pass; record exact command/exit and nonzero executed/passed/failed/skipped counts, semantic update/history effects, source/packed-artifact/fixture hashes and preserved failures. Run relevant anchor/projection/editor/history regressions and native bridge reservation checks for changed shared paths, including the previously failed shared-source guards under Decision 005. No paid inference or provider transports.
+
+Evidence: Progress entry `WEB-1.14` and `../architecture/evidence/engine-heading-end/receipt.json` map each contract criterion to actual passing cases and record immutable source, implementation and packed-artifact revisions/hashes.
+Handoff: Record last completed substep, changed symbols/files, exact missing proof or failing fixture and next bounded action for `WEB-1.14`.
+Blocked behavior: Keep `WEB-1.14` unchecked until its command is qualified. Propose a concrete split if it outgrows the session boundary. WEB-1.8-C2/V1 remain pending on this prerequisite; unchanged absence of the API is the assigned implementation work, not a reason to repeat dependency scans.
+
 ### Task WEB-1.8 — Bridge structural keyboard commands and undo
 
 - [ ] WEB-1.8 Bridge structural keyboard commands and undo.
 
 Purpose: Deliver bridge structural keyboard commands and undo as one reviewable boundary.
-Context: `packages/web/src/input/keyboard.ts`; `tests/browser/keyboard.spec.ts`; `../architecture/specs/web.md`.
-Dependencies: WEB-1.7.
+Context: `packages/web/src/input/keyboard.ts`; `tests/browser/keyboard.spec.ts`; `../architecture/specs/web.md`; `../architecture/specs/editor-interactions.md` (Tab policy and keyboard shortcuts).
+Dependencies: WEB-1.14.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Cross-block splits/joins and list indentation preserve selection; keyboard/menu undo use only the semantic history and remote edits stay excluded.
+Acceptance: Enter creates the context-appropriate block while Shift+Enter inserts a same-block hard break (literal LF in code); selected replacement, cross-block splits/joins and list indentation preserve selection. Enforce specs/web.md baseline heading-end behavior with an immediately following list, with and without trailing spaces: native selection/Enter, exact new paragraph/caret, next typed sentinel, unchanged list identity/parent/text, one commit/history boundary, and undo/redo. Toolbar formatting retains the captured selection. Tab/Shift+Tab indent/outdent applicable lists and indent/dedent code while preserving authored whitespace and selection direction; in prose they move focus forward/backward without document updates. Escape then Tab/Shift+Tab provides one-shot forward/backward focus escape from code/lists without mutation. Inapplicable list actions preserve native focus escape. Platform navigation follows specs/editor-interactions.md; keyboard/menu undo use only semantic history and exclude remote edits. Track 38 extends the regression matrix and table navigation once table presenters exist; basic guarantees remain baseline responsibilities.
 
 Implementation:
 
-- [ ] WEB-1.8-I1 Handle Enter/Backspace/Tab/list navigation and platform historyUndo/historyRedo using engine commands; retain native navigation where correct. Add toolbar command applicability.
+- [ ] WEB-1.8-I1 Handle Enter/Shift+Enter/Backspace/Delete/contextual Tab/list navigation and platform historyUndo/historyRedo using engine commands; retain native navigation where correct. Add toolbar command applicability.
+- [ ] WEB-1.8-I2 Replace heading-end-needs-engine-command with the qualified headingEnd command from WEB-1.14, consume and release its CommitResult.caret under Decision 005, including selected replacement and stable caret/history behavior; preserve prior C1 evidence and complete the existing C2 continuation before the full unfiltered keyboard check.
+- [ ] WEB-1.8-I3 Verify explicit Shift+Tab behavior: list outdent, single-caret and multiline code dedent, native backward focus in prose, and Escape–Shift+Tab backward escape from code/lists. Reuse existing passing list/code cases and execute the added native backward-focus cases; any repair must preserve selection direction, whitespace, composition ownership and zero document/history/journal effects for focus-only actions.
 
 Validation:
 
@@ -197,10 +246,10 @@ Blocked behavior: Leave `WEB-1.8` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO w
 - [ ] WEB-1.9 Implement internal-fragment and literal clipboard.
 
 Purpose: Deliver implement internal-fragment and literal clipboard as one reviewable boundary.
-Context: `packages/web/src/clipboard/fragment.ts`; `tests/browser/clipboard.spec.ts`; `../architecture/specs/web.md`.
+Context: `packages/web/src/clipboard/fragment.ts`; `tests/browser/clipboard.spec.ts`; `../architecture/specs/web.md`.; `crates/editac-core/src/commands/editor.rs`; `crates/editac-wasm/src/bridge.rs`; `packages/web/src/clipboard/html.ts`; `../architecture/specs/formats.md`
 Dependencies: WEB-1.8.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Copy/cut across blocks round-trips supported semantics; malformed payloads never execute markup or cause partial edits; literal paste remains literal.
+Acceptance: Copy/cut across blocks round-trips supported semantics; malformed payloads never execute markup or cause partial edits; literal paste remains literal. Include native-menu and beforeinput-only mobile paste, noncancelable event replay, plain paste commands and Ctrl/Command+Shift+V (plus macOS Command+Option+Shift+V), codec precedence, safe rich HTML, supported marks/headings/code/lists/quotes, single undo/redo and zero edits after failed cut/canceled async paste. Full Markdown dialect and extension codecs retain their named future owners.
 
 Implementation:
 
@@ -266,7 +315,7 @@ Purpose: Deliver add accessibility checks and device test protocol as one review
 Context: `tests/manual/browser-input.md`; `tests/browser/accessibility.spec.ts`; `../architecture/specs/web.md`.
 Dependencies: WEB-1.11.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Automated mechanics pass and the manual protocol lists steps/expected outcomes and required devices. Device availability does not block this implementation track; actual support evidence belongs to REL-1.6.
+Acceptance: Automated mechanics pass and the manual protocol lists steps/expected outcomes and required devices. Device availability does not block this implementation track; actual support evidence belongs to REL-1.6. The manual protocol must include mobile native menu and keyboard plain-paste variants, clipboard permission denial and actual iOS/Android browser device records; no native SDK tests run in this track.
 
 Implementation:
 

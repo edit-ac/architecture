@@ -6,7 +6,7 @@ Status: IN_PROGRESS
 
 Workspace: `core` (sibling of `architecture`). Deliver only the outcomes below. Read `../architecture/specs/verification.md`, `../architecture/specs/verification.md` and the active task's named context. Paths below are relative to `core` unless explicitly prefixed with `../architecture/`. Planned files are created by their task. Source is controller-owned; write state/evidence in the separate progress file.
 
-Upstream entry gates: `08-sdk-integration.md` complete at current source revision with passing artifact evidence.
+Upstream entry gates: `08-sdk-integration.md`, `38-editor-interactions.md` and `40-mobile-web.md` complete at current source revisions with passing artifact evidence, including actual baseline input/accessibility observations.
 
 ## Execution rules
 
@@ -28,7 +28,7 @@ Acceptance: Each browser prerequisite is complete at reviewed revisions; no nati
 
 Implementation:
 
-- [ ] REL-1.1-I1 Check current browser, storage, collaboration, Markdown, module and SDK evidence and record artifact hashes. Native preparation and CLI do not block this browser gate.
+- [ ] REL-1.1-I1 Check current browser, storage, collaboration, Markdown, module, SDK, INT-1.14 interaction/device and MWB-1.11 mobile-browser evidence and record artifact hashes. Reject missing mandatory case IDs and synthetic-only OS/AT claims. Native preparation and CLI do not block this browser gate.
 
 Validation:
 
@@ -46,11 +46,11 @@ Purpose: Deliver build feature-equivalent performance baselines as one reviewabl
 Context: `benchmarks/baselines/`; `benchmarks/manifest.json`; `../architecture/specs/verification.md`.
 Dependencies: REL-1.1.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Benchmark manifests declare versions, features/device/network settings and differences; no disabled durability or hidden WASM bytes create an artificial win.
+Acceptance: Benchmark manifests declare versions, features/device/network settings and differences; no disabled durability or hidden WASM bytes create an artificial win. Minimal and feature-equivalent configurations are separate; exact optimized editor versions, fixture hashes, primary-source configuration references and unavoidable differences are retained for DOC-1.29/1.30.
 
 Implementation:
 
-- [ ] REL-1.2-I1 Pin optimized Tiptap, Lexical and plain-contenteditable baselines with comparable schema, collaboration, persistence and UI; record unavoidable capability differences.
+- [ ] REL-1.2-I1 Pin optimized Tiptap, Lexical and plain-contenteditable baselines with comparable schema, collaboration, persistence and UI; record unavoidable capability differences. Follow the public comparison evidence contract in verification.md; keep plain-contenteditable explicitly a limited reference, itemize required/optional bytes and document reproducible hardware/network/build/warmup/order/sample profiles.
 
 Validation:
 
@@ -68,11 +68,11 @@ Purpose: Deliver measure loading, editability and paste as one reviewable bounda
 Context: `benchmarks/browser/`; `../architecture/evidence/performance.md`; `../architecture/specs/verification.md`.
 Dependencies: REL-1.2.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Task/Long targets are measured on declared desktop/phone profiles; Large/Aged are diagnostic until separately qualified; failures remain explicit.
+Acceptance: Task/Long targets are measured on declared desktop/phone profiles; Large/Aged are diagnostic until separately qualified; failures remain explicit. Public comparison evidence covers distinct first-visible/edit-ready timestamps, HTML/Markdown paste, input-to-visible latency, large-document edits, save/restore and reconnect; missing metrics remain Not yet measured.
 
 Implementation:
 
-- [ ] REL-1.3-I1 Measure fixed corpus cold/warm samples including transfer/decode/compile/restore/DOM/input costs, first visible and first accepted edit, p50/p95/p99 and raw samples.
+- [ ] REL-1.3-I1 Measure fixed corpus cold/warm samples including transfer/decode/compile/restore/DOM/input costs, first visible and first accepted edit, p50/p95/p99 and raw samples. Include HTML paste, actual edit/visible-update timestamps, fixed large-document operations, save/restore and reconnect through prepared local transports; export sanitized profile-linked samples and reproducible commands for DOC-1.30, with failures and insufficient-sample results intact.
 
 Validation:
 
@@ -90,7 +90,7 @@ Purpose: Deliver measure leaks and backpressure as one reviewable boundary.
 Context: `tests/browser/stress.spec.ts`; `../architecture/evidence/stress.md`; `../architecture/specs/verification.md`.
 Dependencies: REL-1.3.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: No monotonic retained-reference growth; bounded queue/recovery policy works; exact iterations and memory samples are retained.
+Acceptance: No monotonic retained-reference growth; bounded queue/recovery policy works; exact iterations and memory samples are retained. Retain comparison-profile identities and remote-burst latency/backpressure samples alongside mount/edit/destroy memory; DOC-1.30 consumes these artifacts without new measurements.
 
 Implementation:
 

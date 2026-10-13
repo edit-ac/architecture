@@ -249,15 +249,59 @@ Handoff: Record the last completed substep, relevant symbols, remaining acceptan
 Blocked behavior: Leave `EXT-1.10` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with reason, owner/unblock condition and bounded retry trigger. Continue another dependency-ready parent only in a later iteration; if none exists, report the external gate without polling.
 
 
+### Task EXT-1.12 — Publish validated first-party configuration profiles
+
+- [ ] EXT-1.12 Publish validated first-party configuration profiles.
+
+Purpose: Publish validated first-party configuration profiles within the existing editor architecture.
+Context: `packages/core/src/extensions/`; `fixtures/extensions/profiles/`; `tests/extension-profiles.test.mjs`; `../architecture/specs/extension-library.md`; [additional interaction cases](../tests/desktop-editing-cases.md).
+Dependencies: EXT-1.5, EXT-1.6, EXT-1.9.
+Session scope: One named behavior boundary and focused validation; use the existing qualified primitives. If it exceeds one bounded iteration, record the remaining acceptance and obtain a controller split before implementation.
+Acceptance: FPX-01–FPX-03 and FPX-05–FPX-08 qualify baseline/preset configuration, versions/conflicts, deterministic precedence, data-preserving disablement and lifecycle. Known contract fixtures stand in for future features; their real combinations remain downstream evidence.
+
+Implementation:
+
+- [ ] EXT-1.12-I1 Publish versioned core/document-tools/code-tools profile contracts and validate dependency/capability/precedence before activation. Reuse registry/conformance/lifecycle interfaces; wire downstream profiles when their features qualify, without claiming their current availability.
+
+Validation:
+
+- [ ] EXT-1.12-V1 node --test tests/extension-profiles.test.mjs. Permute legal order, inject duplicate/incompatible registration and callback failures, check absent-feature imports and repeated teardown in packed consumers. Record exact revisions, fixture IDs, commands and nonzero executed/passed/failed/skipped counts. Missing tests, zero matches and skipped required cases fail; retain failures and native/device limitations.
+
+Evidence: Progress entry `EXT-1.12` links immutable implementation/profile/fixture revisions and artifacts under `../architecture/evidence/desktop-interactions/`; source checkboxes remain templates.
+Handoff: Record last completed substep, failing case/missing primitive, changed paths and next bounded action for `EXT-1.12`.
+Blocked behavior: Leave `EXT-1.12` unchecked with owner, unblock condition and retry trigger; never replace missing qualified engine behavior with a DOM-only workaround.
+
+### Task EXT-1.13 — Define formatting-preserving extension transfer codecs
+
+- [ ] EXT-1.13 Define formatting-preserving extension transfer codecs.
+
+Purpose: Deliver the named transfer boundary with reproducible evidence and explicit qualification status.
+Context: `crates/editac-core/`; `fixtures/extensions/clipboard/`; `tests/extension-formatting.test.mjs`; `../architecture/specs/extension-library.md`; [native clipboard cases](../tests/native-clipboard-cases.md)
+Dependencies: EXT-1.4, EXT-1.6, EXT-1.12.
+Session scope: One named boundary; target 15–45 minutes plus focused validation. These are future tasks; this roadmap revision does not execute native tests or authorize device runs.
+Acceptance: Table, image, reference, math and other registered extension codecs declare supported inline/block formatting and preserve semantic data through copy/cut/paste, import/export and undo. Table cells preserve marks, links, code and paragraph styles plus admitted row/column/span/header metadata. Unknown or unavailable extensions preserve bounded inert source and show explicit fallback; no silent flattening, code/formula execution or asset fetch.
+
+Implementation:
+
+- [ ] EXT-1.13-I1 Extend codec descriptors with formatting capabilities and prepared-transfer entry points. Author portable conformance fixtures for mixed table-cell selections, nested inline content, captions, references/math, checked resource limits, version migration, absent presenters/codecs, plain paste and two-view/native transfer ownership. Make every presenter consume the same atomic prepared edit and formatting policy.
+
+Validation:
+
+- [ ] EXT-1.13-V1 `node --test tests/extension-formatting.test.mjs`. Use deterministic codecs and prepared data only; assert formatting, history, selection, failure atomicity and preserved-source fallback. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+
+Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
+Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+
 ### Task EXT-1.11 — Record the public library integration handoff
 
 - [ ] EXT-1.11 Implement and validate record the public library integration handoff.
 
 Purpose: Give platform and final release tracks reproducible extension contracts and artifact evidence.
 Context: `docs/extensions/`; `fixtures/extensions/capabilities.json`; `../architecture/evidence/extension-library.md`; `tests/extension-consumers.test.mjs`; `../architecture/specs/extension-library.md`.
-Dependencies: EXT-1.7, EXT-1.8, EXT-1.9, EXT-1.10.
+Dependencies: EXT-1.7, EXT-1.8, EXT-1.9, EXT-1.10, EXT-1.12, EXT-1.13.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Public consumer checks pass at immutable revisions, required platform parity obligations are linked to owners/fixtures, and actual missing renderer/device evidence remains explicit. Library completion proves contracts/examples, not downstream native renderer or publication completion.
+Acceptance: Public consumer checks pass at immutable revisions, required platform parity obligations are linked to owners/fixtures, and actual missing renderer/device evidence remains explicit. Library completion proves contracts/examples, not downstream native renderer or publication completion. Include validated official profile contracts and downstream owners for FPX-04 actual high-risk combinations; do not infer future feature or platform readiness from contract fixtures.
 
 Implementation:
 

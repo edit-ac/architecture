@@ -8,6 +8,8 @@ Workspace: `core` (sibling of `architecture`). Deliver only the outcomes below. 
 
 Upstream entry gates: `04-browser-input.md` complete at current source revision with passing artifact evidence, `05-markdown-content.md` complete at current source revision with passing artifact evidence, `06-synchronization.md` complete at current source revision with passing artifact evidence, `07-extension-modules.md` complete at current source revision with passing artifact evidence.
 
+Retain the [baseline typing/rendering gate](../specs/web.md#baseline-typing-and-rendering-guarantees): `npm run check:browser-baseline` passes unfiltered at the reviewed source/artifact revisions before SDK acceptance. Public examples use the common surface mount. Tracks 38/42 expand regression coverage without deferring basic editing or presentation fixes.
+
 ## Execution rules
 
 Each iteration may implement at most one parent task, including all its implementation and validation substeps. Target 15–45 minutes plus validation; if a boundary is too large, stop with a precise proposed split for the controller. Pick a task only when every named dependency is implemented and validated. Other ready tasks are permitted independent work; a roadmap entry gate remains mandatory for its dependents. Do not launch this roadmap while its upstream gate is unavailable.

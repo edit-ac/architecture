@@ -173,10 +173,10 @@ Blocked behavior: Leave `FIT-1.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO w
 - [ ] FIT-1.8 Establish feature-aware performance and accessibility gates.
 
 Purpose: Establish feature-aware performance and accessibility gates as one bounded integration or qualification boundary.
-Context: `benchmarks/profiles/`; `contracts/profiles/`; `tests/architecture/budgets/`; `../architecture/specs/ecosystem-maintainability.md`.
+Context: `benchmarks/profiles/`; `contracts/profiles/`; `tests/architecture/budgets/`; `../architecture/specs/ecosystem-maintainability.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: FIT-1.3, FIT-1.6.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Metrics include feature set, sizes, hardware and raw samples; review limits before measurement and do not pass skipped or incomparable data.
+Acceptance: Metrics include feature set, sizes, hardware and raw samples; review limits before measurement and do not pass skipped or incomparable data. PRF-01–PRF-07 add input-to-visible attribution, continuous drag/scroll frame traces, native text-service costs, changed-region scaling, queue bounds and repeated-disposal memory. Preserve existing budgets; report raw comparable samples and inconclusive results without claiming universal performance.
 
 Implementation:
 

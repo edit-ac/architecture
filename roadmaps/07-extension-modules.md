@@ -8,6 +8,8 @@ Workspace: `core` (sibling of `architecture`). Deliver only the outcomes below. 
 
 Upstream entry gates: `05-markdown-content.md` complete at current source revision with passing artifact evidence, `06-synchronization.md` complete at current source revision with passing artifact evidence.
 
+Controller handoff (2026-10-13): The user instructed "Assume roadmap 5 as completed" in the roadmap 06 continuation and queued this track after roadmap 06. For this continuation, accept roadmap 05 as the upstream baseline by user instruction; retain its outstanding FMT-1.15 actual-device qualification and do not claim that evidence exists. Roadmap 06 must still complete at its current source revision before this runner starts. Queue receipt: `../../evidence/roadmap-07-runner/queue.json`.
+
 ## Execution rules
 
 Each iteration may implement at most one parent task, including all its implementation and validation substeps. Target 15–45 minutes plus validation; if a boundary is too large, stop with a precise proposed split for the controller. Pick a task only when every named dependency is implemented and validated. Other ready tasks are permitted independent work; a roadmap entry gate remains mandatory for its dependents. Do not launch this roadmap while its upstream gate is unavailable.
@@ -90,7 +92,7 @@ Purpose: Deliver implement slash command trigger and presenter as one reviewable
 Context: `packages/web/src/modules/slash.ts`; `tests/browser/slash.spec.ts`; `../architecture/specs/modules-native.md`.
 Dependencies: MOD-1.3.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Remote changes never open the menu; keyboard navigation and escape work; committed slash command has one intended undo group.
+Acceptance: Remote, pasted and unclassified replacement input never auto-open the menu. Follow specs/editor-interactions.md for eligible triggers, keyboard dispatch, query retention, composite focus and IME priority; committed commands use one history group. INT-1.9 owns complete regression coverage.
 
 Implementation:
 

@@ -34,12 +34,33 @@ Parser selection blocks production Markdown import/export work, while fixture au
 Map paragraphs, headings, marks, links, breaks, separators, lists, quotes and code to shared schema primitives.
 Preserve code whitespace, list nesting/order, checked state, link destinations and alt text.
 Map images/tables only through registered portable descriptors with explicit fallback behavior.
+The v1 optional content descriptors use existing opaque block tuples, tagged
+`module:editac.image` or `module:editac.table`, followed by version 1 and bounded
+JSON data. This does not change profile roots or the v5 wire schema. Known
+descriptors validate before staging; disabled/unknown descriptors retain source
+and inert text. Images retain URL/alt/title/source without a network request.
+Tables retain alignment, rectangular rows and rich simple-cell runs (32 columns,
+128 rows, 1,024 runs, 1 MiB text/source). Inline image layout and rich/nested cell
+blocks remain explicit unsupported source fallbacks. Registration governs
+activation; rendering/upload services remain separately owned.
+Prepared paste adds an editable cut around edge atoms so preceding/following
+destination text retains its original ownership and presentation. Those cuts,
+descriptor installation and resulting caret belong to the same prepared update.
 Do not split input into independent paragraph parses: references and block structure cross paragraph boundaries.
 Maintain source ranges for diagnostics when the parser exposes them.
 Unsupported constructs must retain recoverable source and report an actionable diagnostic.
 Unknown atoms/marks retain namespaced type/version and validated data even without a renderer.
 No Markdown export may silently erase unknown content to make a round-trip assertion pass.
 Validate target schema and resource limits before committing any prepared import.
+
+The portable import result retains the exact input source, byte ranges and
+diagnostics alongside prepared fragments. Links reuse the core's public
+`normalize_link_url` admission policy (absolute HTTP(S)/mailto; no credentials,
+encoded controls or executable schemes). Grammar recognition alone does not
+admit a URL. Unsupported link titles/destinations, raw HTML and disabled optional
+content retain original source and report loss rather than executing or fetching.
+Fragment limits remain 128 blocks, 1,024 runs, 16 container levels and 1 MiB of
+source/text. Preparation returns no live document mutation.
 
 ## Clipboard precedence
 
@@ -69,6 +90,8 @@ Cancellation creates no content/history/persistence update.
 Asynchronous completion must preserve the user's subsequent selection unless policy explicitly follows insertion.
 Measure preparation, transfer and main-thread application separately; a worker does not make application free.
 
+Deferred paste is an explicit host action (`ClipboardInput.pasteDeferred`), with a cancelable status control and retained flavor data. It yields preparation scheduling without claiming worker offload. Each flavor is captured once, with per-flavor 1 MiB limits. Completion revalidates both endpoint owners and their parents, current anchors and schema; moved/deleted targets reject with retained source. Current user selection is restored after apply. Timings separate preparation and apply; no automatic size threshold is claimed before measurement.
+
 ## HTML and URL safety
 
 Use an allowlisted HTML-to-semantics importer distinct from Markdown parsing.
@@ -82,11 +105,18 @@ Bound bytes, nesting, attribute lengths, table dimensions and prepared node coun
 Test malformed encodings, nested tags, misleading MIME flavors and adversarial link/image values.
 Untrusted internal fragments follow the same safety/resource checks as external formats.
 
+The baseline HTML adapter admits absolute HTTP(S)/mailto destinations only; relative URLs, credentials and encoded controls become inert text with diagnostics. Styles are reduced to the named text marks; no CSS enters the live tree. Inert template parsing is capped at 1 MiB, 4,096 visits, depth 32, 128 blocks, 1,024 text runs and 4,096 characters per attribute. Dropped content retains exact source in bounded clipboard recovery. Optional resource elements require explicit codecs.
+
 ## Export and representability
 
 Markdown export is deterministic semantic serialization, not recovery of the author's original spelling.
 Specify escaping, fence length, list indentation, line endings and trailing newline once in fixtures.
 Keep text/marks/nesting meaning and code whitespace stable through supported semantic round trips.
+The deterministic serializer uses LF, a trailing newline, escaped punctuation,
+bounded backtick delimiters and indentation derived from container markers.
+It checks representability through the shared importer. Unrepresentable mark
+boundaries or code whitespace return diagnostics and the original typed content
+as recovery data; they must never be reported as lossless exports.
 Underline has no standard CommonMark syntax; choose a declared safe HTML extension or explicit diagnostic/fallback.
 For unsupported atoms, preserve an agreed text/source fallback and return diagnostics alongside output.
 Do not claim a fallback exports an editable table, native math rendering or full-fidelity unknown content.
@@ -132,3 +162,41 @@ Record failures, skips and diagnostics. Fixtures establish the supported profile
 ## Optional broad-format services
 
 [Document conversion](document-conversion.md) defines independent DOCX/ODT/RTF/EPUB/CSV/TSV import and export profiles alongside the baseline formats. PDF is **export-only** by explicit user decision; reject PDF imports, and do not add PDF-reader/OCR dependencies. Converters return bounded prepared edits or output artifacts with fidelity reports; they do not replace source reconciliation or CRDT storage.
+
+## Interaction regression coverage
+
+Use [editor interactions](editor-interactions.md) for literal-paste newline/whitespace policy, typing-rule eligibility and reversal, alternate formatting and clipboard command behavior. The [case catalog](../tests/editor-interaction-cases.md) separates pasted Markdown, literal text, imported HTML and local typing; INT-1.10/INT-1.11 own integrated regressions alongside the existing parser conformance fixtures. Markdown source soft breaks and CLI source preservation remain governed by this format contract, not by the browser's literal-paste presentation policy.
+
+## Adapter integration ownership
+
+WEB-1.9 provides atomic internal fragments, the bounded safe HTML adapter, literal/minimal-host text policy, optional reachable plain-paste control and platform plain-paste shortcuts. Full Rust CommonMark/GFM import and configurable formatted plain-text policy retain their parser qualification gates and FMT-1.13 integration owner. Registered codecs provide additional MIME/asset/extension support; RTF and image/file clipboard items require declared typed/resource-bounded adapters rather than pretending binary items are text. EXT-1.13 and RCH-1.23 own formatting-preserving table cells, captions and other extension payloads, with native and mobile presenter tasks and separate actual-device gates. The supported palette is the admitted model/codec capability set; unavailable formats retain inert source with diagnostics. Literal paste retains destination formatting but never imports source formatting or parses Markdown/HTML.
+
+### Portable WASM Markdown adapters
+
+`EngineHandle.importMarkdown(source, {images?, tables?})` prepares inert whole-document fragments, exact source, byte ranges and diagnostics without a document update. `exportMarkdown(blocks)` returns deterministic source, diagnostics and typed recovery. Both use the pinned portable Rust profile and are disposed with the engine. Unknown fields and resource excess are rejected at the bridge. Registered content tuples and separators share the fragment transfer boundary.
+
+Normal task surfaces default plain text to Markdown; `preset: "minimal"` defaults to literal text. `plainTextPolicy` explicitly overrides the preset. Named Markdown flavors use the portable parser. Code blocks, inline code and explicit plain paste stay literal. Internal fragment, Markdown, HTML, custom codec, and plain text routing retains bounded diagnostics/source recovery and commits one prepared batch.
+
+### Markdown extensions
+
+Portable `extensions::Extension` defines stable names and ordered semantic import hooks over `PreparedContent`, with optional serializers. `extensions::import` always runs the qualified whole-document parser first. Extension outputs use the existing bounded fragment and registered content admission; errors leave the source available to the caller and never open a document transaction. Custom serializers are reparsed with the same hooks and compared semantically; unrepresentable output returns diagnostics and typed recovery.
+
+`MarkdownOptions` exposes `images`, `tables`, `callouts` and ordered `extensions`. Each trusted host extension has a stable unique name and optional pure `prepare(content)` / `serialize(blocks)` callbacks. The WASM wrapper transports only data, validates callback output natively and uses the portable semantic comparator. No function is serialized across the bridge. A hook may recognize custom block syntax or transform existing semantics; its source remains exact, and changed whole-document mappings use explicit full-source ranges. Arbitrary unknown module tuples cannot bypass registration.
+
+GitHub callouts (`NOTE`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION`) are optional v1 `module:editac.callout` descriptors with bounded kind, body Markdown and exact source. Their default view is inert fallback text, like optional images/tables; renderer extensions can present retained data. Disabled callouts remain normal quotes with a diagnostic; unknown kinds remain quotes. Nested/body structures are retained in source rather than silently claimed as editable rich module content. No upload, network load or HTML execution is implied.
+
+### Bounded browser typing rules
+
+The direct-key profile recognizes heading/list/checklist/quote prefixes followed by Space, fences followed by Enter or Space, and completed bold/italic/strike/code suffixes. Eligibility requires correlated trusted keydown and insertText, a collapsed caret at the current unmarked paragraph end, at most 2,048 UTF-16 units, and no composition/modifier/replacement/paste. Escape suppresses the next candidate; hosts can disable rules independently of paste parsing. Inline escapes remain literal. Conversion uses one prepared fragment and explicit history boundaries; immediate Backspace undoes that conversion to the preceding literal prefix. Undo then reverses preceding typing. No remote update triggers a rule.
+
+### Host clipboard configuration
+
+Both recovered `mountEditor` and borrowed-engine `mountEditorSurface` accept `preset`, `plainTextPolicy`, `contentCodecs` and `typingShortcuts`. Task defaults plain text to Markdown; minimal defaults to literal; an explicit policy overrides the preset. Named built-in MIME flavors cannot be replaced by custom codecs. Custom MIME names are unique, valid and capped at 16; validation precedes input-owner allocation. Unsupported RTF/TSV text retains source and an unavailable-codec diagnostic. Full-palette prepared event routing qualifies mechanics only; native mobile paste menus and actual OS clipboard shortcuts have a separate mandatory FMT-1.15 gate.
+
+### Qualified portable source reconciliation
+
+`reconcile::SourceBaseline` captures exact source, a bounded opening checkpoint and explicit ordered source-block/semantic-owner bindings. Bindings must be unique and ordered; shared parser ranges do not supply identity by themselves. Markdown uses the qualified whole-document parser; literal mode uses one literal block and never parses syntax. Exact source no-op and source-only spelling changes preserve the live replica and return the caller's exact source.
+
+The first qualified edit profile preserves block cardinality and container topology. Text/mark/block-presentation/check-state edits on proven mappings are supported. Structural count/container changes return explicit unsupported/ambiguous conflicts, with the draft still caller-owned; they never fall back to whole-document replacement. Unknown/unsupported blocks may remain untouched but cannot be changed by this profile. Unicode text differences use scalar boundaries translated to UTF-16 anchors from the opening checkpoint. Current target ownership/relative order/style/mark context and expected deleted text are checked before staging. Disjoint remote text outside the edited range is preserved; overlap, deleted/moved targets and unsupported data changes reject.
+
+Source deltas preserve existing glyph-source ownership; they do not create fresh clipboard fragments. All deltas stage on one isolated replica and commit through one `PreparedEditorEdit`. Commit retains the core's exact revision/checkpoint guard, so a change between prepare and commit rejects without mutation. The result keeps exact edited spelling; it is not a CRDT checkpoint or a source representation of unrelated remote changes. Hosts retain base/draft/current representations and refresh their source mapping after an accepted merge.

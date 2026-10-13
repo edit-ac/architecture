@@ -139,10 +139,10 @@ Blocked behavior: Leave `RCH-1.5` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 - [ ] RCH-1.6 Implement and validate complete bounded table row and column commands.
 
 Purpose: Fill missing table shape operations using the existing schema.
-Context: `crates/editac-core/src/modules/tables/`; `crates/editac-core/tests/table_shape.rs`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
+Context: `crates/editac-core/src/modules/tables/`; `crates/editac-core/tests/table_shape.rs`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: RCH-1.1.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Row/column operations validate before mutation and form one undo group; concurrent shape/cell edits and deleted destinations converge under fixed fixtures without presenter repair writes.
+Acceptance: Row/column operations validate before mutation and form one undo group; concurrent shape/cell edits and deleted destinations converge under fixed fixtures without presenter repair writes. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly.
 
 Implementation:
 
@@ -185,10 +185,10 @@ Blocked behavior: Leave `RCH-1.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 - [ ] RCH-1.8 Implement and validate qualify cell selection and rectangular clipboard.
 
 Purpose: Complete the existing cell interaction contract without a spreadsheet model.
-Context: `packages/web/src/modules/tables/`; `tests/browser/table-selection.spec.ts`; `fixtures/tables/selection/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
+Context: `packages/web/src/modules/tables/`; `tests/browser/table-selection.spec.ts`; `fixtures/tables/selection/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: RCH-1.7.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Selection/navigation and rectangular paste preserve cell content and intended dimensions; illegal/oversized ranges and readonly targets fail safely with one paste history group.
+Acceptance: Selection/navigation and rectangular paste preserve cell content and intended dimensions; illegal/oversized ranges and readonly targets fail safely with one paste history group. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly.
 
 Implementation:
 
@@ -368,7 +368,7 @@ Blocked behavior: Leave `RCH-1.15` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO,
 
 - [ ] RCH-1.16 Implement and validate complete slash menu input and accessibility behavior.
 
-Purpose: Qualify the existing slash menu under realistic editor input states.
+Purpose: Qualify the existing slash menu at catalog scale using the baseline interaction contract. Task-specific gate: INT-1.9 in roadmap 38 is complete with reviewed evidence; this does not block earlier independent rich-content tasks.
 Context: `packages/web/src/modules/slash/`; `tests/browser/slash-context.spec.ts`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
 Dependencies: RCH-1.1.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
@@ -376,7 +376,7 @@ Acceptance: Only committed local context triggers the menu; escape/empty/error/c
 
 Implementation:
 
-- [ ] RCH-1.16-I1 Add missing code/literal/context exclusions, IME/selection handling, bounded 500-command filtering, pointer/touch actions, focus restoration and screen-reader states.
+- [ ] RCH-1.16-I1 Reuse INT-1.9 trigger, key, IME and composite-focus regressions from specs/editor-interactions.md; add bounded 500-command filtering, large-catalog pointer/touch actions and focus/screen-reader performance checks without creating a competing key policy.
 
 Validation:
 
@@ -433,15 +433,81 @@ Handoff: Record the last completed substep, relevant symbols, remaining acceptan
 Blocked behavior: Leave `RCH-1.18` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, owner/unblock condition and bounded retry trigger. Continue another dependency-ready parent only in a later iteration; if none exists, report the gate without polling.
 
 
+### Task RCH-1.21 — Implement bounded document search and replacement
+
+- [ ] RCH-1.21 Implement bounded document search and replacement.
+
+Purpose: Implement bounded document search and replacement within the existing editor architecture.
+Context: `packages/core/src/extensions/`; `packages/web/src/extensions/`; `tests/document-search.test.mjs`; `../architecture/specs/rich-content-extensions.md`; [additional interaction cases](../tests/desktop-editing-cases.md).
+Dependencies: RCH-1.1.
+Session scope: One named behavior boundary and focused validation; use the existing qualified primitives. If it exceeds one bounded iteration, record the remaining acceptance and obtain a controller split before implementation.
+Acceptance: FND-01–FND-07 pass logical-content search, stable selection scope, transient results, captured replacement targets and one-group bounded Replace All. Regex and unsupported structural matching remain explicit absent capabilities.
+
+Implementation:
+
+- [ ] RCH-1.21-I1 Use existing revision/anchor/command ports for a cancelable search provider and browser presenter. Qualify any missing compound replacement primitive upstream; publish portable command/result fixtures for native consumers.
+
+Validation:
+
+- [ ] RCH-1.21-V1 node --test tests/document-search.test.mjs. Test stale revisions, empty/over-limit queries, unmounted content, independent expected replacements, undo and focus; compare bounded work at several sizes. Record exact revisions, fixture IDs, commands and nonzero executed/passed/failed/skipped counts. Missing tests, zero matches and skipped required cases fail; retain failures and native/device limitations.
+
+Evidence: Progress entry `RCH-1.21` links immutable implementation/profile/fixture revisions and artifacts under `../architecture/evidence/desktop-interactions/`; source checkboxes remain templates.
+Handoff: Record last completed substep, failing case/missing primitive, changed paths and next bounded action for `RCH-1.21`.
+Blocked behavior: Leave `RCH-1.21` unchecked with owner, unblock condition and retry trigger; never replace missing qualified engine behavior with a DOM-only workaround.
+
+### Task RCH-1.22 — Add explicit code editing convenience commands
+
+- [ ] RCH-1.22 Add explicit code editing convenience commands.
+
+Purpose: Add explicit code editing convenience commands within the existing editor architecture.
+Context: `packages/core/src/extensions/`; `packages/web/src/extensions/`; `tests/code-commands.test.mjs`; `../architecture/specs/rich-content-extensions.md`; [additional interaction cases](../tests/desktop-editing-cases.md).
+Dependencies: RCH-1.5.
+Session scope: One named behavior boundary and focused validation; use the existing qualified primitives. If it exceeds one bounded iteration, record the remaining acceptance and obtain a controller split before implementation.
+Acceptance: IDE-01–IDE-06 pass logical-line move/duplicate, indent, surround, declared language comments and opt-in pairing with preserved whitespace, selection and history. No implicit prose line-cut, multi-cursor or cross-block mutation.
+
+Implementation:
+
+- [ ] RCH-1.22-I1 Reuse code-context applicability and prepared commands; provide visible actions and optional remappable bindings. Keep auto-pair policy separate and composition-safe.
+
+Validation:
+
+- [ ] RCH-1.22-V1 node --test tests/code-commands.test.mjs. Assert exact LF/EOF, endpoint exclusion, one undo group and no-op/reject states; replay composition/paste/correction and native focus escape. Record exact revisions, fixture IDs, commands and nonzero executed/passed/failed/skipped counts. Missing tests, zero matches and skipped required cases fail; retain failures and native/device limitations.
+
+Evidence: Progress entry `RCH-1.22` links immutable implementation/profile/fixture revisions and artifacts under `../architecture/evidence/desktop-interactions/`; source checkboxes remain templates.
+Handoff: Record last completed substep, failing case/missing primitive, changed paths and next bounded action for `RCH-1.22`.
+Blocked behavior: Leave `RCH-1.22` unchecked with owner, unblock condition and retry trigger; never replace missing qualified engine behavior with a DOM-only workaround.
+
+### Task RCH-1.23 — Preserve formatting inside tables and other rich extensions
+
+- [ ] RCH-1.23 Preserve formatting inside tables and other rich extensions.
+
+Purpose: Deliver the named transfer boundary with reproducible evidence and explicit qualification status.
+Context: `packages/web/src/modules/tables/`; `tests/browser/extension-formatting.spec.ts`; `fixtures/rich-presenters/formatting/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/extension-library.md`
+Dependencies: RCH-1.8, RCH-1.11, RCH-1.18.
+Session scope: One named boundary; target 15–45 minutes plus focused validation. These are future tasks; this roadmap revision does not execute native tests or authorize device runs.
+Acceptance: Table cells admit the declared inline/block formatting palette, retain styles through row/column edits, rectangular copy/paste and undo, and expose scoped formatting commands. Image/file captions, references, math and other registered inline/block extensions preserve admitted formatting and source data. Unsupported styles/codecs have explicit inert fallback; literal paste remains optional and bypasses rich transformation.
+
+Implementation:
+
+- [ ] RCH-1.23-I1 Implement EXT-1.13 capabilities in portable/web rich presenters. Author mixed cell-range fixtures for bold/italic/underline/strike/code/link/headings/lists, header/alignment metadata, marked captions and inline extensions. Test selection direction, inaccessible or unavailable codecs, readonly, delayed preparation, format precedence, one atomic undo group and import/export round-trips; do not execute table formulas or document-supplied code.
+
+Validation:
+
+- [ ] RCH-1.23-V1 `npm run test:browser -- extension-formatting`. Require each admitted formatting/extension combination, negative unsupported cases and exact semantic/history/storage effects. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+
+Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
+Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+
 ### Task RCH-1.19 — Publish per-feature portable presenter contracts
 
 - [ ] RCH-1.19 Implement and validate publish per-feature portable presenter contracts.
 
 Purpose: Give downstream native/TUI work concrete feature APIs and fixtures.
 Context: `packages/core/`; `packages/web/package.json`; `tests/rich-presenter-contracts.test.mjs`; `fixtures/rich-presenters/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
-Dependencies: RCH-1.5, RCH-1.10, RCH-1.13, RCH-1.14, RCH-1.15, RCH-1.16, RCH-1.17, RCH-1.18.
+Dependencies: RCH-1.5, RCH-1.10, RCH-1.13, RCH-1.14, RCH-1.15, RCH-1.16, RCH-1.17, RCH-1.18, RCH-1.21, RCH-1.22, RCH-1.23.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Clean public consumers need no private paths; Swift/Kotlin/desktop/terminal records define lifecycle/focus/selection/cancel/accessibility obligations and every feature has explicit preservation/view/edit capabilities for roadmaps31–36.
+Acceptance: Clean public consumers need no private paths; Swift/Kotlin/desktop/terminal records define lifecycle/focus/selection/cancel/accessibility obligations and every feature has explicit preservation/view/edit capabilities for roadmaps31–36. Publish search/code command, selection, scope and fallback contracts with exact first-party profile identities for native/terminal consumers.
 
 Implementation:
 
@@ -461,10 +527,10 @@ Blocked behavior: Leave `RCH-1.19` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO,
 - [ ] RCH-1.20 Implement and validate qualify rich-content performance and integration handoff.
 
 Purpose: Publish measured portable/web evidence without implying native implementation.
-Context: `tests/rich-content-performance.test.mjs`; `tests/rich-content-bundles.test.mjs`; `../architecture/evidence/rich-content.md`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
+Context: `tests/rich-content-performance.test.mjs`; `tests/rich-content-bundles.test.mjs`; `../architecture/evidence/rich-content.md`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: RCH-1.19.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Every advertised portable/web feature has nonzero passing fixtures, exact artifacts and honest performance envelope; disabled assets issue zero requests, failures remain visible and no native/TUI parity is inferred.
+Acceptance: Every advertised portable/web feature has nonzero passing fixtures, exact artifacts and honest performance envelope; disabled assets issue zero requests, failures remain visible and no native/TUI parity is inferred. Task-specific evidence gates: current INT-1.16 selected-text-drag qualification and RGS-1.8 shared-driver handoff must exist before this combined qualification runs; keep the task blocked if either is missing, without implementing their behavior here. Qualify FND/IDE/TBL and actual FPX mixed-feature variants; PRF-01–PRF-06 compare supported presets with baseline at fixed workloads, including continuous drag and resource teardown. Feature absence is distinct from a passed optional test.
 
 Implementation:
 
@@ -477,3 +543,330 @@ Validation:
 Evidence: Progress entry `RCH-1.20` links changed paths, source/implementation revisions, commands/results and fixture/artifact hashes. Preserve failures; durable summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, relevant symbols, remaining acceptance, exact failure/missing decision and next bounded action for `RCH-1.20`.
 Blocked behavior: Leave `RCH-1.20` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, owner/unblock condition and bounded retry trigger. Continue another dependency-ready parent only in a later iteration; if none exists, report the gate without polling.
+
+## AI epic entry conditions and execution rules
+
+The AI extension is included in this existing content-extension roadmap. All former AI parents are retained as RCH-2.1–RCH-2.14; their implementation state remains in separate progress/evidence. Existing RCH-1 tasks retain their entry gates and ownership. The AI epic additionally requires `08-sdk-integration.md`, `38-editor-interactions.md` and `40-mobile-web.md` at reviewed qualified revisions before any RCH-2 implementation; its former `13-change-diffs.md` and `21-extension-library.md` gates are already whole-track prerequisites. Native/TUI/docs requirements remain attached to their own tasks. Do not add those downstream platform gates to the manifest's whole-track entry conditions.
+
+Read [the AI contract](../specs/ai-extensions.md) and [SDK evaluation](../evidence/ai-extension-research.md#vercel-ai-sdk-evaluation-and-default-decision). Vercel AI SDK Core is the default TypeScript host/backend adapter behind a portable transport, while the extension is optional for editor consumers. AI native/terminal presenters are owned by this epic; existing non-AI rich-content platform wiring remains in 31–36. The initial browser release has no roadmap-25 prerequisite. Expanded consumers that require all of roadmap 25 also require this AI epic; this consolidation does not claim otherwise or mark pending platforms complete.
+
+One iteration implements at most one bounded parent; controller-review any necessary stable split without dropping acceptance. New suites and runner routes are created by their tasks. Preserve failed/skipped evidence, distinguish deterministic, device and evidence-validator counts, and stop task-owned browsers/servers/transports in teardown. Missing one device cannot block another dependency-ready task or invalidate the separately qualified web subset, but does block an all-platform support claim.
+
+Automated validation uses prepared responses and mocked provider transports only: no inference calls, ambient credentials, `.secrets`, subscription proxies or automatic fixture recording. No dogfood is authorized. Before any future AI test/dogfood change or run, read the Assign workspace architecture/operations/paid-inference-testing-policy.md; manual live-content dogfood also requires user-approved exact content, a hard request/monetary cap and a stop condition before any call. Device/accessibility mechanics use a mock backend and prove no model quality or settlement.
+
+## Epic RCH-2 — Deliver optional AI writing through existing edit contracts
+
+### Task RCH-2.1 — Define the portable AI descriptor and host transport
+
+- [ ] RCH-2.1 Define the portable AI descriptor and host transport.
+
+Purpose: Freeze a versioned optional command/transport envelope before clients depend on it.
+Context: `packages/core/src/extensions/ai.ts`; `crates/editac-core/src/extensions/ai.rs`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: none.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: Registration names Ask AI, fill/continue, rewrite and completion capabilities with bounded context/response, cancellation and host quota admission. Disabled/unconfigured services send zero requests; credentials stay host-owned and no new persisted schema or mandatory provider dependency is added. The portable transport supports the default Vercel AI SDK Core host/backend adapter without leaking SDK types into engine/native contracts.
+
+Implementation:
+
+- [ ] RCH-2.1-I1 Create typed operation/request/response/status envelopes, capability declarations and prepared valid/invalid fixtures. Reuse existing descriptor, anchor and host-policy primitives; declare request/time/output caps and protected-document rejection. Specify the default Vercel AI SDK Core adapter mapping for generation/stream chunks, abort/errors and usage metadata while keeping the public envelope SDK-independent.
+
+Validation:
+
+- [ ] RCH-2.1-V1 `cargo test -p editac-core --test ai_extension_contract --locked`. Create the named suite; test absent/disabled registration, invalid versions, missing transport/limits, quota exhaustion, forbidden context, format rejection and unchanged document/history state. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.1` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.1` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.2 — Implement the shared AI proposal session lifecycle
+
+- [ ] RCH-2.2 Implement the shared AI proposal session lifecycle.
+
+Purpose: Keep asynchronous output separate from authoritative edits.
+Context: `packages/core/src/extensions/ai-session.ts`; `crates/editac-core/tests/ai_extension_session.rs`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.1.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: Streaming remains ephemeral. Captured targets and relevant context revisions are checked on acceptance; stale/late/duplicate results cannot edit another target. Accept commits once through existing prepared semantics and one undo group; cancellation, failure and disposal leave document/history unchanged.
+
+Implementation:
+
+- [ ] RCH-2.2-I1 Implement bounded stream assembly, session/epoch generations, prepared proposal review, cancellation and explicit recovery-copy state. Consume the existing change-review and anchor services instead of adding a patch engine.
+
+Validation:
+
+- [ ] RCH-2.2-V1 `cargo test -p editac-core --test ai_extension_session --locked`. Create the named suite; inject duplicate/out-of-order chunks, malformed/oversized output, timeout, remote insert/delete, changed context, permission loss, read-only, switch/dispose and accept/undo/redo. Assert content, selection, origin/history and resource release. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.2` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.2` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.3 — Add Ask AI and fill or continue text on the web
+
+- [ ] RCH-2.3 Add Ask AI and fill or continue text on the web.
+
+Purpose: Deliver explicit prompt and generation flows with reviewable targets.
+Context: `packages/web/src/extensions/ai/actions.ts`; `packages/web/tests/ai-actions.test.ts`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.2.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: A visible command, selection control and slash route invoke Ask AI or fill/continue with an explicit context scope. Ask AI answers do not edit by default; fill/continue capture caret, block or selection and require reviewed insertion/replacement. Keyboard and touch users can stop, reject, accept or regenerate without losing the target.
+
+Implementation:
+
+- [ ] RCH-2.3-I1 Build the prompt, answer and proposal presenters using the shared session. Add bounded mock responses for empty blocks, selected replacements, continuing text and answers; show unavailable/failed/stale states and new-request limits for regeneration.
+
+Validation:
+
+- [ ] RCH-2.3-V1 `npm run test:web -- ai-actions`. Create the named web suite and its runner route; exercise focus changes, no-selection/selection/empty-block targets, answer-only behavior, Unicode/RTL, safe formatted responses, cancellation and request counts. Record actual keyboard/screen-reader/touch mechanics separately with a mock backend. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.3` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.3` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.4 — Add opt-in autocomplete while writing
+
+- [ ] RCH-2.4 Add opt-in autocomplete while writing.
+
+Purpose: Offer bounded transient writing suggestions without disturbing text input.
+Context: `packages/web/src/extensions/ai/completion.ts`; `packages/web/tests/ai-completion.test.ts`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.2, RCH-2.3.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: Completion is disabled by default and only starts after host quota/context configuration. Debounce and one current request prevent request storms. The initial default backend uses a short bounded SDK generateText response; streamed ghost text requires separate measured justification. Ghost text never enters offsets, copying, export, history or CRDT state until accepted. IME/marked text and excluded contexts suspend requests; stale suggestions are invalidated.
+
+Implementation:
+
+- [ ] RCH-2.4-I1 Implement manual and debounced completion, cancellation on superseding edits, bounded ghost-text rendering and configurable acceptance. Preserve Tab indent/table navigation without a valid suggestion; provide visible mobile/accessibility Accept/Dismiss and Escape dismissal.
+
+Validation:
+
+- [ ] RCH-2.4-V1 `npm run test:web -- ai-completion`. Create the suite and runner route with a fixed clock and mock transport. Assert exact request counts under rapid typing, IME/dictation, selection/caret/remote changes, blur, caps, disposal, code/atom exclusions and accept/undo. Test no ghost-text persistence and actual keyboard/touch/AT behavior independently. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.4` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.4` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.5 — Publish the initial selected-text AI command profile
+
+- [ ] RCH-2.5 Publish the initial selected-text AI command profile.
+
+Purpose: Reuse the proposal flow for common writing actions.
+Context: `packages/core/src/extensions/ai-actions.ts`; `packages/web/tests/ai-transformations.test.ts`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.3.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: The profile includes spelling/grammar, rephrase, simplify, shorten, extend, tone, summarize/key points and explicit-language translation. Each action declares scope and output format, preserves supported marks/atoms and reports unsupported structure. No action applies automatically or claims model accuracy from prepared responses.
+
+Implementation:
+
+- [ ] RCH-2.5-I1 Define deterministic command/prompt metadata and applicability over the shared envelope; provide language/tone controls and one review surface. Add prepared action results, invalid rich content and protected-atom cases rather than making provider calls.
+
+Validation:
+
+- [ ] RCH-2.5-V1 `npm run test:web -- ai-transformations`. Create the suite and route; test every declared command, selected and unavailable targets, missing language, unsafe output, supported format retention, read-only/stale rejection and accept/undo with unrelated remote edits. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.5` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.5` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.6 — Qualify the optional web AI profile and packed consumer
+
+- [ ] RCH-2.6 Qualify the optional web AI profile and packed consumer.
+
+Purpose: Prove the supported browser subset and disabled-feature costs.
+Context: `packages/web/examples/ai/`; `packages/web/tests/ai-consumer.test.ts`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.4, RCH-2.5, RCH-1.20.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: An immutable packed consumer runs the declared AI profile using a mock backend with no client secret or ambient credential discovery. Implement and qualify the default Vercel AI SDK Core backend adapter using pinned stable versions and prepared mock models; incompatible runtime/API behavior blocks its support claim. The adapter must propagate host cancellation, disable automatic retries and obey pre-dispatch quotas through the portable envelope. Default bundles omit AI assets/listeners/requests. The declared desktop/mobile browser and accessibility combinations have actual mechanics evidence; prepared outputs prove integration only.
+
+Implementation:
+
+- [ ] RCH-2.6-I1 Add the versioned optional AI preset through existing exports and configuration precedence. Implement the default Vercel AI SDK Core backend/reference route with pinned stable dependencies and mock models, explicit provider/model injection, abort propagation, zero automatic retries and no tool/agent loops. Use streamText for Ask AI/fill previews and bounded generateText for initial autocomplete; keep SDK types private to the host adapter. Exercise minimal, document-tools, table/link and collaboration combinations; record bundle/resource deltas and capability limitations.
+
+Validation:
+
+- [ ] RCH-2.6-V1 `npm run test:web -- ai-consumer`. Create the suite and runner route. Check packed imports, conflicting keymaps, disable/re-enable, bounded streams, quota admission, protected-context refusal and teardown. For the default SDK adapter, use prepared mock models/simulated streams to assert abort propagation, finish/error mapping and exact request counts with retries disabled; preserve compatibility failures. Measure disabled/enabled contributions and record actual desktop/mobile keyboard/touch/screen-reader results with the mock backend. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.6` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.6` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.7 — Integrate the AI presenter in iOS
+
+- [ ] RCH-2.7 Integrate the AI presenter in iOS.
+
+Purpose: Deliver an independent iOS presenter through qualified native commands.
+Context: `native/ios/extensions/ai/`; `native/ios/tests/`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.2, RCH-2.5.
+Task-specific entry gate: `16-ios-sdk.md` complete at its reviewed implementation/profile revision with passing artifacts; this applies only to this task and consumers of its evidence.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: The iOS consumer exposes its declared Ask AI/fill/rewrite and completion subset using captured native selection, UI-thread dispatch and platform accessibility. Unsupported inline completion has an explicit command fallback. Native marked text, navigation, read-only, remote edits and OS writing tools retain their existing owners.
+
+Implementation:
+
+- [ ] RCH-2.7-I1 Wire the shared transport/session into the native command and proposal presenters. Use prepared responses and qualified native text controls; add visible accept/reject/stop/status, language/tone options and a capability declaration without installing a provider.
+
+Validation:
+
+- [ ] RCH-2.7-V1 `bash native/ios/scripts/check.sh ai-extension`. Create the named deterministic check route. Test focus/marked-text changes, stale/duplicate results, cancellation, quota limits, protected targets, accept/undo/redo and teardown; record actual OS/device, keyboard and accessibility evidence with the mock backend. Missing required platform evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.7` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.8 — Integrate the AI presenter in Android
+
+- [ ] RCH-2.8 Integrate the AI presenter in Android.
+
+Purpose: Deliver an independent Android presenter through qualified native commands.
+Context: `native/android/extensions/ai/`; `native/android/tests/`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.2, RCH-2.5.
+Task-specific entry gate: `17-android-sdk.md` complete at its reviewed implementation/profile revision with passing artifacts; this applies only to this task and consumers of its evidence.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: The Android consumer exposes its declared Ask AI/fill/rewrite and completion subset using captured native selection, UI-thread dispatch and platform accessibility. Unsupported inline completion has an explicit command fallback. Native marked text, navigation, read-only, remote edits and OS writing tools retain their existing owners.
+
+Implementation:
+
+- [ ] RCH-2.8-I1 Wire the shared transport/session into the native command and proposal presenters. Use prepared responses and qualified native text controls; add visible accept/reject/stop/status, language/tone options and a capability declaration without installing a provider.
+
+Validation:
+
+- [ ] RCH-2.8-V1 `bash native/android/scripts/check.sh ai-extension`. Create the named deterministic check route. Test focus/marked-text changes, stale/duplicate results, cancellation, quota limits, protected targets, accept/undo/redo and teardown; record actual OS/device, keyboard and accessibility evidence with the mock backend. Missing required platform evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.8` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.8` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.9 — Integrate the AI presenter in macOS
+
+- [ ] RCH-2.9 Integrate the AI presenter in macOS.
+
+Purpose: Deliver an independent macOS presenter through qualified native commands.
+Context: `native/macos/extensions/ai/`; `native/macos/tests/`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.2, RCH-2.5.
+Task-specific entry gate: `18-desktop-native.md` complete at its reviewed implementation/profile revision with passing artifacts; this applies only to this task and consumers of its evidence.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: The macOS consumer exposes its declared Ask AI/fill/rewrite and completion subset using captured native selection, UI-thread dispatch and platform accessibility. Unsupported inline completion has an explicit command fallback. Native marked text, navigation, read-only, remote edits and OS writing tools retain their existing owners.
+
+Implementation:
+
+- [ ] RCH-2.9-I1 Wire the shared transport/session into the native command and proposal presenters. Use prepared responses and qualified native text controls; add visible accept/reject/stop/status, language/tone options and a capability declaration without installing a provider.
+
+Validation:
+
+- [ ] RCH-2.9-V1 `bash native/macos/scripts/check.sh ai-extension`. Create the named deterministic check route. Test focus/marked-text changes, stale/duplicate results, cancellation, quota limits, protected targets, accept/undo/redo and teardown; record actual OS/device, keyboard and accessibility evidence with the mock backend. Missing required platform evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.9` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.9` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.10 — Integrate the AI presenter in Windows
+
+- [ ] RCH-2.10 Integrate the AI presenter in Windows.
+
+Purpose: Deliver an independent Windows presenter through qualified native commands.
+Context: `native/windows/extensions/ai/`; `native/windows/tests/`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.2, RCH-2.5.
+Task-specific entry gate: `22-windows-native.md` complete at its reviewed implementation/profile revision with passing artifacts; this applies only to this task and consumers of its evidence.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: The Windows consumer exposes its declared Ask AI/fill/rewrite and completion subset using captured native selection, UI-thread dispatch and platform accessibility. Unsupported inline completion has an explicit command fallback. Native marked text, navigation, read-only, remote edits and OS writing tools retain their existing owners.
+
+Implementation:
+
+- [ ] RCH-2.10-I1 Wire the shared transport/session into the native command and proposal presenters. Use prepared responses and qualified native text controls; add visible accept/reject/stop/status, language/tone options and a capability declaration without installing a provider.
+
+Validation:
+
+- [ ] RCH-2.10-V1 `bash native/windows/scripts/check.sh ai-extension`. Create the named deterministic check route. Test focus/marked-text changes, stale/duplicate results, cancellation, quota limits, protected targets, accept/undo/redo and teardown; record actual OS/device, keyboard and accessibility evidence with the mock backend. Missing required platform evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.10` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.10` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.11 — Integrate the AI presenter in Linux
+
+- [ ] RCH-2.11 Integrate the AI presenter in Linux.
+
+Purpose: Deliver an independent Linux presenter through qualified native commands.
+Context: `native/linux/extensions/ai/`; `native/linux/tests/`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.2, RCH-2.5.
+Task-specific entry gate: `23-linux-native.md` complete at its reviewed implementation/profile revision with passing artifacts; this applies only to this task and consumers of its evidence.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: The Linux consumer exposes its declared Ask AI/fill/rewrite and completion subset using captured native selection, UI-thread dispatch and platform accessibility. Unsupported inline completion has an explicit command fallback. Native marked text, navigation, read-only, remote edits and OS writing tools retain their existing owners.
+
+Implementation:
+
+- [ ] RCH-2.11-I1 Wire the shared transport/session into the native command and proposal presenters. Use prepared responses and qualified native text controls; add visible accept/reject/stop/status, language/tone options and a capability declaration without installing a provider.
+
+Validation:
+
+- [ ] RCH-2.11-V1 `bash native/linux/scripts/check.sh ai-extension`. Create the named deterministic check route. Test focus/marked-text changes, stale/duplicate results, cancellation, quota limits, protected targets, accept/undo/redo and teardown; record actual OS/device, keyboard and accessibility evidence with the mock backend. Missing required platform evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.11` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.11` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.12 — Add the terminal AI command and review fallback
+
+- [ ] RCH-2.12 Add the terminal AI command and review fallback.
+
+Purpose: Expose writing actions without requiring an inline visual surface.
+Context: `../cli/src/tui/extensions/ai.rs`; `../cli/tests/ai_extension.rs`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.2, RCH-2.5.
+Task-specific entry gate: `15-tui-client.md` complete at its reviewed implementation/profile revision with passing artifacts; this applies only to this task and consumers of its evidence.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: The terminal provides explicit Ask AI/fill/rewrite commands, bounded text review/status and accept/reject/stop. Completion can be a manual proposal; no printable-key interception, ANSI-only status or background provider request is required. Baseline local/offline editing works without AI.
+
+Implementation:
+
+- [ ] RCH-2.12-I1 Integrate the shared session and host capability through qualified TUI editing/review; create prepared response fixtures and capability limits for the supported terminal/screen-reader combinations.
+
+Validation:
+
+- [ ] RCH-2.12-V1 `From ../cli: cargo test --test ai_extension --locked`. Create the named CLI suite; test Unicode targets, stale proposals, read-only/offline state, quotas, cancellation, safe output, accept/undo and resource disposal. Record actual terminal/accessibility mechanics independently with mock responses. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.12` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.12` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.13 — Qualify declared AI platform and feature combinations
+
+- [ ] RCH-2.13 Qualify declared AI platform and feature combinations.
+
+Purpose: Consolidate actual platform support without equating mock results with model quality.
+Context: `tests/ai-extensions/`; `packages/web/examples/ai/`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.6, RCH-2.7, RCH-2.8, RCH-2.9, RCH-2.10, RCH-2.11, RCH-2.12.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: A versioned matrix distinguishes each implemented, unsupported and pending platform/action. Every claimed combination has immutable deterministic and actual input/accessibility receipts. Web subset evidence from RCH-2.6 remains independently usable; this task cannot claim all-platform readiness while required native evidence is missing.
+
+Implementation:
+
+- [ ] RCH-2.13-I1 Assemble immutable consumers and recorded browser/native/terminal artifacts. Exercise high-risk selection/composition/collaboration/protected-content and rich-extension boundaries for every claimed subset; preserve failures and separate provider-quality evidence as absent.
+
+Validation:
+
+- [ ] RCH-2.13-V1 `npm run test:web -- ai-matrix`. Create the matrix/receipt check route; reject missing platform receipts, inconsistent capability declarations and prepared responses labeled as model-quality/live-usage evidence. Required skipped combinations block the corresponding support claim. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.13` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.13` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+### Task RCH-2.14 — Document AI commands and mock-backed integration recipes
+
+- [ ] RCH-2.14 Document AI commands and mock-backed integration recipes.
+
+Purpose: Make the qualified first-party profile consumable without spending inference credits.
+Context: `../docs/content/docs/extensions/ai/`; `packages/web/examples/ai/`; [AI contract](../specs/ai-extensions.md); [extension library](../specs/extension-library.md); [change review](../specs/change-diffs.md).
+Dependencies: RCH-2.6.
+Task-specific entry gate: The documentation bootstrap and build conventions from `29-public-docs-demo.md` are qualified at a reviewed revision. This task does not wait for that track's unrelated deployment or full-platform examples; platform support labels require their corresponding AI receipts.
+Session scope: One named boundary, normally 15–45 minutes plus focused validation; controller-review any necessary stable split while preserving acceptance.
+Acceptance: Documentation explains Ask AI, fill/continue, selected actions, autocomplete, context scopes, review/cancel, quotas and host-owned transports with a runnable prepared-response example. Supported platform subsets follow actual receipts; privacy, unsupported behavior and unknown cost are explicit. Optional AI adds no baseline release requirement.
+
+Implementation:
+
+- [ ] RCH-2.14-I1 Add versioned public recipes and the capability table through the existing docs/demo owners. Use the packed mock consumer, show provider-neutral backend wiring plus the default Vercel AI SDK Core backend adapter recipe with pinned versions and prepared results, and distinguish subsequent feature suggestions from committed scope. Explain cancellation propagation, disabled retries, explicit provider selection and host quotas.
+
+Validation:
+
+- [ ] RCH-2.14-V1 `From ../docs: npm run build`. Build docs with no inference/network-provider calls; verify example imports against the qualified packed consumer, command/capability links and absent/pending platform labels. Do not publish/deploy or start a live provider demo. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
+
+Evidence: Separate progress entry `RCH-2.14` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
+Blocked behavior: Leave `RCH-2.14` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.

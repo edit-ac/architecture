@@ -4,11 +4,13 @@
 
 [Shared editor, GitHub and website styling](design/brand-guide.md)
 
-This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 37 roadmap files and 451 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
+This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 42 roadmap files and 568 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
 
 The user selected public repositories and Apache-2.0. [Decision 001](decisions/001-web-first.md) resolves scope, ownership, naming and release conflicts. [Decision003](decisions/003-extension-ecosystem.md) adds the requested extension, format, cloud and public-documentation delivery. The [original proposal](sources/initial-roadmap.md) is archived unchanged as reference material; current specs and task acceptance supersede it. [Decision 002](decisions/002-full-delivery.md) extends delivery beyond the initial browser release; the [requirement review](requirements.md) maps each requested capability to concrete tasks.
 
 ## Start here
+
+Follow [workspace setup](WORKSPACE_SETUP.md) to clone the sibling repositories, select their toolchains and install [ROOT_AGENTS.md](ROOT_AGENTS.md) as `AGENTS.md` in the workspace root. Keep the version-controlled root rules in this repository and sync the parent copy after updates.
 
 Clone [core](https://github.com/edit-ac/core), this repository as `architecture`, optional [cli](https://github.com/edit-ac/cli), and [public docs](https://github.com/edit-ac/docs) into one parent directory. The parent itself is not a Git repository. Read the active task's named context rather than every document.
 
@@ -24,13 +26,13 @@ Clone [core](https://github.com/edit-ac/core), this repository as `architecture`
 | [01 Foundation](roadmaps/01-foundation.md) | 14 | Project scaffold | Pinned interop/offset/schema and compiled WASM proof |
 | [02 Engine](roadmaps/02-engine.md) | 23 | 01 | Qualified block/ownership/structural profiles, deterministic semantic commands, anchors, history and patches |
 | [03 Local storage](roadmaps/03-local-storage.md) | 7 | 02 | Crash-tested journal/checkpoint/outbox recovery |
-| [04 Browser input](roadmaps/04-browser-input.md) | 12 | 02, 03 | Continuous accessible editing and composition lifecycle |
-| [05 Markdown/content](roadmaps/05-markdown-content.md) | 12 | 02, 04 | Tested dialect, safe paste, round trips and source reconciliation |
+| [04 Browser input](roadmaps/04-browser-input.md) | 14 | 02, 03 | Qualified input protocol and heading-end command, continuous accessible editing and composition lifecycle |
+| [05 Markdown/content](roadmaps/05-markdown-content.md) | 15 | 02, 04 | Tested dialect, safe paste, round trips and source reconciliation |
 | [06 Synchronization](roadmaps/06-synchronization.md) | 7 | 02, 03 | Direct wire exchange, reconnect and explicit durable receipts |
 | [07 Modules](roadmaps/07-extension-modules.md) | 9 | 05, 06 | Portable extensions and optional browser interactions |
 | [08 SDK integration](roadmaps/08-sdk-integration.md) | 6 | 04–07 | Packed SDK consumers, React wrapper and scoped migration |
 | [09 Native preparation](roadmaps/09-native-preparation.md) | 7 | 02 | Swift/Kotlin and native control probes; follow-up scope |
-| [10 Web qualification](roadmaps/10-web-qualification.md) | 9 | 08 | Measured browser support, recovery and vetted prerelease |
+| [10 Web qualification](roadmaps/10-web-qualification.md) | 9 | 08, 38, 40 | Measured browser support, recovery and vetted prerelease |
 | [11 Editor CLI](roadmaps/11-offline-cli.md) | 12 | 02, 05; hosted tasks also 06 | Local Markdown/text editing, recovery and hosted sync |
 
 Milestone A: foundation and semantic kernel (01–02). Milestone B: durable browser editing (03–04). Milestone C: everyday content and collaboration (05–06). Milestone D: extensible consumable SDK (07–08). Milestone E: browser release qualification (10). Native preparation (09) and the local-first editor client (11) are independent delivery branches, not browser release prerequisites.
@@ -46,6 +48,12 @@ flowchart LR
   F --> G
   G --> H[08 SDK]
   H --> I[10 Web release]
+  G --> Q[38 Editing interactions]
+  H --> S[42 Regression suite]
+  S --> Q
+  Q --> R[40 Mobile web]
+  H --> R
+  R --> I
   B --> J[09 Native preparation]
   E --> K[11 Editor CLI]
   F -. hosted tasks .-> K
@@ -61,14 +69,14 @@ The initial browser milestone remains independently deliverable. These tracks co
 | [13 Exact change review](roadmaps/13-change-diffs.md) | 8 | 12 | Immutable revisions, source/semantic diffs and checked hunk application |
 | [14 Host-app MCP editing](roadmaps/14-host-agent-editing.md) | 7 | 08,12,13,21 | Markdown upload/preview/apply, durable retries and realtime observation |
 | [15 Built-in TUI](roadmaps/15-tui-client.md) | 12 | 11,12,13 | Terminal editing of local and hosted documents with diff review |
-| [16 Native iOS SDK](roadmaps/16-ios-sdk.md) | 21 | 07,12,13,21; iOS preparation evidence | Packaged native editor and capability matrix |
-| [17 Native Android SDK](roadmaps/17-android-sdk.md) | 21 | 07,12,13,21; Android preparation evidence | Packaged native editor and capability matrix |
-| [18 Native macOS SDK](roadmaps/18-desktop-native.md) | 21 | 07,12,13,21 | AppKit editor and packaged consumer |
+| [16 Native iOS SDK](roadmaps/16-ios-sdk.md) | 22 | 07,12,13,21; iOS preparation evidence | Packaged native editor and capability matrix |
+| [17 Native Android SDK](roadmaps/17-android-sdk.md) | 22 | 07,12,13,21; Android preparation evidence | Packaged native editor and capability matrix |
+| [18 Native macOS SDK](roadmaps/18-desktop-native.md) | 22 | 07,12,13,21 | AppKit editor and packaged consumer |
 | [19 Optional document protection](roadmaps/19-security-encryption.md) | 10 | 12,13,21 | Protected storage, ciphertext transport and key lifecycle |
-| [20 Full client qualification](roadmaps/20-product-scenarios.md) | 8 | 08,10,13–18,21–23 | PM tickets, collaboration, agents and actual platform evidence |
-| [21 First-class extension library](roadmaps/21-extension-library.md) | 11 | 05,07,12 | Portable descriptors, presenters, conformance and package consumers |
-| [22 Native Windows SDK](roadmaps/22-windows-native.md) | 21 | 07,12,13,21 | Windows native editor and packaged consumer |
-| [23 Native Linux SDK](roadmaps/23-linux-native.md) | 21 | 07,12,13,21 | GTK native editor and packaged consumer |
+| [20 Full client qualification](roadmaps/20-product-scenarios.md) | 10 | 08,10,13–18,21–23 | PM tickets, collaboration, agents and actual platform evidence |
+| [21 First-class extension library](roadmaps/21-extension-library.md) | 13 | 05,07,12 | Portable descriptors, presenters, conformance and package consumers |
+| [22 Native Windows SDK](roadmaps/22-windows-native.md) | 22 | 07,12,13,21 | Windows native editor and packaged consumer |
+| [23 Native Linux SDK](roadmaps/23-linux-native.md) | 22 | 07,12,13,21 | GTK native editor and packaged consumer |
 | [24 Encrypted profile qualification](roadmaps/24-encrypted-profile-qualification.md) | 13 | 19,20,25–28,31–36 | Real key providers, protected scenarios and independent review |
 
 ## Extension and public ecosystem delivery
@@ -77,19 +85,19 @@ The initial browser milestone remains independently deliverable. These tracks co
 
 | Track | Parent tasks | Whole-track prerequisites | Exit artifact |
 |---|---:|---|---|
-| [25 Rich content](roadmaps/25-rich-content-extensions.md) | 20 | 05, 07, 12, 13, 21 | Code highlighting, table formatting, assets/embeds and interaction upgrades |
+| [25 Rich content and AI](roadmaps/25-rich-content-extensions.md) | 37 | 05, 07, 12, 13, 21 | Code highlighting, tables, assets/embeds, interactions and optional AI writing |
 | [26 Public and internal links](roadmaps/26-link-resolution.md) | 12 | 12, 21 | Automatic metadata, permission-scoped references and safe activation |
 | [27 Document formats](roadmaps/27-document-conversion.md) | 18 | 05, 12, 21, 25 | Direction/fidelity profiles; PDF export only |
 | [28 Cloud-store readiness](roadmaps/28-cloud-document-store.md) | 21 | 06, 12, 25 | Durable reference service, tenant isolation, assets and recovery |
-| [29 Public docs and demo](roadmaps/29-public-docs-demo.md) | 14 | None; task-specific gates | Versioned guides, generated references and an actual deployed editor |
+| [29 Public docs and demo](roadmaps/29-public-docs-demo.md) | 38 | None; task-specific gates | Concepts/API/extensions, concrete examples, migrations/comparisons and a deployed editor |
 | [30 Architecture fitness](roadmaps/30-architecture-fitness.md) | 9 | 08, 12, 21 | Layer/capability/compatibility/loading/privacy checks |
-| [31 iOS extensions](roadmaps/31-ios-extension-integration.md) | 8 | 16, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
-| [32 Android extensions](roadmaps/32-android-extension-integration.md) | 8 | 17, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
-| [33 macOS extensions](roadmaps/33-macos-extension-integration.md) | 8 | 18, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
-| [34 Windows extensions](roadmaps/34-windows-extension-integration.md) | 8 | 22, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
-| [35 Linux extensions](roadmaps/35-linux-extension-integration.md) | 8 | 23, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
+| [31 iOS extensions](roadmaps/31-ios-extension-integration.md) | 9 | 16, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
+| [32 Android extensions](roadmaps/32-android-extension-integration.md) | 9 | 17, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
+| [33 macOS extensions](roadmaps/33-macos-extension-integration.md) | 9 | 18, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
+| [34 Windows extensions](roadmaps/34-windows-extension-integration.md) | 9 | 22, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
+| [35 Linux extensions](roadmaps/35-linux-extension-integration.md) | 9 | 23, 25, 26, 27, 30 | Native feature wiring and packaged consumer evidence |
 | [36 CLI/TUI extensions](roadmaps/36-terminal-extension-integration.md) | 6 | 15, 25, 26, 27, 30 | Terminal code/table/assets/links and format actions |
-| [37 Expanded qualification](roadmaps/37-ecosystem-qualification.md) | 9 | 20, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36 | Actual cross-client scenarios, docs/demo and release evidence |
+| [37 Expanded qualification](roadmaps/37-ecosystem-qualification.md) | 9 | 20, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36, 39, 41 | Actual cross-client scenarios, docs/demo and release evidence |
 
 The machine-readable dependency graph is [manifest.json](roadmaps/manifest.json). Its edges are whole-track entry conditions, not a multi-runner scheduler. Roadmaps 16 and 17 require only their platform-specific NAT preparation tasks, not all of 09. Roadmap 11 additionally gates hosted tasks on track 06; its local editing tasks can proceed without hosted readiness. Launching parallel workers in one checkout is unsupported; use isolated worktrees and explicit integration ownership if later concurrency is needed.
 
@@ -110,3 +118,55 @@ The machine-readable dependency graph is [manifest.json](roadmaps/manifest.json)
 - [Verification](specs/verification.md): evidence, supported envelope and provisional budgets.
 
 The foundation produces `schema-v1.md` and `protocol-v1.md` only after adversarial probes. They are development outputs; production schema decisions must not be invented to make a task appear complete.
+
+## Everyday typing and assistive input
+
+[Research](evidence/editor-interaction-research.md) draws on ProseMirror/Tiptap, Lexical, Slate and their documented regressions; [assistive research](evidence/assistive-input-research.md) adds platform and accessibility sources. [The behavior contract](specs/editor-interactions.md) and [targeted case catalog](tests/editor-interaction-cases.md) specify Enter/Shift+Enter, selected formatting, deletion, whitespace/Unicode, keyboard/selection, slash controls, parsing and paste. These are planned acceptance requirements, not shipped support.
+
+| Track | Parent tasks | Whole-track prerequisites | Exit artifact |
+|---|---:|---|---|
+| [38 Everyday editing](roadmaps/38-editor-interactions.md) | 18 | 04, 05, 07, 42 | Deterministic regression corpus and real input/accessibility evidence; required by 10 |
+| [39 Assistive input](roadmaps/39-assistive-input.md) | 11 | 38, 21; native/TUI gates per task | Optional portable assistance extension and independent platform evidence; required by 37 |
+
+Baseline keyboard access, screen-reader editing and OS dictation work without the optional extension. Assistance adds discoverable commands, status and explicit host capabilities, with prepared/mock transports in automated tests. No speech provider or paid inference testing is added. Existing engine work and its progress remain independently owned; these roadmap edits do not start another runner.
+
+## Touch devices and mobile browser support
+
+[Mobile web](specs/mobile-web.md) defines a small shared semantic core, mandatory touch/mobile browser behavior, progressive keyboard/browser APIs and optional extension presenters. [Platform research](evidence/mobile-web-platform-research.md) and [touch research](evidence/touch-extension-research.md) provide current primary sources and scoped upstream regressions. The catalogs add [64 baseline cases](tests/mobile-web-cases.md) and [32 extension cases](tests/mobile-extension-cases.md), all planned rather than executed support claims.
+
+| Track | Parent tasks | Whole-track prerequisites | Exit artifact |
+|---|---:|---|---|
+| [40 Mobile web](roadmaps/40-mobile-web.md) | 11 | 08, 38 | Touch/keyboard/viewport/API fallback and actual-device evidence; required by 10 |
+| [41 Mobile extensions](roadmaps/41-mobile-web-extensions.md) | 9 | 40, 25, 26, 27, 30; web assistance gates per task | Touch-accessible rich presenters, capability fallbacks and measured optional costs; required by 37 |
+
+Mobile baseline support does not load optional rich-content, converter, gesture or assistance packages. The proposed incremental baseline JS allowance is 5 KiB Brotli within the existing total adapter budget, with event-driven idle behavior and bounded geometry work. Exact costs and support require real measurements; browser API presence alone is insufficient.
+
+## Editing regression suite
+
+[Further regression research](evidence/editor-regressions-round2.md) and [upstream testing methods](evidence/editor-testsuite-methods.md) inform the [suite and architecture guards](specs/editing-regression-suite.md). The [machine-readable manifest](tests/editing-suite/suite.json) indexes 305 catalog cases, 14 guards and 14 representative recipes with 45 independently authored state/effect checkpoints. [Seventeen additional cases](tests/editor-regression-cases.md) target history capture/grouping, atomic edits, normalization, nested controls, custom views and widget selection.
+
+| Track | Parent tasks | Whole-track prerequisite | Exit artifact |
+|---|---:|---|---|
+| [42 Editing regression suite](roadmaps/42-editing-regression-suite.md) | 8 | 08 | Shared real-engine drivers, guard sensitivity and honest coverage reports; required by 38 |
+
+`npm run check` now validates roadmap/fixture consistency and runs the planning-validator contract tests. Those tests do not execute the editing recipes or prove browser support. Track 42 and the existing feature/device owners provide that evidence. The test harness adds no runtime dependency to the editor.
+
+
+## Desktop conventions and official configurations
+
+[Desktop research](evidence/desktop-editing-research.md), [native protocol research](evidence/native-editing-research.md) and [extension/performance research](evidence/editing-performance-extension-research.md) deepen the existing plan without adding a roadmap. The [77 additional cases](tests/desktop-editing-cases.md) cover selection gestures and replacement, text move/copy, native command surfaces, bounded find/replace, code conveniences, table selections, supported first-party presets and mixed-feature performance. Seven bounded parents extend tracks 21, 25 and 38; existing native/mobile, architecture and qualification owners take the related cases. Those desktop additions kept the plan at 42 roadmap files; the AI work below is consolidated into roadmap 25. Feature contracts and source checks are not implementation or performance qualification. The [integration record](evidence/desktop-interactions/README.md) records scope, validation and limits.
+
+
+## AI extensions
+
+[The AI contract](specs/ai-extensions.md) adds the missing writing operations; [research and suggestions](evidence/ai-extension-research.md) record Tiptap references and existing coverage. Track 39 already owns assistance lifecycle patterns, track 13 owns proposal review, and track 14 owns host-app MCP edits. These foundations do not already promise in-editor AI writing.
+
+| Track | Parent tasks | Whole-track prerequisites | Exit artifact |
+|---|---:|---|---|
+| [25 AI epic](roadmaps/25-rich-content-extensions.md#epic-rch-2--deliver-optional-ai-writing-through-existing-edit-contracts) | 14 of 36 | Existing 25 gates; AI-only 08, 38, 40 and per-task native/TUI/docs gates | Ask AI, fill/continue, selected-text actions and opt-in autocomplete; mock-backed consumers and independent platform evidence |
+
+Deliver explicit Ask AI/fill and selected-text actions first, then bounded autocomplete. AI uses optional host-owned transports, explicit context and request limits, transient previews and reviewed semantic edits. Vercel AI SDK Core is the default TypeScript host/backend adapter, qualified with pinned stable versions and prepared mocks through the same portable transport; editor consumers may provide another conforming host transport. It adds no baseline release gate or mandatory provider dependency. Prepared responses qualify integration only; no paid inference or live dogfood is authorized. Additional first-party candidates include glossary checks, notes-to-checklists, source-referenced explanations, reusable templates and anchored review comments; these remain suggestions, not committed tasks.
+
+## Clipboard format and device follow-ups
+
+[Native clipboard cases](tests/native-clipboard-cases.md) define 28 future cases for simulator/emulator/OS-host regression and separately recorded physical-device qualification. Native SDK track tasks 2.4 feed the handoffs; DEL-1.9/DEL-1.10 gate real mobile/desktop transfer qualification. FMT-1.13 owns full Markdown/HTML/plain/internal palette integration; FMT-1.15 preserves its actual-device clipboard-menu and OS-shortcut qualification gate and EXT-1.13 plus native extension tasks 1.9 own formatting-preserving tables and other extension content. No native tests were run by authoring these plans.

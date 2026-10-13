@@ -7,7 +7,7 @@ No full native editor parity is required for the initial web release.
 
 ## Mounting and state
 
-- One editor handle owns one Rust/WASM document handle and one coherent editing surface.
+- One editor surface binds one Rust/WASM document handle and one coherent editing flow.
 - Use a continuous contenteditable text flow with semantic block/inline mappings.
 - Do not create a separate editable root for every paragraph.
 - The imperative adapter owns DOM patches, selection mapping and input listeners.
@@ -15,6 +15,45 @@ No full native editor parity is required for the initial web release.
 - Ordinary edits stay on the browser thread with the authoritative engine.
 - Workers may prepare large parsing/export jobs; they do not mediate every keystroke.
 - Multiple mounts reuse WASM initialization where safe, while retaining distinct replica identities.
+
+The persistent `mountEditor` facade and synchronous `mountEditorSurface` for a
+host-owned engine use one adapter binding for rendering, selection and input.
+Reserve the root before asynchronous recovery; duplicate mounts through either
+API fail before replacing DOM or attaching listeners. Detaching a host-owned
+surface releases adapters and anchors while leaving its engine with the host.
+The persistent facade retains its recovery, durability and destruction contract.
+Examples consume the public package mount and the same behavior defaults.
+
+## Baseline typing and rendering guarantees
+
+Baseline browser work owns authored whitespace and heading-end Enter. These
+guarantees are required before the follow-up interaction/regression infrastructure.
+The renderer preserves leading, trailing and repeated U+0020 spaces on paragraphs,
+headings, marked runs and list items independently of the host stylesheet. Prose
+text blocks use `white-space: break-spaces`; code preserves literal unwrapped
+spacing. Tag replacement, incremental patches and read-only rendering retain this
+policy. Presentation does not trim text or replace authored spaces with NBSP.
+Hosts retain renderer-owned whitespace properties when customizing presentation.
+
+At a nonempty heading end, Enter retains the heading and inserts a sibling
+paragraph before the next sibling, including an immediately following list.
+One prepared engine transaction supplies the resulting stable caret; the next
+typed character enters that paragraph. The list's identity, parentage and text
+remain intact. Undo/redo restore content at each intent boundary. Stored-selection
+restoration across undo/redo is separately qualified by RGS-1.3/G07, including
+undo that removes the newly created paragraph; content-only checks do not pass
+that selection gate.
+
+`npm run check:browser-baseline` in core builds the pinned WASM engine from current
+Rust sources and builds the adapter packages, then runs the unfiltered baseline
+exit gate over renderer, keyboard and public-example suites in Chromium, Firefox
+and WebKit. Existing generated WASM alone cannot qualify a changed engine source.
+Assert exact semantic/DOM code points, visible advances for authored spaces,
+resulting caret and subsequent typing, unchanged neighbors and history effects.
+Record nonzero executed/passed/failed/skipped counts and source/artifact hashes.
+Prove whitespace assertions fail when leaf rendering collapses spaces. Text-only
+equality or screenshots alone cannot qualify these guarantees. Tracks 38/42 extend
+this coverage; their availability does not defer a failing baseline regression.
 
 ## WASM distribution
 
@@ -57,6 +96,8 @@ Do not serialize the whole document or scan all formatting on the typing path.
 Do not synchronously invoke networking, Markdown export or React document rendering from input handlers.
 Honor read-only state in keyboard, paste, drag/drop, composition and command paths.
 Selection-only changes emit scoped selection state without document updates.
+
+Heading-end Enter uses the atomic `headingEnd` engine command qualified by WEB-1.14 under [the engine contract](engine.md#atomic-heading-end-enter). WEB-1.8 applies the resulting stable caret and qualifies the full keyboard suite. Separate live split/format commits or guessed generated owner IDs do not satisfy that behavior.
 
 ## Composition gate
 
@@ -127,3 +168,23 @@ Close test browsers and temporary servers; preserve only explicitly requested pr
 - [Observed beforeinput browser constraints](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforeinput_event)
 - [wasm-pack build targets](https://rustwasm.github.io/docs/wasm-pack/commands/build.html)
 - [IndexedDB durability](https://w3c.github.io/IndexedDB/)
+
+## Everyday interaction acceptance
+
+[Editor interactions](editor-interactions.md) defines Enter/Shift+Enter, selected and pending formatting, contextual Tab, platform navigation, Unicode/whitespace, slash controls and non-keyboard replacement. Use its [case catalog](../tests/editor-interaction-cases.md) for browser input work. Track 38 closes this coverage before browser release; it does not replace the baseline tasks or their engine/storage prerequisites. Baseline OS dictation and screen-reader editing remain mandatory with optional extensions disabled. [Assistive input](assistive-input.md) adds optional host-controlled presentation through track 39.
+
+## Mobile web and touch
+
+[Mobile web](mobile-web.md) defines native touch selection/scroll preservation, mobile keyboard/replacement events, focus/command access, viewport/keyboard occlusion, capability fallbacks and the incremental cost gate. Track 40 and its [59 cases](../tests/mobile-web-cases.md) qualify the baseline before browser release. APIs such as VirtualKeyboard, keyboard layout/lock and EditContext are progressive or experimental capabilities with explicit fallback; they are not universal browser prerequisites. Track 41 qualifies richer extension presenters separately. Real mobile browser modes/devices remain distinct from emulation and native SDKs.
+
+## Regression guard integration
+
+Apply G01–G14 in [the editing suite](editing-regression-suite.md) when implementing input, selection, composition, patching and module event ownership. Correlate actual intents across notifications without deduplicating identical deliberate text; suppress only identified renderer echoes. Capture semantic selection/pending-mark intent before preparing a compound command, and publish callbacks after commit/lock release under a declared queue/rejection policy. WEB input implementation requires the qualified composition ADR from WEB-1.13's real-DOM/real-engine protocol probes, before WEB-1.4. Track 42 later reuses that evidence and proves the shared driver and guard assertions against the completed adapter before interaction qualification. Native IME/device support remains separately qualified.
+
+## Clipboard routing and plain paste
+
+WEB-1.9 owns internal fragments, bounded inert rich-HTML mapping and literal text in the minimal host. Clipboard routing is independent of keyboard input: native menu ClipboardEvents and beforeinput-only/noncancelable mobile sequences are correlated by the event lifecycle, never payload equality or timing. Follow-on native DOM notifications cannot double-commit a handled transfer. Ctrl/Command+Shift+V and macOS Command+Option+Shift+V opt into literal paste; hosts must also expose a labeled Paste without formatting command. Reading the script clipboard is an explicit activated action, never a mount-time permission request. Denied/absent APIs leave native paste available.
+
+Codec ports preserve the format precedence in formats.md; full Rust Markdown/GFM qualification remains FMT-1.2–FMT-1.8 and the full-palette integration task FMT-1.13. Tables and other extension formats require the registered semantic codec and EXT-1.13; unavailable codecs retain source and diagnostics rather than pretending to preserve rich structure. Plain paste and code targets bypass every rich codec. Async plain reads retain the initiating target and preserve later navigation, with cancellation on read-only or disposal. Native SDK simulator/emulator and physical-device testing is planned separately; browser event replay does not qualify mobile OS pasteboards.
+
+The optional built-in plain-paste control has a labeled native button and accepts touch or keyboard activation; hosts can disable it while providing their own labeled command. Literal paste never brings incoming formatting or parses syntax, while retaining the destination's admitted text style, especially inline-code context. Common platform-primary B/I/U and Shift+X shortcuts use the same applicability-checked semantic formatting port as toolbar commands.

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "SEQ-12",
+  "layer": "semantic",
+  "covers": [
+    "DEL-07"
+  ],
+  "requires": [
+    "boundary-noop",
+    "history"
+  ],
+  "context": {
+    "document": "doc-a",
+    "editor": "editor-a",
+    "epoch": 1
+  },
+  "initial": {
+    "blocks": [
+      {
+        "id": "p1",
+        "kind": "paragraph",
+        "text": "a",
+        "hardBreaks": [],
+        "marks": []
+      }
+    ],
+    "selection": {
+      "anchor": {
+        "block": "p1",
+        "offset": 0
+      },
+      "focus": {
+        "block": "p1",
+        "offset": 0
+      },
+      "affinity": "forward"
+    },
+    "pendingMarks": null
+  },
+  "steps": [
+    {
+      "id": "boundary",
+      "action": {
+        "type": "backspace"
+      },
+      "expect": {
+        "outcome": "no-op",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "a",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 0
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 0
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 0,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "repeat",
+      "action": {
+        "type": "backspace"
+      },
+      "expect": {
+        "outcome": "no-op",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "a",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 0
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 0
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 0,
+          "remoteCommits": 0
+        }
+      }
+    },
+    {
+      "id": "empty-history",
+      "action": {
+        "type": "undo"
+      },
+      "expect": {
+        "outcome": "no-op",
+        "state": {
+          "blocks": [
+            {
+              "id": "p1",
+              "kind": "paragraph",
+              "text": "a",
+              "hardBreaks": [],
+              "marks": []
+            }
+          ],
+          "selection": {
+            "anchor": {
+              "block": "p1",
+              "offset": 0
+            },
+            "focus": {
+              "block": "p1",
+              "offset": 0
+            },
+            "affinity": "forward"
+          },
+          "pendingMarks": null
+        },
+        "effects": {
+          "localCommits": 0,
+          "remoteCommits": 0
+        }
+      }
+    }
+  ]
+}
