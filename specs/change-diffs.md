@@ -48,6 +48,12 @@ Preparation and application both bind the integrated observed revision, includin
 
 Rejected valid candidates retain exact base, selected proposed and full-proposal inputs plus the current semantic projection. Malformed patches or invalid selections explicitly lack a materialized selected candidate; projection failure is explicit rather than fabricating current source. Default review diagnostics expose only reason categories and input lengths. Store acknowledgment failure follows the existing unsaved/recovery-required policy and reports the actual post-mutation current state; it is not represented as an atomic semantic rejection.
 
+## Portable presenter export (DIF-1.8)
+
+`editac-change-model-v1` is a bounded JSON envelope `{version,input}` for companion terminal/native/web presenters. Input is exact-source unified wire, projected-Markdown wire with nonempty serializer/dialect, or the complete `editac-semantic-diff-v1` model. Preserve hashes, newline metadata and independent semantic facets; projected input retains normalization warnings. This is presentation data, not an edit capability, authenticated attribution, or a global causal history. Semantic attribution must be `unknown`; text exports carry no author field. Consumers reject unsupported versions/representations, malformed payloads and byte-limit excess before displaying them. Terminal columns, UTF-16 editor offsets and UTF-8 source bytes remain distinct.
+
+The Git qualification profile pins Git 2.53.0, Myers, three context lines, no indentation heuristic, no color, no external diff/text conversion and no user/system configuration. With no error diagnostics, exit 0 is equal and exit 1 is different; other codes or error diagnostics reject (missing paths can also return 1). Fixed unambiguous goldens compare conventional output, while repeated-line/move cases prove exact hash round-trip and Git application without promising identical tie-breaking. Large-diff receipts report fixture bytes, comparison/output limits, actual durations and rejection results; these prepared desktop measurements do not qualify release/device performance targets.
+
 ## Views and attribution
 
 Provide accessible unified, inline and side-by-side web views; a portable changes model feeds native and terminal presenters. Readonly current, readonly historical and writable live modes are distinct. History checkout cannot rewind the live replica. “Restore this version” produces a new authorized edit against the current state with a preview and conflict result.
