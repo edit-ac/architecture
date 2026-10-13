@@ -101,6 +101,27 @@ another writable document or invoke callbacks under engine transactions. Async
 results carry request identity and are ignored after cancellation, disposal or
 target revision change. UI actions respect the host's read-only capability.
 
+### Command preparation lifecycle conformance
+
+`@edit-ac/web/modules` exports `ExtensionCommandSession` over the host's existing
+`ExtensionCommandHost` capability port. A host supplies current activation,
+a document/epoch/content revision token, and its shared `can`/`commit` entry
+points (such as `BrowserEditor`). Async preparation carries an abort signal;
+superseding, cancellation, disposal or content revision changes reject late
+results. Applicability is checked on the returned request and revision/cancellation
+are checked again after that callback; commit rechecks current host permissions.
+The helper owns no engine, semantic store, subscription bus or mutation escape.
+
+The host retains ownership of preparation/atomic commit, persistence admission
+and one-intent history grouping. Observers run through the owning engine and
+`ModuleRuntime` after engine transactions return. Returned caret/selection
+resources retain their normal caller ownership. Trusted preparation failures are
+reported as failed/cancelled outcomes; an exception does not preempt unbounded
+in-process execution. The fixed command corpus and canonical Rust/browser checks
+are qualified in `../evidence/extension-commands.md`. Browser conformance uses
+production WASM, actual storage middleware and prepared IndexedDB completion;
+it does not claim OS/device renderer or deployed persistence qualification.
+
 Define separate browser, terminal, Swift/iOS, Kotlin/Android and desktop adapter
 contracts for focus, input/composition ownership, accessible labels/actions,
 clipboard/Markdown representation, selection/atom boundaries and theme/lifecycle.
