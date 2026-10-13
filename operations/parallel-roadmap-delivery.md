@@ -1,0 +1,31 @@
+# Parallel roadmap delivery and integration
+
+Created 2026-10-13 by explicit user request. Primary workspace: `/Users/bpstr/Github/edit-ac`. Parallel workspace: `/Users/bpstr/Github/edit-ac-parallel-clients`. Every parallel repository uses `runner/parallel-clients-20261013`; see the parallel root worktree-manifest.json for base commits.
+
+## Ownership and queue
+
+Primary runner `0386f4f01f5517a86d785da5` exclusively owns roadmap 08 SDK/optional Markdown footprint and queued roadmap 09 native preparation. Parallel runner owns this FIFO queue: 12 shared client contracts, 13 exact change review, 21 extension library, 11 offline CLI, 15 TUI, 26 link resolution, 19 optional protection. Do not launch duplicate controllers or take another runner's parents. Roadmaps 10, 14, 16–18, 20, 22–25, 27–30 and 31–42 remain outside this new queue; their missing SDK/native/client/content/device prerequisites need fresh scheduling.
+
+The queue is dependency-ordered, not a claim that later tracks already pass their gates. Recheck each entry against current code, named evidence and merged progress. Reuse the committed engine, storage, Markdown SourceBaseline/prepare/commit, synchronization and module implementations. Preserve roadmap 05's explicit physical-device FMT-1.15 gap; portable FMT-1.12 and the already recorded module/SDK implementation baseline are the headless entry evidence, not a device/release claim. CAP-1.1 must verify the reviewed contracts at the actual isolated source hashes. If a required portable gate fails, stop with the concrete blocker; do not waive acceptance or retry indefinitely.
+
+## Isolation and source control
+
+Implement only in the parallel repositories and write progress under parallel architecture/progress, one parent per iteration. Sources remain controller-owned. The primary checkouts contain active, uncommitted SDK/Markdown work; do not copy, stage, stash, reset, overwrite or claim it. Baseline the new worktrees on committed main. Before changing shared Cargo manifests/locks, WASM/engine public interfaces, browser module runtimes or authoritative specs, consult both workspaces' diffs and the shared delivery ledger. Coordinate an unavoidable contract overlap through an integration-request file instead of independently implementing the same API. Use new session/diff/library adapters around existing semantics.
+
+Commit each validated delivery in its owning parallel repository with a plain-English imperative subject. Stage exact owned paths, never git add -A across another task's changes. Record the task ID, branch commit, source hashes, checks/counts, progress and artifact locations in `.roadmap-coordination/deliveries.jsonl` at the shared primary root; include failures and unresolved gates. Progress files are ignored: publish their locations/hashes and copy the parallel-owned progress file to the primary architecture/progress only at an agreed integration checkpoint. Never copy 08/09 progress in either direction.
+
+## Periodic integration
+
+After every two completed parent tasks and every roadmap boundary, and before each next roadmap entry gate, reconcile with main in every repository changed by this lane. Read the shared ledger first so merged tasks are reused rather than recreated. Take the shared `.roadmap-coordination/integration.lock` with an atomic mkdir for the brief integration transaction; write owner, PID, task, time and repository details inside. Respect an existing lock; never remove one based on age alone. Release your own lock in teardown.
+
+Incoming sync: from a clean parallel tree, merge the repository's local main into this branch, resolve conflicts against both owners' validated behavior, rerun the checks affected by the merge and record the merge commit. Fetch and compare origin/main when useful, but never force-update main or silently drop another task's work.
+
+Outgoing sync: integrate validated parallel commits to the local primary main periodically. The primary lane owns modification of its live checkouts. The parallel lane writes `.roadmap-coordination/integration-request.json` with per-repository branch/commits, exact changed paths, checks, progress paths and any conflicts. The primary lane processes it at its next completed-parent or roadmap checkpoint, after preserving/committing its own validated work and checking unrelated user changes. Merge core/API delivery first, then CLI consumers and architecture evidence/contracts in a coherent dependency order. Use normal git merge, preserve both branches' implementations and rerun meaningful affected checks. Record exact merged revisions and acknowledge in `.roadmap-coordination/integration-ack.json`.
+
+Never run a merge into the primary checkout while its implementation worker is mutating it, nor merge over unrelated dirty work. If no safe checkpoint exists, record the deferred request and continue independent work in the parallel branch; refresh incoming main at the next checkpoint. A running controller alone is not stale and must not be stopped for integration. Neither lane may push, publish packages, deploy or use paid synthetic inference under this plan. Local main integration is explicitly requested.
+
+## Validation and resource ownership
+
+Read the root/repository instructions and only active task specs. Codanna MCP/CLI is unavailable in the controller session: discover it again in a worker before code discovery; if unavailable use narrow rg fallbacks and record coverage limits. All tests use deterministic fixtures/mock transports, never provider calls or .secrets. For core tests set unique absolute exchange/evidence directories for this worktree following architecture/WORKSPACE_SETUP.md. Use Node 24.19.0/npm 11.17.0 and rustup 1.97.1 explicitly, including child PATH. Build output, browser ports, fixture profiles and logs must be worktree-owned. Do not symlink mutable target/dist/node_modules output to primary. Preserve failed evidence.
+
+Stop only verified task-owned temporary browsers/servers; preserve primary runner and other tasks' services. Check data-volume space after substantial builds and remove only inactive reproducible output from this lane. At a blocked gate or exhausted ready work, save a precise handoff and stop instead of uncontrolled model retries.
