@@ -5,6 +5,10 @@ Scope: framework-independent web editor plus a thin React lifecycle wrapper.
 Public packages use the `@edit-ac` npm organization.
 No full native editor parity is required for the initial web release.
 
+## Optional Markdown in the Task preset
+
+Under the user-approved 2026-10-13 profile change, the default persistent Task mount has no Markdown parser or automatic Markdown asset request. Hosts explicitly register the first-party Markdown extension to enable its paste, typing-shortcut and import/export behavior under formats.md. Without it, Markdown-looking plain text remains literal and unavailable codec operations retain source with diagnostics. Internal fragments, supported safe HTML, ordinary rich-text editing, persistence and collaboration retain their default guarantees. Examples and regression fixtures name whether Markdown is enabled; default and enabled configurations are qualified separately. React and Astro remain thin consumers of the same configuration.
+
 ## Mounting and state
 
 - One editor surface binds one Rust/WASM document handle and one coherent editing flow.

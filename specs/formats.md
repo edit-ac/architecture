@@ -4,6 +4,12 @@ Status: development contract; parser conformance and schema qualification are im
 Scope: semantic interchange, browser clipboard behavior and the [CLI's Markdown editing representation](cli.md).
 The Rust implementation must remain reusable by CLI and future native adapters.
 
+## Optional Markdown capability
+
+The user approved making Markdown a first-party optional extension on 2026-10-13. The grammar and fidelity requirements below remain mandatory when Markdown is enabled. The default browser Task preset does not include or automatically load the parser, Markdown paste processing, export/import helpers or typing shortcuts. A host explicitly registers the Markdown extension before using those operations; built-in rich-text editing, storage, collaboration and default internal-fragment/safe-HTML/plain clipboard handling remain available without it. CLI Markdown editing and Markdown-enabled native/browser consumers explicitly include the shared portable implementation. Existing roadmap-05 evidence qualifies the enabled feature, not its presence in every default bundle.
+
+Missing Markdown operations expose a recoverable unsupported-capability result and preserve source data. With the extension absent, ordinary text including Markdown syntax is pasted literally and typing shortcuts cannot reinterpret it. An explicit Markdown clipboard/action without the capability preserves source and reports the unavailable codec rather than silently claiming formatted import; safe existing fallback flavors remain usable. Enabling the extension restores the qualified Markdown paste, shortcuts, import/export, stable-anchor, one-transaction history, diagnostics and preservation behavior. This profile change does not authorize a new document format, schema migration or second writable replica.
+
 ## Supported profile
 
 The base grammar is CommonMark 0.31.2.
@@ -71,8 +77,8 @@ source/text. Preparation returns no live document mutation.
 
 Malformed internal fragments fall back to the next safe available flavor with diagnostics.
 An unsupported fragment version is not reinterpreted as a current internal structure.
-The task-editor preset formats plain-text Markdown by default.
-A minimal host chooses and documents its plain-text policy during configuration.
+The task-editor preset pastes plain text literally by default. A host that explicitly registers the Markdown extension may configure its documented Markdown-paste policy; the extension-enabled Task configuration formats plain-text Markdown under that policy.
+Every host chooses and documents its enabled codecs and plain-text policy during configuration.
 Provide an accessible literal/plain-text paste command; do not rely on undocumented heuristics or AI.
 Pasting into a code block or inline-code editing context is literal under the declared target policy.
 Only user paste/import actions parse Markdown; remote structured updates are never reparsed.
@@ -200,3 +206,11 @@ Both recovered `mountEditor` and borrowed-engine `mountEditorSurface` accept `pr
 The first qualified edit profile preserves block cardinality and container topology. Text/mark/block-presentation/check-state edits on proven mappings are supported. Structural count/container changes return explicit unsupported/ambiguous conflicts, with the draft still caller-owned; they never fall back to whole-document replacement. Unknown/unsupported blocks may remain untouched but cannot be changed by this profile. Unicode text differences use scalar boundaries translated to UTF-16 anchors from the opening checkpoint. Current target ownership/relative order/style/mark context and expected deleted text are checked before staging. Disjoint remote text outside the edited range is preserved; overlap, deleted/moved targets and unsupported data changes reject.
 
 Source deltas preserve existing glyph-source ownership; they do not create fresh clipboard fragments. All deltas stage on one isolated replica and commit through one `PreparedEditorEdit`. Commit retains the core's exact revision/checkpoint guard, so a change between prepare and commit rejects without mutation. The result keeps exact edited spelling; it is not a CRDT checkpoint or a source representation of unrelated remote changes. Hosts retain base/draft/current representations and refresh their source mapping after an accepted merge.
+
+## Simulator/emulator development qualification
+
+Controller decision, 2026-10-13: the user authorized "Lets unblock, emulator should do for now". A named iOS Simulator or Android Emulator running its platform browser is accepted for development clipboard qualification. This is a virtual-device result, not physical-device, real IME/accessibility or release support. Playwright mobile viewports, synthetic ClipboardEvent/InputEvent and prepared desktop event variants alone do not meet this emulator gate.
+
+Roadmap 05 provides two qualification levels: its qualified portable FMT-1.1–FMT-1.14 behavior, including FMT-1.12, plus a passing virtual-device development receipt may unblock development tracks 08, 11, 12 and 21. FMT-1.15-V1 remains the mandatory physical-device release criterion; leave FMT-1.15 and roadmap 05 release completion open until it passes. Missing physical observations must not reblock those development tracks after the virtual gate passes. Other failed portable gates remain blockers. CAP-1.1 may execute the virtual gate as its next bounded development entry step rather than requiring a receipt before starting that step.
+
+Use the procedure in tests/clipboard-emulator-development.md and record evidence under evidence/markdown/emulator-development/receipt.json. Require nonzero actually executed native clipboard cases, exact simulator/emulator/browser/OS versions, source/package hashes, semantic/history/storage observations, test counts, failures/skips and reproduction instructions. Missing or failed virtual cases cannot be marked passing. Retain previous physical-device BLOCKED receipts unchanged. Release/device owners later collect physical evidence against the then-current artifacts.

@@ -10,6 +10,8 @@ Workspace: `core` (sibling of `architecture`). Deliver only the outcomes below. 
 
 Upstream entry gates: `02-engine.md` complete at current source revision with passing artifact evidence, `04-browser-input.md` complete at current source revision with passing artifact evidence.
 
+Packaging amendment (2026-10-13): The user made Markdown an explicit optional extension. This track continues to qualify the full enabled grammar, interchange, paste and shortcut behavior. References to Task Markdown defaults mean the extension-enabled Task configuration; the bare Task preset pastes Markdown-looking text literally and does not load the parser. SDK-1.8 owns extraction and separate default/enabled artifact qualification. Preserve historical results, the roadmap-05 completion assumption and the outstanding FMT-1.15 actual-device gate; this amendment does not claim new qualification.
+
 ## Execution rules
 
 Each iteration may implement at most one parent task, including all its implementation and validation substeps. Target 15–45 minutes plus validation; if a boundary is too large, stop with a precise proposed split for the controller. Pick a task only when every named dependency is implemented and validated. Other ready tasks are permitted independent work; a roadmap entry gate remains mandatory for its dependents. Do not launch this roadmap while its upstream gate is unavailable.
@@ -383,16 +385,23 @@ Blocked behavior: Leave `FMT-1.12` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO 
 - [ ] FMT-1.15 Qualify actual-device clipboard entry points.
 
 Purpose: Preserve the physical-device requirements extracted from FMT-1.13.
+
+Controller amendment (2026-10-13): execute the separate simulator/emulator development gate under `../architecture/tests/clipboard-emulator-development.md`. A passing FMT-1.15-V2 receipt unblocks portable development tracks as defined in `specs/verification.md`; FMT-1.15-V1 and physical release completion remain open. CAP-1.1 may own this bounded virtual execution and publish its receipt; do not start a duplicate roadmap-05 worker.
+
 Context: `tests/manual/`; `../architecture/tests/mobile-web-cases.md`; `../architecture/specs/formats.md`; `../architecture/specs/verification.md`.
 Dependencies: FMT-1.13.
-Session scope: One device qualification boundary; no synthetic substitution.
+Session scope: One bounded device qualification boundary. User-approved simulator/emulator development qualification is separate from mandatory physical-device release qualification.
 Acceptance: Record native mobile paste menus and all platform plain-paste shortcuts using actual devices/OS clipboard and the qualified packed palette. Unsupported/missing devices remain explicit and leave this task and the roadmap incomplete.
 
 Implementation:
 
 - [x] FMT-1.15-I1 Prepare the exact-version physical-device protocol, fixture hashes and expected semantic/history/storage observations for native mobile paste menus and platform plain-paste shortcuts.
 
+- [ ] FMT-1.15-I2 Execute the user-approved simulator/emulator development procedure on a task-owned virtual device using the current packed artifacts; keep physical qualification separately open.
+
 Validation:
+
+- [ ] FMT-1.15-V2 Record a passing virtual-device receipt for all five representative clipboard/undo/durability/literal assertions, nonzero executed counts, exact versions/hashes, native action traces and preserved failures. This qualifies development only; no physical observations are inferred.
 
 - [ ] FMT-1.15-V1 Execute the protocol on actual mobile Safari/Chrome and desktop OS shortcut entry points, with nonzero observed case counts, exact device/browser/OS versions, source/package hashes and preserved failures. Missing devices or skipped mandatory cases do not qualify support.
 

@@ -6,7 +6,9 @@ Status: IN_PROGRESS
 
 Workspace: `core`; paths below are core-relative unless prefixed `../architecture/`. Follow `../architecture/specs/client-contracts.md` and the active task context. This is planned follow-up delivery, not implemented capability.
 
-Required upstream tracks: `02-engine.md`, `03-local-storage.md`, `05-markdown-content.md`, `06-synchronization.md` complete at reviewed source/implementation revisions with passing evidence. Check these gates before launching; source dependencies below are local to this file.
+Required upstream tracks: `02-engine.md`, `03-local-storage.md` and `06-synchronization.md` have reviewed passing implementation evidence. Roadmap `05-markdown-content.md` supplies the qualified portable behavior including FMT-1.12 and the simulator/emulator development gate defined below; CAP-1.1-I2/V2 may gather the latter before this development parent closes. Physical FMT-1.15-V1 remains a release gate. Check these gates against recorded revisions; source dependencies below are local to this file.
+
+Controller development-entry amendment (2026-10-13): interpret the roadmap-05 gate using the simulator/emulator development level in `../architecture/specs/verification.md`. Qualified portable FMT-1.1–FMT-1.14 behavior plus the actual passing virtual-device receipt is sufficient for this development track; physical FMT-1.15-V1 remains an open release obligation. No other upstream acceptance is waived. CAP-1.1-I2/V2 executes the missing virtual gate now, so its entry step is runnable before that receipt exists. Reuse the already reviewed 02/03/06 matrix and passing portable checks; do not repeat the physical-device-only blockage.
 
 ## Execution rules
 
@@ -24,13 +26,17 @@ Purpose: Audit shared-client compatibility as one bounded reusable delivery boun
 Context: `crates/editac-core/`; `crates/editac-markdown/`; `../architecture/evidence/client-compatibility.md`; `../architecture/specs/client-contracts.md`; `../architecture/specs/verification.md`.
 Dependencies: none.
 Session scope: One named implementation/qualification boundary, 15–45 minutes plus focused checks; controller splits before exceeding scope.
-Acceptance: All referenced gates including FMT-1.12 pass at recorded revisions; missing API/migration has a bounded controller-owned decision, not an invented compatibility promise.
+Acceptance: All required portable gates including FMT-1.12 pass at recorded revisions; the five native clipboard assertions pass on an actual iOS Simulator or Android Emulator under the user-approved development policy. Physical FMT-1.15-V1 stays an explicit release obligation and does not block this development parent. Missing API/migration has a bounded controller-owned decision, not an invented compatibility promise.
 
 Implementation:
 
 - [ ] CAP-1.1-I1 Check real schema/patch/anchor/source-reconciliation/storage/sync evidence. Map required headless session ports and document any frozen-schema conflict before coding. Create the editac-session crate and contract-test harness only after the map is coherent.
 
+- [ ] CAP-1.1-I2 Execute `../architecture/tests/clipboard-emulator-development.md` on one task-owned virtual device; capture actual native clipboard/menu, semantic/history/durability and literal routing observations with current artifact identities. Record this virtual evidence for FMT-1.15-I2/V2; preserve physical release gaps.
+
 Validation:
+
+- [ ] CAP-1.1-V2 Verify all five virtual clipboard assertions actually executed and passed, with nonzero counts and zero required skips; link `../architecture/evidence/markdown/emulator-development/receipt.json`, exact versions/hashes, traces and retained failures. Reuse unchanged prior portable qualification.
 
 - [ ] CAP-1.1-V1 cargo test -p editac-core --locked; cargo test -p editac-markdown --test reconcile --locked. Assert the acceptance cases; record exact exit results, nonzero matching test counts where applicable, failures/skips and artifact hashes.
 

@@ -16,6 +16,14 @@ Revision requests bind document/epoch/schema/module profile, observed-state toke
 
 A locally monotonic generation may label revisions but must be persisted and scoped; it is not a cross-replica total order. Deletion effects participate in exact revision validation. Availability after pruning, encryption key rotation or schema migration is explicit. Return unavailable/locked/incompatible for a missing revision, never approximate it from the current document. Yrs GC and UndoManager are not an archival history API.
 
+### Named snapshot store (DIF-1.2)
+
+The session companion exposes an in-memory, host-owned snapshot store, separate from the live replica and durable session journal. A host supplies a bounded store namespace; opaque handles contain that namespace, a process-local store instance and a local capture sequence, which is not a persisted revision or global order. Every read binds the complete captured scope, representation and hash. Missing handles return missing; previously issued evicted handles return pruned without retaining unbounded tombstones. Schema/module mismatch returns incompatible; other mismatched request bindings reject explicitly.
+
+Count and encoded-byte retention are FIFO. Byte accounting includes retained label/profile/scope metadata as well as payload. Oversized captures reject before eviction; reads borrow immutable data, so the store owns no unbounded materialization cache. Capture is an explicit operation with a current observed revision check and a read-only engine callback. No capture hook is installed in edit/undo/receive paths. The callback owns representation provenance; engine projection adapters are delivered by DIF-1.4.
+
+An optional host key-profile label records the access generation needed to read a snapshot. Missing or rotated key access returns key-unavailable. This decrypted in-memory store is not an encryption boundary; hosts must enforce authorization and optional encrypted persistence before supplying access. Source text is omitted from store diagnostics. Capture labels are user-supplied, not authenticated attribution. Named snapshots and their capabilities disappear with the host-owned store; durable archival storage and restoration are not claimed here.
+
 ## Patch contract
 
 Pin deterministic line/word diff algorithms and options. A patch carries before/after hashes, representation/profile, limits and hunk ranges. Applying it to the exact baseline must yield byte-for-byte expected output and the expected hash. Wrong baseline, overlapping hunks, malformed lengths, missing context or output-limit violations fail without mutation. Git-like unified output is an interoperability format, not a promise that tie-breaking matches every Git version/options combination.
