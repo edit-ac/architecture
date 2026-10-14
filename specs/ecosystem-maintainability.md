@@ -93,6 +93,39 @@ actual Rust session acknowledgment preservation without network/provider calls.
 
 Test exact supported previous/current combinations for schema, wire, extension descriptors, public JS/Rust APIs and native ABI. Reject unsupported versions with actionable recovery/export options. Upgrade and rollback fixtures must account for persisted data; reverting a package alone does not reverse a schema migration.
 
+### Exact supported upgrade and rollback boundary
+
+`core/fixtures/compatibility/policy.json` names the reviewed previous and current
+source identities and their schema/wire/descriptor/public API/native ABI tuple.
+Support applies only to these identities. The canonical `compatibility` suite
+verifies the complete portable source, dependency and build-input pins before
+compiling. Byte-identical executable closures may share one compiled runtime;
+this does not qualify arbitrary historical packages or target-platform SDKs.
+
+Frozen v4/v5 checkpoints and separate acknowledged journal updates contain
+structural operations, UTF-16 text and unknown extension data. Public Rust and
+qualified Yjs readers recover each matching profile; the current JS SDK and
+native preparation bridge admit v5 only. Unsupported wire or schema identities
+reject before mutation. Persisted newer-schema rollback and metadata relabeling
+must reject while preserving the original checkpoint and journal. Package
+rollback alone is never schema migration.
+
+The policy returns explicit recover/reject, migration and export outcomes.
+Unreviewed implementation revisions and unsupported public API/ABI tuples do not dispatch into the qualified runtime.
+Recovery means reopening preserved bytes with a matching reader, or explicitly
+exporting before a separately admitted new epoch. It does not promise a lossless
+legacy-schema export. Unknown descriptors stay opaque; declared descriptor
+migration produces candidate data requiring host admission, and an undeclared
+reverse edge cannot invoke a migrator. No implicit persisted migration is
+qualified here.
+
+`node scripts/check-architecture.mjs --suite compatibility` exercises actual
+Rust restore/replay, descriptor registration, native FFI and generated ABI
+lower/lift, plus compiled WASM through exported JS APIs. Owned checkpoints travel
+in both native-to-JS and JS-to-native/Rust directions. Receipts retain exact
+source/fixture/executable hashes, nonzero Node and nested Rust counts and failed
+evidence; prepared output cannot manufacture native SDK or release support.
+
 Build consumers from packed/released artifacts on clean workspaces. Check imports and Cargo feature graphs so disabled optional services and heavy dependencies do not enter minimum clients. Pin executable tooling/fixtures, retain licenses/notices and check known advisories at release without claiming that a clean advisory scan proves safety.
 
 Keep dependency choices in short decision records with verified API, target, license, bundle and maintenance evidence. The choice gate must block on missing evidence, not silently choose an unqualified substitute. Avoid invented universal provider interfaces: the common ports are the actual repeated session, asset, resolver, conversion and lifecycle contracts.
