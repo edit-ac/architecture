@@ -25,6 +25,31 @@ Distinguish available, enabled, authorized and qualified capabilities. Permissio
 
 Avoid parallel inventories: adapt existing `native/<platform>/capability.json` and release-profile checks to the shared schema, then generate public support tables and demo controls from the same reviewed release record. Manual qualification evidence remains explicit; a generated green table cannot manufacture it.
 
+### Profile producer and consumer boundary
+
+`core/contracts/profiles/producers.json` is the reviewed build-time producer list.
+Native `capability.json` files use the shared capability schema. Preparation
+receipts are observations with their original scope, counts, input hashes and
+physical/virtual provenance; a passing preparation receipt cannot admit SDK
+support. Source drift remains visible and never upgrades an observation.
+
+`core/scripts/release-profile.mjs` emits one content-addressed JSON record for
+docs, demo and cloud. Its profiles retain the exact implementation/package,
+version tuple, producer hash and evidence identities. Static authorization stays
+null. Consumers pin the entire record's SHA-256 from their reviewed distribution
+channel; neither this record nor its digest grants current host permission.
+
+Native support admission requires a separate reviewed owning-platform policy and
+receipt, bound to the profile's implementation, versions, platform and input
+identities. The policy names required capability cases and packaged artifacts;
+every required case must pass directly on the named target runtime or through a
+linked, executed virtual equivalent. Nonzero exact counts, no failures/skips,
+matching artifact hashes and capability-scoped evidence are mandatory. Accepted
+provenance is physical-device, simulator, emulator, VM or OS host as appropriate
+to the claimed platform. Prepared transports exercise this admission contract
+only. Pending producers remain pending until their owning SDK qualification is
+reviewed; admission does not publish a release or establish resource budgets.
+
 ## Asynchronous service contracts
 
 Every heavy service uses bounded inputs, stable document/session identity, expected revision or content hash, cancellation, deadline and a typed result. Apply only after permission and revision revalidation. Dispose workers/subscriptions and discard stale results. Highlighter spans, link metadata and conversion previews are derived caches; they cannot become competing writable state.
