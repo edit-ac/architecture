@@ -202,3 +202,18 @@ Conformance runs baseline-with-none, every official preset, each feature indepen
 ## Formatting-preserving transfer capabilities
 
 EXT-1.13 owns the portable extension formatting/clipboard contract. Each descriptor declares admitted inline/block formatting, structured transfer codecs and absent-codec/source-preservation behavior. Table cells preserve marks, links, code, paragraph styles and admitted structure; captions, references, math and future extensions use the same prepared atomic mutation and version/resource checks. Every web/native presenter exposes formatting and literal paste consistently. Unsupported extensions keep bounded inert source with explicit diagnostics; transfer cannot execute code/formulas or fetch assets without a host capability. Native platform tasks own OS-host/simulator fixtures and actual-device qualification remains separate.
+
+### Whole-atom deletion in prepared transfers
+
+The owning prepared-fragment path may delete fully selected admitted table,
+image and reference atoms. Validate every selected tuple and full fallback-text
+range before staging. Convert only those selected owners to disposable paragraph
+targets for the existing deletion/join primitives; this intermediate state never
+reaches the live replica, persistence or observers. Commit the final admitted
+update once, with one history intent and normal revision/capability guards.
+Partial reference-label ranges, unknown tuples and collapsed empty-atom targets
+reject before clipboard acknowledgement or live mutation. Ordinary text commands
+and public joins retain their existing admission. Surrounding unselected content
+and formatting survive; undo restores original tuples and fallback text together.
+This boundary does not qualify richer table-cell structures, unknown atom editing
+or any native clipboard/device behavior.
