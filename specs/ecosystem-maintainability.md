@@ -56,6 +56,39 @@ Every heavy service uses bounded inputs, stable document/session identity, expec
 
 Set per-service concurrency, byte/item/decompression/pixel/depth limits, queue admission and recovery behavior. Measure preparation, transfer, apply and rendering separately. Worker execution does not remove copy cost or UI layout cost. Do not run expensive work merely because an unrelated block changed.
 
+### Bounded derived-work lifecycle
+
+`core/contracts/services.json` records actual versus pending highlight, asset,
+resolver and conversion registrations. The session companion's
+`service_lifecycle` module and browser `services/lifecycle.ts` share document,
+session, revision and transient permission identity checks. Hosts provide a
+monotonic deadline, bounded byte/item counts, cancellation and reviewed per-port
+concurrency/queue limits. Check identity/permission before provider invocation,
+after completion and immediately before consuming a ready result. A ready
+result is derived data, never a semantic commit or durability acknowledgment.
+
+Admission is FIFO with explicit saturation/resource rejection. Every admitted
+request has one terminal outcome. Cancellation, deadline and disposal settle
+callers even when a provider ignores abort; its active slot remains occupied
+until provider termination, preventing unbounded replacement work. Queued work
+is removed on cancellation/invalidation without invoking its provider. Hosts
+own actual worker termination and feature-specific output, decompression,
+pixel/depth and content limits; this envelope cannot manufacture those proofs.
+Durable journal acknowledgments remain owned by the store/session and survive
+derived-work invalidation.
+
+The production reference lookup and legacy resolver presenter both use this
+boundary. The lookup keeps its existing query/target/catalog limits, aborts
+superseded work, bounds noncooperative searches to two occupied slots and
+revalidates scope before inserting a selected target. Presenter revisions follow
+the selected-node subscription, preserving stable anchors across unrelated edits. Pending families have
+prepared contract providers only. Their owning tracks must register and test
+real adapters before optional-feature runtime qualification; synchronous image
+URL policy and Markdown preparation do not count as asynchronous providers.
+`node scripts/check-architecture.mjs --suite service-lifecycle` checks shared
+scope vectors, queue/cancellation/deadline behavior, the real lookup adapter and
+actual Rust session acknowledgment preservation without network/provider calls.
+
 ## Compatibility and release maintenance
 
 Test exact supported previous/current combinations for schema, wire, extension descriptors, public JS/Rust APIs and native ABI. Reject unsupported versions with actionable recovery/export options. Upgrade and rollback fixtures must account for persisted data; reverting a package alone does not reverse a schema migration.
