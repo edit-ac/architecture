@@ -211,12 +211,12 @@ range before staging. Convert only those selected owners to disposable paragraph
 targets for the existing deletion/join primitives; this intermediate state never
 reaches the live replica, persistence or observers. Commit the final admitted
 update once, with one history intent and normal revision/capability guards.
-Partial reference-label ranges, unknown tuples and collapsed empty-atom targets
+Partial reference-label/inert-source ranges, unknown tuples and collapsed empty-atom targets
 reject before clipboard acknowledgement or live mutation. Ordinary text commands
 and public joins retain their existing admission. Surrounding unselected content
 and formatting survive; undo restores original tuples and fallback text together.
 The admitted version 2 table tuple also follows this whole-atom path; see the
-bounded table transfer contract below. Unknown atom editing and native clipboard
+bounded table transfer contract below. Partial unknown atom editing and native clipboard
 or device behavior remain separate qualification obligations.
 
 ### Bounded version 2 table transfer
@@ -236,8 +236,8 @@ codec returns prepared data through the same engine admission, revision,
 capability, history and storage boundary as other extension transfers; declaring
 a capability cannot bypass validation. Version 1 remains unchanged. Registration
 does not rewrite v1 into v2 or reinterpret future versions; unsupported versions
-and absent codecs retain bounded source and explicit envelope recovery. Ordinary
-unknown-content transfer/storage is still an unfinished EXT-1.13 obligation.
+and absent codecs retain bounded source and explicit envelope recovery through the
+inert carrier described below.
 
 Structured whole-atom copy/cut/paste, undo/redo and checkpoint reopen retain v2
 cell styles and metadata. Markdown source alone cannot encode all admitted
@@ -245,3 +245,32 @@ semantics: export returns `rich-table-source-fallback` and complete typed recove
 alongside inert source. Source reimport alone is not lossless. This contract adds
 no rich table renderer, cell navigation/editing commands, formula execution,
 asset lookup or native-device qualification.
+
+### Ordinary bounded inert extension transfer
+
+`Content::InertExtension` admits `module:editac.inert-extension` version 1 in the
+existing opaque block envelope. Data is exactly the v1 transfer envelope:
+`version`, `type`, `dataVersion`, `source`, `payload`. The extension type has two
+lowercase ASCII name segments (letters, digits, hyphens), at most 128 bytes;
+dataVersion is an integer 1–4294967295. This carrier does not register or
+reinterpret the wrapped extension. Unknown types/versions and absent codecs use
+it automatically; absent presenters display unformatted source and diagnostics.
+
+Both public preparation and owning engine admission validate JSON-only data:
+at most 1,048,576 serialized UTF-8 bytes, 65,536 values and depth 16 (envelope
+root at depth zero), plus aggregate key/string bytes bounded to 1 MiB. Reject
+nonfinite numbers, binary/undefined values, executable accessors/functions, cycles,
+nonplain objects and `__proto__`/`constructor`/`prototype` keys. Fragment wire and
+text limits independently apply, including duplicated visible fallback source.
+Prepared fallback runs must exactly match source and contain no marks. No payload
+or source evaluation, formula execution, permission grant or asset lookup occurs.
+
+Ordinary structured copy/paste and whole-atom cut preserve the exact envelope,
+normal atomic history, selection and storage guards; undo/redo and checkpoint
+reopen retain it. Partial source edits/cuts and incompatible carrier versions
+reject before mutation. Explicit literal paste bypasses codecs and inserts only
+source text. Markdown export escapes active Markdown/HTML source syntax, reports
+`inert-extension-source-fallback` and retains the exact typed fragment for lossless
+prepared recovery. Markdown source alone does not recover payloads. These are
+portable contract proofs, not optional extension execution, native OS clipboard
+or physical-device qualification.
