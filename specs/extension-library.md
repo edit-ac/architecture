@@ -215,5 +215,33 @@ Partial reference-label ranges, unknown tuples and collapsed empty-atom targets
 reject before clipboard acknowledgement or live mutation. Ordinary text commands
 and public joins retain their existing admission. Surrounding unselected content
 and formatting survive; undo restores original tuples and fallback text together.
-This boundary does not qualify richer table-cell structures, unknown atom editing
-or any native clipboard/device behavior.
+The admitted version 2 table tuple also follows this whole-atom path; see the
+bounded table transfer contract below. Unknown atom editing and native clipboard
+or device behavior remain separate qualification obligations.
+
+### Bounded version 2 table transfer
+
+The owning `Content::RichTable` validates `module:editac.table` version 2 inside
+the existing opaque block envelope. It preserves the exact tuple: rectangular
+rows and column alignments, per-cell header flags, nonoverlapping row/column
+spans with explicit null covered positions, and ordered paragraph/heading/code
+cell blocks with the qualified inline run/mark/link encoding. Admission rejects
+empty geometry or paragraphs, invalid styles/URLs, uncovered null positions,
+overlaps, out-of-bounds spans, unknown fields and resource-limit overruns before
+mutation. Limits and exact shapes are defined in [formats](formats.md).
+
+Transfer descriptors declare `spans` and `cell-paragraph-style` in addition to
+rows/columns/alignment/header and the admitted inline/block formatting. A trusted
+codec returns prepared data through the same engine admission, revision,
+capability, history and storage boundary as other extension transfers; declaring
+a capability cannot bypass validation. Version 1 remains unchanged. Registration
+does not rewrite v1 into v2 or reinterpret future versions; unsupported versions
+and absent codecs retain bounded source and explicit envelope recovery. Ordinary
+unknown-content transfer/storage is still an unfinished EXT-1.13 obligation.
+
+Structured whole-atom copy/cut/paste, undo/redo and checkpoint reopen retain v2
+cell styles and metadata. Markdown source alone cannot encode all admitted
+semantics: export returns `rich-table-source-fallback` and complete typed recovery
+alongside inert source. Source reimport alone is not lossless. This contract adds
+no rich table renderer, cell navigation/editing commands, formula execution,
+asset lookup or native-device qualification.
