@@ -25,11 +25,69 @@ Distinguish available, enabled, authorized and qualified capabilities. Permissio
 
 Avoid parallel inventories: adapt existing `native/<platform>/capability.json` and release-profile checks to the shared schema, then generate public support tables and demo controls from the same reviewed release record. Manual qualification evidence remains explicit; a generated green table cannot manufacture it.
 
+### Profile producer and consumer boundary
+
+`core/contracts/profiles/producers.json` is the reviewed build-time producer list.
+Native `capability.json` files use the shared capability schema. Preparation
+receipts are observations with their original scope, counts, input hashes and
+physical/virtual provenance; a passing preparation receipt cannot admit SDK
+support. Source drift remains visible and never upgrades an observation.
+
+`core/scripts/release-profile.mjs` emits one content-addressed JSON record for
+docs, demo and cloud. Its profiles retain the exact implementation/package,
+version tuple, producer hash and evidence identities. Static authorization stays
+null. Consumers pin the entire record's SHA-256 from their reviewed distribution
+channel; neither this record nor its digest grants current host permission.
+
+Native support admission requires a separate reviewed owning-platform policy and
+receipt, bound to the profile's implementation, versions, platform and input
+identities. The policy names required capability cases and packaged artifacts;
+every required case must pass directly on the named target runtime or through a
+linked, executed virtual equivalent. Nonzero exact counts, no failures/skips,
+matching artifact hashes and capability-scoped evidence are mandatory. Accepted
+provenance is physical-device, simulator, emulator, VM or OS host as appropriate
+to the claimed platform. Prepared transports exercise this admission contract
+only. Pending producers remain pending until their owning SDK qualification is
+reviewed; admission does not publish a release or establish resource budgets.
+
 ## Asynchronous service contracts
 
 Every heavy service uses bounded inputs, stable document/session identity, expected revision or content hash, cancellation, deadline and a typed result. Apply only after permission and revision revalidation. Dispose workers/subscriptions and discard stale results. Highlighter spans, link metadata and conversion previews are derived caches; they cannot become competing writable state.
 
 Set per-service concurrency, byte/item/decompression/pixel/depth limits, queue admission and recovery behavior. Measure preparation, transfer, apply and rendering separately. Worker execution does not remove copy cost or UI layout cost. Do not run expensive work merely because an unrelated block changed.
+
+### Bounded derived-work lifecycle
+
+`core/contracts/services.json` records actual versus pending highlight, asset,
+resolver and conversion registrations. The session companion's
+`service_lifecycle` module and browser `services/lifecycle.ts` share document,
+session, revision and transient permission identity checks. Hosts provide a
+monotonic deadline, bounded byte/item counts, cancellation and reviewed per-port
+concurrency/queue limits. Check identity/permission before provider invocation,
+after completion and immediately before consuming a ready result. A ready
+result is derived data, never a semantic commit or durability acknowledgment.
+
+Admission is FIFO with explicit saturation/resource rejection. Every admitted
+request has one terminal outcome. Cancellation, deadline and disposal settle
+callers even when a provider ignores abort; its active slot remains occupied
+until provider termination, preventing unbounded replacement work. Queued work
+is removed on cancellation/invalidation without invoking its provider. Hosts
+own actual worker termination and feature-specific output, decompression,
+pixel/depth and content limits; this envelope cannot manufacture those proofs.
+Durable journal acknowledgments remain owned by the store/session and survive
+derived-work invalidation.
+
+The production reference lookup and legacy resolver presenter both use this
+boundary. The lookup keeps its existing query/target/catalog limits, aborts
+superseded work, bounds noncooperative searches to two occupied slots and
+revalidates scope before inserting a selected target. Presenter revisions follow
+the selected-node subscription, preserving stable anchors across unrelated edits. Pending families have
+prepared contract providers only. Their owning tracks must register and test
+real adapters before optional-feature runtime qualification; synchronous image
+URL policy and Markdown preparation do not count as asynchronous providers.
+`node scripts/check-architecture.mjs --suite service-lifecycle` checks shared
+scope vectors, queue/cancellation/deadline behavior, the real lookup adapter and
+actual Rust session acknowledgment preservation without network/provider calls.
 
 ## Compatibility and release maintenance
 
