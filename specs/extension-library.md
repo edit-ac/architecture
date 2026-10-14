@@ -1,5 +1,7 @@
 # Public extension library contract
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: development contract extending the qualified first-party modules.
 
 The library exposes the existing [portable module contract](modules-native.md)
@@ -125,7 +127,7 @@ it does not claim OS/device renderer or deployed persistence qualification.
 Define separate browser, terminal, Swift/iOS, Kotlin/Android and desktop adapter
 contracts for focus, input/composition ownership, accessible labels/actions,
 clipboard/Markdown representation, selection/atom boundaries and theme/lifecycle.
-Use headless conformance adapters here. Full platform renderers and real-device
+Use headless conformance adapters here. Full platform renderers and physical or virtual platform
 evidence belong to their platform tracks; this track supplies their fixtures and
 acceptance hooks without depending on those downstream implementations.
 
@@ -201,7 +203,7 @@ Conformance runs baseline-with-none, every official preset, each feature indepen
 
 ## Formatting-preserving transfer capabilities
 
-EXT-1.13 owns the portable extension formatting/clipboard contract. Each descriptor declares admitted inline/block formatting, structured transfer codecs and absent-codec/source-preservation behavior. Table cells preserve marks, links, code, paragraph styles and admitted structure; captions, references, math and future extensions use the same prepared atomic mutation and version/resource checks. Every web/native presenter exposes formatting and literal paste consistently. Unsupported extensions keep bounded inert source with explicit diagnostics; transfer cannot execute code/formulas or fetch assets without a host capability. Native platform tasks own OS-host/simulator fixtures and actual-device qualification remains separate.
+EXT-1.13 owns the portable extension formatting/clipboard contract. Each descriptor declares admitted inline/block formatting, structured transfer codecs and absent-codec/source-preservation behavior. Table cells preserve marks, links, code, paragraph styles and admitted structure; captions, references, math and future extensions use the same prepared atomic mutation and version/resource checks. Every web/native presenter exposes formatting and literal paste consistently. Unsupported extensions keep bounded inert source with explicit diagnostics; transfer cannot execute code/formulas or fetch assets without a host capability. Native platform tasks own OS-host/simulator fixtures and physical or virtual platform qualification remains separate.
 
 ### Whole-atom deletion in prepared transfers
 

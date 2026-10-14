@@ -1,5 +1,7 @@
 # Targeted editing regression cases
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: planned executable coverage, not test results. The owning task creates the fixture and assertions. Expected behavior comes from [editor-interactions](../specs/editor-interactions.md); citations and issue scope live in [research](../evidence/editor-interaction-research.md) and [assistive research](../evidence/assistive-input-research.md).
 
 ## Fixture protocol
@@ -159,6 +161,6 @@ Priorities: **P0** prevents data loss, broken basic input or inaccessible operat
 
 ## Execution and coverage gates
 
-INT-1.1 creates a machine-readable fixture index from these IDs and ensures every row has an implementation test owner. INT-1.2–INT-1.13 run the corresponding deterministic cases; INT-1.14 closes actual device rows (EVT-03/05/06/07, NAV-05/06, KEY-06 and A11-02/04/05/06) and browser integration. Semantic cases also run against native Rust/WASM with equivalent snapshots where relevant; DOM/layout assertions remain browser-specific. Platform adapters reuse the same expected semantics through AIN tasks and existing native qualification; they do not inherit a browser pass.
+INT-1.1 creates a machine-readable fixture index from these IDs and ensures every row has an implementation test owner. INT-1.2–INT-1.13 run the corresponding deterministic cases; INT-1.14 closes physical or virtual platform rows (EVT-03/05/06/07, NAV-05/06, KEY-06 and A11-02/04/05/06) and browser integration. Semantic cases also run against native Rust/WASM with equivalent snapshots where relevant; DOM/layout assertions remain browser-specific. Platform adapters reuse the same expected semantics through AIN tasks and existing native qualification; they do not inherit a browser pass.
 
 For each case record status (`planned`, `pass`, `fail`, `unsupported`, `blocked`), command/manual steps, executed/passed/failed/skipped counts, artifact and revision. Only actual assertions or device observations can mark pass. Zero matches, missing scripts, unchecked manual rows and skipped mandatory combinations prevent qualification. Retain failed evidence and describe the support envelope; adding these documents does not establish support.

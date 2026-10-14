@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core`; paths below are core-relative unless prefixed `../architecture/`. Follow `../architecture/specs/security-encryption.md` and the active task context. This is planned follow-up delivery, not implemented capability.
@@ -68,7 +70,7 @@ Purpose: Connect the iOS host to its approved OS key provider and explicit recov
 Context: `native/ios/security/`; `native/ios/tests/security-keys/`; `native/ios/scripts/check.sh`; `tests/scenarios/run.mjs`; `tests/manual/security-ios.md`; `../architecture/specs/security-encryption.md`; `../architecture/specs/verification.md`.
 Dependencies: ENC-1.1.
 Session scope: One host adapter or evidence boundary, 15–45 minutes plus focused checks. Reuse qualified key ports/protocol and existing host harnesses; propose a controller split before adding another provider or cryptographic mechanism.
-Acceptance: The actual supported iOS key provider passes create/unlock/lock/app-restart, unavailable/wrong/lost-key and authorized restore cases with declared access-control/backup behavior. Device-only claims have device evidence; simulator results do not establish those claims.
+Acceptance: The actual supported iOS key provider passes create/unlock/lock/app-restart, unavailable/wrong/lost-key and authorized restore cases with declared access-control/backup behavior. Hardware-specific claims retain physical provenance; simulator/VM results may close the virtual encrypted-profile gate with tested platform-boundary equivalents and documented hardware limitations.
 
 Implementation:
 
@@ -200,7 +202,7 @@ Purpose: Join host-specific key custody and recovery evidence before encrypted c
 Context: `fixtures/security/profile-matrix.json`; `tests/scenarios/run.mjs`; `../architecture/evidence/encrypted-profile.md`; `../architecture/specs/security-encryption.md`; `../architecture/specs/verification.md`.
 Dependencies: ENC-1.5, ENC-1.6, ENC-1.7, ENC-1.8, ENC-1.9, ENC-1.10, ENC-1.11.
 Session scope: One host adapter or evidence boundary, 15–45 minutes plus focused checks. Reuse qualified key ports/protocol and existing host harnesses; propose a controller split before adding another provider or cryptographic mechanism.
-Acceptance: Every required browser/iOS/Android/macOS/Windows/Linux/terminal key-provider cell maps to current passing real-host evidence and the selected threat model. Provider limitations and unqualified capabilities are explicit; missing devices/providers cannot be replaced with mocks or dropped from required coverage.
+Acceptance: Every required browser/iOS/Android/macOS/Windows/Linux/terminal key-provider cell maps to current passing real-host evidence and the selected threat model. Provider limitations and unqualified capabilities are explicit; unavailable hardware uses accepted virtual runtime/equivalent evidence; required deployed-provider evidence cannot be replaced with mocks or dropped from coverage.
 
 Implementation:
 

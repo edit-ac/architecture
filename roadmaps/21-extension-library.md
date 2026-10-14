@@ -2,11 +2,13 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core` (sibling of `architecture`). Read [the owning contract](../specs/extension-library.md), [shared client contracts](../specs/client-contracts.md) and the active task's named context. Paths below are relative to `core` unless explicitly prefixed with `../architecture/`. Planned implementation/test files are created by their task. Source is controller-owned; write checkmarks, state and evidence only in the separate progress file.
 
-Upstream entry gates: `07-extension-modules.md` and `12-client-contracts.md` complete at current source revisions with passing artifact evidence; `05-markdown-content.md` passes the portable and simulator/emulator development level defined in verification.md, including FMT-1.12. Physical FMT-1.15-V1 remains a release gate. Cross-roadmap IDs are context references; dependencies below name only parents in this file. Do not launch implementation while an upstream gate is unavailable.
+Upstream entry gates: `07-extension-modules.md` and `12-client-contracts.md` complete at current source revisions with passing artifact evidence; `05-markdown-content.md` passes the portable and simulator/emulator development level defined in verification.md, including FMT-1.12. Physical-or-virtual FMT-1.15-V1 remains a release gate. Cross-roadmap IDs are context references; dependencies below name only parents in this file. Do not launch implementation while an upstream gate is unavailable.
 
 Reuse the qualified built-in modules rather than duplicating them. This track owns public contracts, conformance fixtures, examples and platform presenter obligations; tracks 16/17/18 own their full native/desktop renderers. Define those downstream hooks without depending on completed downstream implementations. The final full-delivery gate consumes the library and actual platform evidence.
 
@@ -289,11 +291,11 @@ Implementation:
 
 Validation:
 
-- [ ] EXT-1.13-V1 `node --test tests/extension-formatting.test.mjs`. Use deterministic codecs and prepared data only; assert formatting, history, selection, failure atomicity and preserved-source fallback. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+- [ ] EXT-1.13-V1 `node --test tests/extension-formatting.test.mjs`. Use deterministic codecs and prepared data only; assert formatting, history, selection, failure atomicity and preserved-source fallback. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing required runtime tooling, failed behavior or untested mandatory cases do not qualify support; use accepted virtual runtimes/equivalents when physical hardware is unavailable.
 
 Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
 Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
-Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Accept target-platform simulators/emulators/VMs under verification.md and retain virtual provenance; never relabel their results as physical-device observations.
 
 ### Task EXT-1.11 — Record the public library integration handoff
 

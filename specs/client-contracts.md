@@ -1,5 +1,7 @@
 # Shared local-first client contracts
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: planned portable interfaces, delivered by roadmap 12. Reuse engine, source reconciliation, storage/sync and CLI contracts. This document is an interface contract, not an implemented API.
 
 ## Document addressing
@@ -92,10 +94,6 @@ Run identical prepared command/recovery fixtures through web, headless native an
 
 Implementation patterns and limits: [research](../evidence/followup-research.md). Related contracts: [storage/sync](storage-sync.md), [CLI](cli.md), [diffs](change-diffs.md), [host agents](agent-editing.md).
 
-## Simulator/emulator development qualification
+## Platform qualification with virtual runtimes
 
-Controller decision, 2026-10-13: the user authorized "Lets unblock, emulator should do for now". A named iOS Simulator or Android Emulator running its platform browser is accepted for development clipboard qualification. This is a virtual-device result, not physical-device, real IME/accessibility or release support. Playwright mobile viewports, synthetic ClipboardEvent/InputEvent and prepared desktop event variants alone do not meet this emulator gate.
-
-Roadmap 05 provides two qualification levels: its qualified portable FMT-1.1–FMT-1.14 behavior, including FMT-1.12, plus a passing virtual-device development receipt may unblock development tracks 08, 11, 12 and 21. FMT-1.15-V1 remains the mandatory physical-device release criterion; leave FMT-1.15 and roadmap 05 release completion open until it passes. Missing physical observations must not reblock those development tracks after the virtual gate passes. Other failed portable gates remain blockers. CAP-1.1 may execute the virtual gate as its next bounded development entry step rather than requiring a receipt before starting that step.
-
-Use the procedure in tests/clipboard-emulator-development.md and record evidence under evidence/markdown/emulator-development/receipt.json. Require nonzero actually executed native clipboard cases, exact simulator/emulator/browser/OS versions, source/package hashes, semantic/history/storage observations, test counts, failures/skips and reproduction instructions. Missing or failed virtual cases cannot be marked passing. Retain previous physical-device BLOCKED receipts unchanged. Release/device owners later collect physical evidence against the then-current artifacts.
+The 2026-10-13 five-case simulator/emulator development exception is retained as historical entry evidence for tracks 08/11/12/21. The user-approved 2026-10-14 [verification policy](verification.md#platform-qualification-with-simulators-emulators-and-vms) now accepts named target-platform virtual runtimes for release qualification as well. FMT-1.15-V1 requires the complete current-artifact profile/case matrix, which may run on physical devices, simulators/emulators or desktop OS VMs; its five-case V2 development subset does not automatically complete V1. Missing hardware alone must not block completion. Required implemented behavior, tested virtual equivalents, nonzero actual counts and retained failures remain mandatory. Preserve previous physical-device BLOCKED receipts and their original labels unchanged.

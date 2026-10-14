@@ -2,11 +2,13 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core`; paths below are core-relative unless prefixed `../architecture/`. Follow `../architecture/specs/client-contracts.md` and the active task context. This is planned follow-up delivery, not implemented capability.
 
-Required upstream tracks: `02-engine.md`, `03-local-storage.md` and `06-synchronization.md` have reviewed passing implementation evidence. Roadmap `05-markdown-content.md` supplies the qualified portable behavior including FMT-1.12 and the simulator/emulator development gate defined below; CAP-1.1-I2/V2 may gather the latter before this development parent closes. Physical FMT-1.15-V1 remains a release gate. Check these gates against recorded revisions; source dependencies below are local to this file.
+Required upstream tracks: `02-engine.md`, `03-local-storage.md` and `06-synchronization.md` have reviewed passing implementation evidence. Roadmap `05-markdown-content.md` supplies the qualified portable behavior including FMT-1.12 and the simulator/emulator development gate defined below; CAP-1.1-I2/V2 may gather the latter before this development parent closes. Physical-or-virtual FMT-1.15-V1 remains a release gate. Check these gates against recorded revisions; source dependencies below are local to this file.
 
 Controller development-entry amendment (2026-10-13): interpret the roadmap-05 gate using the simulator/emulator development level in `../architecture/specs/verification.md`. Qualified portable FMT-1.1–FMT-1.14 behavior plus the actual passing virtual-device receipt is sufficient for this development track; physical FMT-1.15-V1 remains an open release obligation. No other upstream acceptance is waived. CAP-1.1-I2/V2 executes the missing virtual gate now, so its entry step is runnable before that receipt exists. Reuse the already reviewed 02/03/06 matrix and passing portable checks; do not repeat the physical-device-only blockage.
 
@@ -26,7 +28,7 @@ Purpose: Audit shared-client compatibility as one bounded reusable delivery boun
 Context: `crates/editac-core/`; `crates/editac-markdown/`; `../architecture/evidence/client-compatibility.md`; `../architecture/specs/client-contracts.md`; `../architecture/specs/verification.md`.
 Dependencies: none.
 Session scope: One named implementation/qualification boundary, 15–45 minutes plus focused checks; controller splits before exceeding scope.
-Acceptance: All required portable gates including FMT-1.12 pass at recorded revisions; the five native clipboard assertions pass on an actual iOS Simulator or Android Emulator under the user-approved development policy. Physical FMT-1.15-V1 stays an explicit release obligation and does not block this development parent. Missing API/migration has a bounded controller-owned decision, not an invented compatibility promise.
+Acceptance: All required portable gates including FMT-1.12 pass at recorded revisions; the five native clipboard assertions pass on an actual iOS Simulator or Android Emulator under the user-approved development policy. FMT-1.15-V1 stays an explicit platform release obligation and does not block this development parent. Missing API/migration has a bounded controller-owned decision, not an invented compatibility promise.
 
 Implementation:
 

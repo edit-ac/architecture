@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core` (sibling of `architecture`). Read [suite contract](../specs/editing-regression-suite.md), [new regression cases](../tests/editor-regression-cases.md), the active recipe/guard in [suite.json](../tests/editing-suite/suite.json), and task-local paths. Paths below are core-relative unless explicitly prefixed. The current architecture validator checks planning consistency; this roadmap implements and runs real drivers/assertions.
@@ -12,7 +14,7 @@ The [baseline typing/rendering gate](../specs/web.md#baseline-typing-and-renderi
 
 ## Execution rules
 
-The controller owns this source. Keep checkmarks, exact counts and handoff in separate progress. Implement one parent per iteration, normally 15–45 minutes plus checks; propose a controller split if a boundary outgrows it. Local Dependencies contain only IDs in this file. Create named scripts/suites first; zero matching tests and missing commands fail. Use deterministic fixtures/mock external transports, real engine/adapters, fixed clocks and independently authored expected outcomes. No paid inference, secrets loading, live provider recording or automatic golden updates. Preserve failing traces and distinguish validation-only, semantic, synthetic replay, real-browser and actual-device evidence. Track/clean up owned test resources and preserve others' processes and work.
+The controller owns this source. Keep checkmarks, exact counts and handoff in separate progress. Implement one parent per iteration, normally 15–45 minutes plus checks; propose a controller split if a boundary outgrows it. Local Dependencies contain only IDs in this file. Create named scripts/suites first; zero matching tests and missing commands fail. Use deterministic fixtures/mock external transports, real engine/adapters, fixed clocks and independently authored expected outcomes. No paid inference, secrets loading, live provider recording or automatic golden updates. Preserve failing traces and distinguish validation-only, semantic, synthetic replay, real-browser and physical or virtual platform evidence. Track/clean up owned test resources and preserve others' processes and work.
 
 ## Epic RGS-1 — Prove editing invariants at their owning boundaries
 
@@ -120,7 +122,7 @@ Implementation:
 
 Validation:
 
-- [ ] RGS-1.5-V1 npm run test:editing -- --group properties. Run bounded deterministic seeds and injected counterexamples. Record actual sample/case counts, maximal lengths, failures/skips and minimized traces; a passing random sample never replaces fixed regressions or real-device evidence. Record exact command/exit, nonzero executed/passed/failed/skipped counts and immutable source/fixture/profile hashes.
+- [ ] RGS-1.5-V1 npm run test:editing -- --group properties. Run bounded deterministic seeds and injected counterexamples. Record actual sample/case counts, maximal lengths, failures/skips and minimized traces; a passing random sample never replaces fixed regressions or physical or virtual platform evidence. Record exact command/exit, nonzero executed/passed/failed/skipped counts and immutable source/fixture/profile hashes.
 
 Evidence: Separate progress entry `RGS-1.5` identifies actual driver/engine revisions, every executed recipe/guard/case variant and retained raw artifacts under `../architecture/evidence/editing-regression-suite/`.
 Handoff: Record the last completed substep, changed symbols/paths, minimal failing trace or missing capability and next bounded action.

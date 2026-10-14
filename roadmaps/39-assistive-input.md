@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core`; only AIN-1.9 implements in sibling `cli`. Paths below are workspace-relative unless explicitly prefixed `../cli/` or `../architecture/`. Read `../architecture/specs/assistive-input.md` and only the active task's named context. Planned implementation paths, test suites and commands are created by their owning task. This source defines delivery; it makes no current capability claim.
@@ -36,7 +38,7 @@ Validation:
 
 - [ ] AIN-1.1-V1 `cargo test -p editac-core --test assistive_input_contract --locked`. Create this suite in this task. Exercise absent/disabled extension, invalid registration, bounded envelopes, disposal and unknown capability handling; verify document/update/history state is unchanged by registration and status. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.1` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.1` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.1` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -58,7 +60,7 @@ Validation:
 
 - [ ] AIN-1.2-V1 `npm run test:browser -- assistive-presenter`. Create the named suite and dispatcher entry in this task. Check keyboard focus, labels/roles, command applicability, status transitions, extension teardown and unchanged selection/content on cancelled controls; structural accessibility checks are not screen-reader qualification. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.2` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.2` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.2` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -80,7 +82,7 @@ Validation:
 
 - [ ] AIN-1.3-V1 `npm run test:browser -- assistive-dictation`. Create the named suite/fixtures and dispatcher entry in this task. Assert semantic text/selection, origin/undo groups, no duplicate commits, nonmutating errors and cleanup. Use prepared events/transcripts only: no microphone, external provider, credentials or fixture recording. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.3` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.3` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.3` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -93,17 +95,17 @@ Context: `native/ios/`; `native/ios/capability.json`; `native/ios/scripts/check.
 Dependencies: AIN-1.1, AIN-1.3.
 Task-specific entry gate: `16-ios-sdk.md` complete at a reviewed source/implementation revision with passing artifacts; this gate applies only to AIN-1.4 and consumers of its evidence.
 Session scope: One named boundary, normally 15–45 minutes plus focused validation. If its implementation or required device matrix cannot fit, propose a stable controller-reviewed split before implementation; retain full acceptance.
-Acceptance: The native input route, marked text, stable selection and shared history remain authoritative. Accessible iOS actions/status, optional host-session disposal and unsupported controls follow the descriptor. Actual declared iOS device/VoiceOver and OS dictation cases have recorded results; simulated transcripts do not qualify them.
+Acceptance: The native input route, marked text, stable selection and shared history remain authoritative. Accessible iOS actions/status, optional host-session disposal and unsupported controls follow the descriptor. Declared iOS Simulator or physical-device accessibility and OS dictation cases have recorded results or tested virtual equivalents under verification.md; prepared transcripts qualify routing behavior, not recognition quality.
 
 Implementation:
 
-- [ ] AIN-1.4-I1 Attach the descriptor to the existing native presenter and UI-thread lifecycle, preserving OS dictation and baseline accessibility when disabled. Create the assistive-input dispatcher suite, mock callback fixtures and a focused real-device protocol; capture OS/device/locale/tool versions, permission/cancel/replacement/stale-target cases and retained failures.
+- [ ] AIN-1.4-I1 Attach the descriptor to the existing native presenter and UI-thread lifecycle, preserving OS dictation and baseline accessibility when disabled. Create the assistive-input dispatcher suite, mock callback fixtures and a focused physical or virtual platform protocol; capture OS/device/locale/tool versions, permission/cancel/replacement/stale-target cases and retained failures.
 
 Validation:
 
-- [ ] AIN-1.4-V1 `bash native/ios/scripts/check.sh assistive-input`. Create the suite and manual protocol in this task. Run deterministic native cases and the declared actual-device cases; record their counts separately. Simulator-only or missing manual evidence leaves the corresponding capability unqualified and this required acceptance incomplete. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
+- [ ] AIN-1.4-V1 `bash native/ios/scripts/check.sh assistive-input`. Create the suite and manual protocol in this task. Run deterministic native cases and the declared physical or virtual platform cases; record their counts separately. Simulator execution plus tested virtual equivalents for unavailable hardware-only/manual cases may complete this acceptance under verification.md. Missing implemented behavior or failed required checks remains a blocker. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.4` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.4` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.4` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -120,13 +122,13 @@ Acceptance: IME/dictation replacement and composing text use the existing native
 
 Implementation:
 
-- [ ] AIN-1.5-I1 Integrate the descriptor with the existing Android text control and UI-thread ownership. Add mock transport and input-connection cases for permission/cancellation, composition, selection replacement, remote deletion and destruction. Create the named suite and a real-device protocol recording Android/device, keyboard/voice input service, locale and TalkBack versions.
+- [ ] AIN-1.5-I1 Integrate the descriptor with the existing Android text control and UI-thread ownership. Add mock transport and input-connection cases for permission/cancellation, composition, selection replacement, remote deletion and destruction. Create the named suite and a physical or virtual platform protocol recording Android/device, keyboard/voice input service, locale and TalkBack versions.
 
 Validation:
 
-- [ ] AIN-1.5-V1 `bash native/android/scripts/check.sh assistive-input`. Create the suite/protocol in this task, then run deterministic and actual-device cases with separate counts. A prepared recognition result, emulator-only run or unavailable input service cannot stand in for required real-device evidence. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
+- [ ] AIN-1.5-V1 `bash native/android/scripts/check.sh assistive-input`. Create the suite/protocol in this task, then run deterministic and physical or virtual platform cases with separate counts. Emulator execution with prepared recognition results and tested platform-boundary equivalents may satisfy unavailable hardware-only cases under verification.md. Record unavailable input services and do not claim speech-recognition quality from prepared transcripts. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.5` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.5` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.5` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -149,7 +151,7 @@ Validation:
 
 - [ ] AIN-1.6-V1 `bash native/macos/scripts/check.sh assistive-input`. Create the suite/protocol in this task. Run mock lifecycle/semantic fixtures and actual supported OS input/accessibility cases separately, recording exact hardware/OS/language/tool versions and failures; synthetic key events do not satisfy native service evidence. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.6` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.6` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.6` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -172,7 +174,7 @@ Validation:
 
 - [ ] AIN-1.7-V1 `powershell -NoProfile -File native/windows/scripts/check.ps1 -Suite assistive-input`. Create the suite/protocol in this task. Record deterministic and real-service/screen-reader cases separately with exact Windows, toolkit, service, language and assistive-technology versions. Missing hardware/service evidence remains pending; no host-provider or paid-recognition test is authorized. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.7` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.7` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -195,7 +197,7 @@ Validation:
 
 - [ ] AIN-1.8-V1 `bash native/linux/scripts/check.sh assistive-input`. Create the suite/protocol in this task. Run deterministic cases and actual declared toolkit/Orca/input-method cases, with speech-service evidence only for claimed combinations. An unsupported optional speech cell is honest scope; an untested mandatory baseline accessibility cell cannot pass. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.8` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.8` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.8` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -216,9 +218,9 @@ Implementation:
 
 Validation:
 
-- [ ] AIN-1.9-V1 From `../cli`: `cargo test --test assistive_input --locked`. Create this suite in the CLI task and record separate real terminal/screen-reader cases for the claimed combinations. The mandatory fallback remains usable when optional transport and OS voice input are unavailable; missing manual accessibility evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
+- [ ] AIN-1.9-V1 From `../cli`: `cargo test --test assistive_input --locked`. Create this suite in the CLI task and record separate real terminal/screen-reader cases for the claimed combinations. The mandatory fallback remains usable when optional transport and OS voice input are unavailable; runtime accessibility observations or tested virtual equivalents satisfy the gate; missing implemented accessibility/fallback behavior stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.9` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.9` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.9` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -230,7 +232,7 @@ Purpose: Qualify the actual browser/device input paths that deterministic fixtur
 Context: `tests/browser/assistive-presenter.spec.ts`; `tests/browser/assistive-dictation.spec.ts`; `tests/manual/assistive-input-web.md`; `../architecture/evidence/assistive-input-web/`; `../architecture/specs/verification.md`; `../architecture/specs/assistive-input.md`.
 Dependencies: AIN-1.2, AIN-1.3.
 Session scope: One named boundary, normally 15–45 minutes plus focused validation. If its implementation or required device matrix cannot fit, propose a stable controller-reviewed split before implementation; retain full acceptance.
-Acceptance: A declared desktop/mobile browser matrix records real OS dictation, command voice activation where supported, screen-reader editing, IME coexistence and RTL behavior with the extension both enabled and disabled. Every required case has an outcome; synthetic transcripts, Playwright WebKit and metadata validation do not substitute for actual device evidence.
+Acceptance: A declared desktop/mobile browser matrix records real OS dictation, command voice activation where supported, screen-reader editing, IME coexistence and RTL behavior with the extension both enabled and disabled. Every required case has a target-runtime observation or tested virtual equivalent under verification.md; prepared transcripts and accessibility-tree/action checks may cover unavailable hardware-only observations. Desktop WebKit and metadata validation alone do not establish the target-platform matrix.
 
 Implementation:
 
@@ -238,9 +240,9 @@ Implementation:
 
 Validation:
 
-- [ ] AIN-1.10-V1 `npm run test:browser -- assistive-presenter assistive-dictation`; execute `tests/manual/assistive-input-web.md` on the declared actual devices. Reuse the suites created by AIN-1.2/3 and create the manual protocol/receipt format here. Record automated and actual-device executed/passed/failed/skipped counts separately. An unavailable required device blocks its qualification; it cannot be relabeled unsupported merely to close the task. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
+- [ ] AIN-1.10-V1 `npm run test:browser -- assistive-presenter assistive-dictation`; execute `tests/manual/assistive-input-web.md` on the declared physical devices or target-platform virtual runtimes. Reuse the suites created by AIN-1.2/3 and create the manual protocol/receipt format here. Record automated and physical or virtual platform executed/passed/failed/skipped counts separately. An unavailable required device blocks its qualification; it cannot be relabeled unsupported merely to close the task. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.10` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.10` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.10` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -248,7 +250,7 @@ Blocked behavior: Leave `AIN-1.10` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO 
 
 - [ ] AIN-1.11 Verify capability evidence and portable consumer behavior.
 
-Purpose: Produce an auditable cross-platform capability statement from behavior and actual-device receipts.
+Purpose: Produce an auditable cross-platform capability statement from behavior and physical or virtual platform receipts.
 Context: `scripts/check-assistive-input-capabilities.mjs`; `tests/assistive-input-capabilities.test.mjs`; `fixtures/assistive-input-consumer/`; `../architecture/evidence/assistive-input/`; `../architecture/specs/assistive-input.md`; `../architecture/specs/extension-library.md`.
 Dependencies: AIN-1.4, AIN-1.5, AIN-1.6, AIN-1.7, AIN-1.8, AIN-1.9, AIN-1.10.
 Session scope: One named boundary, normally 15–45 minutes plus focused validation. If its implementation or required device matrix cannot fit, propose a stable controller-reviewed split before implementation; retain full acceptance.
@@ -262,6 +264,6 @@ Validation:
 
 - [ ] AIN-1.11-V1 `node --test tests/assistive-input-capabilities.test.mjs`; `node scripts/check-assistive-input-capabilities.mjs`. Create both checks and the independent consumer in this task. Record consumer behavior counts separately from receipt-validation counts; evidence validation cannot mark missing platform behavior as passed. Whole-track completion requires the declared mandatory cells and every task acceptance, with no hidden failures/skips. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes.
 
-Evidence: Separate progress entry `AIN-1.11` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify actual-device versus prepared-fixture results.
+Evidence: Separate progress entry `AIN-1.11` links changed paths, immutable inputs and focused artifacts; retain failed evidence and identify physical or virtual platform versus prepared-fixture results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `AIN-1.11` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.

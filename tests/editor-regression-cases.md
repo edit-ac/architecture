@@ -1,5 +1,7 @@
 # Additional regression sequences
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: planned acceptance, not executed editor support. [Research](../evidence/editor-regressions-round2.md) records the primary issue/report scope; [suite methods](../evidence/editor-testsuite-methods.md) supports the test approach. These cases add precise event/history/architecture sequences to the existing catalogs. A closed issue is not assumed fixed unless the research establishes the patch/release relationship.
 
 Each case uses the real engine and owning adapter, a fresh fixture, explicit before/after semantic state, directional selection/affinity, pending marks, history outcome and attributable update counts. Assert intermediate checkpoints and a next typed sentinel where relevant. Exact fixtures and case bindings are owned by [track 42](../roadmaps/42-editing-regression-suite.md); broader feature cases remain with their original tracks.
@@ -54,4 +56,4 @@ Each case uses the real engine and owning adapter, a fresh fixture, explicit bef
 
 ## Qualification
 
-Recipes and trace variants use synthetic content and fixed clocks; failures retain minimized traces and upstream links. The machine-readable manifest verifies every catalog ID and existing roadmap owner, but a valid file is not a passed behavior test. Semantic, browser-replay, native-browser and actual-device claims remain separate. Every guard in the suite contract needs a negative control before its runtime evidence is accepted.
+Recipes and trace variants use synthetic content and fixed clocks; failures retain minimized traces and upstream links. The machine-readable manifest verifies every catalog ID and existing roadmap owner, but a valid file is not a passed behavior test. Semantic, browser-replay, native-browser and physical or virtual platform claims remain separate. Every guard in the suite contract needs a negative control before its runtime evidence is accepted.

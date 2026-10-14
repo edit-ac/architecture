@@ -1,5 +1,7 @@
 # Desktop conventions, native protocols and first-party combinations
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: planned acceptance cases, not executed tests. Extends the existing catalogs; BRK-04 already owns selected Enter, REG-11 owns nested drag routing, and RCH-1.17 owns block reordering. Sources: [desktop](../evidence/desktop-editing-research.md), [native](../evidence/native-editing-research.md), [extensions/performance](../evidence/editing-performance-extension-research.md). Contracts: [interactions](../specs/editor-interactions.md), [rich content](../specs/rich-content-extensions.md), [native parity](../specs/native-sdk-parity.md), [verification](../specs/verification.md).
 
 ## Coverage protocol — RGS-1.1, RGS-1.8

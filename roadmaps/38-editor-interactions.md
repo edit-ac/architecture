@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core` (sibling of `architecture`). Read [editor interactions](../specs/editor-interactions.md), the active task's rows in the [case catalog](../tests/editor-interaction-cases.md), and its named paths. Paths are relative to `core` unless prefixed `../architecture/`. Planned implementation files and commands are created by their owner. This roadmap extends existing behavior; it does not claim a shipped browser editor.
@@ -24,7 +26,7 @@ Purpose: Verify interaction prerequisites and create the case index as one bound
 Context: `tests/interaction-fixtures/`; `tests/browser/interaction-harness.ts`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md). [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: none.
 Session scope: One named behavior group plus its focused validation; change only named paths and directly required test/configuration glue.
-Acceptance: Every catalog ID maps to a real-engine fixture owner and expected semantic/selection state. Current engine and storage/browser/format/module evidence is verified; unsupported structural primitives block affected tasks instead of being emulated in DOM. Index desktop cases by owning task and supported profile; distinguish semantic, browser-replay and actual-device evidence.
+Acceptance: Every catalog ID maps to a real-engine fixture owner and expected semantic/selection state. Current engine and storage/browser/format/module evidence is verified; unsupported structural primitives block affected tasks instead of being emulated in DOM. Index desktop cases by owning task and supported profile; distinguish semantic, browser-replay and physical or virtual platform evidence.
 
 Implementation:
 
@@ -398,7 +400,7 @@ Purpose: Qualify actual typing and assistive-technology support as one bounded b
 Context: `tests/browser/interactions/`; `../architecture/evidence/editor-interactions/`; `../architecture/specs/verification.md`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md).
 Dependencies: INT-1.12, INT-1.13, INT-1.17, INT-1.18.
 Session scope: One named behavior group plus its focused validation; change only named paths and directly required test/configuration glue.
-Acceptance: Every mandatory catalog case has passing exact-revision evidence across the declared browser/device matrix. Real IME, native dictation/correction, screen-reader editing, voice control and non-US layouts have actual observations; untested combinations remain explicit and cannot claim support. Include the owned SEL/MOV/XFR/CMD variants and mandatory platform gesture/OS-command observations from the additional catalog. Optional rich tools remain owned by track 25.
+Acceptance: Every mandatory catalog case has passing exact-revision evidence across the declared browser/device matrix. IME, native dictation/correction, screen-reader editing, voice control and non-US layouts have physical or target-platform virtual observations or tested hardware-only equivalents under verification.md; record their limitations and untested combinations explicitly. Include the owned SEL/MOV/XFR/CMD variants and mandatory platform gesture/OS-command observations from the additional catalog. Optional rich tools remain owned by track 25.
 
 Implementation:
 

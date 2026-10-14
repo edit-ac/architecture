@@ -1,5 +1,7 @@
 # Native SDK delivery and semantic parity
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 This is the delivery contract for roadmaps 16–18, 22 and 23: iOS, Android, macOS,
 Windows and Linux. Roadmap 09 remains preparation evidence. Completing a binding or a
 toolkit probe does not complete a native editor. These tracks deliver embeddable
@@ -122,7 +124,7 @@ Use shared deterministic semantic fixtures and mocked storage/network/asset
 services for automation. Cover two views of the same session, remote updates,
 mount/dispose, error/cancel, schema/version rejection, and native-origin history.
 Preserve failures and skipped cases. No live service credentials or paid inference
-are needed. A recorded real-device/manual OS session is separate from synthetic
+are needed. A recorded physical or virtual platform/manual OS session is separate from synthetic
 event tests and is mandatory for supported composition and screen-reader claims.
 
 Platform packages must work in a clean consumer without a sibling checkout:

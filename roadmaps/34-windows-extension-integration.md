@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core`; paths below are workspace-relative unless prefixed `../architecture/` or another explicit sibling. Read `../architecture/specs/ecosystem-maintainability.md` and only the active task's named context. Planned paths and commands are created by their owning task. This source describes delivery; it is not a capability claim or live progress.
@@ -176,19 +178,19 @@ Purpose: Deliver the named transfer boundary with reproducible evidence and expl
 Context: `native/`; [native clipboard cases](../tests/native-clipboard-cases.md); `../architecture/specs/extension-library.md`; `../architecture/specs/rich-content-extensions.md`
 Dependencies: NWX-1.6, NWX-1.7.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. These are future tasks; this roadmap revision does not execute native tests or authorize device runs.
-Acceptance: Native table-cell, image-caption, reference and math transfer preserves every admitted format and structural field through the shared extension codecs. Native menu and keyboard plain-paste commands bypass formatting while remaining discoverable and accessible. Emulator/OS-host fixtures and physical-device runbooks have separate qualification labels; no native tests run during roadmap editing.
+Acceptance: Native table-cell, image-caption, reference and math transfer preserves every admitted format and structural field through the shared extension codecs. Native menu and keyboard plain-paste commands bypass formatting while remaining discoverable and accessible. Emulator/OS-host fixtures and physical or virtual platform runbooks have separate qualification labels; no native tests run during roadmap editing.
 
 Implementation:
 
-- [ ] NWX-1.9-I1 Wire EXT-1.13 codec capabilities and full-palette import/export into native transfer routing. Add formatted table cells, cross-app flavors, selected rich replacement, two editors, delayed providers, unavailable extension fallback and atomic undo/cancel fixtures; provide the real-device handoff to final ecosystem qualification.
+- [ ] NWX-1.9-I1 Wire EXT-1.13 codec capabilities and full-palette import/export into native transfer routing. Add formatted table cells, cross-app flavors, selected rich replacement, two editors, delayed providers, unavailable extension fallback and atomic undo/cancel fixtures; provide the physical or virtual platform handoff to final ecosystem qualification.
 
 Validation:
 
-- [ ] NWX-1.9-V1 Run the platform extension dispatcher suite `clipboard-formatting` in the future task; validate package and fixture hashes and table/extension semantics. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+- [ ] NWX-1.9-V1 Run the platform extension dispatcher suite `clipboard-formatting` in the future task; validate package and fixture hashes and table/extension semantics. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing required runtime tooling, failed behavior or untested mandatory cases do not qualify support; use accepted virtual runtimes/equivalents when physical hardware is unavailable.
 
 Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
 Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
-Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Accept target-platform simulators/emulators/VMs under verification.md and retain virtual provenance; never relabel their results as physical-device observations.
 
 ### Task NWX-1.8 — Qualify the packed native extension consumer
 
@@ -198,7 +200,7 @@ Purpose: Qualify the packed native extension consumer as one bounded integration
 Context: `native/windows/`; `native/windows/capability.json`; `../architecture/specs/native-sdk-parity.md`; `native/windows/examples/`; `../architecture/specs/ecosystem-maintainability.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: NWX-1.2, NWX-1.3, NWX-1.4, NWX-1.5, NWX-1.6, NWX-1.7, NWX-1.9.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: A clean packaged consumer exposes the supported feature/direction profile with real native UI; missing actual OS evidence blocks its support claim. Run advertised FND/IDE and relevant FPX combinations with PRF-07 actual-device evidence; required preset capabilities cannot be silently marked optional to pass.
+Acceptance: A clean packaged consumer exposes the supported feature/direction profile with real native UI; missing actual OS evidence blocks its support claim. Run advertised FND/IDE and relevant FPX combinations with PRF-07 physical or virtual platform evidence; required preset capabilities cannot be silently marked optional to pass.
 
 Implementation:
 

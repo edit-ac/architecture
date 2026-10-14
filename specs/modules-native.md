@@ -1,5 +1,7 @@
 # Extension modules and native preparation
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 ## Portable extension contract
 
 A registered module declares a namespaced type/version, validated attributes and content shape, commands, codecs and deterministic fallback. Freeze registrations before mounting a document. Dynamic JavaScript behavior is not portable Rust behavior; data-only custom marks and atoms must work without recompilation, while new editing semantics need shared engine work.
@@ -43,7 +45,7 @@ ABI: opaque engine handle, explicit drop/dispose, batched commands and patches, 
 
 Build Swift and Kotlin headless fixtures using the same seed/snapshot corpus. Then use one real UIKit/TextKit control and one EditText/Editable control to probe range patching, selection and composition. Record unsupported mark/attachment behavior honestly. Never implement native support through a WebView.
 
-Full native editor work remains a later separately scoped project: marked/composing text, autocorrect/dictation, OS keyboard, undo gestures, clipboard, accessibility, attachments, storage, lifecycle reconnect, packaging and real-device matrix. Binding generation alone proves none of these. Missing Xcode/SDK/device access has an explicit unblock condition and does not gate independent web tasks.
+Full native editor work remains a later separately scoped project: marked/composing text, autocorrect/dictation, OS keyboard, undo gestures, clipboard, accessibility, attachments, storage, lifecycle reconnect, packaging and physical or virtual platform matrix. Binding generation alone proves none of these. Missing Xcode/SDK/device access has an explicit unblock condition and does not gate independent web tasks.
 
 Sources: [UniFFI](https://mozilla.github.io/uniffi-rs/latest/), [UIKit TextKit](https://developer.apple.com/documentation/uikit/textkit), [Android InputConnection](https://developer.android.com/reference/android/view/inputmethod/InputConnection).
 

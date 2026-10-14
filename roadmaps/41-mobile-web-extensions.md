@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core`. Read `../architecture/specs/mobile-web.md` and only the active task's named context. Paths below are workspace-relative unless explicitly prefixed `../architecture/`. Planned implementation paths, suites and commands are created by their owning task. This is a delivery contract, not evidence of implemented mobile support.
@@ -12,9 +14,9 @@ Rust continues to own content, commands, validation, anchors and history. This t
 
 ## Execution rules
 
-The controller owns this source. Record checkmarks, exact commands, counts, evidence and interruption handoff in the separate progress file. Run at most one parent per iteration. Each parent targets 15–45 minutes plus focused validation; if its implementation or actual-device matrix cannot fit, propose a stable controller-reviewed split before implementation and retain its full acceptance. Required failed/skipped prerequisites remain locked.
+The controller owns this source. Record checkmarks, exact commands, counts, evidence and interruption handoff in the separate progress file. Run at most one parent per iteration. Each parent targets 15–45 minutes plus focused validation; if its implementation or physical or virtual platform matrix cannot fit, propose a stable controller-reviewed split before implementation and retain its full acceptance. Required failed/skipped prerequisites remain locked.
 
-The [mobile extension catalog](../tests/mobile-extension-cases.md) contains 32 planned cases. MWX-1.1 creates its executable index; each owner adds its assertions; MWX-1.8 records final actual-device observations and measured overhead. Create named suites and dispatcher entries before invoking them. Unknown suites, missing assertions and zero matches fail acceptance. Record automated, actual-device and evidence-validator counts separately. Deterministic fixtures and mocked transports cover all automated checks; no paid inference, provider calls, credential loading or automatic fixture recording is authorized.
+The [mobile extension catalog](../tests/mobile-extension-cases.md) contains 32 planned cases. MWX-1.1 creates its executable index; each owner adds its assertions; MWX-1.8 records final physical or virtual platform observations and measured overhead. Create named suites and dispatcher entries before invoking them. Unknown suites, missing assertions and zero matches fail acceptance. Record automated, physical or virtual platform and evidence-validator counts separately. Deterministic fixtures and mocked transports cover all automated checks; no paid inference, provider calls, credential loading or automatic fixture recording is authorized.
 
 Preserve OS text selection, scrolling and pinch zoom. Controls are discoverable without hover; every gesture operation has a simple tap/control alternative and an accessible keyboard route where applicable. Meet the scoped WCAG 2.2 AA target-size rule: at least 24 by 24 CSS pixels, or a recorded applicable spacing/exception condition; aim for 44 by 44 CSS pixels for primary touch controls. A compact document or fine pointer is not a blanket exception. Feature-detect optional APIs, handle rejection and retain the catalog's fallback paths. Reuse track 40 geometry/focus/lifecycle primitives. Stop only verified task-owned test browsers/servers and preserve other tasks' services and retained evidence.
 
@@ -159,7 +161,7 @@ Blocked behavior: Leave `MWX-1.6` unchecked with owner, unblock condition and re
 Purpose: Verify optional web assistance alongside mobile presenters without weakening ordinary OS input and accessibility.
 Context: `packages/web/src/modules/assistive-input.ts`; `tests/browser/mobile-extensions/assistance.spec.ts`; `tests/manual/assistive-input-web.md`; `../architecture/specs/assistive-input.md`; [case catalog](../tests/mobile-extension-cases.md).
 Dependencies: MWX-1.1, MWX-1.2.
-Additional entry gate: AIN-1.2, AIN-1.3 and AIN-1.10 from `39-assistive-input.md` have passing exact-revision web presenter, lifecycle and actual-device evidence. Native/TUI AIN tasks and whole-track 39 completion are not prerequisites for this parent or any independent parent above.
+Additional entry gate: AIN-1.2, AIN-1.3 and AIN-1.10 from `39-assistive-input.md` have passing exact-revision web presenter, lifecycle and physical or virtual platform evidence. Native/TUI AIN tasks and whole-track 39 completion are not prerequisites for this parent or any independent parent above.
 Session scope: One integration boundary against qualified web assistance, normally 15–45 minutes plus focused checks; propose a split if upstream evidence needs broader requalification.
 Acceptance: MWX-C25–MWX-C28 pass. Named assistance controls are reachable around virtual keyboards and magnified viewports, respect native selection/composition and restore focus predictably. Actual VoiceOver/TalkBack and supported voice-control observations retain visible-name parity, bounded status and cancel/recovery access. Disabling assistance leaves baseline OS dictation, screen-reader editing and ordinary commands available. Optional prepared host results still use AIN's session/anchor/history contract.
 
@@ -183,7 +185,7 @@ Purpose: Deliver the named transfer boundary with reproducible evidence and expl
 Context: `packages/web/src/modules/`; `tests/browser/mobile-extension-formatting.spec.ts`; `tests/manual/mobile-web-extensions.md`; `../architecture/specs/rich-content-extensions.md`; [mobile clipboard cases](../tests/mobile-web-cases.md)
 Dependencies: MWX-1.3, MWX-1.6.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. These are future tasks; this roadmap revision does not execute native tests or authorize device runs.
-Acceptance: Touch users can apply every advertised table-cell/caption/reference/extension format and choose formatted or literal paste without desktop-only shortcuts. Captured cell/text selections survive pointerdown/blur/click and native paste menus. Actual-device support remains the final MWX-1.8 gate; authoring and viewport replay do not qualify physical devices.
+Acceptance: Touch users can apply every advertised table-cell/caption/reference/extension format and choose formatted or literal paste without desktop-only shortcuts. Captured cell/text selections survive pointerdown/blur/click and native paste menus. Physical-or-virtual platform support remains the final MWX-1.8 gate; authoring and viewport replay alone do not qualify target-platform behavior.
 
 Implementation:
 
@@ -191,29 +193,29 @@ Implementation:
 
 Validation:
 
-- [ ] MWX-1.9-V1 `npm run test:browser -- mobile-extension-formatting`. Execute deterministic browser mechanics only in this future implementation task; hand off physical-device cases to MWX-1.8. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+- [ ] MWX-1.9-V1 `npm run test:browser -- mobile-extension-formatting`. Execute deterministic browser mechanics only in this future implementation task; hand off physical-device cases to MWX-1.8. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing required runtime tooling, failed behavior or untested mandatory cases do not qualify support; use accepted virtual runtimes/equivalents when physical hardware is unavailable.
 
 Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
 Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
-Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Accept target-platform simulators/emulators/VMs under verification.md and retain virtual provenance; never relabel their results as physical-device observations.
 
-### Task MWX-1.8 — Qualify actual devices and bounded extension overhead
+### Task MWX-1.8 — Qualify platform runtimes and bounded extension overhead
 
-- [ ] MWX-1.8 Qualify actual devices and bounded extension overhead.
+- [ ] MWX-1.8 Qualify platform runtimes and bounded extension overhead.
 
 Purpose: Produce a truthful mobile-extension capability record from actual browser behavior and production artifacts.
 Context: `tests/manual/mobile-web-extensions.md`; `benchmarks/browser/mobile-extensions/`; `tests/browser/mobile-extensions/qualification.test.mjs`; `../architecture/evidence/mobile-web-extensions/`; `../architecture/specs/mobile-web.md`; `../architecture/specs/verification.md`; [case catalog](../tests/mobile-extension-cases.md). [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: MWX-1.2, MWX-1.3, MWX-1.4, MWX-1.5, MWX-1.6, MWX-1.7, MWX-1.9.
-Session scope: One reviewed mobile-extension release-profile boundary, normally 15–45 minutes plus focused checks; if the declared actual-device matrix exceeds this, obtain a controller-reviewed split retaining all required cells before execution.
-Acceptance: MWX-C29–MWX-C32 and all mandatory catalog rows have passing exact-revision assertions/observations. Actual iPhone/iOS Safari, iPad/iPadOS Safari and Android/Chrome evidence covers touch, OS selection, keyboard/viewport, scrolling/zoom and relevant VoiceOver/TalkBack; emulation, synthetic events and Playwright WebKit remain distinct. Every extension's disabled bundle/assets/resource/network contribution is zero; enabled contributions and responsiveness fit limits declared in MWX-1.1 and existing baseline budgets. Missing required devices, stale evidence or skipped mandatory rows block qualification. Record actual official-preset FPX combinations and PRF continuous-input/resource evidence on real devices; desktop keyboard shortcuts are insufficient.
+Session scope: One reviewed mobile-extension release-profile boundary, normally 15–45 minutes plus focused checks; if the declared physical or virtual platform matrix exceeds this, obtain a controller-reviewed split retaining all required cells before execution.
+Acceptance: MWX-C29–MWX-C32 and all mandatory catalog rows have passing exact-revision assertions/observations. Physical or simulated iPhone/iOS Safari and iPad/iPadOS Safari, plus physical or emulated Android/Chrome evidence covers touch, OS selection, keyboard/viewport, scrolling/zoom and relevant VoiceOver/TalkBack; emulation, synthetic events and Playwright WebKit remain distinct. Every extension's disabled bundle/assets/resource/network contribution is zero; enabled contributions and responsiveness fit limits declared in MWX-1.1 and existing baseline budgets. Missing required runtime/equivalent evidence, stale artifacts or failed mandatory rows block qualification; unavailable physical hardware alone does not. Record actual official-preset FPX combinations and PRF continuous-input/resource evidence on real devices; desktop keyboard shortcuts are insufficient.
 
 Implementation:
 
-- [ ] MWX-1.8-I1 Create the bounded actual-device protocol and capability receipts; record device/browser/OS/keyboard/locale/AT versions, pointer mode, viewport/zoom/orientation and feature set. Reuse upstream observations only at matching consumed revisions, then execute new/changed rows. Measure per-feature and combined production JS/WASM/CSS/assets, cold/lazy loads, p50/p95/p99 input/frame latency, geometry/invalidation work, long tasks, memory plateau and resource cleanup against extension-disabled consumers. Record raw samples, limits and supported/unsupported/pending cells without altering a failed threshold after measurement.
+- [ ] MWX-1.8-I1 Create the bounded physical or virtual platform protocol and capability receipts; record device/browser/OS/keyboard/locale/AT versions, pointer mode, viewport/zoom/orientation and feature set. Reuse upstream observations only at matching consumed revisions, then execute new/changed rows. Measure per-feature and combined production JS/WASM/CSS/assets, cold/lazy loads, p50/p95/p99 input/frame latency, geometry/invalidation work, long tasks, memory plateau and resource cleanup against extension-disabled consumers. Record raw samples, limits and supported/unsupported/pending cells without altering a failed threshold after measurement.
 
 Validation:
 
-- [ ] MWX-1.8-V1 `npm run test:mobile-extensions -- --group all`; `npm run bench:mobile-extensions -- --profile release`; `node --test tests/browser/mobile-extensions/qualification.test.mjs`; execute `tests/manual/mobile-web-extensions.md` on the required actual devices. Create the benchmark, receipt validator and manual protocol here; validate evidence freshness/completeness without treating validation as device execution. Record separate automated/benchmark/manual/validator commands, nonzero counts, failures/skips, raw artifact hashes and source/implementation/fixture revisions. Close task-owned browsers/servers, verify resources/listeners are released and record disk hygiene required by the workspace instructions.
+- [ ] MWX-1.8-V1 `npm run test:mobile-extensions -- --group all`; `npm run bench:mobile-extensions -- --profile release`; `node --test tests/browser/mobile-extensions/qualification.test.mjs`; execute `tests/manual/mobile-web-extensions.md` on the required physical or target-platform virtual runtimes. Create the benchmark, receipt validator and manual protocol here; validate evidence freshness/completeness without treating validation as device execution. Record separate automated/benchmark/manual/validator commands, nonzero counts, failures/skips, raw artifact hashes and source/implementation/fixture revisions. Close task-owned browsers/servers, verify resources/listeners are released and record disk hygiene required by the workspace instructions.
 
 Evidence: Separate progress entry `MWX-1.8` links reviewed limits, raw measurements, per-ID/device receipts and retained failures under `../architecture/evidence/mobile-web-extensions/`; hand off qualified profiles to expanded qualification and public capability documentation.
 Handoff: Last completed substep, device/profile or source revision, exact missing/failed row and next bounded action.

@@ -1,5 +1,7 @@
 # Full-delivery scenarios and capability matrix
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: qualification contract, not completed product evidence. Roadmap 20 qualifies the ordinary profile; roadmap 24 qualifies optional encrypted profiles after independent security review. The initial browser release is still independently gated by roadmap 10.
 
 ## Required scenarios
@@ -26,8 +28,8 @@ Optional math typesetting, encryption and other extras have separate capability 
 
 Commit deterministic cross-client fixtures and a machine-readable product manifest tying capability, implementation/package revisions, platform/toolchain/device, command/case IDs and resulting evidence. Production account data, live model providers and paid inference are not test fixtures. A sample host's mock auth is explicitly test infrastructure, not a production security deployment.
 
-Run shared semantic/session/format/diff conformance plus each presenter adapter's focused tests. Then execute actual OS/device IME, keyboard/touch, screen-reader, clipboard and lifecycle cases. Missing device/toolchain evidence blocks that platform's qualified claim; it need not block independent implementation elsewhere. A completed package build alone does not prove parity.
+Run shared semantic/session/format/diff conformance plus each presenter adapter's focused tests. Then execute OS/platform IME, keyboard/touch, screen-reader, clipboard and lifecycle cases on physical or named virtual target runtimes. Apply verification.md virtual-equivalent checks to unavailable hardware-only observations. Missing physical hardware does not block qualification; missing implementation, required runtime tooling or passing behavior evidence does. A completed package build alone does not prove parity.
 
 Record performance against the declared enabled profile: minimal core versus task preset versus review or encrypted mode. Reuse the fixed Task/Long/Large/Aged corpus and honest visibility/editability/durability metrics. The extra clients do not justify silently dropping the earlier correctness or performance gates.
 
-Full delivery requires the whole requested base matrix. Partial browser/iOS success may be released with its actual support table but cannot close the all-platform milestone. Encryption remains an additional profile with a separate completed roadmap; basic delivery can finish while its security review remains blocked.
+Full delivery requires the whole requested base matrix, which may be qualified entirely on named target-platform virtual runtimes under verification.md. Partial browser/iOS success may be released with its actual support table but cannot close the all-platform milestone. Encryption remains an additional profile with a separate completed roadmap; basic delivery can finish while its security review remains blocked.

@@ -2,13 +2,15 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core` (sibling of `architecture`). Deliver only the outcomes below. Read `../architecture/specs/modules-native.md`, `../architecture/specs/verification.md` and the active task's named context. Paths below are relative to `core` unless explicitly prefixed with `../architecture/`. Planned files are created by their task. Source is controller-owned; write state/evidence in the separate progress file.
 
 Upstream entry gates: `05-markdown-content.md` complete at current source revision with passing artifact evidence, `06-synchronization.md` complete at current source revision with passing artifact evidence.
 
-Controller handoff (2026-10-13): The user instructed "Assume roadmap 5 as completed" in the roadmap 06 continuation and queued this track after roadmap 06. For this continuation, accept roadmap 05 as the upstream baseline by user instruction; retain its outstanding FMT-1.15 actual-device qualification and do not claim that evidence exists. Roadmap 06 must still complete at its current source revision before this runner starts. Queue receipt: `../../evidence/roadmap-07-runner/queue.json`.
+Controller handoff (2026-10-13): The user instructed "Assume roadmap 5 as completed" in the roadmap 06 continuation and queued this track after roadmap 06. For this continuation, accept roadmap 05 as the upstream baseline by user instruction; retain its outstanding FMT-1.15 physical or virtual platform qualification and do not claim that evidence exists. Roadmap 06 must still complete at its current source revision before this runner starts. Queue receipt: `../../evidence/roadmap-07-runner/queue.json`.
 
 ## Execution rules
 

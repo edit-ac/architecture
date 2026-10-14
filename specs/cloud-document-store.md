@@ -1,5 +1,7 @@
 # Cloud document store and reference host
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: planned delivery contract. No cloud service, provider, deployment, or durability claim is established by this document.
 
 This companion service lets authorized clients locate documents, exchange durable updates, and store their assets. The Rust document/session contracts remain authoritative. A single deployable reference host lives in `core/services/document-store/`; provider adapters implement its ports. Keep catalog, update storage, authorization, relay, and asset modules in that host initially. Separate services require measured operational need, not an anticipated scale claim.

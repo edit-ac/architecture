@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core` (sibling of `architecture`). Read [the owning contract](../specs/rich-content-extensions.md), [verification](../specs/verification.md) and the active task context. Paths are relative to `core` unless prefixed with `../architecture/`. Planned implementation/test files are created by their task. Source is controller-owned; write checkmarks, state and evidence only in the separate progress file.
@@ -493,11 +495,11 @@ Implementation:
 
 Validation:
 
-- [ ] RCH-1.23-V1 `npm run test:browser -- extension-formatting`. Require each admitted formatting/extension combination, negative unsupported cases and exact semantic/history/storage effects. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+- [ ] RCH-1.23-V1 `npm run test:browser -- extension-formatting`. Require each admitted formatting/extension combination, negative unsupported cases and exact semantic/history/storage effects. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing required runtime tooling, failed behavior or untested mandatory cases do not qualify support; use accepted virtual runtimes/equivalents when physical hardware is unavailable.
 
 Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
 Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
-Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Accept target-platform simulators/emulators/VMs under verification.md and retain virtual provenance; never relabel their results as physical-device observations.
 
 ### Task RCH-1.19 — Publish per-feature portable presenter contracts
 
@@ -574,7 +576,7 @@ Validation:
 
 - [ ] RCH-2.1-V1 `cargo test -p editac-core --test ai_extension_contract --locked`. Create the named suite; test absent/disabled registration, invalid versions, missing transport/limits, quota exhaustion, forbidden context, format rejection and unchanged document/history state. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.1` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.1` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.1` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -596,7 +598,7 @@ Validation:
 
 - [ ] RCH-2.2-V1 `cargo test -p editac-core --test ai_extension_session --locked`. Create the named suite; inject duplicate/out-of-order chunks, malformed/oversized output, timeout, remote insert/delete, changed context, permission loss, read-only, switch/dispose and accept/undo/redo. Assert content, selection, origin/history and resource release. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.2` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.2` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.2` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -618,7 +620,7 @@ Validation:
 
 - [ ] RCH-2.3-V1 `npm run test:web -- ai-actions`. Create the named web suite and its runner route; exercise focus changes, no-selection/selection/empty-block targets, answer-only behavior, Unicode/RTL, safe formatted responses, cancellation and request counts. Record actual keyboard/screen-reader/touch mechanics separately with a mock backend. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.3` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.3` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.3` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -640,7 +642,7 @@ Validation:
 
 - [ ] RCH-2.4-V1 `npm run test:web -- ai-completion`. Create the suite and runner route with a fixed clock and mock transport. Assert exact request counts under rapid typing, IME/dictation, selection/caret/remote changes, blur, caps, disposal, code/atom exclusions and accept/undo. Test no ghost-text persistence and actual keyboard/touch/AT behavior independently. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.4` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.4` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.4` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -662,7 +664,7 @@ Validation:
 
 - [ ] RCH-2.5-V1 `npm run test:web -- ai-transformations`. Create the suite and route; test every declared command, selected and unavailable targets, missing language, unsafe output, supported format retention, read-only/stale rejection and accept/undo with unrelated remote edits. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.5` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.5` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.5` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -684,7 +686,7 @@ Validation:
 
 - [ ] RCH-2.6-V1 `npm run test:web -- ai-consumer`. Create the suite and runner route. Check packed imports, conflicting keymaps, disable/re-enable, bounded streams, quota admission, protected-context refusal and teardown. For the default SDK adapter, use prepared mock models/simulated streams to assert abort propagation, finish/error mapping and exact request counts with retries disabled; preserve compatibility failures. Measure disabled/enabled contributions and record actual desktop/mobile keyboard/touch/screen-reader results with the mock backend. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.6` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.6` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.6` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -707,7 +709,7 @@ Validation:
 
 - [ ] RCH-2.7-V1 `bash native/ios/scripts/check.sh ai-extension`. Create the named deterministic check route. Test focus/marked-text changes, stale/duplicate results, cancellation, quota limits, protected targets, accept/undo/redo and teardown; record actual OS/device, keyboard and accessibility evidence with the mock backend. Missing required platform evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.7` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.7` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -730,7 +732,7 @@ Validation:
 
 - [ ] RCH-2.8-V1 `bash native/android/scripts/check.sh ai-extension`. Create the named deterministic check route. Test focus/marked-text changes, stale/duplicate results, cancellation, quota limits, protected targets, accept/undo/redo and teardown; record actual OS/device, keyboard and accessibility evidence with the mock backend. Missing required platform evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.8` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.8` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.8` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -753,7 +755,7 @@ Validation:
 
 - [ ] RCH-2.9-V1 `bash native/macos/scripts/check.sh ai-extension`. Create the named deterministic check route. Test focus/marked-text changes, stale/duplicate results, cancellation, quota limits, protected targets, accept/undo/redo and teardown; record actual OS/device, keyboard and accessibility evidence with the mock backend. Missing required platform evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.9` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.9` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.9` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -776,7 +778,7 @@ Validation:
 
 - [ ] RCH-2.10-V1 `bash native/windows/scripts/check.sh ai-extension`. Create the named deterministic check route. Test focus/marked-text changes, stale/duplicate results, cancellation, quota limits, protected targets, accept/undo/redo and teardown; record actual OS/device, keyboard and accessibility evidence with the mock backend. Missing required platform evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.10` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.10` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.10` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -799,7 +801,7 @@ Validation:
 
 - [ ] RCH-2.11-V1 `bash native/linux/scripts/check.sh ai-extension`. Create the named deterministic check route. Test focus/marked-text changes, stale/duplicate results, cancellation, quota limits, protected targets, accept/undo/redo and teardown; record actual OS/device, keyboard and accessibility evidence with the mock backend. Missing required platform evidence stays unqualified. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.11` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.11` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.11` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -822,7 +824,7 @@ Validation:
 
 - [ ] RCH-2.12-V1 `From ../cli: cargo test --test ai_extension --locked`. Create the named CLI suite; test Unicode targets, stale proposals, read-only/offline state, quotas, cancellation, safe output, accept/undo and resource disposal. Record actual terminal/accessibility mechanics independently with mock responses. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.12` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.12` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.12` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -844,7 +846,7 @@ Validation:
 
 - [ ] RCH-2.13-V1 `npm run test:web -- ai-matrix`. Create the matrix/receipt check route; reject missing platform receipts, inconsistent capability declarations and prepared responses labeled as model-quality/live-usage evidence. Required skipped combinations block the corresponding support claim. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.13` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.13` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.13` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
 
@@ -867,6 +869,6 @@ Validation:
 
 - [ ] RCH-2.14-V1 `From ../docs: npm run build`. Build docs with no inference/network-provider calls; verify example imports against the qualified packed consumer, command/capability links and absent/pending platform labels. Do not publish/deploy or start a live provider demo. Record exact commands/exits, nonzero executed/passed/failed/skipped counts, immutable implementation/profile/fixture revisions and artifact hashes. All provider results are prepared; no inference call is permitted.
 
-Evidence: Separate progress entry `RCH-2.14` links changed paths and focused immutable artifacts; preserve failed evidence and label actual-device versus mocked results.
+Evidence: Separate progress entry `RCH-2.14` links changed paths and focused immutable artifacts; preserve failed evidence and label physical or virtual platform versus mocked results.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `RCH-2.14` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.

@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `docs`; paths below are workspace-relative unless prefixed `../architecture/` or another explicit sibling. Read `../architecture/specs/public-docs-demo.md` and only the active task's named context. Planned paths and commands are created by their owning task. This source describes delivery; it is not a capability claim or live progress.
@@ -164,7 +166,7 @@ Implementation:
 
 Validation:
 
-- [ ] DOC-1.7-V1 `npm run check:examples -- --suite formats-native`; native examples use recorded platform checks and cannot pass on missing devices. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
+- [ ] DOC-1.7-V1 `npm run check:examples -- --suite formats-native`; native examples use recorded physical or virtual platform checks and tested hardware-only equivalents; missing required behavior remains a failure. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
 
 Evidence: Separate progress entry `DOC-1.7` links changed paths, immutable inputs and focused check artifacts; retain failed evidence.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.

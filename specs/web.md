@@ -1,5 +1,7 @@
 # Browser adapter contract
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: development contract; real input support requires browser and device evidence.
 Scope: framework-independent web editor plus a thin React lifecycle wrapper.
 Public packages use the `@edit-ac` npm organization.
@@ -119,7 +121,7 @@ No supported-IME claim is allowed until real OS input checks qualify the policy.
 Required composition cases include Japanese/Korean/Chinese input, accents/dead keys, emoji and replacement selection.
 Test remote insertion before/inside/after composition and remote deletion of its block.
 Test paste, undo, blur, read-only transition and destruction during a composition.
-Automated event fixtures cover regressions; synthetic events do not replace real-device evidence.
+Automated event fixtures cover regressions; synthetic events do not replace physical or virtual platform evidence.
 
 ## Selection, navigation and DOM patches
 

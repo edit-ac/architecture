@@ -1,5 +1,7 @@
 # Editing regression suite and prevention boundaries
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: test/architecture contract; fixture validation is not editor qualification.
 Scope: semantic commands, browser input, composition, selection, rendering, history, import and extension lifecycle. Reuse the existing interaction/mobile catalogs rather than building another editor or event framework. [Regression research](../evidence/editor-regressions-round2.md) and [testing methods](../evidence/editor-testsuite-methods.md) distinguish reported failures, confirmed fixes and proposed edit.ac tests.
 
@@ -95,7 +97,7 @@ REG-07 selected code/text cross-owner separated-pre qualification requires origi
 
 The [additional catalog](../tests/desktop-editing-cases.md) is indexed by the existing manifest and reporting pipeline. SEQ-13/SEQ-14 deepen BRK-04/SEL-01 with backward selected Enter/hard-break, undo, redo and sentinel checkpoints. They are independently authored expected states, not engine output. Text-transfer, native protocol, first-party preset and performance rows keep their feature/platform owners; RGS infrastructure must not depend on downstream implementations to finish. Extend driver bindings as those owners qualify their commands. A shared semantic result cannot establish a native gesture, clipboard-provider lifetime, IME, accessibility or performance pass.
 
-Use the catalog's risk dimensions to select boundary cases and explicitly named pairs/triads. Preserve failing seeds/traces and expand the catalog when a new field failure is minimized. Report case variants and mandatory profile coverage separately; one successful row, pairwise sampling or a synthetic event must never imply exhaustive combinations or actual-device support.
+Use the catalog's risk dimensions to select boundary cases and explicitly named pairs/triads. Preserve failing seeds/traces and expand the catalog when a new field failure is minimized. Report case variants and mandatory profile coverage separately; one successful row, pairwise sampling or a synthetic event must never imply exhaustive combinations or physical or virtual platform support.
 
 ## Native history selection bookmark repair (UPG-1.2 / RGS-1.2-C3)
 

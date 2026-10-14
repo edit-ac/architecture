@@ -1,5 +1,7 @@
 # Mobile web regression catalog
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: planned executable/device coverage. [Mobile web](../specs/mobile-web.md) defines the policies; [track 40](../roadmaps/40-mobile-web.md) owns these cases. Reuse the [87 everyday cases](editor-interaction-cases.md) where their exact implementation/fixture revision remains applicable. [Optional extension cases](mobile-extension-cases.md) have separate owners and do not gate the minimal browser surface.
 
 ## Fixture and evidence protocol
@@ -71,11 +73,11 @@ Use text near block/document boundaries, emoji/combining/RTL, composing text, ne
 | MBC-05 | P0 | Browser process eviction/offline reopen after localCommitted versus uncommitted edit | Existing durability contract honored; no fabricated unload flush guarantee; device |
 | MBC-06 | P1 | OS picker/share sheet blurs/backgrounds page then cancels/returns twice | Cancellation harmless, accepted result deduplicated, selected target preserved, no forced refocus |
 | MBC-07 | P0 | Two editors with one disposed while clipboard/lifecycle work is pending | No cross-editor insertion or shared resource teardown; late callbacks inert |
-| MBC-08 | P0 | Native mobile Paste menu produces ClipboardEvent plus beforeinput/input, beforeinput only, or a noncancelable replacement | Event lifecycle owns one prepared paste; no keyboard prerequisite, duplicate edit or history/journal echo; real device evidence remains required |
+| MBC-08 | P0 | Native mobile Paste menu produces ClipboardEvent plus beforeinput/input, beforeinput only, or a noncancelable replacement | Event lifecycle owns one prepared paste; no keyboard prerequisite, duplicate edit or history/journal echo; physical or target-platform virtual runtime evidence remains required |
 | MBC-09 | P0 | Same native clipboard payload pasted twice deliberately, including soft-keyboard suggestions | Two distinct user intents both apply; payload equality and timing never suppress the second paste |
 | MBC-10 | P0 | Rich internal/Markdown/HTML flavors and explicit Paste without formatting, with touch and hardware keyboard shortcuts | Declared full-palette codec precedence; plain mode bypasses parsing and formatting; native menu remains available after script-clipboard denial |
 | MBC-11 | P0 | Mobile delayed paste crosses navigation, read-only, target deletion, backgrounding or disposal | Initiating stable target/session retained; later selection preserved; canceled/stale result has zero semantic/history/storage effects |
-| MBC-12 | P0 | Formatted table cells, lists, links, code, captions and other registered extensions copied between mobile web and native apps | Admitted structure/formatting round-trips; missing codec preserves inert source with diagnostics; emulator replay and physical-device results recorded separately |
+| MBC-12 | P0 | Formatted table cells, lists, links, code, captions and other registered extensions copied between mobile web and native apps | Admitted structure/formatting round-trips; missing codec preserves inert source with diagnostics; emulator replay and physical or virtual platform results recorded separately |
 
 ## Optional browser and keyboard APIs — MWB-1.7
 

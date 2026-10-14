@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core`; paths below are workspace-relative unless prefixed `../architecture/` or another explicit sibling. Read `../architecture/specs/ecosystem-maintainability.md` and only the active task's named context. Planned paths and commands are created by their owning task. This source describes delivery; it is not a capability claim or live progress.
@@ -66,7 +68,7 @@ Purpose: Integrate native and release profile producers as one bounded integrati
 Context: `native/*/capability.json`; `scripts/release-profile.mjs`; `tests/architecture/profile-producers/`; `../architecture/specs/ecosystem-maintainability.md`.
 Dependencies: FIT-1.2.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Existing producer outputs map to the shared schema; missing manual evidence cannot become a supported native claim.
+Acceptance: Existing producer outputs map to the shared schema; missing required runtime/equivalent evidence cannot become a supported native claim; physical/manual availability alone is not a blocker under verification.md.
 
 Implementation:
 

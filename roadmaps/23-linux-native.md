@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core`. Deliver an embeddable Linux editor using real native controls, the shared Rust model and portable modules. Paths are relative to `core`; planned paths are created by their task. Read [native parity](../specs/native-sdk-parity.md), [client contracts](../specs/client-contracts.md), [extension library](../specs/extension-library.md), and only the active task's context.
@@ -16,7 +18,7 @@ One parent per iteration, 15–45 minutes plus focused validation. Reuse qualifi
 
 Task 1 creates the real dispatcher/bootstrap suite. Later tasks create their named suites before use; unknown suites, missing tooling and zero tests fail. These are planned commands. Tests live in `native/linux/tests/`. Preserve commands, executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and failures in separate progress; source checkmarks are controller-owned.
 
-Use deterministic fixtures and mocked services; no provider calls, live credentials, production writes, WebViews or publication. Simulations cannot qualify real IMEs/accessibility. Roadmap 20 owns actual OS/device/manual qualification; this track delivers implementation/package readiness.
+Use deterministic fixtures and mocked services; no provider calls, live credentials, production writes, WebViews or publication. Target-platform simulator/emulator/VM input and accessibility observations or tested virtual equivalents may satisfy qualification under verification.md; label the tested environment. Roadmap 20 owns actual OS/device/manual qualification; this track delivers implementation/package readiness.
 
 ## Epic LNX-1 — Implement the native adapter
 
@@ -138,7 +140,7 @@ Purpose: composition.
 Context: `native/linux/src/input/`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: LNX-1.5.
 Session scope: 15–45m; split if larger.
-Acceptance: Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs. Qualify NAT-03 through deterministic native protocol fixtures; preserve captured targets/composition and supply OS/IME runbooks and preliminary observations for DEL-1.7 actual-device qualification.
+Acceptance: Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs. Qualify NAT-03 through deterministic native protocol fixtures; preserve captured targets/composition and supply OS/IME runbooks and preliminary observations for DEL-1.7 physical or virtual platform qualification.
 
 Implementation:
 
@@ -470,7 +472,7 @@ Purpose: Deliver the named transfer boundary with reproducible evidence and expl
 Context: `native/`; [native clipboard cases](../tests/native-clipboard-cases.md); `../architecture/specs/native-sdk-parity.md`
 Dependencies: LNX-1.13, LNX-1.16, LNX-2.2.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. These are future tasks; this roadmap revision does not execute native tests or authorize device runs.
-Acceptance: Linux test host/VM runs NCL-01–NCL-20 against the installed native control and OS clipboard, with declared unsupported OS features. Exercise actual menu/shortcut APIs, rich and literal flavors, formatting, two views/apps, delayed providers, denial, read-only, undo and disposal. Headless/mock transport checks remain separately labeled; emulator/VM success is not real-device, IME or accessibility qualification.
+Acceptance: Linux test host/VM runs NCL-01–NCL-20 against the installed native control and OS clipboard, with declared unsupported OS features. Exercise actual menu/shortcut APIs, rich and literal flavors, formatting, two views/apps, delayed providers, denial, read-only, undo and disposal. Headless/mock transport checks remain separately labeled; emulator/VM success may qualify the virtual platform, including tested IME/accessibility cases or documented virtual equivalents under verification.md; it is not physical-hardware evidence.
 
 Implementation:
 
@@ -478,11 +480,11 @@ Implementation:
 
 Validation:
 
-- [ ] LNX-2.4-V1 `bash native/linux/scripts/check.sh clipboard-host`. Record virtual versus physical provenance and each unsupported/failed clipboard flavor. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+- [ ] LNX-2.4-V1 `bash native/linux/scripts/check.sh clipboard-host`. Record virtual versus physical provenance and each unsupported/failed clipboard flavor. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing required runtime tooling, failed behavior or untested mandatory cases do not qualify support; use accepted virtual runtimes/equivalents when physical hardware is unavailable.
 
 Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
 Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
-Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Accept target-platform simulators/emulators/VMs under verification.md and retain virtual provenance; never relabel their results as physical-device observations.
 
 ### Task LNX-2.3 — Hand off exact platform qualification inputs
 
@@ -492,7 +494,7 @@ Purpose: qualification-readiness.
 Context: `native/linux/qualification/`; `native/linux/capability.json`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: LNX-2.2, LNX-2.4.
 Session scope: 15–45m; split if larger.
-Acceptance: Every mandatory capability links implemented tests/artifacts; real device, IME, accessibility and OS-support claims await roadmap 20. Hand off the owned NAT/SEL/MOV/CMD fixtures, PRF-07 device runbooks and any preliminary observations with unqualified status. DEL-1.7 owns mandatory actual-device/IME/performance qualification; this readiness handoff cannot claim support from synthetic or unmeasured inputs. Include NCL simulator/host receipts and an unchecked physical-device transfer matrix; DEL-1.9 and DEL-1.10 own the actual hardware runs.
+Acceptance: Every mandatory capability links implemented tests/artifacts; platform IME, accessibility and OS-support claims await roadmap 20, which accepts physical or virtual qualification. Hand off the owned NAT/SEL/MOV/CMD fixtures, PRF-07 device runbooks and any preliminary observations with unqualified status. DEL-1.7 owns mandatory physical or virtual platform/IME/performance qualification; this readiness handoff cannot claim support from synthetic or unmeasured inputs. Include NCL simulator/host receipts and an unchecked physical or virtual platform transfer matrix; DEL-1.9 and DEL-1.10 own the physical or virtual platform qualification runs.
 
 Implementation:
 

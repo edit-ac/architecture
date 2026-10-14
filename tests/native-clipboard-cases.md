@@ -1,8 +1,10 @@
 # Planned native clipboard and formatting cases
 
+Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
+
 Status: planned; no native tests or device runs executed by this roadmap revision.
 
-IOS/AND/DSK/WIN/LNX-2.4 own simulator, emulator or OS-host execution of NCL-01–NCL-20. DEL-1.9/DEL-1.10 own physical-device and real-OS execution of NCL-01–NCL-28. NIX/NAX/NMX/NWX/NLX-1.9 own extension integration; unavailable optional extensions have explicit fallback expectations. Do not record a mock, injected callback, simulator or VM as a physical-device result.
+IOS/AND/DSK/WIN/LNX-2.4 own simulator, emulator or OS-host execution of NCL-01–NCL-20. DEL-1.9/DEL-1.10 own physical or target-platform virtual execution of NCL-01–NCL-28. NIX/NAX/NMX/NWX/NLX-1.9 own extension integration; unavailable optional extensions have explicit fallback expectations. Do not record a mock, injected callback, simulator or VM as a physical-device result.
 
 Each future receipt records the case ID, environment class, device/virtual-device model, OS image/build, toolkit/SDK/package/codec revisions, keyboard/IME and accessibility versions, source/target app, actual clipboard flavors, menu/shortcut, semantic selection/content, undo/redo, update/journal counts and failure evidence. Use prepared data and mock network/provider transports. No paid inference, secret loading or fixture recording from providers.
 
@@ -30,11 +32,11 @@ Each future receipt records the case ID, environment class, device/virtual-devic
 | NCL-18 | P0 | Paste formatted text into selected rich content with emoji, RTL and combined accents | Valid UTF-16/grapheme boundaries, direction and surrounding content preserved |
 | NCL-19 | P0 | Copy images/captions, references, math and unknown extension with codec present/absent | Admitted format/source preserved; host asset authority enforced; fallback is explicit and inert |
 | NCL-20 | P0 | Copy table cells with bold/italic/underline/strike/code/links/headings plus rows, columns and spans | Registered table codec preserves formatting and admitted structure; plain paste is literal; one atomic undo group |
-| NCL-21 | P0 | Physical iPhone/iPad long-press Copy/Cut/Paste with selection handles and keyboard open | Real OS pasteboard and native menu flow verified; no synthetic-event substitution |
-| NCL-22 | P0 | Physical Android devices with stock and supported vendor keyboards; toolbar/system paste menu | Real clipboard overlay/replacement callbacks qualified for each claimed keyboard/OS profile |
-| NCL-23 | P0 | Physical mobile device plus hardware keyboard; formatted and plain paste shortcuts | Advertised shortcuts, target/focus and keyboard policy verified on each claimed device |
-| NCL-24 | P0 | Physical device cross-app transfer to/from a browser, word processor and native notes app | Actual offered flavors and resulting semantic formatting recorded; loss or unsupported formats explicit |
+| NCL-21 | P0 | Physical or simulated iPhone/iPad long-press Copy/Cut/Paste with selection handles and keyboard open | Real OS pasteboard and native menu flow verified; no synthetic-event substitution |
+| NCL-22 | P0 | Physical or emulated Android devices with stock and supported vendor keyboards; toolbar/system paste menu | Real clipboard overlay/replacement callbacks qualified for each claimed keyboard/OS profile |
+| NCL-23 | P0 | Physical or virtual mobile device plus hardware/host keyboard or tested native key-action equivalent; formatted and plain paste shortcuts | Advertised shortcuts, target/focus and keyboard policy verified on each claimed device |
+| NCL-24 | P0 | Physical or virtual target-runtime cross-app transfer to/from a browser, word processor and native notes app | Actual offered flavors and resulting semantic formatting recorded; loss or unsupported formats explicit |
 | NCL-25 | P0 | VoiceOver/TalkBack/Narrator or declared desktop screen reader invokes Copy/Cut/Paste/plain paste | Named accessible actions and correct selection/result; manual assistive-input evidence retained |
-| NCL-26 | P0 | Physical OS privacy prompts, managed clipboard restriction, focus change, share sheet and background/foreground | Permission, activation, lifetime and cancellation behavior verified without fabricated support claims |
+| NCL-26 | P0 | Target-runtime OS privacy prompts, managed clipboard restriction, focus change, share sheet and background/foreground | Permission, activation, lifetime and cancellation behavior verified without fabricated support claims |
 | NCL-27 | P0 | Real macOS/Windows and Linux X11/Wayland installations; copy then exit source app | Declared clipboard/PRIMARY lifetime survives or fails as documented; no dangling provider or data loss |
-| NCL-28 | P0 | Physical device pasted table/extension content, undo, app restart and offline recovery | Admitted formatting/structure and durable local state preserved; unknown/absent extension source recoverable |
+| NCL-28 | P0 | Physical or virtual target-runtime pasted table/extension content, undo, app restart and offline recovery | Admitted formatting/structure and durable local state preserved; unknown/absent extension source recoverable |

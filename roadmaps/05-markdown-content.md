@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 Progress (2026-10-13): 14 of 15 parent tasks complete. Software implementation and deterministic qualification are complete; FMT-1.15-V1 is blocked on actual-device observations. Final native/package/WASM/browser/architecture results and cleanup are recorded in `../evidence/markdown/session-20261013/qualification.json`. Checkmarks in this file are maintained under the user's explicit progress-tracking instruction.
 
 ## Goal and entry conditions
@@ -318,17 +320,17 @@ Acceptance: The qualified Rust CommonMark/GFM importer and admitted extension co
 
 Implementation:
 
-- [x] FMT-1.13-I1 Add named codec adapters, host plain-text policy configuration and parameterized full-palette fixtures. Cover external word processors, browser and native producers, HTML/Markdown/plain/internal precedence, hostile/malformed data, codec absence, first formatted frame, Unicode/whitespace and prepared mobile event/platform plain-paste shortcut routing. Physical mobile menus and actual OS shortcut observations retain their mandatory owner FMT-1.15. Keep parser-conformance prerequisites intact; never substitute a browser-only Markdown parser.
+- [x] FMT-1.13-I1 Add named codec adapters, host plain-text policy configuration and parameterized full-palette fixtures. Cover external word processors, browser and native producers, HTML/Markdown/plain/internal precedence, hostile/malformed data, codec absence, first formatted frame, Unicode/whitespace and prepared mobile event/platform plain-paste shortcut routing. Mobile target-runtime menus and OS shortcut observations retain their mandatory owner FMT-1.15; physical or virtual runtime evidence is accepted. Keep parser-conformance prerequisites intact; never substitute a browser-only Markdown parser.
 
 Validation:
 
-- [x] FMT-1.13-V1 `npm run test:browser -- clipboard-formats`. Exercise all supported formats across pinned Chromium/Firefox/WebKit and mobile event variants; require one semantic/history/storage operation per paste. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools or skipped mandatory mechanical cases do not qualify this task; physical-device support remains unqualified until FMT-1.15 passes.
+- [x] FMT-1.13-V1 `npm run test:browser -- clipboard-formats`. Exercise all supported formats across pinned Chromium/Firefox/WebKit and mobile event variants; require one semantic/history/storage operation per paste. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools or skipped mandatory mechanical cases do not qualify this task; platform support remains unqualified until FMT-1.15 passes on the accepted physical or virtual matrix.
 
 Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
 Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
 Controller split (2026-10-13): Separate browser/codec mechanics from physical OS/device observations so portable interchange and source reconciliation can be qualified independently. FMT-1.15 retains the original physical-device requirements and remains mandatory for roadmap completion; prepared variants never substitute for them.
 
-Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Accept target-platform simulators/emulators/VMs under verification.md and retain virtual provenance; never relabel their results as physical-device observations.
 
 Progress (2026-10-13): Full portable Markdown/internal palette qualified for registered images/tables, nesting/checklists, code, links, marks and Unicode. Public recovered/borrowed hosts honor preset/policy/content options; reserved or duplicate MIME codecs reject before allocating input owners. Unsupported RTF/TSV retains source. `npm run build`: exit 0. Pinned Node `EDITAC_CLIPBOARD_FORMATS_OUTPUT=../architecture/evidence/markdown/session-20261013/palette-final npm run test:browser -- clipboard-formats`: 33 executed/passed (11 per engine), 0 failed/skipped. Prepared mobile/shortcut variants are mechanics only; FMT-1.15 retains actual-device qualification. Receipts include package/source hashes and complete teardown. Initial origin/URL/event-fixture failures preserved in palette*.log.
 
@@ -380,30 +382,30 @@ Evidence: Progress entry `FMT-1.12` with changed paths, exact command/result, so
 Handoff: Record the last completed substep, changed symbols/files, exact failing fixture or missing fact, and next bounded action for `FMT-1.12`.
 Blocked behavior: Leave `FMT-1.12` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with reason, owner/unblock condition and retry trigger. Select another dependency-ready task in this track; if none exists, report the gate and stop instead of polling.
 
-### Task FMT-1.15 — Qualify actual-device clipboard entry points
+### Task FMT-1.15 — Qualify physical or virtual platform clipboard entry points
 
-- [ ] FMT-1.15 Qualify actual-device clipboard entry points.
+- [ ] FMT-1.15 Qualify physical or virtual platform clipboard entry points.
 
-Purpose: Preserve the physical-device requirements extracted from FMT-1.13.
+Purpose: Preserve the platform-runtime qualification requirements extracted from FMT-1.13.
 
 Controller amendment (2026-10-13): execute the separate simulator/emulator development gate under `../architecture/tests/clipboard-emulator-development.md`. A passing FMT-1.15-V2 receipt unblocks portable development tracks as defined in `specs/verification.md`; FMT-1.15-V1 and physical release completion remain open. CAP-1.1 may own this bounded virtual execution and publish its receipt; do not start a duplicate roadmap-05 worker.
 
 Context: `tests/manual/`; `../architecture/tests/mobile-web-cases.md`; `../architecture/specs/formats.md`; `../architecture/specs/verification.md`.
 Dependencies: FMT-1.13.
-Session scope: One bounded device qualification boundary. User-approved simulator/emulator development qualification is separate from mandatory physical-device release qualification.
-Acceptance: Record native mobile paste menus and all platform plain-paste shortcuts using actual devices/OS clipboard and the qualified packed palette. Unsupported/missing devices remain explicit and leave this task and the roadmap incomplete.
+Session scope: One bounded device qualification boundary. The earlier five-case emulator development gate remains a subset of the complete FMT-1.15-V1 release matrix, which now accepts physical or virtual target runtimes.
+Acceptance: Record native mobile paste menus and all platform plain-paste shortcuts using physical or target-platform virtual OS clipboard and the qualified packed palette. Record unavailable hardware-only cases and tested virtual equivalents; missing implemented behavior or untested required cases leaves this task and the roadmap incomplete.
 
 Implementation:
 
-- [x] FMT-1.15-I1 Prepare the exact-version physical-device protocol, fixture hashes and expected semantic/history/storage observations for native mobile paste menus and platform plain-paste shortcuts.
+- [x] FMT-1.15-I1 Prepare the exact-version physical or virtual platform protocol, fixture hashes and expected semantic/history/storage observations for native mobile paste menus and platform plain-paste shortcuts.
 
-- [ ] FMT-1.15-I2 Execute the user-approved simulator/emulator development procedure on a task-owned virtual device using the current packed artifacts; keep physical qualification separately open.
+- [ ] FMT-1.15-I2 Execute the user-approved simulator/emulator development procedure on a task-owned virtual device using the current packed artifacts; retain virtual provenance and collect the remaining complete release matrix on accepted physical or virtual runtimes.
 
 Validation:
 
 - [ ] FMT-1.15-V2 Record a passing virtual-device receipt for all five representative clipboard/undo/durability/literal assertions, nonzero executed counts, exact versions/hashes, native action traces and preserved failures. This qualifies development only; no physical observations are inferred.
 
-- [ ] FMT-1.15-V1 Execute the protocol on actual mobile Safari/Chrome and desktop OS shortcut entry points, with nonzero observed case counts, exact device/browser/OS versions, source/package hashes and preserved failures. Missing devices or skipped mandatory cases do not qualify support.
+- [ ] FMT-1.15-V1 Execute the protocol on actual mobile Safari/Chrome and desktop OS shortcut entry points, with nonzero observed case counts, exact device/browser/OS versions, source/package hashes and preserved failures. Missing required runtime/equivalent evidence or failed mandatory cases does not qualify support; physical hardware availability is not required.
 
 Progress (2026-10-13): I1 complete: `core/tests/manual/markdown-clipboard.md`, three native-copy fixtures and exact source/package/WASM hashes in `../evidence/markdown/device/manifest.json`. V1 BLOCKED: device operator must supply actual mobile Safari/Chrome native menu and macOS/Windows/Linux shortcut observations against those artifacts. Read-only availability checks found no Apple devices and only an offline Android emulator; zero physical cases executed. Logs `../evidence/markdown/session-20261013/apple-devices.log` and `android-devices.log` preserve this limitation. Retry when actual hardware or matching existing observations are available; prepared desktop variants cannot close this gate.
 

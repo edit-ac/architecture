@@ -19,6 +19,10 @@ Clone [core](https://github.com/edit-ac/core), this repository as `architecture`
 3. Validate all sources with `npm ci --ignore-scripts` and `npm run check` in this repository. These commands do not execute workers or make inference calls.
 4. Resume the designated runner using its recorded progress and immutable task source. Do not start a duplicate controller in an active checkout. Workers execute at most one parent per iteration; source checkboxes remain a template, not live progress.
 
+## Platform qualification policy
+
+The user approved simulators, emulators and desktop OS VMs/test hosts for full platform and release qualification on 2026-10-14. Physical hardware is optional. Required implemented behavior, current-artifact case coverage and performance checks still pass in the declared runtime; unavailable hardware-only observations use documented tested virtual equivalents. Preserve physical/virtual provenance and historical evidence. See the [authoritative policy](specs/verification.md#platform-qualification-with-simulators-emulators-and-vms).
+
 ## Milestones and task tracks
 
 | Track | Parent tasks | Required upstream tracks | Exit artifact |
@@ -136,7 +140,7 @@ Baseline keyboard access, screen-reader editing and OS dictation work without th
 
 | Track | Parent tasks | Whole-track prerequisites | Exit artifact |
 |---|---:|---|---|
-| [40 Mobile web](roadmaps/40-mobile-web.md) | 11 | 08, 38 | Touch/keyboard/viewport/API fallback and actual-device evidence; required by 10 |
+| [40 Mobile web](roadmaps/40-mobile-web.md) | 11 | 08, 38 | Touch/keyboard/viewport/API fallback and physical or virtual platform evidence; required by 10 |
 | [41 Mobile extensions](roadmaps/41-mobile-web-extensions.md) | 9 | 40, 25, 26, 27, 30; web assistance gates per task | Touch-accessible rich presenters, capability fallbacks and measured optional costs; required by 37 |
 
 Browser release qualification uses [gzip bundle budgets](specs/verification.md#browser-bundle-size-budgets): 512 KiB total / 32 KiB editor JS hard caps, with 256 KB total / 16 KB editor JS preferred sizes (KB = 1,000 bytes). Required WASM glue, runtime dependencies and lazy required code count toward the caps.

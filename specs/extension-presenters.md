@@ -67,9 +67,10 @@ The focus mode identifies the host binding, not availability of a full renderer.
 Each owner consumes the fixed `core/fixtures/extensions/presenters/conformance.json`
 IDs `PRES-<host>-<obligation>`, preserves the same command/source/capability
 boundary and adds its actual platform receipts. Their evidence is pending; this
-track depends on none of those completed renderers. Physical FMT-1.15 remains a
-release gate; the existing virtual development receipt does not qualify real IME
-or accessibility. Built-in per-module parity cells are delivered by EXT-1.7.
+track depends on none of those completed renderers. FMT-1.15 remains a physical or virtual platform release gate under
+[verification.md](verification.md#platform-qualification-with-simulators-emulators-and-vms).
+The existing five-case virtual development receipt is a subset; full release coverage
+and tested input/accessibility observations or virtual equivalents are still required. Built-in per-module parity cells are delivered by EXT-1.7.
 
 ## Canonical conformance
 

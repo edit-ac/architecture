@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core`; paths below are core-relative unless prefixed `../architecture/`. Follow `../architecture/specs/delivery-scenarios.md` and the active task context. This is planned follow-up delivery, not implemented capability.
@@ -156,7 +158,7 @@ Purpose: Complete cross-platform input and accessibility evidence as one bounded
 Context: `tests/manual/full-platform-matrix.md`; `../architecture/evidence/full-platform-input.md`; `../architecture/specs/delivery-scenarios.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: DEL-1.2, DEL-1.3.
 Session scope: One named implementation/qualification boundary, 15–45 minutes plus focused checks; controller splits before exceeding scope.
-Acceptance: Every claimed native platform has actual input/accessibility evidence; desktop/mobile emulation and synthetic events cannot stand in for missing required device cases. Require each native SDK owned NAT/SEL/MOV/CMD variant and actual-device PRF-07 evidence with exact OS/toolkit/IME/profile versions.
+Acceptance: Every claimed native platform has actual input/accessibility evidence; named target-platform simulators/emulators/VMs may supply the required platform cases; synthetic browser events alone are insufficient. Require each native SDK owned NAT/SEL/MOV/CMD variant and physical or virtual platform PRF-07 evidence with exact OS/toolkit/IME/profile versions.
 
 Implementation:
 
@@ -164,33 +166,33 @@ Implementation:
 
 Validation:
 
-- [ ] DEL-1.7-V1 node tests/scenarios/run.mjs verify-manual-evidence; execute tests/manual/full-platform-matrix.md on actual declared devices. Assert all acceptance cases; record exact command/exit, nonzero executed/passed/failed/skipped counts, fixture/revision hashes and unavailable-platform evidence.
+- [ ] DEL-1.7-V1 node tests/scenarios/run.mjs verify-manual-evidence; execute tests/manual/full-platform-matrix.md on declared physical devices or target-platform virtual runtimes. Assert all acceptance cases; record exact command/exit, nonzero executed/passed/failed/skipped counts, fixture/revision hashes and unavailable-platform evidence.
 
 Evidence: Separate progress entry `DEL-1.7` with changed files, source/implementation revisions, commands, fixture IDs and durable artifact links; preserve failed evidence.
 Handoff: Last completed substep, current symbol/file, exact failing case or missing decision, and next bounded action for `DEL-1.7`.
 Blocked behavior: Leave `DEL-1.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, owner/unblock condition and bounded retry trigger. Select another dependency-ready local task; if none exists stop and report rather than repeatedly polling.
 
-### Task DEL-1.9 — Qualify native mobile clipboard on physical devices
+### Task DEL-1.9 — Qualify native mobile clipboard on physical devices or target-platform virtual runtimes
 
-- [ ] DEL-1.9 Qualify native mobile clipboard on physical devices.
+- [ ] DEL-1.9 Qualify native mobile clipboard on physical devices or target-platform virtual runtimes.
 
 Purpose: Deliver the named transfer boundary with reproducible evidence and explicit qualification status.
 Context: `tests/manual/native-mobile-clipboard.md`; `native/ios/qualification/`; `native/android/qualification/`; [native clipboard cases](../tests/native-clipboard-cases.md)
 Dependencies: DEL-1.7.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. These are future tasks; this roadmap revision does not execute native tests or authorize device runs.
-Acceptance: Every claimed iOS/iPadOS and Android OS/device profile has NCL-01–NCL-28 physical-device results using the packaged SDK, native editor and OS pasteboard. Simulator/emulator replay does not replace these runs. Minimum matrix includes iPhone and iPad, supported Android stock and one vendor keyboard/device profile, touch and attached keyboard, cross-app rich/plain/image flavors and accessibility-driven paste.
+Acceptance: Every claimed iOS/iPadOS and Android OS/device profile has NCL-01–NCL-28 physical or virtual platform results using the packaged SDK, native editor and OS pasteboard. Named target-platform simulator/emulator runs may satisfy this gate under verification.md; preserve virtual provenance. Minimum matrix includes iPhone/iPad target runtimes and Android stock plus the available HONOR vendor profile or a documented virtual equivalent, touch and attached/host keyboard, cross-app rich/plain/image flavors and accessibility-driven paste or its tested virtual equivalent.
 
 Implementation:
 
-- [ ] DEL-1.9-I1 Write and execute the physical-device runbook only in this future qualification task. Record device model, OS build, keyboard/IME/accessibility versions, app/package/codec revisions, transfer flavors, expected semantic/selection/history/journal results, permission behavior and evidence for canceled/failed operations. Keep unavailable profiles unchecked.
+- [ ] DEL-1.9-I1 Write and execute the physical or virtual platform runbook only in this future qualification task. Record device model, OS build, keyboard/IME/accessibility versions, app/package/codec revisions, transfer flavors, expected semantic/selection/history/journal results, permission behavior and evidence for canceled/failed operations. Qualify unavailable hardware profiles with named virtual runtimes/equivalents; keep missing implementation or untested required behavior unchecked.
 
 Validation:
 
-- [ ] DEL-1.9-V1 Run the documented on-device protocol and linked device test dispatchers; inspect captured OS events and semantic/undo/storage receipts independently. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+- [ ] DEL-1.9-V1 Run the documented on-device protocol and linked device test dispatchers; inspect captured OS events and semantic/undo/storage receipts independently. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing required runtime tooling, failed behavior or untested mandatory cases do not qualify support; use accepted virtual runtimes/equivalents when physical hardware is unavailable.
 
 Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
 Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
-Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Accept target-platform simulators/emulators/VMs under verification.md and retain virtual provenance; never relabel their results as physical-device observations.
 
 ### Task DEL-1.10 — Qualify native desktop clipboard on real OS installations
 
@@ -200,7 +202,7 @@ Purpose: Deliver the named transfer boundary with reproducible evidence and expl
 Context: `tests/manual/native-desktop-clipboard.md`; `native/macos/qualification/`; `native/windows/qualification/`; `native/linux/qualification/`; [native clipboard cases](../tests/native-clipboard-cases.md)
 Dependencies: DEL-1.7.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. These are future tasks; this roadmap revision does not execute native tests or authorize device runs.
-Acceptance: Each claimed macOS, Windows and Linux desktop profile has physical-machine clipboard/menu/shortcut and assistive-input evidence. Linux separately records X11 and Wayland clipboard ownership and PRIMARY where claimed. A VM/mock pass cannot become an undocumented hardware or accessibility claim.
+Acceptance: Each claimed macOS, Windows and Linux desktop profile has physical-machine or target-OS VM clipboard/menu/shortcut and assistive-input evidence. Linux separately records X11 and Wayland clipboard ownership and PRIMARY where claimed. A target-OS VM pass may satisfy this gate; record its environment and supported accessibility or tested virtual-equivalent cases. Mock-only results are not OS execution or hardware observations.
 
 Implementation:
 
@@ -208,11 +210,11 @@ Implementation:
 
 Validation:
 
-- [ ] DEL-1.10-V1 Execute the documented physical-machine protocol and capture OS/toolkit, desktop session, shortcuts, codec/package revisions and failure artifacts. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing tools/devices or skipped mandatory cases do not qualify support.
+- [ ] DEL-1.10-V1 Execute the documented physical or virtual desktop OS protocol and capture OS/toolkit, desktop session, shortcuts, codec/package revisions and failure artifacts. Require nonzero matching cases and record executed/passed/failed/skipped counts, immutable fixture/source/package revisions and preserved failures. Missing required runtime tooling, failed behavior or untested mandatory cases do not qualify support; use accepted virtual runtimes/equivalents when physical hardware is unavailable.
 
 Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
 Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
-Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Never substitute simulation for physical-device evidence.
+Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Accept target-platform simulators/emulators/VMs under verification.md and retain virtual provenance; never relabel their results as physical-device observations.
 
 ### Task DEL-1.8 — Release the qualified full client profile
 

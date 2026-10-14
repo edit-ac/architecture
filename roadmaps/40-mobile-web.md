@@ -2,9 +2,11 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
-Workspace: `core` (sibling of `architecture`). Read [mobile web](../specs/mobile-web.md), the active task's [case group](../tests/mobile-web-cases.md), and its named paths. Paths are relative to core unless explicitly prefixed. This roadmap implements baseline mobile web behavior; device emulation does not establish real mobile support.
+Workspace: `core` (sibling of `architecture`). Read [mobile web](../specs/mobile-web.md), the active task's [case group](../tests/mobile-web-cases.md), and its named paths. Paths are relative to core unless explicitly prefixed. This roadmap implements baseline mobile web behavior; named target-platform simulators/emulators may establish the declared virtual mobile support profile under verification.md.
 
 Upstream entry gates: `08-sdk-integration.md` and `38-editor-interactions.md` complete at reviewed current source/implementation revisions with passing evidence. Track 40 does not require rich extensions, all native SDKs or optional assistance. Browser release track 10 requires this track; richer optional mobile presenters are qualified separately in 41.
 
@@ -206,7 +208,7 @@ Implementation:
 
 Validation:
 
-- [ ] MWB-1.9-V1 npm run test:mobile-web -- --group budgets. Record raw samples and exact hardware/browser/artifact profiles, not only summaries. Run deterministic resource assertions separately from actual phone timing; emulator results cannot qualify phone budgets. Record exact command/exit, nonzero executed/passed/failed/skipped counts, immutable revisions and artifact hashes.
+- [ ] MWB-1.9-V1 npm run test:mobile-web -- --group budgets. Record raw samples and exact hardware/browser/artifact profiles, not only summaries. Run deterministic resource assertions separately from physical-phone or emulator-profile timing; emulator results may qualify the virtual mobile profile against the same budgets; label timings as virtual-runtime measurements, not physical-phone measurements. Record exact command/exit, nonzero executed/passed/failed/skipped counts, immutable revisions and artifact hashes.
 
 Evidence: Separate progress entry `MWB-1.9` with case IDs, implementation/profile/fixture revisions, exact commands/counts and retained artifacts under `../architecture/evidence/mobile-web/`.
 Handoff: Record the last completed substep, changed files/symbols, failing case/missing capability and next bounded action.
@@ -242,7 +244,7 @@ Purpose: Qualify real mobile devices and release handoff as one bounded integrat
 Context: `tests/mobile-web/device-protocol.md`; `scripts/check-mobile-web-evidence.mjs`; `../architecture/evidence/mobile-web/`; [mobile web contract](../specs/mobile-web.md); [case catalog](../tests/mobile-web-cases.md). [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: MWB-1.10.
 Session scope: One named group and its validation; touch only named paths and directly required test/configuration glue.
-Acceptance: MBQ-01–MBQ-04 and all catalog device rows have actual evidence for the frozen required iPhone/iPadOS/Android browser/keyboard sample. Baseline access works with optional extensions disabled; failed required behavior blocks claims. Tab/PWA/embedded modes qualify only where advertised. Bind relevant SEL/MOV/XFR/CMD actual-device variants including hardware keyboards; unsupported text-drag APIs retain accessible transfer alternatives.
+Acceptance: MBQ-01–MBQ-04 and all catalog device rows have actual evidence for the frozen required iPhone/iPadOS/Android browser/keyboard sample. Baseline access works with optional extensions disabled; failed required behavior blocks claims. Tab/PWA/embedded modes qualify only where advertised. Bind relevant SEL/MOV/XFR/CMD physical or virtual platform variants including hardware keyboards; unsupported text-drag APIs retain accessible transfer alternatives.
 
 Implementation:
 

@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
+
 ## Goal and entry conditions
 
 Workspace: `core` (sibling of `architecture`). Deliver only the outcomes below. Read `../architecture/specs/verification.md`, `../architecture/specs/verification.md` and the active task's named context. Paths below are relative to `core` unless explicitly prefixed with `../architecture/`. Planned files are created by their task. Source is controller-owned; write state/evidence in the separate progress file.
@@ -136,7 +138,7 @@ Purpose: Deliver complete real-browser input qualification as one reviewable bou
 Context: `tests/manual/browser-input.md`; `../architecture/evidence/input-matrix.md`; `../architecture/specs/verification.md`.
 Dependencies: REL-1.1.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Every publicly claimed combination has actual evidence; missing devices/cases remain unchecked and require narrower support claims or later qualification.
+Acceptance: Every publicly claimed runtime combination has physical or virtual evidence, including tested hardware-only equivalents under verification.md; missing implementation or untested required cases remains unchecked. Physical hardware availability is not required.
 
 Implementation:
 
