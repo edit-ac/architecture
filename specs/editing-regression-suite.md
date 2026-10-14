@@ -105,6 +105,12 @@ The existing prepared editor command batch admits an optional first `historySele
 
 Qualification remains acceptance-open until original SEQ-03/07/13/14 and G03 endpoint, direction, affinity, rebase, sentinel and rejection assertions pass in native and packed production engines. Prepared primitive proof cannot replace those original expectations.
 
+## Text grouping and host history bookmarks (RGS-1.3)
+
+Prepared native text edits retain the validated input anchor/focus as the transaction-entry bookmark and a right-affine upper cut as the result caret. A coalesced typing group preserves its first entry bookmark and updates its final result bookmark. Explicit paste/cut operations remain separate even at the same caller-supplied clock value; origin/session and native boundary policy determine grouping. Undo/Redo returns owned mapped endpoints. The single-block fragment fast path, including cut, retains the original directional entry range and independent endpoint biases; its result is the right-affine collapsed replacement end. Production keyboard history applies both endpoints and their affinity after rendering, recaptures the selection and releases returned tokens. Structural keyboard commands supply the actual transaction-entry selection before their first operation.
+
+REG-04 translates the pinned upstream paragraph range 6–13 to UTF-16 cuts 5–12 and insertion position 14 to cut 13. The engine uses native relative anchors and actual two-replica updates, with inverse Undo/reapplied Redo controls; ProseMirror step-map indices are not engine coordinates. Retain the remote insertion and permitted remote reparenting at every history checkpoint. These expectations do not waive the original full history and browser criteria.
+
 ## Align-left and preceding-separator typing profile (UPG-1.3 / RGS-1.2-C4)
 
 Original REG-05 binds canonical left-aligned v5 paragraphs: their existing `["paragraph"]` tuple is the actual left presentation, without a new schema/root or table-cell metadata. The native prepared block command `setAlignment { owner, alignment: "left" }` validates a visible paragraph and preserves its presentation, source spans, text and marks. An already-left paragraph is a zero-update, zero-history no-op; it does not clear editor-local pending marks or change the caret. Nonparagraph owners and undeclared alignment values reject atomically. This bounded profile covers the original align-left variant; it makes no claim for other alignment values or renderer/device behavior.
