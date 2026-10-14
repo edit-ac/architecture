@@ -87,6 +87,10 @@ Track 42 qualifies the common driver, representative recipes, guard sensitivity 
 CI separates quick pure/command fixtures, browser mechanics, seeded bounded interleavings and scheduled/device qualification. All automated providers/transports are deterministic mocks and prepared data. No paid inference, ambient credentials, live recording or recognition-quality claims are part of this suite. Minimized field regressions use synthetic/nonsensitive content and retain source provenance without private documents.
 
 
+### Selected cross-owner pre paste
+
+REG-07 selected code/text cross-owner separated-pre qualification requires original forward and backward variants through native prepared fragments and packed production WASM: prefix, intermediate whitespace, retained suffix, owner/source identities, result caret, one update/history action, content/source undo and redo, and zero-effect rejection. Internal staging presentation alignment cannot waive any assertion or qualify the separately missing history-selection bookmark port.
+
 ## Desktop and native coverage extension
 
 The [additional catalog](../tests/desktop-editing-cases.md) is indexed by the existing manifest and reporting pipeline. SEQ-13/SEQ-14 deepen BRK-04/SEL-01 with backward selected Enter/hard-break, undo, redo and sentinel checkpoints. They are independently authored expected states, not engine output. Text-transfer, native protocol, first-party preset and performance rows keep their feature/platform owners; RGS infrastructure must not depend on downstream implementations to finish. Extend driver bindings as those owners qualify their commands. A shared semantic result cannot establish a native gesture, clipboard-provider lifetime, IME, accessibility or performance pass.

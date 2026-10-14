@@ -115,6 +115,8 @@ Provide an accessible literal/plain-text paste command; do not rely on undocumen
 Pasting into a code block or inline-code editing context is literal under the declared target policy.
 Only user paste/import actions parse Markdown; remote structured updates are never reparsed.
 
+Selected cross-owner paragraph/code paste retains the prefix and suffix as original immutable sources. Fragment staging may align selected-tail code witnesses with the first destination for structural assembly, then installs incoming presentation. This internal staging never publishes intermediate edits or broadens ordinary Join admission. Separated pre whitespace remains a distinct paragraph, and the result caret precedes the retained suffix.
+
 ## Transaction and asynchronous paste behavior
 
 Capture clipboard data and selection once; sanitize/parse/validate outside live mutation.
