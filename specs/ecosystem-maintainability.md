@@ -138,6 +138,36 @@ Require keyboard, touch, screen-reader and non-drag pointer paths where relevant
 
 Observability records bounded operation IDs, error codes, queue/durability state and timings. Redact document text, titles, URLs with credentials, tokens and keys. No live LLM/provider calls or synthetic paid inference are necessary for architecture fitness checks.
 
+### Redacted support artifact boundary
+
+The portable session's `diagnostics` module and optional web `modules` diagnostic
+exports implement version 1 bounded support records. They accept closed typed
+error/recovery/source/state vocabularies and bounded numeric observations only.
+Generated operation IDs are local correlation counters; document/session IDs,
+command origins, provider errors, titles, content, URLs and credentials never
+enter these records. Keep collectors scoped to a host session. Retain the last
+64 events with an explicit dropped count; clamp elapsed time to one day, queue
+and pending counts to 4096, and counters to the exact JavaScript integer range.
+
+Support export is separate from the authorized user's content-bearing recovery
+export. It never edits semantic state, executes recovery, grants permission or
+retries work. Store acknowledgment uncertainty routes to exact store recovery;
+integrity/sequence failures preserve export, unsupported schema requires admitted
+migration/export, and frozen session writes must reconcile persistence before
+retry. Derived failures route to bounded retry, fresh authorization/scope/session,
+capacity wait, or stop as appropriate. Derived success conveys no durable commit.
+The production reference lookup reports immediate denial/cancellation/disposal
+and malformed-query outcomes without reusing a prior operation's diagnostic code.
+
+`node scripts/check-architecture.mjs --suite diagnostics` consumes shared typed
+failure vectors and actual Rust session/store recovery plus the production web
+lifecycle/reference lookup. Private seeded provider results remain available to
+authorized callers while support artifacts contain only allowlisted observations.
+Prepared conversion/host providers and volatile memory store evidence qualify
+privacy/routing, not optional-provider runtime support or crash durability.
+Receipts pin implementation/fixture/bundle hashes and nonzero Node/nested Rust
+counts; skipped or missing proof cannot pass this boundary.
+
 ## Mobile web overhead boundary
 
 [Mobile web](mobile-web.md) freezes an incremental baseline allocation within the [gzip bundle hard caps and preferred sizes](verification.md#browser-bundle-size-budgets); MWB-1.9 and MWX-1.8 own packed baseline/disabled/enabled cost evidence. FIT loading and budget checks consume these receipts where the mobile profile is claimed. The engine remains platform-neutral, optional APIs/dependencies load on demand, idle work is event-driven and per-frame geometry work is bounded. Budget failures require decomposition while preserving essential accessible editing; any hard-cap change requires an explicit user-approved budget decision.
