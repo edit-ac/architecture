@@ -46,9 +46,41 @@ JSON data. This does not change profile roots or the v5 wire schema. Known
 descriptors validate before staging; disabled/unknown descriptors retain source
 and inert text. Images retain URL/alt/title/source without a network request.
 Tables retain alignment, rectangular rows and rich simple-cell runs (32 columns,
-128 rows, 1,024 runs, 1 MiB text/source). Inline image layout and rich/nested cell
-blocks remain explicit unsupported source fallbacks. Registration governs
+128 rows, 1,024 runs, 1 MiB text/source). Inline image layout and nested cell
+containers remain explicit unsupported source fallbacks. Registration governs
 activation; rendering/upload services remain separately owned.
+
+The separately admitted table v2 tuple keeps the same `module:editac.table` tag
+and opaque v5 envelope, with version 2 and exact `alignments`, `rows`, `source`
+keys. Rectangular rows contain cell records or null covered positions. Each cell
+has `paragraphs`, positive integral `rowSpan`/`columnSpan`, and boolean `header`.
+A paragraph has exact `style` and `runs` keys: styles are `["paragraph"]`,
+`["heading", 1..6]`, or `["code", language]` using the existing language bounds;
+runs use the qualified v1 table encoding and single-line text/mark/link policy.
+Spans must tile the rectangle without overlap or out-of-bounds cells; covered
+positions are explicitly null. Aggregate bounds stay 32 columns, 128 rows,
+1,024 paragraphs/runs and 1 MiB text/source. Unknown keys/styles reject.
+V1 is unchanged; no registration rewrite or automatic v1/v2 migration occurs.
+V2 rich rendering/editing is optional and current v1 presenters fall back.
+Portable structured copy/cut/paste retains the exact tuple atomically. Markdown
+cannot express all v2 metadata: export reports `rich-table-source-fallback`,
+returns inert source and retains the complete typed recovery fragment. Reimport
+of that source alone is not a lossless v2 round trip.
+
+Unknown/unavailable extension data uses the owning v1
+`module:editac.inert-extension` carrier in the same opaque envelope. It stores
+exact transfer `version`, `type`, `dataVersion`, `source`, `payload`; the wrapped
+type/version is never interpreted or activated. The [extension library
+contract](extension-library.md#ordinary-bounded-inert-extension-transfer) defines
+JSON shape, 1 MiB/65,536-value/depth-16 bounds and unsafe-value/key rejection.
+Fallback runs equal source and have no marks. Ordinary structured transfer,
+whole-atom cut, history and checkpoint reopen retain the complete envelope without
+codecs/presenters. Partial source editing rejects; literal paste deliberately
+uses text only. Markdown export escapes active source syntax, reports
+`inert-extension-source-fallback` and retains typed recovery; source-only reimport
+cannot recover arbitrary payloads. No code/formula execution or resource fetch
+is authorized by carrier admission.
+
 Prepared paste adds an editable cut around edge atoms so preceding/following
 destination text retains its original ownership and presentation. Those cuts,
 descriptor installation and resulting caret belong to the same prepared update.
