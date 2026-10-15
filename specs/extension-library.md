@@ -281,3 +281,13 @@ source text. Markdown export escapes active Markdown/HTML source syntax, reports
 prepared recovery. Markdown source alone does not recover payloads. These are
 portable contract proofs, not optional extension execution, native OS clipboard
 or physical-device qualification.
+
+
+### Shared atomic-content edit boundary (STB-1.5)
+
+The default-off native `setAtomicContentPolicy` enables only bounded inert
+image/reference replacement/removal through the portable `atomicContent` command.
+It installs no resolver, asset service or presenter. Host results retain their
+captured Session anchor and complete expected descriptor; cancellation, stale
+revision and foreign ownership reject before mutation. See the authoritative
+[atomic-content boundary](client-contracts.md#shared-atomic-content-edit-boundary-stb-15).

@@ -189,3 +189,14 @@ staged-input overlap, explicit cancellation/rebase, document replacement and hos
 completion reentry. The fixture remains outside the production library. Native
 presenters must still consume qualified main-integrated ports and prove their
 own UI/input/selection lifecycle before original DSK-1.15 can close.
+
+
+### Shared atomic-content edit boundary (STB-1.5)
+
+Trusted hosts may explicitly enable default-off image/reference edits with
+`setAtomicContentPolicy(images, references)` on the existing Session. The portable
+`atomicContent` route provides same-family v1 replacement and whole-atom removal,
+with captured anchors, exact descriptors, revision/permission admission and shared
+history/durability. Profile availability describes only this inert shared port;
+asset/resolver and native presenter qualification remain separate. See the
+[atomic-content boundary](client-contracts.md#shared-atomic-content-edit-boundary-stb-15).

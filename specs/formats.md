@@ -272,3 +272,15 @@ Original REG-05 binds canonical left-aligned v5 paragraphs: their existing `["pa
 Pending marks remain editor-local: null derives allowed context marks, empty disables them, nonempty overrides them. Align-left and deletion of a preceding rule trigger or separator preserve this explicit state. Separator deletion uses the existing prepared `deleteSeparator` command with actual native entry/result selection bookmarks on the unchanged editable owner; retained separator/source identities reappear on undo. Typing applies text and admitted marks together in one prepared action. Moving away/back and successful history navigation clear pending state and recompute from the resolved context, with no ghost span or default mark. Invalid alignment/targets or a rejected later operation preserve all persistent and transient state.
 
 Qualification must bind the immutable original REG-05 row and SEQ-05 recipe, both pending empty/nonempty controls, context-derived typing, move-away/back, source/owner identity, one-action history, actual native selection endpoints/affinity and a following sentinel. Original REG-07 code/empty-root and selected code/text pre variants remain required; this profile does not reduce them. Native evidence proves committed semantics and bookmarks; packed host evidence additionally proves editor-local pending lifecycle.
+
+
+### Shared atomic-content edit boundary (STB-1.5)
+
+The portable `atomicContent` command edits existing admitted v1 image/reference
+tuples without a schema change or implicit conversion. It validates the complete
+expected tuple and same-family replacement using `Content::from_tuple`; null
+removes the whole atom, leaving an empty paragraph at its existing owner. Shared
+prepared staging updates fallback text and descriptor together; history restores
+both. Unknown/future versions, unsafe image URLs and out-of-bounds descriptors
+reject. Source stays inert and no asset or reference fetch occurs. See the
+[atomic-content boundary](client-contracts.md#shared-atomic-content-edit-boundary-stb-15).

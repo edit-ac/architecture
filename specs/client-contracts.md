@@ -303,3 +303,29 @@ Native methods install no foreign callbacks. A host completion may synchronously
 read, detach and reattach after a method returns; later events must recheck the
 current token. This qualifies shared staged-input overlap and lifecycle ownership,
 not native UI/IME execution or the original DSK-1.15 presenter acceptance.
+
+
+### Shared atomic-content edit boundary (STB-1.5)
+
+Trusted hosts may call `NativeSession.setAtomicContentPolicy(images, references)`
+on the existing Session. Both flags default to false on create/open; policy does
+not grant permission, resolver access, asset upload or network authority. The
+portable `atomicContent` command carries `owner`, complete `expected` v1 tuple,
+a captured source-owned `at` anchor at offset zero, and `replacement` (a validated
+same-family image/reference tuple, or null for whole-atom removal). The ordinary
+observed revision and single-use prepared-plan rules apply. Removal clears the
+complete descriptor and fallback into an empty paragraph at the same owner and
+position. One existing Session commit/history group changes payload and fallback;
+undo restores both. Surrounding owners, formatting and source identity survive.
+
+Known descriptor versions, exact fields, inert source, safe HTTP(S) image URL,
+reference ID/label and existing resource limits validate before staging. Host
+resolver/asset results confer no semantic authority: hosts must retain the captured
+Session anchor and expected descriptor, discard cancelled results, and recheck
+permission/revision/policy at commit. Foreign, stale or disposed handles cannot
+retarget a result. No resolver or asset bytes enter the engine; no implicit fetch
+occurs. Catalog/profile availability declares only this bounded inert edit port,
+with target checks required, and does not qualify native presentation or services.
+Policy changes after prepare recheck both the old family and replacement family;
+removal and undo cannot bypass a disabled codec. Existing retained-update append
+failure, freeze, exact idempotent recovery and publication semantics apply.
