@@ -66,6 +66,20 @@ Native Session error tags are append-only on the admitted UniFFI boundary. The o
 
 Qualification is deterministic Rust execution of `editac-ffi` native Session integration and internal SQLite fault/lifetime cases. Generated Swift execution, AppKit-owned scheduling and view-disposal tests remain NSR-1.2 and original DSK-1.3; no SDK, IME, release, power-loss or deployed transport qualification follows from this boundary.
 
+The additive trusted-host `NativeSession.setTablePolicy(enabled)` changes only
+the existing `HostPolicy.codecs.tables` bit through `EditService.set_policy`, on
+the same serialized worker. Every create/open defaults to disabled; configuration
+is not persisted. Enabling it never grants write permission or bypasses schema,
+tuple, revision, resource, recovery or history admission. Disabling it also rejects
+already prepared table plans at commit, consuming their single-use token without
+mutation. Cancellation/disposal retain the ordinary Session lifecycle contract.
+The table route/profile is available only for an editor identity with this codec
+enabled; `canPrepare` additionally requires current admission. Its initial supported
+editing surface is bounded v1 `tableCell` replacement through the shared planner;
+v2 cell editing and row/column commands are not qualified by policy activation.
+`checkCommands` remains required for exact target applicability. Existing options,
+read/commit records, constructor behavior and error tag order remain unchanged.
+
 ### Explicit local delivery v1 (CAP-1.6)
 
 Local channels are host-granted, document/epoch/profile-scoped wake notifications over a shared committed journal, not a database polling promise or a durability receipt. After a successful append, a sender signals its fresh live writer ID. Recipients read and verify the full retained journal, qualify a combined real-engine candidate, then apply remote updates without manufacturing local typing history or echoing them. An explicit startup/reconnect catch-up replays missed notifications; channels do not erase journal/outbox entries. Concurrent checkpoint publication remains generation CAS and retains full replay coverage. Hosted reconnect accepts a scoped, engine-qualified journal envelope before durably appending and applying it; send success is still durability unknown.
