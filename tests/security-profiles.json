@@ -1,0 +1,367 @@
+{
+  "schema": 1,
+  "gate": "SEC-1.1",
+  "qualification": "design-only",
+  "profiles": {
+    "baseline": {
+      "protectBeforePersist": false,
+      "protectBeforeRelay": false,
+      "plaintextEndpoints": [
+        "authorized-client",
+        "host-service"
+      ],
+      "tlsIsE2ee": false
+    },
+    "local-at-rest": {
+      "protectBeforePersist": true,
+      "protectBeforeRelay": false,
+      "plaintextEndpoints": [
+        "authorized-client",
+        "configured-plaintext-sync"
+      ],
+      "tlsIsE2ee": false
+    },
+    "e2ee": {
+      "protectBeforePersist": true,
+      "protectBeforeRelay": true,
+      "plaintextEndpoints": [
+        "authorized-client",
+        "explicitly-authorized-decrypting-endpoint"
+      ],
+      "tlsIsE2ee": false
+    }
+  },
+  "assets": [
+    "agent-results",
+    "attachments",
+    "backup-cache",
+    "checkpoint",
+    "creation",
+    "exports",
+    "history",
+    "journal",
+    "keys",
+    "outbox",
+    "routing",
+    "updates"
+  ],
+  "attackers": [
+    "ciphertext-injector",
+    "downgrade-peer",
+    "host-token-holder",
+    "malicious-reader",
+    "malicious-relay",
+    "network-observer",
+    "revoked-member",
+    "storage-reader"
+  ],
+  "fixtures": [
+    {
+      "id": "SEC-F-create-first",
+      "asset": "creation",
+      "attacker": "storage-reader",
+      "invariant": "SEC-INV-protect-first",
+      "parent": "SEC-1.5",
+      "plannedCheck": "cargo test -p editac-security --test protected_store --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "no-plaintext-first-write",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-create-failure",
+      "asset": "journal",
+      "attacker": "storage-reader",
+      "invariant": "SEC-INV-no-fallback",
+      "parent": "SEC-1.5",
+      "plannedCheck": "cargo test -p editac-security --test protected_store --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "abort-without-plaintext",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-commit-crash",
+      "asset": "checkpoint",
+      "attacker": "storage-reader",
+      "invariant": "SEC-INV-durable-protected",
+      "parent": "SEC-1.5",
+      "plannedCheck": "cargo test -p editac-security --test protected_store --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "recover-acknowledged-protected-state",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-wrong-key",
+      "asset": "updates",
+      "attacker": "ciphertext-injector",
+      "invariant": "SEC-INV-authenticated-admission",
+      "parent": "SEC-1.3",
+      "plannedCheck": "cargo test -p editac-security --test envelopes --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "reject-before-apply",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-tamper",
+      "asset": "updates",
+      "attacker": "malicious-relay",
+      "invariant": "SEC-INV-authenticated-admission",
+      "parent": "SEC-1.3",
+      "plannedCheck": "cargo test -p editac-security --test envelopes --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "reject-before-apply",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-cross-document",
+      "asset": "updates",
+      "attacker": "ciphertext-injector",
+      "invariant": "SEC-INV-context-binding",
+      "parent": "SEC-1.3",
+      "plannedCheck": "cargo test -p editac-security --test envelopes --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "reject-before-apply",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-cross-epoch",
+      "asset": "updates",
+      "attacker": "ciphertext-injector",
+      "invariant": "SEC-INV-context-binding",
+      "parent": "SEC-1.3",
+      "plannedCheck": "cargo test -p editac-security --test envelopes --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "reject-before-apply",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-cross-schema",
+      "asset": "updates",
+      "attacker": "ciphertext-injector",
+      "invariant": "SEC-INV-context-binding",
+      "parent": "SEC-1.3",
+      "plannedCheck": "cargo test -p editac-security --test envelopes --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "reject-before-apply",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-cross-key-epoch",
+      "asset": "updates",
+      "attacker": "ciphertext-injector",
+      "invariant": "SEC-INV-context-binding",
+      "parent": "SEC-1.3",
+      "plannedCheck": "cargo test -p editac-security --test envelopes --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "reject-before-apply",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-replay",
+      "asset": "updates",
+      "attacker": "malicious-relay",
+      "invariant": "SEC-INV-replay-freshness",
+      "parent": "SEC-1.3",
+      "plannedCheck": "cargo test -p editac-security --test envelopes --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "no-second-application",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-counter-restore",
+      "asset": "updates",
+      "attacker": "malicious-relay",
+      "invariant": "SEC-INV-replay-freshness",
+      "parent": "SEC-1.3",
+      "plannedCheck": "cargo test -p editac-security --test envelopes --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "safe-protocol-recovery-or-locked",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-oversized",
+      "asset": "updates",
+      "attacker": "ciphertext-injector",
+      "invariant": "SEC-INV-bounded-admission",
+      "parent": "SEC-1.3",
+      "plannedCheck": "cargo test -p editac-security --test envelopes --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "reject-before-unbounded-allocation",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-readonly-forgery",
+      "asset": "updates",
+      "attacker": "malicious-reader",
+      "invariant": "SEC-INV-writer-authorization",
+      "parent": "SEC-1.3",
+      "plannedCheck": "cargo test -p editac-security --test envelopes --locked",
+      "decisionSection": "Metadata and authorization",
+      "expected": "reject-authenticated-reader-write",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-host-auth-no-key",
+      "asset": "keys",
+      "attacker": "host-token-holder",
+      "invariant": "SEC-INV-key-authority",
+      "parent": "SEC-1.4",
+      "plannedCheck": "cargo test -p editac-security --test key_lifecycle --locked",
+      "decisionSection": "Keys, offline revocation and recovery",
+      "expected": "locked-no-key-delegation",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-lost-key",
+      "asset": "keys",
+      "attacker": "storage-reader",
+      "invariant": "SEC-INV-honest-recovery",
+      "parent": "SEC-1.4",
+      "plannedCheck": "cargo test -p editac-security --test key_lifecycle --locked",
+      "decisionSection": "Keys, offline revocation and recovery",
+      "expected": "unavailable-without-authorized-recovery",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-key-cleanup",
+      "asset": "keys",
+      "attacker": "storage-reader",
+      "invariant": "SEC-INV-scoped-keys",
+      "parent": "SEC-1.4",
+      "plannedCheck": "cargo test -p editac-security --test key_lifecycle --locked",
+      "decisionSection": "Keys, offline revocation and recovery",
+      "expected": "scoped-use-no-key-in-locator-log-tool",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-opaque-receipt",
+      "asset": "outbox",
+      "attacker": "malicious-relay",
+      "invariant": "SEC-INV-receipt-scope",
+      "parent": "SEC-1.6",
+      "plannedCheck": "cargo test -p editac-security --test encrypted_sync --locked",
+      "decisionSection": "Creation and admission",
+      "expected": "ciphertext-storage-only-receipt",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-incompatible-peer",
+      "asset": "updates",
+      "attacker": "downgrade-peer",
+      "invariant": "SEC-INV-no-downgrade",
+      "parent": "SEC-1.6",
+      "plannedCheck": "cargo test -p editac-security --test encrypted_sync --locked",
+      "decisionSection": "Profiles and assets",
+      "expected": "visible-incompatible-no-plaintext",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-offline-revoked",
+      "asset": "keys",
+      "attacker": "revoked-member",
+      "invariant": "SEC-INV-future-key-exclusion",
+      "parent": "SEC-1.7",
+      "plannedCheck": "cargo test -p editac-security --test rotation --locked",
+      "decisionSection": "Keys, offline revocation and recovery",
+      "expected": "no-new-epoch-access-old-plaintext-not-erased",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-old-pending",
+      "asset": "outbox",
+      "attacker": "revoked-member",
+      "invariant": "SEC-INV-preserve-pending",
+      "parent": "SEC-1.7",
+      "plannedCheck": "cargo test -p editac-security --test rotation --locked",
+      "decisionSection": "Keys, offline revocation and recovery",
+      "expected": "quarantine-retain-no-silent-admission-or-loss",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-history-key-missing",
+      "asset": "history",
+      "attacker": "storage-reader",
+      "invariant": "SEC-INV-exact-history",
+      "parent": "SEC-1.8",
+      "plannedCheck": "cargo test -p editac-security --test assets --locked",
+      "decisionSection": "History, attachments and exports",
+      "expected": "unavailable-history-no-approximation",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-attachment-binding",
+      "asset": "attachments",
+      "attacker": "ciphertext-injector",
+      "invariant": "SEC-INV-asset-binding",
+      "parent": "SEC-1.8",
+      "plannedCheck": "cargo test -p editac-security --test assets --locked",
+      "decisionSection": "History, attachments and exports",
+      "expected": "reject-cross-document-attachment",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-backup-cache-leak",
+      "asset": "backup-cache",
+      "attacker": "storage-reader",
+      "invariant": "SEC-INV-protected-assets",
+      "parent": "SEC-1.8",
+      "plannedCheck": "cargo test -p editac-security --test assets --locked",
+      "decisionSection": "History, attachments and exports",
+      "expected": "seed-absent-from-unauthorized-artifacts-logs",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-implicit-export",
+      "asset": "exports",
+      "attacker": "host-token-holder",
+      "invariant": "SEC-INV-explicit-export",
+      "parent": "SEC-1.8",
+      "plannedCheck": "cargo test -p editac-security --test assets --locked",
+      "decisionSection": "History, attachments and exports",
+      "expected": "deny-without-explicit-plaintext-authorization",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-opaque-agent",
+      "asset": "agent-results",
+      "attacker": "host-token-holder",
+      "invariant": "SEC-INV-plaintext-capability",
+      "parent": "SEC-1.9",
+      "plannedCheck": "cargo test -p editac-security --test capabilities --locked",
+      "decisionSection": "Agent and host capabilities",
+      "expected": "deny-plaintext-tools-on-relay",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-local-agent-readonly",
+      "asset": "agent-results",
+      "attacker": "malicious-reader",
+      "invariant": "SEC-INV-same-edit-policy",
+      "parent": "SEC-1.9",
+      "plannedCheck": "cargo test -p editac-security --test capabilities --locked",
+      "decisionSection": "Agent and host capabilities",
+      "expected": "local-authorized-readonly-cannot-edit",
+      "state": "planned-behavior"
+    },
+    {
+      "id": "SEC-F-metadata-observer",
+      "asset": "routing",
+      "attacker": "network-observer",
+      "invariant": "SEC-INV-honest-metadata",
+      "parent": "SEC-1.1",
+      "plannedCheck": "node --test tests/security-profiles.test.mjs",
+      "decisionSection": "Metadata and authorization",
+      "expected": "declare-identifiers-size-timing-participants-not-content",
+      "state": "design-contract"
+    }
+  ],
+  "exclusions": [
+    "compromised-unlocked-endpoint",
+    "malicious-authorized-writer",
+    "authorized-reader-copy-or-collusion",
+    "traffic-analysis-or-denial-of-service",
+    "global-rollback-without-trusted-freshness",
+    "historical-plaintext-copies"
+  ],
+  "productionReady": false,
+  "protocolSelected": false
+}

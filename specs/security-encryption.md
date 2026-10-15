@@ -14,6 +14,8 @@ TLS or disk encryption alone is not E2EE. Selecting E2EE must protect creation/r
 
 ## Design gate
 
+The [profile and threat-boundary decision](../decisions/003-encryption-profiles.md) and [asset/attack fixture review](../evidence/security-threat-model.md) freeze SEC-1.1's design requirements. Their deterministic checks qualify the design contract only; protocol selection, implementation and independent security review remain separate gates.
+
 Write a threat model, key/identity lifecycle and protocol selection ADR before choosing cryptographic dependencies. Use a maintained, reviewed implementation/protocol; do not invent primitives, nonce schemes or a bespoke group-key protocol. Compile and license/advisory-check the selected dependency on WASM and all native targets. A library's existence or passing round trip is not a security review.
 
 Associate authenticated ciphertext with document/epoch/schema/key epoch and operation identity. Define tamper/replay handling, secure nonce uniqueness across crash/fork/restore, sender/write authorization distinct from decryption ability, membership/key rotation and attachment binding. Untrusted ciphertext cannot cause unbounded decode/allocation or be applied before verification. Design authenticated membership and writer signatures if the threat model requires them; a shared decrypt key alone must not be advertised as read-only enforcement against malicious peers.
