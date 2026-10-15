@@ -247,8 +247,11 @@ Structured whole-atom copy/cut/paste, undo/redo and checkpoint reopen retain v2
 cell styles and metadata. Markdown source alone cannot encode all admitted
 semantics: export returns `rich-table-source-fallback` and complete typed recovery
 alongside inert source. Source reimport alone is not lossless. This contract adds
-no rich table renderer, cell navigation/editing commands, formula execution,
-asset lookup or native-device qualification.
+no rich table renderer, formula execution, asset lookup or native-device
+qualification. The subsequent bounded shared editing surface is defined in
+[formats](formats.md): single-block v2 cell text and unmerged row/column
+operations use the same prepared engine commands; multi-block replacement and
+span-changing structure remain explicit unsupported targets.
 
 ### Ordinary bounded inert extension transfer
 
@@ -278,3 +281,13 @@ source text. Markdown export escapes active Markdown/HTML source syntax, reports
 prepared recovery. Markdown source alone does not recover payloads. These are
 portable contract proofs, not optional extension execution, native OS clipboard
 or physical-device qualification.
+
+
+### Shared atomic-content edit boundary (STB-1.5)
+
+The default-off native `setAtomicContentPolicy` enables only bounded inert
+image/reference replacement/removal through the portable `atomicContent` command.
+It installs no resolver, asset service or presenter. Host results retain their
+captured Session anchor and complete expected descriptor; cancellation, stale
+revision and foreign ownership reject before mutation. See the authoritative
+[atomic-content boundary](client-contracts.md#shared-atomic-content-edit-boundary-stb-15).

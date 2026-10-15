@@ -66,6 +66,20 @@ Native Session error tags are append-only on the admitted UniFFI boundary. The o
 
 Qualification is deterministic Rust execution of `editac-ffi` native Session integration and internal SQLite fault/lifetime cases. Generated Swift execution, AppKit-owned scheduling and view-disposal tests remain NSR-1.2 and original DSK-1.3; no SDK, IME, release, power-loss or deployed transport qualification follows from this boundary.
 
+The additive trusted-host `NativeSession.setTablePolicy(enabled)` changes only
+the existing `HostPolicy.codecs.tables` bit through `EditService.set_policy`, on
+the same serialized worker. Every create/open defaults to disabled; configuration
+is not persisted. Enabling it never grants write permission or bypasses schema,
+tuple, revision, resource, recovery or history admission. Disabling it also rejects
+already prepared table plans at commit, consuming their single-use token without
+mutation. Cancellation/disposal retain the ordinary Session lifecycle contract.
+The table route/profile is available only for an editor identity with this codec
+enabled; `canPrepare` additionally requires current admission. The supported
+editing surface is defined by the bounded shared table commands below; policy
+activation alone does not qualify an operation or a native presenter.
+`checkCommands` remains required for exact target applicability. Existing options,
+read/commit records, constructor behavior and error tag order remain unchanged.
+
 ### Explicit local delivery v1 (CAP-1.6)
 
 Local channels are host-granted, document/epoch/profile-scoped wake notifications over a shared committed journal, not a database polling promise or a durability receipt. After a successful append, a sender signals its fresh live writer ID. Recipients read and verify the full retained journal, qualify a combined real-engine candidate, then apply remote updates without manufacturing local typing history or echoing them. An explicit startup/reconnect catch-up replays missed notifications; channels do not erase journal/outbox entries. Concurrent checkpoint publication remains generation CAS and retains full replay coverage. Hosted reconnect accepts a scoped, engine-qualified journal envelope before durably appending and applying it; send success is still durability unknown.
@@ -121,3 +135,197 @@ Implementation patterns and limits: [research](../evidence/followup-research.md)
 ## Platform qualification with virtual runtimes
 
 The 2026-10-13 five-case simulator/emulator development exception is retained as historical entry evidence for tracks 08/11/12/21. The user-approved 2026-10-14 [verification policy](verification.md#platform-qualification-with-simulators-emulators-and-vms) now accepts named target-platform virtual runtimes for release qualification as well. FMT-1.15-V1 requires the complete current-artifact profile/case matrix, which may run on physical devices, simulators/emulators or desktop OS VMs; its five-case V2 development subset does not automatically complete V1. Missing hardware alone must not block completion. Required implemented behavior, tested virtual equivalents, nonzero actual counts and retained failures remain mandatory. Preserve previous physical-device BLOCKED receipts and their original labels unchanged.
+
+### Bounded shared table commands
+
+The portable JSON routes `tableCell {owner, expected, row, column, text}` and
+`tableStructure {owner, expected, action, index}` use one shared interchange
+translator on native and WASM. `action` is `insertRow`, `deleteRow`,
+`insertColumn` or `deleteColumn`. Both require the exact complete captured table
+tuple in `expected` plus the Session observed revision. A stale tuple returns
+`PresentationConflict`; a stale revision uses the existing revision failure.
+Unknown owner, invalid indices, unsupported geometry, bounds, permission and
+policy failures reject before live mutation. Captured cell coordinates remain
+valid only with their captured tuple/revision; hosts recapture after structural
+or remote changes. The supported v1/v2 surface and new-cell defaults are defined
+in [formats](formats.md). Neither route grants permission or enables a codec.
+
+The existing table policy gates both routes, including revalidation after prepare.
+The catalog's enabled table profile reports
+`bounded-v1-v2-cell-unmerged-structure-target-check-required`; per-target
+applicability still requires `checkCommands`. A successful staged table change
+uses one existing engine commit, ordinary origin history and the exact durable
+Session receipt, including retained-update recovery after append failure.
+These shared ports do not qualify native presenter behavior or a public native
+remote adapter; those retain their own acceptance gates.
+
+### Native trusted-host journal adapter (STB-1.3)
+
+`NativeSession.reservePeerWriter(writer)` delegates to the existing SessionStore
+writer reservation before accepting that peer's first journal entry. Reservations
+are persistent, bounded and never reassigned: repeated reservation returns conflict,
+including after reopen. They grant no authentication or document write permission.
+The current replica's writer cannot be reserved or received as a peer. Hosts retain
+which remote writers they admitted; opening a store does not reset reservations.
+
+`pendingUpdates()` exports owned, already committed journal entries from the actual
+Session outbox, including exact full identity JSON, writer/sequence/digest, origin
+and bytes. Recovery-required state denies export, preserving the publication barrier.
+`receivePeer(update)` is the trusted-host adapter to `EditService.receive_peer`, not
+an untrusted network endpoint: the caller must authenticate and authorize the peer,
+verify/decrypt its negotiated envelope using the owning host security contract,
+and supply that admitted immutable journal entry. Writer IDs and SHA-256 checksums
+are not authentication. No production encryption profile is supplied by this API;
+the existing security crate's protocol probes do not become a production port.
+Transport, leases, receipts and presence remain separately owned collaboration work.
+
+Receive compares the complete current document identity (including schema/profile,
+protocol/encoding/offsets), checks bounded record metadata and retained digest, then
+uses existing Session semantic staging, SQLite reservation/order/idempotency and
+store-first admission. It does not reinterpret wire versions, rehash forged records,
+mutate a projection, grant local write permission, or join remote edits to local undo.
+A readonly local viewer can receive host-authorized remote work. Default table policy
+still gates local commands; remote synchronization preserves the existing admitted
+schema independently of local command policy. No remote durability acknowledgment
+is inferred from a local commit. Existing append errors freeze the Session; a lost
+acknowledgment can retain a durable remote entry which `recover()` applies exactly
+once. Prepared local targets then fail their observed-revision check; projection
+and anchors are the same live Session's existing notification/resolution surfaces.
+Disposal serializes with ingress and rejects subsequent calls. There is no retained
+incoming queue or callback to cancel; hosts cancel detached transport work before
+calling this synchronous boundary.
+
+### Native host transport and receipt prerequisite (STB-1.4-a)
+
+`NativeSession.attachHostTransport(options, now)` explicitly grants a host-owned
+connection on the existing Session. Options bind the complete document identity,
+an exclusive host-clock authorization expiry, bounded frame/queue sizes and the
+negotiated durable-receipt capability. This trusted-host grant is not peer
+identity authentication, key discovery or encryption. The host authenticates and
+admits its existing envelope before `receiveHostPeer`; raw network bytes are not
+accepted. Existing `receivePeer` retains its separate trusted-host baseline.
+
+The returned worker-scoped connection token changes on every successful attach.
+`flushHostTransport`, `takeHostFrames`, `receiveHostPeer` and
+`acceptHostReceipt` require that exact token and a current unexpired lease.
+Invalid attachments preserve the existing connection. `detachHostTransport`
+revokes it and drops only transient frames; reconnect starts with a fresh token
+and replays the actual persistent outbox. Late calls from previous connections
+cannot drain, mutate or detach a replacement. Disposal releases the queue and
+transport with the owning worker. No foreign callbacks, timers or network IO are
+installed; hosts can safely invoke these synchronous methods from their own
+transport event loop without a callback reentrancy path.
+
+The adapter reuses the existing bounded `Transport` queue and actual
+Session/EditService attach/detach/flush/receipt/admission paths. Outbound bytes
+remain the existing y-protocols update frame. Hosts obtain exact journal identity
+from `pendingUpdates`; the native adapter introduces no wire format. Send or
+drain success never means remote durability. Backpressure preserves durable
+pending work, even when a flush queued an earlier prefix. Recovery freezes frame
+drain, ingress, publication and receipt admission until existing recovery passes.
+
+`acceptHostReceipt` consumes only an identity/writer/sequence/checksum record
+from the host's authenticated negotiated application transport, never a frame or
+awareness message. Exact `DurableV1` receipts use the existing atomic SQLite
+receipt path; unknown/capability-absent receipts cannot prune pending entries.
+`receiveHostPeer` returns the actual local durable commit that the trusted host
+may acknowledge after completion, using the existing writer reservation and
+Session remote-admission boundary. Read-only local permission does not grant or
+revoke host-authorized remote ingest, and a transport lease never grants local
+write permission. This prerequisite does not advertise presence, encrypted
+transport or full native collaboration qualification.
+
+`flushHostTransportPage(token, after, maxFrames, now)` forwards to additive
+`Session.flush_pending_page`. Its optional cursor is an exact retained pending
+identity; the page limit is 1–32. The host reads pending identities, drains each
+bounded page, then advances after its last sent entry. This allows a backlog
+larger than the transport queue to progress even without receipt capability.
+Cursors never prune entries or manufacture remote durability. An unknown or
+already acknowledged cursor rejects before sending; refresh pending and restart.
+The original whole-outbox flush keeps its behavior through the same Session
+implementation, with no second cursor/transport state machine.
+
+### Native scoped awareness prerequisite (STB-1.4-b)
+
+The additive `setHostPresence`, `flushHostPresence`, `takeHostPresenceFrames`,
+`receiveHostPresence` and `hostPresence` methods use the exact active host
+connection token and unexpired lease. The host authenticates participant routing
+before providing awareness; client IDs are not authentication. Frames retain the
+existing pinned y-protocols awareness encoding and portable anchor envelope.
+Yrs Awareness runs on a clone of the existing document handle (the same store),
+with a host-driven monotonic millisecond clock. No replica, timer, callback,
+network service or document mutation is created. Presence is optional and never
+changes history, revision, pending journal work or durable receipts.
+
+Native presence uses the existing defaults: 64 peers including tombstones,
+64 KiB awareness frames, 50 ms coalesced sends and 30 second expiry with renewal
+at half expiry. Its separate bounded Transport queue inherits the connection
+frame/count/aggregate limits; it cannot consume sync frames. Backpressure retains
+local state for a later flush. An absent range means online without a selection;
+`present=false` emits a leave. Partial, foreign, released, deleted or unresolved
+local anchor pairs reject. Read-only local permission does not deny separately
+authorized ephemeral presence. Receiving validates the entire bounded canonical
+payload and all portable cursors before applying awareness. Leave/expiry retain
+clock tombstones to prevent stale resurrection. Remote selections resolve against
+the current committed model; deleted/unresolved targets render no selection.
+
+Detach, reattach and disposal drop all presence and transient frames with the
+connection. Reattach creates a new host-authorized presence session; the host must
+route only frames from that session. A stale connection token cannot affect the
+replacement or another document's worker. Authorization and recovery guards
+apply to every presence port. Hosts cancel/detach before switching documents and
+must not publish temporary IME composition as committed selection. The b2
+qualification below covers prepared host/key admission and shared staged-input
+overlap; native UI/IME, production encrypted authority and original full native
+collaboration acceptance remain separate. Awareness alone does not advertise a
+full collaboration capability.
+
+
+### Prepared native host admission and lifecycle qualification (STB-1.4-b2)
+
+The local-only `editac-security` example `native-host-admission` composes the
+existing prepared KeySession, exact key context, fresh prepared MLS admission,
+EncryptedClient and ciphertext-only SQLite relay with the generated Swift host.
+Each host acquisition rechecks current key access; authority approval supplies no
+key. Only an admitted exact journal entry reaches `receiveHostPeer`, which still
+checks its own current connection generation, exclusive lease, writer reservation,
+semantic admission, durable append and recovery state. Ciphertext receipts never
+become application durable receipts. Disposable fixture keys and JSON-line harness
+control are not a public API, transport protocol, production identity verifier or
+qualified encrypted profile. Production encryption remains unavailable.
+
+At the shared boundary, a remote commit overlapping staged local input invalidates
+the captured revision. The host cancels the obsolete plan and explicitly prepares
+against the new committed revision; local undo/redo preserves the remote update.
+Temporary composition is not transmitted. Hosts cancel plans, detach and dispose
+the old document before switching; old tokens/handles cannot act on the replacement.
+Native methods install no foreign callbacks. A host completion may synchronously
+read, detach and reattach after a method returns; later events must recheck the
+current token. This qualifies shared staged-input overlap and lifecycle ownership,
+not native UI/IME execution or the original DSK-1.15 presenter acceptance.
+
+
+### Shared atomic-content edit boundary (STB-1.5)
+
+Trusted hosts may call `NativeSession.setAtomicContentPolicy(images, references)`
+on the existing Session. Both flags default to false on create/open; policy does
+not grant permission, resolver access, asset upload or network authority. The
+portable `atomicContent` command carries `owner`, complete `expected` v1 tuple,
+a captured source-owned `at` anchor at offset zero, and `replacement` (a validated
+same-family image/reference tuple, or null for whole-atom removal). The ordinary
+observed revision and single-use prepared-plan rules apply. Removal clears the
+complete descriptor and fallback into an empty paragraph at the same owner and
+position. One existing Session commit/history group changes payload and fallback;
+undo restores both. Surrounding owners, formatting and source identity survive.
+
+Known descriptor versions, exact fields, inert source, safe HTTP(S) image URL,
+reference ID/label and existing resource limits validate before staging. Host
+resolver/asset results confer no semantic authority: hosts must retain the captured
+Session anchor and expected descriptor, discard cancelled results, and recheck
+permission/revision/policy at commit. Foreign, stale or disposed handles cannot
+retarget a result. No resolver or asset bytes enter the engine; no implicit fetch
+occurs. Catalog/profile availability declares only this bounded inert edit port,
+with target checks required, and does not qualify native presentation or services.
+Policy changes after prepare recheck both the old family and replacement family;
+removal and undo cannot bypass a disabled codec. Existing retained-update append
+failure, freeze, exact idempotent recovery and publication semantics apply.

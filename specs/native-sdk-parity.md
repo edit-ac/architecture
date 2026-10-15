@@ -28,7 +28,7 @@ projection; it cannot become a second authoritative document. The same command
 and fixture must produce the same semantic result across clients, while native
 controls retain platform-appropriate appearance and interaction.
 
-The additive native Session command boundary accepts the portable `EditorCommand` transport and shared anchor tokens, then uses the same Rust `EditService` planner and durable Session commit. Native presenters obtain current route/profile metadata from `commandCatalog` and check target applicability with `checkCommands`; admission metadata alone is not target enablement. Optional host services and pending profiles remain explicitly unavailable. See [native Session ownership](client-contracts.md#native-shared-session-ownership-nsr-11). `historyState(now)` exposes actual shared undo/redo group counts and combines them with current admission for exact menu/key enablement; observations remain advisory and history calls recheck permission/revision. Empty stacks, denied history and disposed handles are distinct states. This Rust boundary is a prerequisite for native key/menu/profile qualification, not evidence that those SDK or platform gates are complete.
+The additive native Session command boundary accepts the portable `EditorCommand` transport and shared anchor tokens, then uses the same Rust `EditService` planner and durable Session commit. Native presenters obtain current route/profile metadata from `commandCatalog` and check target applicability with `checkCommands`; admission metadata alone is not target enablement. Optional host services and pending profiles remain explicitly unavailable. See [native Session ownership](client-contracts.md#native-shared-session-ownership-nsr-11). Trusted hosts may explicitly enable the default-disabled table codec using `setTablePolicy(enabled)` on the same Session; availability describes the bounded v1/v2 single-block cell and unmerged row/column commands specified in [formats](formats.md#semantic-mapping). Policy activation does not grant permission or qualify native input, selection or presentation. `historyState(now)` exposes actual shared undo/redo group counts and combines them with current admission for exact menu/key enablement; observations remain advisory and history calls recheck permission/revision. Empty stacks, denied history and disposed handles are distinct states. This Rust boundary is a prerequisite for native key/menu/profile qualification, not evidence that those SDK or platform gates are complete.
 
 An adapter consumes the shared native storage/session port rather than creating
 another journal, sync protocol or reconciliation engine. Persisted/asynchronous
@@ -163,3 +163,40 @@ Measure keystroke/IME-to-visible response, candidate/caret geometry, text-servic
 ## Planned native clipboard qualification
 
 [NCL cases](../tests/native-clipboard-cases.md) separate simulator/emulator/VM mechanics from physical-device and actual OS pasteboard evidence. IOS/AND/DSK/WIN/LNX-2.4 own deterministic native OS-host fixtures; DEL-1.9 and DEL-1.10 own physical-device/platform qualification. Native menu paste, rich/plain format precedence, optional match-style shortcuts, failed cut, delayed provider lifetime, cross-app transfer, tables/extension formatting, undo, read-only and disposal must be tested on their stated environment. These additions create future tasks only; no native support is established by authoring them.
+
+The bounded shared table routes admit v1/v2 single-block cell text and unmerged row/column changes as specified in [formats](formats.md). Native hosts capture the complete descriptor and observed revision with their cell target and recapture after structural/remote changes. Shared command availability is a prerequisite for actual native selection/navigation/edit qualification.
+
+The additive native trusted-host journal adapter is specified in
+[client contracts](client-contracts.md#native-trusted-host-journal-adapter-stb-13).
+It exchanges exact committed Session journal entries between independently backed
+SQLite Sessions. It preserves the host authentication/admission prerequisite;
+writer reservation and digest verification are not authentication. This shared
+baseline port alone does not qualify native collaboration transport, encrypted
+profiles, presence, reconnect or AppKit table input/selection behavior.
+
+STB-1.4-b adds scoped host-driven awareness methods on the existing NativeSession,
+using the owning Yrs awareness implementation and the existing portable anchors.
+Remote selection records are additive; existing NativeSession records, error tags
+and entry checksums remain unchanged. The connection lease and recovery guards
+are mandatory. See the native scoped awareness prerequisite in client-contracts.
+This is ephemeral selection/lease proof, not native composition, encrypted
+collaboration or full DSK-1.15 qualification.
+
+
+STB-1.4-b2 additionally composes prepared owning key/MLS admission with actual
+independent-store NativeSession ingress in generated Swift, and qualifies shared
+staged-input overlap, explicit cancellation/rebase, document replacement and host
+completion reentry. The fixture remains outside the production library. Native
+presenters must still consume qualified main-integrated ports and prove their
+own UI/input/selection lifecycle before original DSK-1.15 can close.
+
+
+### Shared atomic-content edit boundary (STB-1.5)
+
+Trusted hosts may explicitly enable default-off image/reference edits with
+`setAtomicContentPolicy(images, references)` on the existing Session. The portable
+`atomicContent` route provides same-family v1 replacement and whole-atom removal,
+with captured anchors, exact descriptors, revision/permission admission and shared
+history/durability. Profile availability describes only this inert shared port;
+asset/resolver and native presenter qualification remain separate. See the
+[atomic-content boundary](client-contracts.md#shared-atomic-content-edit-boundary-stb-15).
