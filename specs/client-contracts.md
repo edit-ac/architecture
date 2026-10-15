@@ -74,9 +74,9 @@ tuple, revision, resource, recovery or history admission. Disabling it also reje
 already prepared table plans at commit, consuming their single-use token without
 mutation. Cancellation/disposal retain the ordinary Session lifecycle contract.
 The table route/profile is available only for an editor identity with this codec
-enabled; `canPrepare` additionally requires current admission. Its initial supported
-editing surface is bounded v1 `tableCell` replacement through the shared planner;
-v2 cell editing and row/column commands are not qualified by policy activation.
+enabled; `canPrepare` additionally requires current admission. The supported
+editing surface is defined by the bounded shared table commands below; policy
+activation alone does not qualify an operation or a native presenter.
 `checkCommands` remains required for exact target applicability. Existing options,
 read/commit records, constructor behavior and error tag order remain unchanged.
 
@@ -135,3 +135,26 @@ Implementation patterns and limits: [research](../evidence/followup-research.md)
 ## Platform qualification with virtual runtimes
 
 The 2026-10-13 five-case simulator/emulator development exception is retained as historical entry evidence for tracks 08/11/12/21. The user-approved 2026-10-14 [verification policy](verification.md#platform-qualification-with-simulators-emulators-and-vms) now accepts named target-platform virtual runtimes for release qualification as well. FMT-1.15-V1 requires the complete current-artifact profile/case matrix, which may run on physical devices, simulators/emulators or desktop OS VMs; its five-case V2 development subset does not automatically complete V1. Missing hardware alone must not block completion. Required implemented behavior, tested virtual equivalents, nonzero actual counts and retained failures remain mandatory. Preserve previous physical-device BLOCKED receipts and their original labels unchanged.
+
+### Bounded shared table commands
+
+The portable JSON routes `tableCell {owner, expected, row, column, text}` and
+`tableStructure {owner, expected, action, index}` use one shared interchange
+translator on native and WASM. `action` is `insertRow`, `deleteRow`,
+`insertColumn` or `deleteColumn`. Both require the exact complete captured table
+tuple in `expected` plus the Session observed revision. A stale tuple returns
+`PresentationConflict`; a stale revision uses the existing revision failure.
+Unknown owner, invalid indices, unsupported geometry, bounds, permission and
+policy failures reject before live mutation. Captured cell coordinates remain
+valid only with their captured tuple/revision; hosts recapture after structural
+or remote changes. The supported v1/v2 surface and new-cell defaults are defined
+in [formats](formats.md). Neither route grants permission or enables a codec.
+
+The existing table policy gates both routes, including revalidation after prepare.
+The catalog's enabled table profile reports
+`bounded-v1-v2-cell-unmerged-structure-target-check-required`; per-target
+applicability still requires `checkCommands`. A successful staged table change
+uses one existing engine commit, ordinary origin history and the exact durable
+Session receipt, including retained-update recovery after append failure.
+These shared ports do not qualify native presenter behavior or a public native
+remote adapter; those retain their own acceptance gates.

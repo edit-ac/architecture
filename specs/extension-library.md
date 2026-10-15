@@ -247,8 +247,11 @@ Structured whole-atom copy/cut/paste, undo/redo and checkpoint reopen retain v2
 cell styles and metadata. Markdown source alone cannot encode all admitted
 semantics: export returns `rich-table-source-fallback` and complete typed recovery
 alongside inert source. Source reimport alone is not lossless. This contract adds
-no rich table renderer, cell navigation/editing commands, formula execution,
-asset lookup or native-device qualification.
+no rich table renderer, formula execution, asset lookup or native-device
+qualification. The subsequent bounded shared editing surface is defined in
+[formats](formats.md): single-block v2 cell text and unmerged row/column
+operations use the same prepared engine commands; multi-block replacement and
+span-changing structure remain explicit unsupported targets.
 
 ### Ordinary bounded inert extension transfer
 

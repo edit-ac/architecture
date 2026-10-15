@@ -163,3 +163,5 @@ Measure keystroke/IME-to-visible response, candidate/caret geometry, text-servic
 ## Planned native clipboard qualification
 
 [NCL cases](../tests/native-clipboard-cases.md) separate simulator/emulator/VM mechanics from physical-device and actual OS pasteboard evidence. IOS/AND/DSK/WIN/LNX-2.4 own deterministic native OS-host fixtures; DEL-1.9 and DEL-1.10 own physical-device/platform qualification. Native menu paste, rich/plain format precedence, optional match-style shortcuts, failed cut, delayed provider lifetime, cross-app transfer, tables/extension formatting, undo, read-only and disposal must be tested on their stated environment. These additions create future tasks only; no native support is established by authoring them.
+
+The bounded shared table routes admit v1/v2 single-block cell text and unmerged row/column changes as specified in [formats](formats.md). Native hosts capture the complete descriptor and observed revision with their cell target and recapture after structural/remote changes. Shared command availability is a prerequisite for actual native selection/navigation/edit qualification.

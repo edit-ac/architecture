@@ -64,6 +64,24 @@ positions are explicitly null. Aggregate bounds stay 32 columns, 128 rows,
 1,024 paragraphs/runs and 1 MiB text/source. Unknown keys/styles reject.
 V1 is unchanged; no registration rewrite or automatic v1/v2 migration occurs.
 V2 rich rendering/editing is optional and current v1 presenters fall back.
+The shared prepared table commands retain the original version, source, owner,
+column alignments and every unaffected cell verbatim. `tableCell` replaces the
+selected cell's complete single-line text using the existing scalar-safe mark/link
+retention policy. V2 admits a non-null cell with exactly one paragraph, heading
+or code block, preserving its style, header and spans; covered cells and cells
+with multiple blocks return `UnsupportedTarget` before mutation. Newline input
+rejects. This bounded surface does not flatten rich multi-block cells.
+
+`tableStructure` inserts/deletes a row or column at a zero-based index. Insert
+accepts the end index; delete requires an existing index and cannot remove the
+last row/column. V1 rectangles and v2 rectangles containing only unmerged cells
+are supported. Any v2 span/covered position rejects structural editing with
+`UnsupportedTarget`; existing geometry is retained. New cells have one empty,
+unmarked paragraph, unit spans and `header:false`; new columns use `none`
+alignment. Existing cells retain exact payload and metadata when shifted.
+The owning decoder revalidates the complete result against the existing bounds
+before staging. No implicit version migration or new wire representation occurs.
+
 Portable structured copy/cut/paste retains the exact tuple atomically. Markdown
 cannot express all v2 metadata: export reports `rich-table-source-fallback`,
 returns inert source and retains the complete typed recovery fragment. Reimport
