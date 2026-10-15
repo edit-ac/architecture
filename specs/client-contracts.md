@@ -158,3 +158,39 @@ uses one existing engine commit, ordinary origin history and the exact durable
 Session receipt, including retained-update recovery after append failure.
 These shared ports do not qualify native presenter behavior or a public native
 remote adapter; those retain their own acceptance gates.
+
+### Native trusted-host journal adapter (STB-1.3)
+
+`NativeSession.reservePeerWriter(writer)` delegates to the existing SessionStore
+writer reservation before accepting that peer's first journal entry. Reservations
+are persistent, bounded and never reassigned: repeated reservation returns conflict,
+including after reopen. They grant no authentication or document write permission.
+The current replica's writer cannot be reserved or received as a peer. Hosts retain
+which remote writers they admitted; opening a store does not reset reservations.
+
+`pendingUpdates()` exports owned, already committed journal entries from the actual
+Session outbox, including exact full identity JSON, writer/sequence/digest, origin
+and bytes. Recovery-required state denies export, preserving the publication barrier.
+`receivePeer(update)` is the trusted-host adapter to `EditService.receive_peer`, not
+an untrusted network endpoint: the caller must authenticate and authorize the peer,
+verify/decrypt its negotiated envelope using the owning host security contract,
+and supply that admitted immutable journal entry. Writer IDs and SHA-256 checksums
+are not authentication. No production encryption profile is supplied by this API;
+the existing security crate's protocol probes do not become a production port.
+Transport, leases, receipts and presence remain separately owned collaboration work.
+
+Receive compares the complete current document identity (including schema/profile,
+protocol/encoding/offsets), checks bounded record metadata and retained digest, then
+uses existing Session semantic staging, SQLite reservation/order/idempotency and
+store-first admission. It does not reinterpret wire versions, rehash forged records,
+mutate a projection, grant local write permission, or join remote edits to local undo.
+A readonly local viewer can receive host-authorized remote work. Default table policy
+still gates local commands; remote synchronization preserves the existing admitted
+schema independently of local command policy. No remote durability acknowledgment
+is inferred from a local commit. Existing append errors freeze the Session; a lost
+acknowledgment can retain a durable remote entry which `recover()` applies exactly
+once. Prepared local targets then fail their observed-revision check; projection
+and anchors are the same live Session's existing notification/resolution surfaces.
+Disposal serializes with ingress and rejects subsequent calls. There is no retained
+incoming queue or callback to cancel; hosts cancel detached transport work before
+calling this synchronous boundary.
