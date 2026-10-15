@@ -110,6 +110,10 @@ source/text. Preparation returns no live document mutation.
 4. Plain text processed under the host's declared Markdown-paste policy.
 
 Malformed internal fragments fall back to the next safe available flavor with diagnostics.
+Copy may export the complete already admitted document as plain text when it
+exceeds the 1 MiB import/fragment bound; it omits structured and HTML flavors in
+that case. This does not admit that oversized text for paste. Oversized Cut
+rejects before writing or deleting, preserving the source and history.
 An unsupported fragment version is not reinterpreted as a current internal structure.
 The task-editor preset pastes plain text literally by default. A host that explicitly registers the Markdown extension may configure its documented Markdown-paste policy; the extension-enabled Task configuration formats plain-text Markdown under that policy.
 Every host chooses and documents its enabled codecs and plain-text policy during configuration.
