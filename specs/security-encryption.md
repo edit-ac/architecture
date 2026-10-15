@@ -20,6 +20,8 @@ Write a threat model, key/identity lifecycle and protocol selection ADR before c
 
 Associate authenticated ciphertext with document/epoch/schema/key epoch and operation identity. Define tamper/replay handling, secure nonce uniqueness across crash/fork/restore, sender/write authorization distinct from decryption ability, membership/key rotation and attachment binding. Untrusted ciphertext cannot cause unbounded decode/allocation or be applied before verification. Design authenticated membership and writer signatures if the threat model requires them; a shared decrypt key alone must not be advertised as read-only enforcement against malicious peers.
 
+The [SEC-1.2 candidate decision](../evidence/crypto-selection.md) pins a compile-only MLS dependency/probe boundary and independent-review plan. It exposes no production encryption API and does not resolve the application/platform/review gates above.
+
 ## Keys and offline behavior
 
 The host owns key acquisition, OS keystore/browser key wrapping, user unlock, backup/recovery, retention and deletion. Keys/passwords never appear in ac:// URLs, logs, crash diagnostics or MCP responses. Define locked, unavailable-key, revoked, recovery and incompatible-key states. Keep encrypted pending updates recoverable without plaintext fallback.
