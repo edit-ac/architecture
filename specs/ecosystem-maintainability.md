@@ -89,6 +89,10 @@ URL policy and Markdown preparation do not count as asynchronous providers.
 scope vectors, queue/cancellation/deadline behavior, the real lookup adapter and
 actual Rust session acknowledgment preservation without network/provider calls.
 
+## Shared-resource loading fitness
+
+Independent consumer/loading fitness also enforces the [same-page and same-site sharing contract](web.md#shared-resources-across-editors-and-site-routes). FIT-1.6 consumes SDK-1.10's packed shared-resource cases and the existing gzip harness: inspect dependency/chunk identity, concurrent initialization, mixed configuration isolation and cold/warm route transfer rather than multiplying a single-editor result by mount count. Inject a duplicate engine/common asset and a disabled-feature eager import as negative controls. Existing historical loading receipts do not qualify this added matrix; adopt the new source at a safe controller checkpoint and record fresh exact-artifact evidence without rewriting earlier results.
+
 ## Compatibility and release maintenance
 
 Test exact supported previous/current combinations for schema, wire, extension descriptors, public JS/Rust APIs and native ABI. Reject unsupported versions with actionable recovery/export options. Upgrade and rollback fixtures must account for persisted data; reverting a package alone does not reverse a schema migration.

@@ -34,6 +34,8 @@ Implementation:
 
 - [ ] REL-1.1-I1 Check current browser, storage, collaboration, Markdown, module, SDK, INT-1.14 interaction/device and MWB-1.11 mobile-browser evidence and record artifact hashes. Reject missing mandatory case IDs and synthetic-only OS/AT claims. Native preparation and CLI do not block this browser gate.
 
+The SDK gate includes SDK-1.9/1.10 and all required SHR-01–SHR-08 same-page/site cases at the reviewed release artifacts. Earlier SDK completion or single-editor transfer evidence cannot substitute for this 2026-10-15 addition; preserve those historical receipts.
+
 Validation:
 
 - [ ] REL-1.1-V1 node --test tests/packed-consumers.test.mjs. Assert the acceptance cases above and record build/probe exit results and executed/passed/failed/skipped counts for actual test suites (nonzero matching tests required).
@@ -77,10 +79,13 @@ Acceptance: Task/Long targets are measured on declared desktop/phone profiles; L
 Implementation:
 
 - [ ] REL-1.3-I1 Measure fixed corpus cold/warm samples including transfer/decode/compile/restore/DOM/input costs, first visible and first accepted edit, p50/p95/p99 and raw samples. Include HTML paste, actual edit/visible-update timestamps, fixed large-document operations, save/restore and reconnect through prepared local transports; export sanitized profile-linked samples and reproducible commands for DOC-1.30, with failures and insufficient-sample results intact.
+- [ ] REL-1.3-I2 Reuse SDK-1.10's shared site fixture for task-description/comment concurrent mounts and task-description/document route navigation. Under verification.md's resource-accounting contract, measure standalone default, mixed-page union and second-editor/route incremental transfers, initialization versus live handles, first-visible/first-edit and retained resources. Separate cold/cache-disabled, same-realm client navigation and controlled warm full-navigation samples; verify static optional-asset union and independent editor lifecycle. Required SHR cases, dependency/chunk/hash inventory and duplicate-delivery negative controls must match the release artifacts. Report separate-realm initialization honestly and keep both default hard caps unchanged.
 
 Validation:
 
 - [ ] REL-1.3-V1 Run the pinned benchmark command and record raw sample counts, percentiles and artifact hashes. Assert the acceptance cases above and record build/probe exit results and executed/passed/failed/skipped counts for actual test suites (nonzero matching tests required).
+
+Shared-resource acceptance: Missing same-page or same-site results, duplicated common assets in a supported build or stale/unmatched SHR receipts leave REL-1.3 incomplete even when single-editor size/timings pass. No new timing threshold is established by this amendment.
 
 Evidence: Progress entry `REL-1.3` with changed paths, exact command/result, source and implementation revisions, fixture/artifact hashes, and any preserved failure log. Durable milestone summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, changed symbols/files, exact failing fixture or missing fact, and next bounded action for `REL-1.3`.

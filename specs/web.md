@@ -30,6 +30,48 @@ surface releases adapters and anchors while leaving its engine with the host.
 The persistent facade retains its recovery, durability and destruction contract.
 Examples consume the public package mount and the same behavior defaults.
 
+## Shared resources across editors and site routes
+
+This is planned delivery under SDK-1.9/1.10, with independent loading checks in FIT-1.6 and release measurements in REL-1.3. Existing module-local initialization and multi-mount tests are useful prerequisites; they do not establish the complete site-wide contract below.
+
+Two host scenarios are mandatory: a task description and comment body mounted together, and task-description/document-body configurations on different routes of one site. A comment configuration is a host configuration over admitted capabilities, not a new mandatory preset. Use the existing Task and optional Markdown/presenter boundaries; document-tools/code-tools combinations become qualified only when their owning features are implemented. Configuration differences alone must not produce another engine binary or another copy of common JS/assets.
+
+### Resource ownership and identity
+
+| Resource | Sharing boundary | Instance-owned state |
+|---|---|---|
+| Core JS, generated glue and engine WASM | One resolved core module and initialized runtime per supported artifact identity in a browser realm; concurrent callers reuse its initialization promise | Each editor retains its own engine handle, document/epoch and live replica identity, selection, history, subscriptions and disposal |
+| Optional Markdown and presenter libraries, grammars, essential CSS/fonts | Reuse the same versioned static artifact when multiple enabled instances need it; optional assets remain separate from the baseline graph | Registration, commands/keymaps, schema admission, parser options, mutable macro/grammar configuration, DOM and error/fallback state remain scoped to each editor |
+| Injected styles and other static DOM resources | One installation per artifact and owner Document where injection is needed; teardown observes remaining users | An editor cannot remove resources still used by another editor |
+| Workers and derived services | Reuse code/assets; pool execution only through an existing service contract that supports bounded, identity-scoped multiplexing and cancellation | Requests, outputs, permissions, queues and cancellation remain session-scoped; no new worker pool is required by this plan |
+
+Share executable resources, never the writable document. Different task/comment documents retain separate history, document storage namespaces, active sync bindings and callback targets. Hosts may reuse stateless handlers and transport/auth/resolver services when every request remains bound to its initiating document/session and current permission scope; loading shared code cannot grant authority to a sibling instance. Deliberate collaboration on the same document continues through the existing identity/session/sync contracts. User uploads, private media, resolved metadata and signed URLs are content, not globally reusable static assets; their caches retain existing tenant/principal/security boundaries.
+
+Artifact identity includes the exact compatible package/build, generated glue, ABI and resolved asset URL. All plain, React and Astro entry points in the supported site build resolve to the same core dependency and common chunks. Presets configure instances rather than embedding their own engine. Host build examples use one reviewed asset manifest and stable versioned URLs across routes; editor IDs, route names and preset fingerprints cannot become cache-busting suffixes. Detect duplicate resolved SDK copies/common artifacts in production output, including identical bytes emitted under different URLs. Prefer the existing dependency/export and host bundler/import-map controls over a new global runtime registry.
+
+Retain `init(assetUrl)` and `initMarkdown(assetUrl)` semantics: one explicit URL per module instance, concurrent initialization sharing, rejection of a conflicting URL and retry after failure. Do not add an arbitrary URL-keyed runtime map over generated bindings that have one mutable WASM owner. Incompatible versions/glue or deliberately isolated realms are explicit separate owners, with separate costs; never alias them merely because a preset name or WASM filename matches. Imports and SSR rendering still perform no browser access, fetch, instantiation or document allocation.
+
+### Loading and lifetime
+
+Start optional loads only for enabled/needed features. A page with a Markdown-enabled description and a plain comment may load Markdown once for the description; that does not enable it in the comment. Test disabled-only pages for complete import/request absence and mixed pages against the union of enabled requirements. Adding a second enabled editor or visiting a route with overlapping capabilities loads only missing resources. Share initialization work without allowing one mount's abort/disposal to cancel another mount's required load. A failed load settles all affected waiters, preserves diagnostics/fallbacks and permits an explicit retry; no failed entry permanently poisons the loader. Disposed waiters cannot attach late DOM/listeners or leak a handle. Destroying one editor releases its state and pending work under the existing flush/report policy while other editors remain editable. The initialized module may remain ready for remount; retained runtime state must not retain disposed documents or grow with mount count.
+
+Client-side navigation within the same realm reuses initialized resources. Full navigation, reload, tabs and frames have separate JS/WASM lifetimes: reuse stable URLs through normal HTTP caching where the browser permits, then initialize a fresh runtime in each realm. Document content-hashed/versioned deployment paths, appropriate cache headers, MIME/CORS/CSP behavior and version rollover without stale-glue/new-WASM mixing. A validated warm HTTP cache may avoid body downloads while still performing requests/revalidation; do not claim zero initialization or unconditional cache retention across pages. No service worker, SharedWorker or cross-tab mutable runtime is required.
+
+### Required shared-resource cases
+
+| Case | Required observation |
+|---|---|
+| SHR-01 | Concurrent task-description/comment mounts with the same configuration share one core load/initialization; edit, undo, save and destroy remain independent |
+| SHR-02 | Mixed configurations in both mount orders, including two consumers of one optional parser/presenter, load the union once; a disabled instance keeps literal/fallback behavior and its own permissions |
+| SHR-03 | Delayed initialization, disposal of one waiter, shared failure/retry and repeated mount/destroy leave the survivor usable, with no late handles/listeners or silent pending-save loss |
+| SHR-04 | Packed plain, React and Astro production consumers, including mixed bindings, resolve one common runtime/artifact graph; SSR remains side-effect free |
+| SHR-05 | Task route → document route → back via client navigation adds only newly needed features and preserves correct per-instance configuration and teardown |
+| SHR-06 | The same journey through full navigation/reload in a controlled warm HTTP cache reuses asset bodies under declared cache policy while initializing each new realm; cold/cache-disabled results are separate |
+| SHR-07 | Conflicting asset URLs and incompatible builds reject or use explicitly isolated owners; version rollover cannot mix stale glue/new WASM, and deliberately duplicated bundles/asset URLs are detected |
+| SHR-08 | Concurrent optional rendering and teardown preserve shared styles/assets and isolate mutable renderer configuration, async results and private content/authority |
+
+SDK-1.9 implements same-page sharing and SDK-1.10 owns the consolidated fixture/receipt rather than creating parallel framework harnesses. Record exact artifact/module URLs and hashes, import/chunk graphs, server requests/status/body bytes, browser cache provenance and initialization counts separately from live engine handles. Include cold/warm transfer, per-instance retained resources and first-visible/first-edit timing; reuse the gzip inventory and counting rules in verification.md. Unit loader counts alone cannot prove packed site deduplication or cross-route HTTP reuse. Missing required cases remain unqualified; existing progress receipts are preserved rather than relabeled as passes.
+
 ## Baseline typing and rendering guarantees
 
 Baseline browser work owns authored whitespace and heading-end Enter. These

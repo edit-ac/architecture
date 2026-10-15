@@ -164,6 +164,8 @@ through fallback. Record actual JS/WASM/CSS/asset contributions and pinned build
 settings. Native/TUI manifests identify optional dependencies and renderer assets;
 do not equate a source feature flag with measured binary-size savings.
 
+For multiple editor configurations, apply the [shared-resource contract](web.md#shared-resources-across-editors-and-site-routes): share versioned parser/presenter code and static assets while keeping each instance's registration, keymaps, mutable renderer options, permissions and async lifecycle separate. Two enabled instances reuse one optional artifact load; a disabled instance gains no feature merely because another instance loaded its code. Disabled-only graphs prove absence, while mixed graphs equal the union of explicitly enabled requirements. Shared style installation observes owner Document and remaining users; destroying one presenter cannot break another. EXT-1.9/1.12 own extension graph/configuration checks, SDK-1.9/1.10 own the site consumer matrix, and FIT-1.6 reuses their exact receipts. Future rich assets remain gated by their owning feature implementations.
+
 Provide a third-party tutorial for one data-defined mark and one atom, using only
 public imports and the conformance harness. Its clean consumer fixture must work
 with unchanged engine artifacts, survive absent renderers, preserve data through

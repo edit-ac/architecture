@@ -4,7 +4,7 @@
 
 [Shared editor, GitHub and website styling](design/brand-guide.md)
 
-This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 42 roadmap files and 555 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
+This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 42 roadmap files and 558 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
 
 The user selected public repositories and Apache-2.0. [Decision 001](decisions/001-web-first.md) resolves scope, ownership, naming and release conflicts. [Decision003](decisions/003-extension-ecosystem.md) adds the requested extension, format, cloud and public-documentation delivery. The [original proposal](sources/initial-roadmap.md) is archived unchanged as reference material; current specs and task acceptance supersede it. [Decision 002](decisions/002-full-delivery.md) extends delivery beyond the initial browser release; the [requirement review](requirements.md) maps each requested capability to concrete tasks.
 
@@ -34,7 +34,7 @@ The user approved simulators, emulators and desktop OS VMs/test hosts for full p
 | [05 Markdown/content](roadmaps/05-markdown-content.md) | 15 | 02, 04 | Tested dialect, safe paste, round trips and source reconciliation |
 | [06 Synchronization](roadmaps/06-synchronization.md) | 7 | 02, 03 | Direct wire exchange, reconnect and explicit durable receipts |
 | [07 Modules](roadmaps/07-extension-modules.md) | 9 | 05, 06 | Portable extensions and optional browser interactions |
-| [08 SDK integration](roadmaps/08-sdk-integration.md) | 7 | 04–07 | Framework-independent SDK, first-party React/Astro integrations, packed consumers and integration/recovery examples |
+| [08 SDK integration](roadmaps/08-sdk-integration.md) | 9 | 04–07 | Framework-independent SDK, first-party React/Astro integrations, shared engine/assets across configurations and routes, packed consumers and integration/recovery examples |
 | [09 Native preparation](roadmaps/09-native-preparation.md) | 7 | 02 | Swift/Kotlin and native control probes; follow-up scope |
 | [10 Web qualification](roadmaps/10-web-qualification.md) | 9 | 08, 38, 40 | Default Task gzip caps, measured browser support, recovery and vetted prerelease |
 | [11 Editor CLI](roadmaps/11-offline-cli.md) | 12 | 02, 05; hosted tasks also 06 | Local Markdown/text editing, recovery and hosted sync |
@@ -172,6 +172,10 @@ Mobile baseline support does not load optional rich-content, converter, gesture 
 | [25 AI epic](roadmaps/25-rich-content-extensions.md#epic-rch-2--deliver-optional-ai-writing-through-existing-edit-contracts) | 14 of 36 | Existing 25 gates; AI-only 08, 38, 40 and per-task native/TUI/docs gates | Ask AI, fill/continue, selected-text actions and opt-in autocomplete; mock-backed consumers and independent platform evidence |
 
 Deliver explicit Ask AI/fill and selected-text actions first, then bounded autocomplete. AI uses optional host-owned transports, explicit context and request limits, transient previews and reviewed semantic edits. Vercel AI SDK Core is the default TypeScript host/backend adapter, qualified with pinned stable versions and prepared mocks through the same portable transport; editor consumers may provide another conforming host transport. It adds no baseline release gate or mandatory provider dependency. Prepared responses qualify integration only; no paid inference or live dogfood is authorized. Additional first-party candidates include glossary checks, notes-to-checklists, source-referenced explanations, reusable templates and anchored review comments; these remain suggestions, not committed tasks.
+
+## Shared resources across editors and site routes
+
+The [browser sharing contract](specs/web.md#shared-resources-across-editors-and-site-routes) covers task-description/comment editors on one page and task-description/document configurations across one site. Two bounded additions to existing roadmap 08, SDK-1.9/1.10, preserve instance state while sharing compatible runtime/static assets, then qualify packed common chunks and client/full-navigation cache behavior. Existing tracks 10/20/21/29/30 consume the same SHR-01–SHR-08 evidence for loading, configuration isolation, performance and guides. This adds no roadmap file or runtime service. Earlier module-local initialization/multiple-instance evidence remains useful but does not qualify the added site matrix; adopt at a safe controller source-refresh checkpoint without rewriting progress or restarting active workers.
 
 ## Clipboard format and device follow-ups
 

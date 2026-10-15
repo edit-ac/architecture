@@ -22,6 +22,8 @@ Controller direction (2026-10-13, optional Markdown): The user explicitly author
 
 ## Execution rules
 
+Shared-resource amendment (2026-10-15): SDK-1.9 and SDK-1.10 close the task-description/comment same-page and task-description/document same-site cases in [web.md](../specs/web.md#shared-resources-across-editors-and-site-routes). Preserve completed SDK-1.1–1.8 implementation/progress and historical measurements; their previous single-consumer evidence does not pass the added matrix. Adopt this source at a safe controller checkpoint. This planning change does not start/restart a runner, alter an active immutable task snapshot or authorize publication.
+
 Each iteration may implement at most one parent task, including all its implementation and validation substeps. Target 15–45 minutes plus validation; if a boundary is too large, stop with a precise proposed split for the controller. Pick a task only when every named dependency is implemented and validated. Other ready tasks are permitted independent work; a roadmap entry gate remains mandatory for its dependents. Do not launch this roadmap while its upstream gate is unavailable.
 
 Create named checks before invoking them. Record nonzero executed/passed/failed/skipped counts; missing tests and zero-match Rust filters fail acceptance. Run the narrow check, then relevant integration checks. Use prepared fixtures and transports only. No model API tests, live dogfood, background runner startup or publication outside an explicit release task.
@@ -184,3 +186,49 @@ Validation:
 Evidence: Progress entry `SDK-1.8` with changed paths, exact commands/results, source/build/profile revisions, before/after packed manifests and byte totals, preferred-size status, semantic/browser receipts and preserved failed experiments. Durable implementation evidence belongs in `../architecture/evidence/browser-size-optimization/`; use `../architecture/progress/08-sdk-integration.md` for worker state, not this source.
 Handoff: Record the last completed substep, current artifact hashes, both measured totals and remaining byte gaps, exact failing gate or missing fact, and the next bounded reduction for `SDK-1.8`.
 Blocked behavior: Leave `SDK-1.8` unchecked while either cap or required parity gate fails; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and retry trigger. Propose a controller split if the reduction cannot fit this boundary; do not lower feature parity, waive caps, start paid inference or publish artifacts.
+
+### Task SDK-1.9 — Share runtime and static resources across mounted configurations
+
+- [ ] SDK-1.9 Share runtime and static resources across mounted configurations.
+
+Purpose: Close same-page resource loading and lifetime behavior through the existing core/web and optional extension boundaries.
+Context: `packages/core/src/index.ts`; `packages/markdown/src/index.ts`; `packages/web/src/editor.ts`; `packages/web/src/modules/`; `tests/wasm-runtime-loader.test.mjs`; planned `tests/shared-editor-resources.test.mjs` and `tests/browser/shared-editor-resources.spec.ts`; `scripts/test-browser.mjs`; `../architecture/specs/web.md`; `../architecture/specs/packages-release.md`; `../architecture/specs/extension-library.md`.
+Dependencies: SDK-1.4, SDK-1.7, SDK-1.8.
+Session scope: One resource-ownership implementation boundary plus focused checks; reuse existing loaders and browser drivers. Split through the controller before implementation if a newly discovered loader change exceeds one bounded parent.
+Acceptance: SHR-01–SHR-03 and SHR-08 pass on current engine artifacts. Concurrent equal/mixed task-description/comment configurations share core and enabled optional artifact initialization while document handles, history, persistence, callbacks, permissions and mutable renderer configuration remain isolated. Disposal/failure/retry cannot poison another live editor or leak late resources. Default-only graphs omit optional assets; mixed graphs load the enabled union once. Existing explicit-URL/conflicting-URL and SSR contracts remain intact.
+
+Implementation:
+
+- [ ] SDK-1.9-I1 Inspect current core/Markdown single-flight loaders and presenter asset lifetimes; make only the missing sharing/teardown corrections under the authoritative web contract. Reuse module ownership, existing service cancellation and mount flush/report policies. Share static styles per owner Document when applicable; do not share writable document state, private content caches or add a global runtime/worker pool. Retain one explicit URL per generated module owner.
+- [ ] SDK-1.9-I2 Extend the existing browser/loader drivers with SHR-01–SHR-03 and SHR-08: both mount orders, equal and mixed configurations, two enabled optional consumers, delayed success, one disposed waiter, shared failure/retry, repeated remount and surviving edits/saves. Assert independent history, storage/identity, read-only/permission behavior and renderer options; create only missing fixture glue and a named `shared-resources` browser suite.
+
+Validation:
+
+- [ ] SDK-1.9-V1 Create then run `node --test tests/wasm-runtime-loader.test.mjs tests/shared-editor-resources.test.mjs` and `npm run test:browser -- shared-resources` across the pinned Chromium/Firefox/WebKit drivers. Record actual fetch/initialization versus engine-handle counts and independent document outcomes. Run affected default/optional Markdown and lifecycle regressions without reducing the baseline gate. Use local prepared assets/failures only; record exact commands/exits, nonzero executed/passed/failed/skipped counts, artifact/fixture hashes and browser/server teardown. Missing/failing/skipped required cases leave acceptance open.
+
+Evidence: Separate progress entry `SDK-1.9` links source changes and case-level receipts under `../architecture/evidence/shared-editor-resources/`; preserve failures and earlier SDK receipts. These are same-page results, not cross-route qualification.
+Handoff: Last completed case/substep, exact loader/resource owner, failure and next bounded action for `SDK-1.9`.
+Blocked behavior: Leave `SDK-1.9` unchecked with the exact missing primitive, owner, unblock condition and retry trigger; do not mask duplicate owners with a document singleton or skip isolation checks.
+
+### Task SDK-1.10 — Qualify shared artifacts across site builds and navigation
+
+- [ ] SDK-1.10 Qualify shared artifacts across site builds and navigation.
+
+Purpose: Prove that supported packed site consumers reuse engine/common assets across bindings, configurations and routes.
+Context: `tests/packed-consumers.test.mjs`; `tests/astro-build.test.mjs`; `tests/shared-editor-resources.test.mjs`; planned `tests/consumers/shared-resources/`; `tests/browser/shared-editor-resources.spec.ts`; `scripts/check-browser-size.mjs`; `packages/react/`; `packages/astro/`; `examples/task-editor/`; `../architecture/specs/web.md`; `../architecture/specs/packages-release.md`; `../architecture/specs/verification.md`.
+Dependencies: SDK-1.9.
+Session scope: One installed-tarball site-consumer qualification boundary; extend existing production builders and instrumentation rather than creating another framework harness. Separate unsupported future feature/platform combinations explicitly.
+Acceptance: SHR-04–SHR-07 pass and reuse SDK-1.9's matching same-page cases. Plain, React and Astro production consumers, including mixed bindings, resolve one compatible core/common artifact graph. Task-description → document-body → back works through both same-realm client navigation and full navigation with controlled HTTP caching. Only newly required optional resources add transfer. Separate realms initialize separately; incompatible builds never silently alias. Duplicate emitted engine/common resources and disabled-feature eager loading are detected even if HTTP cache masks their transfer.
+
+Implementation:
+
+- [ ] SDK-1.10-I1 Extend installed-tarball plain/React/Astro production fixtures with task/comment and task/document routes sharing one host asset manifest. Reuse existing dependency/export and bundler/import-map controls to correct duplicate core/chunks/assets where found, retaining explicit compatible URL ownership. Document stable versioned URLs, hosting/cache headers, MIME/CSP/CORS, deployment rollover and intentionally separate version/realm costs in executable integration guidance. No new preset binary, package, service worker or cache service is required.
+- [ ] SDK-1.10-I2 Add SHR-04–SHR-07 to the shared receipt: resolved module/dependency graph, emitted URL/hash/size inventory, server status/body-byte logs, browser cache provenance, evaluation/initialization and live/disposed-handle counts. Run cold/cache-disabled, concurrent mounts, client navigation/remount and controlled warm full-navigation journeys; retain first-visible/first-edit and per-instance resource observations using existing measurement methods. Inject a duplicate module/asset URL and eager optional import to prove detector sensitivity; exercise conflicting URL/build rejection and cache/version rollover. Keep per-profile budgets, page union and incremental transfers separate.
+
+Validation:
+
+- [ ] SDK-1.10-V1 Run `node --test tests/shared-editor-resources.test.mjs tests/packed-consumers.test.mjs tests/astro-build.test.mjs`, `npm run test:browser -- shared-resources` and `npm run check:browser-size` on fresh production packs. Require nonzero case coverage in each supported browser/binding/cache mode, exact package/build/module/asset hashes and successful negative controls; unknown/empty suites fail. Report actual executed/passed/failed/skipped counts, both unchanged default gzip caps and enabled/union/incremental costs. Verify SSR performs no initialization and surviving editor/save behavior after route teardown. Stop task-owned browsers/servers and preserve logs. Missing required runtime or transfer evidence leaves the corresponding claim unqualified.
+
+Evidence: Separate progress entry `SDK-1.10` links the consolidated SHR-01–SHR-08 receipt, supported build/settings and limitations under `../architecture/evidence/shared-editor-resources/`. FIT-1.6, REL-1.3, DEL-1.2 and DOC-1.37 consume exact matching receipts rather than duplicate harnesses. Existing SDK progress does not complete this parent.
+Handoff: Last completed consumer/cache mode, graph or transfer discrepancy, exact artifact revisions and next bounded action for `SDK-1.10`.
+Blocked behavior: Leave `SDK-1.10` unchecked with missing consumer/evidence, owner and retry trigger; never claim cross-realm runtime reuse or count a cache-hidden duplicate as shared delivery.

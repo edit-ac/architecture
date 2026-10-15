@@ -41,6 +41,12 @@ The user-approved 2026-10-13 profile change excludes Markdown parser/codec asset
 
 SDK-1.8 implements the default Task artifact reductions, reproducible inventory and executable cap assertions before REL-1.2 establishes feature-equivalent comparison baselines. REL-1.2/1.3, EXT-1.9 and FIT-1.6 consume the same budget contract and harness. Preferred-size misses remain visible optimization work even when both hard caps pass.
 
+## Multi-editor and cross-route resource accounting
+
+The [SHR-01–SHR-08 cases](web.md#required-shared-resource-cases) add resource-reuse evidence to the existing single-profile budgets. Keep the default Task caps above unchanged and independently enforced; a mixed page containing optional features is a separately reported union. Report each profile's standalone inventory, the page/site union of unique required resources, incremental resources for the second editor/route, and actual network body transfers. Count an artifact referenced through one shared URL once in that union; identical bytes emitted or delivered under different URLs are duplicate delivery candidates, not a deduplication win. Required lazy assets still count. Do not divide bytes by editor count to pass a cap or hide duplicates behind a warm cache.
+
+Use a pinned installed-tarball production site with recorded build graph/hashes and controlled local HTTP cache headers. Separate cold/cache-disabled, same-realm remount/client navigation and warm-cache full-navigation runs. Record server request/status/body-byte logs, browser cache provenance, JS evaluation/WASM initialization counters, live/disposed handles, first-visible/first-edit samples and per-instance retained resources; a 304/cache hit is not a fresh body download, and each new realm may compile/initialize again. Reuse existing timing methods without inventing a new numeric budget. SDK-1.9/1.10 create the receipt; FIT-1.6 checks graph/sensitivity, REL-1.3 measures browser-release profiles, DEL-1.2 qualifies product isolation and DOC-1.37 teaches only qualified behavior. Counts, failures/skips, exact revisions and teardown remain mandatory. This planning amendment executes none of these runtime cases.
+
 ## Provisional performance targets
 
 These are retained design targets from the proposal and have no measured result yet. Pin actual hardware, browser/OS versions, CPU/network profiles and capability parity before making comparisons.

@@ -35,6 +35,12 @@ Build ESM and declarations into real exported paths; the Astro package additiona
 
 Keep WASM code generation separate from hand-maintained package metadata. Pin wasm-bindgen crate/CLI together and verify wasm-pack output target; do not assume bundler and browser-native outputs are interchangeable. Wasm binary/API changes participate in package versioning and compatibility tests.
 
+### Site-wide artifact reuse
+
+Follow the [shared-resource contract and SHR cases](web.md#shared-resources-across-editors-and-site-routes). A supported host production build resolves one compatible core/web dependency graph across plain, React and Astro consumers. Emit common engine/glue/runtime assets once and reference the same versioned URLs from task-description, comment and document configurations/routes; optional features contribute separate shared chunks, not preset-specific copies of the engine. Inspect both resolved dependency topology and emitted artifacts: package-manager deduplication alone does not prove that multiple entry bundles share code. SDK-1.10 extends the existing installed-tarball consumers with concurrent mounts, mixed bindings and client/full-navigation fixtures. Use existing hosting/asset-URL controls, and document exact build settings, immutable cache policy, CSP/CORS/MIME requirements and version changes. Do not introduce another package or mandatory cache service for this boundary.
+
+Browser-realm runtime sharing and HTTP-cache reuse are separate evidence claims. Conflicting URLs retain the current loader rejection contract; incompatible releases or isolated realms have explicit separate runtime costs. Default-only pages still prove optional-asset absence; mixed pages report the union of enabled assets and each configuration's isolated behavior. Existing single-consumer size passes cannot qualify multi-entry or cross-route reuse.
+
 The private foundation probe is an explicit qualification entry: `@edit-ac/core/fixture`
 loads `@edit-ac/core/fixture/wasm` via `initFixture(assetUrl)` after
 `npm run build:wasm:fixture`. The production `init` returns `EngineRuntime`

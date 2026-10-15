@@ -24,6 +24,12 @@ TUI is a Markdown/literal-source client. Terminal glyphs, source syntax and atta
 
 Optional math typesetting, encryption and other extras have separate capability entries. Source preservation/editing is distinguished from typeset rendering. Optional absence never erases document data or silently changes the active security profile. A feature absent from one platform cannot be described as universal full parity.
 
+## Multiple web editors and configurations
+
+DEL-1.2 includes a task-description editor and comment-body editor mounted on the same page, plus task-description/document-body configurations on different site routes. Follow the [resource-sharing contract and SHR cases](web.md#shared-resources-across-editors-and-site-routes): reuse compatible engine/glue/common assets and the union of enabled optional code while preserving each document's identity, undo/redo, storage namespace, sync attachment, save/error callbacks, read-only state and host permissions. Exercise equal and mixed configurations, both mount orders, independent edits/saves, disposal during loading, one surviving editor and route-away/back. A feature loaded for the document configuration cannot silently enable it in a plain comment or grant resolver access.
+
+Reuse SDK-1.10's installed-tarball site and exact-artifact receipt for resource assertions; add real product embedding/permission outcomes through the existing ticket scenario. Separate client navigation's in-memory reuse from full navigation's controlled HTTP-cache reuse and fresh initialization. Report default, optional union and incremental costs under verification.md; historical single-editor or native-control receipts do not establish web site deduplication. Native instances retain their existing per-platform/session qualification without a new browser-runtime-sharing obligation.
+
 ## Test and release discipline
 
 Commit deterministic cross-client fixtures and a machine-readable product manifest tying capability, implementation/package revisions, platform/toolchain/device, command/case IDs and resulting evidence. Production account data, live model providers and paid inference are not test fixtures. A sample host's mock auth is explicitly test infrastructure, not a production security deployment.

@@ -53,10 +53,13 @@ Acceptance: Ticket text/marks/lists/table/image/reference edits, undo/redo and f
 Implementation:
 
 - [ ] DEL-1.2-I1 Embed the same schema/preset in web plus each native host with host-owned reference resolver and readonly/edit modes. Use actual native controls and prepared host auth.
+- [ ] DEL-1.2-I2 In the web ticket consumer, mount task-description and comment-body editors together with equal and mixed enabled capabilities, then visit a document-body configuration and return through client and full navigation. Reuse SDK-1.10's SHR fixture/receipt and the delivery-scenarios.md sharing contract; assert independent identities/history/storage/save/error/read-only/resolver authority and surviving edits after another editor's disposal. Verify common asset reuse and enabled optional union without enabling disabled instance features. This adds web embedding acceptance; native parity retains its existing owning-platform gates.
 
 Validation:
 
 - [ ] DEL-1.2-V1 node tests/scenarios/run.mjs ticket-editor. Assert all acceptance cases; record exact command/exit, nonzero executed/passed/failed/skipped counts, fixture/revision hashes and unavailable-platform evidence.
+
+Shared-resource acceptance: Require the matching SHR-01–SHR-08 web receipt plus actual product-level state/permission isolation. Preserve old single-editor evidence; absent mixed-configuration or route results remain unqualified rather than inferred from shared asset hashes.
 
 Evidence: Separate progress entry `DEL-1.2` with changed files, source/implementation revisions, commands, fixture IDs and durable artifact links; preserve failed evidence.
 Handoff: Last completed substep, current symbol/file, exact failing case or missing decision, and next bounded action for `DEL-1.2`.

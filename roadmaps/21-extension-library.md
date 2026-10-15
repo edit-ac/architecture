@@ -220,6 +220,7 @@ Acceptance: Packed minimal and enabled browser consumers have recorded JS/WASM/C
 Implementation:
 
 - [ ] EXT-1.9-I1 Extend existing module bundle checks to public imports and lazy presenter entry points. Apply the user-approved gzip hard caps and preferred sizes from verification.md; record measured baseline deltas and fail either default-profile hard-cap overrun or missing required artifact. Confirm enabled/disabled fallback behavior from the same descriptor fixtures.
+- [ ] EXT-1.9-I2 Check the shared-resource rules in web.md for two enabled consumers of an optional parser/presenter and mixed enabled/disabled configurations: one static artifact graph/URL, isolated registration/mutable renderer state, owner-Document style lifetime and no requests on disabled-only pages. Mixed-page manifests report the enabled union and incremental costs. Reuse SDK-1.9/1.10's site harness when available; do not gate portable extension work on a downstream SDK task or add another runtime registry. FIT-1.6 requires the integrated exact-artifact receipt before making site-wide claims. Earlier EXT receipts remain historical until these additional cases are executed.
 
 Validation:
 
@@ -266,6 +267,8 @@ Acceptance: FPX-01–FPX-03 and FPX-05–FPX-08 qualify baseline/preset configur
 Implementation:
 
 - [ ] EXT-1.12-I1 Publish versioned core/document-tools/code-tools profile contracts and validate dependency/capability/precedence before activation. Reuse registry/conformance/lifecycle interfaces; wire downstream profiles when their features qualify, without claiming their current availability.
+
+Mixed-configuration acceptance (2026-10-15): Loading common code for one profile does not register it in a sibling profile. Add simultaneous equal/mixed-profile fixtures with independent keymaps, permissions, history and teardown; configurations reuse common artifacts rather than generating profile-specific engine builds. Future profile features remain gated by their owning tasks. SDK-1.9/1.10 and FIT-1.6 qualify integration across frameworks/routes without treating prior profile-contract fixtures as shipped feature combinations.
 
 Validation:
 

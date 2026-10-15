@@ -120,6 +120,8 @@ Implementation:
 
 - [ ] DOC-1.5-I1 Require08 and10 release-consumer evidence, including SDK-1.7/1.4 Astro qualification, and the qualified package versions; create complete plain browser, React/SSR and Astro static/SSR consumers and derive snippets from tested files. Name required JS/WASM/CSS assets, loading failure handling, independently expected edit/readback/save states and lifecycle cleanup. Register sources, snippet ranges, exact versions, fixtures and capability status in examples/manifest.json; additional framework/native bindings remain clearly planned.
 
+Shared-resource guidance: Consume SDK-1.9/1.10's qualified asset manifest and common dependency/chunk settings. Explain one runtime initialization per compatible module owner with independent document handles, optional-feature union versus instance enablement, stable URLs/cache headers across routes and fresh initialization after full navigation. SSR remains side-effect free. Do not promise unconditional cross-page cache hits; guides use exact supported host build settings.
+
 Validation:
 
 - [ ] DOC-1.5-V1 `npm run check:examples -- --suite web-react`; `npm run check:examples -- --suite astro`; create the dispatcher and reject unknown/empty suites. Validate all three consumers, including Astro static/SSR and navigation lifecycle, using deterministic content and prepared transports. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
@@ -537,6 +539,7 @@ Acceptance: Recipes explain a reader task through concrete input/action/output, 
 Implementation:
 
 - [ ] DOC-1.37-I1 Build the recipe index and checked walkthroughs from existing consumer sources: an accessible bold/heading/undo toolbar, Markdown paste with expected semantic output, a quota/save-failure recovery path and a prepared two-view reconnect scenario. Link DOC-1.6/1.7/1.8 sources for import preview/cancel, cancelled upload, internal-link denial and host operations when qualified; pending recipes remain labeled. Do not reimplement those features or conceal missing profile evidence.
+- [ ] DOC-1.37-I2 Derive two recipes from SDK-1.10's SHR-01–SHR-08 consumers: task-description plus comment-body editors on one page, and task-description/document-body configurations across site routes. Show shared immutable engine/optional assets with isolated handles/history/storage/permissions, first versus incremental loading, loading failure/retry, disposal and client/full-navigation differences. Verify example asset URLs/chunk manifests and independent edit/save outcomes in DOC-1.37-V1; link exact profile/receipt revisions and disclose cache limits. Reuse the owning SDK examples; unqualified future document/code features remain planned.
 
 Validation:
 

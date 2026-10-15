@@ -139,10 +139,13 @@ Acceptance: Packed consumers work without workspace aliases; disabled heavy form
 Implementation:
 
 - [ ] FIT-1.6-I1 Extend existing package/FFI consumer harnesses with import graph and artifact-byte checks; consume the shared gzip counting/cap assertions from verification.md/SDK-1.8 and report preferred-size status without duplicating the measurement harness. Scope semver checks to exported public contracts and actual supported consumer versions.
+- [ ] FIT-1.6-I2 Consume SDK-1.10's exact-artifact SHR-01–SHR-08 receipt for task-description/comment mounts and task-description/document routes. Check one compatible resolved runtime/common chunk graph, single-flight initialization, instance/preset/permission isolation, shared asset teardown and separate same-realm versus HTTP-cache behavior. Reuse SDK-1.9/1.10's fixtures and duplicate-asset/eager-import negative controls; missing cases or stale build identities fail this added gate. Preserve earlier FIT receipts and adopt amended source only at a safe controller checkpoint; old single-consumer passes cannot qualify the new matrix.
 
 Validation:
 
 - [ ] FIT-1.6-V1 `node scripts/check-architecture.mjs --suite consumers-loading`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
+
+Shared-resource acceptance (2026-10-15): The same command verifies the added receipt and detector sensitivity, standalone default caps, mixed-page union/incremental costs and cold/warm route results under [web.md](../specs/web.md#shared-resources-across-editors-and-site-routes). A passing unit loader or cache-hidden duplicate is insufficient. Create/extend the receipt checks before invocation; no new harness or numeric budget is implied.
 
 Evidence: Separate progress entry `FIT-1.6` links changed paths, immutable inputs and focused check artifacts; retain failed evidence.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
