@@ -173,3 +173,11 @@ SQLite Sessions. It preserves the host authentication/admission prerequisite;
 writer reservation and digest verification are not authentication. This shared
 baseline port alone does not qualify native collaboration transport, encrypted
 profiles, presence, reconnect or AppKit table input/selection behavior.
+
+STB-1.4-b adds scoped host-driven awareness methods on the existing NativeSession,
+using the owning Yrs awareness implementation and the existing portable anchors.
+Remote selection records are additive; existing NativeSession records, error tags
+and entry checksums remain unchanged. The connection lease and recovery guards
+are mandatory. See the native scoped awareness prerequisite in client-contracts.
+This is ephemeral selection/lease proof, not native composition, encrypted
+collaboration or full DSK-1.15 qualification.

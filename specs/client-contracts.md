@@ -244,3 +244,37 @@ Cursors never prune entries or manufacture remote durability. An unknown or
 already acknowledged cursor rejects before sending; refresh pending and restart.
 The original whole-outbox flush keeps its behavior through the same Session
 implementation, with no second cursor/transport state machine.
+
+### Native scoped awareness prerequisite (STB-1.4-b)
+
+The additive `setHostPresence`, `flushHostPresence`, `takeHostPresenceFrames`,
+`receiveHostPresence` and `hostPresence` methods use the exact active host
+connection token and unexpired lease. The host authenticates participant routing
+before providing awareness; client IDs are not authentication. Frames retain the
+existing pinned y-protocols awareness encoding and portable anchor envelope.
+Yrs Awareness runs on a clone of the existing document handle (the same store),
+with a host-driven monotonic millisecond clock. No replica, timer, callback,
+network service or document mutation is created. Presence is optional and never
+changes history, revision, pending journal work or durable receipts.
+
+Native presence uses the existing defaults: 64 peers including tombstones,
+64 KiB awareness frames, 50 ms coalesced sends and 30 second expiry with renewal
+at half expiry. Its separate bounded Transport queue inherits the connection
+frame/count/aggregate limits; it cannot consume sync frames. Backpressure retains
+local state for a later flush. An absent range means online without a selection;
+`present=false` emits a leave. Partial, foreign, released, deleted or unresolved
+local anchor pairs reject. Read-only local permission does not deny separately
+authorized ephemeral presence. Receiving validates the entire bounded canonical
+payload and all portable cursors before applying awareness. Leave/expiry retain
+clock tombstones to prevent stale resurrection. Remote selections resolve against
+the current committed model; deleted/unresolved targets render no selection.
+
+Detach, reattach and disposal drop all presence and transient frames with the
+connection. Reattach creates a new host-authorized presence session; the host must
+route only frames from that session. A stale connection token cannot affect the
+replacement or another document's worker. Authorization and recovery guards
+apply to every presence port. Hosts cancel/detach before switching documents and
+must not publish temporary IME composition as committed selection. Native UI,
+composition overlap, encrypted authority/key admission and full collaboration
+qualification remain separate open acceptance; this prerequisite does not
+advertise a full collaboration capability.
