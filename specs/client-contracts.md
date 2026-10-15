@@ -274,7 +274,32 @@ connection. Reattach creates a new host-authorized presence session; the host mu
 route only frames from that session. A stale connection token cannot affect the
 replacement or another document's worker. Authorization and recovery guards
 apply to every presence port. Hosts cancel/detach before switching documents and
-must not publish temporary IME composition as committed selection. Native UI,
-composition overlap, encrypted authority/key admission and full collaboration
-qualification remain separate open acceptance; this prerequisite does not
-advertise a full collaboration capability.
+must not publish temporary IME composition as committed selection. The b2
+qualification below covers prepared host/key admission and shared staged-input
+overlap; native UI/IME, production encrypted authority and original full native
+collaboration acceptance remain separate. Awareness alone does not advertise a
+full collaboration capability.
+
+
+### Prepared native host admission and lifecycle qualification (STB-1.4-b2)
+
+The local-only `editac-security` example `native-host-admission` composes the
+existing prepared KeySession, exact key context, fresh prepared MLS admission,
+EncryptedClient and ciphertext-only SQLite relay with the generated Swift host.
+Each host acquisition rechecks current key access; authority approval supplies no
+key. Only an admitted exact journal entry reaches `receiveHostPeer`, which still
+checks its own current connection generation, exclusive lease, writer reservation,
+semantic admission, durable append and recovery state. Ciphertext receipts never
+become application durable receipts. Disposable fixture keys and JSON-line harness
+control are not a public API, transport protocol, production identity verifier or
+qualified encrypted profile. Production encryption remains unavailable.
+
+At the shared boundary, a remote commit overlapping staged local input invalidates
+the captured revision. The host cancels the obsolete plan and explicitly prepares
+against the new committed revision; local undo/redo preserves the remote update.
+Temporary composition is not transmitted. Hosts cancel plans, detach and dispose
+the old document before switching; old tokens/handles cannot act on the replacement.
+Native methods install no foreign callbacks. A host completion may synchronously
+read, detach and reattach after a method returns; later events must recheck the
+current token. This qualifies shared staged-input overlap and lifecycle ownership,
+not native UI/IME execution or the original DSK-1.15 presenter acceptance.

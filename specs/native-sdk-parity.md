@@ -181,3 +181,11 @@ and entry checksums remain unchanged. The connection lease and recovery guards
 are mandatory. See the native scoped awareness prerequisite in client-contracts.
 This is ephemeral selection/lease proof, not native composition, encrypted
 collaboration or full DSK-1.15 qualification.
+
+
+STB-1.4-b2 additionally composes prepared owning key/MLS admission with actual
+independent-store NativeSession ingress in generated Swift, and qualifies shared
+staged-input overlap, explicit cancellation/rebase, document replacement and host
+completion reentry. The fixture remains outside the production library. Native
+presenters must still consume qualified main-integrated ports and prove their
+own UI/input/selection lifecycle before original DSK-1.15 can close.
