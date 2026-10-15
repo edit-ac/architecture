@@ -194,3 +194,53 @@ and anchors are the same live Session's existing notification/resolution surface
 Disposal serializes with ingress and rejects subsequent calls. There is no retained
 incoming queue or callback to cancel; hosts cancel detached transport work before
 calling this synchronous boundary.
+
+### Native host transport and receipt prerequisite (STB-1.4-a)
+
+`NativeSession.attachHostTransport(options, now)` explicitly grants a host-owned
+connection on the existing Session. Options bind the complete document identity,
+an exclusive host-clock authorization expiry, bounded frame/queue sizes and the
+negotiated durable-receipt capability. This trusted-host grant is not peer
+identity authentication, key discovery or encryption. The host authenticates and
+admits its existing envelope before `receiveHostPeer`; raw network bytes are not
+accepted. Existing `receivePeer` retains its separate trusted-host baseline.
+
+The returned worker-scoped connection token changes on every successful attach.
+`flushHostTransport`, `takeHostFrames`, `receiveHostPeer` and
+`acceptHostReceipt` require that exact token and a current unexpired lease.
+Invalid attachments preserve the existing connection. `detachHostTransport`
+revokes it and drops only transient frames; reconnect starts with a fresh token
+and replays the actual persistent outbox. Late calls from previous connections
+cannot drain, mutate or detach a replacement. Disposal releases the queue and
+transport with the owning worker. No foreign callbacks, timers or network IO are
+installed; hosts can safely invoke these synchronous methods from their own
+transport event loop without a callback reentrancy path.
+
+The adapter reuses the existing bounded `Transport` queue and actual
+Session/EditService attach/detach/flush/receipt/admission paths. Outbound bytes
+remain the existing y-protocols update frame. Hosts obtain exact journal identity
+from `pendingUpdates`; the native adapter introduces no wire format. Send or
+drain success never means remote durability. Backpressure preserves durable
+pending work, even when a flush queued an earlier prefix. Recovery freezes frame
+drain, ingress, publication and receipt admission until existing recovery passes.
+
+`acceptHostReceipt` consumes only an identity/writer/sequence/checksum record
+from the host's authenticated negotiated application transport, never a frame or
+awareness message. Exact `DurableV1` receipts use the existing atomic SQLite
+receipt path; unknown/capability-absent receipts cannot prune pending entries.
+`receiveHostPeer` returns the actual local durable commit that the trusted host
+may acknowledge after completion, using the existing writer reservation and
+Session remote-admission boundary. Read-only local permission does not grant or
+revoke host-authorized remote ingest, and a transport lease never grants local
+write permission. This prerequisite does not advertise presence, encrypted
+transport or full native collaboration qualification.
+
+`flushHostTransportPage(token, after, maxFrames, now)` forwards to additive
+`Session.flush_pending_page`. Its optional cursor is an exact retained pending
+identity; the page limit is 1–32. The host reads pending identities, drains each
+bounded page, then advances after its last sent entry. This allows a backlog
+larger than the transport queue to progress even without receipt capability.
+Cursors never prune entries or manufacture remote durability. An unknown or
+already acknowledged cursor rejects before sending; refresh pending and restart.
+The original whole-outbox flush keeps its behavior through the same Session
+implementation, with no second cursor/transport state machine.
