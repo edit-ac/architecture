@@ -30,6 +30,12 @@ Offline revocation cannot erase keys/plaintext already acquired by a former read
 
 ## Host and agent boundaries
 
+The [SEC-1.4 lifecycle evidence](../evidence/key-lifecycle.md) defines prepared
+host acquisition/wrapping/unlock/recovery ports, scoped zeroizing ownership and
+fixed safe status codes. Its opaque prepared wrapping provider is not a cipher
+or an OS/browser keystore qualification; concrete platform cleanup/recovery and
+all downstream protection/review gates remain required.
+
 A ciphertext-only server can enforce envelope size/rate/auth metadata and durably acknowledge stored ciphertext; it cannot validate plaintext schema, search it or generate plaintext previews/diffs. Authorized clients validate decrypted semantics. Hosted search, plaintext export and agent editing require an explicitly trusted decrypting endpoint or remain unavailable.
 
 The application's existing MCP may expose Markdown tools only within that authorized plaintext boundary. Credentials and keys are not delegated merely because an agent can edit. Different encryption profiles cannot join the same session by silently downgrading; capability negotiation fails visibly.
