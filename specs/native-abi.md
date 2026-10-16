@@ -22,6 +22,14 @@ Every `NativeEngine` is opaque and reference-counted. Creation/restoration const
 
 Detached patch batches are returned with commits/updates/history; `takePatch` drains the latest unread patch once (`null` when empty). Hosts must consume every synchronous result; this ABI is not an unbounded patch event queue. The bridge's snapshots/projection deltas remain observational read data, not a second writable model. Remote update bytes and checkpoint metadata are admitted by the real engine, not a prepared replacement engine.
 
+## Shared Session immutable review
+
+`NativeSession` exposes the existing `editac-change-model-v1` bounded decode/validation and canonical re-encoding, including exact-source/projected wire and complete semantic payloads. Output attribution is unknown; user labels and key-profile names establish no authorship or authorization. Native presenters consume this model without a second parser or diff implementation.
+
+Explicit `captureReviewRevision` binds the current acknowledged Session revision and copies the real engine semantic projection into the existing bounded `HistoryStore`. Receipts bind an opaque process-local store key, document, epoch, schema, module profile, observed token, representation and SHA-256 hash. `readReviewRevision` and `compareReviewRevisions` require the full receipt; missing, pruned, incompatible-schema and key-unavailable are explicit outcomes, with the unavailable comparison side identified. Other binding mismatches reject. There is no current-document fallback. Reads/comparison never apply edits or change journal receipts, history, live projection queues or observed state.
+
+Each native worker owns one FIFO history companion (default 16 captures/32 MiB; host retention may be tightened up to 128 captures/32 MiB). Semantic capture is bounded to 2 MiB/10,000 nodes/depth 64; portable input/output is capped at 16 MiB and may be bounded further per call. Oversized/rejected captures do not evict valid entries. Disposal/reopen releases this process-local history, while detached owned results survive. SQLite remains the actual Session journal/checkpoint store; this API adds no durable archival history or encryption boundary. Hosts enforce access before supplying optional key-profile availability. No automatic per-edit capture, source reconstruction, rewind, restoration or trusted-host attribution is added.
+
 ## Errors, copies and checks
 
 UniFFI errors distinguish `InvalidInput`, `EngineRejected`, `InvalidHandle`, `ResourceLimit`, `Disposed` and `ExecutorUnavailable`. Underlying engine rejection preserves operation/reason in an owned message; unsupported identity/profile is rejected, never silently converted. Worker failures return `ExecutorUnavailable`; there are no success fallbacks.
