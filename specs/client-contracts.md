@@ -363,3 +363,28 @@ Stale descriptors, foreign anchors, invalid UTF-16 cuts or a rejected later batc
 operation produce no live update, history entry or durable receipt. Native renderer
 consumption/qualification remains with DSK-1.12-P3 and does not follow from this
 shared API qualification alone.
+
+### Shared prepared fragment transfer (SFA-1.2)
+
+The generated NativeSession transfer methods consume owned `NativeTransferRange`
+anchor tokens and the current observed revision. `exportTransfer` returns bounded
+internal v1 JSON, Markdown, plain text, diagnostics and process-local opaque source
+provenance. `preparePaste`, `prepareCut` and `prepareTransferMove` retain an
+EditService plan; `commitTransfer` alone consumes it. `cancelTransfer` is idempotent.
+All parser/fragment/anchor/history/persistence semantics remain in the existing
+Rust owners. No Swift semantic parser, native replica, OS clipboard write, asset
+fetch or foreign callback is introduced.
+
+`NativeTransferSource` and `NativeTransferReceipt` have no consumer constructors
+or writable fields. An exact canonical internal-fragment paste can return the
+latter only alongside a nonempty process-crash-durable Session commit. It binds
+that captured source intent and destination document identity. Explicit qualified
+source deletion additionally requires the original unconsumed cut plan, a distinct
+document identity and unchanged source revision/current permission. Plain,
+Markdown, literal or transformed imports never qualify source deletion. A normal
+paste performs copy only. A normal cut needs trusted clipboard acknowledgement.
+
+The existing content policy switches cover tables and image/reference atoms;
+`setCalloutPolicy` registers the existing callout codec separately. These switches
+grant no write, resolver or network authority and are rechecked at commit. See
+[format policy and the remaining native HTML gap](formats.md#shared-native-prepared-transfer-boundary-sfa-12).

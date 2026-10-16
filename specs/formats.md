@@ -165,7 +165,7 @@ Bound bytes, nesting, attribute lengths, table dimensions and prepared node coun
 Test malformed encodings, nested tags, misleading MIME flavors and adversarial link/image values.
 Untrusted internal fragments follow the same safety/resource checks as external formats.
 
-The baseline HTML adapter admits absolute HTTP(S)/mailto destinations only; relative URLs, credentials and encoded controls become inert text with diagnostics. Styles are reduced to the named text marks; no CSS enters the live tree. Inert template parsing is capped at 1 MiB, 4,096 visits, depth 32, 128 blocks, 1,024 text runs and 4,096 characters per attribute. Dropped content retains exact source in bounded clipboard recovery. Optional resource elements require explicit codecs.
+The baseline HTML adapter admits absolute HTTP(S)/mailto destinations only; relative URLs, credentials and encoded controls become inert text with diagnostics. Styles are reduced to the named text marks; no CSS enters the live tree. The common Rust `editac-html` codec owns the whitelist and semantic mapping for NativeSession and browser WASM. Native uses an inert HTML5 tokenizer; browsers serialize their inert template tokens to the same codec, without host semantic mapping or a second bundled tokenizer. Inert HTML5 fragment parsing is capped at 1 MiB, 4,096 visits, depth 32, 128 blocks, 1,024 text runs and 4,096 characters per attribute. Inert token transport is capped at 8 MiB to allow JSON escaping of the 1 MiB source; common node, depth, text-run and decoded-text limits still apply. Dropped content retains exact source in bounded clipboard recovery. Optional resource elements require explicit codecs.
 
 ## Export and representability
 
@@ -284,3 +284,38 @@ prepared staging updates fallback text and descriptor together; history restores
 both. Unknown/future versions, unsafe image URLs and out-of-bounds descriptors
 reject. Source stays inert and no asset or reference fetch occurs. See the
 [atomic-content boundary](client-contracts.md#shared-atomic-content-edit-boundary-stb-15).
+
+### Shared native prepared transfer boundary (SFA-1.2)
+
+`NativeSession` exports an owned bounded anchor range using the canonical engine
+fragment projection and v1 interchange codec. Whole typed atoms are indivisible;
+partial atomic fallback selections reject. Internal JSON is the lossless recovery
+flavor; Markdown export diagnostics describe representability, and plain text is
+an explicit fallback. No asset is fetched. Enabled table/image/callout/reference
+policy is checked by EditService during preparation and again during admission.
+
+Prepared paste, acknowledged cut and disjoint same-session range move use the
+existing fragment planner and one Session commit, journal receipt and history
+unit. Retained plans own anchors and exact observed revision; every commit attempt
+consumes the token, including permission/stale/acknowledgement rejection.
+Cancellation drops retained preparation; disposal drops all session-owned plans.
+Clipboard acknowledgement is a trusted host transport observation, not document
+content. Generic command commit cannot admit a transfer token.
+
+Cross-document paste defaults to copy. Explicit source deletion may instead use
+an opaque destination receipt issued only after exact internal-fragment admission
+and a nonempty process-crash-durable destination commit. Receipt provenance binds
+the captured source operation and canonical fragment hash; document identity must
+differ and source admission rechecks its retained revision and current permission.
+Receipts do not qualify arbitrary caller-provided JSON or transformed imports.
+
+Rich import prefers validated internal fragments, then explicitly provided
+registered Markdown, then shared sanitized HTML, then literal plain text. Explicit
+literal paste and code-context paste bypass rich parsing. All original flavors
+remain owned recovery source. The common HTML whitelist admits bounded text,
+marks, headings, lists, quotes and code with source-preserving diagnostics. Optional
+resource elements require explicit codecs; unsupported HTML falls back only to
+supplied plain text, or rejects without mutation and reports its rejection reason.
+Session/SQLite and generated Swift qualify this shared feature boundary. Native
+clipboard/provider lifetime, UI/drag integration and platform/performance/release
+qualification remain separate; the default packed size cap is still unmet.
