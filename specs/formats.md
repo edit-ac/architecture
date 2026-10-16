@@ -284,3 +284,34 @@ prepared staging updates fallback text and descriptor together; history restores
 both. Unknown/future versions, unsafe image URLs and out-of-bounds descriptors
 reject. Source stays inert and no asset or reference fetch occurs. See the
 [atomic-content boundary](client-contracts.md#shared-atomic-content-edit-boundary-stb-15).
+
+### Shared native prepared transfer boundary (SFA-1.2)
+
+`NativeSession` exports an owned bounded anchor range using the canonical engine
+fragment projection and v1 interchange codec. Whole typed atoms are indivisible;
+partial atomic fallback selections reject. Internal JSON is the lossless recovery
+flavor; Markdown export diagnostics describe representability, and plain text is
+an explicit fallback. No asset is fetched. Enabled table/image/callout/reference
+policy is checked by EditService during preparation and again during admission.
+
+Prepared paste, acknowledged cut and disjoint same-session range move use the
+existing fragment planner and one Session commit, journal receipt and history
+unit. Retained plans own anchors and exact observed revision; every commit attempt
+consumes the token, including permission/stale/acknowledgement rejection.
+Cancellation drops retained preparation; disposal drops all session-owned plans.
+Clipboard acknowledgement is a trusted host transport observation, not document
+content. Generic command commit cannot admit a transfer token.
+
+Cross-document paste defaults to copy. Explicit source deletion may instead use
+an opaque destination receipt issued only after exact internal-fragment admission
+and a nonempty process-crash-durable destination commit. Receipt provenance binds
+the captured source operation and canonical fragment hash; document identity must
+differ and source admission rechecks its retained revision and current permission.
+Receipts do not qualify arbitrary caller-provided JSON or transformed imports.
+
+Rich import currently prefers validated internal fragments, then explicitly
+provided registered Markdown, then literal plain text. Explicit literal paste and
+code-context paste bypass rich parsing. All original flavors remain owned recovery
+source. HTML has no shared native sanitizer yet: it returns an unavailable-codec
+diagnostic and falls back to supplied plain text, or rejects without mutation.
+This is an unfinished SFA-1.2 criterion, not full multi-format/native qualification.
