@@ -57,3 +57,13 @@ Process validated unmerged deliveries on hourly checks, after two completed pare
 The controller can commit explicitly user-authorized, reviewed planning/rule amendments after planning validation so they no longer prevent integration. Leave unrelated benchmark work and historical/generated qualification changes untouched. Record actual merged revisions, checks, preserved dirty-path hashes and resumed IDs in the ledger and acknowledgment. If overlap cannot be resolved safely, identify exact paths and an actionable next step instead of repeatedly polling the same blocker.
 
 For each blocked parent, record a fingerprint of task, consumed source revision, error and missing prerequisite, plus owner, evidence, attempted repair and exact resume condition. After an unchanged failed repair, do not restart a worker or rerun validation without changed input or a concrete new repair hypothesis. Continue independent authorized work when dependencies permit; otherwise stop the affected controller and notify once. Hourly checks inspect pending validated deliveries as well as runner liveness; unchanged state must not create repeated notifications or model-driven retry loops.
+
+The current roadmap runner automatically continues after a BLOCKED worker even
+when dependencies are unchanged. Arm `scripts/guard-roadmap-recovery.py` for each
+resumed lane with its exact managed run ID, workspace, event log, CLI path and
+receipt path. This deterministic guard stops that controller after a completed
+BLOCKED worker and preserves progress/FIFO; it never restarts a run. It ignores
+active work, supervisor turns, foreign run IDs and foreign progress paths. The
+hourly monitor may resume only after a qualified dependency return or a concrete
+changed repair input, and must re-arm the guard for the new ID. Record guard PID,
+log and receipt in queue.json; the guard exits with its runner or after seven days.

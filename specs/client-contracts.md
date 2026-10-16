@@ -329,3 +329,37 @@ with target checks required, and does not qualify native presentation or service
 Policy changes after prepare recheck both the old family and replacement family;
 removal and undo cannot bypass a disabled codec. Existing retained-update append
 failure, freeze, exact idempotent recovery and publication semantics apply.
+
+### Shared registered extension edits (DSK-1.12-P2)
+
+`NativeSession.createLocalWithRegistry` and `openWithRegistry` accept a bounded
+JSON array of existing portable data-defined mark/inline-atom descriptors.
+All definitions validate atomically before store creation/open, and the registry
+is frozen for that Session. Existing constructors use an empty registry. This
+changes no persisted schema and creates no additional document replica. Unknown
+stored envelopes remain inert data; opening never migrates them or executes code.
+
+The default-disabled `setExtensionPolicy` admits `customMarkAt` with a registered
+`module:namespace.type` key, virtual UTF-16 owner/from/to range, and a complete
+`[version, attributes]` value (null removes the known value). Descriptor limits,
+existing formatting/code rules and source routing apply. A different or unknown
+stored version under that same key cannot be overwritten or removed by this port.
+Known mark/inline-atom edits use the existing prepared planner, one atomic durable
+commit, projection publication and undo/redo history; no foreign mutable handle
+or document callback is exposed.
+
+`extensionSource` carries owner, complete expected inert tuple, captured
+source-owned zero-offset anchor and at most 8192 UTF-16 units of source. It changes
+only the source and corresponding fallback text, retaining type, dataVersion,
+payload and unknown data exactly. Math syntax is never parsed or repaired, and
+source editing grants no typesetting capability. `atomicContent` additionally
+admits same-envelope inert source replacement or whole-atom removal under the
+extension policy; payload/type/version changes reject before mutation.
+
+Both ports use ordinary observed revisions and single-use Session plans. Current
+permission/expiry, extension policy, cancellation and disposal are checked through
+existing admission; policy revocation also blocks retained plans and history.
+Stale descriptors, foreign anchors, invalid UTF-16 cuts or a rejected later batch
+operation produce no live update, history entry or durable receipt. Native renderer
+consumption/qualification remains with DSK-1.12-P3 and does not follow from this
+shared API qualification alone.
