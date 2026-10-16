@@ -113,6 +113,10 @@ Route keyboard shortcuts, platform Edit menus, context menus, accessibility acti
 
 The optional first-party search and code-command contracts live in [rich content](rich-content-extensions.md). They reuse engine preparation/history and public selection APIs. Multi-cursor/discontiguous editing, rectangular text selection, overwrite mode, application-wide search, macros, track changes and paginated page/section layout are capability decisions, not implied support from an IDE/Word comparison. Their controls/shortcuts remain absent or explicitly unsupported until their own semantics, serialization and platform evidence are qualified. No extra semantic model or general plugin event framework is needed for the scoped additions.
 
+## Changed-field formatting surfaces
+
+[WCF-19](../tests/wordcraft-regression-cases.md) refines INT-1.3 for existing/claimed formatting surfaces; it does not require a new Word-style property dialog. Capture mixed and unrepresented values without normalizing them to the caret's values. Accept only intentional changed fields through one prepared semantic batch. Unchanged acceptance/cancellation makes no edit/history, and undo restores original supported properties. Revalidate captured target/revision/permission before commit and assert pending marks with a next typed sentinel. Existing REG-01/REG-02/REG-05 variants cover alias grouping, selection replacement after typing and pending Bold across successful history navigation versus empty-history Undo.
+
 ## Regression prevention and shared suite
 
 [The editing suite](editing-regression-suite.md) defines guards for atomic compound edits, intent correlation, semantic selection results, history origins and post-transaction callbacks. Pending marks distinguish context-derived state (null) from explicit no marks (empty set); selected formatting is not a persisted default for an empty block. Use the shared real-engine driver and independently authored snapshots from track 42. Catalog references and valid fixture files are planned coverage, not runtime passes.

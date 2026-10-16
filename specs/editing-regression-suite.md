@@ -93,6 +93,12 @@ CI separates quick pure/command fixtures, browser mechanics, seeded bounded inte
 
 REG-07 selected code/text cross-owner separated-pre qualification requires original forward and backward variants through native prepared fragments and packed production WASM: prefix, intermediate whitespace, retained suffix, owner/source identities, result caret, one update/history action, content/source undo and redo, and zero-effect rejection. Internal staging presentation alignment cannot waive any assertion or qualify the separately missing history-selection bookmark port.
 
+## Wordcraft-derived case refinement
+
+The [Wordcraft catalog](../tests/wordcraft-regression-cases.md) adds 19 planned cases owned by existing storage, client, agent, converter, rich-content, fitness and interaction tasks. [Provenance/overlap](../evidence/wordcraft-research.md) records which existing IDs are refined instead of duplicated. Track 42 indexes and reports these cases; it does not implement every owner or treat registration as execution. No new common-driver recipe/guard count or runtime dependency is implied.
+
+Record source/case revisions, applicable profiles and actual work/effect counts. Changed variants invalidate only evidence that no longer covers their assertions; preserve prior receipts and completed work without relabeling added cases as passed. Controllers adopt the amendment at a safe source-refresh checkpoint, retaining active immutable sources/progress and scheduling required deltas under existing owners. No worker restart, queue expansion or waived prerequisite is authorized by the amendment.
+
 ## Desktop and native coverage extension
 
 The [additional catalog](../tests/desktop-editing-cases.md) is indexed by the existing manifest and reporting pipeline. SEQ-13/SEQ-14 deepen BRK-04/SEL-01 with backward selected Enter/hard-break, undo, redo and sentinel checkpoints. They are independently authored expected states, not engine output. Text-transfer, native protocol, first-party preset and performance rows keep their feature/platform owners; RGS infrastructure must not depend on downstream implementations to finish. Extend driver bindings as those owners qualify their commands. A shared semantic result cannot establish a native gesture, clipboard-provider lifetime, IME, accessibility or performance pass.

@@ -1,5 +1,7 @@
 # Targeted editing regression cases
 
+Wordcraft refinement (2026-10-16): selected existing IDs below include additional variants; [provenance and overlap](../evidence/wordcraft-research.md) distinguish them from the new WCF cases. Previous case evidence does not qualify added variants.
+
 Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
 
 Status: planned executable coverage, not test results. The owning task creates the fixture and assertions. Expected behavior comes from [editor-interactions](../specs/editor-interactions.md); citations and issue scope live in [research](../evidence/editor-interaction-research.md) and [assistive research](../evidence/assistive-input-research.md).
@@ -73,7 +75,7 @@ Priorities: **P0** prevents data loss, broken basic input or inaccessible operat
 | KEY-03 | P1 | Code single caret / multi-line selection; Tab then Shift+Tab | Tab/indent and bounded dedent preserve authored whitespace and selection |
 | KEY-04 | P1 | Table interior/last/first cell; Tab/Shift+Tab | Move cells; append at most one allowed row at last; backward first and bounded last can exit |
 | KEY-05 | P0 | Code/list/table with popup open/closed; Escape then Tab or Shift+Tab | Popup dismissal arms one-shot forward/backward exit; other editing clears it; IME Escape remains native; focus/help visible |
-| KEY-06 | P0 | Hungarian/AltGraph/dead-key/non-US layout; Ctrl/Cmd editing shortcuts | Characters insert correctly; browser find/zoom and OS/AT shortcuts remain available |
+| KEY-06 | P0 | Hungarian/AltGraph/dead-key/non-US layout; Ctrl/Cmd editing shortcuts Include Right Alt versus Left Alt with menus/keytips active on the claimed Linux/Wayland profile. | Characters insert correctly; browser find/zoom and OS/AT shortcuts remain available AltGr characters never enter menu navigation or duplicate a command; preserve the host modifier profile. |
 | KEY-07 | P0 | Default Primary+B/I/K/Z/Shift+Z/A/C/X/V, Windows Control+Y, optional U and host submit | Each applicable shortcut matches toolbar/menu semantic behavior; unsupported bindings remain native, input is committed once, ordinary Enter does not submit |
 
 ## Composition and replacement input — INT-1.7
@@ -82,7 +84,7 @@ Priorities: **P0** prevents data loss, broken basic input or inaccessible operat
 |---|---|---|---|
 | EVT-01 | P0 | Same edit through cancelable beforeinput vs native input/observer echo | Equivalent model/selection, exactly one commit, no duplicate observer commit |
 | EVT-02 | P0 | Noncancelable or absent beforeinput, empty target ranges, replacement text | Bounded input/DOM fallback reconciles real affected range; original text not duplicated |
-| EVT-03 | P0 | Japanese/Korean/Chinese composition; Enter while slash visible | IME confirms candidate; no command acceptance or extra block until distinct committed intent |
+| EVT-03 | P0 | Japanese/Korean/Chinese composition; Enter while slash visible Compose in the middle of existing text and inspect the candidate/composing range geometry. | IME confirms candidate; no command acceptance or extra block until distinct committed intent Interim composition remains legible without overlapping the untouched suffix; layout observation accompanies final semantic assertions. |
 | EVT-04 | P0 | Interim composition, final input before/after compositionend, compositionend before final Enter with isComposing=false | One finalized semantic result and undo boundary; commit Enter does not split/accept popup, next deliberate Enter works |
 | EVT-05 | P0 | Tab in code or existing literal tab then Korean IME (including Safari device row) | Caret/input stay responsive and composing span is not replaced; no freeze |
 | EVT-06 | P0 | Native dictation insertion, selected phrase correction and punctuation; no keydown | Correct insert/replace and mark inheritance, one committed result; no assumed dictation inputType |
@@ -119,7 +121,7 @@ Priorities: **P0** prevents data loss, broken basic input or inaccessible operat
 |---|---|---|---|
 | PST-01 | P0 | Fragment + Markdown + HTML + plain flavors together | Existing documented precedence; invalid/unknown fragment falls back safely with diagnostic |
 | PST-02 | P0 | Paste Markdown normally and via visible literal action into prose/code/cell | Host policy honored; literal/code paths do not format, cell literal paste does not add rows |
-| PST-03 | P1 | Synthetic Word/Google Docs/Notes HTML, PDF/terminal text, TSV | Safe supported semantics or explicit fidelity fallback; whitespace/list/table policy stated |
+| PST-03 | P1 | Synthetic Word/Google Docs/Notes HTML, PDF/terminal text, TSV Add multiline plain paste midway through a styled RTL paragraph, retaining prefix/suffix. | Safe supported semantics or explicit fidelity fallback; whitespace/list/table policy stated Declare destination paragraph/mark inheritance for every new paragraph within admitted properties and the platform bidi policy; preserve the untouched suffix without accidental default-direction reset. |
 | PST-04 | P0 | HTML handlers/scripts, encoded unsafe URL, deep nesting and oversized fragments | Inert bounded preparation, no execution/fetch, atomic reject or declared safe fallback |
 | PST-05 | P0 | Cross-block selected paste/cut, clipboard failure or denial | Success one transaction and undo; failed cut retains original document |
 | PST-06 | P0 | Cancel delayed paste; edit/move selection/delete target/switch editor meanwhile | Cancel zero mutation, stale target rejected, valid result uses original anchors without moving later caret |

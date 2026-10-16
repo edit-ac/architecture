@@ -50,6 +50,12 @@ to the claimed platform. Prepared transports exercise this admission contract
 only. Pending producers remain pending until their owning SDK qualification is
 reviewed; admission does not publish a release or establish resource budgets.
 
+## Command and dependency check refinements
+
+[WCF-17/WCF-18](../tests/wordcraft-regression-cases.md) strengthen FIT-1.2/FIT-1.1. Derive a build/test command-to-surface matrix from existing descriptors and host bindings, without creating another semantic registry. Detect missing IDs, conflicting aliases and invalid capability/direction claims. Runtime permission checks and evidence-qualified support remain distinct from registration. CMD-01 exercises actual accepted effects, intentional history, no-op and rejected routes across each claimed surface; a queued UI event is not semantic completion.
+
+Dependency negative controls include unclassified production packages, forbidden transitive/default-feature edges and test helpers used at runtime. Use actual Cargo/JS graph adapters and declared target profiles, alongside allowed optional/test-only controls. Preserve optional loading and existing hard bundle caps.
+
 ## Asynchronous service contracts
 
 Every heavy service uses bounded inputs, stable document/session identity, expected revision or content hash, cancellation, deadline and a typed result. Apply only after permission and revision revalidation. Dispose workers/subscriptions and discard stale results. Highlighter spans, link metadata and conversion previews are derived caches; they cannot become competing writable state.

@@ -21,10 +21,10 @@ The controller owns this source. Keep checkmarks, evidence and interruption hand
 - [ ] FIT-1.1 Freeze and check dependency-layer ownership.
 
 Purpose: Freeze and check dependency-layer ownership as one bounded integration or qualification boundary.
-Context: `contracts/layers.json`; `scripts/check-architecture.mjs`; `tests/architecture/layers/`; `../architecture/specs/ecosystem-maintainability.md`.
+Context: `contracts/layers.json`; `scripts/check-architecture.mjs`; `tests/architecture/layers/`; `../architecture/specs/ecosystem-maintainability.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: none.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Engine and minimum SDK imports exclude UI/network/cloud/conversion/highlighting runtime dependencies; intended companions remain explicit.
+Acceptance: Engine and minimum SDK imports exclude UI/network/cloud/conversion/highlighting runtime dependencies; intended companions remain explicit. WCF-18: Negative graph fixtures reject unclassified production packages, forbidden transitive/default-feature reachability and test helpers on runtime edges; allowed optional/test-only controls pass.
 
 Implementation:
 
@@ -32,7 +32,7 @@ Implementation:
 
 Validation:
 
-- [ ] FIT-1.1-V1 `node scripts/check-architecture.mjs --suite layers`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
+- [ ] FIT-1.1-V1 `node scripts/check-architecture.mjs --suite layers`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified. Execute the named WCF-18 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Separate progress entry `FIT-1.1` links changed paths, immutable inputs and focused check artifacts; retain failed evidence.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
@@ -43,10 +43,10 @@ Blocked behavior: Leave `FIT-1.1` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO w
 - [ ] FIT-1.2 Define the shared capability and compatibility schema.
 
 Purpose: Define the shared capability and compatibility schema as one bounded integration or qualification boundary.
-Context: `contracts/capabilities.schema.json`; `contracts/profiles/`; `tests/architecture/profiles/`; `../architecture/specs/ecosystem-maintainability.md`.
+Context: `contracts/capabilities.schema.json`; `contracts/profiles/`; `tests/architecture/profiles/`; `../architecture/specs/ecosystem-maintainability.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: FIT-1.1.
 Session scope: One named boundary, normally 15–45 minutes plus focused checks. If it cannot fit, propose a stable controller-reviewed split before implementation; do not hide additional platform/features in this task.
-Acceptance: Available/enabled/authorized/qualified states are distinct; converter directions and version/evidence identities are validated.
+Acceptance: Available/enabled/authorized/qualified states are distinct; converter directions and version/evidence identities are validated. WCF-17: Derive command/surface consistency checks from existing descriptors and bindings; reject missing IDs/conflicting aliases and stale support evidence without a duplicate semantic registry. Route existence never establishes current permission or executed qualification.
 
 Implementation:
 
@@ -54,7 +54,7 @@ Implementation:
 
 Validation:
 
-- [ ] FIT-1.2-V1 `node scripts/check-architecture.mjs --suite profiles`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
+- [ ] FIT-1.2-V1 `node scripts/check-architecture.mjs --suite profiles`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified. Execute the named WCF-17 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Separate progress entry `FIT-1.2` links changed paths, immutable inputs and focused check artifacts; retain failed evidence.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.

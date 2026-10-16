@@ -26,10 +26,10 @@ Keep heavy codecs/renderers/fonts optional and outside the minimum editor WASM. 
 - [ ] CNV-1.1 Freeze directional format profiles and test dispatch.
 
 Purpose: Make supported directions and fidelity limits explicit before adding converters.
-Context: `crates/editac-formats/`; `fixtures/formats/profiles.json`; `tests/formats/run.mjs`; `../architecture/evidence/document-conversion.md`; `../architecture/specs/document-conversion.md`.
+Context: `crates/editac-formats/`; `fixtures/formats/profiles.json`; `tests/formats/run.mjs`; `../architecture/evidence/document-conversion.md`; `../architecture/specs/document-conversion.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: none.
 Session scope: One named direction/adapter boundary, 15–45 minutes plus focused checks; change only the named paths and required test/build glue.
-Acceptance: Existing Markdown/HTML/text/semantic-JSON behavior is reused; each new direction has a versioned profile, limits, diagnostic schema and target/dependency record. PDF import returns FORMAT_EXPORT_ONLY before any conversion or mutation, including misleading extensions/MIME. Legacy DOC/PPT/XLS and universal fidelity are excluded. The dispatcher invokes real named checks and rejects unknown, absent or zero-case suites.
+Acceptance: Existing Markdown/HTML/text/semantic-JSON behavior is reused; each new direction has a versioned profile, limits, diagnostic schema and target/dependency record. PDF import returns FORMAT_EXPORT_ONLY before any conversion or mutation, including misleading extensions/MIME. Legacy DOC/PPT/XLS and universal fidelity are excluded. The dispatcher invokes real named checks and rejects unknown, absent or zero-case suites. WCF-05: Import-only and exhausted-output profiles produce visible actionable outcomes on claimed host routes; no silent no-op save or successful truncated artifact. This adds no format direction.
 
 Implementation:
 
@@ -37,7 +37,7 @@ Implementation:
 
 Validation:
 
-- [ ] CNV-1.1-V1 node tests/formats/run.mjs profiles. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable.
+- [ ] CNV-1.1-V1 node tests/formats/run.mjs profiles. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable. Execute the named WCF-05 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress `CNV-1.1` links changed paths, selected format/direction/profile, exact dependency and asset versions, test/resource results and preserved failures; durable summaries belong in `../architecture/evidence/document-conversion.md`.
 Handoff: Last completed substep, relevant symbol/fixture, unsupported construct or exact failing case, remaining acceptance and next bounded action for `CNV-1.1`.
@@ -49,10 +49,10 @@ Blocked behavior: Keep `CNV-1.1` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO wi
 - [ ] CNV-1.2 Implement bounded conversion jobs and asset staging.
 
 Purpose: Keep preparation local, cancellable and separate from live document mutation.
-Context: `crates/editac-formats/src/job.rs`; `crates/editac-formats/tests/jobs.rs`; `fixtures/formats/jobs/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/document-conversion.md`.
+Context: `crates/editac-formats/src/job.rs`; `crates/editac-formats/tests/jobs.rs`; `fixtures/formats/jobs/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/document-conversion.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: CNV-1.1.
 Session scope: One named direction/adapter boundary, 15–45 minutes plus focused checks; change only the named paths and required test/build glue.
-Acceptance: Input/profile/revision/target and resource budgets are fixed per job. Timeout/cancel/stale-target/asset failure leaves live state unchanged and releases only job-owned resources; fixed-revision export cannot mix later edits. Isolation-unavailable is explicit, with no cloud/network fallback.
+Acceptance: Input/profile/revision/target and resource budgets are fixed per job. Timeout/cancel/stale-target/asset failure leaves live state unchanged and releases only job-owned resources; fixed-revision export cannot mix later edits. Isolation-unavailable is explicit, with no cloud/network fallback. WCF-03: Host save transitions consume correlated completion/revision outcomes, not job initiation; cancel/write/close failure retains recoverable state and completion for revision N never marks N+1 saved. Reuse this fixture in existing platform wiring owners; conversion completion is not journal durability.
 
 Implementation:
 
@@ -60,7 +60,7 @@ Implementation:
 
 Validation:
 
-- [ ] CNV-1.2-V1 node tests/formats/run.mjs jobs. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable.
+- [ ] CNV-1.2-V1 node tests/formats/run.mjs jobs. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable. Execute the named WCF-03 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress `CNV-1.2` links changed paths, selected format/direction/profile, exact dependency and asset versions, test/resource results and preserved failures; durable summaries belong in `../architecture/evidence/document-conversion.md`.
 Handoff: Last completed substep, relevant symbol/fixture, unsupported construct or exact failing case, remaining acceptance and next bounded action for `CNV-1.2`.
@@ -95,10 +95,10 @@ Blocked behavior: Keep `CNV-1.3` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO wi
 - [ ] CNV-1.4 Enforce archive, XML and media ingress budgets.
 
 Purpose: Reject hostile document containers before semantic mapping or asset publication.
-Context: `crates/editac-formats/src/container.rs`; `crates/editac-formats/tests/container_limits.rs`; `fixtures/formats/hostile/`; `../architecture/specs/document-conversion.md`.
+Context: `crates/editac-formats/src/container.rs`; `crates/editac-formats/tests/container_limits.rs`; `fixtures/formats/hostile/`; `../architecture/specs/document-conversion.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: CNV-1.2, CNV-1.3.
 Session scope: One named direction/adapter boundary, 15–45 minutes plus focused checks; change only the named paths and required test/build glue.
-Acceptance: Traversal/absolute/duplicate/conflicting paths, symlinks, unsupported encryption, DTD/external entities, nested active packages and malformed encodings fail safely. Entry/depth/attribute, actual inflated bytes, ratio, decoded pixels and output-node limits are enforced during work, not only from archive headers.
+Acceptance: Traversal/absolute/duplicate/conflicting paths, symlinks, unsupported encryption, DTD/external entities, nested active packages and malformed encodings fail safely. Entry/depth/attribute, actual inflated bytes, ratio, decoded pixels and output-node limits are enforced during work, not only from archive headers. WCF-06/WCF-07: Aggregate work charges nested scans and repeated resource references, checks remaining allowance before decode/allocation, and deduplicates rejected resources within the immutable job. Exercise duplicate/normalized-alias/corrupt entries in both orders; log-only omission cannot substitute for structured failure/diagnostics.
 
 Implementation:
 
@@ -106,7 +106,7 @@ Implementation:
 
 Validation:
 
-- [ ] CNV-1.4-V1 node tests/formats/run.mjs container-limits. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable.
+- [ ] CNV-1.4-V1 node tests/formats/run.mjs container-limits. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable. Execute the named WCF-06/WCF-07 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress `CNV-1.4` links changed paths, selected format/direction/profile, exact dependency and asset versions, test/resource results and preserved failures; durable summaries belong in `../architecture/evidence/document-conversion.md`.
 Handoff: Last completed substep, relevant symbol/fixture, unsupported construct or exact failing case, remaining acceptance and next bounded action for `CNV-1.4`.
@@ -118,10 +118,10 @@ Blocked behavior: Keep `CNV-1.4` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO wi
 - [ ] CNV-1.5 Import DOCX text, marks and paragraph structure.
 
 Purpose: Map the qualified WordprocessingML text subset into prepared editor content.
-Context: `crates/editac-formats/src/docx/import.rs`; `crates/editac-formats/tests/docx_import_text.rs`; `fixtures/formats/docx/text/`; `../architecture/specs/document-conversion.md`.
+Context: `crates/editac-formats/src/docx/import.rs`; `crates/editac-formats/tests/docx_import_text.rs`; `fixtures/formats/docx/text/`; `../architecture/specs/document-conversion.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: CNV-1.4.
 Session scope: One named direction/adapter boundary, 15–45 minutes plus focused checks; change only the named paths and required test/build glue.
-Acceptance: Paragraphs, Unicode runs, supported direct/style-derived marks, headings, links, tabs and breaks map deterministically. Style/theme/field/revision constructs outside the profile produce complete diagnostics; import does not invent original-source spelling or Word layout fidelity.
+Acceptance: Paragraphs, Unicode runs, supported direct/style-derived marks, headings, links, tabs and breaks map deterministically. Style/theme/field/revision constructs outside the profile produce complete diagnostics; import does not invent original-source spelling or Word layout fidelity. WCF-09: Validate adapter-produced Unicode span lengths, checked arithmetic and coordinate conversion before batch preparation; invalid boundaries cannot panic, normalize authored text or partially import.
 
 Implementation:
 
@@ -129,7 +129,7 @@ Implementation:
 
 Validation:
 
-- [ ] CNV-1.5-V1 node tests/formats/run.mjs docx-import-text. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable.
+- [ ] CNV-1.5-V1 node tests/formats/run.mjs docx-import-text. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable. Execute the named WCF-09 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress `CNV-1.5` links changed paths, selected format/direction/profile, exact dependency and asset versions, test/resource results and preserved failures; durable summaries belong in `../architecture/evidence/document-conversion.md`.
 Handoff: Last completed substep, relevant symbol/fixture, unsupported construct or exact failing case, remaining acceptance and next bounded action for `CNV-1.5`.
@@ -164,10 +164,10 @@ Blocked behavior: Keep `CNV-1.6` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO wi
 - [ ] CNV-1.7 Export the qualified semantic DOCX subset.
 
 Purpose: Produce portable Word documents from a captured editor revision.
-Context: `crates/editac-formats/src/docx/export.rs`; `crates/editac-formats/tests/docx_export.rs`; `fixtures/formats/docx/export/`; `../architecture/specs/document-conversion.md`.
+Context: `crates/editac-formats/src/docx/export.rs`; `crates/editac-formats/tests/docx_export.rs`; `fixtures/formats/docx/export/`; `../architecture/specs/document-conversion.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: CNV-1.6.
 Session scope: One named direction/adapter boundary, 15–45 minutes plus focused checks; change only the named paths and required test/build glue.
-Acceptance: A fixed-revision export encodes supported text/marks/lists/tables/links and embedded authorized assets; unknown features yield a representability report. Independent package parsing and declared viewer fixtures validate semantics; original layout, package-byte identity, macros and signatures are never claimed preserved.
+Acceptance: A fixed-revision export encodes supported text/marks/lists/tables/links and embedded authorized assets; unknown features yield a representability report. Independent package parsing and declared viewer fixtures validate semantics; original layout, package-byte identity, macros and signatures are never claimed preserved. WCF-10/WCF-11: Minimal hand-authored packages distinguish preserved supported semantics from lost wrappers/defaults/numbering/metadata. Independent package and semantic inspection requires complete representability diagnostics even when plain text matches; no added TOC/content-control/opaque-part fidelity.
 
 Implementation:
 
@@ -175,7 +175,7 @@ Implementation:
 
 Validation:
 
-- [ ] CNV-1.7-V1 node tests/formats/run.mjs docx-export. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable.
+- [ ] CNV-1.7-V1 node tests/formats/run.mjs docx-export. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable. Execute the named WCF-10/WCF-11 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress `CNV-1.7` links changed paths, selected format/direction/profile, exact dependency and asset versions, test/resource results and preserved failures; durable summaries belong in `../architecture/evidence/document-conversion.md`.
 Handoff: Last completed substep, relevant symbol/fixture, unsupported construct or exact failing case, remaining acceptance and next bounded action for `CNV-1.7`.
@@ -187,10 +187,10 @@ Blocked behavior: Keep `CNV-1.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO wi
 - [ ] CNV-1.8 Qualify PDF export engine, font assets and isolation.
 
 Purpose: Choose optional PDF publication components with measured deployment costs.
-Context: `crates/editac-formats/Cargo.toml`; `Cargo.lock`; `crates/editac-formats/tests/pdf_probe.rs`; `fixtures/formats/fonts/`; `../architecture/evidence/format-dependencies.md`; `../architecture/specs/document-conversion.md`.
+Context: `crates/editac-formats/Cargo.toml`; `Cargo.lock`; `crates/editac-formats/tests/pdf_probe.rs`; `fixtures/formats/fonts/`; `../architecture/evidence/format-dependencies.md`; `../architecture/specs/document-conversion.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: CNV-1.1, CNV-1.2.
 Session scope: One named direction/adapter boundary, 15–45 minutes plus focused checks; change only the named paths and required test/build glue.
-Acceptance: Exact export/layout versions, target builds, transitive/native notices and font embedding/redistribution permissions are recorded. Candidates demonstrate shaping, tagging and layout needs on tiny fixtures; heavyweight artifacts stay optional and claimed browser/native execution has enforceable isolation/resource limits.
+Acceptance: Exact export/layout versions, target builds, transitive/native notices and font embedding/redistribution permissions are recorded. Candidates demonstrate shaping, tagging and layout needs on tiny fixtures; heavyweight artifacts stay optional and claimed browser/native execution has enforceable isolation/resource limits. WCF-12: Pin test font files/hashes and fallback environment; missing fonts yield declared fallback/unavailability rather than an implicit host-font dependency or download. Font and target provenance accompany output evidence.
 
 Implementation:
 
@@ -198,7 +198,7 @@ Implementation:
 
 Validation:
 
-- [ ] CNV-1.8-V1 node tests/formats/run.mjs pdf-dependencies. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable.
+- [ ] CNV-1.8-V1 node tests/formats/run.mjs pdf-dependencies. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable. Execute the named WCF-12 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress `CNV-1.8` links changed paths, selected format/direction/profile, exact dependency and asset versions, test/resource results and preserved failures; durable summaries belong in `../architecture/evidence/document-conversion.md`.
 Handoff: Last completed substep, relevant symbol/fixture, unsupported construct or exact failing case, remaining acceptance and next bounded action for `CNV-1.8`.
@@ -210,10 +210,10 @@ Blocked behavior: Keep `CNV-1.8` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO wi
 - [ ] CNV-1.9 Export a paginated PDF publication profile.
 
 Purpose: Create readable publication artifacts without misrepresenting them as editable source.
-Context: `crates/editac-formats/src/pdf/export.rs`; `crates/editac-formats/tests/pdf_export.rs`; `fixtures/formats/pdf/export/`; `../architecture/specs/document-conversion.md`.
+Context: `crates/editac-formats/src/pdf/export.rs`; `crates/editac-formats/tests/pdf_export.rs`; `fixtures/formats/pdf/export/`; `../architecture/specs/document-conversion.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: CNV-1.8.
 Session scope: One named direction/adapter boundary, 15–45 minutes plus focused checks; change only the named paths and required test/build glue.
-Acceptance: Declared text/marks/lists/tables/images paginate with correct Unicode shaping, selectable text, controlled fonts, links and semantic tags where supported. Independent text/render inspection checks clipping and reading order. PDF/UA or archival compliance is claimed only after its own output validation; no library-choice inference.
+Acceptance: Declared text/marks/lists/tables/images paginate with correct Unicode shaping, selectable text, controlled fonts, links and semantic tags where supported. Independent text/render inspection checks clipping and reading order. PDF/UA or archival compliance is claimed only after its own output validation; no library-choice inference. WCF-13/WCF-14: Use independent logical-text/reading-order and visual/layout oracles for Arabic ligatures/zero-advance glyphs and multipage synthetic content. Perturbed text, missing lines/pages and clipping must fail the relevant oracle; raster similarity alone cannot qualify output. Validation tools inspect generated artifacts only.
 
 Implementation:
 
@@ -221,7 +221,7 @@ Implementation:
 
 Validation:
 
-- [ ] CNV-1.9-V1 node tests/formats/run.mjs pdf-export. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable.
+- [ ] CNV-1.9-V1 node tests/formats/run.mjs pdf-export. Assert every acceptance case; record exact underlying commands/exits, nonzero executed/passed/failed/skipped counts, revisions, fixture/artifact hashes and measured limits where applicable. Execute the named WCF-13/WCF-14 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress `CNV-1.9` links changed paths, selected format/direction/profile, exact dependency and asset versions, test/resource results and preserved failures; durable summaries belong in `../architecture/evidence/document-conversion.md`.
 Handoff: Last completed substep, relevant symbol/fixture, unsupported construct or exact failing case, remaining acceptance and next bounded action for `CNV-1.9`.

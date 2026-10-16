@@ -26,6 +26,10 @@ Journal committed update bytes and dedup/result metadata in one durable host-sto
 
 Agent operations carry authenticated provenance and intentional history groups; they use the same engine, renderer patches, persistence/outbox and sync channel as human edits. Reverting an agent change is a new revision-checked authorized edit, not destructive rewind. Limits apply per request, document and pending queue.
 
+## Queued expiry and uncertain completion
+
+[WCF-02](../tests/wordcraft-regression-cases.md) sharpens AGT-1.4 without changing the receipt protocol. Hosts recheck execution deadlines/cancellation inside serialized admission before mutation. Work that expires while queued is a clean rejection with no edit. A caller timeout after engine commit is not cancellation of that commit: preserve the existing pending/unknown-durability barrier and resolve the same request identity through its durable outcome. Test both sides of the commit boundary with fixed clocks and held queues; no synthetic UI acknowledgement may substitute for semantic execution evidence.
+
 ## Realtime and read-only behavior
 
 Open views receive ordinary engine updates without remounting; concurrent human changes are reconciled under the same policy. MCP resources/subscriptions or supported notifications advertise invalidation and bounded revision metadata, with capability-negotiated polling/resync fallback. MCP notification delivery is not the CRDT transport, guaranteed event history, or proof of durable storage.

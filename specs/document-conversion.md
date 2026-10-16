@@ -138,6 +138,14 @@ real viewer/OS checks and release support claims remain gated by the platform tr
 Local prepared fixtures and mocked host transports suffice for automated checks;
 private user documents, live credentials and paid models are not test fixtures.
 
+## Failure and fidelity qualification refinements
+
+[WCF-03/WCF-05–WCF-07/WCF-09–WCF-14](../tests/wordcraft-regression-cases.md) strengthen existing CNV owners. Cumulative budgets include nested parser work and repeated resource references. Check remaining allowance before decode/allocation; deduplicate expensive failed attempts within the immutable input/resource/profile job. Changed eligible jobs must not inherit stale failures. Duplicate or normalized-alias parts and corrupt required entries cannot become last-entry-wins or log-only omissions. Validate adapter span arithmetic and Unicode boundaries before preparing edits.
+
+Output limits never silently truncate a supposedly complete artifact. Unsupported direction/structure and loss are visible through the existing capability/diagnostic contract with original-input retention. Host Save-before-New/Open waits for a correlated output completion; cancellation/write/close failure preserves recoverable state, and revision N completion cannot mark N+1 clean. Export completion remains distinct from journal durability. Platform wiring owners reuse these prepared host cases at their existing integration boundaries.
+
+Build minimal original ZIP/XML fixtures for supported semantics and unsupported wrappers/defaults/list/relationship cases. Compare semantic projections and complete diagnostics through independent package inspection; do not extend the profile to TOC editing, arbitrary opaque-package preservation or legacy DOC. Pin font files/hashes and allowlisted fallback environments. Generated PDF checks independently assess logical text/reading order and visual placement, including Arabic lam-alef/zero-advance glyphs, clipping and multipage breaks; perturbations must fail the relevant oracle. Keep external validation tooling outside runtime dependencies and preserve the export-only PDF policy. No imported Wordcraft code, assets or new converter dependency is approved by these scenarios.
+
 ## Format references
 
 [ECMA-376 OOXML](https://ecma-international.org/publications-and-standards/standards/ecma-376/)
