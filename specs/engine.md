@@ -24,6 +24,14 @@ This document describes required behavior; it does not assert that the engine is
   This uses the existing placement shape/bounds; v4's frozen creation rule stays
   unchanged. Fragment payloads use distinct original sources, with existing
   prefix/suffix sources retained, so redo cannot shift cuts into reinserted text.
+  A single inline paragraph fragment replacing a range within one existing v5
+  paragraph may reuse the prepared source-edit path: retain the destination
+  source/owner, replace text and known marks atomically, and preserve entry/result
+  history bookmarks. This exception requires no imported containers or checked
+  state and no presentation change. It avoids retaining an additional text source
+  that would make exact undo exceed the unchanged 1 MiB aggregate source-text
+  ceiling. Multi-block, cross-owner and presentation-changing fragments retain
+  the distinct-source rule; no resource or restore bound is increased.
 - Persistence and synchronization consume immutable update bytes and metadata through ports.
 
 ## Compatibility profile
