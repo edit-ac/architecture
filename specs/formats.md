@@ -165,7 +165,7 @@ Bound bytes, nesting, attribute lengths, table dimensions and prepared node coun
 Test malformed encodings, nested tags, misleading MIME flavors and adversarial link/image values.
 Untrusted internal fragments follow the same safety/resource checks as external formats.
 
-The baseline HTML adapter admits absolute HTTP(S)/mailto destinations only; relative URLs, credentials and encoded controls become inert text with diagnostics. Styles are reduced to the named text marks; no CSS enters the live tree. Inert template parsing is capped at 1 MiB, 4,096 visits, depth 32, 128 blocks, 1,024 text runs and 4,096 characters per attribute. Dropped content retains exact source in bounded clipboard recovery. Optional resource elements require explicit codecs.
+The baseline HTML adapter admits absolute HTTP(S)/mailto destinations only; relative URLs, credentials and encoded controls become inert text with diagnostics. Styles are reduced to the named text marks; no CSS enters the live tree. The common Rust `editac-html` codec owns the whitelist and semantic mapping for NativeSession and browser WASM. Native uses an inert HTML5 tokenizer; browsers serialize their inert template tokens to the same codec, without host semantic mapping or a second bundled tokenizer. Inert HTML5 fragment parsing is capped at 1 MiB, 4,096 visits, depth 32, 128 blocks, 1,024 text runs and 4,096 characters per attribute. Inert token transport is capped at 8 MiB to allow JSON escaping of the 1 MiB source; common node, depth, text-run and decoded-text limits still apply. Dropped content retains exact source in bounded clipboard recovery. Optional resource elements require explicit codecs.
 
 ## Export and representability
 
