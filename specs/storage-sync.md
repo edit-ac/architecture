@@ -14,6 +14,10 @@ A checkpoint consists of CRDT state, coverage metadata and hash. Publish checkpo
 
 Use deterministic failure injection before/after each write/transaction/publication boundary, plus actual browser process termination after acknowledgment. Test two tab writers, duplicate/reordered replay, corrupt latest checkpoint, quota/permission rejection, schema mismatch and missing document identity. Preserve failures in evidence.
 
+## Bounded recovery failure work
+
+[WCF-01](../tests/wordcraft-regression-cases.md) extends LOC-1.6 and the shared CAP-1.5 lifecycle. Retain the last valid checkpoint, recoverable journal tail and outbox after rejected recovery work. A stable permanent rejection (input/profile/resource condition) suppresses unchanged expensive serialization/write retries; a changed eligible input or repaired condition permits retry. Transient quota/I/O failures use bounded backoff and an actionable state, not a timer-driven write storm. Measure attempts and bytes through the existing storage port. Do not replace CRDT checkpoints with JSON or clear unsaved state on failed persistence.
+
 ## Network
 
 Transport is optional and attaches to the existing engine. It must not reinitialize the document, import a second snapshot or replace selection/history on connection. Use transaction origins to avoid echo. Define bounded receive/send queues, frame sizes, retry/backoff and reconnection behavior. Defer unauthorized uploads but retain recoverable local edits.

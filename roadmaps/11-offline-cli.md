@@ -115,10 +115,10 @@ Blocked behavior: Leave `CLI-1.4` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO w
 - [ ] CLI-1.5 Save local edits without stale-file overwrite.
 
 Purpose: Deliver save local edits without stale-file overwrite as one reviewable boundary.
-Context: `src/files.rs`; `tests/files.rs`; `../architecture/specs/cli.md`; `../architecture/specs/formats.md`; `../architecture/specs/packages-release.md`.
+Context: `src/files.rs`; `tests/files.rs`; `../architecture/specs/cli.md`; `../architecture/specs/formats.md`; `../architecture/specs/packages-release.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: CLI-1.4.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Changed opened targets save atomically; no-op leaves bytes untouched; stale fingerprints, replaced targets, read-only/full-disk failures and failed publication preserve the original or report an explicitly uncertain publication with recoverable source.
+Acceptance: Changed opened targets save atomically; no-op leaves bytes untouched; stale fingerprints, replaced targets, read-only/full-disk failures and failed publication preserve the original or report an explicitly uncertain publication with recoverable source. WCF-04: Qualify temp-file/directory/symlink collisions, competing saves and short-write/replacement failures through exclusively owned staging; preserve existing stale-file fingerprint and uncertain-publication semantics.
 
 Implementation:
 
@@ -126,7 +126,7 @@ Implementation:
 
 Validation:
 
-- [ ] CLI-1.5-V1 cargo test --test files --locked. Assert the acceptance cases above and record build/probe exit results and executed/passed/failed/skipped counts for actual test suites (nonzero matching tests required).
+- [ ] CLI-1.5-V1 cargo test --test files --locked. Assert the acceptance cases above and record build/probe exit results and executed/passed/failed/skipped counts for actual test suites (nonzero matching tests required). Execute the named WCF-04 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress entry `CLI-1.5` with changed paths, exact command/result, source and implementation revisions, fixture/artifact hashes, and any preserved failure log. Durable milestone summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, changed symbols/files, exact failing fixture or missing fact, and next bounded action for `CLI-1.5`.

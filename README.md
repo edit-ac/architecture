@@ -149,7 +149,7 @@ Mobile baseline support does not load optional rich-content, converter, gesture 
 
 ## Editing regression suite
 
-[Further regression research](evidence/editor-regressions-round2.md) and [upstream testing methods](evidence/editor-testsuite-methods.md) inform the [suite and architecture guards](specs/editing-regression-suite.md). The [machine-readable manifest](tests/editing-suite/suite.json) indexes 305 catalog cases, 14 guards and 14 representative recipes with 45 independently authored state/effect checkpoints. [Seventeen additional cases](tests/editor-regression-cases.md) target history capture/grouping, atomic edits, normalization, nested controls, custom views and widget selection.
+[Further regression research](evidence/editor-regressions-round2.md) and [upstream testing methods](evidence/editor-testsuite-methods.md) inform the [suite and architecture guards](specs/editing-regression-suite.md). The [machine-readable manifest](tests/editing-suite/suite.json) indexes 324 catalog cases, 14 guards and 14 representative recipes with 45 independently authored state/effect checkpoints. [Seventeen additional cases](tests/editor-regression-cases.md) target history capture/grouping, atomic edits, normalization, nested controls, custom views and widget selection.
 
 | Track | Parent tasks | Whole-track prerequisite | Exit artifact |
 |---|---:|---|---|
@@ -182,3 +182,7 @@ The [browser sharing contract](specs/web.md#shared-resources-across-editors-and-
 [Native clipboard cases](tests/native-clipboard-cases.md) define 28 future cases for simulator/emulator/OS-host regression and separately recorded physical-device qualification. Native SDK track tasks 2.4 feed the handoffs; DEL-1.9/DEL-1.10 gate real mobile/desktop transfer qualification. FMT-1.13 owns full Markdown/HTML/plain/internal palette integration; FMT-1.15 preserves its actual-device clipboard-menu and OS-shortcut qualification gate and EXT-1.13 plus native extension tasks 1.9 own formatting-preserving tables and other extension content. No native tests were run by authoring these plans.
 
 Content migrations and editor migration guides are [deferred until full app completion and qualification](operations/deferred-content-migrations.md). Their preserved tasks are outside the active runner catalog.
+
+## Wordcraft reliability and converter refinements
+
+[Source research and overlap](evidence/wordcraft-research.md) adds [19 planned cases](tests/wordcraft-regression-cases.md) to the existing suite and refines eight existing case variants. Priorities are failure paths, converter qualification, then cache/command checks. Existing parent owners receive the acceptance and validation changes; roadmap, parent and dependency counts stay unchanged. No runtime execution, new format direction, dependency, general layout engine or offline proofing feature is claimed. Adopt at a safe controller checkpoint without rewriting active progress or treating earlier receipts as proof of the new assertions.

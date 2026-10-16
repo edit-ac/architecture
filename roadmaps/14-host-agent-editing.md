@@ -87,10 +87,10 @@ Blocked behavior: Leave `AGT-1.3` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 - [ ] AGT-1.4 Implement durable idempotency and apply receipts.
 
 Purpose: Implement durable idempotency and apply receipts as one bounded reusable delivery boundary.
-Context: `crates/editac-session/src/receipts.rs`; `crates/editac-session/tests/request_replay.rs`; `../architecture/specs/agent-editing.md`; `../architecture/specs/verification.md`.
+Context: `crates/editac-session/src/receipts.rs`; `crates/editac-session/tests/request_replay.rs`; `../architecture/specs/agent-editing.md`; `../architecture/specs/verification.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: AGT-1.3.
 Session scope: One named implementation/qualification boundary, 15–45 minutes plus focused checks; controller splits before exceeding scope.
-Acceptance: Same request after timeout/restart returns the original result even after proposal expiry or revision advancement; changed payload with same ID rejects. Unauthorized receipt lookup rejects. Crash/failure at each boundary cannot duplicate an acknowledged insertion; later human edits, checkpoints and state-vector resync cannot expose an unjournaled operation.
+Acceptance: Same request after timeout/restart returns the original result even after proposal expiry or revision advancement; changed payload with same ID rejects. Unauthorized receipt lookup rejects. Crash/failure at each boundary cannot duplicate an acknowledged insertion; later human edits, checkpoints and state-vector resync cannot expose an unjournaled operation. WCF-02: Recheck queued execution expiry/cancellation at serialized admission; expired pre-commit work makes no mutation. Distinguish post-commit timeout from clean rejection and recover its outcome through the same durable request identity.
 
 Implementation:
 
@@ -98,7 +98,7 @@ Implementation:
 
 Validation:
 
-- [ ] AGT-1.4-V1 cargo test -p editac-session --test request_replay --locked. Assert the acceptance cases; record exact exit results, nonzero matching test counts where applicable, failures/skips and artifact hashes.
+- [ ] AGT-1.4-V1 cargo test -p editac-session --test request_replay --locked. Assert the acceptance cases; record exact exit results, nonzero matching test counts where applicable, failures/skips and artifact hashes. Execute the named WCF-02 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Separate progress entry `AGT-1.4` with changed files, source/implementation revisions, commands, fixture IDs and durable artifact links; preserve failed evidence.
 Handoff: Last completed substep, current symbol/file, exact failing case or missing decision, and next bounded action for `AGT-1.4`.

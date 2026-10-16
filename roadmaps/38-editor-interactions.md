@@ -67,10 +67,10 @@ Blocked behavior: Leave `INT-1.2` unchecked with the owner, unblock condition an
 - [ ] INT-1.3 Preserve selection and typing marks across formatting actions.
 
 Purpose: Preserve selection and typing marks across formatting actions as one bounded behavior and regression boundary.
-Context: `crates/editac-core/src/commands/`; `packages/web/src/commands/`; `tests/browser/interactions/formatting.spec.ts`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md).
+Context: `crates/editac-core/src/commands/`; `packages/web/src/commands/`; `tests/browser/interactions/formatting.spec.ts`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md). [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: INT-1.2.
 Session scope: One named behavior group plus its focused validation; change only named paths and directly required test/configuration glue.
-Acceptance: MRK-01–MRK-09 pass for collapsed, forward/backward and cross-block mixed selections. Toolbar focus does not lose the target; pending marks create no empty content; links/custom marks and serialization policy are explicit.
+Acceptance: MRK-01–MRK-09 pass for collapsed, forward/backward and cross-block mixed selections. Toolbar focus does not lose the target; pending marks create no empty content; links/custom marks and serialization policy are explicit. WCF-19: Existing/claimed property surfaces preserve untouched mixed/unrepresented properties and commit only intentional changed fields in one prepared batch. Unchanged acceptance/cancellation is a no-op; stale target/permission and next-typed pending-mark behavior are checked. No new Word-style dialog surface is required.
 
 Implementation:
 
@@ -78,7 +78,7 @@ Implementation:
 
 Validation:
 
-- [ ] INT-1.3-V1 npm run test:interactions -- --group formatting. Assert exact mark spans, directional selection, subsequent typing, undo, stale-target rejection and unsupported-format diagnostics. Record nonzero executed/passed/failed/skipped counts; missing tests and zero matches fail acceptance.
+- [ ] INT-1.3-V1 npm run test:interactions -- --group formatting. Assert exact mark spans, directional selection, subsequent typing, undo, stale-target rejection and unsupported-format diagnostics. Record nonzero executed/passed/failed/skipped counts; missing tests and zero matches fail acceptance. Execute the named WCF-19 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress entry `INT-1.3` with case IDs, source/implementation/fixture revisions, exact commands/counts and preserved artifacts under `../architecture/evidence/editor-interactions/`.
 Handoff: Record the last finished substep, changed paths/symbols, failing case or missing capability and next bounded action for `INT-1.3`.
@@ -375,10 +375,10 @@ Blocked behavior: Leave `INT-1.17` unchecked with owner, unblock condition and r
 - [ ] INT-1.18 Unify editing command surfaces and replacement targets.
 
 Purpose: Unify editing command surfaces and replacement targets within the existing editor architecture.
-Context: `packages/web/src/commands/`; `tests/browser/interactions/command-surfaces.spec.ts`; `../architecture/specs/editor-interactions.md`; [additional interaction cases](../tests/desktop-editing-cases.md).
+Context: `packages/web/src/commands/`; `tests/browser/interactions/command-surfaces.spec.ts`; `../architecture/specs/editor-interactions.md`; [additional interaction cases](../tests/desktop-editing-cases.md). [Wordcraft amendment](../evidence/wordcraft-research.md).
 Dependencies: INT-1.13, INT-1.15.
 Session scope: One named behavior boundary and focused validation; use the existing qualified primitives. If it exceeds one bounded iteration, record the remaining acceptance and obtain a controller split before implementation.
-Acceptance: CMD-01–CMD-06 pass focused-editor routing, menu/toolbar/accessibility equivalence, supplied replacement ranges and late permission changes; host and native controls retain ownership.
+Acceptance: CMD-01–CMD-06 pass focused-editor routing, menu/toolbar/accessibility equivalence, supplied replacement ranges and late permission changes; host and native controls retain ownership. CMD-01 additionally checks registered aliases, no-op/read-only effects and declared CLI/agent semantic routes; queued synthetic UI input is not observed execution.
 
 Implementation:
 

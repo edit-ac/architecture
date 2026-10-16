@@ -131,10 +131,10 @@ Blocked behavior: Leave `LOC-1.5` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO w
 - [ ] LOC-1.6 Expose local flush and recovery state.
 
 Purpose: Deliver expose local flush and recovery state as one reviewable boundary.
-Context: `packages/web/src/storage/index.ts`; `tests/storage-lifecycle.test.mjs`; `../architecture/specs/storage-sync.md`.
+Context: `packages/web/src/storage/index.ts`; `tests/storage-lifecycle.test.mjs`; `../architecture/specs/storage-sync.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: LOC-1.5.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. Change only the named paths and directly required test/configuration glue.
-Acceptance: Flush resolves for its captured update set after completion; errors reject it and saved UI is cleared; recovery retains in-memory edits.
+Acceptance: Flush resolves for its captured update set after completion; errors reject it and saved UI is cleared; recovery retains in-memory edits. WCF-01: Repeated permanent recovery rejection suppresses unchanged expensive work, transient errors back off, and recovery preserves the last valid checkpoint/tail/outbox with explicit retry conditions and measured attempt/write counts.
 
 Implementation:
 
@@ -142,7 +142,7 @@ Implementation:
 
 Validation:
 
-- [ ] LOC-1.6-V1 npm run build; node --test tests/storage-lifecycle.test.mjs. Assert the acceptance cases above and record build/probe exit results and executed/passed/failed/skipped counts for actual test suites (nonzero matching tests required).
+- [ ] LOC-1.6-V1 npm run build; node --test tests/storage-lifecycle.test.mjs. Assert the acceptance cases above and record build/probe exit results and executed/passed/failed/skipped counts for actual test suites (nonzero matching tests required). Execute the named WCF-01 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress entry `LOC-1.6` with changed paths, exact command/result, source and implementation revisions, fixture/artifact hashes, and any preserved failure log. Durable milestone summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, changed symbols/files, exact failing fixture or missing fact, and next bounded action for `LOC-1.6`.

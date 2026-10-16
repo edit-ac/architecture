@@ -73,6 +73,12 @@ Use production artifacts and fixed hardware/browser/toolchain profiles from [ver
 
 Measure full highlight/format latency separately from input. Attribute >50 ms long tasks in ordinary-edit fixtures. A worker is not proof of responsiveness. Minimal disabled consumers must exclude optional grammar/presenter assets and issue zero requests for them. Device IME/accessibility/native rendering requires downstream real-platform evidence.
 
+## Work-count and structural rejection refinements
+
+[WCF-08/WCF-15/WCF-16](../tests/wordcraft-regression-cases.md) extend existing table/highlight owners. Reject table-into-own-cell and over-depth fragments before mutation under the bounded simple-cell policy; exercise copy, serialization, history and disposal afterward with small fixtures. Do not add nested-table semantics.
+
+Instrument cache hits/misses, measured cells, recomputed blocks and rendered updates separately from timings. Declare the affected dependency set for content versus width/font/zoom or grammar/query/theme changes; unaffected tables/blocks reuse results. Compare warm/incremental results to cold recomputation, bound retained resources and reject stale/cross-session results. This adds test observations, not a second model, general layout engine or always-on telemetry. Offline proofing remains deferred.
+
 ## Primary references
 
 - [Tree-sitter highlighting](https://tree-sitter.github.io/tree-sitter/3-syntax-highlighting.html) and [incremental parsing](https://tree-sitter.github.io/tree-sitter/using-parsers/3-advanced-parsing.html)

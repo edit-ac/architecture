@@ -1,5 +1,7 @@
 # Desktop conventions, native protocols and first-party combinations
 
+Wordcraft refinement (2026-10-16): selected existing IDs below include additional variants; [provenance and overlap](../evidence/wordcraft-research.md) distinguish them from the new WCF cases. Previous case evidence does not qualify added variants.
+
 Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
 
 Status: planned acceptance cases, not executed tests. Extends the existing catalogs; BRK-04 already owns selected Enter, REG-11 owns nested drag routing, and RCH-1.17 owns block reordering. Sources: [desktop](../evidence/desktop-editing-research.md), [native](../evidence/native-editing-research.md), [extensions/performance](../evidence/editing-performance-extension-research.md). Contracts: [interactions](../specs/editor-interactions.md), [rich content](../specs/rich-content-extensions.md), [native parity](../specs/native-sdk-parity.md), [verification](../specs/verification.md).
@@ -54,7 +56,7 @@ Risk dimensions: empty/start/end; forward/backward/collapsed/cell/node selection
 
 | ID | Priority | Setup and action | Required result |
 |---|---|---|---|
-| CMD-01 | P0 | Same edit from keyboard, Edit menu, context menu, toolbar and accessibility action | Same applicability/content/history and one commit; only focused editor handles it |
+| CMD-01 | P0 | Same edit from keyboard, Edit menu, context menu, toolbar and accessibility action Include registered aliases and declared native/CLI/agent semantic routes, empty/no-op and read-only outcomes; distinguish background UI event delivery. | Same applicability/content/history and one commit; only focused editor handles it Same target/revision yields equivalent accepted effects and intentional undo groups; observed execution is required, not a queued-event acknowledgement. Unavailable UI delivery is explicit. |
 | CMD-02 | P0 | Find field, host input or nested widget focused; Enter, Select All, undo/cut | Focus owner handles command; outer document unchanged |
 | CMD-03 | P0 | OS spelling/correction/reconversion range differs from visible selection | Captured supplied target replaced once; stale/invalid range rejects, never latest-caret fallback |
 | CMD-04 | P0 | Read-only changes while menu/dialog is open; cancel/close/reopen | Enablement revalidated at activation; no stale write or swallowed native focus action |
@@ -90,7 +92,7 @@ Risk dimensions: empty/start/end; forward/backward/collapsed/cell/node selection
 |---|---|---|---|
 | TBL-01 | P0 | Selected cell rectangle; Delete/Backspace versus Remove Rows/Columns | Clear contents retains geometry; explicit removal changes structure; undo restores identities and content |
 | TBL-02 | P0 | Text inside one cell versus whole-cell selection; type/Enter/clipboard | Distinct selection kinds route to declared command, never accidentally delete table |
-| TBL-03 | P0 | Rectangular paste mismatched dimensions, protected cells, merged cells if admitted | Profile's explicit expansion/rejection; no silent loss, partial writes or unsupported merge flattening |
+| TBL-03 | P0 | Rectangular paste mismatched dimensions, protected cells, merged cells if admitted Copy a multi-cell row through HTML and declared TSV/plain clipboard fallbacks, then paste into a matching rectangle. | Profile's explicit expansion/rejection; no silent loss, partial writes or unsupported merge flattening Preserve column/row boundaries and qualified marks; never serialize all cells as newlines into the first cell. Literal-paste policy remains explicit. |
 | TBL-04 | P1 | Resize/reorder handle beside text selection, touch scroll or nested cell input | One gesture/event owner; cancellation restores preview; no drag theft or duplicate commit |
 
 ## Official extension configurations — EXT-1.12, EXT-1.5, RGS-1.7

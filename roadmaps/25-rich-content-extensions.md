@@ -72,10 +72,10 @@ Blocked behavior: Leave `RCH-1.2` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 - [ ] RCH-1.3 Implement and validate implement revisioned token spans and cache invalidation.
 
 Purpose: Make syntax appearance a bounded projection of code text.
-Context: `crates/editac-highlighting/src/`; `crates/editac-highlighting/tests/highlight_incremental.rs`; `crates/editac-core/src/modules/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
+Context: `crates/editac-highlighting/src/`; `crates/editac-highlighting/tests/highlight_incremental.rs`; `crates/editac-core/src/modules/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: RCH-1.2.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Incremental and full recomputation agree for multiline comments/strings, Unicode and undo; stale/invalid spans reject, cache bounds hold, and tokenization emits no CRDT mutations.
+Acceptance: Incremental and full recomputation agree for multiline comments/strings, Unicode and undo; stale/invalid spans reject, cache bounds hold, and tokenization emits no CRDT mutations. WCF-16: Instrument recomputed blocks/cache work and compare warm incremental output with cold recomputation across version-key changes, undo and stale completion; unrelated blocks reuse results without cross-session aliasing.
 
 Implementation:
 
@@ -83,7 +83,7 @@ Implementation:
 
 Validation:
 
-- [ ] RCH-1.3-V1 cargo test -p editac-highlighting --test highlight_incremental --locked. Assert the acceptance cases; record exact command/exit, nonzero selected tests, failures/skips, fixture/revision hashes and relevant performance/artifact evidence.
+- [ ] RCH-1.3-V1 cargo test -p editac-highlighting --test highlight_incremental --locked. Assert the acceptance cases; record exact command/exit, nonzero selected tests, failures/skips, fixture/revision hashes and relevant performance/artifact evidence. Execute the named WCF-16 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress entry `RCH-1.3` links changed paths, source/implementation revisions, commands/results and fixture/artifact hashes. Preserve failures; durable summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, relevant symbols, remaining acceptance, exact failure/missing decision and next bounded action for `RCH-1.3`.
@@ -141,10 +141,10 @@ Blocked behavior: Leave `RCH-1.5` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 - [ ] RCH-1.6 Implement and validate complete bounded table row and column commands.
 
 Purpose: Fill missing table shape operations using the existing schema.
-Context: `crates/editac-core/src/modules/tables/`; `crates/editac-core/tests/table_shape.rs`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
+Context: `crates/editac-core/src/modules/tables/`; `crates/editac-core/tests/table_shape.rs`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md). [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: RCH-1.1.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Row/column operations validate before mutation and form one undo group; concurrent shape/cell edits and deleted destinations converge under fixed fixtures without presenter repair writes. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly.
+Acceptance: Row/column operations validate before mutation and form one undo group; concurrent shape/cell edits and deleted destinations converge under fixed fixtures without presenter repair writes. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly. WCF-08: Self-paste and already over-depth fragments reject before mutation under the existing simple-cell profile; subsequent copy/serialization/history/disposal remain bounded. No nested-table support is added.
 
 Implementation:
 
@@ -152,7 +152,7 @@ Implementation:
 
 Validation:
 
-- [ ] RCH-1.6-V1 cargo test -p editac-core --test table_shape --locked. Assert the acceptance cases; record exact command/exit, nonzero selected tests, failures/skips, fixture/revision hashes and relevant performance/artifact evidence.
+- [ ] RCH-1.6-V1 cargo test -p editac-core --test table_shape --locked. Assert the acceptance cases; record exact command/exit, nonzero selected tests, failures/skips, fixture/revision hashes and relevant performance/artifact evidence. Execute the named WCF-08 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress entry `RCH-1.6` links changed paths, source/implementation revisions, commands/results and fixture/artifact hashes. Preserve failures; durable summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, relevant symbols, remaining acceptance, exact failure/missing decision and next bounded action for `RCH-1.6`.
@@ -187,10 +187,10 @@ Blocked behavior: Leave `RCH-1.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 - [ ] RCH-1.8 Implement and validate qualify cell selection and rectangular clipboard.
 
 Purpose: Complete the existing cell interaction contract without a spreadsheet model.
-Context: `packages/web/src/modules/tables/`; `tests/browser/table-selection.spec.ts`; `fixtures/tables/selection/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
+Context: `packages/web/src/modules/tables/`; `tests/browser/table-selection.spec.ts`; `fixtures/tables/selection/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md). [Wordcraft amendment](../evidence/wordcraft-research.md).
 Dependencies: RCH-1.7.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Selection/navigation and rectangular paste preserve cell content and intended dimensions; illegal/oversized ranges and readonly targets fail safely with one paste history group. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly.
+Acceptance: Selection/navigation and rectangular paste preserve cell content and intended dimensions; illegal/oversized ranges and readonly targets fail safely with one paste history group. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly. The refined TBL-03/NCL-20 clipboard variants require declared row/column boundaries in HTML/TSV fallbacks; newline-only flattening into one cell is not success.
 
 Implementation:
 
@@ -233,10 +233,10 @@ Blocked behavior: Leave `RCH-1.9` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 - [ ] RCH-1.10 Implement and validate bound table invalidation and rendering work.
 
 Purpose: Keep ordinary table edits local to their affected geometry and cells.
-Context: `packages/web/src/modules/tables/`; `tests/browser/table-performance.spec.ts`; `fixtures/tables/performance/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
+Context: `packages/web/src/modules/tables/`; `tests/browser/table-performance.spec.ts`; `fixtures/tables/performance/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: RCH-1.8, RCH-1.9.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: A cell edit does not rebuild unrelated tables; input budgets, memory and touched-cell counts are recorded on fixed hardware, with stress limits honestly qualified and failed targets retained.
+Acceptance: A cell edit does not rebuild unrelated tables; input budgets, memory and touched-cell counts are recorded on fixed hardware, with stress limits honestly qualified and failed targets retained. WCF-15: Assert affected dependency sets and cache/measurement/update counts independently of timings; cold and warm results agree, unrelated tables stay untouched, and width/font/zoom changes invalidate only justified geometry.
 
 Implementation:
 
@@ -244,7 +244,7 @@ Implementation:
 
 Validation:
 
-- [ ] RCH-1.10-V1 npm run test:browser -- table-performance. Assert the acceptance cases; record exact command/exit, nonzero selected tests, failures/skips, fixture/revision hashes and relevant performance/artifact evidence.
+- [ ] RCH-1.10-V1 npm run test:browser -- table-performance. Assert the acceptance cases; record exact command/exit, nonzero selected tests, failures/skips, fixture/revision hashes and relevant performance/artifact evidence. Execute the named WCF-15 variants through this owner's real boundary; record case/fixture revisions and work/effect counts. Planning validation is not runtime evidence.
 
 Evidence: Progress entry `RCH-1.10` links changed paths, source/implementation revisions, commands/results and fixture/artifact hashes. Preserve failures; durable summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, relevant symbols, remaining acceptance, exact failure/missing decision and next bounded action for `RCH-1.10`.
