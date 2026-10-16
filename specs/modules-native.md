@@ -37,6 +37,26 @@ The optional browser `contentModules` factory renders existing v1 opaque image/t
 
 Simple table cells use labeled native controls for temporary text, selection, copy and composition. The portable prepared `tableCell` editor command carries owner ID, exact expected descriptor, zero-based row/column and bounded single-line text. Rust rejects stale/non-table/out-of-range/invalid edits before live mutation, retains marks on surviving text runs and unaffected cells, and updates the tuple plus inert tab/newline fallback in one atomic history group. The original source field remains import provenance; export uses the current rows. Disabled presenters preserve the tuple and fallback through storage recovery. Merged cells, nested blocks, spreadsheets and full native table editing are outside this boundary.
 
+The Rust `commands::table::rectangle_commands` preparation helper reuses those
+same commands and opaque descriptors. `CellRectangle` captures zero-based start
+and nonzero dimensions against one expected table. `Clear` empties cells while
+retaining geometry; structural removal remains `TableStructure`, and removing
+the final row/column rejects. `Paste` requires an exact rectangular matrix of
+literal single-line strings; embedded tabs are literal cell text, not separators.
+`PasteFragment` admits only unmarked plain paragraph cells; marks, atoms,
+containers, nested tables and merged geometry reject rather than flattening.
+Foreign clipboard decoding and browser event routing remain presenter work.
+At most 128 cells, 1024 fragment runs and 1 MiB replacement text are admitted.
+The host supplies captured protected coordinates; overlap rejects the whole
+action. Whole-document readonly/codec policy remains enforced by EditService.
+Submit the entire returned sequence to one preparation/commit, never one commit
+per cell. Every step carries its exact staged descriptor, so intervening edits
+invalidate it. Rows/cells remain positions within the frozen atomic tuple,
+not independently identified CRDT objects; the stable owner and surviving cell
+payloads are retained. Concurrent tuple writes use the existing Y.Map conflict
+rule with no presenter repair writes. This helper adds no schema/wire route or
+browser selection/gesture support claim.
+
 ## Native preparation output
 
 The first browser release does not require native SDK parity. The native roadmap proves the portable boundary and estimates the remaining work with evidence. Use a pinned UniFFI runtime/generator initially; measure copies and call count before freezing it. MPL-2.0 dependency licensing does not change the project's Apache-2.0 source license; retain required notices and review any modifications to dependency files.
