@@ -309,9 +309,13 @@ the captured source operation and canonical fragment hash; document identity mus
 differ and source admission rechecks its retained revision and current permission.
 Receipts do not qualify arbitrary caller-provided JSON or transformed imports.
 
-Rich import currently prefers validated internal fragments, then explicitly
-provided registered Markdown, then literal plain text. Explicit literal paste and
-code-context paste bypass rich parsing. All original flavors remain owned recovery
-source. HTML has no shared native sanitizer yet: it returns an unavailable-codec
-diagnostic and falls back to supplied plain text, or rejects without mutation.
-This is an unfinished SFA-1.2 criterion, not full multi-format/native qualification.
+Rich import prefers validated internal fragments, then explicitly provided
+registered Markdown, then shared sanitized HTML, then literal plain text. Explicit
+literal paste and code-context paste bypass rich parsing. All original flavors
+remain owned recovery source. The common HTML whitelist admits bounded text,
+marks, headings, lists, quotes and code with source-preserving diagnostics. Optional
+resource elements require explicit codecs; unsupported HTML falls back only to
+supplied plain text, or rejects without mutation and reports its rejection reason.
+Session/SQLite and generated Swift qualify this shared feature boundary. Native
+clipboard/provider lifetime, UI/drag integration and platform/performance/release
+qualification remain separate; the default packed size cap is still unmet.
