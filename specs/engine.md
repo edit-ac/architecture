@@ -121,6 +121,27 @@ Host focus/menu side effects are outside the atomic document mutation contract.
 Reentrant adapter callbacks cannot mutate a document while a transaction is active.
 Revision numbers are local observation tokens, not globally comparable CRDT timestamps.
 
+### Bounded table fallback and WASM journal transport
+
+Prepared table edits retain the validated opaque table descriptor and atomically
+synchronize its plain-text fallback. Replace only the scalar-aligned changed
+range of the fallback, preserving unchanged text identities, stable anchors and
+one semantic history/update group. Whole-table fallback rewrites must not consume
+CRDT clocks and history for unchanged cells. The v5 schema and descriptor format
+remain unchanged.
+
+The WASM restore call keeps its `(metadata JSON, binary bytes)` signature and
+existing 2 MiB JSON, 4096 journal-entry and 16 MiB combined binary restore limits.
+For journals, the binary argument concatenates the original checkpoint and every
+acknowledged update in order. Metadata supplies `checkpointBytes` and a
+`binaryJournal` array of `{identity, byteLength}` records; `journal` is empty.
+Validate all lengths, exact buffer coverage and identities before publishing a
+restored engine. Reject mixed legacy/binary journals, absent paired metadata,
+overruns, trailing bytes and unsupported identities. Legacy JSON journals remain
+readable within their existing limits. Public SDK checkpoint/journal values and
+persisted bytes are unchanged; this transport avoids decimal JSON expansion,
+without compaction, truncation, replay substitution or higher limits.
+
 ## Ordered text and mark batch coordinates
 
 The existing prepared editor batch admits `replaceAt` and `markAt` commands over one logical owner. Their `from`/`to` offsets are UTF-16 cuts in the disposable replica after all preceding commands, not coordinates captured from the live entry snapshot. A collapsed replacement inserts; empty replacement text deletes. Mark actions reuse the qualified formatting planner, including code/link/unknown-attribute policy. Mixed commands stage in order and publish one live update only after the entire plan passes admission. Invalid later owners, surrogate-interior cuts, mark policy or resource limits reject without changing content, state vector, revision, history or subscribers.
