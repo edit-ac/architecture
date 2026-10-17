@@ -158,10 +158,10 @@ Blocked behavior: Leave `DEL-1.6` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 - [ ] DEL-1.7 Complete cross-platform input and accessibility evidence.
 
 Purpose: Complete cross-platform input and accessibility evidence as one bounded reusable delivery boundary.
-Context: `tests/manual/full-platform-matrix.md`; `../architecture/evidence/full-platform-input.md`; `../architecture/specs/delivery-scenarios.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
+Context: `tests/manual/full-platform-matrix.md`; `../architecture/evidence/full-platform-input.md`; `../architecture/specs/delivery-scenarios.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md). [Platform editing contract](../specs/platform-editing-services.md); [ENV acceptance variants](../tests/platform-editing-cases.md).
 Dependencies: DEL-1.2, DEL-1.3.
 Session scope: One named implementation/qualification boundary, 15–45 minutes plus focused checks; controller splits before exceeding scope.
-Acceptance: Every claimed native platform has actual input/accessibility evidence; named target-platform simulators/emulators/VMs may supply the required platform cases; synthetic browser events alone are insufficient. Require each native SDK owned NAT/SEL/MOV/CMD variant and physical or virtual platform PRF-07 evidence with exact OS/toolkit/IME/profile versions.
+Acceptance: Every claimed native platform has actual input/accessibility evidence; named target-platform simulators/emulators/VMs may supply the required platform cases; synthetic browser events alone are insufficient. Require each native SDK owned NAT/SEL/MOV/CMD variant and physical or virtual platform PRF-07 evidence with exact OS/toolkit/IME/profile versions. Consume applicable ENV-01–12 observations for each claimed native control: user spelling on/off and locale availability, independent autocorrection/coupled traits, platform/off/custom behavior, correction undo/redo and actual command/menu/gesture routing. Missing optional services require passing explicit fallback cases; old receipts do not qualify added variants.
 
 Implementation:
 
@@ -169,7 +169,7 @@ Implementation:
 
 Validation:
 
-- [ ] DEL-1.7-V1 node tests/scenarios/run.mjs verify-manual-evidence; execute tests/manual/full-platform-matrix.md on declared physical devices or target-platform virtual runtimes. Assert all acceptance cases; record exact command/exit, nonzero executed/passed/failed/skipped counts, fixture/revision hashes and unavailable-platform evidence.
+- [ ] DEL-1.7-V1 node tests/scenarios/run.mjs verify-manual-evidence; execute tests/manual/full-platform-matrix.md on declared physical devices or target-platform virtual runtimes. Assert all acceptance cases; record exact command/exit, nonzero executed/passed/failed/skipped counts, fixture/revision hashes and unavailable-platform evidence. Record requested/observed/unknown settings, dictionary/IME/locale and exact-artifact ENV coverage. Restore isolated profile settings and keep prepared checker/text-service data separate from actual OS observations; no live hosted checker or paid provider validation.
 
 Evidence: Separate progress entry `DEL-1.7` with changed files, source/implementation revisions, commands, fixture IDs and durable artifact links; preserve failed evidence.
 Handoff: Last completed substep, current symbol/file, exact failing case or missing decision, and next bounded action for `DEL-1.7`.

@@ -418,24 +418,24 @@ Evidence: EXT-1.17 progress links the downloadable recipe, exact configured API,
 Handoff: Last verified scenario, remaining browser/input boundary and next bounded action.
 Blocked behavior: Keep EXT-1.17 unchecked with the exact matcher/command prerequisite; do not replace lookup with URL interpolation or claim a fixture resolver is production integration.
 
-### Task EXT-1.18 — Ship an optional spellcheck extension recipe
+### Task EXT-1.18 — Prefer platform spellcheck with an optional custom recipe
 
-- [ ] EXT-1.18 Ship an optional spellcheck extension recipe.
+- [ ] EXT-1.18 Prefer platform spellcheck with an optional custom recipe.
 
-Purpose: Prove a useful decoration/service extension without new committed document semantics.
-Context: [Spelling contract](../specs/extension-dx.md#spell-checking-custom-parsing-and-url-insertion); `examples/extensions/spellcheck/`; `tests/extension-dx/spellcheck.test.mjs`.
+Purpose: Reuse browser/user spelling facilities by default and prove an explicit optional checker without new committed document semantics.
+Context: [Spelling contract](../specs/extension-dx.md#spell-checking-custom-parsing-and-url-insertion); `examples/extensions/spellcheck/`; `tests/extension-dx/spellcheck.test.mjs`. [Platform editing contract](../specs/platform-editing-services.md); [ENV variants](../tests/platform-editing-cases.md).
 Dependencies: EXT-1.15.
 Cross-roadmap feature gates: SDK-1.12, with exact applicable passing artifacts; these are parent-specific gates, not completion of an expanded downstream track.
-Session scope: One configured local-dictionary/mock-checker recipe with suggestions and prepared correction.
-Acceptance: DXC-15/16: checker/dictionary assets are optional, decorations are ephemeral and changed-range analysis excludes composition. Only an accepted current suggestion makes one prepared replacement; stale results do nothing. Preserve formatting/selection/undo and instance isolation. Native browser spellcheck is documented separately and no hosted checker is required.
+Session scope: One browser platform/off/custom policy adapter and prepared custom-checker recipe. Reuse existing input/history primitives; native implementation and platform-wide observations remain with their named owners.
+Acceptance: DXC-15/16 and ENV-01–06 pass: default platform reuse respects user/inherited settings; off and explicit custom modes preserve independent autocorrection and report unknown/unsupported or coupled traits. No inferred setting or unavailable locale triggers forced enablement/custom fallback. Platform/off load no checker/dictionary/worker; custom presentation avoids unapproved overlap. Accepted current corrections make one prepared replacement with formatting/selection/shared undo; stale analysis does nothing. Preserve composition, code exclusions, instance isolation and disposal. No hosted checker is required. Actual browser observations remain mandatory under INT-1.14, with native control evidence owned separately.
 
 Implementation:
 
-- [ ] EXT-1.18-I1 Provide one-import configured checking, a tiny deterministic dictionary, managed async/worker adapter where needed and accessible suggestions. Reuse existing prepared replacement and decoration ports; document locale/Unicode behavior, limits, failure and disposal. Record an owner gap if an admitted decoration or replacement primitive is unavailable.
+- [ ] EXT-1.18-I1 Provide one-import platform/off/custom policy with separate autocorrection, host preference preservation and capability diagnostics. Reuse native browser spelling presentation; provide a tiny prepared dictionary/mock checker only for explicit custom mode, with managed async work and accessible suggestions. Reuse replacement/decoration/history ports, preserve user settings on reconfiguration/disposal, and document locale/Unicode/exclusion and coupled-control limits. Supply the actual-browser runbook and record upstream gaps rather than duplicating missing primitives.
 
 Validation:
 
-- [ ] EXT-1.18-V1 Run `node scripts/test-extension-dx.mjs --group spellcheck`. Verify no document/history effects from analysis, composed/Unicode text behavior, accepted versus stale suggestions, disabled-asset absence, readonly, undo and teardown through the real engine with prepared checker data.
+- [ ] EXT-1.18-V1 Run `node scripts/test-extension-dx.mjs --group spellcheck`. Execute ENV-01–06 and correction/history aspects of ENV-07 with prepared checker data through the real engine: user-default preservation, off/custom/autocorrection combinations, unavailable/unknown locale/provider, asset absence, overlap handling, Unicode/composition, current/stale acceptance, readonly, selection/formatting, one undo/redo and teardown. Assert emitted effects/request counts and mode/instance isolation. Hand off the exact browser fixture/runbook to INT-1.14; synthetic events alone do not establish platform support.
 
 Evidence: EXT-1.18 progress links the recipe, dictionary/checker scope, decoration outcomes and correction evidence.
 Handoff: Last suggestion/input/resource case, unavailable primitive or exact failure and next action.

@@ -139,6 +139,10 @@ Initialization failure leaves an accessible read-only/recovery view with a visib
 Destroy must settle or explicitly reject pending work and remove all listeners/observers/subscriptions.
 Document whether failed persistence requires recovery export before a host discards the handle.
 
+## Platform editing services
+
+Follow the [platform editing contract](platform-editing-services.md) and [ENV variants](../tests/platform-editing-cases.md). Spellcheck defaults to platform/user behavior with explicit off/custom modes; preserve host/inherited attributes and keep autocorrection separate. Reuse browser spelling UI and native input facilities without loading a checker in platform/off mode. Effective settings may be unknown. Route browser historyUndo/historyRedo, menus and keyboard intents through shared history exactly once, preserving focused nested controls and OS-reserved shortcuts. Actual browser/OS observations are distinct from prepared event replays.
+
 ## Input routing
 
 Handle `beforeinput`, `input`, composition events and a bounded MutationObserver fallback.

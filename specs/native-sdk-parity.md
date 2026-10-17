@@ -44,6 +44,10 @@ others. Each OS must pass its own toolkit feasibility, implementation, packaged
 consumer, input and accessibility gates. Cross-platform qualification records
 each result separately; a missing mandatory target remains an open deliverable.
 
+## Platform services and preferences
+
+The [platform editing contract](platform-editing-services.md) refines the existing native input/command owners and their [ENV variants](../tests/platform-editing-cases.md). Default platform spellcheck reuses the chosen control and respects user settings; off and explicit custom modes expose unsupported/coupled traits without silently changing independent autocorrection or keyboard behavior. Reuse system selection, clipboard, text services, accessibility and command affordances through existing session boundaries. Platform Edit menus, Cmd/Ctrl+Z, redo and native gestures must forward to shared history; enabling a second native undo stack or merely disabling it does not satisfy command support. Native -1.6/-1.7 supply prepared/control evidence and DEL-1.7 supplies exact-artifact platform observations, including on/off settings and missing-provider fallbacks. Old preparation/completion receipts do not qualify these added variants.
+
 ## Mandatory capability matrix
 
 Every listed native platform must deliver the following semantics. Create the

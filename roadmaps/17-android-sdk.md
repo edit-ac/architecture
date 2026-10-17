@@ -137,18 +137,18 @@ Blocked behavior: Unchecked; name owner/unblock condition.
 - [ ] AND-1.6 Integrate composition and OS replacements.
 
 Purpose: composition.
-Context: `native/android/sdk/src/main/input/`. [additional interaction cases](../tests/desktop-editing-cases.md).
+Context: `native/android/sdk/src/main/input/`. [additional interaction cases](../tests/desktop-editing-cases.md). [Platform editing contract](../specs/platform-editing-services.md); [ENV acceptance variants](../tests/platform-editing-cases.md).
 Dependencies: AND-1.5.
 Session scope: 15–45m; split if larger.
-Acceptance: Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs. Qualify NAT-01/NAT-02 through deterministic native protocol fixtures; supply actual OS/IME runbooks and preliminary observations for DEL-1.7, without claiming device qualification here. Android additionally binds NAT-06 handwriting preview/fallback where available.
+Acceptance: Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs. Qualify NAT-01/NAT-02 through deterministic native protocol fixtures; supply actual OS/IME runbooks and preliminary observations for DEL-1.7, without claiming device qualification here. Android additionally binds NAT-06 handwriting preview/fallback where available. ENV-01–06/09/12 refine native control policy: default platform spelling respects user settings, off/custom are explicit, autocorrection remains independent and unsupported/coupled traits are reported. Reuse the selected control/provider; accepted corrections use captured targets once. No implicit checker dependency/service or automatic fallback is allowed.
 
 Implementation:
 
-- [ ] AND-1.6-I1 Integrate InputConnection composing, batch-edit and selection state with the shared overlap policy. Handle supported autocorrect/dictation replacements without committing provisional input twice.
+- [ ] AND-1.6-I1 Integrate InputConnection composing, batch-edit and selection state with the shared overlap policy. Handle supported autocorrect/dictation replacements without committing provisional input twice. Expose platform/off/custom spellcheck policy and independent autocorrection using the control adapter; preserve IME services and diagnose inseparable flags. Reuse configured host-checker ports where supported; never duplicate engine semantics.
 
 Validation:
 
-- [ ] AND-1.6-V1 `bash native/android/scripts/check.sh composition`. Assert acceptance; require nonzero matching tests.
+- [ ] AND-1.6-V1 `bash native/android/scripts/check.sh composition`. Assert acceptance; require nonzero matching tests. Include prepared/control ENV preference/replacement variants and actual-control on/off/correction observations where available; supply exact settings/locale/toolkit and unqualified combinations to DEL-1.7. No synthetic-only platform claim.
 
 Evidence: Commands/counts/revisions in progress.
 Handoff: Last substep and next action.
@@ -159,10 +159,10 @@ Blocked behavior: Unchecked; name owner/unblock condition.
 - [ ] AND-1.7 Route commands, history and read-only state.
 
 Purpose: commands.
-Context: `native/android/sdk/src/main/commands/`. [additional interaction cases](../tests/desktop-editing-cases.md).
+Context: `native/android/sdk/src/main/commands/`. [additional interaction cases](../tests/desktop-editing-cases.md). [Platform editing contract](../specs/platform-editing-services.md); [ENV acceptance variants](../tests/platform-editing-cases.md).
 Dependencies: AND-1.5, AND-1.6.
 Session scope: 15–45m; split if larger.
-Acceptance: Existing native actions honor shared history/capabilities and read-only state; later adapters must use this same mutation gate. NAT-07 command enablement/routing uses the appropriate first-party profile and injected transfer/service ports; unavailable optional services are explicit. Full NAT-10/NAT-11 transfer behavior remains with the clipboard owner, not an entry prerequisite here.
+Acceptance: Existing native actions honor shared history/capabilities and read-only state; later adapters must use this same mutation gate. NAT-07 command enablement/routing uses the appropriate first-party profile and injected transfer/service ports; unavailable optional services are explicit. Full NAT-10/NAT-11 transfer behavior remains with the clipboard owner, not an entry prerequisite here. ENV-07/08 route native undo/redo keys, Edit/context menus, accessibility actions and supported gestures to shared history exactly once, with current enablement and nested-responder/composition ownership. Native storage/projection changes cannot create a competing undo stack.
 
 Implementation:
 
@@ -170,7 +170,7 @@ Implementation:
 
 Validation:
 
-- [ ] AND-1.7-V1 `bash native/android/scripts/check.sh commands`. Assert acceptance; require nonzero matching tests.
+- [ ] AND-1.7-V1 `bash native/android/scripts/check.sh commands`. Assert acceptance; require nonzero matching tests. Include ENV-07/08 empty/denied history, correction undo/redo, menu/key/gesture routing, duplicate delivery, remote edits and two-editor/nested-field ownership. Distinguish protocol checks from actual OS observations for DEL-1.7.
 
 Evidence: Commands/counts/revisions in progress.
 Handoff: Last substep and next action.

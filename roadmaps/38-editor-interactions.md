@@ -133,10 +133,10 @@ Blocked behavior: Leave `INT-1.5` unchecked with the owner, unblock condition an
 - [ ] INT-1.6 Implement contextual Tab and platform shortcuts.
 
 Purpose: Implement contextual Tab and platform shortcuts as one bounded behavior and regression boundary.
-Context: `packages/web/src/input/keyboard.ts`; `packages/web/src/commands/`; `tests/browser/interactions/keyboard.spec.ts`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md).
+Context: `packages/web/src/input/keyboard.ts`; `packages/web/src/commands/`; `tests/browser/interactions/keyboard.spec.ts`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md). [Platform editing contract](../specs/platform-editing-services.md); [ENV acceptance variants](../tests/platform-editing-cases.md).
 Dependencies: INT-1.5.
 Session scope: One named behavior group plus its focused validation; change only named paths and directly required test/configuration glue.
-Acceptance: KEY-01–KEY-07 pass for prose focus traversal, list indentation, literal code indentation, table-cell navigation, keyboard escape and default shortcut/toolbar parity. Modifier handling permits AltGraph/dead keys and preserves browser/OS commands.
+Acceptance: KEY-01–KEY-07 pass for prose focus traversal, list indentation, literal code indentation, table-cell navigation, keyboard escape and default shortcut/toolbar parity. Modifier handling permits AltGraph/dead keys and preserves browser/OS commands. ENV-08 preserves system shortcut/focus behavior and command applicability across nested host controls.
 
 Implementation:
 
@@ -144,7 +144,7 @@ Implementation:
 
 Validation:
 
-- [ ] INT-1.6-V1 npm run test:interactions -- --group keyboard. Test applicable/inapplicable command branches, key repeat, selection after indentation and actual focus destination; non-US/AT device proof remains separate. Record nonzero executed/passed/failed/skipped counts; missing tests and zero matches fail acceptance.
+- [ ] INT-1.6-V1 npm run test:interactions -- --group keyboard. Test applicable/inapplicable command branches, key repeat, selection after indentation and actual focus destination; non-US/AT device proof remains separate. Record nonzero executed/passed/failed/skipped counts; missing tests and zero matches fail acceptance. Include ENV-08 focused-editor, Select All, Find, reserved shortcut and menu/key ownership variants.
 
 Evidence: Progress entry `INT-1.6` with case IDs, source/implementation/fixture revisions, exact commands/counts and preserved artifacts under `../architecture/evidence/editor-interactions/`.
 Handoff: Record the last finished substep, changed paths/symbols, failing case or missing capability and next bounded action for `INT-1.6`.
@@ -155,10 +155,10 @@ Blocked behavior: Leave `INT-1.6` unchecked with the owner, unblock condition an
 - [ ] INT-1.7 Handle composition and non-keyboard replacement exactly once.
 
 Purpose: Handle composition and non-keyboard replacement exactly once as one bounded behavior and regression boundary.
-Context: `packages/web/src/input/`; `tests/browser/interactions/replacement.spec.ts`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md).
+Context: `packages/web/src/input/`; `tests/browser/interactions/replacement.spec.ts`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md). [Platform editing contract](../specs/platform-editing-services.md); [ENV acceptance variants](../tests/platform-editing-cases.md).
 Dependencies: INT-1.3, INT-1.6.
 Session scope: One named behavior group plus its focused validation; change only named paths and directly required test/configuration glue.
-Acceptance: EVT-01–EVT-10 deterministic replays pass, including missing/noncancelable beforeinput, empty target ranges, IME ordering, dictation/correction, spellcheck, read-only and disposal. These passes do not establish real OS support.
+Acceptance: EVT-01–EVT-10 deterministic replays pass, including missing/noncancelable beforeinput, empty target ranges, IME ordering, dictation/correction, spellcheck, read-only and disposal. These passes do not establish real OS support. ENV-04/09/12 refine platform corrections and available text-service replacements: use reported stable targets and one admitted edit without implicitly enabling services or treating provisional/non-typing input as a Markdown trigger.
 
 Implementation:
 
@@ -166,7 +166,7 @@ Implementation:
 
 Validation:
 
-- [ ] INT-1.7-V1 npm run test:interactions -- --group replacement. Use prepared traces with stated provenance; assert content, marks, selection, commit count and history. Actual IME/voice/keyboard observations are required in INT-1.14. Record nonzero executed/passed/failed/skipped counts; missing tests and zero matches fail acceptance.
+- [ ] INT-1.7-V1 npm run test:interactions -- --group replacement. Use prepared traces with stated provenance; assert content, marks, selection, commit count and history. Actual IME/voice/keyboard observations are required in INT-1.14. Record nonzero executed/passed/failed/skipped counts; missing tests and zero matches fail acceptance. Include ENV-04/09/12 prepared replacement, stale/focus/composition and unsupported-result variants; keep actual OS behavior separately qualified.
 
 Evidence: Progress entry `INT-1.7` with case IDs, source/implementation/fixture revisions, exact commands/counts and preserved artifacts under `../architecture/evidence/editor-interactions/`.
 Handoff: Record the last finished substep, changed paths/symbols, failing case or missing capability and next bounded action for `INT-1.7`.
@@ -265,18 +265,18 @@ Blocked behavior: Leave `INT-1.11` unchecked with the owner, unblock condition a
 - [ ] INT-1.12 Verify undo and command races across input paths.
 
 Purpose: Verify undo and command races across input paths as one bounded behavior and regression boundary.
-Context: `tests/browser/interactions/history.spec.ts`; `packages/web/src/commands/`; `packages/web/src/input/`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md).
+Context: `tests/browser/interactions/history.spec.ts`; `packages/web/src/commands/`; `packages/web/src/input/`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md). [Platform editing contract](../specs/platform-editing-services.md); [ENV acceptance variants](../tests/platform-editing-cases.md).
 Dependencies: INT-1.4, INT-1.9, INT-1.10, INT-1.11.
 Session scope: One named behavior group plus its focused validation; change only named paths and directly required test/configuration glue.
-Acceptance: HIS-01–HIS-05 pass through keyboard/menu/toolbar paths. Remote edits survive local undo; canceled/read-only/stale/cross-session actions produce no content or history changes.
+Acceptance: HIS-01–HIS-05 pass through keyboard/menu/toolbar paths. Remote edits survive local undo; canceled/read-only/stale/cross-session actions produce no content or history changes. ENV-07 routes Cmd/Ctrl+Z, declared redo bindings, historyUndo/historyRedo and menu/gesture intents through one shared history. Native DOM/control history and duplicate key/input delivery cannot cause extra undo or record projections. Composition and focused nested inputs retain their qualified ownership.
 
 Implementation:
 
-- [ ] INT-1.12-I1 Add integrated deterministic race cases around finalized composition, formatting, paste, slash and structural commands; repair command routing or explicit history boundaries where mismatches occur.
+- [ ] INT-1.12-I1 Add integrated deterministic race cases around finalized composition, formatting, paste, slash and structural commands; repair command routing or explicit history boundaries where mismatches occur. Bridge platform history affordances to shared commands and enabled state; disabling a native stack alone does not satisfy routing.
 
 Validation:
 
-- [ ] INT-1.12-V1 npm run test:interactions -- --group history. Assert resulting selection and document state after undo/redo, exact emitted updates, rejected-command atomicity and listener cleanup after two-editor disposal. Record nonzero executed/passed/failed/skipped counts; missing tests and zero matches fail acceptance.
+- [ ] INT-1.12-V1 npm run test:interactions -- --group history. Assert resulting selection and document state after undo/redo, exact emitted updates, rejected-command atomicity and listener cleanup after two-editor disposal. Record nonzero executed/passed/failed/skipped counts; missing tests and zero matches fail acceptance. Include ENV-07 correction undo/redo, empty/denied state, duplicate event delivery, remote edits, composition and focused nested fields. Hand actual menu/gesture observations to INT-1.14.
 
 Evidence: Progress entry `INT-1.12` with case IDs, source/implementation/fixture revisions, exact commands/counts and preserved artifacts under `../architecture/evidence/editor-interactions/`.
 Handoff: Record the last finished substep, changed paths/symbols, failing case or missing capability and next bounded action for `INT-1.12`.
@@ -397,10 +397,10 @@ Blocked behavior: Leave `INT-1.18` unchecked with owner, unblock condition and r
 - [ ] INT-1.14 Qualify actual typing and assistive-technology support.
 
 Purpose: Qualify actual typing and assistive-technology support as one bounded behavior and regression boundary.
-Context: `tests/browser/interactions/`; `../architecture/evidence/editor-interactions/`; `../architecture/specs/verification.md`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md).
+Context: `tests/browser/interactions/`; `../architecture/evidence/editor-interactions/`; `../architecture/specs/verification.md`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md). [Platform editing contract](../specs/platform-editing-services.md); [ENV acceptance variants](../tests/platform-editing-cases.md).
 Dependencies: INT-1.12, INT-1.13, INT-1.17, INT-1.18.
 Session scope: One named behavior group plus its focused validation; change only named paths and directly required test/configuration glue.
-Acceptance: Every mandatory catalog case has passing exact-revision evidence across the declared browser/device matrix. IME, native dictation/correction, screen-reader editing, voice control and non-US layouts have physical or target-platform virtual observations or tested hardware-only equivalents under verification.md; record their limitations and untested combinations explicitly. Include the owned SEL/MOV/XFR/CMD variants and mandatory platform gesture/OS-command observations from the additional catalog. Optional rich tools remain owned by track 25.
+Acceptance: Every mandatory catalog case has passing exact-revision evidence across the declared browser/device matrix. IME, native dictation/correction, screen-reader editing, voice control and non-US layouts have physical or target-platform virtual observations or tested hardware-only equivalents under verification.md; record their limitations and untested combinations explicitly. Include the owned SEL/MOV/XFR/CMD variants and mandatory platform gesture/OS-command observations from the additional catalog. Optional rich tools remain owned by track 25. Consume ENV-01–12 for each claimed browser/OS capability, especially actual platform spelling on/off, separate autocorrection, unknown/unavailable locale/provider, accepted correction and key/Edit/context-menu history. Optional service absence requires a tested fallback, not a service-support pass.
 
 Implementation:
 
@@ -408,7 +408,7 @@ Implementation:
 
 Validation:
 
-- [ ] INT-1.14-V1 npm run test:interactions -- --group all. Record per-ID and per-platform executed/passed/failed/skipped counts, device steps and observations, revisions/hashes and logs. No missing suite, skipped mandatory row, synthetic-only IME proof or paid provider probe can pass. Record nonzero executed/passed/failed/skipped counts; missing tests and zero matches fail acceptance.
+- [ ] INT-1.14-V1 npm run test:interactions -- --group all. Record per-ID and per-platform executed/passed/failed/skipped counts, device steps and observations, revisions/hashes and logs. No missing suite, skipped mandatory row, synthetic-only IME proof or paid provider probe can pass. Record nonzero executed/passed/failed/skipped counts; missing tests and zero matches fail acceptance. Use isolated setting profiles and restore them; record exact browser/OS/IME/locale, requested/effective/unknown policy and actual-versus-prepared observations. Standalone WebKit is not Safari/mobile qualification. No live hosted checker/provider calls.
 
 Evidence: Progress entry `INT-1.14` with case IDs, source/implementation/fixture revisions, exact commands/counts and preserved artifacts under `../architecture/evidence/editor-interactions/`.
 Handoff: Record the last finished substep, changed paths/symbols, failing case or missing capability and next bounded action for `INT-1.14`.
