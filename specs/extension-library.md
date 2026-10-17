@@ -30,6 +30,11 @@ promise arbitrary new editing semantics without engine work. A host may supply
 its own renderer implementation through a typed interface; renderer callbacks,
 code and downloaded executable plugins never live in document state. Unknown
 types and versions retain their bounded original payload and explicit fallback.
+Internal fragment runs retain unknown character attributes in the optional
+`opaqueMarks` carrier under the [common format bounds](formats.md). This is
+inert preservation through prepared transfer/history/storage, with no registry
+admission, rendering capability or host permission implied. Known mark commands
+remain restricted to their declared semantics.
 
 ### Implemented public v1 entry points
 

@@ -127,6 +127,26 @@ descriptor installation and resulting caret belong to the same prepared update.
 Do not split input into independent paragraph parses: references and block structure cross paragraph boundaries.
 Maintain source ranges for diagnostics when the parser exposes them.
 Unsupported constructs must retain recoverable source and report an actionable diagnostic.
+Internal v1 fragment runs may include `opaqueMarks: [{key, value}]` beside the
+six named `marks`. The common validator admits at most 32 distinct opaque keys
+per run, 128 UTF-8 bytes per key (nonempty, no controls, disjoint from the six
+named keys), inert finite JSON values with interoperable numbers (integer magnitudes at most
+2^53−1), depth at most 8, 256 value nodes,
+16 KiB per descriptor and 64 KiB descriptors per run. The existing 1 MiB
+clipboard and 2 MiB prepared request caps still apply. Null/removal values,
+duplicate keys and named-key aliases reject before mutation. Omitted fields
+remain compatible; ordinary named marks retain their existing rules. Run text
+supplies contiguous scalar-safe UTF-16 spans; marks may overlap across different
+keys, never duplicate a key in one span. Unknown values do not register renderers,
+commands or permissions. Internal capture/export/import, prepared transfer,
+history and durable recovery preserve exact descriptors; external HTML/plain
+flavors have no opaque fidelity claim. Markdown export reports
+`opaque-marks-internal-only` and retains the exact typed recovery fragment;
+source reconciliation never treats opaque spans as named-only equivalents. Cut deletes only after the lossless
+internal flavor and the requested fallbacks are acknowledged. Unsupported or
+invalid opaque data must reject or retain exact recoverable source, never silently
+drop descriptors. Code and declared atomic fallback profiles remain restrictive.
+
 Unknown atoms/marks retain namespaced type/version and validated data even without a renderer.
 No Markdown export may silently erase unknown content to make a round-trip assertion pass.
 Validate target schema and resource limits before committing any prepared import.
