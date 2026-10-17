@@ -36,6 +36,8 @@ inert preservation through prepared transfer/history/storage, with no registry
 admission, rendering capability or host permission implied. Known mark commands
 remain restricted to their declared semantics.
 
+The [core/extension boundary](extension-dx.md#core-and-extension-boundaries) and [speed-critical interfaces](extension-dx.md#interfaces-on-speed-critical-paths) also govern the planned authoring facade. Basic configurable formatting need not acquire an extension dispatch layer. Heavy behavior declares optional readiness, operation/source/range interests and managed lifecycle; reuse the existing indexed runtime. Register/freeze admission once, and verify that disabled or unrelated extensions add no input callbacks or document/registry scans. EXT-1.14/1.15 define these planned interfaces; this does not change the qualified public v1 exports below.
+
 ### Implemented public v1 entry points
 
 `@edit-ac/core/extensions` owns the portable registry (also re-exported compatibly
@@ -196,6 +198,8 @@ Track 39 uses these same registration/presenter/conformance interfaces for [assi
 
 
 ## Official configuration profiles
+
+User amendment, 2026-10-17: [the extension DX contract](extension-dx.md) and the SDK-1.11/1.12, EXT-1.14–1.20 and FIT-1.10/1.11 follow-ups in existing roadmaps make explicit per-instance extension composition the primary public API. Optional default/document presets are inspectable convenience configurations, not use-case restrictions or separate engines. Existing core/document-tools/code-tools and Task contracts below remain compatibility and qualification inputs. The planned facade hides ordinary registry/codec/worker orchestration behind one import and typed configuration, with independent heavy bundles and an approachable custom authoring API. This does not change existing stored semantics, byte budgets or completed evidence.
 
 First-party ownership must produce repeatable configurations. Track 21 publishes versioned core, document-tools and code-tools presets with exact extension identities, required capabilities, compatible version ranges, deterministic command/keymap/input-rule precedence, schema admission, optional host permissions and explicit conflicts. A host's explicit remapping is allowed and appears in diagnostics; registration/import order cannot silently choose a winner. Validate the entire configuration before activation and report actionable duplicate/conflict/missing-capability errors without mutating an open document. Upgrading or disabling a presenter cannot reinterpret or drop stored content; retain the declared lossless fallback and gate serialization/schema migrations through existing contracts.
 

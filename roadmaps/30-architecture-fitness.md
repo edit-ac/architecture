@@ -216,3 +216,55 @@ Validation:
 Evidence: Separate progress entry `FIT-1.9` links changed paths, immutable inputs and focused check artifacts; retain failed evidence.
 Handoff: Last completed substep, current file/symbol, exact failure or unresolved choice, and the next bounded action.
 Blocked behavior: Leave `FIT-1.9` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with owner, unblock condition and bounded retry trigger. Select another dependency-ready task; otherwise stop and report.
+
+## Extension DX follow-up — 2026-10-17
+
+User-authorized additions to this existing roadmap; no separate extension DX track or runner is created. Read [the shared extension DX contract](../specs/extension-dx.md) and [32 planned acceptance cases](../tests/extension-dx-cases.md). Individual extension composition is primary; optional default/document presets are convenience configurations, not use-case restrictions. Keep the same execution, ownership, deterministic fixture, paid-inference, evidence and teardown rules as the original tasks.
+
+Original task IDs, completed progress and qualification receipts are preserved. They do not complete these added parents. Previously qualified baseline prerequisites keep their original parent/artifact scope; new facade functionality requires the named new feature gates. Cross-roadmap feature gates refer to specific parents, not a whole expanded track that would introduce a dependency cycle. Adopt revised sources only at an owning controller's safe checkpoint; do not change active queues or start duplicate workers. Runtime, platform and release claims remain evidence-gated.
+
+### Task FIT-1.10 — Measure facade costs and qualify compressed delivery
+
+- [ ] FIT-1.10 Measure facade costs and qualify compressed delivery.
+
+Purpose: Establish exact initial/deferred costs, dispatch baseline attribution and real compressed asset delivery using the existing accounting and performance producers.
+Context: [Byte budgets](../specs/verification.md#browser-bundle-size-budgets); [size contract](../specs/extension-dx.md#size-reduction-and-compression); `scripts/check-browser-size.mjs`; `scripts/browser-size-contract.mjs`; `tests/extension-dx/size.test.mjs`.
+Dependencies: FIT-1.6.
+Cross-roadmap feature gates: SDK-1.12, with exact applicable passing artifacts; these are parent-specific gates, not completion of an expanded downstream track.
+Session scope: Facade cost attribution and local HTTP compression proof using existing producers; candidate optimization remains SDK-1.13 and full workload qualification remains FIT-1.11.
+Acceptance: DXC-19/20/26/29: baseline, individual extensions, representative combinations and shared-site unions record raw/gzip/Brotli, initial/deferred/combined assets and hashes. Required lazy code counts and existing caps remain enforced. Local HTTP proves negotiation/MIME/Vary/cache/uncompressed fallback and byte identity; request absence and duplicate controls fail when corrupted. Include disabled collaboration retained-code/provider/request/work counters and direct-port/facade dispatch baselines. Freeze numerical per-workload latency/regression limits, sampling and environment before SDK-1.13 candidate runs under the [performance contract](../specs/verification.md#extension-dispatch-and-jswasm-performance).
+
+Implementation:
+
+- [ ] FIT-1.10-I1 Extend existing packed inventory/shared-resource producers for facade entries, per-format/dictionary assets and compression behavior. Pin exact inputs, compressor settings, server headers and browser cache provenance. Attribute JS/glue/WASM/parser/asset retention and preserve default Task capability equivalence; separately report any new generic preset inventory. Create the fail-closed performance group over existing benchmark/input producers, operation/source/range counters and 0/1/10/100 unrelated-extension fixtures. Export immutable baseline/profile receipts for SDK-1.13; this group must not depend on downstream SDK-1.13/FIT-1.11 results.
+
+Validation:
+
+- [ ] FIT-1.10-V1 Run `npm run check:browser-size` with a unique absolute evidence output directory and `node scripts/test-extension-dx.mjs --group size`. Run the created `node scripts/test-extension-dx.mjs --group performance` baseline/work-count checks. Execute local compressed delivery and cold/warm consumer checks, retain raw inventories/negative controls and record nonzero counts, hard/preferred results and teardown. Unavailable optional features retain explicit pending cells.
+
+Evidence: FIT-1.10 progress links immutable production inventories, byte attribution, delivery headers and budget results.
+Handoff: Largest measured contributors, current headroom, pending feature cells and next concrete reduction hypothesis.
+Blocked behavior: Keep missing admission unchecked; do not exclude required lazy code, change caps or substitute Brotli for gzip admission.
+
+### Task FIT-1.11 — Qualify clean consumers and extension composition
+
+- [ ] FIT-1.11 Qualify clean consumers and extension composition.
+
+Purpose: Verify the complete DX from an external integrator's installed packages.
+Context: [Case catalog](../tests/extension-dx-cases.md); [shared resources](../specs/web.md#shared-resources-across-editors-and-site-routes); `tests/extension-dx/consumers.test.mjs`; `tests/architecture/`; `examples/`.
+Dependencies: FIT-1.10, FIT-1.6.
+Cross-roadmap feature gates: SDK-1.11, SDK-1.12, EXT-1.17, EXT-1.18, EXT-1.19, SDK-1.13, EXT-1.20, with exact applicable passing artifacts; these are parent-specific gates, not completion of an expanded downstream track.
+Session scope: Reuse existing pinned plain/React/Astro and shared-resource producers; do not create another framework editor harness.
+Acceptance: DXC-07/22/23/24/27/28/29/30/32: clean public-import consumers configure independent features with no workspace aliases, private initialization or duplicated engines. Baseline/individual/risk-selected combinations cover input/keymaps, async races, history, unknown data, readonly and remount/routes. Required coverage and platform/feature limits are explicit; no release claim follows merely from source compilation. Qualify mixed local/collaborative editors, independently disabled presence, direct-port/facade and heavy-feature workloads against the frozen FIT-1.10 latency/work profile. Include cold first edit, warm activation, input-to-visible p50/p95/p99, remote bursts and repeated-disposal memory; preserve per-workload failures and inconclusive noise.
+
+Implementation:
+
+- [ ] FIT-1.11-I1 Extend the current installed-tarball and canonical architecture admission with facade/authoring/recipe identities, typed options, isolated feature composition and shared load/disposal proofs. Record selection rationale and uncovered combinations, plus eager-import, stale-result, duplicate-runtime and documentation-drift negative controls, plus unrelated-callback, full-document-input-export, whole-registry-scan and per-character JS/WASM-call controls. Reuse the existing real browser input and performance producers, including selected wrapper state and small-input/batched-work comparisons. Feed applicable receipts to FIT-1.6 and DOC owners without rewriting historical qualification.
+
+Validation:
+
+- [ ] FIT-1.11-V1 Run `node scripts/test-extension-dx.mjs --group consumers`, `node scripts/test-extension-dx.mjs --group performance`, the affected existing packed framework/shared-resource checks and `node scripts/check-architecture.mjs --suite consumers-loading`. Use real compiled engine/input/storage with deterministic resolver/checker services; retain exact browser/package/input hashes, nonzero counts, failures/skips, byte admission and teardown.
+
+Evidence: FIT-1.11 progress links complete case ownership, clean consumers, independent outcomes, inventories and downstream handoff.
+Handoff: Last composition/runtime cell, explicit unsupported combinations or release/platform obligation and exact next owner.
+Blocked behavior: Keep unmet required cells unchecked with task/source/error/prerequisite fingerprint; do not waive failure/skip, claim native parity or publish packages to complete this parent.
