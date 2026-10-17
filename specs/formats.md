@@ -49,7 +49,26 @@ JSON data. This does not change profile roots or the v5 wire schema. Known
 descriptors validate before staging; disabled/unknown descriptors retain source
 and inert text. Images retain URL/alt/title/source without a network request.
 Tables retain alignment, rectangular rows and rich simple-cell runs (32 columns,
-128 rows, 1,024 runs, 1 MiB text/source). Inline image layout and nested cell
+128 rows, 1,024 runs, 1 MiB text/source).
+SFR-1.1 admits semantic LF inside both v1 and v2 runs, retaining the existing
+version tags, mark/link policy and bounds. Enter and Shift+Enter within one
+editable cell both insert LF; they do not add rows or cell blocks. Shared table
+commands/descriptors reject CR rather than silently rewriting it. Native textarea
+input and the explicit literal clipboard action normalize external CRLF/CR to LF
+before preparation; tabs and all other scalar text remain literal. Ill-formed
+UTF-16 rejects at the browser boundary before conversion. Exact expected tuples
+pin delayed edits, and unchanged/cancelled/rejected preparation creates no history.
+Markdown exports supported cell LFs as attribute-free `<br />` (including empty,
+repeated and trailing breaks), and imports only the shared finite inert `br`
+allowlist with the active marks. Physical table rows and source line endings are
+separate from cell LFs. Unsupported Markdown marks (including multiline inline
+code) retain explicit diagnostics and exact typed descriptor/source recovery;
+no lossy Markdown fallback is qualified as exact. Single-block cell selection copy
+offers the internal run matrix and literal HTML/quoted TSV (also used for plain
+text); quoting retains embedded LF, tabs and quotes. Multi-block cells retain
+only the structured flavor, preserving distinct block boundaries. Existing descriptor source bytes
+remain retained verbatim when editing cells; semantic export never overwrites them.
+ Inline image layout and nested cell
 containers remain explicit unsupported source fallbacks. Registration governs
 activation; rendering/upload services remain separately owned.
 
@@ -59,7 +78,7 @@ keys. Rectangular rows contain cell records or null covered positions. Each cell
 has `paragraphs`, positive integral `rowSpan`/`columnSpan`, and boolean `header`.
 A paragraph has exact `style` and `runs` keys: styles are `["paragraph"]`,
 `["heading", 1..6]`, or `["code", language]` using the existing language bounds;
-runs use the qualified v1 table encoding and single-line text/mark/link policy.
+runs use the qualified v1 table encoding and text/mark/link policy.
 Spans must tile the rectangle without overlap or out-of-bounds cells; covered
 positions are explicitly null. Aggregate bounds stay 32 columns, 128 rows,
 1,024 paragraphs/runs and 1 MiB text/source. Unknown keys/styles reject.
@@ -67,7 +86,7 @@ V1 is unchanged; no registration rewrite or automatic v1/v2 migration occurs.
 V2 rich rendering/editing is optional and current v1 presenters fall back.
 The shared prepared table commands retain the original version, source, owner,
 column alignments and every unaffected cell verbatim. `tableCell` replaces the
-selected cell's complete single-line text using the existing scalar-safe mark/link
+selected cell's complete text using the existing scalar-safe mark/link
 retention policy. V2 admits a non-null cell with exactly one paragraph, heading
 or code block, preserving its style, header and spans; covered cells and cells
 with multiple blocks return `UnsupportedTarget` before mutation. Newline input
