@@ -184,3 +184,18 @@ Documentation source and explicitly conceptual examples can proceed before packa
 ## Content migration sequencing — 2026-10-13
 
 The user deferred editor-content migrations and migration guides until full app completion and qualification. SDK-1.5 and DOC-1.15–1.27 are preserved in [the deferred migration backlog](operations/deferred-content-migrations.md), outside active SDK/docs runners. Earlier migration requirement mappings describe retained future scope, not current delivery gates. SDK integration/recovery examples and comparison documentation proceed without migration dependencies. No migration implementation or qualification is claimed by this deferral.
+
+## Composable extensions and authoring DX — 2026-10-17
+
+The user requested individual extension selection with one import plus configuration, hiding codec/registry/worker orchestration, and easy documented custom extension authoring inspired by Tiptap. Task/comment/document use cases cannot prescribe extension sets; optional default/document presets are convenience configurations. The existing [SDK](roadmaps/08-sdk-integration.md), [extension library](roadmaps/21-extension-library.md) and [architecture fitness](roadmaps/30-architecture-fitness.md) roadmaps implement [the contract](specs/extension-dx.md) over existing portable semantics and loaders. Existing task identities, stored data, Task byte inventories and release evidence remain compatible.
+
+| Requirement | Task owners | Acceptance evidence |
+|---|---|---|
+| One-import typed configuration, isolated options and optional generic presets | EXT-1.14, SDK-1.11 | Clean public consumers, actionable admission errors, compatible low-level APIs, ready/failure/disposal outcomes |
+| Dedicated optional bundles and managed worker/WASM/assets | SDK-1.12; existing SDK/FIT shared-resource owners | Disabled graph/request absence, per-feature loading, one compatible runtime, direct-browser/bundler hosting and cancellation |
+| Easy custom behavior/mark/atom authoring and async pattern resolution | EXT-1.15, EXT-1.16 | Public typed helpers against unchanged engine artifacts, bounded local matching, stable targets and no stale/unauthorized mutation |
+| ASD-123 lookup-and-link, spellcheck, parsing and URL insertion | EXT-1.17, EXT-1.18, EXT-1.19 | Original runnable recipes with prepared catalogs/dictionaries, found versus not-found behavior, literal fallback, undo and disposal |
+| Measured size reduction and compressed delivery | FIT-1.10, SDK-1.13 | Existing raw/gzip/Brotli inventory, unchanged caps, per-feature/combined costs, HTTP negotiation/cache proof and feature-equivalent before/after evidence |
+| Authoring reference, beginner examples and clean composition consumers | EXT-1.20, FIT-1.11; DOC-1.34/1.35 | Checked canonical source ranges, installed plain/React/Astro consumers, independent outcomes and drift/eager-import/stale-result controls |
+
+[Thirty-two DXC cases](tests/extension-dx-cases.md) specify required outcomes; none are claimed executed by this planning update. No runner is scheduled, paid provider testing authorized, package published or size reduction claimed here.
