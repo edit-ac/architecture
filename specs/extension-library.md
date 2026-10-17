@@ -34,7 +34,12 @@ Internal fragment runs retain unknown character attributes in the optional
 `opaqueMarks` carrier under the [common format bounds](formats.md). This is
 inert preservation through prepared transfer/history/storage, with no registry
 admission, rendering capability or host permission implied. Known mark commands
-remain restricted to their declared semantics.
+remain restricted to their declared semantics. Registered run-level `attributes` tuple aliases follow the same bounded
+carrier and canonical export; known Session registry envelopes and permissions
+are rechecked under [SFR-1.3](client-contracts.md#registered-inline-and-marked-atom-transfer-sfr-13).
+Exact reference labels, asset fallbacks and inert-envelope source text retain
+declared named/opaque marks while remaining indivisible for structured copy/cut.
+
 
 The [core/extension boundary](extension-dx.md#core-and-extension-boundaries) and [speed-critical interfaces](extension-dx.md#interfaces-on-speed-critical-paths) also govern the planned authoring facade. Basic configurable formatting need not acquire an extension dispatch layer. Heavy behavior declares optional readiness, operation/source/range interests and managed lifecycle; reuse the existing indexed runtime. Register/freeze admission once, and verify that disabled or unrelated extensions add no input callbacks or document/registry scans. EXT-1.14/1.15 define these planned interfaces; this does not change the qualified public v1 exports below.
 

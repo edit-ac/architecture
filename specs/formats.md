@@ -359,3 +359,27 @@ supplied plain text, or rejects without mutation and reports its rejection reaso
 Session/SQLite and generated Swift qualify this shared feature boundary. Native
 clipboard/provider lifetime, UI/drag integration and platform/performance/release
 qualification remain separate; the default packed size cap is still unmet.
+
+### Registered inline and marked-atom transfer (SFR-1.3)
+
+The existing v1 fragment run accepts optional `attributes`, an object of at most
+32 `module:namespace.type` entries with `[positive integer version, inert object]`
+values. Namespace segments use lowercase ASCII letters, digits and hyphens,
+starting with a letter. These are aliases for existing opaque Yrs attributes,
+subject to the same depth/node/byte/UTF-16/resource limits; duplicate keys across
+`attributes` and `opaqueMarks` reject. Canonical export uses `opaqueMarks` without
+changing the tuple or fallback text. This is inert data admission, not module
+registration, rendering authority or permission. Unknown/future tuples remain
+inert, with exact internal recovery and existing unsupported-source diagnostics.
+The trusted extension transfer codec may emit tuple attributes only for its own
+declared type/version; ordinary named marks must still be declared. A registered
+Session validates known envelopes against its frozen registry and rechecks the
+extension capability for imported/removed registered attributes at commit.
+
+Exact admitted reference-label, asset-fallback and inert-envelope source text may
+carry declared named marks and
+bounded opaque attributes through the prepared fragment planner. It remains one
+indivisible atom; partial copy/cut and mismatched fallback text reject. Other
+atom edit/descriptor policies are unchanged. Markdown must report marked atomic
+fallbacks that cannot be represented and return the exact internal recovery;
+it must never claim lossless source recovery after silently dropping marks.
