@@ -22,6 +22,8 @@ Use deterministic failure injection before/after each write/transaction/publicat
 
 Transport is optional and attaches to the existing engine. It must not reinitialize the document, import a second snapshot or replace selection/history on connection. Use transaction origins to avoid echo. Define bounded receive/send queues, frame sizes, retry/backoff and reconnection behavior. Defer unauthorized uploads but retain recoverable local edits.
 
+The [composable collaboration facade](extension-dx.md#optional-collaboration-per-editor) preserves this port contract. Enabling sync for one mounted editor cannot create providers, retry/awareness work or authority for another. Local input/persistence/history and readiness work without a provider. Transport and presence are independent capabilities; detach/dispose invalidates late callbacks while preserving local recovery and unsent edits. Lazy orchestration must retain legacy attachment compatibility and the same immutable update/schema/receipt contracts. SDK-1.11/1.12 and FIT-1.11 own these new facade requirements; historical sync receipts do not establish facade loading or overhead.
+
 Profile four independently versioned contracts: v1 update bytes, baseline sync messages, awareness messages, and edit.ac document schema. The pinned JS fixture operates on the same schema. A Yrs handle is not a JS `Y.Doc`; use a direct wire adapter or an explicitly tested provider adapter. Yjs compatibility does not imply Tiptap/ProseMirror schema compatibility.
 
 Awareness is ephemeral, expiring and throttled. It cannot advance document durability. Relative peer selections resolve against current state and fail safely when targets disappear. Presence remains optional and is never journaled as document state.

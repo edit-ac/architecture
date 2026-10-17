@@ -11,6 +11,12 @@ No full native editor parity is required for the initial web release.
 
 Under the user-approved 2026-10-13 profile change, the default persistent Task mount has no Markdown parser or automatic Markdown asset request. Hosts explicitly register the first-party Markdown extension to enable its paste, typing-shortcut and import/export behavior under formats.md. Without it, Markdown-looking plain text remains literal and unavailable codec operations retain source with diagnostics. Internal fragments, supported safe HTML, ordinary rich-text editing, persistence and collaboration retain their default guarantees. Examples and regression fixtures name whether Markdown is enabled; default and enabled configurations are qualified separately. React and Astro remain thin consumers of the same configuration.
 
+## Composable extensions follow-up
+
+The planned [extension DX contract](extension-dx.md) adds a typed extensions array with lightweight configurable factories and managed lazy implementations/assets over these same mount and lifecycle ports. A host chooses capabilities independently; optional default/document convenience presets do not infer features from task/comment/document labels. The existing Task name and its default capability/byte inventory remain compatible during migration. Required-ready input adapters and command-lazy exporters have explicit states; schema registration remains frozen before attachment, and unsupported hot registration is not implied. SDK-1.11/1.12 and FIT-1.11 implement and qualify this facade in the existing SDK and architecture-fitness roadmaps before documentation advertises it as executable.
+
+The [core/extension boundary](extension-dx.md#core-and-extension-boundaries) keeps inexpensive basic formatting configurable without mandatory behavior dispatch. Collaboration transport, presence and peer-caret UI are independently explicit per-editor capabilities over the existing ports; a local comment and a collaborative document can coexist. Shared Yrs/WASM primitives remain baseline. Disabled collaboration must have no provider/awareness work or dedicated asset requests, and local readiness/input cannot await the network. Existing Task behavior and capability/byte inventories remain compatible. SDK-1.11/1.12 and FIT-1.11 qualify admission, loading and isolation; [dispatch and JS/WASM checks](verification.md#extension-dispatch-and-jswasm-performance) measure the actual overhead.
+
 ## Mounting and state
 
 - One editor surface binds one Rust/WASM document handle and one coherent editing flow.
