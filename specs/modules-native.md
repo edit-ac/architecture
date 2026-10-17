@@ -35,14 +35,14 @@ The explicit presenter retains a stable range, stores its query outside the docu
 
 The optional browser `contentModules` factory renders existing v1 opaque image/table tuples. A synchronous host image policy supplies an absolute HTTP(S) asset URL or denies loading; absent policy never loads the authored URL. Alt/title and original source remain inert metadata. Credential-bearing, executable and control-bearing URLs are rejected. Uploads and authentication remain host services.
 
-Simple table cells use labeled native controls for temporary text, selection, copy and composition. The portable prepared `tableCell` editor command carries owner ID, exact expected descriptor, zero-based row/column and bounded single-line text. Rust rejects stale/non-table/out-of-range/invalid edits before live mutation, retains marks on surviving text runs and unaffected cells, and updates the tuple plus inert tab/newline fallback in one atomic history group. The original source field remains import provenance; export uses the current rows. Disabled presenters preserve the tuple and fallback through storage recovery. Merged cells, nested blocks, spreadsheets and full native table editing are outside this boundary.
+Simple table cells use labeled native controls for temporary text, selection, copy and composition. The portable prepared `tableCell` editor command carries owner ID, exact expected descriptor, zero-based row/column and bounded LF-bearing scalar text. CR rejects at the shared command/descriptor boundary; the browser textarea and explicit literal paste normalize external CRLF/CR to LF before preparation, as specified in [formats.md](formats.md). Enter and Shift+Enter both insert LF within the same editable cell. Rust rejects stale/non-table/out-of-range/invalid edits before live mutation, retains marks on surviving text runs and unaffected cells, and updates the tuple plus inert tab/newline fallback in one atomic history group. The original source field remains import provenance; export uses the current rows. Disabled presenters preserve the tuple and fallback through storage recovery. Merged cells, nested blocks, spreadsheets and full native table editing are outside this boundary.
 
 The Rust `commands::table::rectangle_commands` preparation helper reuses those
 same commands and opaque descriptors. `CellRectangle` captures zero-based start
 and nonzero dimensions against one expected table. `Clear` empties cells while
 retaining geometry; structural removal remains `TableStructure`, and removing
 the final row/column rejects. `Paste` requires an exact rectangular matrix of
-literal single-line strings; embedded tabs are literal cell text, not separators.
+literal scalar strings with cell-internal LF; embedded tabs and LF are literal cell text, not separators. CR rejects rather than silently normalizing at this shared API boundary.
 `PasteFragment` admits only unmarked plain paragraph cells; marks, atoms,
 containers, nested tables and merged geometry reject rather than flattening.
 Foreign clipboard decoding and browser event routing remain presenter work.
