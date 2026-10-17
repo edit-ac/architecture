@@ -4,9 +4,13 @@
 
 [Shared editor, GitHub and website styling](design/brand-guide.md)
 
-This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 42 roadmap files and 558 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
+This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 42 roadmap files and 570 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
 
 The user selected public repositories and Apache-2.0. [Decision 001](decisions/001-web-first.md) resolves scope, ownership, naming and release conflicts. [Decision003](decisions/003-extension-ecosystem.md) adds the requested extension, format, cloud and public-documentation delivery. The [original proposal](sources/initial-roadmap.md) is archived unchanged as reference material; current specs and task acceptance supersede it. [Decision 002](decisions/002-full-delivery.md) extends delivery beyond the initial browser release; the [requirement review](requirements.md) maps each requested capability to concrete tasks.
+
+## Extension integration and authoring
+
+The existing [SDK](roadmaps/08-sdk-integration.md), [extension library](roadmaps/21-extension-library.md) and [architecture fitness](roadmaps/30-architecture-fitness.md) roadmaps add 12 follow-up parents for one-import extension configuration, managed lazy bundles/assets, an approachable custom extension API, verified ASD-123 task linking, spellcheck, custom parsing/URL insertion, compressed delivery and measured SDK/WASM reductions. [The contract](specs/extension-dx.md) makes individual extension composition primary; optional default/document presets are convenience configurations, and application use cases do not prescribe feature sets. Existing Task budget/compatibility evidence remains intact. [The case catalog](tests/extension-dx-cases.md) defines 32 planned outcomes. Public extension catalog/tutorial tasks consume the resulting canonical SDK recipes. The Tiptap-informed review tightens those same parents for configurable basic formatting, optional per-editor collaboration/presence, indexed hot-path dispatch and workload-specific JS/WASM latency checks; see the [review basis](specs/extension-dx.md#review-basis--2026-10-17) and [performance contract](specs/verification.md#extension-dispatch-and-jswasm-performance). No roadmap or parent is added by this review. This planning amendment starts no runner and makes no new capability, size or speed claim.
 
 ## Start here
 

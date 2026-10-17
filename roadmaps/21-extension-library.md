@@ -321,3 +321,167 @@ Validation:
 Evidence: Progress entry `EXT-1.11` links changed paths, implementation/source revisions, exact commands/results and fixture/artifact hashes. Preserve failures; milestone summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, relevant symbols, remaining acceptance, exact failing fixture or missing decision and next bounded action for `EXT-1.11`.
 Blocked behavior: Leave `EXT-1.11` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO with reason, owner/unblock condition and bounded retry trigger. Continue another dependency-ready parent only in a later iteration; if none exists, report the external gate without polling.
+
+## Extension DX follow-up — 2026-10-17
+
+User-authorized additions to this existing roadmap; no separate extension DX track or runner is created. Read [the shared extension DX contract](../specs/extension-dx.md) and [32 planned acceptance cases](../tests/extension-dx-cases.md). Individual extension composition is primary; optional default/document presets are convenience configurations, not use-case restrictions. Keep the same execution, ownership, deterministic fixture, paid-inference, evidence and teardown rules as the original tasks.
+
+Original task IDs, completed progress and qualification receipts are preserved. They do not complete these added parents. Previously qualified baseline prerequisites keep their original parent/artifact scope; new facade functionality requires the named new feature gates. Cross-roadmap feature gates refer to specific parents, not a whole expanded track that would introduce a dependency cycle. Adopt revised sources only at an owning controller's safe checkpoint; do not change active queues or start duplicate workers. Runtime, platform and release claims remain evidence-gated.
+
+### Task EXT-1.14 — Freeze the public extension configuration contract
+
+- [ ] EXT-1.14 Freeze the public extension configuration contract.
+
+Purpose: Define the smallest consistent typed facade over existing public extension primitives.
+Context: [DX contract](../specs/extension-dx.md); [case catalog](../tests/extension-dx-cases.md); `packages/web/src/extensions/`; `packages/core/src/extensions/`; `scripts/test-extension-dx.mjs`; `tests/extension-dx/contract.test.mjs`.
+Dependencies: EXT-1.11.
+Cross-roadmap feature gates: SDK-1.10, with exact applicable passing artifacts; these are parent-specific gates, not completion of an expanded downstream track.
+Session scope: One public API/admission contract; split implementation delivery into the dependent parents below.
+Acceptance: DXC-01/03/25/27: proposed names/options, extensions array, configure isolation, readiness, errors, dependencies/conflicts and legacy-option precedence have typed positive/negative fixtures. Distinguish behavior, data-defined marks/atoms and engine-semantic additions; no product-specific feature restrictions or arbitrary hot schema registration. Freeze configurable lightweight core-formatting options, independent opt-in collaboration/presence, no-provider local readiness and instance authority/history isolation. Declare operation/source/range interests and one-time conflict resolution for the existing runtime, without baseline per-keystroke registry scans.
+
+Implementation:
+
+- [ ] EXT-1.14-I1 Freeze versioned facade/authoring types and contract fixtures around existing registry/profile/session ports. Specify default/document convenience semantics and migration aliases, asset override, callback authority and required-ready versus command-lazy states. Create the fail-closed named-group test entry before running it.
+
+Validation:
+
+- [ ] EXT-1.14-V1 Run `npm run typecheck` and `node scripts/test-extension-dx.mjs --group contract`. Verify typed invalid configurations and independent admission expectations without fetching assets or mutating an attached document; record nonzero exact counts and immutable inputs.
+
+Evidence: Separate EXT-1.14 progress links the API decision, fixtures, commands/counts and any upstream primitive gap.
+Handoff: Last frozen interface, rejected alternative or exact missing prerequisite and next bounded change.
+Blocked behavior: Keep EXT-1.14 unchecked; record source/error/prerequisite fingerprint, owner, attempted repair and exact resume condition. Do not restart unchanged failed work.
+
+### Task EXT-1.15 — Expose approachable custom extension authoring primitives
+
+- [ ] EXT-1.15 Expose approachable custom extension authoring primitives.
+
+Purpose: Let authors express behavior, options and admitted data without implementing SDK plumbing.
+Context: [Portable extension contract](../specs/extension-library.md); [DX contract](../specs/extension-dx.md#an-approachable-extension-authoring-api); `packages/web/src/extensions/`; `packages/core/src/extensions/`; `tests/extension-dx/authoring.test.mjs`.
+Dependencies: EXT-1.14.
+Cross-roadmap feature gates: SDK-1.11, with exact applicable passing artifacts; these are parent-specific gates, not completion of an expanded downstream track.
+Session scope: A typed authoring facade and existing-port helpers, not arbitrary new editing semantics.
+Acceptance: DXC-08/29: a behavior extension and admitted mark/atom use public Extension.create/configure-style APIs against unchanged engine artifacts. Authors receive bounded subscriptions, command/target and managed-resource helpers; callbacks cannot bypass readonly, preparation, atomic history or preservation. Platform and schema limits are explicit. Use existing indexed dispatch; empty, disabled and unrelated extensions have no callbacks or registry/document scans on input. Selection/format/structural patches and disposal retain correct interest filtering; configuration/admission runs once.
+
+Implementation:
+
+- [ ] EXT-1.15-I1 Implement typed options/defaults, commands, lifecycle, key/input/paste precedence, ephemeral decoration and cleanup integration using existing owners. Create original minimal behavior/mark/atom consumers and document explicit new-semantic/migration boundaries. Supply actionable diagnostics and exported declarations without private source imports. Add deterministic dispatch work counters and 0/1/10/100 unrelated-descriptor fixtures with corrupted broad-scan/unrelated-callback controls; reuse the current ModuleRuntime rather than introduce another dispatcher.
+
+Validation:
+
+- [ ] EXT-1.15-V1 Run `npm run typecheck`, `npm run build` and `node scripts/test-extension-dx.mjs --group authoring`. Check clean packed public imports, unchanged WASM hashes, invalid/duplicate definitions, readonly/failure/disposal and absent-presenter round trips with independent expected content. Assert DXC-29 work bounds, selection/format/structural filtering and negative-control sensitivity; timing qualification remains with FIT and SDK owners.
+
+Evidence: EXT-1.15 progress links authoring types, public consumers, conformance results and platform limitations.
+Handoff: Last helper/consumer, unavailable semantic primitive and next bounded action.
+Blocked behavior: Keep EXT-1.15 unchecked with the exact owning API gap; do not expose raw CRDT writes or introduce a parallel state store.
+
+### Task EXT-1.16 — Add bounded pattern matching and managed async resolution
+
+- [ ] EXT-1.16 Add bounded pattern matching and managed async resolution.
+
+Purpose: Make parsing plus host lookup plus safe prepared application reusable for custom extensions.
+Context: [Matching contract](../specs/extension-dx.md#pattern-recognition-and-asynchronous-resolution); [link resolution](../specs/link-resolution.md); `packages/web/src/extensions/`; `tests/extension-dx/matching.test.mjs`.
+Dependencies: EXT-1.15.
+Session scope: One generic matching/resolution facility over existing input/anchor/command ports.
+Acceptance: DXC-09/12/13: changed-range matching has bounded context, local/composition/code/link/literal policies, stable target capture, generation/authority/source revalidation, deduplication and bounded async work. It performs no speculative mutation or implicit lookup on remote changes/reopen/export. Reuse qualified LNK host resolution/cancellation contracts; missing shared behavior is an explicit owner gate.
+
+Implementation:
+
+- [ ] EXT-1.16-I1 Implement typed matcher/resolver/application hooks and managed transient status. Define input/paste trigger and undo suppression policies, principal-scoped cache limits, safe URL admission and current-text checks. Keep host credentials outside documents/logs and document trusted callback versus isolated worker execution.
+
+Validation:
+
+- [ ] EXT-1.16-V1 Run `node scripts/test-extension-dx.mjs --group matching`. Use deterministic delayed/denied/out-of-order resolvers and real engine anchors to verify bounded work, unchanged text/history on failure, unrelated-edit rebasing and zero stale/cross-instance effects. Record exact counts and inputs.
+
+Evidence: EXT-1.16 progress links reusable hooks, resource bounds, independent race outcomes and LNK applicability.
+Handoff: Last trigger/async boundary, failing target/authority case or upstream gap and next action.
+Blocked behavior: Keep EXT-1.16 unchecked with a concrete resume condition; do not use raw offsets across awaits or sequential mutations to imitate atomic application.
+
+### Task EXT-1.17 — Ship the verified issue-code linking recipe
+
+- [ ] EXT-1.17 Ship the verified issue-code linking recipe.
+
+Purpose: Demonstrate ASD-123 to task-link behavior with configuration and a small host resolver.
+Context: [DX contract](../specs/extension-dx.md#pattern-recognition-and-asynchronous-resolution); [DXC cases](../tests/extension-dx-cases.md); `examples/extensions/task-links/`; `tests/extension-dx/task-links.test.mjs`.
+Dependencies: EXT-1.16.
+Session scope: One complete custom-reference/linking recipe using the generic facility, not a task-product dependency in core.
+Acceptance: DXC-10/11/12/13/14: found tasks add one validated link over unchanged code text; not-found/denied/error/timeout never fabricate URLs or change history. Preserve adjacent formatting/selection, reject obsolete results, converge through peer updates and support undo/redo without immediate reapplication. The example has one public import/configuration and a prepared catalog resolver.
+
+Implementation:
+
+- [ ] EXT-1.17-I1 Add a canonical standalone recipe and fixed task catalog with explicit delimiter/paste/exclusion policy. Show standard link marks first and document the distinct optional persistent-reference representation. Expose transient loading/error states, cancellation and one-action history through existing helpers; no live task service, startup lookup or content upload.
+
+Validation:
+
+- [ ] EXT-1.17-V1 Run `node scripts/test-extension-dx.mjs --group task-links` using packed modules, real input/engine history/peer paths and mocked task responses. Assert before/after text/marks/history and request counts for found/not-found/stale/undo/dispose cases in the named browsers; record nonzero counts and teardown.
+
+Evidence: EXT-1.17 progress links the downloadable recipe, exact configured API, task fixtures and independent behavior outcomes.
+Handoff: Last verified scenario, remaining browser/input boundary and next bounded action.
+Blocked behavior: Keep EXT-1.17 unchecked with the exact matcher/command prerequisite; do not replace lookup with URL interpolation or claim a fixture resolver is production integration.
+
+### Task EXT-1.18 — Ship an optional spellcheck extension recipe
+
+- [ ] EXT-1.18 Ship an optional spellcheck extension recipe.
+
+Purpose: Prove a useful decoration/service extension without new committed document semantics.
+Context: [Spelling contract](../specs/extension-dx.md#spell-checking-custom-parsing-and-url-insertion); `examples/extensions/spellcheck/`; `tests/extension-dx/spellcheck.test.mjs`.
+Dependencies: EXT-1.15.
+Cross-roadmap feature gates: SDK-1.12, with exact applicable passing artifacts; these are parent-specific gates, not completion of an expanded downstream track.
+Session scope: One configured local-dictionary/mock-checker recipe with suggestions and prepared correction.
+Acceptance: DXC-15/16: checker/dictionary assets are optional, decorations are ephemeral and changed-range analysis excludes composition. Only an accepted current suggestion makes one prepared replacement; stale results do nothing. Preserve formatting/selection/undo and instance isolation. Native browser spellcheck is documented separately and no hosted checker is required.
+
+Implementation:
+
+- [ ] EXT-1.18-I1 Provide one-import configured checking, a tiny deterministic dictionary, managed async/worker adapter where needed and accessible suggestions. Reuse existing prepared replacement and decoration ports; document locale/Unicode behavior, limits, failure and disposal. Record an owner gap if an admitted decoration or replacement primitive is unavailable.
+
+Validation:
+
+- [ ] EXT-1.18-V1 Run `node scripts/test-extension-dx.mjs --group spellcheck`. Verify no document/history effects from analysis, composed/Unicode text behavior, accepted versus stale suggestions, disabled-asset absence, readonly, undo and teardown through the real engine with prepared checker data.
+
+Evidence: EXT-1.18 progress links the recipe, dictionary/checker scope, decoration outcomes and correction evidence.
+Handoff: Last suggestion/input/resource case, unavailable primitive or exact failure and next action.
+Blocked behavior: Keep EXT-1.18 unchecked; do not persist spelling decorations as semantic marks or call a paid/production provider to bypass missing fixtures.
+
+### Task EXT-1.19 — Ship custom parsing and URL insertion recipes
+
+- [ ] EXT-1.19 Ship custom parsing and URL insertion recipes.
+
+Purpose: Show third parties how to map small source formats and host-resolved URLs to existing semantic commands.
+Context: [Parsing contract](../specs/extension-dx.md#spell-checking-custom-parsing-and-url-insertion); [formats](../specs/formats.md); `examples/extensions/parsing/`; `examples/extensions/url-insert/`; `tests/extension-dx/parsing.test.mjs`.
+Dependencies: EXT-1.15, EXT-1.16.
+Session scope: Two small recipes over the same existing prepared transfer/command boundary; no new general parser or schema.
+Acceptance: DXC-17/18: a bounded declared source syntax prepares one admitted fragment, with literal bypass, precedence and retained unsupported source. URL insertion applies only safe authorized results at a current target; absent custom-reference presenters retain fallback. No raw DOM mutation, automatic public-fetch fallback or new writable model.
+
+Implementation:
+
+- [ ] EXT-1.19-I1 Provide canonical small parser and URL-insert consumers through the public authoring helpers and configured host resolver. Define grammar/input limits, diagnostics, source recovery, current target validation and undo; document codec versus input-rule versus custom-reference choices and reuse owning FMT/LNK fixtures where applicable.
+
+Validation:
+
+- [ ] EXT-1.19-V1 Run `node scripts/test-extension-dx.mjs --group parsing`. Check accepted/literal/unsupported/oversized input, safe/unsafe/not-found URLs, cancellation/stale targets, one atomic history result and unknown-data fallback against independent semantic expectations; record counts and exact consumers.
+
+Evidence: EXT-1.19 progress links both original recipes, grammar and resolution policy plus conformance outcomes.
+Handoff: Last source/URL case, exact missing codec/command prerequisite and next bounded action.
+Blocked behavior: Keep EXT-1.19 unchecked with the owner/resume condition; do not mutate before validation or advertise unsupported parsing as a successful conversion.
+
+### Task EXT-1.20 — Document the extension API and executable authoring recipes
+
+- [ ] EXT-1.20 Document the extension API and executable authoring recipes.
+
+Purpose: Make supported custom extension creation understandable from public documentation and working examples.
+Context: [DX documentation contract](../specs/extension-dx.md#documentation-and-delivery-evidence); [public docs](../specs/public-docs-demo.md); `docs/extensions/`; `examples/extensions/`; `tests/extension-dx/documentation.test.mjs`.
+Dependencies: EXT-1.15, EXT-1.17, EXT-1.18, EXT-1.19.
+Cross-roadmap feature gates: SDK-1.12, with exact applicable passing artifacts; these are parent-specific gates, not completion of an expanded downstream track.
+Session scope: Canonical SDK authoring guide and source manifest; public site rendering remains DOC-1.34/1.35 ownership.
+Acceptance: DXC-22: getting started uses one import/configuration; API reference and original behavior/mark/atom, ASD-123, spelling, parser and URL recipes explain options, before/after results, errors, async cancellation, history and cleanup. Supported interfaces are exact and typed, advanced hosting is separate, and no planned facade is presented as already executable.
+
+Implementation:
+
+- [ ] EXT-1.20-I1 Write canonical extension selection/configuration, Extension.create authoring, lifecycle/input/command/codec/decoration and migration guides from validated consumers. Add a recipe/source/version manifest for DOC-1.34/1.35 reuse and a small third-party packaging/conformance guide. Explain unchanged-WASM data extensions versus new Rust semantics and host/platform limits.
+
+Validation:
+
+- [ ] EXT-1.20-V1 Run `node scripts/test-extension-dx.mjs --group documentation` against installed tarballs. Compile and execute documented source ranges, reject private imports and stale manifest/options, and compare independent recipe outcomes including failures and disposal; record exact counts and identities.
+
+Evidence: EXT-1.20 progress links canonical pages, recipe source ranges, package versions and runnable drift checks.
+Handoff: Last documented surface, exact unavailable example or public-site downstream owner and next action.
+Blocked behavior: Keep EXT-1.20 unchecked where an advertised recipe lacks an artifact; label conceptual material and do not substitute configuration-only snippets for working behavior.

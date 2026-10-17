@@ -232,3 +232,77 @@ Validation:
 Evidence: Separate progress entry `SDK-1.10` links the consolidated SHR-01–SHR-08 receipt, supported build/settings and limitations under `../architecture/evidence/shared-editor-resources/`. FIT-1.6, REL-1.3, DEL-1.2 and DOC-1.37 consume exact matching receipts rather than duplicate harnesses. Existing SDK progress does not complete this parent.
 Handoff: Last completed consumer/cache mode, graph or transfer discrepancy, exact artifact revisions and next bounded action for `SDK-1.10`.
 Blocked behavior: Leave `SDK-1.10` unchecked with missing consumer/evidence, owner and retry trigger; never claim cross-realm runtime reuse or count a cache-hidden duplicate as shared delivery.
+
+## Extension DX follow-up — 2026-10-17
+
+User-authorized additions to this existing roadmap; no separate extension DX track or runner is created. Read [the shared extension DX contract](../specs/extension-dx.md) and [32 planned acceptance cases](../tests/extension-dx-cases.md). Individual extension composition is primary; optional default/document presets are convenience configurations, not use-case restrictions. Keep the same execution, ownership, deterministic fixture, paid-inference, evidence and teardown rules as the original tasks.
+
+Original task IDs, completed progress and qualification receipts are preserved. They do not complete these added parents. Previously qualified baseline prerequisites keep their original parent/artifact scope; new facade functionality requires the named new feature gates. Cross-roadmap feature gates refer to specific parents, not a whole expanded track that would introduce a dependency cycle. Adopt revised sources only at an owning controller's safe checkpoint; do not change active queues or start duplicate workers. Runtime, platform and release claims remain evidence-gated.
+
+### Task SDK-1.11 — Implement one-import editor extension configuration
+
+- [ ] SDK-1.11 Implement one-import editor extension configuration.
+
+Purpose: Replace normal consumer orchestration with one public configuration path.
+Context: [DX contract](../specs/extension-dx.md); `packages/web/src/index.ts`; `packages/web/src/editor.ts`; `packages/web/src/surface.ts`; `packages/web/src/extensions/`; `tests/extension-dx/configuration.test.mjs`.
+Dependencies: none.
+Cross-roadmap feature gates: EXT-1.14, with exact applicable passing artifacts; these are parent-specific gates, not completion of an expanded downstream track.
+Session scope: Facade-to-existing-lifecycle integration, without rebuilding feature implementations.
+Acceptance: DXC-01/02/03/06/24/25/27/28: existing qualified features can be configured through lightweight factories and extensions array; options/instances are isolated, errors occur before attachment, imports are SSR-safe, and legacy APIs retain documented behavior. No preset is required and no use-case name restricts selection. Basic formatting options use existing core commands; collaboration and presence are independently explicit per editor. Local readiness/input/history/persistence work without a provider. A mixed comment/local/collaborative page proves identity/authority isolation and attach/detach/late-completion preservation over the existing sync ports.
+
+Implementation:
+
+- [ ] SDK-1.11-I1 Assemble existing descriptors/codecs/presenters/cleanup through current lifecycle ports. Provide typed immutable configure values, feature status and generic optional presets/overrides; preserve legacy Task naming and its capability/byte inventory through explicit compatibility behavior. Document deterministic conflicts when legacy and facade options are mixed. Implement typed basic-formatting and collaboration/presence configuration without a second document, history manager or dispatcher; invalidate stale attachment work and preserve local recovery/unsent edits.
+
+Validation:
+
+- [ ] SDK-1.11-V1 Run `npm run typecheck`, `npm run build` and `node scripts/test-extension-dx.mjs --group configuration`. Exercise both public mount paths, independent option values, ready/failure/disposal, invalid options and an installed public-import smoke consumer. Include DXC-25/27/28 with deterministic delayed/denied transports, independent presence settings and local editing without a provider; retain counts and artifacts.
+
+Evidence: SDK-1.11 progress links exact public types, consumers, migration behavior and lifecycle results.
+Handoff: Last configured feature, remaining legacy mapping or exact failing case and next bounded action.
+Blocked behavior: Keep SDK-1.11 unchecked; record the missing owning API and resume condition; do not duplicate the lifecycle or weaken legacy guarantees.
+
+### Task SDK-1.12 — Deliver dedicated lazy extension bundles and managed assets
+
+- [ ] SDK-1.12 Deliver dedicated lazy extension bundles and managed assets.
+
+Purpose: Keep the facade ergonomic while optional implementations and assets load independently.
+Context: [Packaging](../specs/packages-release.md); [shared resources](../specs/web.md#shared-resources-across-editors-and-site-routes); [conversion](../specs/document-conversion.md#adapter-and-execution-boundary); `packages/web/package.json`; `packages/markdown/`; `scripts/`; `tests/extension-dx/loading.test.mjs`.
+Dependencies: SDK-1.11.
+Session scope: Optional delivery/asset wiring over qualified feature implementations; converters remain owned by CNV.
+Acceptance: DXC-04/05/06/07/24/26/28: named facade imports retain only lightweight factories; disabled implementation assets are absent. Enabled features use independent chunks, conventional asset discovery or one host override, shared compatible initialization and isolated cancellation. Exporters do not block typing; parser failure retains input. A broad dynamic barrel and a Cargo feature alone cannot establish bundle separation. Collaboration orchestration/provider/presence code is independently lazy and absent when disabled; retain baseline Yrs/update/local-storage costs honestly and preserve legacy attachSync compatibility. A sibling collaborative editor cannot create local-field provider/listener/timer work.
+
+Implementation:
+
+- [ ] SDK-1.12-I1 Adapt collaboration orchestration/presence, Markdown, math and highlighting to managed asynchronous loaders; add direction-specific converter facade/worker entries only for qualified CNV implementations. Define package ownership before adding packages, independent PDF/DOCX assets and advanced public subpaths. Exercise bundler and direct-browser hosting with immutable compatible URLs and bounded retry/disposal. Pending converters remain honestly unavailable and their actual runtime cells stay gated by CNV evidence.
+
+Validation:
+
+- [ ] SDK-1.12-V1 Run `npm run build` and `node scripts/test-extension-dx.mjs --group loading` through installed production consumers in Chromium, Firefox and WebKit. Reuse import/request/shared-resource oracles; reject eager-loading controls, duplicate engine assets, stale completion and incorrect MIME/CSP/CORS setup. Record enabled/disabled graphs, requests, exact assets and teardown, including no-provider local editing, collaboration-specific work counters and pending-attachment disposal races; unavailable converter cells cannot be counted as passing.
+
+Evidence: SDK-1.12 progress links per-feature chunk/asset manifests, hosting recipes and feature-specific qualification gates.
+Handoff: Last loader/package/host variant, concrete unavailable converter or failure and next action.
+Blocked behavior: Keep unmet cells unchecked with owner/revision/resume condition. Continue independent ready parents only; do not advertise planned loaders as completed converters.
+
+### Task SDK-1.13 — Reduce measured SDK and WASM costs without feature loss
+
+- [ ] SDK-1.13 Reduce measured SDK and WASM costs without feature loss.
+
+Purpose: Implement the highest-value measured SDK/WASM size or runtime reduction supported by current attribution, with feature parity and input-latency checks.
+Context: [Size contract](../specs/extension-dx.md#size-reduction-and-compression); [performance contract](../specs/verification.md#extension-dispatch-and-jswasm-performance); [engine](../specs/engine.md); `scripts/build-wasm.mjs`; `scripts/check-browser-size.mjs`; `tests/extension-dx/reductions.test.mjs`.
+Dependencies: SDK-1.12.
+Cross-roadmap feature gates: FIT-1.10, with exact applicable passing artifacts; these are parent-specific gates, not completion of an expanded downstream track.
+Session scope: One attributed reduction hypothesis and its feature-equivalent comparison; additional hypotheses require later bounded iterations.
+Acceptance: DXC-21/30/31: exact before/after graphs, bytes and startup/compile observations show any claimed gain. Investigate facade/re-export retention, duplicate chunks, glue/WASM roots and optional parser/serializer/assets before changing compiler settings. Unicode, unknown data, atomic commands/history, persistence, peer behavior and default clipboard guarantees remain intact; no per-preset engine or silent budget change. Compare facade/direct-port dispatch and equivalent pure JS/WASM candidates for small interactive and larger batched work; attribute boundary calls, encoding/copies/allocations and end-to-end p50/p95/p99. Pin per-workload limits before candidate runs; a large-batch or size win cannot hide typing, selection, startup or memory regressions. No universal WASM speed claim or JS writable mirror is allowed.
+
+Implementation:
+
+- [ ] SDK-1.13-I1 Apply a measured justified reduction using existing package/engine ownership and size-oriented build controls. Retain exact feature-equivalent baseline and rollback evidence. If no evaluated candidate safely improves size or latency, publish measured rejected candidates/tradeoffs and an explicit controller decision instead of claiming savings; unresolved cap failures remain blockers. Numerical optimization follows integrated feature readiness under the current priority policy.
+
+Validation:
+
+- [ ] SDK-1.13-V1 Run `npm run check:browser-size` with isolated output and `node scripts/test-extension-dx.mjs --group reductions`; run affected owning engine/browser/Unicode/history/storage/peer checks. Compare identical features and runtime, record raw/compressed/compile/startup changes and exact counts. Extend reductions checks with small/medium/large JS/WASM kernels, single/batched calls, direct-port/facade attribution and the existing real input-to-visible producer; retain raw distributions, workload crossover/no-safe-gain and predeclared budget results. Rejected experiments cannot be labeled improvements or erase failed evidence.
+
+Evidence: SDK-1.13 progress links before/after artifact identities, measured gains or reviewed no-safe-gain decision, retained behavior and remaining headroom.
+Handoff: Last hypothesis, exact accepted/rejected measurements, unresolved budget result and next bounded action.
+Blocked behavior: Keep unresolved correctness/admission unchecked; do not remove character handling, weaken preservation or run unchanged benchmarks without a new hypothesis.
