@@ -124,8 +124,3 @@ The optional first-party search and code-command contracts live in [rich content
 ## Regression prevention and shared suite
 
 [The editing suite](editing-regression-suite.md) defines guards for atomic compound edits, intent correlation, semantic selection results, history origins and post-transaction callbacks. Pending marks distinguish context-derived state (null) from explicit no marks (empty set); selected formatting is not a persisted default for an empty block. Use the shared real-engine driver and independently authored snapshots from track 42. Catalog references and valid fixture files are planned coverage, not runtime passes.
-
-Shared internal clipboard runs preserve bounded inert `opaqueMarks` under the
-[format contract](formats.md). Prepared admission is authoritative; adapters only
-capture raw attributes. Clipboard writes are acknowledged before cut deletion.
-Opaque descriptors carry no rendering, module-registration or host authority.
