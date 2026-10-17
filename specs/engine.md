@@ -129,6 +129,10 @@ An optional final `selectionAt` supplies anchor/focus owner, UTF-16 offset and l
 
 These synchronous coordinates are not asynchronous targets. Preparing a batch does not mutate live state; commit checks the original replica/revision/checkpoint and rejects a stale plan rather than rebasing integer offsets onto unrelated content. Use stable anchors for asynchronous work. Exact atomic text/mark and selection vectors are in `crates/editac-core/tests/atomic_batch.rs`, bridge capacity tests, and the packed `tests/editing/atomic-batch.test.mjs` proof. These tests unblock the missing SEQ-11 primitive; they do not close all RGS-1.2 recipes or native device qualification.
 
+### Prepared grapheme deletion
+
+`deleteGraphemeAt { owner, offset, backward }` uses the core extended-grapheme boundary helper against the disposable batch state. The public cut is UTF-16. Interior grapheme/surrogate cuts, missing owners and invalid offsets reject the entire preparation; no preceding staged change becomes live. A successful deletion preserves retained runs and returns a separate stable caret at the deleted range start. An empty document-edge range is a zero-update, zero-history result. Entry/result bookmarks use the existing semantic history owner. Shared native and mounted-WASM cases consume `fixtures/editing-failures/deletion-vectors.json`; the adapter owns native word/line range capture and selection-first atom presentation.
+
 ## Atomic heading-end Enter
 
 WEB-1.14 owns the engine/WASM prerequisite for WEB-1.8. Add the prepared Rust editor command `HeadingEnd { owner, at }` and the packed command `{ type: "headingEnd", owner, at }`, using the existing engine-owned stable anchor token and editor request envelope. This is an additive command API on the qualified v5 replica; it does not change the persisted schema or peer update protocol.
