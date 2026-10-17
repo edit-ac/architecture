@@ -4,7 +4,7 @@ Status: controller-authored correction for ENG-1.9-F1; qualification ENG-1.22 an
 
 ## Profile and version boundary
 
-Schema `editac.registry.editor.v5`, profile `editac.yrs-yjs.editor.v5`; protocol version 1, update encoding 1, UTF-16 and the same pinned Yrs/Yjs/toolchain pair as [schema-v4.md](schema-v4.md). Retain v4's exact ten roots, value shapes, namespaces, bounds, containers, presentation/check/control metadata and immutable original-source identities, except the split/join tuples and replay rule explicitly changed below. The tuple change requires a new profile; no implicit v4 mutation, automatic migration, reseeding restore or mixed-epoch update. V4 readers reject the v5 envelope before live mutation. Legacy v4 presentation guards remain until an explicit separately authorized migration, which retains the old checkpoint and uses a new epoch.
+Schema `editac.registry.editor.v5`, profile `editac.yrs-yjs.editor.v5`; protocol version 1, update encoding 1, UTF-16 and the same pinned Yrs/Yjs/toolchain pair as [schema-v4.md](schema-v4.md). Retain v4's exact ten roots, value shapes, namespaces, bounds, containers, presentation/check/control metadata and immutable original-source identities, including the ordered-start contract of integral 0…2147483647 with no coercion and atomic malformed-tuple rejection, except the split/join tuples and replay rule explicitly changed below. The tuple change requires a new profile; no implicit v4 mutation, automatic migration, reseeding restore or mixed-epoch update. V4 readers reject the v5 envelope before live mutation. Legacy v4 presentation guards remain until an explicit separately authorized migration, which retains the old checkpoint and uses a new epoch.
 
 ## Immutable preparation witnesses
 

@@ -133,12 +133,12 @@ Priorities: **P0** prevents data loss, broken basic input or inaccessible operat
 |---|---|---|---|
 | PAR-01 | P1 | Asterisks/underscores, setext/ATX headings, fence lengths/languages, ordered delimiters | Equivalent declared CommonMark semantics; canonical output reparses consistently |
 | PAR-02 | P0 | Escaped/unmatched delimiters, intraword underscores, nested marks and code spans | Partial syntax stays literal; valid nesting follows pinned grammar; code excluded |
-| PAR-03 | P1 | List/quote/heading typing triggers and immediate Backspace | Exact local trigger converts; Backspace reverses conversion without losing typed source |
+| PAR-03 | P1 | List/quote/heading typing triggers and immediate Backspace | Exact local trigger (including `0. `) converts through the shared ordered tuple; Backspace reverses conversion without losing typed source; undo/redo and durable reopen preserve start/content |
 | PAR-04 | P0 | Same trigger in paste/dictation/replacement/remote replay/IME/read-only | No local typing shortcut; separate paste importer follows its own policy |
 | PAR-05 | P1 | URL/email followed by Unicode punctuation; invalid URL or explicit literal mode | Correct boundary, safe scheme, no unexpected parsing or normalization |
 | PAR-06 | P1 | Multiline inline-code literal paste and unsupported alternate formatting | Declared schema fallback/diagnostic preserves source rather than silently dropping breaks/marks |
 | PAR-07 | P1 | Code contains triple backticks; export using a safe longer outer fence then reparse | Exact literal code text and code-block boundary preserved |
-| PAR-08 | P1 | Parse `Hi. there`, `Ex) aside`, and a valid list starting at `0.` | First two remain ordinary text; valid ordered list preserves start value zero and content |
+| PAR-08 | P1 | Parse `Hi. there`, `Ex) aside`, and a valid list starting at `0.` | First two remain ordinary text; valid ordered list preserves start value zero and content through shared command/schema admission, export/reimport, projection, undo/redo and durable reopen; malformed, fractional, negative and overflow starts still reject |
 
 ## History, races and command parity — INT-1.12
 
