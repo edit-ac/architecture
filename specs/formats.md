@@ -22,6 +22,7 @@ The published GFM specification is version 0.29-gfm; record differences from the
 Pin official fixture versions and report pass/fail/unsupported outcomes per construct.
 Document disabled syntax explicitly; optional math/reference syntax must not silently alter ordinary Markdown.
 Raw HTML syntax is recognized as input but admitted only through the safe semantic import policy.
+The finite attribute-free `br` spellings (`<br>`, `<br/>`, `<br />`, case-insensitive) map to the existing semantic LF/hard-break primitive, including a standalone break paragraph. No other HTML or attributes gain authority. Export uses `<br />` for authored terminal hard breaks, which CommonMark's backslash/newline spelling cannot retain; interior breaks retain the existing spelling. Import/export qualification must cover repeated/empty/trailing breaks, marked text and inert rejection of attributed or executable variants. This is codec admission over the existing schema, with no new storage or wire representation.
 The parser does not define a plugin marketplace or execute document-supplied code.
 
 ## Parser qualification gate
@@ -115,7 +116,7 @@ The portable import result retains the exact input source, byte ranges and
 diagnostics alongside prepared fragments. Links reuse the core's public
 `normalize_link_url` admission policy (absolute HTTP(S)/mailto; no credentials,
 encoded controls or executable schemes). Grammar recognition alone does not
-admit a URL. Unsupported link titles/destinations, raw HTML and disabled optional
+admit a URL. Unsupported link titles/destinations, unadmitted raw HTML and disabled optional
 content retain original source and report loss rather than executing or fetching.
 Fragment limits remain 128 blocks, 1,024 runs, 16 container levels and 1 MiB of
 source/text. Preparation returns no live document mutation.
