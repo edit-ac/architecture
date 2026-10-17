@@ -1,9 +1,9 @@
 # Decision 004: Correlate native input and buffer composition
 
-Version: 1 (2026-10-12).
-Status: mechanically qualified by WEB-1.13; actual OS/IME/device support remains unqualified.
+Version: 2 (2026-10-17).
+Status: original mechanics qualified by WEB-1.13; INT-1.7 adds the portable replacement, interruption and pointer-destination policy below. Actual OS/IME/device support remains unqualified.
 Authority: track 04 immutable source revision `78ed60d4dd3fa0c8055ffe2dbc957703e144f2e69172c0e26e1cb112e953c2ab`.
-Evidence: [input-policy receipt](../evidence/browser-input-policy/receipt.json), including retained failures, native/prepared traces, actual engine profiles and source/artifact hashes.
+Evidence: [original input-policy receipt](../evidence/browser-input-policy/receipt.json) and [INT-1.7 receipt](../evidence/editor-interactions/int-1.7-20261017/receipt.json), including retained failures, native/prepared traces, actual engine profiles and source/artifact hashes. INT-1.7 is authorized by immutable feature source revision `d252fa992250c2ca98c27d742352ad6f9a94e7b5723ff9e3482e09fcf6924f8c`.
 
 ## Basis and ownership
 
