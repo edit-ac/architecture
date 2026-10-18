@@ -196,6 +196,27 @@ Measure preparation, transfer and main-thread application separately; a worker d
 
 Deferred paste is an explicit host action (`ClipboardInput.pasteDeferred`), with a cancelable status control and retained flavor data. It yields preparation scheduling without claiming worker offload. Each flavor is captured once, with per-flavor 1 MiB limits. Completion revalidates both endpoint owners and their parents, current anchors and schema; moved/deleted targets reject with retained source. Current user selection is restored after apply. Timings separate preparation and apply; no automatic size threshold is claimed before measurement.
 
+### Captured touch paste choices
+
+The optional editing-command group exposes labeled “Paste with formatting” and
+“Paste without formatting” controls. `BrowserEditor.capturePaste` captures a
+stable text target before the owning control takes focus; `capturePlainPaste`
+retains its string-reader interface and literal policy. Both use the existing
+clipboard preparation and cancellation owner, not a second transfer/history model.
+Script clipboard reads occur only on explicit activation. The rich read admits
+bounded known flavors, including the browser's `web ` custom-MIME prefix, then
+uses the same internal-fragment/codec/HTML/plain precedence as native paste.
+An unavailable optional extension codec retains its offered source with a
+recoverable diagnostic before safe fallback. Code targets keep literal policy.
+
+Focus within the owning command/search controls preserves the capture. A foreign
+editor, changed document revision, read-only/background transition or disposal
+prevents late mutation. Completion preserves later user selection and does not
+reopen the keyboard. Ordinary OS paste menu and beforeinput/input routing remain
+with the input owner; prepared browser event replay is not an OS-menu observation.
+Table rectangles keep their existing structured cell clipboard owner and explicit
+“Paste cells as literal text” choice.
+
 ## HTML and URL safety
 
 Use an allowlisted HTML-to-semantics importer distinct from Markdown parsing.

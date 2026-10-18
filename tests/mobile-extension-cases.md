@@ -87,3 +87,17 @@ Common assertions: preserve anchor/focus direction and composition; canceled/rea
 ## Evidence sources and overlap
 
 Use [mobile platform research](../evidence/mobile-web-platform-research.md) for browser input/viewport distinctions and [touch extension research](../evidence/touch-extension-research.md) for control/gesture/API constraints. The authoritative [mobile contract](../specs/mobile-web.md) resolves implementation policy. This matrix consumes INT/AIN/RCH behavior instead of defining competing input, command, resolver, asset or format semantics. Reuse exact-revision upstream observations when their full setup/outcome matches; a changed presenter or consumed dependency requires the affected cases to be requalified.
+
+## Portable touch formatting projection — MEX-1.9 / MWX-1.9
+
+MTF-1.1–1.3 implement the portable production-browser subset of MEX-1.9-I1/V1. Original catalog IDs and platform criteria above remain unchanged. The executable registration is `core/tests/browser/mobile-extensions/touch-predicates.json`; the canonical packed-consumer suite is `npm run test:browser -- mobile-extension-formatting`. Its receipt reconciles every named case and pins original catalog rows. A passing projection does not close full platform rows or MWX-1.8/roadmap43.
+
+| Original criterion / catalog overlap | Portable registration | Required proof and remaining observations |
+|---|---|---|
+| Every advertised caption/reference/extension/text mark; MWX-C05 | text-families, search-focus, target-guards | Six marks across nine carrier families plus five enabled presenters; captured reverse range, opaque/source preservation, one history effect and undo/redo. Native handles and platform accessibility pending. |
+| Every advertised table-cell format; MWX-C10 | table-actions, target-guards | Six inline actions, paragraph, six heading levels, code block, header/body, four alignments and link removal on captured rectangle. Native handles/OS host observations pending. |
+| Explicit formatted/literal paste; MWX-C05/C24 | paste-flavors, search-paste, code-paste | Internal precedence, HTML/plain, malformed/disabled/unsupported fallback, search focus and literal code policy. Real producer/OS delivery pending. |
+| Captured cell/text selection survives menu focus; MWX-C05/C10 | native-event-replay, table-paste | beforeinput-only/noncancelable/menu event replacement, rich rectangle and literal single-cell policy; constructed events are prepared replay, never observed OS menus. |
+| Async cancellation and editor isolation; MWX-C05/C24 | async-fences | Stale/foreign/read-only/background/dismiss/dispose/denied/empty/duplicate/later-selection fences. Full import/export/manual-copy C24 ownership is unchanged. |
+
+The device handoff is `core/tests/manual/mobile-web-extensions.md`. All iPhone/iPad/Android OS cells are pending here; accepted simulator/emulator receipts must identify actual runtime versions and tested equivalents. Existing broader menu/IME/AT/overhead/release owners remain open. Final immutable portable receipts, counts and historical failures are linked from `evidence/mobile-extensions/touch-qualification-20261018/delivery.json` when delivered.
