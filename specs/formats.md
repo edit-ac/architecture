@@ -409,3 +409,32 @@ indivisible atom; partial copy/cut and mismatched fallback text reject. Other
 atom edit/descriptor policies are unchanged. Markdown must report marked atomic
 fallbacks that cannot be represented and return the exact internal recovery;
 it must never claim lossless source recovery after silently dropping marks.
+
+### Packed browser selected-table source boundary
+
+An explicitly registered `@edit-ac/markdown` codec supplies the stateless
+`tableSource` checkpoint adapter. `EngineHandle.captureSourceBaseline(source,
+owners, options, opening?)` retains exact source, ordered source owners, codec
+options and a private opening checkpoint. Hosts may retain that opening checkpoint
+with their source representation and supply it after storage recovery. The handle's
+`originalSource` is immutable; `dispose()` releases its retained snapshot.
+
+`prepareTableFormat(owner, origin)` invokes the existing Rust
+`SourceBaseline::prepare_table_format` over read-only checkpoint snapshots in the
+optional codec. It returns `{plan, source, changed}`. Only Rust extracts the exact
+selected-table replacement bytes. The live engine checks the exact captured
+checkpoint before preparing the existing bounded `TableSource` command and again
+at commit, including no-ops. Plans are engine-scoped and single-use. The caller
+commits through public `BrowserEditor.commitPrepared` (which rechecks readiness, readonly and composition) or the existing Session storage `commitPrepared` admission and owns
+ordinary write/table/protected-content policy. No parser is linked into the default
+engine and no snapshot replica is committed. `sourceWithCurrentTable(owner)` uses
+the existing Rust recovery method after undo/redo or local storage recovery;
+changed represented content, moved/deleted/invalid targets and wrong identities
+reject. Source preparation never reparses or serializes source in JavaScript and
+never replaces the whole live document. Codec removal, engine disposal and baseline
+disposal invalidate later calls. Existing 1 MiB formatter limits, scalar padding,
+exact adjacent bytes and targeted projection invalidation remain mandatory.
+
+`BrowserEditor.captureSourceBaseline` delegates to the same engine/optional codec
+and returns the same source handle. The public editor never exposes another
+semantic model; its prepared commit uses its existing recovered storage session.
