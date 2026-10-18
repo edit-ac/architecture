@@ -133,6 +133,26 @@ def admit(manifest_path, core_repository, expected_identity):
             proofs[proof_id] = {'cases': set(names), 'packages': set(names_bound)}
             proof_counts[ident + '/' + proof_id] = len(cases)
         require(proofs, 'No independent runtime proof')
+        for recipe in candidate.get('recipes', []):
+            require(recipe['proof'] in proofs and recipe['cases']
+                    and set(recipe['cases']).issubset(proofs[recipe['proof']]['cases']),
+                    'Recipe lacks exact runtime proof')
+            content = verify_file(root, recipe['source'])
+            blob = subprocess.run(['git', '-C', str(core_repository), 'show',
+                                   candidate['sourceCommit'] + ':' + recipe['gitPath']],
+                                  capture_output=True, check=True).stdout
+            require(content == blob, 'Recipe source differs from pinned Git commit')
+            require(recipe['ownerRanges'], 'Recipe has no owning source references')
+            for owner in recipe['ownerRanges']:
+                path = PurePosixPath(owner['path'])
+                require(not path.is_absolute() and '..' not in path.parts,
+                        'Unsafe recipe owner path')
+                source = subprocess.run(['git', '-C', str(core_repository), 'show',
+                                         candidate['sourceCommit'] + ':' + owner['path']],
+                                        capture_output=True, check=True).stdout.splitlines(keepends=True)
+                require(1 <= owner['start'] <= owner['end'] <= len(source), 'Invalid owner range')
+                require(digest(b''.join(source[owner['start'] - 1:owner['end']])) == owner['sha256'],
+                        'Recipe owner range differs from pinned source')
         for artifact in candidate.get('artifacts', []):
             verify_file(root, artifact)
         candidates[ident] = proofs

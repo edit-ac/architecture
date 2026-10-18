@@ -325,6 +325,28 @@ both. Unknown/future versions, unsafe image URLs and out-of-bounds descriptors
 reject. Source stays inert and no asset or reference fetch occurs. See the
 [atomic-content boundary](client-contracts.md#shared-atomic-content-edit-boundary-stb-15).
 
+### Local structural-callout recipe (LCR-1.2)
+
+The existing v1 `module:editac.callout` is an atomic structural content block,
+with one admitted kind, retained body Markdown and exact source. The portable
+`atomicContent` boundary also admits same-family callout replacement/removal.
+It validates the complete expected tuple and source-owned offset-zero anchor
+before staging; replacement updates descriptor and canonical `kind + "\n" + body`
+fallback together at the same owner. Invalid kind/version, stale tuple/anchor,
+wrong-family replacement and a rejected later command leave data/history unchanged.
+One undo restores the descriptor and fallback; concurrent edits elsewhere survive.
+This adds no schema, wire root, dispatcher or native policy capability. Native
+`setAtomicContentPolicy` remains image/reference-only pending its owning evidence.
+
+The local Project kickoff recipe uses the existing public authoring API for
+callout construction, a `demo.highlight` mark and a captured local menu command.
+An advanced public content presenter can remount the persisted document with
+atomic source editing. The configured facade and legacy `content` option cannot
+be mixed; the recipe qualifies them as separate sequential mounts. Callout body
+Markdown is retained source, not a nested rich-text replica. Unknown extensions
+retain opaque data/checkpoints; Markdown loss reports must retain recovery data.
+The historical `[note]` heading/bold codec remains a separate example.
+
 ### Shared native prepared transfer boundary (SFA-1.2)
 
 `NativeSession` exports an owned bounded anchor range using the canonical engine
