@@ -24,6 +24,14 @@ This document describes required behavior; it does not assert that the engine is
   This uses the existing placement shape/bounds; v4's frozen creation rule stays
   unchanged. Fragment payloads use distinct original sources, with existing
   prefix/suffix sources retained, so redo cannot shift cuts into reinserted text.
+  A single inline paragraph fragment replacing a range within one existing v5
+  paragraph may reuse the prepared source-edit path: retain the destination
+  source/owner, replace text and known marks atomically, and preserve entry/result
+  history bookmarks. This exception requires no imported containers or checked
+  state and no presentation change. It avoids retaining an additional text source
+  that would make exact undo exceed the unchanged 1 MiB aggregate source-text
+  ceiling. Multi-block, cross-owner and presentation-changing fragments retain
+  the distinct-source rule; no resource or restore bound is increased.
 - Persistence and synchronization consume immutable update bytes and metadata through ports.
 
 ## Compatibility profile
@@ -120,6 +128,27 @@ A command chain validates all document mutations before any of them changes the 
 Host focus/menu side effects are outside the atomic document mutation contract.
 Reentrant adapter callbacks cannot mutate a document while a transaction is active.
 Revision numbers are local observation tokens, not globally comparable CRDT timestamps.
+
+### Bounded table fallback and WASM journal transport
+
+Prepared table edits retain the validated opaque table descriptor and atomically
+synchronize its plain-text fallback. Replace only the scalar-aligned changed
+range of the fallback, preserving unchanged text identities, stable anchors and
+one semantic history/update group. Whole-table fallback rewrites must not consume
+CRDT clocks and history for unchanged cells. The v5 schema and descriptor format
+remain unchanged.
+
+The WASM restore call keeps its `(metadata JSON, binary bytes)` signature and
+existing 2 MiB JSON, 4096 journal-entry and 16 MiB combined binary restore limits.
+For journals, the binary argument concatenates the original checkpoint and every
+acknowledged update in order. Metadata supplies `checkpointBytes` and a
+`binaryJournal` array of `{identity, byteLength}` records; `journal` is empty.
+Validate all lengths, exact buffer coverage and identities before publishing a
+restored engine. Reject mixed legacy/binary journals, absent paired metadata,
+overruns, trailing bytes and unsupported identities. Legacy JSON journals remain
+readable within their existing limits. Public SDK checkpoint/journal values and
+persisted bytes are unchanged; this transport avoids decimal JSON expansion,
+without compaction, truncation, replay substitution or higher limits.
 
 ## Ordered text and mark batch coordinates
 
