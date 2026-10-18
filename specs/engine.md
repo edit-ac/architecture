@@ -129,6 +129,10 @@ Host focus/menu side effects are outside the atomic document mutation contract.
 Reentrant adapter callbacks cannot mutate a document while a transaction is active.
 Revision numbers are local observation tokens, not globally comparable CRDT timestamps.
 
+### Durable prepared-media admission
+
+`Document::preview_editor` validates an opaque editor plan against its exact identity/writer/revision/checkpoint and returns its immutable replay update without changing content, history or clocks. `commit_editor` uses that same admission. For browser prepared-media insertion, the WASM boundary restores only a disposable candidate to derive every new live asset target; callers cannot substitute arbitrary node IDs. The shared EngineHandle reservation prevents content/history/replay/disposal or plan release while storage commits that exact update and job-only AssetJournal candidate together. Committing the reserved plan then uses ordinary editor history once; abort releases admission without semantic mutation. This reservation is not a document commit or storage receipt. The public browser owner exposes lazy `enableAssets` and `commitPreparedAssets`; optional converter codecs remain separate consumers. Full lifecycle details belong to [prepared originals](rich-content-extensions.md#prepared-import-originals).
+
 ### Bounded table fallback and WASM journal transport
 
 Prepared table edits retain the validated opaque table descriptor and atomically
