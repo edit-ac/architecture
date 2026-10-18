@@ -412,3 +412,8 @@ indivisible atom; partial copy/cut and mismatched fallback text reject. Other
 atom edit/descriptor policies are unchanged. Markdown must report marked atomic
 fallbacks that cannot be represented and return the exact internal recovery;
 it must never claim lossless source recovery after silently dropping marks.
+
+
+### Optional browser asset Session companion
+
+The existing local storage lifecycle may enable the shared AssetWork adapter with `enableAssets(indexedDB, databaseName)`; `@edit-ac/web/assets` also exports `AssetSession` and its explicit mockable host transport. The same document database stores opaque Rust-owned lifecycle state and retained source bytes in an atomic transaction. Only the existing EngineHandle/Session owns document changes and history. The companion requires an already committed matching asset descriptor and stable target; it never inserts, replaces or resurrects document content. `destroy` retires asset work by default; an explicit `assetPolicy: suspend` aborts transports while preserving pending IDs for recovery. Recovery never contacts a provider. Mobile picker/capture/platform acceptance remains with MEX-1.5, beyond this shared prerequisite.
