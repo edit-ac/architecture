@@ -38,3 +38,14 @@ Status: planned acceptance catalog for [the extension DX contract](../specs/exte
 | DXC-32 | Packed consumers enforce the predeclared latency/work budgets, cold first-edit and warm activation costs, remote-burst behavior and repeated-disposal memory. Unrelated wrapper state does not repaint the document or every extension; per-character boundary-call and whole-document-export controls are rejected. | FIT-1.11 |
 
 Use prepared task catalogs, local dictionaries, in-memory resolvers and explicit delayed/error transports. Do not contact production task systems, hosted spellcheck or model providers. Negative fixtures must detect stale application, eager imports and drift rather than merely exercise the happy path. Byte measurements and runtime correctness are separately recorded. Execution counts, failures/skips, immutable inputs, applicable browser runtimes and teardown are mandatory; native support stays with its owning qualification tasks.
+
+## Local structural-callout return (LCR-1.2)
+
+The Project kickoff consumer must construct a real v1 callout via the production
+codec/engine, edit its body via one same-owner atomic command, and independently
+check invalid registration/nonmutation, exact descriptor/fallback undo and redo,
+serialization/local reopen, Markdown roundtrip and explicit highlight loss recovery,
+absent/future extension preservation, remote text with semantic undo, cancelled/stale
+preparation and complete presenter/menu teardown. Configured authoring and advanced
+presenter remount use the same stored document sequentially; their unsupported
+mixed configuration must still reject. Native/device and full EQL stay pending.

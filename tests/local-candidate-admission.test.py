@@ -53,6 +53,38 @@ class AdmissionControls(unittest.TestCase):
                          'requiredCells': ['control'], 'cells': [{'id': 'control', 'state': 'supported',
                          'candidate': 'control', 'proof': 'fixture', 'packages': ['@edit-ac/core'], 'cases': ['fixture-control']}]}
 
+    def recipe_control(self):
+        content = (self.repo / 'engine.rs').read_bytes()
+        (self.root / 'recipe.mjs').write_bytes(content)
+        recipe = {'id': 'control-recipe', 'source': self.file('recipe.mjs'),
+                  'gitPath': 'engine.rs', 'proof': 'fixture', 'cases': ['fixture-control'],
+                  'ownerRanges': [{'path': 'engine.rs', 'start': 1, 'end': 1,
+                                   'sha256': admission.digest(content)}]}
+        self.manifest['candidates'][0]['recipes'] = [recipe]
+        return recipe
+
+    def test_valid_recipe_source_and_owner_binding(self):
+        self.recipe_control()
+        self.assertEqual(self.run_admission()['sourceBlobs'], 1)
+
+    def test_recipe_cannot_substitute_uncommitted_source(self):
+        recipe = self.recipe_control()
+        (self.root / 'recipe.mjs').write_text('// substituted source')
+        recipe['source'] = self.file('recipe.mjs')
+        with self.assertRaisesRegex(ValueError, 'Recipe source differs'): self.run_admission()
+
+    def test_recipe_requires_owning_source_ranges(self):
+        self.recipe_control()['ownerRanges'] = []
+        with self.assertRaisesRegex(ValueError, 'no owning source'): self.run_admission()
+
+    def test_recipe_rejects_changed_owner_range(self):
+        self.recipe_control()['ownerRanges'][0]['sha256'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'owner range differs'): self.run_admission()
+
+    def test_recipe_rejects_unexecuted_runtime_case(self):
+        self.recipe_control()['cases'] = ['not-executed']
+        with self.assertRaisesRegex(ValueError, 'lacks exact runtime'): self.run_admission()
+
     def test_unproved_package_combination(self):
         self.manifest['cells'][0]['packages'].append('@edit-ac/react')
         with self.assertRaisesRegex(ValueError, 'Cell packages lack'): self.run_admission()
