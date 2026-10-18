@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Physical follow-up sequencing (user decision, 2026-10-18): transfer deferred physical-only observations to [roadmap 43](43-physical-device-verification.md) after development. Accepted target-platform virtual checks and tested equivalents remain valid; no physical device is required to finish this development roadmap. Failed implementation, virtual input/semantic checks and applicable performance budgets remain blockers. Preserve original case IDs and historical evidence; do not mark deferred physical runs passed.
+
 Qualification amendment (user decision, 2026-10-14): Physical devices, named target-platform simulators/emulators and desktop OS VMs/test hosts are accepted for platform and release qualification under the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). Missing physical hardware does not block completion. Execute required behavior against the implemented target-platform runtime; document and test virtual equivalents for unavailable hardware-only input/accessibility cases. Record physical versus virtual provenance and measure performance in the tested environment. This supersedes earlier physical-only or manual-only clauses below; it does not complete unchecked tasks or waive implementation, correctness, security or artifact gates.
 
 Progress (2026-10-13): 14 of 15 parent tasks complete. Software implementation and deterministic qualification are complete; FMT-1.15-V1 is blocked on actual-device observations. Final native/package/WASM/browser/architecture results and cleanup are recorded in `../evidence/markdown/session-20261013/qualification.json`. Checkmarks in this file are maintained under the user's explicit progress-tracking instruction.
