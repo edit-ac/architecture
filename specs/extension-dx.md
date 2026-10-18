@@ -1,5 +1,7 @@
 # Extension integration, authoring and optional web delivery
 
+Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
+
 Status: planned follow-up contract, authorized 2026-10-17. Implementation belongs to the existing [SDK](../roadmaps/08-sdk-integration.md), [extension library](../roadmaps/21-extension-library.md), [architecture fitness](../roadmaps/30-architecture-fitness.md) and [public documentation](../roadmaps/29-public-docs-demo.md) roadmaps. Proposed APIs below describe the target experience; they are not shipped exports or executable support claims.
 
 ## Delivery ownership in existing roadmaps

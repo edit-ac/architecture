@@ -1,5 +1,7 @@
 # Mobile browser extension case catalog
 
+Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
+
 Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
 
 Status: planned acceptance matrix; none of these rows claims an executed runtime test or supported device.
@@ -88,7 +90,7 @@ Common assertions: preserve anchor/focus direction and composition; canceled/rea
 
 Use [mobile platform research](../evidence/mobile-web-platform-research.md) for browser input/viewport distinctions and [touch extension research](../evidence/touch-extension-research.md) for control/gesture/API constraints. The authoritative [mobile contract](../specs/mobile-web.md) resolves implementation policy. This matrix consumes INT/AIN/RCH behavior instead of defining competing input, command, resolver, asset or format semantics. Reuse exact-revision upstream observations when their full setup/outcome matches; a changed presenter or consumed dependency requires the affected cases to be requalified.
 
-## Portable touch formatting projection — MEX-1.9 / MWX-1.9
+## Portable touch formatting projection — MWX-1.9
 
 MTF-1.1–1.3 implement the portable production-browser subset of MEX-1.9-I1/V1. Original catalog IDs and platform criteria above remain unchanged. The executable registration is `core/tests/browser/mobile-extensions/touch-predicates.json`; the canonical packed-consumer suite is `npm run test:browser -- mobile-extension-formatting`. Its receipt reconciles every named case and pins original catalog rows. A passing projection does not close full platform rows or MWX-1.8/roadmap43.
 

@@ -1,5 +1,7 @@
 # Extension DX and optional-loading acceptance cases
 
+Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
+
 Status: planned acceptance catalog for [the extension DX contract](../specs/extension-dx.md). These cases are not executed support claims. The existing SDK, extension-library and architecture-fitness follow-ups create the named executable groups; reuse the existing engine, packed consumers, browser input, byte inventory and shared-resource harnesses.
 
 | Case | Independent expected outcome | Owner |

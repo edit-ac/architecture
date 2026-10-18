@@ -1,5 +1,7 @@
 # Everyday editing behavior
 
+Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
+
 Status: development contract; behavior is unimplemented until the owning task and its evidence pass.
 Scope: the default rich editor, with explicit code, list, table and literal-text contexts. Hosts may publish named keyboard profiles; silent platform-dependent content semantics are unsupported.
 

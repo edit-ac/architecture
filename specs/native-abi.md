@@ -1,5 +1,7 @@
 # Native preparation ABI v1
 
+Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
+
 NAT-1.2 defines a preparation bridge, not an iOS/Android SDK. It wraps the existing v5 semantic bridge in `core/crates/editac-ffi`, compiling the same `editac-wasm/src/bridge.rs` translation code against the portable engine. It exposes no Yrs document, borrowed slice, transaction, Rust pointer or mutable projection. The existing engine contracts are unchanged; native controls, IME, clipboard, accessibility, packaging and device support remain later gates.
 
 ## Version and wire contract
