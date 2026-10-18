@@ -10,6 +10,19 @@ Workspace: `core` (sibling of `architecture`). Preserve the [accepted simulator/
 
 Entry gate: the relevant iOS, Android, mobile-web and extension implementation has passed its owning development checks at exact source/package revisions. Consume current reports from tracks 05, 10, 16, 17, 20, 30, 31, 32, 37, 38, 39, 40 and 41. Preserve their historical receipts and failures. Transfer only deferred physical observations, not failing virtual tests, missing APIs, incomplete conversion/media features, unmeasured budgets or unfinished accessibility-tree/action equivalents.
 
+## Handoff from existing development owners
+
+| Original owner | Physical observation deferred here | Required development evidence remains with owner |
+|---|---|---|
+| FMT-1.15-V1 | Physical clipboard providers and hardware-specific transfer behavior on the declared mobile devices | Complete accepted-runtime case/profile matrix; the old five-case development subset alone is insufficient |
+| INT-1.14 / INT-1.18 | Physical keyboard, stylus and device-only gesture observations | Available OS menu/replacement behavior, semantic targets and Undo/Redo; the Safari Edit Undo gap is not deferred as hardware work |
+| AIN-1.10 | Physical VoiceOver/TalkBack exploration and hardware-dependent dictation/recognition observations | Executed accessibility-tree/action and native input-boundary equivalents, semantic preservation and working advertised fallbacks |
+| MWB-1.11 / MWX-1.8 | Physical mobile viewport/gesture, vendor input and extension observations | Actual named mobile virtual-runtime coverage and required lifecycle/input/extension behavior |
+| FIT-1.8 / PRF-07 | Physical thermal, compositor, peak-memory and device-specific timing observations | Comparable simulator/OS-host performance and raw attribution; observed native Long latency failure and insufficient tail samples remain development work |
+| REL-1.6 / DEL-1.7, DEL-1.9, DEL-1.10 | Physical-device-specific capability and release-envelope claims | Complete accepted virtual-platform release evidence and all other correctness, security and artifact gates |
+
+PHY-1.1 binds the exact retained source case/profile IDs for each row before physical execution. No row changes the status of historical results or turns an untested equivalent into a pass.
+
 ## Execution rules
 
 The controller owns this source. Record progress separately; do not check off planning templates. Run one parent per iteration. Before touching a device, record its ownership, OS/build, app/browser/package identity, input/accessibility configuration and exact case manifest. Use deterministic fixtures and mocked provider transports. No paid inference, secrets, publication or deployment. Restore changed device settings and clean only owned test resources. Missing hardware blocks this roadmap's affected parent, not accepted virtual development. Never count a deferred physical observation as an executed or passed test.
