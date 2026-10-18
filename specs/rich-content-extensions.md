@@ -10,6 +10,12 @@ Expose each feature through the owning Rust crate and documented `@edit-ac/core`
 
 Portable presenter ports carry stable node identity, content revision, source/profile, selection/readonly capabilities and bounded patches. Results carry request identity/revision; stale, canceled or disposed results cannot mutate or repaint a replaced target. Define prepare/apply actions separately from derived appearance updates. Publish fixtures that Swift/Kotlin/desktop/terminal presenters can consume without browser types.
 
+### Captured touch formatting
+
+The existing v5 prepared-format owner admits the six ordinary inline marks on validated reference labels, asset fallback text and inert-extension source text. Formatting preserves the complete descriptor, source bytes, backing-text identity and opaque attributes; ordinary URL, code-precedence, revision, authorization and history rules still apply. Tables require their scoped cell commands. Literal code blocks, arbitrary unknown tuples, malformed carriers and unsupported versions remain unavailable targets.
+
+Labeled command controls expose all enabled marks without shortcuts in both legacy and configured editors. A whole content-node selection can retain its complete backing-text range for formatting and its undo/redo controls; ordinary capture, node deletion and clipboard routing keep their existing node-action semantics. Capture occurs before pointer/Tab focus leaves the surface, internal menu/link controls retain the target, and a foreign editor or changed revision invalidates it. Table rectangles likewise retire when a foreign editing control takes focus; their own link/format controls preserve the rectangle. These portable browser mechanics do not qualify native menus or target-platform input/accessibility.
+
 ## Code blocks and highlighting
 
 Persist literal code and a validated language identifier. Highlight spans, grammar/theme caches and syntax trees never become collaborative marks or another writable document. Preserve unsupported labels and provide immediate plain-code editing when a language is unavailable, loading, over budget or disabled.
