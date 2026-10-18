@@ -13,8 +13,8 @@ a = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(a)
 
 
-def prepare(core, output, receipt_path, commit):
-    previous = output / 'local-candidates-v3.json'
+def prepare(core, output, receipt_path, commit, base="v3", version="v4", ident="structural-callout-v1", summary_name="callout-receipt.json"):
+    previous = output / f'local-candidates-{base}.json'
     a.admit(previous, core, a.digest(previous.read_bytes()))
     result = copy.deepcopy(json.loads(previous.read_bytes()))
     receipt = json.loads(receipt_path.read_bytes())
@@ -41,19 +41,19 @@ def prepare(core, output, receipt_path, commit):
         a.require(a.digest(blob(pin['path'])) == pin['sha256'], 'Consumer/build source differs from committed input: ' + pin['path'])
     tracked = subprocess.check_output(['git', '-C', str(core), 'ls-tree', '-r', '--name-only', commit], text=True).splitlines()
     paths = [p for p in tracked if p.startswith(('packages/core/src/', 'packages/web/src/', 'packages/markdown/src/', 'crates/'))
-             or p in ['Cargo.toml', 'Cargo.lock', 'rust-toolchain.toml', 'scripts/build-wasm.mjs', 'scripts/share-wasm-glue.mjs']
+             or p in ['Cargo.toml', 'Cargo.lock', 'rust-toolchain.toml', 'scripts/build-wasm.mjs', 'scripts/share-wasm-glue.mjs', 'scripts/build-extension-runtime.mjs', 'scripts/build-math-assets.mjs', 'package.json', 'package-lock.json', 'tsconfig.json']
              or p.startswith(('examples/extensions/structural-callout/', 'tests/extension-dx/structural-callout'))
              or p == 'scripts/test-structural-callout.mjs'
              or p in [f'packages/{n}/{f}' for n in ['core', 'web', 'markdown'] for f in ['package.json', 'tsconfig.json']]]
-    sources = frozen_json('structural-callout-v1/source-pins.json', [{'path': p, 'sha256': a.digest(blob(p))} for p in paths])
-    candidate = {'id': 'structural-callout-v1', 'sourceCommit': commit, 'sources': sources, 'packages': [], 'runtime': [], 'proofs': [], 'artifacts': []}
+    sources = frozen_json(ident + '/source-pins.json', [{'path': p, 'sha256': a.digest(blob(p))} for p in paths])
+    candidate = {'id': ident, 'sourceCommit': commit, 'sources': sources, 'packages': [], 'runtime': [], 'proofs': [], 'artifacts': []}
     for package in receipt['packs']:
         path = Path(package['path'])
         data = path.read_bytes()
         a.require(a.digest(data) == package['sha256'], 'Qualified package changed')
         members = a.archive_members(path)
         a.require({n: a.digest(b) for n, b in members.items()} == package['members'], 'Qualified package members changed')
-        candidate['packages'].append({**freeze('structural-callout-v1/packages/' + path.name, data),
+        candidate['packages'].append({**freeze(ident + '/packages/' + path.name, data),
                                      'name': package['name'], 'version': package['version'], 'published': False,
                                      'bytes': len(data), 'members': package['members']})
         for name, content in members.items():
@@ -61,7 +61,7 @@ def prepare(core, output, receipt_path, commit):
                 candidate['runtime'].append({'package': package['name'], 'member': name, 'sha256': a.digest(content)})
     names = [c['name'] for c in receipt['cases']]
     packages = [p['name'] for p in candidate['packages']]
-    candidate['proofs'].append({**freeze('structural-callout-v1/consumer.json', receipt_path.read_bytes()), 'id': 'callout', 'kind': 'retained-production-consumer', 'binding': 'packs-sha256', 'packages': packages, 'requiredCases': names})
+    candidate['proofs'].append({**freeze(ident + '/consumer.json', receipt_path.read_bytes()), 'id': 'callout', 'kind': 'retained-production-consumer', 'binding': 'packs-sha256', 'packages': packages, 'requiredCases': names})
     ranges = []
     for path, marker, length in [
         ('crates/editac-core/src/commands/editor.rs', '                EditorCommand::AtomicContent {', 135),
@@ -76,18 +76,19 @@ def prepare(core, output, receipt_path, commit):
         ranges.append({'path': path, 'start': start + 1, 'end': end, 'sha256': a.digest(b''.join(lines[start:end]))})
     recipe_path = 'examples/extensions/structural-callout/recipe.mjs'
     candidate['recipes'] = [{'id': 'project-kickoff-callout-v1', 'gitPath': recipe_path,
-                            'source': freeze('structural-callout-v1/recipe.mjs', blob(recipe_path)),
+                            'source': freeze(ident + '/recipe.mjs', blob(recipe_path)),
                             'proof': 'callout', 'cases': names, 'ownerRanges': ranges}]
-    candidate['artifacts'].append(freeze('structural-callout-v1/README.md', blob('examples/extensions/structural-callout/README.md')))
-    candidate['artifacts'].append(frozen_json('structural-callout-v1/generated-build.json', receipt['engineBuild']))
+    candidate['artifacts'].append(freeze(ident + '/README.md', blob('examples/extensions/structural-callout/README.md')))
+    candidate['artifacts'].append(frozen_json(ident + '/generated-build.json', receipt['engineBuild']))
     result['candidates'].append(candidate)
     for cell in result['cells']:
         if cell['id'] == 'structural-callout':
             cell.clear()
             cell.update(id='structural-callout', state='supported', candidate=candidate['id'], proof='callout', packages=packages, cases=names)
-    result['requiredCells'].append('structural-callout')
+    if 'structural-callout' not in result['requiredCells']:
+        result['requiredCells'].append('structural-callout')
     result['composition'] = 'Separate immutable candidate families. The structural-callout family contains its own current engine/WASM, web and Markdown packages. Do not mix same-version archives or infer optional-loader/framework/native/release support.'
-    pin = frozen_json('local-candidates-v4.json', result)
+    pin = frozen_json(f'local-candidates-{version}.json', result)
     checked = a.admit(output / pin['path'], core, pin['sha256'])
     native_log = (output / 'callout/checks/rust-2.log').read_text()
     native_runs = re.findall(r'test result: ok\. (\d+) passed; 0 failed; 0 ignored; 0 measured; 0 filtered out', native_log)
@@ -102,7 +103,7 @@ def prepare(core, output, receipt_path, commit):
                'failedEvidence': ['callout/checks/run-1/receipt.json', 'callout/checks/run-2/receipt.json', 'callout/checks/run-3/receipt.json', 'callout/checks/run-4/receipt.json', 'callout/checks/rust-1.log'],
                'boundary': 'Configured public authoring and advanced content presenter use separate sequential mounts of the same local document. Callout body is retained Markdown source, not a nested rich-text replica.',
                'cleanup': receipt['cleanup'], 'noOriginalReleasePlatformGateClosed': True}
-    frozen_json('callout-receipt.json', summary)
+    frozen_json(summary_name, summary)
     return {'manifest': pin, 'admission': checked, 'browser': receipt['counts']}
 
 
@@ -112,5 +113,9 @@ if __name__ == '__main__':
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--receipt', type=Path, required=True)
     parser.add_argument('--commit', required=True)
+    parser.add_argument('--base', default='v3')
+    parser.add_argument('--version', default='v4')
+    parser.add_argument('--candidate', default='structural-callout-v1')
+    parser.add_argument('--summary', default='callout-receipt.json')
     args = parser.parse_args()
-    print(json.dumps(prepare(args.core.resolve(), args.output.resolve(), args.receipt.resolve(), args.commit)))
+    print(json.dumps(prepare(args.core.resolve(), args.output.resolve(), args.receipt.resolve(), args.commit, args.base, args.version, args.candidate, args.summary)))
