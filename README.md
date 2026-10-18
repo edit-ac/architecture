@@ -1,10 +1,12 @@
 # edit.ac architecture and development roadmaps
 
+Superseding delivery decision, 2026-10-18: [web feature completeness first](operations/web-feature-first-20261018.md). Alpha is an internal local checkpoint; native implementation, public docs, qualification and native/device tests follow in that order. Every device/target-runtime requirement is owned by final roadmap43 and accepts appropriate simulators/emulators/VMs; no physical-device wait or performance qualification gate holds independent web feature work. Focused correctness and data safety remain mandatory. Windows/Linux are deferred until feature complete. No publication/deployment authorization is implied.
+
 <p align="center"><img src="design/assets/editac-github-avatar.png" alt="edit.ac logo" width="120"></p>
 
 [Shared editor, GitHub and website styling](design/brand-guide.md)
 
-This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 43 roadmap files and 575 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
+This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 43 roadmap files and 577 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
 
 The user selected public repositories and Apache-2.0. [Decision 001](decisions/001-web-first.md) resolves scope, ownership, naming and release conflicts. [Decision003](decisions/003-extension-ecosystem.md) adds the requested extension, format, cloud and public-documentation delivery. The [original proposal](sources/initial-roadmap.md) is archived unchanged as reference material; current specs and task acceptance supersede it. [Decision 002](decisions/002-full-delivery.md) extends delivery beyond the initial browser release; the [requirement review](requirements.md) maps each requested capability to concrete tasks.
 

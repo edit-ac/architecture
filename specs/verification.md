@@ -1,5 +1,7 @@
 # Verification and supported envelope
 
+Superseding delivery decision, 2026-10-18: [web feature completeness first](../operations/web-feature-first-20261018.md). Alpha is an internal local checkpoint; native implementation, public docs, qualification and native/device tests follow in that order. Every device/target-runtime requirement is owned by final roadmap43 and accepts appropriate simulators/emulators/VMs; no physical-device wait or performance qualification gate holds independent web feature work. Focused correctness and data safety remain mandatory. Windows/Linux are deferred until feature complete. No publication/deployment authorization is implied.
+
 ## Evidence contract
 
 Every task adds or identifies its named deterministic check before running it. Planned test files/scripts in task contracts do not exist until implemented; a missing check is a failure, not permission to skip. Record exact command, revision, fixture seed/hash, executed/passed/failed/skipped counts and artifact path in progress. Rust name filters must execute at least one intended test. No paid inference or external model transport belongs in any check.

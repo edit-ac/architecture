@@ -1,5 +1,7 @@
 # Platform editing services and user preferences
 
+Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
+
 Status: planned contract amendment, 2026-10-17. Reuse browser/OS editor facilities where their behavior can be admitted through the existing editor boundaries. This document refines existing roadmap parents; it does not qualify a platform, start a runner or change historical completion evidence. [Environment cases](../tests/platform-editing-cases.md) expand existing DXC/EVT/HIS/KEY/NAT cases rather than creating a second editing suite.
 
 ## Ownership

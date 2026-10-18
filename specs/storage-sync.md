@@ -1,5 +1,7 @@
 # Storage and synchronization contract
 
+Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
+
 The engine emits immutable update bytes and document/epoch/schema/origin metadata. Browser and native CLI storage/transport adapters consume these independently. Baseline versions and wire layout are frozen by the foundation protocol task, using the [engine contract](engine.md). The [CLI contract](cli.md) defines filesystem durability, Markdown working buffers and hosted target resolution; browser-specific storage mechanisms are not native filesystem guarantees.
 
 ## Local durability
