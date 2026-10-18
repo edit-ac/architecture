@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Delivery sequencing (superseding user decision, 2026-10-18): follow [web → features → alpha → native → docs → qualification → native tests → beta → integrations](../operations/web-feature-first-20261018.md). All device/target-runtime observations in this source belong to [roadmap43](43-physical-device-verification.md), including simulator/emulator/OS/IME/AT/clipboard device matrices. They do not gate feature development. Original predicate text below remains the later verification contract; its transfer owner and exact paragraphs are in the [device requirement register](../operations/device-requirements-20261018.json). Feature tasks retain focused correctness/data-safety checks; exhaustive performance/platform/release qualification is later. Windows/Linux implementation waits for web feature completeness; cloud28 retains its explicit deferral. Historical source/progress/checkmarks/failures are not rewritten or declared complete.
+
 Physical follow-up sequencing (user decision, 2026-10-18): transfer deferred physical-only observations to [roadmap 43](43-physical-device-verification.md) after development. Accepted target-platform virtual checks and tested equivalents remain valid; no physical device is required to finish this development roadmap. Failed implementation, virtual input/semantic checks and applicable performance budgets remain blockers. Preserve original case IDs and historical evidence; do not mark deferred physical runs passed.
 
 ## Goal and entry conditions

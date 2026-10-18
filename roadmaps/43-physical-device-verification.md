@@ -1,141 +1,167 @@
-# Verify physical devices after development
+# Verify all device requirements after feature delivery
 
 Status: IN_PROGRESS
 
-User decision, 2026-10-18: “lets move physical device verification to a dedicated roadmap and finish the development before that.” This roadmap owns deferred physical-device observations. It starts after the relevant implementation and accepted virtual-platform development checks pass. Its unchecked tasks do not block those development roadmaps. No runner is started by this planning change.
-
 ## Goal and entry conditions
 
-Workspace: `core` (sibling of `architecture`). Preserve the [accepted simulator/emulator/VM policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms). That policy already permits eligible release profiles on named virtual runtimes and tested virtual equivalents; this roadmap does not impose a new physical-only release requirement. Physical-device capability claims require the corresponding physical evidence here. Missing implementation, failed semantic/input/history/storage checks, unsupported required behavior and failed applicable performance budgets remain development blockers.
+User decision, 2026-10-18: this final roadmap owns every device/target-runtime observation from all editor roadmaps and their referenced specs/case catalogs. Follow [the delivery sequence](../operations/web-feature-first-20261018.md): web → feature complete → internal alpha → native platforms → public docs → qualifications → native tests here → beta candidate → integrations/feedback. No physical device wait: accepted iOS simulators, Android emulators and desktop OS hosts/VMs satisfy eligible runtime checks. Physical-only claims remain separately deferred if unavailable, never counted as passing.
 
-Entry gate: the relevant iOS, Android, mobile-web and extension implementation has passed its owning development checks at exact source/package revisions. Consume current reports from tracks 05, 10, 16, 17, 20, 30, 31, 32, 37, 38, 39, 40 and 41. Preserve their historical receipts and failures. Transfer only deferred physical observations, not failing virtual tests, missing APIs, incomplete conversion/media features, unmeasured budgets or unfinished accessibility-tree/action equivalents.
-
-## Handoff from existing development owners
-
-| Original owner | Physical observation deferred here | Required development evidence remains with owner |
-|---|---|---|
-| FMT-1.15-V1 | Physical clipboard providers and hardware-specific transfer behavior on the declared mobile devices | Complete accepted-runtime case/profile matrix; the old five-case development subset alone is insufficient |
-| INT-1.14 / INT-1.18 | Physical keyboard, stylus and device-only gesture observations | Available OS menu/replacement behavior, semantic targets and Undo/Redo; the Safari Edit Undo gap is not deferred as hardware work |
-| AIN-1.10 | Physical VoiceOver/TalkBack exploration and hardware-dependent dictation/recognition observations | Executed accessibility-tree/action and native input-boundary equivalents, semantic preservation and working advertised fallbacks |
-| MWB-1.11 / MWX-1.8 | Physical mobile viewport/gesture, vendor input and extension observations | Actual named mobile virtual-runtime coverage and required lifecycle/input/extension behavior |
-| FIT-1.8 / PRF-07 | Physical thermal, compositor, peak-memory and device-specific timing observations | Comparable simulator/OS-host performance and raw attribution; observed native Long latency failure and insufficient tail samples remain development work |
-| REL-1.6 / DEL-1.7, DEL-1.9, DEL-1.10 | Physical-device-specific capability and release-envelope claims | Complete accepted virtual-platform release evidence and all other correctness, security and artifact gates |
-
-PHY-1.1 binds the exact retained source case/profile IDs for each row before physical execution. No row changes the status of historical results or turns an untested equivalent into a pass.
+Workspace: `core`. Entry requires implemented features and the relevant qualified immutable native/browser artifacts. The [transfer register](../operations/device-requirements-20261018.json) preserves original IDs/paragraphs. Original01–42 feature development does not wait on this roadmap. Earlier source/progress/failed evidence remain preserved; no migration marks an unexecuted criterion complete. Focused feature correctness/data safety stays with implementation. Windows/Linux hardware is available but not a priority before editor feature completeness. No paid inference, credentials, publication, deployment or external service integration.
 
 ## Execution rules
 
-The controller owns this source. Record progress separately; do not check off planning templates. Run one parent per iteration. Before touching a device, record its ownership, OS/build, app/browser/package identity, input/accessibility configuration and exact case manifest. Use deterministic fixtures and mocked provider transports. No paid inference, secrets, publication or deployment. Restore changed device settings and clean only owned test resources. Missing hardware blocks this roadmap's affected parent, not accepted virtual development. Never count a deferred physical observation as an executed or passed test.
+One bounded15–45minute profile/task per worker; split a larger matrix before execution. Use an existing accepted simulator/emulator/OS host; preserve exact runtime/image/browser/keyboard/IME/AT and source/package/fixture hashes. Synthetic callbacks or desktop mobile viewports do not prove target OS behavior. Optional physical observations never hold virtual-runtime completion. Retain actual nonzero counts and every failed/inconclusive receipt; no unsupported case is silently dropped. Preserve original case IDs in each return. Independent platform groups remain eligible beside another unavailable profile.
 
-## Epic PHY-1 — Qualify the physical observations deferred during development
+### Task PHY-1.1 — Freeze the migrated device matrix
 
-### Task PHY-1.1 — Bind the deferred physical-device matrix
+- [ ] PHY-1.1 Freeze the migrated device matrix.
 
-- [ ] PHY-1.1 Bind the deferred physical-device matrix.
-
-Purpose: Bind the deferred physical-device matrix as one bounded qualification boundary.
-Context: [verification policy](../specs/verification.md); [desktop input cases](../tests/desktop-editing-cases.md); [mobile cases](../tests/mobile-web-cases.md); [extension cases](../tests/mobile-extension-cases.md). Planned implementation paths are core-relative.
+Purpose: Finish the final device verification slice without reblocking editor features.
+Context: [verification policy](../specs/verification.md); [device transfer register](../operations/device-requirements-20261018.json); task-local original case catalog and existing dispatcher named by that register.
 Dependencies: none.
-Session scope: One declared device/profile group; split a larger matrix before execution.
-Acceptance: Inventory the physical-only observations deferred by each owning roadmap; retain original case IDs and virtual equivalents. Select supported device/OS/input profiles and freeze sample counts, correctness oracles, latency/resource limits and comparison policy before measurements.
+Session scope: One profile/case group,15–45minutes plus focused checks; split before a larger campaign.
+Acceptance: Every original task/device predicate has an owner, accepted virtual method, source pin and honest executed/deferred state; no feature roadmap waits for a device.
 
 Implementation:
 
-- [ ] PHY-1.1-I1 Create the physical-device manifest, receipt validator and runbook; link exact development receipts and explicit direct-versus-virtual evidence.
+- [ ] PHY-1.1-I1 Reconcile every transfer-register entry and referenced device case into named platform/profile/case groups; reuse exact applicable existing virtual or physical evidence without replaying it.
 
 Validation:
 
-- [ ] PHY-1.1-V1 Run the new validator against valid prepared manifests and deliberately missing devices, source hashes, cases and failure counts. Reject empty coverage and fabricated passes. Planning validation does not qualify hardware. Create named commands before invoking them; missing scripts, zero matches and skipped required cases fail.
+- [ ] PHY-1.1-V1 Create/reuse the original named deterministic dispatcher, then run the declared accepted-runtime group. Record exact command/exit, nonzero executed/passed/failed/skipped counts, source/package/fixture/runtime pins and preserved failures. Missing commands, zero matches and skipped required cases fail; optional physical observations are separately deferred.
 
-Evidence: Separate progress entry `PHY-1.1` links immutable manifests, raw artifacts and commands/exits under `../architecture/evidence/physical-devices/`.
-Handoff: Record the last completed case, changed paths, exact failure or missing device, owner and next bounded action.
-Blocked behavior: Leave `PHY-1.1` unchecked with a stable fingerprint and exact resume condition; do not retry unchanged failures or reblock unrelated development.
+Evidence: Separate progress entry `PHY-1.1` and immutable receipts under `../architecture/evidence/device-verification/`; map every originating task/case ID.
+Handoff: Last completed case, exact remaining substep/error/profile, owner and changed-input resume condition.
+Blocked behavior: Retain failed required behavior for its implementation owner; use an available accepted virtual runtime and continue independent profile work. Do not wait for physical hardware or mark missing evidence passed.
 
-### Task PHY-1.2 — Verify iOS and iPadOS physical editing
+### Task PHY-1.2 — Verify iOS and iPadOS device behavior
 
-- [ ] PHY-1.2 Verify iOS and iPadOS physical editing.
+- [ ] PHY-1.2 Verify iOS and iPadOS device behavior.
 
-Purpose: Verify iOS and iPadOS physical editing as one bounded qualification boundary.
-Context: [verification policy](../specs/verification.md); [desktop input cases](../tests/desktop-editing-cases.md); [mobile cases](../tests/mobile-web-cases.md); [extension cases](../tests/mobile-extension-cases.md). Planned implementation paths are core-relative.
+Purpose: Finish the final device verification slice without reblocking editor features.
+Context: [verification policy](../specs/verification.md); [device transfer register](../operations/device-requirements-20261018.json); task-local original case catalog and existing dispatcher named by that register.
 Dependencies: PHY-1.1.
-Session scope: One declared device/profile group; split a larger matrix before execution.
-Acceptance: On each declared iPhone/iPad profile, verify native SDK and mobile Safari or installed-app paths: IME candidate commit/cancel, selection/handles, clipboard and storage recovery, Undo/Redo, viewport/focus and extension lifecycle. Include physical keyboard/stylus observations only where advertised.
+Session scope: One profile/case group,15–45minutes plus focused checks; split before a larger campaign.
+Acceptance: Actual packaged engine/native controls and Safari cases execute with independent semantic/history/reopen assertions and exact nonzero counts; virtual limitations and optional physical observations are explicit.
 
 Implementation:
 
-- [ ] PHY-1.2-I1 Implement the declared physical iOS drivers or reproducible operator protocol using the packaged native engine and real OS controls; preserve input and semantic ownership.
+- [ ] PHY-1.2-I1 Run existing mobile Safari/native iOS clipboard, IME, selection, touch, lifecycle, recovery and extension cases in the accepted iOS/iPadOS Simulator. Use available physical devices only as optional additional observations.
 
 Validation:
 
-- [ ] PHY-1.2-V1 Execute the pinned case matrix on actual devices and retain screenshots/traces, independent semantic/history/reopen assertions and exact nonzero counts. Do not replace physical runs with desktop WebKit or injected callbacks. Create named commands before invoking them; missing scripts, zero matches and skipped required cases fail.
+- [ ] PHY-1.2-V1 Create/reuse the original named deterministic dispatcher, then run the declared accepted-runtime group. Record exact command/exit, nonzero executed/passed/failed/skipped counts, source/package/fixture/runtime pins and preserved failures. Missing commands, zero matches and skipped required cases fail; optional physical observations are separately deferred.
 
-Evidence: Separate progress entry `PHY-1.2` links immutable manifests, raw artifacts and commands/exits under `../architecture/evidence/physical-devices/`.
-Handoff: Record the last completed case, changed paths, exact failure or missing device, owner and next bounded action.
-Blocked behavior: Leave `PHY-1.2` unchecked with a stable fingerprint and exact resume condition; do not retry unchanged failures or reblock unrelated development.
+Evidence: Separate progress entry `PHY-1.2` and immutable receipts under `../architecture/evidence/device-verification/`; map every originating task/case ID.
+Handoff: Last completed case, exact remaining substep/error/profile, owner and changed-input resume condition.
+Blocked behavior: Retain failed required behavior for its implementation owner; use an available accepted virtual runtime and continue independent profile work. Do not wait for physical hardware or mark missing evidence passed.
 
-### Task PHY-1.3 — Verify Android physical editing
+### Task PHY-1.3 — Verify Android device behavior
 
-- [ ] PHY-1.3 Verify Android physical editing.
+- [ ] PHY-1.3 Verify Android device behavior.
 
-Purpose: Verify Android physical editing as one bounded qualification boundary.
-Context: [verification policy](../specs/verification.md); [desktop input cases](../tests/desktop-editing-cases.md); [mobile cases](../tests/mobile-web-cases.md); [extension cases](../tests/mobile-extension-cases.md). Planned implementation paths are core-relative.
+Purpose: Finish the final device verification slice without reblocking editor features.
+Context: [verification policy](../specs/verification.md); [device transfer register](../operations/device-requirements-20261018.json); task-local original case catalog and existing dispatcher named by that register.
 Dependencies: PHY-1.1.
-Session scope: One declared device/profile group; split a larger matrix before execution.
-Acceptance: On declared Android vendor/device/IME profiles, verify native SDK and Chrome/installed-app paths, composition, selection, clipboard, lifecycle/recovery, Undo/Redo and extensions. Retain existing HONOR observations as historical evidence unless their source/profile pins still apply.
+Session scope: One profile/case group,15–45minutes plus focused checks; split before a larger campaign.
+Acceptance: Accepted emulator cases have real target-input/runtime traces and independent semantic/storage/history assertions; physical hardware is never an entry dependency.
 
 Implementation:
 
-- [ ] PHY-1.3-I1 Implement physical Android drivers or reproducible operator protocol against the actual packaged engine and approved local fixtures.
+- [ ] PHY-1.3-I1 Run Android Chrome/native input, IME, clipboard, selection, lifecycle/recovery and extension cases using Android Emulator with recorded image/vendor input profile. Retain historical HONOR evidence only if applicable.
 
 Validation:
 
-- [ ] PHY-1.3-V1 Run the named physical matrix with exact OS/vendor keyboard provenance and independent semantic, storage and lifecycle assertions. Preserve failures and unsupported capabilities without silently shrinking required coverage. Create named commands before invoking them; missing scripts, zero matches and skipped required cases fail.
+- [ ] PHY-1.3-V1 Create/reuse the original named deterministic dispatcher, then run the declared accepted-runtime group. Record exact command/exit, nonzero executed/passed/failed/skipped counts, source/package/fixture/runtime pins and preserved failures. Missing commands, zero matches and skipped required cases fail; optional physical observations are separately deferred.
 
-Evidence: Separate progress entry `PHY-1.3` links immutable manifests, raw artifacts and commands/exits under `../architecture/evidence/physical-devices/`.
-Handoff: Record the last completed case, changed paths, exact failure or missing device, owner and next bounded action.
-Blocked behavior: Leave `PHY-1.3` unchecked with a stable fingerprint and exact resume condition; do not retry unchanged failures or reblock unrelated development.
+Evidence: Separate progress entry `PHY-1.3` and immutable receipts under `../architecture/evidence/device-verification/`; map every originating task/case ID.
+Handoff: Last completed case, exact remaining substep/error/profile, owner and changed-input resume condition.
+Blocked behavior: Retain failed required behavior for its implementation owner; use an available accepted virtual runtime and continue independent profile work. Do not wait for physical hardware or mark missing evidence passed.
 
-### Task PHY-1.4 — Measure physical input accessibility and resource behavior
+### Task PHY-1.4 — Verify device input accessibility and resources
 
-- [ ] PHY-1.4 Measure physical input accessibility and resource behavior.
+- [ ] PHY-1.4 Verify device input accessibility and resources.
 
-Purpose: Measure physical input accessibility and resource behavior as one bounded qualification boundary.
-Context: [verification policy](../specs/verification.md); [desktop input cases](../tests/desktop-editing-cases.md); [mobile cases](../tests/mobile-web-cases.md); [extension cases](../tests/mobile-extension-cases.md). Planned implementation paths are core-relative.
-Dependencies: PHY-1.2, PHY-1.3.
-Session scope: One declared device/profile group; split a larger matrix before execution.
-Acceptance: Measure real touch, hardware keyboard/stylus and advertised native input services; exercise VoiceOver/TalkBack on the supported profiles. Measure Task/Long input/scroll, memory/disposal and physical thermal behavior with the pre-reviewed sample/tail policy. Simulator callbacks do not establish physical compositor, recognition or thermal behavior.
+Purpose: Finish the final device verification slice without reblocking editor features.
+Context: [verification policy](../specs/verification.md); [device transfer register](../operations/device-requirements-20261018.json); task-local original case catalog and existing dispatcher named by that register.
+Dependencies: PHY-1.1.
+Session scope: One profile/case group,15–45minutes plus focused checks; split before a larger campaign.
+Acceptance: Required virtual behavior/fallbacks and resource cases have honest measurements; no synthetic callback is represented as physical recognition, thermal or hardware proof.
 
 Implementation:
 
-- [ ] PHY-1.4-I1 Reuse the existing input, assistive and fitness instrumentation; add only the physical observation adapters needed by the declared matrix. Keep platform policy outside the shared engine.
+- [ ] PHY-1.4-I1 Reuse native/browser instrumentation for VoiceOver/TalkBack/AT, dictation fallback, hardware-input equivalents and device/resource observations, using accepted virtual boundary/action equivalents where actual virtual hardware is unavailable.
 
 Validation:
 
-- [ ] PHY-1.4-V1 Execute physical assistive/input and performance cases with raw samples, resource traces, semantic oracles and sufficient tail samples. A failed or inconclusive budget stays failed or inconclusive; do not widen limits after observing results. Create named commands before invoking them; missing scripts, zero matches and skipped required cases fail.
+- [ ] PHY-1.4-V1 Create/reuse the original named deterministic dispatcher, then run the declared accepted-runtime group. Record exact command/exit, nonzero executed/passed/failed/skipped counts, source/package/fixture/runtime pins and preserved failures. Missing commands, zero matches and skipped required cases fail; optional physical observations are separately deferred.
 
-Evidence: Separate progress entry `PHY-1.4` links immutable manifests, raw artifacts and commands/exits under `../architecture/evidence/physical-devices/`.
-Handoff: Record the last completed case, changed paths, exact failure or missing device, owner and next bounded action.
-Blocked behavior: Leave `PHY-1.4` unchecked with a stable fingerprint and exact resume condition; do not retry unchanged failures or reblock unrelated development.
+Evidence: Separate progress entry `PHY-1.4` and immutable receipts under `../architecture/evidence/device-verification/`; map every originating task/case ID.
+Handoff: Last completed case, exact remaining substep/error/profile, owner and changed-input resume condition.
+Blocked behavior: Retain failed required behavior for its implementation owner; use an available accepted virtual runtime and continue independent profile work. Do not wait for physical hardware or mark missing evidence passed.
 
-### Task PHY-1.5 — Publish the physical qualification return internally
+### Task PHY-1.6 — Verify desktop runtime device behavior
 
-- [ ] PHY-1.5 Publish the physical qualification return internally.
+- [ ] PHY-1.6 Verify desktop runtime device behavior.
 
-Purpose: Publish the physical qualification return internally as one bounded qualification boundary.
-Context: [verification policy](../specs/verification.md); [desktop input cases](../tests/desktop-editing-cases.md); [mobile cases](../tests/mobile-web-cases.md); [extension cases](../tests/mobile-extension-cases.md). Planned implementation paths are core-relative.
-Dependencies: PHY-1.2, PHY-1.3, PHY-1.4.
-Session scope: One declared device/profile group; split a larger matrix before execution.
-Acceptance: Reconcile each deferred physical observation with its owning case and exact implemented profile. Distinguish physical-qualified, virtual-qualified, failed, unavailable and diagnostic states; no universal hardware parity claim.
+Purpose: Finish the final device verification slice without reblocking editor features.
+Context: [verification policy](../specs/verification.md); [device transfer register](../operations/device-requirements-20261018.json); task-local original case catalog and existing dispatcher named by that register.
+Dependencies: PHY-1.1.
+Session scope: One profile/case group,15–45minutes plus focused checks; split before a larger campaign.
+Acceptance: Each claimed desktop toolkit/OS profile has executable target-runtime observations and exact semantic/history/recovery assertions. A missing physical host never blocks an accepted VM method.
 
 Implementation:
 
-- [ ] PHY-1.5-I1 Assemble the immutable physical evidence index and update capability/progress evidence for only the profiles that passed; keep historical failed receipts and links to accepted virtual evidence.
+- [ ] PHY-1.6-I1 Run macOS then lower-priority Windows/Linux OS-host/VM native clipboard, keyboard/IME, accessibility, selection and lifecycle cases against their actual packaged native SDKs.
 
 Validation:
 
-- [ ] PHY-1.5-V1 Run the receipt validator and owning qualification checks; verify all declared required physical cells have nonzero passing counts, current hashes and no failures/skips. Leave incomplete cells open. This internal return does not authorize public publication or deployment. Create named commands before invoking them; missing scripts, zero matches and skipped required cases fail.
+- [ ] PHY-1.6-V1 Create/reuse the original named deterministic dispatcher, then run the declared accepted-runtime group. Record exact command/exit, nonzero executed/passed/failed/skipped counts, source/package/fixture/runtime pins and preserved failures. Missing commands, zero matches and skipped required cases fail; optional physical observations are separately deferred.
 
-Evidence: Separate progress entry `PHY-1.5` links immutable manifests, raw artifacts and commands/exits under `../architecture/evidence/physical-devices/`.
-Handoff: Record the last completed case, changed paths, exact failure or missing device, owner and next bounded action.
-Blocked behavior: Leave `PHY-1.5` unchecked with a stable fingerprint and exact resume condition; do not retry unchanged failures or reblock unrelated development.
+Evidence: Separate progress entry `PHY-1.6` and immutable receipts under `../architecture/evidence/device-verification/`; map every originating task/case ID.
+Handoff: Last completed case, exact remaining substep/error/profile, owner and changed-input resume condition.
+Blocked behavior: Retain failed required behavior for its implementation owner; use an available accepted virtual runtime and continue independent profile work. Do not wait for physical hardware or mark missing evidence passed.
 
+### Task PHY-1.7 — Reconcile every transferred original requirement
+
+- [ ] PHY-1.7 Reconcile every transferred original requirement.
+
+Purpose: Finish the final device verification slice without reblocking editor features.
+Context: [verification policy](../specs/verification.md); [device transfer register](../operations/device-requirements-20261018.json); task-local original case catalog and existing dispatcher named by that register.
+Dependencies: PHY-1.2, PHY-1.3, PHY-1.4, PHY-1.6.
+Session scope: One profile/case group,15–45minutes plus focused checks; split before a larger campaign.
+Acceptance: All required accepted-runtime device predicates have passing evidence; optional physical observations remain unclaimed. Every original ID has an auditable return, no missing/zero-case/skipped required runtime counts as success.
+
+Implementation:
+
+- [ ] PHY-1.7-I1 Resolve all transfer-register tasks and all further device predicates in linked specs/catalogs to exact applicable receipts or explicit optional physical deferrals; retain failures and original unchecked historical evidence.
+
+Validation:
+
+- [ ] PHY-1.7-V1 Create/reuse the original named deterministic dispatcher, then run the declared accepted-runtime group. Record exact command/exit, nonzero executed/passed/failed/skipped counts, source/package/fixture/runtime pins and preserved failures. Missing commands, zero matches and skipped required cases fail; optional physical observations are separately deferred.
+
+Evidence: Separate progress entry `PHY-1.7` and immutable receipts under `../architecture/evidence/device-verification/`; map every originating task/case ID.
+Handoff: Last completed case, exact remaining substep/error/profile, owner and changed-input resume condition.
+Blocked behavior: Retain failed required behavior for its implementation owner; use an available accepted virtual runtime and continue independent profile work. Do not wait for physical hardware or mark missing evidence passed.
+
+### Task PHY-1.5 — Return the device qualification inventory internally
+
+- [ ] PHY-1.5 Return the device qualification inventory internally.
+
+Purpose: Finish the final device verification slice without reblocking editor features.
+Context: [verification policy](../specs/verification.md); [device transfer register](../operations/device-requirements-20261018.json); task-local original case catalog and existing dispatcher named by that register.
+Dependencies: PHY-1.7.
+Session scope: One profile/case group,15–45minutes plus focused checks; split before a larger campaign.
+Acceptance: Internal beta handoff distinguishes qualified simulator/emulator/VM/OS-host evidence, optional physical observations and failures; no publication or deployment occurs.
+
+Implementation:
+
+- [ ] PHY-1.5-I1 Compose exact profile/case returns for the existing qualification/release owners and the reviewable beta candidate; retain all source/receipt hashes and unresolved physical claims.
+
+Validation:
+
+- [ ] PHY-1.5-V1 Create/reuse the original named deterministic dispatcher, then run the declared accepted-runtime group. Record exact command/exit, nonzero executed/passed/failed/skipped counts, source/package/fixture/runtime pins and preserved failures. Missing commands, zero matches and skipped required cases fail; optional physical observations are separately deferred.
+
+Evidence: Separate progress entry `PHY-1.5` and immutable receipts under `../architecture/evidence/device-verification/`; map every originating task/case ID.
+Handoff: Last completed case, exact remaining substep/error/profile, owner and changed-input resume condition.
+Blocked behavior: Retain failed required behavior for its implementation owner; use an available accepted virtual runtime and continue independent profile work. Do not wait for physical hardware or mark missing evidence passed.

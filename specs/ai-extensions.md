@@ -1,5 +1,7 @@
 # Optional first-party AI extensions
 
+Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
+
 Status: development contract; no AI feature, model quality or provider support is qualified.
 Scope: autocomplete while writing, Ask AI, fill/continue text and selected-text actions, delivered through the existing portable extension and client interfaces. [The AI epic in roadmap 25](../roadmaps/25-rich-content-extensions.md#epic-rch-2--deliver-optional-ai-writing-through-existing-edit-contracts) owns delivery; [evaluation and suggestions](../evidence/ai-extension-research.md) record the default adapter decision and future candidates.
 

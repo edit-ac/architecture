@@ -1,5 +1,7 @@
 # Rich content extension contracts
 
+Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
+
 Status: planned portable and web delivery, roadmap 25. Reuse roadmap 07 implementations and roadmap 21 public interfaces; this work adds the named gaps rather than replacing qualified modules. Full native/TUI integration consumes these contracts in roadmaps 31–36 and is not an upstream prerequisite.
 
 ## Ownership and public boundary

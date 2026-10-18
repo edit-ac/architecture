@@ -1,0 +1,29 @@
+# Deliver the editor features before qualification
+
+User decision, 2026-10-18: web first → feature complete → alpha → native platforms → public docs → qualifications → native tests → beta release → first integrations and feedback.
+
+## Primary goal and phase gates
+
+The primary goal is a feature-complete editor. Finish the implemented web/portable editor and integrated local product before qualification campaigns. Alpha is an internal, locally runnable feature checkpoint, not publication or release authorization. Preserve useful existing implementations, immutable successful receipts and all failed evidence; revalidate only changed affected inputs.
+
+1. **Web first:** complete shared semantic APIs, everyday editing, rich content, optional browser conversion, accessible browser/touch controls, local durability/recovery and the installed-SDK product flows.
+2. **Feature complete:** close a concrete web feature/case ledger using working public APIs and focused deterministic behavioral/data-safety checks. Repair real missing APIs within their single owner. An old whole-roadmap/platform/performance COMPLETE label is not an entry requirement.
+3. **Alpha:** produce a locally runnable integrated editor, declared feature inventory, recovery paths and internal walkthrough. No deployment, publishing, paid dogfood or remote release.
+4. **Native platforms:** implement/adapt the same shared owners on iOS/Android/macOS, then lower-priority Windows/Linux. Windows/Linux SDKs and their extension/assistance/native qualification work stay deferred until web feature completeness. No parallel semantic or codec owner.
+5. **Public docs:** resume public documentation/tutorial/demo polish after native feature delivery. Minimal internal feature instructions and code help may accompany implementation now. Existing public material remains preserved; this phase does not authorize publication.
+6. **Qualifications:** performance/size/tail/resource campaigns, exhaustive platform/security/encrypted/ecosystem/release matrices and original aggregate gates run after feature implementation and docs. Focused correctness, cancellation, permission, atomicity, history and persistence checks stay with each implementation.
+7. **Native tests:** roadmap43 owns **every device/target-runtime requirement**, including physical devices, iOS simulators, Android emulators, OS hosts/VMs, native input/IME/clipboard/AT observations and device-specific measurements. Run the accepted virtual systems; never wait for physical hardware. All migrated predicates retain original IDs, required coverage and failure history. Physical-only observations remain optional explicitly deferred claims. A missing optional device cannot block an implemented feature.
+8. **Beta release:** prepare qualification receipts and a reviewable beta candidate; execution/publication/deployment needs separate explicit authorization.
+9. **First integrations and feedback:** undertake first external integrations/feedback after beta, within separately authorized service/data/publication scope.
+
+## Requirement ownership and preserved acceptance
+
+This decision supersedes performance-first FIFO, physical-only gates and clauses that require device/runtime qualification before unrelated feature development. For roadmaps01–42, the device-observation predicate of every task is transferred to roadmap43; its feature implementation and focused deterministic correctness remain with the original owner. Pure device/qualification tasks are excluded from the current feature queue and remain unchecked in historical progress. Original acceptance text is retained as evidence of what later qualification must prove, not as a current device gate. The machine-readable transfer inventory is [device-requirements-20261018.json](device-requirements-20261018.json). Roadmap43 reconciles that inventory and any further device predicate discovered in original specs/case catalogs; no predicate may silently disappear.
+
+Full-roadmap `upstream` edges describe eventual aggregate qualification. Feature queues consume exact API/case receipts and name only genuine local prerequisites. A measured budget, hardware permission, unavailable native runtime or later release assertion cannot hold independent ready feature work. Real incorrect semantics, unsafe persistence, a required missing shared API or an unavailable deterministic feature check must be fixed by its owner; this policy never fabricates a pass. Preserve a fingerprint and exact changed-input retry condition if a genuine dependency remains.
+
+Cloud/document-store28 remains explicitly deferred until the user's whole-editor-ready condition is established or priority changes. It is excluded from these feature queues, not inferred ready from a completed browser sample or an empty queue. Original native-media conversion remains a later native owner handoff. AI/provider mechanics use prepared fixtures/mock transports with no credentials, `.secrets`, subscription proxy or paid calls. No pushes, publication, deployment or new external integration is authorized.
+
+## Runner ownership and transitions
+
+PRIMARY owns existing engine/Session/storage/ABI, general browser editing and shared/mobile assistance primitives. PARALLEL owns rich-content presenters, optional conversion adapters/consumer glue and mobile extension glue. Both reuse completed work. Independent web work proceeds beside a concrete shared dependency; neither lane duplicates another's owner. Integrate validated owned work after two parents, source boundaries and ready monitor checkpoints under integration.lock. Preserve unrelated bytes/modes/index and active other-lane checkouts. Replace the active performance queue only at an uninterrupted completed-worker checkpoint; keep original queues/source/progress/failed evidence intact. Each replacement has a deterministic stop-on-BLOCKED guard. The existing bounded caffeinate/cutoff is unchanged.
