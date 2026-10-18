@@ -4,9 +4,11 @@
 
 [Shared editor, GitHub and website styling](design/brand-guide.md)
 
-This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 42 roadmap files and 570 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
+This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 43 roadmap files and 575 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
 
 The user selected public repositories and Apache-2.0. [Decision 001](decisions/001-web-first.md) resolves scope, ownership, naming and release conflicts. [Decision003](decisions/003-extension-ecosystem.md) adds the requested extension, format, cloud and public-documentation delivery. The [original proposal](sources/initial-roadmap.md) is archived unchanged as reference material; current specs and task acceptance supersede it. [Decision 002](decisions/002-full-delivery.md) extends delivery beyond the initial browser release; the [requirement review](requirements.md) maps each requested capability to concrete tasks.
+
+Physical-device verification is sequenced after development in [roadmap 43](roadmaps/43-physical-device-verification.md). Existing accepted virtual-platform checks can finish development and eligible release profiles; physical-only observations remain separately tracked and unexecuted until that roadmap runs.
 
 ## Extension integration and authoring
 
@@ -160,6 +162,7 @@ Mobile baseline support does not load optional rich-content, converter, gesture 
 | Track | Parent tasks | Whole-track prerequisite | Exit artifact |
 |---|---:|---|---|
 | [42 Editing regression suite](roadmaps/42-editing-regression-suite.md) | 8 | 08 | Shared real-engine drivers, guard sensitivity and honest coverage reports; required by 38 |
+| [43 Physical-device verification](roadmaps/43-physical-device-verification.md) | 5 | Completed relevant platform development | Deferred physical input, accessibility, performance and hardware observations with exact evidence |
 
 `npm run check` now validates roadmap/fixture consistency and runs the planning-validator contract tests. Those tests do not execute the editing recipes or prove browser support. Track 42 and the existing feature/device owners provide that evidence. The test harness adds no runtime dependency to the editor.
 
