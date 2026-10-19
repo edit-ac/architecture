@@ -120,6 +120,8 @@ Compare expected revision and prepared preconditions within the serialized commi
 
 The shared editor service exposes read snapshot/capabilities, prepare semantic commands or source changes, preview, apply, observe changes and receipt lookup. It uses FMT-1.12's exact baseline/source-to-identity mapping. Unsupported or ambiguous mappings return recoverable base/proposed/current data. Capability checks include document permissions, module support, readonly/history mode and resource limits.
 
+Command previews reuse the complete semantic projection already qualified on the engine's disposable preparation stage. They do not reprepare or commit a second command batch. The preview retains the actual plan's owner/source identities, runs, recovery content and retained structure; apply still checks the original observed revision and current policy, then emits ordinary history/observer/durability effects once. Snapshot refresh metadata describes the disposable preview and cannot qualify live changed-region work.
+
 A post-commit persistence failure enters recovery mode: freeze further mutation admission and outbound synchronization until ordered durable recovery succeeds. Keep reads and labeled recovery exports available; bound queued incoming updates. Later human edits, checkpoints or full-state synchronization must not publish an unjournaled predecessor. When the predecessor is an agent request, its durable dedup receipt belongs to the same publication barrier; see the host-agent contract.
 
 ## Operation identity and history
