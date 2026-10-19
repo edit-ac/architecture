@@ -108,6 +108,19 @@ Native adapter v1 (CAP-1.4): `editac-session` exposes `store::NativeStore` only 
 
 Native persistence reuses the portable memory policy over a detached verified snapshot inside each SQLite transaction. A bounded, versioned local snapshot holds all journal/checkpoint/outbox/receipt records atomically; it is adapter data, not a new semantic document or wire format. JSON encoding/SQLite pages add overhead beyond payload limits. Reads use a single snapshot transaction; writes use BEGIN IMMEDIATE across processes. Retained generation CAS, previous valid checkpoint, immutable digests/manifests, full replay tail and exact pending receipts keep the portable semantics. Invalid latest checkpoints fall back without resetting publication generation. An absent valid checkpoint remains recovery-required. No compaction or automatic database replacement is offered.
 
+The native adapter may retain one disposable snapshot from its own successful write.
+Within each later `BEGIN IMMEDIATE`, it still reads and bounds the current SQLite
+scope/body and requires exact body byte equality before cloning that verified
+state instead of repeating JSON decoding. Every journal writer reservation is
+checked against the current SQL table, including on reuse. A changed body falls
+back to full decoding and immutable record validation; external connections remain
+authoritative. Publish the cache only after actual SQLite commit, including a lost
+acknowledgment; rollback leaves the prior entry. Reads and recovery always freshly
+decode and validate stored records. The cache is one bounded acceleration owned by
+the same store and released on drop, not an alternate store, semantic replica,
+receipt, migration or change to serialized bytes, resource limits or durability.
+Writes still read/encode the full bounded body; this is not constant-time persistence.
+
 Before its first append, a host reserves its actual engine replica writer ID with `claim_writer`; zero or an existing reservation rejects. Reservations are persistent, bounded by record capacity and never reused after termination. A restored replica generates a fresh engine ID; if it collides with a retained reservation, restore a fresh replica and retry before editing. The host owns admission to that writer, not authentication by the ID. Unreserved appends reject. Interrupted reservation acknowledgment is resolved by recovery/fresh identity, never by silently assigning an old writer to a new replica. Per-writer journal sequences survive reopen. Transaction completion precedes every acknowledgment; commit errors/lost acknowledgments conservatively return CommitUnknown and require recovery/idempotent retry. Explicit diagnostic observers/fault hooks and connection-local SQLite page quotas (reapplied on reopen) support deterministic boundary qualification; no environment variable enables faults in production.
 
 Executable shared prepared conformance: `core/crates/editac-session/tests/ports.rs`. Parent acceptance remains the immutable roadmap's CAP-1.3-I1/V1 criteria; CAP-1.4–1.10 remain separate.
