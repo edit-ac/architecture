@@ -138,6 +138,24 @@ real viewer/OS checks and release support claims remain gated by the platform tr
 Local prepared fixtures and mocked host transports suffice for automated checks;
 private user documents, live credentials and paid models are not test fixtures.
 
+### Logical export names and browser downloads
+
+The prepared export artifact retains the requested logical filename exactly,
+including its Unicode code units. The browser adapter passes that exact name to
+`File`, the save picker and the download anchor; it must not strip accents,
+normalize the logical name or change converter bytes. Browser download metadata
+is a separate boundary: `suggestedFilename()` may use a canonically equivalent
+Unicode spelling (NFC/NFD), as observed in WebKit. Compare canonical NFC forms
+only at that boundary, while checking the logical artifact and anchor name
+independently and exactly. Compatibility normalization, accent removal, case
+folding, extension changes and arbitrary substitutions are not equivalent.
+ASCII suggested names remain exact. Downloaded bytes remain exact for all names.
+These checks establish a browser download request and received bytes, not a
+claim about the final OS destination or actual device delivery. The baseline
+`MWX-C22-download` and installed-worker `MFA-1.1-worker-export-*` cases share this
+contract; neither browser spelling nor a successful request changes export
+revision, retained artifact or save/share completion semantics.
+
 ## Failure and fidelity qualification refinements
 
 [WCF-03/WCF-05–WCF-07/WCF-09–WCF-14](../tests/wordcraft-regression-cases.md) strengthen existing CNV owners. Cumulative budgets include nested parser work and repeated resource references. Check remaining allowance before decode/allocation; deduplicate expensive failed attempts within the immutable input/resource/profile job. Changed eligible jobs must not inherit stale failures. Duplicate or normalized-alias parts and corrupt required entries cannot become last-entry-wins or log-only omissions. Validate adapter span arithmetic and Unicode boundaries before preparing edits.
