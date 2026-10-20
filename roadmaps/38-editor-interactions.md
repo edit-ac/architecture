@@ -379,7 +379,7 @@ Blocked behavior: Leave `INT-1.17` unchecked with owner, unblock condition and r
 - [ ] INT-1.18 Unify editing command surfaces and replacement targets.
 
 Purpose: Unify editing command surfaces and replacement targets within the existing editor architecture.
-Context: `packages/web/src/commands/`; `tests/browser/interactions/command-surfaces.spec.ts`; `../architecture/specs/editor-interactions.md`; [additional interaction cases](../tests/desktop-editing-cases.md). [Wordcraft amendment](../evidence/wordcraft-research.md).
+Context: `packages/web/src/commands/`; `tests/browser/interactions/command-surfaces.spec.ts`; `../architecture/specs/editor-interactions.md`; [additional interaction cases](../tests/desktop-editing-cases.md). [Wordcraft amendment](../sources/wordcraft-research.md).
 Dependencies: INT-1.13, INT-1.15.
 Session scope: One named behavior boundary and focused validation; use the existing qualified primitives. If it exceeds one bounded iteration, record the remaining acceptance and obtain a controller split before implementation.
 Acceptance: CMD-01–CMD-06 pass focused-editor routing, menu/toolbar/accessibility equivalence, supplied replacement ranges and late permission changes; host and native controls retain ownership. CMD-01 additionally checks registered aliases, no-op/read-only effects and declared CLI/agent semantic routes; queued synthetic UI input is not observed execution.

@@ -97,7 +97,7 @@ REG-07 selected code/text cross-owner separated-pre qualification requires origi
 
 ## Wordcraft-derived case refinement
 
-The [Wordcraft catalog](../tests/wordcraft-regression-cases.md) adds 19 planned cases owned by existing storage, client, agent, converter, rich-content, fitness and interaction tasks. [Provenance/overlap](../evidence/wordcraft-research.md) records which existing IDs are refined instead of duplicated. Track 42 indexes and reports these cases; it does not implement every owner or treat registration as execution. No new common-driver recipe/guard count or runtime dependency is implied.
+The [Wordcraft catalog](../tests/wordcraft-regression-cases.md) adds 19 planned cases owned by existing storage, client, agent, converter, rich-content, fitness and interaction tasks. [Provenance/overlap](../sources/wordcraft-research.md) records which existing IDs are refined instead of duplicated. Track 42 indexes and reports these cases; it does not implement every owner or treat registration as execution. No new common-driver recipe/guard count or runtime dependency is implied.
 
 Record source/case revisions, applicable profiles and actual work/effect counts. Changed variants invalidate only evidence that no longer covers their assertions; preserve prior receipts and completed work without relabeling added cases as passed. Controllers adopt the amendment at a safe source-refresh checkpoint, retaining active immutable sources/progress and scheduling required deltas under existing owners. No worker restart, queue expansion or waived prerequisite is authorized by the amendment.
 

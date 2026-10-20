@@ -189,7 +189,7 @@ Blocked behavior: Leave `RCH-1.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 - [ ] RCH-1.8 Implement and validate qualify cell selection and rectangular clipboard.
 
 Purpose: Complete the existing cell interaction contract without a spreadsheet model.
-Context: `packages/web/src/modules/tables/`; `tests/browser/table-selection.spec.ts`; `fixtures/tables/selection/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md). [Wordcraft amendment](../evidence/wordcraft-research.md).
+Context: `packages/web/src/modules/tables/`; `tests/browser/table-selection.spec.ts`; `fixtures/tables/selection/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md). [Wordcraft amendment](../sources/wordcraft-research.md).
 Dependencies: RCH-1.7.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
 Acceptance: Selection/navigation and rectangular paste preserve cell content and intended dimensions; illegal/oversized ranges and readonly targets fail safely with one paste history group. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly. The refined TBL-03/NCL-20 clipboard variants require declared row/column boundaries in HTML/TSV fallbacks; newline-only flattening into one cell is not success.
