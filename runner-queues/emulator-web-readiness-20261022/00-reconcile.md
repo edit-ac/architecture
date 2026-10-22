@@ -1,8 +1,8 @@
 # Reconcile readiness scope, completed deliveries and target inputs
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
-Current delivery: RRD-1.1 and RRD-1.2 verified; source coverage and read-only runtime/toolchain inventories delivered, with unavailable prerequisites explicit. Next: RRD-1.3 single-workspace handoff.
+Current delivery: RRD-1.1, RRD-1.2 and RRD-1.3 verified; source/runtime inventories and single-workspace owner/selector handoff delivered. Runtime qualification remains open with original final-testing owners. Next source: RWP-1.1.
 
 ## Goal and entry conditions
 
@@ -72,7 +72,7 @@ Blocked behavior: Leave unchecked; try an independent ready parent, otherwise re
 
 ### Task RRD-1.3 — Prepare the single-workspace handoff and coverage ownership
 
-- [ ] RRD-1.3 Prepare the single-workspace handoff and coverage ownership.
+- [x] RRD-1.3 Prepare the single-workspace handoff and coverage ownership.
 
 Purpose: Make subsequent entries consume bounded current facts
 Context: Queue `manifest.json` and `requirement-map.json`; `.roadmap-coordination/parallel-clients.md`; current Git statuses; existing dispatcher inventories
@@ -83,11 +83,11 @@ Acceptance: One controller owns this root workspace on current main branches; ot
 
 Implementation:
 
-- [ ] RRD-1.3-I1 Finalize prerequisite rows, selectors, expected suite costs and stale-state dispositions. Record unavailable-runtime constraints and independent work. Cross-check all queued implementation acceptance against its original owner; preserve missing shared prerequisites as concrete original-owner repair requests within the bounded current parent, never duplicate engine semantics.
+- [x] RRD-1.3-I1 Finalize prerequisite rows, selectors, expected suite costs and stale-state dispositions. Record unavailable-runtime constraints and independent work. Cross-check all queued implementation acceptance against its original owner; preserve missing shared prerequisites as concrete original-owner repair requests within the bounded current parent, never duplicate engine semantics.
 
 Validation:
 
-- [ ] RRD-1.3-V1 Check unique ownership and local/cross-file dependency references, source hashes, ignored scratch and clean/owned branch paths. Reuse the authored queue validator results; no application suite.
+- [x] RRD-1.3-V1 Check unique ownership and local/cross-file dependency references, source hashes, ignored scratch and clean/owned branch paths. Reuse the authored queue validator results; no application suite.
 
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
