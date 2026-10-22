@@ -1,5 +1,7 @@
 # Engine ownership qualification beyond the foundation
 
+Historical fixture/design contract: [the 2026-10-23 single-format policy](../decisions/006-single-format-before-publication.md) removes any requirement to retain this experimental reader/writer in production. Keep independent fixture oracles and port useful behavior assertions to the current format; no old-profile support is claimed.
+
 Status: development requirements for ENG-1.17/1.18, not a frozen wire layout or passing interoperability claim.
 
 ## Authority and scope

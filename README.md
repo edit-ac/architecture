@@ -1,5 +1,7 @@
 # edit.ac architecture and development roadmaps
 
+Current user decision, 2026-10-23: [one durable format before publication](decisions/006-single-format-before-publication.md), with [durability invariants and required proof](specs/document-durability.md). Retire obsolete production document/API versions; retain fixture-only history. Finish independent features before remaining size/performance campaigns; hard final readiness caps remain unchanged.
+
 Superseding delivery decision, 2026-10-18: [web feature completeness first](operations/web-feature-first-20261018.md). Alpha is an internal local checkpoint; native implementation, public docs, qualification and native/device tests follow in that order. Every device/target-runtime requirement is owned by final roadmap43 and accepts appropriate simulators/emulators/VMs; no physical-device wait or performance qualification gate holds independent web feature work. Focused correctness and data safety remain mandatory. Windows/Linux are deferred until feature complete. No publication/deployment authorization is implied.
 
 <p align="center"><img src="design/assets/editac-github-avatar.png" alt="edit.ac logo" width="120"></p>

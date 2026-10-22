@@ -1,0 +1,31 @@
+# Canonical document durability
+
+Authority: [single-format decision, 2026-10-23](../decisions/006-single-format-before-publication.md). This is the production target and durability review, not a declaration that every cutover, crash test or final suite has passed.
+
+## Canonical identity
+
+Use schema `editac.registry.editor.v5`, profile `editac.yrs-yjs.editor.v5`, protocol 1, Yrs/Yjs update encoding 1 and UTF-16 public offsets. `DocumentIdentity::current` is the application-facing selector. Keep document ID and epoch as separately validated stable UUIDs. SDK version, build revision, process ID and current writer ID must not become document-format identity. The current v5 roots, immutable source identities and witnessed split/join semantics are the normative layout; older spec references describe the origin of those rules, not additional supported runtimes.
+
+Keep the existing v5 identifiers for already written canonical checkpoints. A cosmetic rename to v1 would create an unnecessary data boundary. All production creation, restore, sync, Session/FFI, WASM, converters, native and terminal consumers must select this same current identity. Unknown, retired or mismatched schema/profile/protocol/encoding/offset tuples reject before live mutation. Do not guess a format from root names, retry an older reader, or silently relabel bytes.
+
+## Required persistence invariants
+
+1. Store the exact identity and explicit initialized state with checkpoint bytes. Restoring an empty document must never rerun initial content import. Authorize creation once per new document/epoch; initialized empty data is existing data.
+2. Preserve checkpoint and journal bytes until their validated replacement is durably committed. Replay duplicate/reordered updates idempotently, reject missing binary dependencies rather than accept partial state, and acknowledge persistence only at the owning durable-store boundary. A CRDT state vector alone is not a durable-save receipt.
+3. Reopen with a fresh independent writer identity, preserving integrated original text identities, Unicode/UTF-16 anchors, retained owners, formatting, table/asset/reference metadata and unknown bounded data. A process writer is provenance, never a restored writer lease. Keep semantic document revisions/history; they are real user data.
+4. Validate identity, tuple shapes, immutable operation records, limits and permissions on a staged replica before applying to the live replica. Failed restore, replay, command preparation or format admission must leave content, history, pending receipts and persisted recovery bytes unchanged.
+5. Keep split/join presentation witnesses immutable. Later formatting, code-language changes, undo/redo, peer update order or checkpoint reopen must not reinterpret previously committed ownership. Preserve dormant/absorbed text, marks and recoverable intentions. Fresh invalid operations still reject atomically.
+6. Preserve unknown bounded JSON/opaque feature data through reopen, sync, supported export and disabled-extension round trips. Unknown data grants no editing/execution permission. Malformed known records, depth/byte/operation overflow, non-finite values and forged incompatible witnesses reject with typed errors, without lossy fallback or repair writes.
+7. Durable storage, schema and application upgrades must not be keyed to one development Git hash. Hashes authenticate a test or artifact; they do not authorize a document write or require the exact old build to reopen the same supported format. Capability permission/availability remains distinct from format admission.
+
+## Review and required proof
+
+Source review of `core/crates/editac-core/src/document.rs`, `editor.rs`, `editor_replay.rs`, `core/crates/editac-session/src/locator.rs` and the v5 specification found existing initialized-checkpoint envelopes, staged restore/admission, document/epoch matching, fresh writer leases, binary/graph bounds and witnessed replay. These are suitable foundations. Production still admits older experimental identities and carries profile-dependent replay/projection paths; removing them is a required implementation task, not a completed review result. Versioned historical mappers remain useful independent fixture oracles, outside production dependency graphs.
+
+Focused cutover proof must cover fresh current creation; empty and Unicode checkpoint reopen without reseeding; checkpoint plus duplicate/reordered journal replay; wrong document/epoch and retired/future tuple rejection with byte-for-byte nonmutation; witness immutability under format changes and undo/redo; unknown/opaque data retention; stale target/anchor safety; crash/atomic commit recovery; and a current-format checkpoint crossing actual Rust/WASM/Session/native consumer boundaries. Keep existing independent Yjs exchanges and semantic oracles. Test old envelopes as unsupported inputs, without compiling their readers into the runtime. Port original regression assertions to current fixtures rather than count historical old-reader passes as current proof.
+
+Use deterministic fixtures and mocked transports only. Full functional, storage/crash, cross-runtime and native suites retain their existing final-testing owners; the focused cutover gate protects subsequent implementation without replaying every suite. Exact counts, input/artifact/runtime pins, failure dispositions and remaining unsupported claims belong to ignored progress, not generated Git evidence. No prepared provider result proves model quality, usage or launch readiness.
+
+## Publication boundary
+
+Before publication, review the complete format descriptor and dependency/decoder versions, prove recovery/unknown-data retention and complete the applicable suites, then explicitly freeze the published identity. Future format changes require a documented compatibility or offline migration plan tied to real published data, not a new production version for each development experiment. Offline conversion preserves original bytes, creates a new destination/epoch and proves semantic/opaque-data preservation before adoption; it never runs implicitly on open. Physical-only qualification is separate from the accepted simulator/emulator/OS-host evidence required for native readiness.

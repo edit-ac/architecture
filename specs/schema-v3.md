@@ -1,5 +1,7 @@
 # General retained-source ownership v3
 
+Historical fixture/design contract: [the 2026-10-23 single-format policy](../decisions/006-single-format-before-publication.md) removes any requirement to retain this experimental reader/writer in production. Keep independent fixture oracles and port useful behavior assertions to the current format; no old-profile support is claimed.
+
 Status: locally qualified disposable representation for ENG-1.17; see [the matching receipt](../evidence/engine-ownership-profile/receipt.json). Production integration remains ENG-1.18. This is no performance, persistence, deployment or publication claim.
 
 ## Envelope and exact roots

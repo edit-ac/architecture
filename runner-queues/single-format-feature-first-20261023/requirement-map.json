@@ -1,0 +1,1833 @@
+{
+  "version": 1,
+  "originalNativeAndTerminalParents": [
+    {
+      "original": "DSK-1.1",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.1",
+      "testingOwner": "QMC-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Pinned tooling builds a native control and runs a real bootstrap test; missing tools name an exact unblock condition.",
+      "featureFile": "05-macos-input-part-1.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.2",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.2",
+      "testingOwner": "QMC-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "A native fixture proves composition and editable cell/atom feasibility; unsupported required routes block dependents.",
+      "featureFile": "05-macos-input-part-1.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.3",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.3",
+      "testingOwner": "QMC-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Open/dispose, failure and cancellation preserve ownership and callback order; disposed views receive no callbacks.",
+      "featureFile": "05-macos-input-part-1.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.4",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.4",
+      "testingOwner": "QMC-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Incremental patches preserve stable identity and selection across Unicode, bidi text and attachment boundaries. The coordinate/range-mapping portion of NAT-05 covers selection direction and stale target rejection; full protocol sequences stay with the input owner.",
+      "featureFile": "05-macos-input-part-1.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.5",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.5",
+      "testingOwner": "QMC-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Insert/delete/replacement each commits once; rejection leaves a consistent projection without recursive input.",
+      "featureFile": "05-macos-input-part-1.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.6",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.6",
+      "testingOwner": "QMC-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs. Qualify NAT-05 through deterministic native protocol fixtures; preserve captured targets/composition and supply OS/IME runbooks and preliminary observations for DEL-1.7 physical or virtual platform qualification. ENV-01\u201306/09/12 refine native control policy: default platform spelling respects user settings, off/custom are explicit, autocorrection remains independent and unsupported/coupled traits are reported. Reuse the selected control/provider; accepted corrections use captured targets once. No implicit checker dependency/service or automatic fallback is allowed.",
+      "featureFile": "06-macos-input-part-2.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.7",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.7",
+      "testingOwner": "QMC-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Existing native actions honor shared history/capabilities and read-only state; later adapters must use this same mutation gate. NAT-07 command enablement/routing uses the appropriate first-party profile and injected transfer/service ports; unavailable optional services are explicit. Full NAT-10/NAT-11 transfer behavior remains with the clipboard owner, not an entry prerequisite here. NAT-08 checks captured Services command dispatch; later service completion follows the input/transfer owners. ENV-07/08 route native undo/redo keys, Edit/context menus, accessibility actions and supported gestures to shared history exactly once, with current enablement and nested-responder/composition ownership. Native storage/projection changes cannot create a competing undo stack.",
+      "featureFile": "06-macos-input-part-2.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.8",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.8",
+      "testingOwner": "QMC-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "The shared mark/block/list corpus retains semantic equality, including links, mixed marks, nesting and checked items.",
+      "featureFile": "06-macos-input-part-2.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.9",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.9",
+      "testingOwner": "QMC-1.2",
+      "priorTasks": [
+        "DSK-1.8"
+      ],
+      "originalAcceptance": "Native table/cell views retain identity under incremental updates; source or image fallback fails required parity.",
+      "featureFile": "07-macos-rich-content.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.10",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.10",
+      "testingOwner": "QMC-1.2",
+      "priorTasks": [
+        "DSK-1.7"
+      ],
+      "originalAcceptance": "Cell edits/navigation, supported selections and row/column actions preserve identity through remote updates and undo.",
+      "featureFile": "07-macos-rich-content.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.11",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.11",
+      "testingOwner": "QMC-1.2",
+      "priorTasks": [
+        "DSK-1.7",
+        "DSK-1.8"
+      ],
+      "originalAcceptance": "Images expose alt/error/edit states; references retain IDs/labels. Both reject stale or cancelled host resolutions.",
+      "featureFile": "07-macos-rich-content.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.12",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.12",
+      "testingOwner": "QMC-1.2",
+      "priorTasks": [
+        "DSK-1.8"
+      ],
+      "originalAcceptance": "Custom marks/atoms render, select, edit and dispose; unknown data survives. Math source editing never implies typesetting.",
+      "featureFile": "07-macos-rich-content.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.13",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.13",
+      "testingOwner": "QMC-1.2",
+      "priorTasks": [
+        "DSK-1.7"
+      ],
+      "originalAcceptance": "Rich copy/cut/paste preserves supported structure; hostile data is diagnosed, while read-only/cancelled drops cannot mutate. NAT-10/NAT-11 adds multiple views, delayed providers, cross-app copy/move and source preservation under the shared transfer contract; qualify platform clipboard lifetime.",
+      "featureFile": "07-macos-rich-content.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.14",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.14",
+      "testingOwner": "QMC-1.3",
+      "priorTasks": [
+        "DSK-1.3",
+        "DSK-1.7"
+      ],
+      "originalAcceptance": "Offline edit/restore needs no account; commit status follows durable receipts. Close/reopen and storage errors preserve recovery.",
+      "featureFile": "08-macos-lifecycle.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.15",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.15",
+      "testingOwner": "QMC-1.3",
+      "priorTasks": [
+        "DSK-1.6"
+      ],
+      "originalAcceptance": "Two fixtures converge across reconnect; remote selection, revocation and document switching preserve receipt/input semantics.",
+      "featureFile": "08-macos-lifecycle.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.16",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.16",
+      "testingOwner": "QMC-1.3",
+      "priorTasks": [
+        "DSK-1.6",
+        "DSK-1.7",
+        "DSK-1.8"
+      ],
+      "originalAcceptance": "Native accessibility exposes text, selection, command/read-only state and keyboard focus at declared scaling settings. NAT-13/NAT-14 checks current accessible text geometry and safe text-service lock/reentrancy behavior; record actual platform evidence.",
+      "featureFile": "08-macos-lifecycle.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.17",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.17",
+      "testingOwner": "QMC-1.3",
+      "priorTasks": [
+        "DSK-1.10",
+        "DSK-1.11",
+        "DSK-1.12"
+      ],
+      "originalAcceptance": "Tables/cells, alt text, reference labels and atom actions have accessible relationships and a pointer-free focus route.",
+      "featureFile": "08-macos-lifecycle.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-1.18",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-1.18",
+      "testingOwner": "QMC-1.3",
+      "priorTasks": [
+        "DSK-1.10",
+        "DSK-1.11"
+      ],
+      "originalAcceptance": "Read-only unified/semantic changes retain profile labels and trusted/unknown attribution; stale revisions remain visible.",
+      "featureFile": "08-macos-lifecycle.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "NMX-1.1",
+      "source": "33-macos-extension-integration.md",
+      "featureTask": "RMX-1.1",
+      "testingOwner": "QMC-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "The existing native SDK is qualified at a named revision; public service descriptors/FFI and platform thread ownership are fixed before feature wiring. Bind the published official profile and document-search/code-command capabilities; missing presenters are explicit, not an implied web parity pass.",
+      "featureFile": "09-macos-extensions-package-part-1.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "NMX-1.2",
+      "source": "33-macos-extension-integration.md",
+      "featureTask": "RMX-1.2",
+      "testingOwner": "QMC-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Code edits use shared text commands; syntax spans are derived, versioned, cancellable and composition-safe with supported fonts/contrast. Large block typing does not wait for full highlighting. Bind IDE-01\u2013IDE-06 where the code-tools profile is advertised, preserving native focus/IME and shared command history.",
+      "featureFile": "09-macos-extensions-package-part-1.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "NMX-1.3",
+      "source": "33-macos-extension-integration.md",
+      "featureTask": "RMX-1.3",
+      "testingOwner": "QMC-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Formatter/row/column/alignment commands preserve identity/selection and one intended undo group; native table layout and accessible navigation meet the supported envelope.",
+      "featureFile": "09-macos-extensions-package-part-1.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "NMX-1.4",
+      "source": "33-macos-extension-integration.md",
+      "featureTask": "RMX-1.4",
+      "testingOwner": "QMC-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Pick/upload/finalize/cancel/retry/download uses host authorization and actual asset state; unsupported embeds remain safe accessible cards with recoverable data.",
+      "featureFile": "09-macos-extensions-package-part-1.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "NMX-1.5",
+      "source": "33-macos-extension-integration.md",
+      "featureTask": "RMX-1.5",
+      "testingOwner": "QMC-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Public auto-paste metadata and private references follow26 policy; principal changes clear private caches, revoked titles never enter shared labels, and activation rechecks permission.",
+      "featureFile": "10-macos-extensions-package-part-2.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "NMX-1.6",
+      "source": "33-macos-extension-integration.md",
+      "featureTask": "RMX-1.6",
+      "testingOwner": "QMC-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Qualified directions support OS open/save, loss preview, cancellation and atomic output; PDF is export-only. Missing optional converter has explicit diagnostics.",
+      "featureFile": "10-macos-extensions-package-part-2.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "NMX-1.7",
+      "source": "33-macos-extension-integration.md",
+      "featureTask": "RMX-1.7",
+      "testingOwner": "QMC-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Local slash suggestions and block movement work with keyboard/touch, screen readers and a non-drag single-pointer alternative; remote edits do not open menus. Bind FND-01\u2013FND-07 through native find/command surfaces when advertised; distinguish selected-text drag from block handles and preserve native text services.",
+      "featureFile": "10-macos-extensions-package-part-2.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "NMX-1.9",
+      "source": "33-macos-extension-integration.md",
+      "featureTask": "RMX-1.9",
+      "testingOwner": "QMC-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Native table-cell, image-caption, reference and math transfer preserves every admitted format and structural field through the shared extension codecs. Native menu and keyboard plain-paste commands bypass formatting while remaining discoverable and accessible. Emulator/OS-host fixtures and physical or virtual platform runbooks have separate qualification labels; no native tests run during roadmap editing.",
+      "featureFile": "10-macos-extensions-package-part-2.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-2.1",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-2.1",
+      "testingOwner": "QMC-1.5",
+      "priorTasks": [
+        "DSK-1.13",
+        "DSK-1.14",
+        "DSK-1.15",
+        "DSK-1.17",
+        "DSK-1.18"
+      ],
+      "originalAcceptance": "The package contains supported binaries, API/version metadata, resources and notices, with immutable hashes and no publication.",
+      "featureFile": "11-macos-extensions-package-part-3.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-2.2",
+      "source": "18-desktop-native.md",
+      "featureTask": "RMC-2.2",
+      "testingOwner": "QMC-1.5",
+      "priorTasks": [],
+      "originalAcceptance": "A clean consumer needs no sibling checkout and runs actual local/rich/offline/mocked-collaboration and change-review smoke cases.",
+      "featureFile": "11-macos-extensions-package-part-3.md",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "IOS-1.1",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.1",
+      "testingOwner": "QIO-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "The four named preparation tasks have passing fixture/build evidence matching the consumed engine/binding revisions. Pinned tooling builds a native control and runs a real bootstrap test; missing evidence/tools name an exact unblock condition.",
+      "featureFile": "12-ios-input-part-1.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.2",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.2",
+      "testingOwner": "QIO-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "A native fixture proves composition and editable cell/atom feasibility; unsupported required routes block dependents.",
+      "featureFile": "12-ios-input-part-1.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.3",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.3",
+      "testingOwner": "QIO-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Open/dispose, failure and cancellation preserve ownership and callback order; disposed views receive no callbacks.",
+      "featureFile": "12-ios-input-part-1.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.4",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.4",
+      "testingOwner": "QIO-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Incremental patches preserve stable identity and selection across Unicode, bidi text and attachment boundaries. The coordinate/range-mapping portion of NAT-05 covers selection direction and stale target rejection; full protocol sequences stay with the input owner.",
+      "featureFile": "12-ios-input-part-1.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.5",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.5",
+      "testingOwner": "QIO-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Insert/delete/replacement each commits once; rejection leaves a consistent projection without recursive input.",
+      "featureFile": "12-ios-input-part-1.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.6",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.6",
+      "testingOwner": "QIO-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs. Qualify NAT-05 through deterministic native protocol fixtures; preserve captured targets/composition and supply OS/IME runbooks and preliminary observations for DEL-1.7 physical or virtual platform qualification. ENV-01\u201306/09/12 refine native control policy: default platform spelling respects user settings, off/custom are explicit, autocorrection remains independent and unsupported/coupled traits are reported. Reuse the selected control/provider; accepted corrections use captured targets once. No implicit checker dependency/service or automatic fallback is allowed.",
+      "featureFile": "13-ios-input-part-2.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.7",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.7",
+      "testingOwner": "QIO-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Existing native actions honor shared history/capabilities and read-only state; later adapters must use this same mutation gate. NAT-07 command enablement/routing uses the appropriate first-party profile and injected transfer/service ports; unavailable optional services are explicit. Full NAT-10/NAT-11 transfer behavior remains with the clipboard owner, not an entry prerequisite here. ENV-07/08 route native undo/redo keys, Edit/context menus, accessibility actions and supported gestures to shared history exactly once, with current enablement and nested-responder/composition ownership. Native storage/projection changes cannot create a competing undo stack.",
+      "featureFile": "13-ios-input-part-2.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.8",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.8",
+      "testingOwner": "QIO-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "The shared mark/block/list corpus retains semantic equality, including links, mixed marks, nesting and checked items.",
+      "featureFile": "13-ios-input-part-2.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.9",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.9",
+      "testingOwner": "QIO-1.2",
+      "priorTasks": [
+        "IOS-1.8"
+      ],
+      "originalAcceptance": "Native table/cell views retain identity under incremental updates; source or image fallback fails required parity.",
+      "featureFile": "14-ios-rich-content.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.10",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.10",
+      "testingOwner": "QIO-1.2",
+      "priorTasks": [
+        "IOS-1.7"
+      ],
+      "originalAcceptance": "Cell edits/navigation, supported selections and row/column actions preserve identity through remote updates and undo.",
+      "featureFile": "14-ios-rich-content.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.11",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.11",
+      "testingOwner": "QIO-1.2",
+      "priorTasks": [
+        "IOS-1.7",
+        "IOS-1.8"
+      ],
+      "originalAcceptance": "Images expose alt/error/edit states; references retain IDs/labels. Both reject stale or cancelled host resolutions.",
+      "featureFile": "14-ios-rich-content.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.12",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.12",
+      "testingOwner": "QIO-1.2",
+      "priorTasks": [
+        "IOS-1.8"
+      ],
+      "originalAcceptance": "Custom marks/atoms render, select, edit and dispose; unknown data survives. Math source editing never implies typesetting.",
+      "featureFile": "14-ios-rich-content.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.13",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.13",
+      "testingOwner": "QIO-1.2",
+      "priorTasks": [
+        "IOS-1.7"
+      ],
+      "originalAcceptance": "Rich copy/cut/paste preserves supported structure; hostile data is diagnosed, while read-only/cancelled drops cannot mutate. NAT-10/NAT-11 adds multiple views, delayed providers, cross-app copy/move and source preservation under the shared transfer contract; qualify platform clipboard lifetime.",
+      "featureFile": "14-ios-rich-content.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.14",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.14",
+      "testingOwner": "QIO-1.3",
+      "priorTasks": [
+        "IOS-1.3",
+        "IOS-1.7"
+      ],
+      "originalAcceptance": "Offline edit/restore needs no account; commit status follows durable receipts. Close/reopen and storage errors preserve recovery.",
+      "featureFile": "15-ios-lifecycle.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.15",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.15",
+      "testingOwner": "QIO-1.3",
+      "priorTasks": [
+        "IOS-1.6"
+      ],
+      "originalAcceptance": "Two fixtures converge across reconnect; remote selection, revocation and document switching preserve receipt/input semantics.",
+      "featureFile": "15-ios-lifecycle.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.16",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.16",
+      "testingOwner": "QIO-1.3",
+      "priorTasks": [
+        "IOS-1.6",
+        "IOS-1.7",
+        "IOS-1.8"
+      ],
+      "originalAcceptance": "Native accessibility exposes text, selection, command/read-only state and keyboard focus at declared scaling settings. NAT-13/NAT-14 checks current accessible text geometry and safe text-service lock/reentrancy behavior; record actual platform evidence.",
+      "featureFile": "15-ios-lifecycle.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.17",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.17",
+      "testingOwner": "QIO-1.3",
+      "priorTasks": [
+        "IOS-1.10",
+        "IOS-1.11",
+        "IOS-1.12"
+      ],
+      "originalAcceptance": "Tables/cells, alt text, reference labels and atom actions have accessible relationships and a pointer-free focus route.",
+      "featureFile": "15-ios-lifecycle.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-1.18",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-1.18",
+      "testingOwner": "QIO-1.3",
+      "priorTasks": [
+        "IOS-1.10",
+        "IOS-1.11"
+      ],
+      "originalAcceptance": "Read-only unified/semantic changes retain profile labels and trusted/unknown attribution; stale revisions remain visible.",
+      "featureFile": "15-ios-lifecycle.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "NIX-1.1",
+      "source": "31-ios-extension-integration.md",
+      "featureTask": "RIX-1.1",
+      "testingOwner": "QIO-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "The existing native SDK is qualified at a named revision; public service descriptors/FFI and platform thread ownership are fixed before feature wiring. Bind the published official profile and document-search/code-command capabilities; missing presenters are explicit, not an implied web parity pass.",
+      "featureFile": "16-ios-extensions-package-part-1.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "NIX-1.2",
+      "source": "31-ios-extension-integration.md",
+      "featureTask": "RIX-1.2",
+      "testingOwner": "QIO-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Code edits use shared text commands; syntax spans are derived, versioned, cancellable and composition-safe with supported fonts/contrast. Large block typing does not wait for full highlighting. Bind IDE-01\u2013IDE-06 where the code-tools profile is advertised, preserving native focus/IME and shared command history.",
+      "featureFile": "16-ios-extensions-package-part-1.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "NIX-1.3",
+      "source": "31-ios-extension-integration.md",
+      "featureTask": "RIX-1.3",
+      "testingOwner": "QIO-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Formatter/row/column/alignment commands preserve identity/selection and one intended undo group; native table layout and accessible navigation meet the supported envelope.",
+      "featureFile": "16-ios-extensions-package-part-1.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "NIX-1.4",
+      "source": "31-ios-extension-integration.md",
+      "featureTask": "RIX-1.4",
+      "testingOwner": "QIO-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Pick/upload/finalize/cancel/retry/download uses host authorization and actual asset state; unsupported embeds remain safe accessible cards with recoverable data.",
+      "featureFile": "16-ios-extensions-package-part-1.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "NIX-1.5",
+      "source": "31-ios-extension-integration.md",
+      "featureTask": "RIX-1.5",
+      "testingOwner": "QIO-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Public auto-paste metadata and private references follow26 policy; principal changes clear private caches, revoked titles never enter shared labels, and activation rechecks permission.",
+      "featureFile": "17-ios-extensions-package-part-2.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "NIX-1.6",
+      "source": "31-ios-extension-integration.md",
+      "featureTask": "RIX-1.6",
+      "testingOwner": "QIO-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Qualified directions support OS open/save, loss preview, cancellation and atomic output; PDF is export-only. Missing optional converter has explicit diagnostics.",
+      "featureFile": "17-ios-extensions-package-part-2.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "NIX-1.7",
+      "source": "31-ios-extension-integration.md",
+      "featureTask": "RIX-1.7",
+      "testingOwner": "QIO-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Local slash suggestions and block movement work with keyboard/touch, screen readers and a non-drag single-pointer alternative; remote edits do not open menus. Bind FND-01\u2013FND-07 through native find/command surfaces when advertised; distinguish selected-text drag from block handles and preserve native text services.",
+      "featureFile": "17-ios-extensions-package-part-2.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "NIX-1.9",
+      "source": "31-ios-extension-integration.md",
+      "featureTask": "RIX-1.9",
+      "testingOwner": "QIO-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Native table-cell, image-caption, reference and math transfer preserves every admitted format and structural field through the shared extension codecs. Native menu and keyboard plain-paste commands bypass formatting while remaining discoverable and accessible. Emulator/OS-host fixtures and physical or virtual platform runbooks have separate qualification labels; no native tests run during roadmap editing.",
+      "featureFile": "17-ios-extensions-package-part-2.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-2.1",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-2.1",
+      "testingOwner": "QIO-1.5",
+      "priorTasks": [
+        "IOS-1.13",
+        "IOS-1.14",
+        "IOS-1.15",
+        "IOS-1.17",
+        "IOS-1.18"
+      ],
+      "originalAcceptance": "The package contains supported binaries, API/version metadata, resources and notices, with immutable hashes and no publication.",
+      "featureFile": "18-ios-extensions-package-part-3.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-2.2",
+      "source": "16-ios-sdk.md",
+      "featureTask": "RIO-2.2",
+      "testingOwner": "QIO-1.5",
+      "priorTasks": [],
+      "originalAcceptance": "A clean consumer needs no sibling checkout and runs actual local/rich/offline/mocked-collaboration and change-review smoke cases.",
+      "featureFile": "18-ios-extensions-package-part-3.md",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "AND-1.1",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.1",
+      "testingOwner": "QAN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "The four named preparation tasks have passing fixture/build evidence matching the consumed engine/binding revisions. Pinned tooling builds a native control and runs a real bootstrap test; missing evidence/tools name an exact unblock condition.",
+      "featureFile": "19-android-input-part-1.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.2",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.2",
+      "testingOwner": "QAN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "A native fixture proves composition and editable cell/atom feasibility; unsupported required routes block dependents.",
+      "featureFile": "19-android-input-part-1.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.3",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.3",
+      "testingOwner": "QAN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Open/dispose, failure and cancellation preserve ownership and callback order; disposed views receive no callbacks.",
+      "featureFile": "19-android-input-part-1.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.4",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.4",
+      "testingOwner": "QAN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Incremental patches preserve stable identity and selection across Unicode, bidi text and attachment boundaries. The coordinate/range-mapping portion of NAT-01/NAT-02 covers selection direction and stale target rejection; full protocol sequences stay with the input owner.",
+      "featureFile": "19-android-input-part-1.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.5",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.5",
+      "testingOwner": "QAN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Insert/delete/replacement each commits once; rejection leaves a consistent projection without recursive input.",
+      "featureFile": "19-android-input-part-1.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.6",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.6",
+      "testingOwner": "QAN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs. Qualify NAT-01/NAT-02 through deterministic native protocol fixtures; supply actual OS/IME runbooks and preliminary observations for DEL-1.7, without claiming device qualification here. Android additionally binds NAT-06 handwriting preview/fallback where available. ENV-01\u201306/09/12 refine native control policy: default platform spelling respects user settings, off/custom are explicit, autocorrection remains independent and unsupported/coupled traits are reported. Reuse the selected control/provider; accepted corrections use captured targets once. No implicit checker dependency/service or automatic fallback is allowed.",
+      "featureFile": "20-android-input-part-2.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.7",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.7",
+      "testingOwner": "QAN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Existing native actions honor shared history/capabilities and read-only state; later adapters must use this same mutation gate. NAT-07 command enablement/routing uses the appropriate first-party profile and injected transfer/service ports; unavailable optional services are explicit. Full NAT-10/NAT-11 transfer behavior remains with the clipboard owner, not an entry prerequisite here. ENV-07/08 route native undo/redo keys, Edit/context menus, accessibility actions and supported gestures to shared history exactly once, with current enablement and nested-responder/composition ownership. Native storage/projection changes cannot create a competing undo stack.",
+      "featureFile": "20-android-input-part-2.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.8",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.8",
+      "testingOwner": "QAN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "The shared mark/block/list corpus retains semantic equality, including links, mixed marks, nesting and checked items.",
+      "featureFile": "20-android-input-part-2.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.9",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.9",
+      "testingOwner": "QAN-1.2",
+      "priorTasks": [
+        "AND-1.8"
+      ],
+      "originalAcceptance": "Native table/cell views retain identity under incremental updates; source or image fallback fails required parity.",
+      "featureFile": "21-android-rich-content.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.10",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.10",
+      "testingOwner": "QAN-1.2",
+      "priorTasks": [
+        "AND-1.7"
+      ],
+      "originalAcceptance": "Cell edits/navigation, supported selections and row/column actions preserve identity through remote updates and undo.",
+      "featureFile": "21-android-rich-content.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.11",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.11",
+      "testingOwner": "QAN-1.2",
+      "priorTasks": [
+        "AND-1.7",
+        "AND-1.8"
+      ],
+      "originalAcceptance": "Images expose alt/error/edit states; references retain IDs/labels. Both reject stale or cancelled host resolutions.",
+      "featureFile": "21-android-rich-content.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.12",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.12",
+      "testingOwner": "QAN-1.2",
+      "priorTasks": [
+        "AND-1.8"
+      ],
+      "originalAcceptance": "Custom marks/atoms render, select, edit and dispose; unknown data survives. Math source editing never implies typesetting.",
+      "featureFile": "21-android-rich-content.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.13",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.13",
+      "testingOwner": "QAN-1.2",
+      "priorTasks": [
+        "AND-1.7"
+      ],
+      "originalAcceptance": "Rich copy/cut/paste preserves supported structure; hostile data is diagnosed, while read-only/cancelled drops cannot mutate. NAT-10/NAT-11 adds multiple views, delayed providers, cross-app copy/move and source preservation under the shared transfer contract; qualify platform clipboard lifetime.",
+      "featureFile": "21-android-rich-content.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.14",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.14",
+      "testingOwner": "QAN-1.3",
+      "priorTasks": [
+        "AND-1.3",
+        "AND-1.7"
+      ],
+      "originalAcceptance": "Offline edit/restore needs no account; commit status follows durable receipts. Close/reopen and storage errors preserve recovery.",
+      "featureFile": "22-android-lifecycle.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.15",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.15",
+      "testingOwner": "QAN-1.3",
+      "priorTasks": [
+        "AND-1.6"
+      ],
+      "originalAcceptance": "Two fixtures converge across reconnect; remote selection, revocation and document switching preserve receipt/input semantics.",
+      "featureFile": "22-android-lifecycle.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.16",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.16",
+      "testingOwner": "QAN-1.3",
+      "priorTasks": [
+        "AND-1.6",
+        "AND-1.7",
+        "AND-1.8"
+      ],
+      "originalAcceptance": "Native accessibility exposes text, selection, command/read-only state and keyboard focus at declared scaling settings. NAT-13/NAT-14 checks current accessible text geometry and safe text-service lock/reentrancy behavior; record actual platform evidence.",
+      "featureFile": "22-android-lifecycle.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.17",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.17",
+      "testingOwner": "QAN-1.3",
+      "priorTasks": [
+        "AND-1.10",
+        "AND-1.11",
+        "AND-1.12"
+      ],
+      "originalAcceptance": "Tables/cells, alt text, reference labels and atom actions have accessible relationships and a pointer-free focus route.",
+      "featureFile": "22-android-lifecycle.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-1.18",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-1.18",
+      "testingOwner": "QAN-1.3",
+      "priorTasks": [
+        "AND-1.10",
+        "AND-1.11"
+      ],
+      "originalAcceptance": "Read-only unified/semantic changes retain profile labels and trusted/unknown attribution; stale revisions remain visible.",
+      "featureFile": "22-android-lifecycle.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "NAX-1.1",
+      "source": "32-android-extension-integration.md",
+      "featureTask": "RAX-1.1",
+      "testingOwner": "QAN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "The existing native SDK is qualified at a named revision; public service descriptors/FFI and platform thread ownership are fixed before feature wiring. Bind the published official profile and document-search/code-command capabilities; missing presenters are explicit, not an implied web parity pass.",
+      "featureFile": "23-android-extensions-package-part-1.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "NAX-1.2",
+      "source": "32-android-extension-integration.md",
+      "featureTask": "RAX-1.2",
+      "testingOwner": "QAN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Code edits use shared text commands; syntax spans are derived, versioned, cancellable and composition-safe with supported fonts/contrast. Large block typing does not wait for full highlighting. Bind IDE-01\u2013IDE-06 where the code-tools profile is advertised, preserving native focus/IME and shared command history.",
+      "featureFile": "23-android-extensions-package-part-1.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "NAX-1.3",
+      "source": "32-android-extension-integration.md",
+      "featureTask": "RAX-1.3",
+      "testingOwner": "QAN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Formatter/row/column/alignment commands preserve identity/selection and one intended undo group; native table layout and accessible navigation meet the supported envelope.",
+      "featureFile": "23-android-extensions-package-part-1.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "NAX-1.4",
+      "source": "32-android-extension-integration.md",
+      "featureTask": "RAX-1.4",
+      "testingOwner": "QAN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Pick/upload/finalize/cancel/retry/download uses host authorization and actual asset state; unsupported embeds remain safe accessible cards with recoverable data.",
+      "featureFile": "23-android-extensions-package-part-1.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "NAX-1.5",
+      "source": "32-android-extension-integration.md",
+      "featureTask": "RAX-1.5",
+      "testingOwner": "QAN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Public auto-paste metadata and private references follow26 policy; principal changes clear private caches, revoked titles never enter shared labels, and activation rechecks permission.",
+      "featureFile": "24-android-extensions-package-part-2.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "NAX-1.6",
+      "source": "32-android-extension-integration.md",
+      "featureTask": "RAX-1.6",
+      "testingOwner": "QAN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Qualified directions support OS open/save, loss preview, cancellation and atomic output; PDF is export-only. Missing optional converter has explicit diagnostics.",
+      "featureFile": "24-android-extensions-package-part-2.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "NAX-1.7",
+      "source": "32-android-extension-integration.md",
+      "featureTask": "RAX-1.7",
+      "testingOwner": "QAN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Local slash suggestions and block movement work with keyboard/touch, screen readers and a non-drag single-pointer alternative; remote edits do not open menus. Bind FND-01\u2013FND-07 through native find/command surfaces when advertised; distinguish selected-text drag from block handles and preserve native text services.",
+      "featureFile": "24-android-extensions-package-part-2.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "NAX-1.9",
+      "source": "32-android-extension-integration.md",
+      "featureTask": "RAX-1.9",
+      "testingOwner": "QAN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Native table-cell, image-caption, reference and math transfer preserves every admitted format and structural field through the shared extension codecs. Native menu and keyboard plain-paste commands bypass formatting while remaining discoverable and accessible. Emulator/OS-host fixtures and physical or virtual platform runbooks have separate qualification labels; no native tests run during roadmap editing.",
+      "featureFile": "24-android-extensions-package-part-2.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-2.1",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-2.1",
+      "testingOwner": "QAN-1.5",
+      "priorTasks": [
+        "AND-1.13",
+        "AND-1.14",
+        "AND-1.15",
+        "AND-1.17",
+        "AND-1.18"
+      ],
+      "originalAcceptance": "The package contains supported binaries, API/version metadata, resources and notices, with immutable hashes and no publication.",
+      "featureFile": "25-android-extensions-package-part-3.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-2.2",
+      "source": "17-android-sdk.md",
+      "featureTask": "RAN-2.2",
+      "testingOwner": "QAN-1.5",
+      "priorTasks": [],
+      "originalAcceptance": "A clean consumer needs no sibling checkout and runs actual local/rich/offline/mocked-collaboration and change-review smoke cases.",
+      "featureFile": "25-android-extensions-package-part-3.md",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "WIN-1.1",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.1",
+      "testingOwner": "QWI-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Pinned tooling builds a native control and runs a real bootstrap test; missing tools name an exact unblock condition.",
+      "featureFile": "26-windows-input-part-1.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.2",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.2",
+      "testingOwner": "QWI-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "A native fixture proves composition and editable cell/atom feasibility; unsupported required routes block dependents.",
+      "featureFile": "26-windows-input-part-1.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.3",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.3",
+      "testingOwner": "QWI-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Open/dispose, failure and cancellation preserve ownership and callback order; disposed views receive no callbacks.",
+      "featureFile": "26-windows-input-part-1.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.4",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.4",
+      "testingOwner": "QWI-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Incremental patches preserve stable identity and selection across Unicode, bidi text and attachment boundaries. The coordinate/range-mapping portion of NAT-04 covers selection direction and stale target rejection; full protocol sequences stay with the input owner.",
+      "featureFile": "26-windows-input-part-1.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.5",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.5",
+      "testingOwner": "QWI-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Insert/delete/replacement each commits once; rejection leaves a consistent projection without recursive input.",
+      "featureFile": "26-windows-input-part-1.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.6",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.6",
+      "testingOwner": "QWI-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs. Qualify NAT-04 through deterministic native protocol fixtures; preserve captured targets/composition and supply OS/IME runbooks and preliminary observations for DEL-1.7 physical or virtual platform qualification. ENV-01\u201306/09/12 refine native control policy: default platform spelling respects user settings, off/custom are explicit, autocorrection remains independent and unsupported/coupled traits are reported. Reuse the selected control/provider; accepted corrections use captured targets once. No implicit checker dependency/service or automatic fallback is allowed.",
+      "featureFile": "27-windows-input-part-2.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.7",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.7",
+      "testingOwner": "QWI-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Existing native actions honor shared history/capabilities and read-only state; later adapters must use this same mutation gate. NAT-07 command enablement/routing uses the appropriate first-party profile and injected transfer/service ports; unavailable optional services are explicit. Full NAT-10/NAT-11 transfer behavior remains with the clipboard owner, not an entry prerequisite here. ENV-07/08 route native undo/redo keys, Edit/context menus, accessibility actions and supported gestures to shared history exactly once, with current enablement and nested-responder/composition ownership. Native storage/projection changes cannot create a competing undo stack.",
+      "featureFile": "27-windows-input-part-2.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.8",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.8",
+      "testingOwner": "QWI-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "The shared mark/block/list corpus retains semantic equality, including links, mixed marks, nesting and checked items.",
+      "featureFile": "27-windows-input-part-2.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.9",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.9",
+      "testingOwner": "QWI-1.2",
+      "priorTasks": [
+        "WIN-1.8"
+      ],
+      "originalAcceptance": "Native table/cell views retain identity under incremental updates; source or image fallback fails required parity.",
+      "featureFile": "28-windows-rich-content.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.10",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.10",
+      "testingOwner": "QWI-1.2",
+      "priorTasks": [
+        "WIN-1.7"
+      ],
+      "originalAcceptance": "Cell edits/navigation, supported selections and row/column actions preserve identity through remote updates and undo.",
+      "featureFile": "28-windows-rich-content.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.11",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.11",
+      "testingOwner": "QWI-1.2",
+      "priorTasks": [
+        "WIN-1.7",
+        "WIN-1.8"
+      ],
+      "originalAcceptance": "Images expose alt/error/edit states; references retain IDs/labels. Both reject stale or cancelled host resolutions.",
+      "featureFile": "28-windows-rich-content.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.12",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.12",
+      "testingOwner": "QWI-1.2",
+      "priorTasks": [
+        "WIN-1.8"
+      ],
+      "originalAcceptance": "Custom marks/atoms render, select, edit and dispose; unknown data survives. Math source editing never implies typesetting.",
+      "featureFile": "28-windows-rich-content.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.13",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.13",
+      "testingOwner": "QWI-1.2",
+      "priorTasks": [
+        "WIN-1.7"
+      ],
+      "originalAcceptance": "Rich copy/cut/paste preserves supported structure; hostile data is diagnosed, while read-only/cancelled drops cannot mutate. NAT-10/NAT-11 adds multiple views, delayed providers, cross-app copy/move and source preservation under the shared transfer contract; qualify platform clipboard lifetime.",
+      "featureFile": "28-windows-rich-content.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.14",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.14",
+      "testingOwner": "QWI-1.3",
+      "priorTasks": [
+        "WIN-1.3",
+        "WIN-1.7"
+      ],
+      "originalAcceptance": "Offline edit/restore needs no account; commit status follows durable receipts. Close/reopen and storage errors preserve recovery.",
+      "featureFile": "29-windows-lifecycle.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.15",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.15",
+      "testingOwner": "QWI-1.3",
+      "priorTasks": [
+        "WIN-1.6"
+      ],
+      "originalAcceptance": "Two fixtures converge across reconnect; remote selection, revocation and document switching preserve receipt/input semantics.",
+      "featureFile": "29-windows-lifecycle.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.16",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.16",
+      "testingOwner": "QWI-1.3",
+      "priorTasks": [
+        "WIN-1.6",
+        "WIN-1.7",
+        "WIN-1.8"
+      ],
+      "originalAcceptance": "Native accessibility exposes text, selection, command/read-only state and keyboard focus at declared scaling settings. NAT-13/NAT-14 checks current accessible text geometry and safe text-service lock/reentrancy behavior; record actual platform evidence.",
+      "featureFile": "29-windows-lifecycle.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.17",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.17",
+      "testingOwner": "QWI-1.3",
+      "priorTasks": [
+        "WIN-1.10",
+        "WIN-1.11",
+        "WIN-1.12"
+      ],
+      "originalAcceptance": "Tables/cells, alt text, reference labels and atom actions have accessible relationships and a pointer-free focus route.",
+      "featureFile": "29-windows-lifecycle.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-1.18",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-1.18",
+      "testingOwner": "QWI-1.3",
+      "priorTasks": [
+        "WIN-1.10",
+        "WIN-1.11"
+      ],
+      "originalAcceptance": "Read-only unified/semantic changes retain profile labels and trusted/unknown attribution; stale revisions remain visible.",
+      "featureFile": "29-windows-lifecycle.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "NWX-1.1",
+      "source": "34-windows-extension-integration.md",
+      "featureTask": "RWX-1.1",
+      "testingOwner": "QWI-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "The existing native SDK is qualified at a named revision; public service descriptors/FFI and platform thread ownership are fixed before feature wiring. Bind the published official profile and document-search/code-command capabilities; missing presenters are explicit, not an implied web parity pass.",
+      "featureFile": "30-windows-extensions-package-part-1.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "NWX-1.2",
+      "source": "34-windows-extension-integration.md",
+      "featureTask": "RWX-1.2",
+      "testingOwner": "QWI-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Code edits use shared text commands; syntax spans are derived, versioned, cancellable and composition-safe with supported fonts/contrast. Large block typing does not wait for full highlighting. Bind IDE-01\u2013IDE-06 where the code-tools profile is advertised, preserving native focus/IME and shared command history.",
+      "featureFile": "30-windows-extensions-package-part-1.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "NWX-1.3",
+      "source": "34-windows-extension-integration.md",
+      "featureTask": "RWX-1.3",
+      "testingOwner": "QWI-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Formatter/row/column/alignment commands preserve identity/selection and one intended undo group; native table layout and accessible navigation meet the supported envelope.",
+      "featureFile": "30-windows-extensions-package-part-1.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "NWX-1.4",
+      "source": "34-windows-extension-integration.md",
+      "featureTask": "RWX-1.4",
+      "testingOwner": "QWI-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Pick/upload/finalize/cancel/retry/download uses host authorization and actual asset state; unsupported embeds remain safe accessible cards with recoverable data.",
+      "featureFile": "30-windows-extensions-package-part-1.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "NWX-1.5",
+      "source": "34-windows-extension-integration.md",
+      "featureTask": "RWX-1.5",
+      "testingOwner": "QWI-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Public auto-paste metadata and private references follow26 policy; principal changes clear private caches, revoked titles never enter shared labels, and activation rechecks permission.",
+      "featureFile": "31-windows-extensions-package-part-2.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "NWX-1.6",
+      "source": "34-windows-extension-integration.md",
+      "featureTask": "RWX-1.6",
+      "testingOwner": "QWI-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Qualified directions support OS open/save, loss preview, cancellation and atomic output; PDF is export-only. Missing optional converter has explicit diagnostics.",
+      "featureFile": "31-windows-extensions-package-part-2.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "NWX-1.7",
+      "source": "34-windows-extension-integration.md",
+      "featureTask": "RWX-1.7",
+      "testingOwner": "QWI-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Local slash suggestions and block movement work with keyboard/touch, screen readers and a non-drag single-pointer alternative; remote edits do not open menus. Bind FND-01\u2013FND-07 through native find/command surfaces when advertised; distinguish selected-text drag from block handles and preserve native text services.",
+      "featureFile": "31-windows-extensions-package-part-2.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "NWX-1.9",
+      "source": "34-windows-extension-integration.md",
+      "featureTask": "RWX-1.9",
+      "testingOwner": "QWI-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Native table-cell, image-caption, reference and math transfer preserves every admitted format and structural field through the shared extension codecs. Native menu and keyboard plain-paste commands bypass formatting while remaining discoverable and accessible. Emulator/OS-host fixtures and physical or virtual platform runbooks have separate qualification labels; no native tests run during roadmap editing.",
+      "featureFile": "31-windows-extensions-package-part-2.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-2.1",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-2.1",
+      "testingOwner": "QWI-1.5",
+      "priorTasks": [
+        "WIN-1.13",
+        "WIN-1.14",
+        "WIN-1.15",
+        "WIN-1.17",
+        "WIN-1.18"
+      ],
+      "originalAcceptance": "The package contains supported binaries, API/version metadata, resources and notices, with immutable hashes and no publication.",
+      "featureFile": "32-windows-extensions-package-part-3.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-2.2",
+      "source": "22-windows-native.md",
+      "featureTask": "RWI-2.2",
+      "testingOwner": "QWI-1.5",
+      "priorTasks": [],
+      "originalAcceptance": "A clean consumer needs no sibling checkout and runs actual local/rich/offline/mocked-collaboration and change-review smoke cases.",
+      "featureFile": "32-windows-extensions-package-part-3.md",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "LNX-1.1",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.1",
+      "testingOwner": "QLN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Pinned tooling builds a native control and runs a real bootstrap test; missing tools name an exact unblock condition.",
+      "featureFile": "33-linux-input-part-1.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.2",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.2",
+      "testingOwner": "QLN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "A native fixture proves composition and editable cell/atom feasibility; unsupported required routes block dependents.",
+      "featureFile": "33-linux-input-part-1.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.3",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.3",
+      "testingOwner": "QLN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Open/dispose, failure and cancellation preserve ownership and callback order; disposed views receive no callbacks.",
+      "featureFile": "33-linux-input-part-1.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.4",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.4",
+      "testingOwner": "QLN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Incremental patches preserve stable identity and selection across Unicode, bidi text and attachment boundaries. The coordinate/range-mapping portion of NAT-03 covers selection direction and stale target rejection; full protocol sequences stay with the input owner.",
+      "featureFile": "33-linux-input-part-1.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.5",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.5",
+      "testingOwner": "QLN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Insert/delete/replacement each commits once; rejection leaves a consistent projection without recursive input.",
+      "featureFile": "33-linux-input-part-1.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.6",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.6",
+      "testingOwner": "QLN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Commit/cancel, OS replacement and remote overlap preserve text/selection; synthetic input does not qualify actual IMEs. Qualify NAT-03 through deterministic native protocol fixtures; preserve captured targets/composition and supply OS/IME runbooks and preliminary observations for DEL-1.7 physical or virtual platform qualification. ENV-01\u201306/09/12 refine native control policy: default platform spelling respects user settings, off/custom are explicit, autocorrection remains independent and unsupported/coupled traits are reported. Reuse the selected control/provider; accepted corrections use captured targets once. No implicit checker dependency/service or automatic fallback is allowed.",
+      "featureFile": "34-linux-input-part-2.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.7",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.7",
+      "testingOwner": "QLN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Existing native actions honor shared history/capabilities and read-only state; later adapters must use this same mutation gate. NAT-07 command enablement/routing uses the appropriate first-party profile and injected transfer/service ports; unavailable optional services are explicit. Full NAT-10/NAT-11 transfer behavior remains with the clipboard owner, not an entry prerequisite here. NAT-09 checks action enablement only; PRIMARY transfer execution belongs to LNX-1.13. ENV-07/08 route native undo/redo keys, Edit/context menus, accessibility actions and supported gestures to shared history exactly once, with current enablement and nested-responder/composition ownership. Native storage/projection changes cannot create a competing undo stack.",
+      "featureFile": "34-linux-input-part-2.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.8",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.8",
+      "testingOwner": "QLN-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "The shared mark/block/list corpus retains semantic equality, including links, mixed marks, nesting and checked items.",
+      "featureFile": "34-linux-input-part-2.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.9",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.9",
+      "testingOwner": "QLN-1.2",
+      "priorTasks": [
+        "LNX-1.8"
+      ],
+      "originalAcceptance": "Native table/cell views retain identity under incremental updates; source or image fallback fails required parity.",
+      "featureFile": "35-linux-rich-content.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.10",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.10",
+      "testingOwner": "QLN-1.2",
+      "priorTasks": [
+        "LNX-1.7"
+      ],
+      "originalAcceptance": "Cell edits/navigation, supported selections and row/column actions preserve identity through remote updates and undo.",
+      "featureFile": "35-linux-rich-content.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.11",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.11",
+      "testingOwner": "QLN-1.2",
+      "priorTasks": [
+        "LNX-1.7",
+        "LNX-1.8"
+      ],
+      "originalAcceptance": "Images expose alt/error/edit states; references retain IDs/labels. Both reject stale or cancelled host resolutions.",
+      "featureFile": "35-linux-rich-content.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.12",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.12",
+      "testingOwner": "QLN-1.2",
+      "priorTasks": [
+        "LNX-1.8"
+      ],
+      "originalAcceptance": "Custom marks/atoms render, select, edit and dispose; unknown data survives. Math source editing never implies typesetting.",
+      "featureFile": "35-linux-rich-content.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.13",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.13",
+      "testingOwner": "QLN-1.2",
+      "priorTasks": [
+        "LNX-1.7"
+      ],
+      "originalAcceptance": "Rich copy/cut/paste preserves supported structure; hostile data is diagnosed, while read-only/cancelled drops cannot mutate. NAT-10/NAT-11 adds multiple views, delayed providers, cross-app copy/move and source preservation under the shared transfer contract; qualify platform clipboard lifetime and full NAT-09 PRIMARY/clipboard/backend behavior.",
+      "featureFile": "35-linux-rich-content.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.14",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.14",
+      "testingOwner": "QLN-1.3",
+      "priorTasks": [
+        "LNX-1.3",
+        "LNX-1.7"
+      ],
+      "originalAcceptance": "Offline edit/restore needs no account; commit status follows durable receipts. Close/reopen and storage errors preserve recovery.",
+      "featureFile": "36-linux-lifecycle.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.15",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.15",
+      "testingOwner": "QLN-1.3",
+      "priorTasks": [
+        "LNX-1.6"
+      ],
+      "originalAcceptance": "Two fixtures converge across reconnect; remote selection, revocation and document switching preserve receipt/input semantics.",
+      "featureFile": "36-linux-lifecycle.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.16",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.16",
+      "testingOwner": "QLN-1.3",
+      "priorTasks": [
+        "LNX-1.6",
+        "LNX-1.7",
+        "LNX-1.8"
+      ],
+      "originalAcceptance": "Native accessibility exposes text, selection, command/read-only state and keyboard focus at declared scaling settings. NAT-13/NAT-14 checks current accessible text geometry and safe text-service lock/reentrancy behavior; record actual platform evidence.",
+      "featureFile": "36-linux-lifecycle.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.17",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.17",
+      "testingOwner": "QLN-1.3",
+      "priorTasks": [
+        "LNX-1.10",
+        "LNX-1.11",
+        "LNX-1.12"
+      ],
+      "originalAcceptance": "Tables/cells, alt text, reference labels and atom actions have accessible relationships and a pointer-free focus route.",
+      "featureFile": "36-linux-lifecycle.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-1.18",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-1.18",
+      "testingOwner": "QLN-1.3",
+      "priorTasks": [
+        "LNX-1.10",
+        "LNX-1.11"
+      ],
+      "originalAcceptance": "Read-only unified/semantic changes retain profile labels and trusted/unknown attribution; stale revisions remain visible.",
+      "featureFile": "36-linux-lifecycle.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "NLX-1.1",
+      "source": "35-linux-extension-integration.md",
+      "featureTask": "RLX-1.1",
+      "testingOwner": "QLN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "The existing native SDK is qualified at a named revision; public service descriptors/FFI and platform thread ownership are fixed before feature wiring. Bind the published official profile and document-search/code-command capabilities; missing presenters are explicit, not an implied web parity pass.",
+      "featureFile": "37-linux-extensions-package-part-1.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "NLX-1.2",
+      "source": "35-linux-extension-integration.md",
+      "featureTask": "RLX-1.2",
+      "testingOwner": "QLN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Code edits use shared text commands; syntax spans are derived, versioned, cancellable and composition-safe with supported fonts/contrast. Large block typing does not wait for full highlighting. Bind IDE-01\u2013IDE-06 where the code-tools profile is advertised, preserving native focus/IME and shared command history.",
+      "featureFile": "37-linux-extensions-package-part-1.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "NLX-1.3",
+      "source": "35-linux-extension-integration.md",
+      "featureTask": "RLX-1.3",
+      "testingOwner": "QLN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Formatter/row/column/alignment commands preserve identity/selection and one intended undo group; native table layout and accessible navigation meet the supported envelope.",
+      "featureFile": "37-linux-extensions-package-part-1.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "NLX-1.4",
+      "source": "35-linux-extension-integration.md",
+      "featureTask": "RLX-1.4",
+      "testingOwner": "QLN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Pick/upload/finalize/cancel/retry/download uses host authorization and actual asset state; unsupported embeds remain safe accessible cards with recoverable data.",
+      "featureFile": "37-linux-extensions-package-part-1.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "NLX-1.5",
+      "source": "35-linux-extension-integration.md",
+      "featureTask": "RLX-1.5",
+      "testingOwner": "QLN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Public auto-paste metadata and private references follow26 policy; principal changes clear private caches, revoked titles never enter shared labels, and activation rechecks permission.",
+      "featureFile": "38-linux-extensions-package-part-2.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "NLX-1.6",
+      "source": "35-linux-extension-integration.md",
+      "featureTask": "RLX-1.6",
+      "testingOwner": "QLN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Qualified directions support OS open/save, loss preview, cancellation and atomic output; PDF is export-only. Missing optional converter has explicit diagnostics.",
+      "featureFile": "38-linux-extensions-package-part-2.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "NLX-1.7",
+      "source": "35-linux-extension-integration.md",
+      "featureTask": "RLX-1.7",
+      "testingOwner": "QLN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Local slash suggestions and block movement work with keyboard/touch, screen readers and a non-drag single-pointer alternative; remote edits do not open menus. Bind FND-01\u2013FND-07 through native find/command surfaces when advertised; distinguish selected-text drag from block handles and preserve native text services.",
+      "featureFile": "38-linux-extensions-package-part-2.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "NLX-1.9",
+      "source": "35-linux-extension-integration.md",
+      "featureTask": "RLX-1.9",
+      "testingOwner": "QLN-1.4",
+      "priorTasks": [],
+      "originalAcceptance": "Native table-cell, image-caption, reference and math transfer preserves every admitted format and structural field through the shared extension codecs. Native menu and keyboard plain-paste commands bypass formatting while remaining discoverable and accessible. Emulator/OS-host fixtures and physical or virtual platform runbooks have separate qualification labels; no native tests run during roadmap editing.",
+      "featureFile": "38-linux-extensions-package-part-2.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-2.1",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-2.1",
+      "testingOwner": "QLN-1.5",
+      "priorTasks": [
+        "LNX-1.13",
+        "LNX-1.14",
+        "LNX-1.15",
+        "LNX-1.17",
+        "LNX-1.18"
+      ],
+      "originalAcceptance": "The package contains supported binaries, API/version metadata, resources and notices, with immutable hashes and no publication.",
+      "featureFile": "39-linux-extensions-package-part-3.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-2.2",
+      "source": "23-linux-native.md",
+      "featureTask": "RLN-2.2",
+      "testingOwner": "QLN-1.5",
+      "priorTasks": [],
+      "originalAcceptance": "A clean consumer needs no sibling checkout and runs actual local/rich/offline/mocked-collaboration and change-review smoke cases.",
+      "featureFile": "39-linux-extensions-package-part-3.md",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "TUI-1.8",
+      "source": "15-tui-client.md",
+      "featureTask": "RTU-1.8",
+      "testingOwner": "QTS-1.1",
+      "priorTasks": [
+        "TUI-1.7"
+      ],
+      "originalAcceptance": "A clean buffer refreshes with stable selection; a dirty buffer retains base/local/current representations. Disjoint qualified mappings reconcile through shared source preparation; duplicate/reordered updates and detach/reconnect never replace the live replica or silently submit stale full source.",
+      "featureFile": "40-terminal-recovery.md",
+      "testingFile": "51-full-terminal-suites.md"
+    },
+    {
+      "original": "TUI-1.9",
+      "source": "15-tui-client.md",
+      "featureTask": "RTU-1.9",
+      "testingOwner": "QTS-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Overlap, deleted targets, ambiguous mapping and incompatible epoch preserve base/local/current content without partial mutation. User-selected resolution is prepared against current revision; another remote change invalidates stale resolution safely. Cancel/export retains recoverable drafts.",
+      "featureFile": "40-terminal-recovery.md",
+      "testingFile": "51-full-terminal-suites.md"
+    },
+    {
+      "original": "TUI-1.10",
+      "source": "15-tui-client.md",
+      "featureTask": "RTU-1.10",
+      "testingOwner": "QTS-1.1",
+      "priorTasks": [],
+      "originalAcceptance": "Normal quit, startup/I/O failure and supported interrupt/suspend/resume paths dispose resources and restore terminal settings. Flush failure offers explicit recoverable exit behavior; restart recovers locally committed data, pending outbox and unresolved draft/conflict state without claiming remote durability.",
+      "featureFile": "40-terminal-recovery.md",
+      "testingFile": "51-full-terminal-suites.md"
+    },
+    {
+      "original": "TUI-1.12",
+      "source": "15-tui-client.md",
+      "featureTask": "RTU-1.12",
+      "testingOwner": "QTS-1.1",
+      "priorTasks": [
+        "TUI-1.11"
+      ],
+      "originalAcceptance": "Clean packaged-binary consumers can discover and run supported TUI targets without a sibling checkout. Help matches behavior, external-editor commands remain available, and supported terminal/OS/accessibility claims identify actual evidence rather than inferring it from PTY simulation.",
+      "featureFile": "40-terminal-recovery.md",
+      "testingFile": "51-full-terminal-suites.md"
+    },
+    {
+      "original": "TCX-1.1",
+      "source": "36-terminal-extension-integration.md",
+      "featureTask": "RTX-1.1",
+      "testingOwner": "QTS-1.2",
+      "priorTasks": [],
+      "originalAcceptance": "CLI consumes immutable core service revisions with existing15 buffer/reconciliation/diff behavior preserved.",
+      "featureFile": "41-terminal-extensions.md",
+      "testingFile": "51-full-terminal-suites.md"
+    },
+    {
+      "original": "TCX-1.2",
+      "source": "36-terminal-extension-integration.md",
+      "featureTask": "RTX-1.2",
+      "testingOwner": "QTS-1.2",
+      "priorTasks": [],
+      "originalAcceptance": "Visible code coloring and Markdown table formatting stay responsive, preserve source spelling outside edited ranges and handle UTF-16/grapheme conversions. Expose the qualified code-tools commands and document search through terminal controls where supported; bind relevant FND/IDE cases without claiming pointer/OS GUI parity.",
+      "featureFile": "41-terminal-extensions.md",
+      "testingFile": "51-full-terminal-suites.md"
+    },
+    {
+      "original": "TCX-1.3",
+      "source": "36-terminal-extension-integration.md",
+      "featureTask": "RTX-1.3",
+      "testingOwner": "QTS-1.2",
+      "priorTasks": [],
+      "originalAcceptance": "User can attach/reference/list/export assets through host ports; terminal cards preserve embed data without claiming graphical rendering.",
+      "featureFile": "41-terminal-extensions.md",
+      "testingFile": "51-full-terminal-suites.md"
+    },
+    {
+      "original": "TCX-1.4",
+      "source": "36-terminal-extension-integration.md",
+      "featureTask": "RTX-1.4",
+      "testingOwner": "QTS-1.2",
+      "priorTasks": [],
+      "originalAcceptance": "Auto mode obeys local-paste policy; private title/cache/activation rules match26 and offline source editing remains available.",
+      "featureFile": "41-terminal-extensions.md",
+      "testingFile": "51-full-terminal-suites.md"
+    },
+    {
+      "original": "TCX-1.5",
+      "source": "36-terminal-extension-integration.md",
+      "featureTask": "RTX-1.5",
+      "testingOwner": "QTS-1.2",
+      "priorTasks": [],
+      "originalAcceptance": "Import/export accepts declared formats with loss reports, atomic save/stale-target protection and cancellation; PDF input is rejected as export-only.",
+      "featureFile": "41-terminal-extensions.md",
+      "testingFile": "51-full-terminal-suites.md"
+    },
+    {
+      "original": "NMX-1.8",
+      "source": "33-macos-extension-integration.md",
+      "featureTask": null,
+      "testingOwner": "QMC-1.4",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-2.4",
+      "source": "18-desktop-native.md",
+      "featureTask": null,
+      "testingOwner": "QMC-1.5",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "DSK-2.3",
+      "source": "18-desktop-native.md",
+      "featureTask": null,
+      "testingOwner": "QMC-1.5",
+      "testingFile": "46-full-macos-suites.md"
+    },
+    {
+      "original": "NIX-1.8",
+      "source": "31-ios-extension-integration.md",
+      "featureTask": null,
+      "testingOwner": "QIO-1.4",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-2.4",
+      "source": "16-ios-sdk.md",
+      "featureTask": null,
+      "testingOwner": "QIO-1.5",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "IOS-2.3",
+      "source": "16-ios-sdk.md",
+      "featureTask": null,
+      "testingOwner": "QIO-1.5",
+      "testingFile": "47-full-ios-suites.md"
+    },
+    {
+      "original": "NAX-1.8",
+      "source": "32-android-extension-integration.md",
+      "featureTask": null,
+      "testingOwner": "QAN-1.4",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-2.4",
+      "source": "17-android-sdk.md",
+      "featureTask": null,
+      "testingOwner": "QAN-1.5",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "AND-2.3",
+      "source": "17-android-sdk.md",
+      "featureTask": null,
+      "testingOwner": "QAN-1.5",
+      "testingFile": "48-full-android-suites.md"
+    },
+    {
+      "original": "NWX-1.8",
+      "source": "34-windows-extension-integration.md",
+      "featureTask": null,
+      "testingOwner": "QWI-1.4",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-2.4",
+      "source": "22-windows-native.md",
+      "featureTask": null,
+      "testingOwner": "QWI-1.5",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "WIN-2.3",
+      "source": "22-windows-native.md",
+      "featureTask": null,
+      "testingOwner": "QWI-1.5",
+      "testingFile": "49-full-windows-suites.md"
+    },
+    {
+      "original": "NLX-1.8",
+      "source": "35-linux-extension-integration.md",
+      "featureTask": null,
+      "testingOwner": "QLN-1.4",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-2.4",
+      "source": "23-linux-native.md",
+      "featureTask": null,
+      "testingOwner": "QLN-1.5",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "LNX-2.3",
+      "source": "23-linux-native.md",
+      "featureTask": null,
+      "testingOwner": "QLN-1.5",
+      "testingFile": "50-full-linux-suites.md"
+    },
+    {
+      "original": "TUI-1.11",
+      "source": "15-tui-client.md",
+      "featureTask": null,
+      "testingOwner": "QTS-1.1",
+      "testingFile": "51-full-terminal-suites.md"
+    },
+    {
+      "original": "TCX-1.6",
+      "source": "36-terminal-extension-integration.md",
+      "featureTask": null,
+      "testingOwner": "QTS-1.2",
+      "testingFile": "51-full-terminal-suites.md"
+    }
+  ],
+  "performanceOwners": {
+    "NPR-1.1": "RBO-1.3",
+    "NPR-1.2": "RBO-1.3",
+    "NPR-1.3": "RBO-1.3",
+    "NPR-1.4": "QPF-1.1",
+    "NPR-1.5": "QPF-1.4",
+    "NPR-1.6": "QPF-1.6"
+  },
+  "aggregateOwners": {
+    "REL-1.2\u20131.4": "QPF-1.2",
+    "FIT-1.6/1.10": "QPF-1.3",
+    "FIT-1.8/1.11/PRF-01\u201307": "QPF-1.2/QPF-1.4/QPF-1.6",
+    "editing42 infrastructure and missing variants": "QWB-1.1",
+    "mobile-web38\u201341 virtual input": "QWB-1.6",
+    "physical43 virtual transfer completeness": "QRD-1.2",
+    "DEL/REL/EQL non-publication readiness": "QRD-1.1/QRD-1.3",
+    "complete documentation validation and stale gallery admission": "QRD-1.1"
+  },
+  "prePublicationPolicy": "006-single-format-before-publication.md; historical schema-specific runtime clauses are superseded, useful semantic regression obligations remain",
+  "canonicalCutoverOwners": {
+    "00-source-and-data-handoff.md": [
+      "SFC-1.1",
+      "SFC-1.2"
+    ],
+    "01-canonical-admission-and-replay.md": [
+      "SFC-2.1",
+      "SFC-2.2",
+      "SFC-2.3"
+    ],
+    "02-canonical-projection-and-consumers.md": [
+      "SFC-3.1",
+      "SFC-3.2",
+      "SFC-3.3"
+    ],
+    "03-regression-oracles-and-version-scaffolding.md": [
+      "SFC-4.1",
+      "SFC-4.2",
+      "SFC-4.3"
+    ],
+    "04-durability-gate-and-guide-handoff.md": [
+      "SFC-5.1",
+      "SFC-5.2"
+    ]
+  },
+  "performanceImplementationOwners": {
+    "RWP-1.1": "reuse accepted existing delivery",
+    "RWP-1.2": "RBO-1.1 bounded batch; hard budgets QPF-1.3",
+    "RWP-1.3": "RBO-1.2 bounded batch; final QPF",
+    "NPR-1.1\u20131.3": "RBO-1.3 bounded batch; full predicates QPF-1.1/1.4/1.6"
+  }
+}

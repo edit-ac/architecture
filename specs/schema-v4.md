@@ -1,5 +1,7 @@
 # Nested structural editor profile v4
 
+Historical fixture/design contract: [the 2026-10-23 single-format policy](../decisions/006-single-format-before-publication.md) removes any requirement to retain this experimental reader/writer in production. Keep independent fixture oracles and port useful behavior assertions to the current format; no old-profile support is claimed.
+
 Status: controller-authored development contract; ENG-1.19/1.20 qualification and ENG-1.21 production integration are required. This is not a passing interoperability, persistence or release claim. Preserve the qualified v1/v2/v3 layouts, fixtures and receipts.
 
 ## Envelope and roots

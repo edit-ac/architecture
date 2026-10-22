@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Pre-publication policy, 2026-10-23: [one durable current format](../decisions/006-single-format-before-publication.md) supersedes old requirements to keep experimental schemas or unpublished previous/current implementations in production. Preserve useful original behavior/case IDs with current-format tests and fixture-only historical oracles. One canonical witnessed v5 document format is the target; original version-specific text below is historical where it conflicts. Keep real protocol/encoding/ABI validation and user revision history. Independent feature delivery proceeds after bounded optimization; unchanged hard size/performance gates remain with final readiness owners. No physical-device or publication requirement is added.
+
 ## Goal and entry conditions
 
 User decision, 2026-10-18: this final roadmap owns every device/target-runtime observation from all editor roadmaps and their referenced specs/case catalogs. Follow [the delivery sequence](../operations/web-feature-first-20261018.md): web → feature complete → internal alpha → native platforms → public docs → qualifications → native tests here → beta candidate → integrations/feedback. No physical device wait: accepted iOS simulators, Android emulators and desktop OS hosts/VMs satisfy eligible runtime checks. Physical-only claims remain separately deferred if unavailable, never counted as passing.

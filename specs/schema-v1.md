@@ -1,5 +1,7 @@
 # Registry schema v1
 
+Historical fixture/design contract: [the 2026-10-23 single-format policy](../decisions/006-single-format-before-publication.md) removes any requirement to retain this experimental reader/writer in production. Keep independent fixture oracles and port useful behavior assertions to the current format; no old-profile support is claimed.
+
 Status: frozen foundation contract, locally reconstructible; structural Rust/JS exchange is a separate FND-1.12 gate. This is not a production command API or a Tiptap document format.
 
 ## Scope and authority

@@ -43,3 +43,7 @@ Source roadmaps are controller-owned. The worker writes checked steps, exact res
 Each task adds its named checks before invoking them. A missing command/file or zero matched Rust tests is not a pass. Manual device qualification remains incomplete until actual device evidence exists. COMPLETE is a worker assertion requiring evidence review, not independent proof.
 
 Publish only after the explicit final browser release task's gates. Routine implementation tasks cannot enable npm publication, deploy the test relay, run paid inference or rewrite acceptance to clear a blocker.
+
+## Current format and bounded optimization
+
+Before first publication, apply [decision 006](../decisions/006-single-format-before-publication.md) and the [durability contract](../specs/document-durability.md). Do not preserve executable old document profiles or synthetic previous/current package matrices just because an old task named them. Preserve useful behavior assertions in current-format tests and independent historical fixture oracles. The single root-workspace queue must put the canonical cutover and focused safety gate first, then independent feature work, then remaining optimization and full suites. One optimization batch is at most 45 minutes or two different measured repair hypotheses; checkpoint and move on when the budget ends. Hard size/resource gates remain required before final readiness/publication.
