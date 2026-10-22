@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Current delivery: RRD-1.1 and RRD-1.2 verified; source coverage and read-only runtime/toolchain inventories delivered, with unavailable prerequisites explicit. Next: RRD-1.3 single-workspace handoff.
+
 ## Goal and entry conditions
 
 No implementation prerequisite; authenticate current inputs first. All paths below are relative to the single root workspace unless explicitly stated. Read only the prerequisite summary rows named by the active parent in `.roadmap-runner/emulator-web-readiness-20261022/readiness.json`; the first entry creates them. No old whole-roadmap COMPLETE label is an entry gate.
@@ -24,7 +26,7 @@ For a blocker, first select an independent ready parent in THIS source. If none 
 
 ### Task RRD-1.1 — Reconcile existing feature delivery and original requirements
 
-- [ ] RRD-1.1 Reconcile existing feature delivery and original requirements.
+- [x] RRD-1.1 Reconcile existing feature delivery and original requirements.
 
 Purpose: Reuse completed work and identify actual remaining feature predicates
 Context: `architecture/roadmaps/manifest.json`; task-local canonical paragraphs; latest D24P and web-alpha progress paths recorded in `.roadmap-coordination/queue.json`; `core/examples/task-editor/FEATURES.md`; `core/examples/task-editor/ALPHA.md`
@@ -35,11 +37,11 @@ Acceptance: The ignored readiness matrix maps web, five native SDKs/extensions a
 
 Implementation:
 
-- [ ] RRD-1.1-I1 Create ignored `readiness.json` with source and row-level ownership, evidence applicability and missing-feature entries. Read only relevant prior progress, never reconstruct removed generated artifacts. Record profile as web + iOS + Android + macOS + Windows + Linux; terminal full-suite coverage remains required. Optional encrypted/cloud release profiles and physical-only observations stay separate.
+- [x] RRD-1.1-I1 Create ignored `readiness.json` with source and row-level ownership, evidence applicability and missing-feature entries. Read only relevant prior progress, never reconstruct removed generated artifacts. Record profile as web + iOS + Android + macOS + Windows + Linux; terminal full-suite coverage remains required. Optional encrypted/cloud release profiles and physical-only observations stay separate.
 
 Validation:
 
-- [ ] RRD-1.1-V1 Validate row coverage against canonical manifest/transfer register and current Git inputs using deterministic source checks only; record counts. No broad runtime suite at inventory time.
+- [x] RRD-1.1-V1 Validate row coverage against canonical manifest/transfer register and current Git inputs using deterministic source checks only; record counts. No broad runtime suite at inventory time.
 
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
@@ -47,7 +49,7 @@ Blocked behavior: Leave unchecked; try an independent ready parent, otherwise re
 
 ### Task RRD-1.2 — Inventory virtual runtimes and package toolchains
 
-- [ ] RRD-1.2 Inventory virtual runtimes and package toolchains.
+- [x] RRD-1.2 Inventory virtual runtimes and package toolchains.
 
 Purpose: Give target-runtime proof a concrete executable owner
 Context: `architecture/specs/verification.md` virtual-platform policy; `core/native/*/` task-local host configuration; installed toolchains; transfer rows from RRD-1.1
@@ -58,11 +60,11 @@ Acceptance: Each target has an exact existing simulator/emulator/OS host or VM, 
 
 Implementation:
 
-- [ ] RRD-1.2-I1 Inventory without booting a broad matrix or provisioning paid/external services. Locate documented Windows/Linux runtime access rather than assume PATH absence proves none exists. Missing target runtime blocks only its actual-runtime assertions; source work and other available profiles remain eligible. Record exact owner/unblock condition for genuinely unavailable inputs.
+- [x] RRD-1.2-I1 Inventory without booting a broad matrix or provisioning paid/external services. Locate documented Windows/Linux runtime access rather than assume PATH absence proves none exists. Missing target runtime blocks only its actual-runtime assertions; source work and other available profiles remain eligible. Record exact owner/unblock condition for genuinely unavailable inputs.
 
 Validation:
 
-- [ ] RRD-1.2-V1 Use read-only availability/version/list commands; verify names/paths and command prerequisites. Do not run model/provider smoke checks.
+- [x] RRD-1.2-V1 Use read-only availability/version/list commands; verify names/paths and command prerequisites. Do not run model/provider smoke checks.
 
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
