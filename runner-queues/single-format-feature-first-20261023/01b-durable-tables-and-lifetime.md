@@ -69,7 +69,7 @@ Implementation:
 
 - [x] DRA-1.2-I5 Deliver the shared visible-content export view and explicit limitations, Markdown/native table-text adapters, fresh-ID external import and separate exact recovery capture. Capture whole-document recovery once per export job and preserve the current semantic/history assertions.
 
-- [ ] DRA-1.2-I6 Complete HTML and clipboard transfer using the same current visible/export and recovery owners, fresh-ID ordinary import and explicit external limitations. Declared internal recovery retains unknown/hidden/source data; ordinary paste never implicitly activates document-wide recovery.
+- [x] DRA-1.2-I6 Complete HTML and clipboard transfer using the same current visible/export and recovery owners, fresh-ID ordinary import and explicit external limitations. Declared internal recovery retains unknown/hidden/source data; ordinary paste never implicitly activates document-wide recovery.
 
 
 Validation:
