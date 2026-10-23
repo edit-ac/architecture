@@ -76,6 +76,8 @@ Validation:
 
 - [ ] DRA-1.2-V1 Run focused core table concurrency and current WASM/Session round trips with both merge orders, checkpoint recovery and undo. Planned regression target `core/crates/editac-core/tests/table_concurrency.rs` must execute nonzero cases. Full discovery and native runtime proof remain QSH/QWB/native final owners.
 
+- [ ] DRA-1.2-V2 Recheck affected current WASM/browser boundaries with required Node 24.19.0/npm 11.17.0 and exact current artifact pins. Node 24.21 functional passes do not close this pinned-runtime predicate; reuse applicable Rust/SQLite proof.
+
 Evidence: Separate progress records exact current source/runtime/fixture pins, changed contract, commands and nonzero executed/pass/fail/skip counts. Reuse unchanged applicable proof; generated output stays ignored.
 Handoff: Record the chosen representation or lifecycle invariant, remaining concrete substep, interface consumers and final-suite owner. A design parent is not delivered implementation.
 Blocked behavior: Keep unproved criteria unchecked. Record the exact failed invariant, owner, attempted repair and changed-input resume condition; no unchanged retry loop, silent data reset or alternate production format.
@@ -151,6 +153,8 @@ Implementation:
 
 - [ ] DRA-1.5-I6 Adapt CLI qualified storage rollover beyond 4096 journal records, fallback, required-tail integrity and independent outbox/quota continuation using current documents and atomic durable publication.
 
+
+- [ ] DRA-1.5-I7 Preserve declared text-size capacity with bounded text-run index storage under unchanged work/node caps. Resolve the full-text and actual resource-refusal history regressions, and supply the isolated pinned Yjs exchange-harness input before history qualification.
 
 Validation:
 
