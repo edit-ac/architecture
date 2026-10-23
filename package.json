@@ -9,7 +9,8 @@
   },
   "scripts": {
     "validate:roadmaps": "node scripts/validate-roadmaps.mjs",
-    "check": "npm run validate:roadmaps && npm run validate:editing-suite && npm run test:editing-suite-contract",
+    "check": "npm run validate:roadmaps && npm run validate:editing-suite && npm run test:editing-suite-contract && npm run test:runner-guard",
+    "test:runner-guard": "python3 -m unittest discover -s tests -p test_roadmap_recovery_guard.py",
     "validate:editing-suite": "node scripts/validate-editing-suite.mjs",
     "test:editing-suite-contract": "node --test tests/editing-suite-contract.test.mjs"
   },

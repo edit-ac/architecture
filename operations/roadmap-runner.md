@@ -1,48 +1,47 @@
-# Run a bounded development roadmap
+# Run a guarded development roadmap
 
-Verified against `@bpstr/roadmap-runner` 0.8.0 and its `write-runner-roadmap` task contract. This guide does not start a runner. The checked-in package uses the runner's pure contract validator, without model calls.
+Use one serial runner in the root workspace containing `core`, `architecture`, `cli` and `docs`, on the existing main branches. The installed managed CLI is Roadmap Runner 0.10.2. The package-pinned 0.8.0 contract validator remains a pure local validation dependency; it does not select the runtime executable.
 
-## Validation
+## Validation and toolchains
 
-In architecture, run `npm ci --ignore-scripts` then `npm run check`. The script validates the official task contract plus file coverage, IDs, status header and cross-roadmap manifest DAG. For an already-built runner checkout, use `node scripts/validate-roadmaps.mjs --runner-contract /absolute/path/to/roadmap-runner/dist/roadmap-contract.js`.
+In architecture, run `npm run check`. This validates the task contract, canonical roadmap coverage and manifest dependencies; it does not establish runtime acceptance. Cross-file prerequisites belong in bounded entry conditions, while each task's Dependencies names only local tasks. Validate queue source hashes, parent counts, progress isolation and requirement ownership after controller amendments. Run the loop safety tests with `python3 -m unittest discover -s tests -p test_roadmap_recovery_guard.py`.
 
-The validator cannot establish that code, evidence or human acceptance is correct. Each roadmap's first task checks its upstream gate; all later tasks name exact local prerequisites. Cross-file dependencies do not belong in a task's Dependencies field because the runner resolves only IDs in the same source file.
+Use the core-pinned Node 24.19.0/npm 11.17.0 for product checks and the pinned rustup compiler for target builds. Resolve the actual runner executable before starting: this Mac currently uses `/Users/bpstr/.nvm/versions/node/v24.21.0/bin/roadmap-runner`. Do not assume an older Homebrew path or version exists.
 
-## Local toolchain selection
+## Start and resume
 
-Use Node 24.19.0/npm 11.17.0 for the core scaffold; select it explicitly with the installed version manager before npm commands. This Mac also has Node 26, which correctly fails the core engine-strict check. Use the pinned rustup 1.97.1 compiler for target-specific builds: a Homebrew cargo/rustc can bypass the target installed under rustup. The dependency probe README records an explicit compiler selection command. A successful native build does not prove the browser target exists.
-
-## Start one track
-
-Replace `/path/to/edit-ac` with the parent directory containing `core`, `architecture`, `cli` and `docs`. Ensure upstream tracks are COMPLETE at the current source revision with reproducible passing evidence. Native/CLI are independent branches; they do not gate web release.
+Every new start or changed-input resume uses the guarded launcher. Pass the existing ordered FIFO with repeated `--queue`; preserve completed entries and their receipts instead of re-running them. Check the coordination ledger and the existing runner status before starting. A live worker must not be duplicated or have its source overwritten.
 
 ```sh
-roadmap-runner /path/to/edit-ac/architecture/roadmaps/01-foundation.md \
-  --workspace /path/to/edit-ac/core \
-  --progress-file /path/to/edit-ac/architecture/progress/01-foundation.md \
-  --client codex --timeout 45m
+python3 /path/to/edit-ac/architecture/scripts/guarded-roadmap-runner.py \
+  --cli /absolute/path/to/roadmap-runner \
+  start /path/to/edit-ac/architecture/roadmaps/TRACK.md \
+  --workspace /path/to/edit-ac \
+  --progress-file /path/to/edit-ac/.roadmap-runner/TRACK/progress.md \
+  --client codex --timeout 90m --supervisor-every 2 \
+  --supervisor-timeout 10m --notify off --no-prevent-sleep \
+  --idempotency-key UNIQUE_DELIVERY_ID --json
 ```
 
-For CLI use `--workspace /path/to/edit-ac/cli`; for public documentation use `--workspace /path/to/edit-ac/docs`. Sources and progress use distinct absolute paths. One runner per workspace/progress file; isolated worktrees require an explicitly coordinated integration plan. The model must be one actually available in the selected client; specify `--model` only after choosing it. A smaller model should read the task context and complete one parent, not expand the entire product in one iteration.
+The launcher passes the runner's options through and returns its JSON plus `loopGuard`. It verifies the guard's live PID and readiness receipt. If the guard cannot arm, it requests a stop for that exact run ID/workspace and fails visibly. It never restarts a stopped runner. The timeout bounds one worker, not total execution cost. Automated product/provider validation remains deterministic and mocked; no paid synthetic inference or secret loading is authorized.
 
-`--timeout 45m` bounds an individual worker, not total runtime or total inference cost. Runner execution uses the selected client's configured model access; this planning task did not authorize unattended runs. The prohibition on paid synthetic AI testing still applies to all implementation validation.
-
-Runner 0.8.0 rejects managed `start` when source/progress paths are outside the authorized workspace, as they are in this sibling-directory layout. The foreground command above supports those paths and still registers a run ID for `status`/`stop`. Keep its terminal open, or use an owned detached launcher with redirected output and verify readiness through `status`.
-
-Select the verified executable explicitly after changing Node PATH. On this Mac `/opt/homebrew/bin/roadmap-runner` is 0.8.0, while the Node 24 bin directory also contains 0.7.0. The foundation run used `--model gpt-6.1-sol --effort medium`. Completion lives in progress at the recorded source revision; preserved source checkboxes are not the completion record.
-
-## Control and handoff
+To attach protection to an existing run without starting a worker or modifying its queue:
 
 ```sh
-roadmap-runner status RUN_ID --workspace /path/to/edit-ac/core --json
-roadmap-runner stop RUN_ID --workspace /path/to/edit-ac/core
+python3 /path/to/edit-ac/architecture/scripts/guarded-roadmap-runner.py \
+  --cli /absolute/path/to/roadmap-runner \
+  attach RUN_ID --workspace /path/to/edit-ac --json
 ```
 
-Source roadmaps are controller-owned. The worker writes checked steps, exact results/counts, artifact paths and the next precise action to its separate progress file. BLOCKED, SKIPPED, NEEDS_INFO and PROBLEM stay unchecked with an owner/unblock condition/retry trigger. Skipped prerequisites do not unlock dependents. BLOCKED is nonterminal and can cause retries: do not launch a track with an unavailable entry gate; stop the controller run when no ready work remains.
+## Loop detection and handoff
 
-Each task adds its named checks before invoking them. A missing command/file or zero matched Rust tests is not a pass. Manual device qualification remains incomplete until actual device evidence exists. COMPLETE is a worker assertion requiring evidence review, not independent proof.
+The guard stops the exact managed run on a BLOCKED worker, or after two distinct successful workers repeat the same completed source contract. It catches the original failure even when a `Current delivery` paragraph changes a source hash each pass. Duplicate events, other run IDs, interrupted/failed workers, real acceptance changes and advancement to a different source do not count as this loop. An invalid/truncated event stream or the guard's seven-day monitoring deadline also requests a stop rather than leaving an unprotected controller.
 
-Publish only after the explicit final browser release task's gates. Routine implementation tasks cannot enable npm publication, deploy the test relay, run paid inference or rewrite acceptance to clear a blocker.
+The guard watches the managed run's `artifacts.events` stream, which follows every FIFO source and distinguishes `runner.roadmap_completed` from run completion. Never attach it to a progress-side per-roadmap event file. Guard receipts and logs live under ignored `.roadmap-runner/guards/`. A stop records its reason, iteration, source, CLI response and changed-input resume condition. Preserve source, progress, dirty code, original data and exact failure evidence. Never restart unchanged blockers or a detected loop. Correct the cause, validate the repair, then resume from the next genuinely ready task through the guarded launcher.
+
+Acceptance text stays controller-owned. With runtime 0.10.2, workers update only verified source checkboxes and the `Status:` line. Store delivery summaries, source hashes, reconciliation notes, counts and timestamps in separate progress/ignored receipts. Never write a self-referential `Current delivery` paragraph into source: the runner treats that prose as a new requirement revision. A COMPLETE label still needs applicable passing evidence; missing commands, zero cases and required skips cannot pass.
+
+Use `roadmap-runner status RUN_ID --workspace ROOT --json` to inspect and `roadmap-runner stop RUN_ID --workspace ROOT --json` to stop. Physical-device qualification is deferred; declared simulator/emulator/OS-host proof, full functional suites and unchanged performance gates remain required. Publication, push and deployment remain separately controlled by the user's instructions.
 
 ## Current format and bounded optimization
 
