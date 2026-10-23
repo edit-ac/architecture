@@ -9,6 +9,7 @@ Consumers read prerequisites.RRD-1.3, then only their entries/tasks/original row
 
 import argparse
 import ast
+import copy
 import hashlib
 import importlib.util
 import json
@@ -17,6 +18,7 @@ import re
 import shlex
 import subprocess
 import sys
+from readiness_config import Locations, arguments
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -26,6 +28,17 @@ STORE = ROOT / "architecture/.artifacts/emulator-web-readiness-20261022/handoff.
 LINK = STATE / "handoff.json"
 ID = re.compile(r"\b[A-Z][A-Z0-9]*-\d+(?:\.\d+)*\b")
 OWNED = {"scripts/readiness-handoff.py", "runner-queues/emulator-web-readiness-20261022/00-reconcile.md"}
+CONFIG = Locations()
+
+
+def configure(manifest, runtime_root=None):
+    global CONFIG, QUEUE, STATE, STORE, LINK, OWNED
+    CONFIG = Locations(manifest, runtime_root)
+    QUEUE, STATE = CONFIG.queue, CONFIG.state
+    STORE, LINK = CONFIG.store / "handoff.json", STATE / "handoff.json"
+    OWNED = {"scripts/readiness-handoff.py", "scripts/readiness-inventory.py", "scripts/readiness-runtimes.py",
+             "scripts/readiness_config.py", "tests/readiness_collectors_test.py",
+             str((QUEUE / CONFIG.data['entries'][0]['file']).relative_to(ROOT / 'architecture'))}
 
 
 def module(name):
@@ -50,6 +63,17 @@ def command(*args):
     return subprocess.check_output(args, text=True).strip()
 
 
+def acceptance_checkpoint(data):
+    """Compare accepted inputs, excluding explicitly unvalidated observations."""
+    data = copy.deepcopy(data)
+    for repo in data['workspace']['repositories'].values():
+        # Current owned staging and unrelated external edits are observations.
+        # Preserved paths, source pins, heads and all acceptance rows still match.
+        repo.pop('ownedDirtyPaths', None)
+        repo.pop('externalInputs', None)
+    return data
+
+
 class Inventory:
     def __init__(self):
         self.checks = 0
@@ -72,16 +96,45 @@ class Inventory:
 
     def workspace(self, coordination):
         records = {}
+        preserved = CONFIG.preserved_inputs(self.load) if CONFIG.successor else {}
         for repo in ["architecture", "core", "cli", "docs"]:
             cwd = str(ROOT / repo)
             branch = command("git", "-C", cwd, "branch", "--show-current")
             dirty = subprocess.check_output(["git", "-C", cwd, "status", "--porcelain=v1", "-uall"], text=True).splitlines()
             self.require(branch == "main", repo + " remains on current main")
             # Capture every path; do not stash, reset or stage unrelated work.
-            self.require(all(repo == "architecture" and r[3:] in OWNED for r in dirty),
-                         repo + " only declared owned dirty paths")
+            preserved_paths = {r["path"]: r for r in preserved.get(repo, [])}
+            external = []
+            for path, row in preserved_paths.items():
+                current_sha = sha((ROOT / repo / path).read_bytes())
+                if row.get('externalOwner'):
+                    external.append({'path': path, 'owner': row['externalOwner'], 'observedSha256': row['sha256'],
+                                     'currentSha256': current_sha, 'state': 'external active edit; unvalidated'})
+                else:
+                    original = CONFIG.preserved_path(row, ROOT / repo / path)
+                    original_sha = sha(original.read_bytes())
+                    self.pins[str(original.relative_to(ROOT))] = original_sha
+                    self.require(original_sha == row['sha256'], repo + " preserved " + path)
+                    if row.get('evolvedOwner'):
+                        external.append({'path': path, 'owner': row['evolvedOwner'], 'originalSha256': row['sha256'],
+                                         'preservedAt': str(original), 'currentSha256': current_sha,
+                                         'state': 'original bytes authenticated; evolved live source unvalidated'})
+            unowned = [r for r in dirty if not (repo == 'architecture' and r[3:] in OWNED) and r[3:] not in preserved_paths]
+            # A successor worker must preserve concurrent controller edits too.
+            # Inventory them explicitly; their existence grants no write/commit
+            # ownership and is never accepted implementation evidence.
+            if CONFIG.successor:
+                for row in unowned:
+                    path = ROOT / repo / row[3:]
+                    external.append({'path': row[3:], 'status': row[:2],
+                        'currentSha256': sha(path.read_bytes()) if path.is_file() else None,
+                        'owner': 'external concurrent task; not owned by this collector',
+                        'state': 'unvalidated; preserve outside this worker commit'})
+            self.require(CONFIG.successor or not unowned, repo + " owned or explicitly external dirty paths")
             records[repo] = {"branch": branch, "head": command("git", "-C", cwd, "rev-parse", "HEAD"),
-                             "ownedDirtyPaths": [r[3:] for r in dirty]}
+                             "ownedDirtyPaths": [r[3:] for r in dirty if repo == 'architecture' and r[3:] in OWNED],
+                             "preservedDirtyPaths": [r[3:] for r in dirty if r[3:] in preserved_paths and not preserved_paths[r[3:]].get('externalOwner')],
+                             "externalInputs": external}
         processes = command("ps", "-axo", "pid,ppid,command").splitlines()
         controllers = []
         for line in processes:
@@ -157,6 +210,8 @@ class Inventory:
     def build(self):
         source = module("readiness-inventory")
         runtimes = module("readiness-runtimes")
+        source.configure(CONFIG.manifest, STATE)
+        runtimes.configure(CONFIG.manifest, STATE)
         upstream = self.load(STATE / "readiness.json")
         runtime = self.load(STATE / "runtimes.json")
         # Authenticate existing passing inventories, without redoing availability probes.
@@ -168,8 +223,8 @@ class Inventory:
         mapping = self.load(QUEUE / "requirement-map.json")
         coordination = self.load(ROOT / ".roadmap-coordination/queue.json")
         workspace = self.workspace(coordination)
-        self.require(manifest["workspace"] == str(ROOT) and manifest["mode"] == "single-workspace-main", "queue workspace/profile")
-        baseline = command("git", "-C", str(ROOT / "architecture"), "log", "-1", "--format=%H", "--", "runner-queues/emulator-web-readiness-20261022/manifest.json")
+        self.require(manifest["workspace"] == str(ROOT) and manifest["mode"] in {"single-workspace-main", "single-workspace-main-feature-first"}, "queue workspace/profile")
+        baseline = command("git", "-C", str(ROOT / "architecture"), "log", "-1", "--format=%H", "--", str(CONFIG.manifest.relative_to(ROOT / "architecture")))
         entries, tasks, sources = [], {}, {}
         for index, entry in enumerate(manifest["entries"]):
             path = QUEUE / entry["file"]
@@ -196,14 +251,14 @@ class Inventory:
                                "sourceRef": str(path.relative_to(ROOT)) + "#task-" + task.lower()}
             entries.append({"file": entry["file"], "parents": parents, "phase": entry["phase"],
                             "progressFile": entry["progressFile"], "entryTaskPrerequisites": entry["entryTaskPrerequisites"],
-                            "consume": ["handoff.json.prerequisites.RRD-1.3", "handoff.json.tasks.<active-id>", "readiness.json relevant original/suite rows", "runtimes.json relevant target/toolchain row"],
+                            "consume": ["handoff.json.prerequisites." + ("SFC-1.1" if CONFIG.successor else "RRD-1.3"), "handoff.json.tasks.<active-id>", "readiness.json relevant original/suite rows", "runtimes.json relevant target/toolchain row"],
                             "entryConditions": entry["entryConditions"]})
         # Reuse the authored contract with the queue's actual pinned runner version.
         contract = Path.home() / ".nvm/versions/node/v24.21.0/lib/node_modules/@bpstr/roadmap-runner/dist/roadmap-contract.js"
         runner = self.load(contract.parent.parent / "package.json")
         self.read(contract)
         self.require(runner["version"] == manifest["runnerVersion"], "queue runner contract version")
-        node = Path.home() / ".nvm/versions/node/v24.19.0/bin/node"
+        node = Path.home() / ".nvm/versions/node" / ("v" + json.loads((ROOT / "core/package.json").read_text())["engines"]["node"]) / "bin/node"
         js = """import fs from 'node:fs'; import {pathToFileURL} from 'node:url';
 const {validateRoadmap}=await import(pathToFileURL(process.argv[1]).href);
 const q=process.argv[2], m=JSON.parse(fs.readFileSync(q+'/manifest.json','utf8'));
@@ -270,9 +325,17 @@ console.log(JSON.stringify(m.entries.map(e=>({file:e.file,errors:validateRoadmap
         for task, item in tasks.items():
             if item["phase"] != "implementation" or item.get("originalOwners"):
                 continue
+            if CONFIG.successor and task.startswith("SFC-"):
+                item["originalOwners"] = [task]
+                item["policyRef"] = "architecture/decisions/006-single-format-before-publication.md"
+                item["prerequisiteRows"] = [{"original": dep, "state": "requires verified current-format interface; metadata is not cutover proof"}
+                                            for dep in item["localDependencies"]]
+                continue
             section = source.section((QUEUE / item["file"]).read_text(), task)
             context = source.field(section, "Context")
             originals = set(ID.findall(context))
+            mapped_originals = {original for original, target in mapping['performanceOwners'].items() if target == task}
+            originals.update(mapped_originals)
             for match in re.finditer(r"\b([A-Z][A-Z0-9]*-\d+)\.(\d+)[–−-](?:\d+\.)?(\d+)\b", context):
                 originals.update(f"{match[1]}.{n}" for n in range(int(match[2]), int(match[3]) + 1))
             item["originalOwners"] = sorted(originals)
@@ -280,13 +343,17 @@ console.log(JSON.stringify(m.entries.map(e=>({file:e.file,errors:validateRoadmap
             for original in sorted(originals):
                 if original.startswith("NPR-"):
                     path = Path("/Users/bpstr/Github/edit-ac-shared-features-20261016/.roadmap-runner/post-alpha-performance-20261019/roadmap.md")
+                elif original in tasks:
+                    path = QUEUE / tasks[original]["file"]
+                elif original.startswith("RWP-") and CONFIG.successor:
+                    path = ROOT / "architecture/runner-queues/emulator-web-readiness-20261022/01-web-performance-repairs.md"
                 else:
                     path = prefix_sources[original.split("-")[0]]
                 original_section = source.section(self.read(path), original)
                 item.setdefault("originalRefs", []).append({"original": original, "source": str(path),
                     "acceptanceSha256": sha(source.field(original_section, "Acceptance").encode()),
                     "disposition": "Repair only this original owner; originating runtime/performance thresholds remain with the named final-test owner."})
-                self.require(original in context or original.startswith("SDK-1."), task + " original reference " + original)
+                self.require(original in context or original in mapped_originals or original.startswith("SDK-1."), task + " original reference " + original)
         for key in ["performanceOwners", "aggregateOwners"]:
             for original, targets in mapping[key].items():
                 for target in ID.findall(targets):
@@ -310,9 +377,10 @@ console.log(JSON.stringify(m.entries.map(e=>({file:e.file,errors:validateRoadmap
                     "repair": "Authenticate current original-owner format interfaces and replace absent obsolete proof helpers on the existing final-test owner if needed. Missing historical helpers do not authorize duplicate format/engine semantics or fabricated qualification."})
         self.require(subprocess.run(["git", "-C", str(ROOT / "architecture"), "check-ignore", "-q", str(STORE)]).returncode == 0, "ignored handoff storage")
         self.read(Path(__file__))
-        return {"schemaVersion": 1, "parent": "RRD-1.3",
-                "prerequisites": {"RRD-1.3": {"state": "ownership-handoff-verified", "nextOwner": "RWP-1.1",
-                    "requires": ["RRD-1.1", "RRD-1.2"], "runtimeQualification": "none; all final runtime/full-suite predicates remain open"}},
+        parent = "SFC-1.1" if CONFIG.successor else "RRD-1.3"
+        return {"schemaVersion": 1, "parent": parent,
+                "prerequisites": {parent: {"state": "ownership-handoff-verified", "nextOwner": "SFC-1.2" if CONFIG.successor else "RWP-1.1",
+                    "requires": [] if CONFIG.successor else ["RRD-1.1", "RRD-1.2"], "runtimeQualification": "none; all final runtime/full-suite predicates remain open"}},
                 "workspace": workspace, "authoredQueueRevision": baseline, "sources": sources,
                 "entries": entries, "tasks": tasks, "originals": owners, "repairRequests": repairs,
                 "performanceOwners": mapping["performanceOwners"], "aggregateOwners": mapping["aggregateOwners"],
@@ -331,8 +399,8 @@ console.log(JSON.stringify(m.entries.map(e=>({file:e.file,errors:validateRoadmap
                     "perStepTimeoutSeconds": [180, 300], "runtimeQualification": "not executed; timeouts are not measured suite costs"},
                     "web": {"source": "core/scripts/test-browser.mjs", "fullDiscoveryOwner": "QWB-1.1"},
                     "shared": runtime["toolchains"]["shared"], "terminal": runtime["toolchains"]["terminal"]},
-                "reusedValidation": {"authoredQueue": "coordination ledger: ddef8d7 source contract/original ownership pass; architecture check 14/14. Current deterministic checks below authenticate changed inputs.",
-                    "RRD-1.1": upstream_checks, "RRD-1.2": runtime_checks["inventoryChecks"],
+                "reusedValidation": {"authoredQueue": baseline,
+                    "sourceInventory": upstream_checks, "runtimeMetadata": runtime_checks["inventoryChecks"],
                     "availabilityProbesExecutedThisInvocation": 0, "queueContractFiles": len(contract_results)},
                 "sourcePins": dict(sorted(self.pins.items()))}
 
@@ -340,16 +408,15 @@ console.log(JSON.stringify(m.entries.map(e=>({file:e.file,errors:validateRoadmap
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    arguments(parser)
     args = parser.parse_args()
+    configure(args.manifest, args.runtime_root)
     inventory = Inventory()
     data = inventory.build()
     if args.check:
         saved = json.loads(LINK.read_text())
-        # Dirty paths describe the capture checkpoint; staged/committed owned
-        # paths can legitimately change without changing source acceptance.
-        for repo in data["workspace"]["repositories"]:
-            saved["workspace"]["repositories"][repo]["ownedDirtyPaths"] = data["workspace"]["repositories"][repo]["ownedDirtyPaths"]
-        inventory.require(saved == data, "saved handoff matches current sources/owners/workspace; refresh after changed inputs")
+        inventory.require(acceptance_checkpoint(saved) == acceptance_checkpoint(data),
+                          "saved handoff matches current sources/owners/workspace; refresh after changed inputs")
     report = {"executed": inventory.checks, "passed": inventory.checks - len(inventory.errors),
               "failed": len(inventory.errors), "skipped": 0, "errors": inventory.errors,
               "queueFiles": len(data["entries"]), "parents": len(data["tasks"]), "originalOwners": len(data["originals"]),
@@ -366,7 +433,7 @@ def main():
         STORE.parent.mkdir(parents=True, exist_ok=True)
         STORE.write_text(json.dumps(data, indent=2) + "\n")
         if not LINK.is_symlink():
-            LINK.symlink_to(Path("../../architecture/.artifacts/emulator-web-readiness-20261022/handoff.json"))
+            CONFIG.link(LINK, STORE)
     return 0
 
 

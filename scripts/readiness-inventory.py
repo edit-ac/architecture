@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Reconcile RRD-1.1 inputs without executing application/provider checks.
 
+Supply --manifest and optional --runtime-root for a successor queue.
 Run from the workspace: python3 architecture/scripts/readiness-inventory.py
 Use --check to authenticate an existing inventory against the same inputs.
 The workspace-facing JSON links to ignored architecture/.artifacts storage.
@@ -13,6 +14,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+from readiness_config import Locations, arguments
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -22,6 +24,14 @@ OUTPUT = STATE / "readiness.json"
 STORAGE = ROOT / "architecture/.artifacts/emulator-web-readiness-20261022/readiness.json"
 CASE = re.compile(r"\b[A-Z][A-Z0-9]*(?:-[A-Z]+)*-\d+(?:\.\d+)*(?:[–−-]\d+)?\b")
 PINS = {}
+CONFIG = Locations()
+
+
+def configure(manifest, runtime_root=None):
+    global CONFIG, QUEUE, STATE, OUTPUT, STORAGE
+    CONFIG = Locations(manifest, runtime_root)
+    QUEUE, STATE = CONFIG.queue, CONFIG.state
+    OUTPUT, STORAGE = STATE / "readiness.json", CONFIG.store / "readiness.json"
 
 
 def git(repo, *args):
@@ -123,11 +133,110 @@ def commit_evidence(short):
             "applicability": "retained implementation; changed inputs require affected proof authentication; no fresh runtime claim"}
 
 
+def authenticate_pins(pins, base):
+    rows = []
+    for name, expected in sorted(pins.items()):
+        path = Path(name) if Path(name).is_absolute() else base / name
+        actual = digest(path.read_bytes()) if path.is_file() else None
+        rows.append({"path": str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path),
+                     "expectedSha256": expected, "currentSha256": actual,
+                     "state": "matched" if actual == expected else "changed" if actual else "absent-historical-input"})
+        if path.is_file():
+            ref(path)
+    return rows
+
+
+def preserved_work():
+    baseline = CONFIG.preserved_inputs(load)
+    if len([r for r in baseline["core"] if not r.get('externalOwner')]) != 44:
+        raise ValueError("Expected 44 preserved core paths")
+    old_manifest = load(ROOT / "architecture/runner-queues/emulator-web-readiness-20261022/manifest.json")
+    progress_path = Path(old_manifest["entries"][1]["progressFile"])
+    progress = read(progress_path)
+    accepted = []
+    proof_owners = {}
+    receipt_names = [("RWP-1.1-I1", "rwp-1.1"), ("RWP-1.1-I2", "rwp-1.1-i2"),
+                     ("RWP-1.1-I3", "rwp-1.1-i3"), ("RWP-1.2-I1-G1", "rwp-1.2")]
+    receipt_names += [(f"RWP-1.2-I1-S1-G{n}", f"rwp-1.2-s1-g{n}") for n in range(2, 8)]
+    for task, directory in receipt_names:
+        path = ROOT / "core/.artifacts" / directory / "receipt.json"
+        if task not in progress:
+            raise ValueError("Missing accepted progress reference: " + task)
+        row = {"id": task, "progress": str(progress_path), "receipt": str(path),
+               "state": "historical-accepted; current runtime qualification not inferred"}
+        if path.is_file():
+            receipt = load(path)
+            expected = re.search(re.escape('core/.artifacts/' + directory + '/receipt.json') + r'`[^\n]*?SHA256 `([a-f0-9]{64})`', progress)
+            if expected and digest(path.read_bytes()) != expected[1]:
+                raise ValueError("Historical receipt hash differs from accepted progress: " + task)
+            pins = dict(receipt.get("sourcePins", {}))
+            owned = receipt.get("ownedAuthoredSource", receipt.get("ownedSource", {}))
+            if isinstance(owned, dict):
+                pins.update(owned)
+            for name in owned:
+                proof_owners[name] = task
+            notice = receipt.get('generatedNotice')
+            if notice:
+                pins[notice['path']] = notice['sha256']
+                proof_owners[notice['path']] = task + ' generated-notice; never stage as authored source'
+            row.update(receiptSha256=digest(path.read_bytes()),
+                       inputAuthentication=authenticate_pins(pins, ROOT / "core"),
+                       counts=receipt.get("acceptedCounts", receipt.get("finalAcceptedCoverage", receipt.get("counts"))),
+                       commands=receipt.get("commands", [
+                           {k: c[k] for k in ["command", "args", "exit", "counts", "executed", "passed", "failed", "skipped"] if k in c}
+                           for c in receipt.get("checks", [])]),
+                       runtime=receipt.get("runtime", receipt.get("runtimes", receipt.get("runtimeProvenance"))),
+                       failureDispositions={k: receipt[k] for k in ["failureDispositions", "earlierFailures", "earlierSetupFailures"] if k in receipt})
+            row["reuse"] = "Matching input hashes retain scoped historical evidence only; changed or absent inputs require owner proof. No aggregate replay/cutover/size qualification."
+        else:
+            row.update(receiptSha256=None, inputAuthentication=[],
+                       reuse="Named progress preserves accepted history; removed generated receipt is not a prerequisite or current proof.")
+        accepted.append(row)
+    preserved = []
+    for repo, rows in baseline.items():
+        for old in rows:
+            path = ROOT / repo / old["path"]
+            actual = digest(path.read_bytes()) if path.is_file() else None
+            if not actual:
+                raise ValueError("Preserved input changed: " + str(path))
+            preserved_path = path if old.get('externalOwner') else CONFIG.preserved_path(old, path)
+            ref(preserved_path)
+            ref(path)
+            matches = [r['id'] for r in accepted if any(p['path'] == str(path.relative_to(ROOT)) and p['state'] == 'matched'
+                                                       for p in r['inputAuthentication'])]
+            historical_owner = old.get('externalOwner') or proof_owners.get(old['path'])
+            if repo == 'core':
+                next_owner = ('SFC-2.3' if old['path'] in ['crates/editac-core/src/editor.rs', 'crates/editac-core/src/editor_replay.rs', 'crates/editac-core/src/lib.rs']
+                              else 'SFC-4.1' if old['path'].startswith('crates/editac-core/tests/') or old['path'] == 'tests/wasm-commands.test.mjs'
+                              else 'SFC-3.2' if '/commands/' in old['path']
+                              else 'SFC-3.3' if old['path'].startswith('crates/')
+                              else 'RBO-1.1')
+            else:
+                next_owner = 'controller'
+            preserved.append({"repo": repo, **old, "preserved": digest(preserved_path.read_bytes()) == old['sha256'],
+                "preservedAt": str(preserved_path), "currentSha256": actual,
+                "state": "external active edit; excluded from this worker's accepted proof" if old.get('externalOwner') else "original bytes preserved; evolved live source unvalidated" if old.get('evolvedOwner') else "original bytes preserved",
+                "historicalOwner": historical_owner or ('interrupted-G8' if next_owner == 'SFC-2.3' else 'controller' if repo != 'core' else 'predecessor; matching proof references below'),
+                "matchingEvidence": matches, "deliveryOwner": old.get('deliveryOwner', next_owner),
+                "commitDisposition": "preserve pending cutover owner; historical affected-runtime evidence is not current cutover proof"})
+    commits = {}
+    for repo, short in {"architecture": "94c53f2", "core": "6a6482d", "cli": "ff768a1", "docs": "663f0dd"}.items():
+        commit = git(repo, "rev-parse", short)
+        subprocess.run(["git", "-C", str(ROOT / repo), "merge-base", "--is-ancestor", commit, "HEAD"], check=True)
+        commits[repo] = {"commit": commit, "ancestorOfMain": True,
+                         "paths": git(repo, "diff-tree", "--no-commit-id", "--name-only", "-r", commit).splitlines()}
+    return {"baselineRef": str(ROOT / ".roadmap-runner/emulator-web-readiness-20261022/pre-schema-policy-dirty-inputs.json"),
+            "paths": preserved, "initialCommits": commits, "accepted": accepted,
+            "interrupted": {"id": "RWP-1.2-I1-S1-G8", "state": "interrupted-unvalidated", "owner": "SFC-2.3",
+                            "resume": "current-format replay cutover, preserving original regression assertions; no dual-runtime optimization"}}
+
+
 def build():
     PINS.clear()
     ref(Path(__file__))
     queue = load(ROOT / ".roadmap-coordination/queue.json")
-    manifest = load(QUEUE / "manifest.json")
+    manifest = load(CONFIG.manifest)
+    ref(Path(__file__).with_name("readiness_config.py"))
     canonical = load(ROOT / "architecture/roadmaps/manifest.json")
     mapping = load(QUEUE / "requirement-map.json")
     transfer = load(ROOT / "architecture/operations/device-requirements-20261018.json")
@@ -254,10 +363,12 @@ def build():
                        "implementationRoot": path, "exists": (ROOT / path).is_dir(),
                        "missingImplementation": None if (ROOT / path).is_dir() else {"owner": impl, "unblock": "create the original native SDK bootstrap/dispatcher; authenticate on required OS runtime"},
                        "fullSuiteState": "required-unproven; no application tests run by inventory",
-                       "runtimePrerequisiteOwner": "RRD-1.2"})
-    return {"schemaVersion": 1, "parent": "RRD-1.1", "profile": manifest["profile"],
+                       "runtimePrerequisiteOwner": test if CONFIG.successor else "RRD-1.2"})
+    preservation = preserved_work() if CONFIG.successor else None
+    parent = "SFC-1.1" if CONFIG.successor else "RRD-1.1"
+    return {"schemaVersion": 1, "parent": parent, "profile": manifest["profile"],
             "sourceContractSha256": manifest["entries"][0]["sha256"],
-            "prerequisites": {"RRD-1.1": {"state": "source-inventory-verified", "nextOwner": "RRD-1.2",
+            "prerequisites": {parent: {"state": "source-inventory-verified", "nextOwner": "SFC-1.2" if CONFIG.successor else "RRD-1.2",
                 "coverage": "137 transfers; 166 native/terminal owners; 17 D24P deliveries; 19 web features; 4 portable returns; 8 suite families",
                 "runtimeQualification": "not performed; no implementation or runtime acceptance inferred from inventory"}},
             "excludedClaims": manifest["excludedClaims"], "terminalFullSuiteRequired": True,
@@ -281,6 +392,7 @@ def build():
                 {"source": "core/examples/task-editor/FEATURES.md", "state": "pending prose superseded by named WFE-3.1/3.2 checked evidence; do not redo feature work",
                  "evidence": str(web_progress_path), "bothParentsChecked": all(re.search(r"^- \[x\] " + re.escape(task) + r"(?=\s|$)", web_progress, re.M) for task in ["WFE-3.1", "WFE-3.2"])},
                 {"source": "older native progress", "state": "blocked labels predate retained D24P and portable returns; authenticate original predicates independently"}],
+            "preservedWork": preservation,
             "sourcePins": dict(sorted(PINS.items()))}
 
 
@@ -316,7 +428,9 @@ def validate(matrix):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    arguments(parser)
     args = parser.parse_args()
+    configure(args.manifest, args.runtime_root)
     matrix = build()
     result = validate(matrix)
     if args.check:
@@ -331,7 +445,7 @@ def main():
         STORAGE.write_text(json.dumps(matrix, indent=2) + "\n")
         OUTPUT.parent.mkdir(parents=True, exist_ok=True)
         if not OUTPUT.is_symlink():
-            OUTPUT.symlink_to(Path("../../architecture/.artifacts/emulator-web-readiness-20261022/readiness.json"))
+            CONFIG.link(OUTPUT, STORAGE)
     print(json.dumps(result, sort_keys=True))
 
 

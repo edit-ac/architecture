@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """RRD-1.2: inventory local runtimes without booting or qualifying them.
 
+Supply --manifest and optional --runtime-root for a successor queue.
 Run from the workspace: python3 architecture/scripts/readiness-runtimes.py
 Then use --check to validate the saved inventory without repeating probes.
 Only explicit read-only commands below are executed. No package installation,
@@ -19,6 +20,7 @@ import pwd
 import re
 import shutil
 import subprocess
+from readiness_config import Locations, arguments
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -32,6 +34,46 @@ JAVA = Path('/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home')
 DEVELOPER = '/Applications/Xcode.app/Contents/Developer'
 PINS = {}
 SAVED_PROBES = {}
+CONFIG = Locations()
+
+
+def configure(manifest, runtime_root=None):
+    global CONFIG, STORE, OUT, LINK, LOGS
+    CONFIG = Locations(manifest, runtime_root)
+    STORE = CONFIG.store
+    OUT, LINK = STORE / 'runtimes.json', CONFIG.state / 'runtimes.json'
+    LOGS = STORE / 'runtime-inventory'
+
+
+def scoped_proof():
+    """Authenticate supplied proof metadata; never replay runtime probes/suites."""
+    PINS.clear()
+    path = CONFIG.state / 'initial-current-format-proof.json'
+    proof = json.loads(Path(pin(path)).read_text())
+    source_rows, binary_rows = [], []
+    for key, base, rows in [('inputs', ROOT, source_rows), ('executedBinaries', ROOT / 'core', binary_rows)]:
+        for name, expected in proof.get(key, {}).items():
+            source = base / name
+            actual = hashlib.sha256(source.read_bytes()).hexdigest() if source.is_file() else None
+            if source.is_file():
+                pin(source)
+            rows.append({'path': str(source), 'expectedSha256': expected, 'currentSha256': actual,
+                         'state': 'matched' if actual == expected else 'changed' if actual else 'absent-historical-input'})
+    for path in [__file__, CONFIG.manifest, Path(__file__).with_name('readiness_config.py'),
+                 ROOT / 'core/package.json', ROOT / 'core/rust-toolchain.toml']:
+        pin(path)
+    package = json.loads((ROOT / 'core/package.json').read_text())
+    node = HOME / '.nvm/versions/node' / ('v' + package['engines']['node']) / 'bin/node'
+    pin(node)
+    return {'schemaVersion': 1, 'parent': 'SFC-1.1', 'mode': 'scoped-proof-metadata',
+            'proof': proof, 'proofRef': str(CONFIG.state / 'initial-current-format-proof.json'),
+            'sourceAuthentication': source_rows, 'binaryAuthentication': binary_rows,
+            'toolchains': {'node': fact(node), 'nodeRequired': package['engines']['node'],
+                'shared': {'scope': 'Initial 59-case proof only; full cutover/runtime suites remain open'},
+                'terminal': {'scope': 'No terminal runtime qualification'}},
+            'targets': {}, 'probes': [], 'sourcePins': dict(PINS),
+            'runtimeQualification': 'Historical bounded proof only; no current-format cutover/full target qualification',
+            'prohibitedActionsExecuted': {'boot': 0, 'tests': 0, 'providers': 0, 'network': 0, 'provisioning': 0}}
 
 
 def pin(path):
@@ -123,6 +165,8 @@ def access_search():
 
 
 def collect():
+    if CONFIG.successor:
+        return scoped_proof()
     LOGS.mkdir(parents=True, exist_ok=True)
     upstream = json.loads((STORE / 'readiness.json').read_text())
     if upstream['prerequisites']['RRD-1.1']['state'] != 'source-inventory-verified':
@@ -340,6 +384,23 @@ def collect():
 
 
 def validate(data):
+    if data.get('mode') == 'scoped-proof-metadata':
+        if data != scoped_proof():
+            raise ValueError('Saved scoped proof differs from authoritative metadata/current inputs')
+        proof = data['proof']
+        predicates = [data['parent'] == 'SFC-1.1', bool(data['sourceAuthentication']),
+                      sum(proof['suites'].values()) == proof['rustDistinctPassed'] == 59,
+                      proof['rustFailed'] == proof['rustRequiredSkipped'] == 0,
+                      len(proof['setupFailures']) == 2, bool(proof.get('commands')),
+                      not data['probes'], all(v == 0 for v in data['prohibitedActionsExecuted'].values())]
+        predicates += [Path(p).is_file() and hashlib.sha256(Path(p).read_bytes()).hexdigest() == sha
+                       for p, sha in data['sourcePins'].items()]
+        if not all(predicates):
+            raise ValueError('Scoped proof metadata or current pins changed')
+        return {'inventoryChecks': {'executed': len(predicates), 'passed': len(predicates), 'failed': 0, 'skipped': 0},
+                'availabilityProbes': {'executed': 0, 'passed': 0, 'failed': 0, 'skipped': 0},
+                'collectionNewProbes': 0, 'collectionReusedProbes': 0, 'runtimeTestsExecuted': 0,
+                'output': str(OUT)}
     checks = []
     def require(ok, name):
         checks.append(name)
@@ -389,7 +450,9 @@ def main():
     parser.add_argument('--check', action='store_true', help='check saved pins/logs; no runtime probes')
     parser.add_argument('--reuse-probes', action='store_true',
                         help='reuse unchanged command/log receipts during this inventory session')
+    arguments(parser)
     args = parser.parse_args()
+    configure(args.manifest, args.runtime_root)
     if args.reuse_probes:
         SAVED_PROBES.update({p['id']: p for p in json.loads(OUT.read_text())['probes']})
     data = json.loads(OUT.read_text()) if args.check else collect()
@@ -400,10 +463,11 @@ def main():
             raise ValueError('Refuse to replace regular runtime inventory')
         if LINK.is_symlink() and LINK.resolve() != OUT:
             raise ValueError('Refuse to replace another runtime inventory link')
+        OUT.parent.mkdir(parents=True, exist_ok=True)
         OUT.write_text(json.dumps(data, indent=2) + '\n')
         LINK.parent.mkdir(parents=True, exist_ok=True)
         if not LINK.is_symlink():
-            LINK.symlink_to(Path('../../architecture/.artifacts/emulator-web-readiness-20261022/runtimes.json'))
+            CONFIG.link(LINK, OUT)
     print(json.dumps(result, sort_keys=True))
 
 

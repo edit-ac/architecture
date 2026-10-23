@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Current delivery: SFC-1.1 verified: successor metadata collectors and exact preserved-source provenance; interrupted G8 and concurrent edits remain unqualified. Next SFC-1.2.
+
 ## Goal and entry conditions
 
 Prior controller is verified stopped; current branches and preserved source are available. These inventory parents have no retired-runtime or historical receipt prerequisite.
@@ -24,7 +26,7 @@ One parent per worker, normally 15–45 minutes including focused checks. Commit
 
 ### Task SFC-1.1 — Authenticate interrupted source and accepted delivery
 
-- [ ] SFC-1.1 Authenticate interrupted source and accepted delivery.
+- [x] SFC-1.1 Authenticate interrupted source and accepted delivery.
 
 Purpose: Deliver this named canonical-format boundary safely without retaining unpublished runtime versions.
 Context: `architecture/decisions/006-single-format-before-publication.md`; `architecture/specs/document-durability.md`; only task-local original APIs/specs and prerequisite rows; prior run progress and `.roadmap-runner/emulator-web-readiness-20261022/pre-schema-policy-dirty-inputs.json`; existing `architecture/scripts/readiness-*.py` collectors
@@ -35,11 +37,11 @@ Acceptance: All prior 44 dirty core paths and controller edits remain preserved 
 
 Implementation:
 
-- [ ] SFC-1.1-I1 Record exact current dirty ownership and the initial canonical API commits. Adapt existing collectors to a supplied manifest/current-runtime root instead of copying another collector. Produce current readiness/handoff/prerequisite rows, authenticating the old 17 D24P deliveries and RWP-1.1/accepted G1–G7 evidence. Commit earlier owned changes only where their exact accepted proof still applies; leave the remaining related interrupted work for its cutover owner.
+- [x] SFC-1.1-I1 Record exact current dirty ownership and the initial canonical API commits. Adapt existing collectors to a supplied manifest/current-runtime root instead of copying another collector. Produce current readiness/handoff/prerequisite rows, authenticating the old 17 D24P deliveries and RWP-1.1/accepted G1–G7 evidence. Commit earlier owned changes only where their exact accepted proof still applies; leave the remaining related interrupted work for its cutover owner.
 
 Validation:
 
-- [ ] SFC-1.1-V1 Use deterministic source/hash/owner checks and affected collector tests only. Authenticate initial current-format and locator proof plus corrected Node/runtime setup failures as bounded evidence, not full cutover qualification. Do not replay full suites or benchmarks.
+- [x] SFC-1.1-V1 Use deterministic source/hash/owner checks and affected collector tests only. Authenticate initial current-format and locator proof plus corrected Node/runtime setup failures as bounded evidence, not full cutover qualification. Do not replay full suites or benchmarks.
 
 Evidence: Separate progress contains changed interfaces, exact input/fixture/runtime hashes, selector/command/exit, executed/passed/failed/skipped counts, reuse decisions and concise failure dispositions. Detailed output remains ignored.
 Handoff: Last verified substep, remaining file/symbol, exact missing predicate and next bounded action.
