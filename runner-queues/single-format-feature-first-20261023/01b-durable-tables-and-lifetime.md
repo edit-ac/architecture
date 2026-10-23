@@ -67,6 +67,11 @@ Implementation:
 - [ ] DRA-1.2-I4 Complete the descriptor consumer-field matrix across current WASM/Session/FFI and web/native/terminal DTO consumers. Retire obsolete whole-atom table paths only after current replacements and affected assertions pass; full target-runtime suites retain their existing final owners.
 
 
+- [x] DRA-1.2-I5 Deliver the shared visible-content export view and explicit limitations, Markdown/native table-text adapters, fresh-ID external import and separate exact recovery capture. Capture whole-document recovery once per export job and preserve the current semantic/history assertions.
+
+- [ ] DRA-1.2-I6 Complete HTML and clipboard transfer using the same current visible/export and recovery owners, fresh-ID ordinary import and explicit external limitations. Declared internal recovery retains unknown/hidden/source data; ordinary paste never implicitly activates document-wide recovery.
+
+
 Validation:
 
 - [ ] DRA-1.2-V1 Run focused core table concurrency and current WASM/Session round trips with both merge orders, checkpoint recovery and undo. Planned regression target `core/crates/editac-core/tests/table_concurrency.rs` must execute nonzero cases. Full discovery and native runtime proof remain QSH/QWB/native final owners.
