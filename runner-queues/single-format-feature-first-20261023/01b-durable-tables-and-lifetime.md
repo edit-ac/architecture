@@ -60,7 +60,7 @@ Implementation:
 
 - [ ] DRA-1.2-I1 Replace whole-atom mutation where necessary and adapt command preparation, projection and bindings. Keep one shared owner. Add current-format regression fixtures reproducing the observed LEFT EDIT/RIGHT EDIT loss and structural conflicts; preserve original real data outside any explicit conversion.
 
-- [ ] DRA-1.2-I2 Complete stable addressed cell-block creation/order/style/deletion/recovery and unknown metadata preservation in the chosen model, with scoped selective history and staged refusal.
+- [x] DRA-1.2-I2 Complete stable addressed cell-block creation/order/style/deletion/recovery and unknown metadata preservation in the chosen model, with scoped selective history and staged refusal.
 
 - [ ] DRA-1.2-I3 Complete declared Markdown/HTML/formats, clipboard and native-format transfer: fresh-ID external import and explicit external limitations; validated identity-scoped internal recovery preserves exact IDs, hidden/losing content, unknown data and retained source snapshots.
 
