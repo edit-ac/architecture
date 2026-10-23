@@ -1,0 +1,1225 @@
+{
+  "purpose": "DRA-1.1 finite design examples; not a production CRDT oracle or runtime proof",
+  "documentIdentity": {
+    "schema": "editac.registry.editor.v5",
+    "profile": "editac.yrs-yjs.editor.v5",
+    "protocol": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16"
+  },
+  "descriptor": [
+    "module:editac.table",
+    3,
+    {
+      "tableId": "t:1:1",
+      "extensions": {
+        "vendor:table": {
+          "raw": [
+            1,
+            "keep"
+          ]
+        }
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "DRA-T01-distinct-cells",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 0,
+          "delete": 4,
+          "insert": "LEFT EDIT"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:5",
+          "at": 0,
+          "delete": 5,
+          "insert": "RIGHT EDIT"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "LEFT EDIT",
+          "r:1:2/k:1:5": "RIGHT EDIT",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {}
+      }
+    },
+    {
+      "id": "DRA-T02-same-cell-gap",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 2,
+          "delete": 0,
+          "insert": "X"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 2,
+          "delete": 0,
+          "insert": "Y"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "baXYse",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {}
+      }
+    },
+    {
+      "id": "DRA-T03-delete-observed-only",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 0,
+          "delete": 4,
+          "insert": ""
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 2,
+          "delete": 0,
+          "insert": "PEER"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "PEER",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {}
+      }
+    },
+    {
+      "id": "DRA-T04-row-delete-versus-edit",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "delete-row",
+          "axis": "r:1:2"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 4,
+          "delete": 0,
+          "insert": " PEER"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {
+          "r:1:2/k:1:4": "base PEER",
+          "r:1:2/k:1:5": "right"
+        }
+      }
+    },
+    {
+      "id": "DRA-T05-column-delete-versus-edit",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "delete-column",
+          "axis": "k:1:4"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 4,
+          "delete": 0,
+          "insert": " PEER"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {
+          "r:1:2/k:1:4": "base PEER",
+          "r:1:3/k:1:4": "bottom"
+        }
+      }
+    },
+    {
+      "id": "DRA-T06-concurrent-axis-inserts",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "row",
+          "axis": "r:10:2",
+          "left": "r:1:2",
+          "right": "r:1:3"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "column",
+          "axis": "k:20:2",
+          "left": "k:1:4",
+          "right": "k:1:5"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:10:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:20:2",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:10:2/k:20:2": "",
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:2/k:20:2": "",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": "",
+          "r:1:3/k:20:2": "",
+          "r:10:2/k:1:4": "",
+          "r:10:2/k:1:5": ""
+        },
+        "hidden": {}
+      }
+    },
+    {
+      "id": "DRA-T07-reorder-preserves-cell",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "place-row",
+          "axis": "r:1:3",
+          "left": null,
+          "right": "r:1:2"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:3",
+          "column": "k:1:4",
+          "at": 6,
+          "delete": 0,
+          "insert": "!"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:3",
+          "r:1:2"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:3/k:1:4": "bottom!",
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {}
+      }
+    },
+    {
+      "id": "DRA-T08-selective-local-undo",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 0,
+          "delete": 0,
+          "insert": "LOCAL"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:5",
+          "at": 5,
+          "delete": 0,
+          "insert": " PEER"
+        },
+        {
+          "id": "e:10:2",
+          "lamport": 12,
+          "kind": "undo-text",
+          "target": "e:10:1"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right PEER",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {}
+      }
+    },
+    {
+      "id": "DRA-T09-one-delete-undo-retains-other",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "delete-row",
+          "axis": "r:1:2"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "delete-row",
+          "axis": "r:1:2"
+        },
+        {
+          "id": "e:10:2",
+          "lamport": 12,
+          "kind": "control",
+          "target": "e:10:1",
+          "enabled": false
+        },
+        {
+          "id": "e:20:2",
+          "lamport": 12,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 4,
+          "delete": 0,
+          "insert": " retained"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {
+          "r:1:2/k:1:4": "base retained",
+          "r:1:2/k:1:5": "right"
+        }
+      }
+    },
+    {
+      "id": "DRA-T10-restore-retained-peer",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "delete-row",
+          "axis": "r:1:2"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 4,
+          "delete": 0,
+          "insert": " retained"
+        },
+        {
+          "id": "e:10:2",
+          "lamport": 12,
+          "kind": "control",
+          "target": "e:10:1",
+          "enabled": false
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base retained",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {}
+      },
+      "disconnectedPeer": true
+    },
+    {
+      "id": "DRA-T11-concurrent-last-axis-deletes",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "delete-row",
+          "axis": "r:1:2"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "delete-row",
+          "axis": "r:1:3"
+        }
+      ],
+      "expected": {
+        "rows": [],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {},
+        "hidden": {
+          "r:1:2/k:1:4": "base",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:5": ""
+        },
+        "recovery": "deleted-geometry"
+      }
+    },
+    {
+      "id": "DRA-T12-simultaneous-empty-cell-first-write",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:3",
+          "column": "k:1:5",
+          "at": 0,
+          "delete": 0,
+          "insert": "X"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:3",
+          "column": "k:1:5",
+          "at": 0,
+          "delete": 0,
+          "insert": "Y"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:3/k:1:5": "XY",
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "hidden": {}
+      }
+    },
+    {
+      "id": "DRA-T13-unknown-fields-independent",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "attribute",
+          "scope": "r:1:2/k:1:4",
+          "key": "vendor:left",
+          "value": {
+            "raw": "LEFT"
+          }
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "attribute",
+          "scope": "r:1:2/k:1:4",
+          "key": "vendor:right",
+          "value": [
+            "RIGHT",
+            false
+          ]
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {},
+        "attributes": {
+          "r:1:2/k:1:4/vendor:left": {
+            "raw": "LEFT"
+          },
+          "r:1:2/k:1:4/vendor:right": [
+            "RIGHT",
+            false
+          ]
+        }
+      }
+    },
+    {
+      "id": "DRA-T14-conflicting-attribute-retains-loser",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "attribute",
+          "scope": "k:1:4",
+          "key": "alignment",
+          "value": "left"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "attribute",
+          "scope": "k:1:4",
+          "key": "alignment",
+          "value": "right"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {},
+        "attributes": {
+          "k:1:4/alignment": "right"
+        },
+        "retainedEvents": [
+          "e:10:1",
+          "e:20:1"
+        ]
+      }
+    },
+    {
+      "id": "DRA-T15-same-cell-selective-undo",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 2,
+          "delete": 0,
+          "insert": "X"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 2,
+          "delete": 0,
+          "insert": "Y"
+        },
+        {
+          "id": "e:10:2",
+          "lamport": 12,
+          "kind": "undo-text",
+          "target": "e:10:1"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "baYse",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {}
+      }
+    },
+    {
+      "id": "DRA-T16-column-move-versus-delete",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "base",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "place-column",
+          "axis": "k:1:4",
+          "left": "k:1:5",
+          "right": null
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "delete-column",
+          "axis": "k:1:4"
+        },
+        {
+          "id": "e:10:2",
+          "lamport": 12,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 4,
+          "delete": 0,
+          "insert": " retained"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {
+          "r:1:2/k:1:4": "base retained",
+          "r:1:3/k:1:4": "bottom"
+        }
+      }
+    },
+    {
+      "id": "DRA-T17-utf16-same-cell",
+      "initial": {
+        "tableId": "t:1:1",
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "🦀a",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom"
+        },
+        "extensions": {
+          "vendor:table": {
+            "raw": [
+              1,
+              "keep"
+            ]
+          }
+        },
+        "metadata": {
+          "vendor:cell": "unchanged"
+        }
+      },
+      "actions": [
+        {
+          "id": "e:10:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 2,
+          "delete": 0,
+          "insert": "X"
+        },
+        {
+          "id": "e:20:1",
+          "lamport": 11,
+          "kind": "text",
+          "row": "r:1:2",
+          "column": "k:1:4",
+          "at": 3,
+          "delete": 0,
+          "insert": "!"
+        }
+      ],
+      "expected": {
+        "rows": [
+          "r:1:2",
+          "r:1:3"
+        ],
+        "columns": [
+          "k:1:4",
+          "k:1:5"
+        ],
+        "cells": {
+          "r:1:2/k:1:4": "🦀Xa!",
+          "r:1:2/k:1:5": "right",
+          "r:1:3/k:1:4": "bottom",
+          "r:1:3/k:1:5": ""
+        },
+        "hidden": {}
+      }
+    }
+  ]
+}
