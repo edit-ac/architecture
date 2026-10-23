@@ -1,0 +1,150 @@
+{
+  "authority": "DRA-1.4-V1",
+  "kind": "authored-source-review-not-runtime-proof",
+  "fixedRoots": [
+    "registry-parents", "registry-texts", "registry-placements", "delete-probe-tombstones",
+    "registry-block-attributes", "registry-ownership-ops", "registry-owner-origins",
+    "registry-container-attributes", "registry-list-item-attributes", "registry-entity-controls",
+    "registry-table-records"
+  ],
+  "textNamespace": "table-text/<tableId>/<rowId>/<columnId>/<blockId>",
+  "reviews": [
+    {
+      "id": "ROOT-ADMISSION",
+      "sources": [
+        {"path": "core/crates/editac-core/src/lib.rs", "markers": ["skip_gc: true", "OffsetKind::Utf16"]},
+        {"path": "core/crates/editac-core/src/document.rs", "markers": ["MAX_RESTORE_BYTES", "validate_immutable_base_assignments", "validate_source_identities", "Update::merge_updates"]},
+        {"path": "core/crates/editac-core/src/editor_replay/bounded_decoder.rs", "markers": ["262144", "depth > 32", "structs", "read_json"]}
+      ],
+      "data": "all-fixed-roots-and-retained-CRDT-assignments",
+      "finding": "staged-atomic-admission-and-skip_gc-already-exist;decoder-counters-reset-per-input;read_json-delegates-before-shape-validation",
+      "requiredChange": "aggregate-retained-state-byte-value-struct-and-work-accounting-before-publishing-any-mutation;bound-JSON-path-before-allocation-too",
+      "bound": "16MiB-corpus-and-result;262144-values-and-structs;existing-depth-and-decoder-limits",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "REPLAY-GRAPH",
+      "sources": [{"path": "core/crates/editac-core/src/editor_replay.rs", "markers": ["ROOTS", "fn deps", "let mut depths", "depth > 128", "records.len() > 4096", "fn normalize", "fn effective"]}],
+      "data": "registrations-operations-witnesses-controls-tombstones-attributes-source-spans",
+      "finding": "repeated-topological-scans-owner-vector-rewrites-and-128-operation-inheritance-limits-turn-causal-age-into-refusal",
+      "requiredChange": "iterative-topological-order-and-inheritance;indexed-normalized-owner-order-and-uncoalesced-segments;retain-all-qualified-outcomes",
+      "bound": "O(N+E+NlogN+SlogS+T)-plus-indexed-edits;128-only-for-container-depth;16777216-charged-work;262144-live-index-nodes",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "COMMAND-PROJECTION",
+      "sources": [
+        {"path": "core/crates/editac-core/src/commands/editor.rs", "markers": ["prepare", "table"]},
+        {"path": "core/crates/editac-core/src/editor.rs", "markers": ["projection_from_view", "ownership_view"]},
+        {"path": "core/crates/editac-core/src/projection.rs", "markers": ["SourceSpan", "identity"]}
+      ],
+      "data": "owner-versions-span-indices-original-identities-and-retained-snapshot",
+      "finding": "shared-replay-view-is-converted-to-owned-spans-and-retained-snapshot;materializing-every-prefix-and-full-text-diff-per-slice-can-dominate-long-sessions",
+      "requiredChange": "one-qualified-replay-per-candidate;materialize-once;index-source-runs-once;preserve-existing-span-index-and-winner-semantics;typed-atomic-resource-errors",
+      "bound": "projection-O(M+Slog(T+1)+T+output-runs);no-per-record-whole-view-clones;staging-may-still-cost-O(B)",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "ANCHORS",
+      "sources": [{"path": "core/crates/editac-core/src/anchors.rs", "markers": ["source_identity", "ReplacedSource", "Deleted", "portable_parts"]}],
+      "data": "original-Yrs-source-and-item-identity-UTF16-affinity;including-absorbed-and-hidden-sources",
+      "finding": "anchors-resolve-original-sources-not-projected-owner-indices",
+      "requiredChange": "keep-source-identities-and-cut-affinity;resolve-pre-boundary-anchors-after-chained-replay-and-fresh-writer-restore",
+      "bound": "bounded-materialized-span-search;no-recursive-owner-ancestry",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "LOCAL-UNDO",
+      "sources": [{"path": "core/crates/editac-core/src/history.rs", "markers": ["max_groups: 100", "max_group_commits: 256", "self.undo.pop_front()", "clear_history", "history:controls"]}],
+      "data": "session-local-selective-undo-groups-and-durable-reversible-controls",
+      "finding": "bounded-session-undo-eviction-is-distinct-from-semantic-record-GC;restore-does-not-serialize-the-undo-manager",
+      "requiredChange": "preserve-retained-groups-across-publication-and-nonlocal-structural-updates;prove-undo-redo-keeps-peer-text-and-immutable-records",
+      "bound": "existing-default100-groups-8MiB-payload-256-commits;no-new-unlimited-stack",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "REVIEW-REVISIONS",
+      "sources": [
+        {"path": "core/crates/editac-session/src/revision.rs", "markers": ["deletion set", "ObservedRevision", "MAX_RESTORE_BYTES"]},
+        {"path": "core/crates/editac-session/src/review_apply.rs", "markers": ["compare_revision", "recovery"]},
+        {"path": "core/crates/editac-session/src/history_store.rs", "markers": ["HistoryStore", "RetentionPolicy", "evict_oldest", "HashMismatch"]},
+        {"path": "core/crates/editac-diff/src/representation.rs", "markers": ["ImmutableRevision", "RetentionPolicy", "UnavailableReason"]}
+      ],
+      "data": "complete-observed-revisions-immutable-host-history-representations-capture-receipts-and-review-proposals",
+      "finding": "revision-includes-deletions;history-store-has-explicit-bounded-FIFO-retention-and-host-owned-representation-provenance",
+      "requiredChange": "do-not-rewrite-retained-captures-or-retarget-review;unchanged-restored-state-keeps-revision;stale-review-refuses;explicitly-evicted-captures-remain-unavailable",
+      "bound": "existing-RetentionPolicy-max_revisions-and-max_total_bytes;not-an-unlimited-archive",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "TABLE-RETAINED",
+      "sources": [{"path": "core/crates/editac-core/src/table.rs", "markers": ["registry-table-records", "MAX_EVENTS", "validate_retention", "retained_order"]}],
+      "data": "table-records-named-cell-text-hidden-axes-blocks-losing-events-source-snapshots-and-unknown-values",
+      "finding": "table-order-has-indexed-placement;retention-is-immutable-and-independent-of-browser-rollover",
+      "requiredChange": "include-all-table-records-text-and-losing-assignments-in-document-wide-budget;preserve-hidden-peer-edits-portable-cuts-and-unknown-fields",
+      "bound": "table-merge-limits65536-events16384-text-roots-and-JSON-text-geometry-budgets;stricter-global-bounds-win",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "WASM",
+      "sources": [{"path": "core/crates/editac-wasm/src/bridge.rs", "markers": ["MAX_RESTORE_BYTES", "r.journal.len() > 4096", "pub fn restore"]}],
+      "data": "current-envelope-checkpoint-and-uncovered-transport-tail;anchor-slots",
+      "finding": "4096-tail-and4096-live-anchor-handle-caps-are-not-retained-operation-caps",
+      "requiredChange": "reuse-shared-replay-policy;round-trip-long-session-full-checkpoint-with-bounded-tail;preserve-explicit-anchor-handle-errors",
+      "bound": "unchanged16MiB-admission4096-tail-and-anchor-handle-budgets",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "BROWSER",
+      "sources": [
+        {"path": "core/packages/web/src/storage/checkpoint.ts", "markers": ["publish", "recover"]},
+        {"path": "core/packages/web/src/storage/outbox.ts", "markers": ["pending"]},
+        {"path": "core/packages/web/src/storage/transaction.ts", "markers": ["transaction"]}
+      ],
+      "data": "qualified-latest-previous-checkpoints-scoped-recovery-tails-and-independent-outbox",
+      "finding": "DRA-1.3-has-qualified-atomic-publication-and-fallback-tail-retention;does-not-retire-semantic-CRDT-records",
+      "requiredChange": "prove-long-session-current-WASM-reopen-over-four-publications;reuse-unchanged-DRA1.3-proof;test-pending-payloads-and-fallback",
+      "bound": "4096-uncovered-tail-and-existing-storage-quotas;durable-publication-is-not-remote-acknowledgement",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "SESSION-STORAGE",
+      "sources": [
+        {"path": "core/crates/editac-session/src/ports.rs", "markers": ["StoreLimits", "max_records: 4096", "max_total_bytes: 64"]},
+        {"path": "core/crates/editac-session/src/ports/memory.rs", "markers": ["fn publish", "state.receipted.push", "state.latest = Some"]},
+        {"path": "core/crates/editac-session/src/store/mod.rs", "markers": ["fn publish", "limits.max_records", "FULL"]}
+      ],
+      "data": "SQLite-state-generation-checkpoints-journal-pending-receipts-and-writer-bookkeeping",
+      "finding": "publication-keeps-journal-and-receipted-list;both-and-writer-reservations-have4096-record-bounds",
+      "requiredChange": "separate-covered-recovery-retention-from-pending-outbox;bound-exact-receipt-and-writer-metadata-without-forgetting-required-identity;qualify-fallback-and-prune-atomically",
+      "bound": "unchanged4096-uncovered-tail16MiB-record64MiB-store;explicit-backpressure-on-unsent-quota;review-any-store-encoding-change",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "CLI-STORAGE",
+      "sources": [{"path": "cli/src/storage.rs", "markers": ["MAX_ENTRIES: usize = 4096", "also the unpruned outbox", "coverage includes updates absent from checkpoint"]}],
+      "data": "file-synced-checkpoints-journal-outbox-and-durable-receipts",
+      "finding": "all-retained-journal-files-and-receipts-are-scanned-even-after-checkpoint;browser-rollover-does-not-fix-this",
+      "requiredChange": "qualified-latest-previous-covered-tail-retirement-separate-from-unacknowledged-payloads;durable-rename-directory-sync;no-reseed-on-corruption",
+      "bound": "existing-entry-and-byte-limits;bounded-uncovered-tail-and-independent-outbound-quota",
+      "runtimeOwner": "DRA-1.5"
+    },
+    {
+      "id": "PUBLIC-CONSUMERS",
+      "sources": [
+        {"path": "core/crates/editac-ffi/src/session.rs", "markers": ["pending_updates", "receive_peer", "OwnedCheckpoint"]},
+        {"path": "core/crates/editac-ffi/src/session_review.rs", "markers": ["review"]},
+        {"path": "core/crates/editac-core/src/interchange.rs", "markers": ["retained"]},
+        {"path": "core/crates/editac-html/src/lib.rs", "markers": ["import_tree", "html-limit"]},
+        {"path": "core/crates/editac-markdown/src/lib.rs", "markers": ["prepared fragment"]},
+        {"path": "core/crates/editac-markdown/src/export.rs", "markers": ["recovery", "retained"]}
+      ],
+      "data": "native-terminal-web-DTOs-source-recovery-carriers-and-external-format-projections",
+      "finding": "consumers-use-shared-engine-semantics;external-visible-projection-is-not-complete-retained-history",
+      "requiredChange": "keep-one-current-codec-and-admission-owner;transport-stable-identities-revisions-and-resource-errors;retain-unknown-hidden-content-in-exact-carriers",
+      "bound": "shared-staged-admission-and-consumer-input-output-limits;no-consumer-specific-GC-or-legacy-reader",
+      "runtimeOwner": "DRA-1.5"
+    }
+  ],
+  "finalOwners": {"functional": "QSH", "browserCrash": "QWB", "platform": "native-final-owners", "resourcesAndPerformance": "QPF"}
+}

@@ -14,6 +14,14 @@ The [DRA-1.1 table descriptor](table-merge.md) is the chosen pending amendment t
 
 ## Immutable preparation witnesses
 
+The [DRA-1.4 structural lifetime policy](structural-lifetime.md) is the chosen
+pending replay/resource amendment. It keeps the exact persisted layout and
+retained records, replacing operation-age ceilings with bounded indexed replay
+under unchanged binary, decoding and final resource caps. It does not relax
+container nesting or authorize record collection. DRA-1.5 owns implementation and
+actual long-session/consumer proof; the inherited replay limits remain a current
+implementation risk until that proof passes.
+
 V5 ownership-operation values are:
 
 - Split: `["split", leftOwner, leftVersion, spanIndex, sourceId, binaryRelativeCut, leftPresentation]`.

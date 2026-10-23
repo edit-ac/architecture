@@ -1,0 +1,161 @@
+{
+  "authority": "DRA-1.4",
+  "kind": "authored-design-inputs-not-runtime-evidence",
+  "identity": {
+    "schema": "editac.registry.editor.v5",
+    "profile": "editac.yrs-yjs.editor.v5",
+    "protocol": 1,
+    "updateEncoding": 1,
+    "offsets": "utf16",
+    "documentId": "10000000-0000-4000-8000-000000000014",
+    "epoch": "20000000-0000-4000-8000-000000000014"
+  },
+  "initial": {
+    "writer": 11,
+    "peerWriter": 22,
+    "restoreWriterRule": "fresh-nonzero-not-integrated-or-checkpoint-writer;record-actual-generated-values-at-runtime",
+    "owner": "n:11:1",
+    "source": "n:11:1",
+    "text": "A😀B",
+    "attributes": ["paragraph"],
+    "unknown": {"vendor:lifetime": {"opaque": ["keep", 0, true]}},
+    "anchorUtf16Offsets": [0, 1, 3, 4],
+    "anchorBiases": ["left", "right"],
+    "table": {
+      "id": "t:11:1", "row": "r:11:1", "column": "k:11:1", "block": "base",
+      "text": "CELL😀", "hiddenRow": "r:11:2", "hiddenText": "HIDDEN"
+    }
+  },
+  "limits": {
+    "restoreBytes": 16777216,
+    "decodedStructs": 262144,
+    "decodedValues": 262144,
+    "jsonDepth": 32,
+    "anyCollectionEntries": 8192,
+    "decodedItemLength": 1048576,
+    "allocationVarint": 2097152,
+    "workUnits": 16777216,
+    "liveReplayNodes": 262144,
+    "originalRegistrations": 4096,
+    "containerDepth": 128,
+    "sourceUtf16": 262144,
+    "sourceUtf8Total": 1048576,
+    "uncoveredTailEntries": 4096,
+    "tableEvents": 65536,
+    "tableTextRoots": 16384
+  },
+  "longSessions": [
+    {
+      "id": "LIFE-MOVE",
+      "operations": 16384,
+      "schedule": "chained-place",
+      "operationWriter": 11,
+      "operationFirstClock": 1,
+      "target": "n:11:1",
+      "parent": "@root",
+      "before": null,
+      "firstVersion": "base",
+      "nextVersion": "previous-operation",
+      "saveAfterOperations": [4096, 8192, 12288, 16384],
+      "expected": {
+        "text": "A😀B", "owners": ["n:11:1"], "spans": 1,
+        "retainedOperations": 16384, "maximumOperationDepth": 16384,
+        "appliedOperations": 16384, "finalVersion": "o:11:16384",
+        "operationAnyValues": 131072
+      }
+    },
+    {
+      "id": "LIFE-SPLIT-JOIN",
+      "operations": 16384,
+      "schedule": "nested-splits-reverse-joins",
+      "operationWriter": 11,
+      "operationFirstClock": 1,
+      "cycles": 16,
+      "splitsPerCycle": 512,
+      "splitTarget": "newest-right-owner",
+      "firstSplitSpanIndex": "cycle-index-times-splitsPerCycle",
+      "laterSplitSpanIndex": 0,
+      "cutSource": "n:11:1",
+      "cutUtf16": 0,
+      "cutAffinity": "before",
+      "witness": ["paragraph"],
+      "derivedAttributes": "absent-in-retained-update-so-inheritance-is-required",
+      "joinOrder": "innermost-right-into-immediate-left-then-outward",
+      "saveAfterOperations": [4096, 8192, 12288, 16384],
+      "additionalSaveAtFirstCycleSplit": 512,
+      "expected": {
+        "text": "A😀B", "owners": ["n:11:1"], "spans": 8193,
+        "retainedOperations": 16384, "maximumOperationDepth": 16384,
+        "maximumInheritanceDepth": 512, "peakVisibleOwners": 513,
+        "appliedOperations": 16384, "finalVersion": "o:11:16384",
+        "immutableSplitWitnesses": 8192, "immutableJoinWitnessPairs": 8192,
+        "operationAnyValues": 155648
+      }
+    }
+  ],
+  "crossBoundaryCases": [
+    {
+      "id": "LIFE-PEER",
+      "disconnectAfterOperations": 0,
+      "rejoinAfterOperations": 16384,
+      "peerActions": [
+        {"kind": "insert-source-text", "source": "n:11:1", "utf16": 1, "text": "PEER"},
+        {"kind": "place", "id": "o:22:1", "target": "n:11:1", "targetVersion": "base", "parent": "@root", "before": null},
+        {"kind": "insert-hidden-table-text", "row": "r:11:2", "utf16": 6, "text": " PEER"}
+      ],
+      "deliveryOrders": ["local-then-peer", "peer-then-local", "duplicate-reversed-complete-restore-corpus"],
+      "expectedText": "APEER😀B",
+      "expectedHiddenTableText": "HIDDEN PEER",
+      "expectedPeerPlaceOutcome": "losing",
+      "expectedPeerPlaceRetained": true,
+      "expectedAnchorOffsets": {"left": [0, 1, 7, 8], "right": [0, 5, 7, 8]},
+      "expectedUnknown": {"vendor:lifetime": {"opaque": ["keep", 0, true]}},
+      "anchorRule": "same-original-source-item-identities-and-bias-dependent-peer-insertion-resolution"
+    },
+    {
+      "id": "LIFE-CONTROLS",
+      "retainedDisabledOperations": 8193,
+      "expected": "controls-and-immutable-target-records-retained;no-8192-control-count-refusal",
+      "qualifier": "separate-small-record-fixture-within-aggregate-state-budgets"
+    },
+    {
+      "id": "LIFE-HISTORY",
+      "capture": "local-format-then-close-history-group-before-publication",
+      "publicationAfterOperations": 4096,
+      "laterIndependentStructuralOperations": 12288,
+      "laterOperationOrigin": "prepared-peer-update-not-local-history-capture;keep-local-group-inside-existing-retention-window",
+      "expectedUndo": "local-format-reverted-peer-text-and-immutable-structural-records-preserved",
+      "expectedRedo": "local-format-restored-without-rebasing-source-identities",
+      "reopen": "new-session-undo-manager-not-reconstructed;retained-revisions-and-review-source-bytes-preserved",
+      "staleReview": "typed-Stale-with-no-mutation",
+      "unchangedReviewAfterReopen": "same-observed-revision-with-fresh-writer",
+      "retainedCapture": "same-scope-hash-and-bytes-within-explicit-HistoryStore-RetentionPolicy",
+      "explicitCaptureEviction": "Unavailable-Pruned-never-current-document-fallback",
+      "rejectedCapture": "no-eviction-no-rewrite"
+    },
+    {
+      "id": "LIFE-STORAGE",
+      "families": ["browser-indexeddb", "session-native-store", "cli-native-storage"],
+      "publicationCycles": 4,
+      "tailAtMost": 4096,
+      "cases": ["qualified-publication", "crash-before-publication", "crash-after-publication-before-prune", "corrupt-newest-valid-fallback", "corrupt-required-tail-refuses", "unacknowledged-outbox-preserved", "outbound-quota-refuses-before-mutation"],
+      "outboundCapacity": "prepared-exact-peer-receipts-for-continuation;separate-unsent-payload-case",
+      "expected": "latest-or-fallback-plus-complete-required-tail;no-reseed;no-semantic-record-pruning"
+    }
+  ],
+  "negativeCases": [
+    {"id": "LIFE-BYTES", "input": "checkpoint-plus-journal-byte-sum-16777217", "error": "ResourceLimit"},
+    {"id": "LIFE-STATE-UNION", "input": "individually-bounded-updates-whose-retained-merged-state-exceeds-262144-values-or-structs", "error": "ResourceLimit"},
+    {"id": "LIFE-WORK", "input": "candidate-needs-work-unit-16777217-or-live-node-262145", "error": "ResourceLimit"},
+    {"id": "LIFE-JSON", "input": "unknown-value-depth-33", "error": "ResourceLimit"},
+    {"id": "LIFE-NUMBER", "input": "known-heading-level-NaN-or-Infinity-encoded-in-Yrs-Any-number-not-JSON", "error": "UnsupportedSchema"},
+    {"id": "LIFE-CONTAINMENT", "input": "129-parent-edges-not-129-structural-versions", "error": "ResourceLimit"},
+    {"id": "LIFE-CYCLE", "input": "known-operation-cycle-even-when-disabled-or-dormant", "error": "UnsupportedSchema", "internalReason": "cycle"},
+    {"id": "LIFE-WITNESS", "input": "forged-incompatible-immutable-witness-or-rewritten-retained-record", "error": "UnsupportedSchema"},
+    {"id": "LIFE-MISSING", "input": "missing-binary-prerequisite-in-checkpoint-plus-tail", "error": "IncompleteRestore"},
+    {"id": "LIFE-ENVELOPE", "input": "wrong-epoch-retired-or-future-envelope", "error": "WrongEpoch-for-epoch;UnsupportedProfile-for-retired-or-future-profile"}
+  ],
+  "allFailuresPreserve": ["checkpointBytes", "observedRevisionIncludingDeletionSet", "historyAvailability", "pendingOutboxAndReceipts", "originalRecoveryInputBytes"],
+  "requiredRuntimeOwners": ["DRA-1.5", "QSH", "QWB", "QPF"],
+  "plannedRuntimeTest": "core/crates/editac-core/tests/document_lifetime.rs"
+}

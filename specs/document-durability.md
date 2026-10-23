@@ -57,6 +57,13 @@ Storage adds its own atomic publication and receipt boundary without changing th
 
 ## Source-authenticated risk and coverage map
 
+DRA-1.4's [structural lifetime policy](structural-lifetime.md) selects lossless
+retained records with bounded indexed replay, including exact root/consumer review
+and deterministic long-session, disconnected-peer, history/anchor and refusal
+inputs. It changes no persisted layout and grants no record-pruning permission.
+DRA-1.5 still owns implementation and actual current-format continuation proof;
+the historical limits described below remain implementation risks until then.
+
 This review describes the current source, including preserved uncommitted replay/command work. Test names identify existing coverage to retain or port; they are not a claim that an entire suite, OS consumer or crash matrix passed. SFC-5.1 owns the focused cutover proof; the existing final suite owners retain comprehensive qualification.
 
 | Invariant | Current implementation / existing check | Remaining implementation and proof owner |
