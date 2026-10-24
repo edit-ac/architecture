@@ -8,6 +8,8 @@ Status: development contract; parser conformance and schema qualification are im
 Scope: semantic interchange, browser clipboard behavior and the [CLI's Markdown editing representation](cli.md).
 The Rust implementation must remain reusable by CLI and future native adapters.
 
+Table-paste product acceptance follows [table paste and direct cell editing](table-paste-and-editing.md): preserve admitted rich/rectangular content through these existing codecs and mutation gates, while the UI adapter renders/edits a real table instead of repeated form fields. This does not add a format, relax unsupported merge/nesting bounds or qualify historical fixtures as current product UI.
+
 ## Optional Markdown capability
 
 The user approved making Markdown a first-party optional extension on 2026-10-13. The grammar and fidelity requirements below remain mandatory when Markdown is enabled. The default browser Task preset does not include or automatically load the parser, Markdown paste processing, export/import helpers or typing shortcuts. A host explicitly registers the Markdown extension before using those operations; built-in rich-text editing, storage, collaboration and default internal-fragment/safe-HTML/plain clipboard handling remain available without it. CLI Markdown editing and Markdown-enabled native/browser consumers explicitly include the shared portable implementation. Existing roadmap-05 evidence qualifies the enabled feature, not its presence in every default bundle.
