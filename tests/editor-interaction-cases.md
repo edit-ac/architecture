@@ -116,6 +116,7 @@ Priorities: **P0** prevents data loss, broken basic input or inaccessible operat
 | SLH-05 | P1 | Backspace query/trigger; move caret out; blur/read-only/destroy | Update/dismiss as specified, no focus theft or lingering active-descendant reference |
 | SLH-06 | P0 | Reordered async query responses and remote deletion of trigger | Stale response ignored; only current valid anchor can commit; failure preserves literal query |
 | SLH-07 | P0 | Pointerdown → editor blur → item click, internal AT focus transition, or keyboard activation | Composite focus preserves valid activation; external focus dismisses; same semantic result/selection and one undo; clear name/state/result announcement |
+| SLH-08 | P0 | Open at an empty/text caret; filter; scroll host/editor; resize or show visual viewport | Menu follows its stable caret, flips above when needed, remains inside the visible viewport and scrolls its results; no page jump or focus theft |
 
 ## Paste formats and failure paths — INT-1.10
 

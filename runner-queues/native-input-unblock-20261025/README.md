@@ -6,7 +6,7 @@ The first two sources implement actual UIKit and Android input prerequisites usi
 
 `manifest.json` owns the ordered 37 source/progress pairs, exact source pins, task ownership and prior completed evidence. All 30 UI pairs retain their original relative order and exact progress locations. The mixed historical EDX-2 source is replaced for execution by the two bounded verbatim extracts; its completed tasks are not rerun or relabeled. EDX-3 must consume their new progress receipts alongside the historical EDX-2.5/2.6 and shared-history receipts; an incomplete required parent prevents whole-plan COMPLETE.
 
-Run one guarded serial controller from root main, preserve unrelated bytes/index, and checkpoint only validated owned source at two-parent/source boundaries under integration.lock. Installed runtime 0.11.0 keeps all worker checklists/status/evidence in separate progress; it does not rewrite roadmap sources. No agents/worktrees, external provisioning, AI/provider testing, secrets, push, publication or deployment. The external guard still stops on BLOCKED and confirmed repeated successful-contract loops; no unchanged retry.
+Run one guarded serial controller from root main, preserve unrelated bytes/index, and checkpoint only validated owned source at two-parent/source boundaries under integration.lock. The observed managed tracking mode permits verified source checkbox/Status updates, with requirements read-only and detailed evidence in separate progress. No agents/worktrees, external provisioning, AI/provider testing, secrets, push, publication or deployment. The external guard still stops on BLOCKED and confirmed repeated successful-contract loops; no unchanged retry.
 
 | File | Parents | Outcome |
 | --- | ---: | --- |
@@ -47,3 +47,7 @@ Run one guarded serial controller from root main, preserve unrelated bytes/index
 | [27-final-native-ui-testing.md](../editor-ui-integrations-20261024/27-final-native-ui-testing.md) | 6 | Complete native toolkit UI coverage |
 | [28-final-expo-flutter-testing.md](../editor-ui-integrations-20261024/28-final-expo-flutter-testing.md) | 6 | Complete Expo and Flutter UI/package coverage |
 | [29-final-support-handoff.md](../editor-ui-integrations-20261024/29-final-support-handoff.md) | 4 | Close UI support and adoption gates |
+
+## Dependency closure repair,2026-10-25
+
+This historical execution order is superseded by [the dependency-closed queue](../dependency-closed-ui-20261025/README.md) after the successful NIP-1.2 worker checkpoint. It preserves the original tasks and exact UI source/progress pairs, adds actual transitive prerequisites, and moves the Windows branch after independent native work. The previous syntax/startup checks did not establish dependency closure. Runtime0.11.0 was observed using source-checkbox tracking; task requirements remain read-only and detailed evidence remains separate. No prior source/snapshot or failed evidence is removed.

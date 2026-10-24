@@ -10,7 +10,7 @@ The controller moved the exact original tasks below from the stopped platform so
 
 The user requested unblocking and continuing the existing editing/UI run on 2026-10-25. Implement the missing native owner instead of retrying the old absent-adapter gate. One guarded serial root-main runner, one parent per iteration. Inspect current exports before editing; reuse the single current Session/FFI command, history, prepared-target and durability owners. Existing review/probe code is a reference, not a production editor. Keep platform policy out of Rust; no second semantic/history/storage implementation, compatibility aliases or silent document conversion.
 
-Workers use the installed 0.11.0 read-only roadmap behavior: keep their checklist, status, implementation results and evidence in the configured separate progress file; do not edit this source or its requirements. Keep original IDs, acceptance and ownership. Implement at most one parent per 30–45-minute session including focused checks; checkpoint partial implementation with exact next function/command before the deadline. Do not turn a missing planned path or selector into an external blocker: creating it is the implementation task. Add only the smallest production-linked bootstrap/regression fixture necessary to prove the changed boundary. Comprehensive suites and new case matrices remain with EDX-3 and UI final testing, after functional delivery. Reuse compatible current receipts; no broad inventory, full engine suite or unchanged failed retry.
+Requirements and acceptance are read-only. Follow the runner-selected tracking mode for verified task checkbox/Status changes only; keep implementation results, hashes and detailed evidence in the separate progress file. Keep original IDs, acceptance and ownership. Implement at most one parent per 30–45-minute session including focused checks; checkpoint partial implementation with exact next function/command before the deadline. Do not turn a missing planned path or selector into an external blocker: creating it is the implementation task. Add only the smallest production-linked bootstrap/regression fixture necessary to prove the changed boundary. Comprehensive suites and new case matrices remain with EDX-3 and UI final testing, after functional delivery. Reuse compatible current receipts; no broad inventory, full engine suite or unchanged failed retry.
 
 Read owning AGENTS.md and only the current task's named specs/paths. Use deterministic real-engine fixtures and prepared/mock network transports. No AI/provider calls, secrets, paid inference, external provisioning, push, deployment or publication. Missing physical hardware is not a gate; required virtual/runtime proof remains unqualified until executed. Never represent compiler-only or host protocol proof as target IME/runtime qualification.
 
@@ -23,6 +23,7 @@ At every two completed parents and source boundary, preserve unrelated dirty byt
 Purpose: Make rich line breaks available through supported mobile input Existing owner: roadmaps16/31 input owners.
 Context: native/ios/; architecture/roadmaps/16-ios-sdk.md and 31-ios-extension-integration.md input owners; architecture/specs/editing-experience.md iOS row; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
 Dependencies: none.
+Entry receipts: [NIP-1.4](00-ios-input.md).
 Session scope: One named integration boundary, 15–45 minutes including focused validation; record a concrete split/handoff before exceeding it.
 Acceptance: Explicit in-paragraph break and supported hardware Shift+Return differ from Return; UITextInput marked/selected ranges, composition ownership and candidate geometry stay correct. Missing hardware observations remain identified.
 
@@ -45,6 +46,7 @@ Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and chan
 Purpose: Avoid treating every incoming LF as a paragraph split Existing owner: roadmaps17/32 input owners.
 Context: native/android/; architecture/roadmaps/17-android-sdk.md and 32-android-extension-integration.md input owners; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
 Dependencies: none.
+Entry receipts: [NAP-1.4](01-android-input.md).
 Session scope: One named integration boundary, 15–45 minutes including focused validation; record a concrete split/handoff before exceeding it.
 Acceptance: InputConnection composition/commitText/batch edits and action keys reach explicit intents; in-paragraph break preserves owner/history/UTF-16 selection. A visible break action exists where the IME lacks the chord.
 
@@ -60,3 +62,10 @@ Evidence: Separate ignored progress for this source, with task ID, changed paths
 Handoff: Last finished substep, affected symbol/interface, exact failing input or missing prerequisite and next bounded action.
 Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and changed-input resume condition; continue an independent dependency-ready parent or end BLOCKED. Do not restart unchanged input.
 
+
+## Current prerequisite receipts
+
+Controller repair2026-10-25: the selected prerequisite owners below are queued before their consumers. Read only the named task/interface result from its exact progress file; source order alone is not proof. Missing planned paths/selectors owned by the selected task must be implemented, not treated as someone else's absent roadmap. No acceptance criterion is waived.
+
+- NAP-1.4: `/Users/bpstr/Github/edit-ac/.roadmap-runner/native-input-unblock-20261025/01-android-input.progress.md`.
+- NIP-1.4: `/Users/bpstr/Github/edit-ac/.roadmap-runner/native-input-unblock-20261025/00-ios-input.progress.md`.

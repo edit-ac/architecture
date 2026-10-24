@@ -12,7 +12,7 @@ Entry: consume current generated NativeSession/FFI and the existing prepared edi
 
 The user requested unblocking and continuing the existing editing/UI run on 2026-10-25. Implement the missing native owner instead of retrying the old absent-adapter gate. One guarded serial root-main runner, one parent per iteration. Inspect current exports before editing; reuse the single current Session/FFI command, history, prepared-target and durability owners. Existing review/probe code is a reference, not a production editor. Keep platform policy out of Rust; no second semantic/history/storage implementation, compatibility aliases or silent document conversion.
 
-Workers use the installed 0.11.0 read-only roadmap behavior: keep their checklist, status, implementation results and evidence in the configured separate progress file; do not edit this source or its requirements. Keep original IDs, acceptance and ownership. Implement at most one parent per 30–45-minute session including focused checks; checkpoint partial implementation with exact next function/command before the deadline. Do not turn a missing planned path or selector into an external blocker: creating it is the implementation task. Add only the smallest production-linked bootstrap/regression fixture necessary to prove the changed boundary. Comprehensive suites and new case matrices remain with EDX-3 and UI final testing, after functional delivery. Reuse compatible current receipts; no broad inventory, full engine suite or unchanged failed retry.
+Requirements and acceptance are read-only. Follow the runner-selected tracking mode for verified task checkbox/Status changes only; keep implementation results, hashes and detailed evidence in the separate progress file. Keep original IDs, acceptance and ownership. Implement at most one parent per 30–45-minute session including focused checks; checkpoint partial implementation with exact next function/command before the deadline. Do not turn a missing planned path or selector into an external blocker: creating it is the implementation task. Add only the smallest production-linked bootstrap/regression fixture necessary to prove the changed boundary. Comprehensive suites and new case matrices remain with EDX-3 and UI final testing, after functional delivery. Reuse compatible current receipts; no broad inventory, full engine suite or unchanged failed retry.
 
 Read owning AGENTS.md and only the current task's named specs/paths. Use deterministic real-engine fixtures and prepared/mock network transports. No AI/provider calls, secrets, paid inference, external provisioning, push, deployment or publication. Missing physical hardware is not a gate; required virtual/runtime proof remains unqualified until executed. Never represent compiler-only or host protocol proof as target IME/runtime qualification.
 
@@ -26,6 +26,7 @@ Purpose: Remove the concrete missing Android input prerequisite for AND-1.1–1.
 Deliverable: `native/android/sdk/src/main/kotlin/ac/edit/android/input/` and the relevant existing package/consumer, with focused selector `native/android/sdk/check-input.py bootstrap`.
 Context: `native/android/sdk/; native/android/probe/control/; tests/native/android-control.py; generated Kotlin bindings from the current FFI`; read only the affected source symbols and active contract above.
 Dependencies: none.
+Entry receipts: [EAD-1.1](../dependency-closed-ui-20261025/01-android-toolchain.md).
 Independent work: Other dependency-ready parents in this source; unrelated platform work is controller-owned in separate files.
 Session scope: One input integration boundary, 30–45 minutes including checks; checkpoint partial production code before exceeding it.
 Acceptance: An ordinary production consumer creates and disposes one session-backed native input control. One real current-format document is read through the actual binding; disposed callbacks reject. The named bootstrap selector exists and compiles the affected host/binding; one production-linked nonzero lifecycle fixture passes. A fake Session or a probe-only executable is insufficient.
@@ -50,6 +51,7 @@ Purpose: Remove the concrete missing Android input prerequisite for AND-1.1–1.
 Deliverable: `native/android/sdk/src/main/kotlin/ac/edit/android/input/` and the relevant existing package/consumer, with focused selector `native/android/sdk/check-input.py projection`.
 Context: `native/android/sdk/; native/android/probe/control/; tests/native/android-control.py; generated Kotlin bindings from the current FFI`; read only the affected source symbols and active contract above.
 Dependencies: NAP-1.1.
+Entry receipts: [EAD-1.1](../dependency-closed-ui-20261025/01-android-toolchain.md).
 Independent work: Other dependency-ready parents in this source; unrelated platform work is controller-owned in separate files.
 Session scope: One input integration boundary, 30–45 minutes including checks; checkpoint partial production code before exceeding it.
 Acceptance: A normal mounted control consumes an actual shared projection and round-trips one non-ASCII selection through the current binding. Applying a projection emits no edit; read-only/disposed updates are nonmutating. Compile the target control and execute one production-linked projection/selection fixture.
@@ -74,6 +76,7 @@ Purpose: Remove the concrete missing Android input prerequisite for AND-1.1–1.
 Deliverable: `native/android/sdk/src/main/kotlin/ac/edit/android/input/` and the relevant existing package/consumer, with focused selector `native/android/sdk/check-input.py edits`.
 Context: `native/android/sdk/; native/android/probe/control/; tests/native/android-control.py; generated Kotlin bindings from the current FFI`; read only the affected source symbols and active contract above.
 Dependencies: NAP-1.2.
+Entry receipts: [EAD-1.1](../dependency-closed-ui-20261025/01-android-toolchain.md).
 Independent work: Other dependency-ready parents in this source; unrelated platform work is controller-owned in separate files.
 Session scope: One input integration boundary, 30–45 minutes including checks; checkpoint partial production code before exceeding it.
 Acceptance: A committed insert/delete/replacement reaches the actual Session once and uses the existing history. A rejected/stale edit preserves document and selection without recursive native callbacks. The smallest actual control or real-binding edit fixture passes with nonzero counts; do not substitute source inspection for behavior.
@@ -98,6 +101,7 @@ Purpose: Remove the concrete missing Android input prerequisite for AND-1.1–1.
 Deliverable: `native/android/sdk/src/main/kotlin/ac/edit/android/input/` and the relevant existing package/consumer, with focused selector `native/android/sdk/check-input.py composition`.
 Context: `native/android/sdk/; native/android/probe/control/; tests/native/android-control.py; generated Kotlin bindings from the current FFI`; read only the affected source symbols and active contract above.
 Dependencies: NAP-1.3.
+Entry receipts: [EAD-1.1](../dependency-closed-ui-20261025/01-android-toolchain.md).
 Independent work: Other dependency-ready parents in this source; unrelated platform work is controller-owned in separate files.
 Session scope: One input integration boundary, 30–45 minutes including checks; checkpoint partial production code before exceeding it.
 Acceptance: One production-linked deterministic native protocol fixture demonstrates provisional text is not double committed, commit reaches one shared command and cancel restores the original state/selection. A relevant remote/stale-target path rejects safely. Compile the actual platform adapter; record toolkit/settings and distinguish deterministic protocol proof from target IME observations. Comprehensive target-runtime variants remain EDX-3.3.
@@ -114,3 +118,9 @@ Evidence: Separate configured progress for this file; changed production paths/i
 Handoff: Last implemented function, exact remaining code/command, source inputs, failure and changed-input next step.
 Blocked behavior: Leave this original boundary unchecked; name toolchain/host/API owner and exact resume condition, continue any ready sibling or exit BLOCKED. No unchanged retry.
 
+
+## Current prerequisite receipts
+
+Controller repair2026-10-25: the selected prerequisite owners below are queued before their consumers. Read only the named task/interface result from its exact progress file; source order alone is not proof. Missing planned paths/selectors owned by the selected task must be implemented, not treated as someone else's absent roadmap. No acceptance criterion is waived.
+
+- EAD-1.1: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/01-android-toolchain.progress.md`.

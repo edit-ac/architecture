@@ -12,7 +12,7 @@ Entry: consume current generated NativeSession/FFI and the existing prepared edi
 
 The user requested unblocking and continuing the existing editing/UI run on 2026-10-25. Implement the missing native owner instead of retrying the old absent-adapter gate. One guarded serial root-main runner, one parent per iteration. Inspect current exports before editing; reuse the single current Session/FFI command, history, prepared-target and durability owners. Existing review/probe code is a reference, not a production editor. Keep platform policy out of Rust; no second semantic/history/storage implementation, compatibility aliases or silent document conversion.
 
-Workers use the installed 0.11.0 read-only roadmap behavior: keep their checklist, status, implementation results and evidence in the configured separate progress file; do not edit this source or its requirements. Keep original IDs, acceptance and ownership. Implement at most one parent per 30–45-minute session including focused checks; checkpoint partial implementation with exact next function/command before the deadline. Do not turn a missing planned path or selector into an external blocker: creating it is the implementation task. Add only the smallest production-linked bootstrap/regression fixture necessary to prove the changed boundary. Comprehensive suites and new case matrices remain with EDX-3 and UI final testing, after functional delivery. Reuse compatible current receipts; no broad inventory, full engine suite or unchanged failed retry.
+Requirements and acceptance are read-only. Follow the runner-selected tracking mode for verified task checkbox/Status changes only; keep implementation results, hashes and detailed evidence in the separate progress file. Keep original IDs, acceptance and ownership. Implement at most one parent per 30–45-minute session including focused checks; checkpoint partial implementation with exact next function/command before the deadline. Do not turn a missing planned path or selector into an external blocker: creating it is the implementation task. Add only the smallest production-linked bootstrap/regression fixture necessary to prove the changed boundary. Comprehensive suites and new case matrices remain with EDX-3 and UI final testing, after functional delivery. Reuse compatible current receipts; no broad inventory, full engine suite or unchanged failed retry.
 
 Read owning AGENTS.md and only the current task's named specs/paths. Use deterministic real-engine fixtures and prepared/mock network transports. No AI/provider calls, secrets, paid inference, external provisioning, push, deployment or publication. Missing physical hardware is not a gate; required virtual/runtime proof remains unqualified until executed. Never represent compiler-only or host protocol proof as target IME/runtime qualification.
 
@@ -20,7 +20,7 @@ At every two completed parents and source boundary, preserve unrelated dirty byt
 
 ### Task NIP-1.1 — Create the production input host and bounded dispatcher
 
-- [ ] NIP-1.1 Create the production input host and bounded dispatcher.
+- [x] NIP-1.1 Create the production input host and bounded dispatcher.
 
 Purpose: Remove the concrete missing iOS input prerequisite for IOS-1.1–1.7; EDX-2.1.
 Deliverable: `native/ios/Sources/EditacIOS/input/` and the relevant existing package/consumer, with focused selector `native/ios/scripts/check.sh bootstrap`.
@@ -32,11 +32,11 @@ Acceptance: An ordinary production consumer creates and disposes one session-bac
 
 Implementation:
 
-- [ ] NIP-1.1-I1 Create native/ios/Sources/EditacIOS/input/ and wire UITextView/TextKit, UITextInput and the generated Swift NativeSession to one current Session lifecycle. Reuse review ownership/disposal patterns without presenting read-only review as editing. Keep generated bindings sourced from the current owner; initialize unimplemented capabilities honestly. Introduce `native/ios/scripts/check.sh bootstrap` (invoke Python or bash as appropriate), rejecting unknown selectors and zero cases. If a required local compiler is absent, first produce useful platform-independent integration source and a precise compiler requirement without claiming it builds.
+- [x] NIP-1.1-I1 Create native/ios/Sources/EditacIOS/input/ and wire UITextView/TextKit, UITextInput and the generated Swift NativeSession to one current Session lifecycle. Reuse review ownership/disposal patterns without presenting read-only review as editing. Keep generated bindings sourced from the current owner; initialize unimplemented capabilities honestly. Introduce `native/ios/scripts/check.sh bootstrap` (invoke Python or bash as appropriate), rejecting unknown selectors and zero cases. If a required local compiler is absent, first produce useful platform-independent integration source and a precise compiler requirement without claiming it builds.
 
 Validation:
 
-- [ ] NIP-1.1-V1 Run `native/ios/scripts/check.sh bootstrap` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
+- [x] NIP-1.1-V1 Run `native/ios/scripts/check.sh bootstrap` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
 
 Evidence: Separate configured progress for this file; changed production paths/interfaces, selector results, remaining qualification and original-owner mapping. No generated output in Git.
 Handoff: Last implemented function, exact remaining code/command, source inputs, failure and changed-input next step.
@@ -44,7 +44,7 @@ Blocked behavior: Leave this original boundary unchecked; name toolchain/host/AP
 
 ### Task NIP-1.2 — Project text and UTF-16 selection through one owner
 
-- [ ] NIP-1.2 Project text and UTF-16 selection through one owner.
+- [x] NIP-1.2 Project text and UTF-16 selection through one owner.
 
 Purpose: Remove the concrete missing iOS input prerequisite for IOS-1.1–1.7; EDX-2.1.
 Deliverable: `native/ios/Sources/EditacIOS/input/` and the relevant existing package/consumer, with focused selector `native/ios/scripts/check.sh projection`.
@@ -56,11 +56,11 @@ Acceptance: A normal mounted control consumes an actual shared projection and ro
 
 Implementation:
 
-- [ ] NIP-1.2-I1 Bind committed projection/results to native/ios/Sources/EditacIOS/input/; map native UTF-16 selection and focus through existing stable targets. Guard projection-origin callbacks and detach/disposal; read-only rejects before mutation. Do not duplicate text or selection semantics.
+- [x] NIP-1.2-I1 Bind committed projection/results to native/ios/Sources/EditacIOS/input/; map native UTF-16 selection and focus through existing stable targets. Guard projection-origin callbacks and detach/disposal; read-only rejects before mutation. Do not duplicate text or selection semantics.
 
 Validation:
 
-- [ ] NIP-1.2-V1 Run `native/ios/scripts/check.sh projection` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
+- [x] NIP-1.2-V1 Run `native/ios/scripts/check.sh projection` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
 
 Evidence: Separate configured progress for this file; changed production paths/interfaces, selector results, remaining qualification and original-owner mapping. No generated output in Git.
 Handoff: Last implemented function, exact remaining code/command, source inputs, failure and changed-input next step.
