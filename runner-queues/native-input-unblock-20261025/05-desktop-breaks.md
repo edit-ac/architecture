@@ -1,6 +1,6 @@
 # Close original platform break-routing acceptance
 
-Status: PLANNED
+Status: IN_PROGRESS
 
 ## Entry and ownership
 

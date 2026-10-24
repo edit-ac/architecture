@@ -1,6 +1,6 @@
 # Implement the missing Windows input owner
 
-Status: PLANNED
+Status: IN_PROGRESS
 
 ## Goal and bounded entry conditions
 
