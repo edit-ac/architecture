@@ -1,6 +1,6 @@
 # Deliver Vue controls composition
 
-Status: BLOCKED
+Status: IN_PROGRESS
 
 ## Goal and entry conditions
 
