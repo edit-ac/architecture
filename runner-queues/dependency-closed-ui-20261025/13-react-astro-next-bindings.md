@@ -1,6 +1,6 @@
 # Close BWF-1.1, BWF-1.2 prerequisite ownership
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; paths in task contracts are core-relative.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/13-react-astro-next-bindings.progress.md`.
@@ -23,7 +23,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task BWF-1.1 — Align the existing React and Astro bindings
 
-- [ ] BWF-1.1 Align the existing React and Astro bindings.
+- [x] BWF-1.1 Align the existing React and Astro bindings.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: packages/react/; packages/astro/.
@@ -37,11 +37,11 @@ Acceptance: Existing bindings expose shared save-state/transport configuration w
 
 Implementation:
 
-- [ ] BWF-1.1-I1 Align the existing React and Astro bindings. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BWF-1.1-I1 Align the existing React and Astro bindings. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BWF-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.1`: One existing packed binding consumer per package mounts/disposes with prepared save transport and no cross-editor state leakage. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BWF-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.1`: One existing packed binding consumer per package mounts/disposes with prepared save transport and no cross-editor state leakage. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -49,7 +49,7 @@ Blocked behavior: Leave BWF-1.1 unchecked; record owner, source/error fingerprin
 
 ### Task BWF-1.2 — Add the Next.js client boundary
 
-- [ ] BWF-1.2 Add the Next.js client boundary.
+- [x] BWF-1.2 Add the Next.js client boundary.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/web/nextjs/.
@@ -63,11 +63,11 @@ Acceptance: Client component wraps the React editor with SSR-safe lazy runtime l
 
 Implementation:
 
-- [ ] BWF-1.2-I1 Add the Next.js client boundary. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BWF-1.2-I1 Add the Next.js client boundary. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BWF-1.2-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.2`: Server render creates no editor/transport; one local client mount/save/route-dispose uses the actual binding. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BWF-1.2-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.2`: Server render creates no editor/transport; one local client mount/save/route-dispose uses the actual binding. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
