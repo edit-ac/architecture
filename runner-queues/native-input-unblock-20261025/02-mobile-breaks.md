@@ -1,6 +1,6 @@
 # Close original platform break-routing acceptance
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Entry and ownership
 
@@ -18,7 +18,7 @@ At every two completed parents and source boundary, preserve unrelated dirty byt
 
 ### Task EDX-2.1 — Expose iOS paragraph and in-paragraph break actions
 
-- [ ] EDX-2.1 Expose iOS paragraph and in-paragraph break actions.
+- [x] EDX-2.1 Expose iOS paragraph and in-paragraph break actions.
 
 Purpose: Make rich line breaks available through supported mobile input Existing owner: roadmaps16/31 input owners.
 Context: native/ios/; architecture/roadmaps/16-ios-sdk.md and 31-ios-extension-integration.md input owners; architecture/specs/editing-experience.md iOS row; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
@@ -29,11 +29,11 @@ Acceptance: Explicit in-paragraph break and supported hardware Shift+Return diff
 
 Implementation:
 
-- [ ] EDX-2.1-I1 Locate the existing UIKit input and command owners; expose the shared break action through mobile/accessibility controls and route supported hardware intent without duplicate commits.
+- [x] EDX-2.1-I1 Locate the existing UIKit input and command owners; expose the shared break action through mobile/accessibility controls and route supported hardware intent without duplicate commits.
 
 Validation:
 
-- [ ] EDX-2.1-V1 Run an existing bounded iOS input/command compiler or simulator selector on the provisioned toolchain, one focused supported path and caret sentinel. Budget 5 minutes; comprehensive virtual rows remain EDX-3.3. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
+- [x] EDX-2.1-V1 Run an existing bounded iOS input/command compiler or simulator selector on the provisioned toolchain, one focused supported path and caret sentinel. Budget 5 minutes; comprehensive virtual rows remain EDX-3.3. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
 
 Evidence: Separate ignored progress for this source, with task ID, changed paths, focused results, reused evidence and remaining limitations. No generated evidence in Git.
 Handoff: Last finished substep, affected symbol/interface, exact failing input or missing prerequisite and next bounded action.
@@ -41,7 +41,7 @@ Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and chan
 
 ### Task EDX-2.2 — Route Android IME and keyboard break intents
 
-- [ ] EDX-2.2 Route Android IME and keyboard break intents.
+- [x] EDX-2.2 Route Android IME and keyboard break intents.
 
 Purpose: Avoid treating every incoming LF as a paragraph split Existing owner: roadmaps17/32 input owners.
 Context: native/android/; architecture/roadmaps/17-android-sdk.md and 32-android-extension-integration.md input owners; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
@@ -52,11 +52,11 @@ Acceptance: InputConnection composition/commitText/batch edits and action keys r
 
 Implementation:
 
-- [ ] EDX-2.2-I1 Repair existing InputConnection intent routing and expose a named shared hard-break action without introducing another semantic/history implementation.
+- [x] EDX-2.2-I1 Repair existing InputConnection intent routing and expose a named shared hard-break action without introducing another semantic/history implementation.
 
 Validation:
 
-- [ ] EDX-2.2-V1 Select existing bounded Android input/command test or compiler check on the provisioned emulator/toolchain. Budget 5 minutes; actual IME/runtime matrix remains EDX-3.3. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
+- [x] EDX-2.2-V1 Select existing bounded Android input/command test or compiler check on the provisioned emulator/toolchain. Budget 5 minutes; actual IME/runtime matrix remains EDX-3.3. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
 
 Evidence: Separate ignored progress for this source, with task ID, changed paths, focused results, reused evidence and remaining limitations. No generated evidence in Git.
 Handoff: Last finished substep, affected symbol/interface, exact failing input or missing prerequisite and next bounded action.
