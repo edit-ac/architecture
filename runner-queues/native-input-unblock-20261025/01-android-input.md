@@ -1,6 +1,6 @@
 # Implement the missing Android input owner
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal and bounded entry conditions
 
@@ -70,7 +70,7 @@ Blocked behavior: Leave this original boundary unchecked; name toolchain/host/AP
 
 ### Task NAP-1.3 — Route committed text edits and native replacements
 
-- [ ] NAP-1.3 Route committed text edits and native replacements.
+- [x] NAP-1.3 Route committed text edits and native replacements.
 
 Purpose: Remove the concrete missing Android input prerequisite for AND-1.1–1.7; EDX-2.2.
 Deliverable: `native/android/sdk/src/main/kotlin/ac/edit/android/input/` and the relevant existing package/consumer, with focused selector `native/android/sdk/check-input.py edits`.
@@ -83,11 +83,11 @@ Acceptance: A committed insert/delete/replacement reaches the actual Session onc
 
 Implementation:
 
-- [ ] NAP-1.3-I1 Route insert, delete and replacement callbacks from native editable control and InputConnection over the generated Kotlin/JNA NativeSession through existing prepared command admission. Capture target and selection before async/native work, apply the shared command result and restore selection/focus. Reject stale/read-only edits before mutation. Native temporary buffers are projections only.
+- [x] NAP-1.3-I1 Route insert, delete and replacement callbacks from native editable control and InputConnection over the generated Kotlin/JNA NativeSession through existing prepared command admission. Capture target and selection before async/native work, apply the shared command result and restore selection/focus. Reject stale/read-only edits before mutation. Native temporary buffers are projections only.
 
 Validation:
 
-- [ ] NAP-1.3-V1 Run `native/android/sdk/check-input.py edits` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
+- [x] NAP-1.3-V1 Run `native/android/sdk/check-input.py edits` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
 
 Evidence: Separate configured progress for this file; changed production paths/interfaces, selector results, remaining qualification and original-owner mapping. No generated output in Git.
 Handoff: Last implemented function, exact remaining code/command, source inputs, failure and changed-input next step.
@@ -95,7 +95,7 @@ Blocked behavior: Leave this original boundary unchecked; name toolchain/host/AP
 
 ### Task NAP-1.4 — Integrate marked text and composition ownership
 
-- [ ] NAP-1.4 Integrate marked text and composition ownership.
+- [x] NAP-1.4 Integrate marked text and composition ownership.
 
 Purpose: Remove the concrete missing Android input prerequisite for AND-1.1–1.7; EDX-2.2.
 Deliverable: `native/android/sdk/src/main/kotlin/ac/edit/android/input/` and the relevant existing package/consumer, with focused selector `native/android/sdk/check-input.py composition`.
@@ -108,11 +108,11 @@ Acceptance: One production-linked deterministic native protocol fixture demonstr
 
 Implementation:
 
-- [ ] NAP-1.4-I1 Integrate platform marked/composing range, commit/cancel, batch edits and OS replacement lifecycle at native/android/sdk/src/main/kotlin/ac/edit/android/input/. Preserve provisional input outside shared committed state, resolve captured targets once and use the existing overlap policy. Expose platform/off/custom spelling and independent autocorrection where supported; report coupled or unsupported traits. Use existing platform policy, not a new engine semantic.
+- [x] NAP-1.4-I1 Integrate platform marked/composing range, commit/cancel, batch edits and OS replacement lifecycle at native/android/sdk/src/main/kotlin/ac/edit/android/input/. Preserve provisional input outside shared committed state, resolve captured targets once and use the existing overlap policy. Expose platform/off/custom spelling and independent autocorrection where supported; report coupled or unsupported traits. Use existing platform policy, not a new engine semantic.
 
 Validation:
 
-- [ ] NAP-1.4-V1 Run `native/android/sdk/check-input.py composition` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
+- [x] NAP-1.4-V1 Run `native/android/sdk/check-input.py composition` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
 
 Evidence: Separate configured progress for this file; changed production paths/interfaces, selector results, remaining qualification and original-owner mapping. No generated output in Git.
 Handoff: Last implemented function, exact remaining code/command, source inputs, failure and changed-input next step.
