@@ -1,6 +1,6 @@
 # Implement the missing iOS input owner
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal and bounded entry conditions
 
@@ -68,7 +68,7 @@ Blocked behavior: Leave this original boundary unchecked; name toolchain/host/AP
 
 ### Task NIP-1.3 — Route committed text edits and native replacements
 
-- [ ] NIP-1.3 Route committed text edits and native replacements.
+- [x] NIP-1.3 Route committed text edits and native replacements.
 
 Purpose: Remove the concrete missing iOS input prerequisite for IOS-1.1–1.7; EDX-2.1.
 Deliverable: `native/ios/Sources/EditacIOS/input/` and the relevant existing package/consumer, with focused selector `native/ios/scripts/check.sh edits`.
@@ -80,11 +80,11 @@ Acceptance: A committed insert/delete/replacement reaches the actual Session onc
 
 Implementation:
 
-- [ ] NIP-1.3-I1 Route insert, delete and replacement callbacks from UITextView/TextKit, UITextInput and the generated Swift NativeSession through existing prepared command admission. Capture target and selection before async/native work, apply the shared command result and restore selection/focus. Reject stale/read-only edits before mutation. Native temporary buffers are projections only.
+- [x] NIP-1.3-I1 Route insert, delete and replacement callbacks from UITextView/TextKit, UITextInput and the generated Swift NativeSession through existing prepared command admission. Capture target and selection before async/native work, apply the shared command result and restore selection/focus. Reject stale/read-only edits before mutation. Native temporary buffers are projections only.
 
 Validation:
 
-- [ ] NIP-1.3-V1 Run `native/ios/scripts/check.sh edits` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
+- [x] NIP-1.3-V1 Run `native/ios/scripts/check.sh edits` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
 
 Evidence: Separate configured progress for this file; changed production paths/interfaces, selector results, remaining qualification and original-owner mapping. No generated output in Git.
 Handoff: Last implemented function, exact remaining code/command, source inputs, failure and changed-input next step.
@@ -92,7 +92,7 @@ Blocked behavior: Leave this original boundary unchecked; name toolchain/host/AP
 
 ### Task NIP-1.4 — Integrate marked text and composition ownership
 
-- [ ] NIP-1.4 Integrate marked text and composition ownership.
+- [x] NIP-1.4 Integrate marked text and composition ownership.
 
 Purpose: Remove the concrete missing iOS input prerequisite for IOS-1.1–1.7; EDX-2.1.
 Deliverable: `native/ios/Sources/EditacIOS/input/` and the relevant existing package/consumer, with focused selector `native/ios/scripts/check.sh composition`.
@@ -104,11 +104,11 @@ Acceptance: One production-linked deterministic native protocol fixture demonstr
 
 Implementation:
 
-- [ ] NIP-1.4-I1 Integrate platform marked/composing range, commit/cancel, batch edits and OS replacement lifecycle at native/ios/Sources/EditacIOS/input/. Preserve provisional input outside shared committed state, resolve captured targets once and use the existing overlap policy. Expose platform/off/custom spelling and independent autocorrection where supported; report coupled or unsupported traits. Use existing platform policy, not a new engine semantic.
+- [x] NIP-1.4-I1 Integrate platform marked/composing range, commit/cancel, batch edits and OS replacement lifecycle at native/ios/Sources/EditacIOS/input/. Preserve provisional input outside shared committed state, resolve captured targets once and use the existing overlap policy. Expose platform/off/custom spelling and independent autocorrection where supported; report coupled or unsupported traits. Use existing platform policy, not a new engine semantic.
 
 Validation:
 
-- [ ] NIP-1.4-V1 Run `native/ios/scripts/check.sh composition` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
+- [x] NIP-1.4-V1 Run `native/ios/scripts/check.sh composition` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
 
 Evidence: Separate configured progress for this file; changed production paths/interfaces, selector results, remaining qualification and original-owner mapping. No generated output in Git.
 Handoff: Last implemented function, exact remaining code/command, source inputs, failure and changed-input next step.
