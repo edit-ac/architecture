@@ -23,7 +23,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task BSC-1.1 — Map existing interfaces and package ownership
 
-- [ ] BSC-1.1 Map existing interfaces and package ownership.
+- [x] BSC-1.1 Map existing interfaces and package ownership.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/contracts/ownership.md; crates/editac-session/; services/document-store/; packages/web/.
@@ -35,11 +35,11 @@ Acceptance: Every logical operation has one existing owner, actual source path, 
 
 Implementation:
 
-- [ ] BSC-1.1-I1 Map existing interfaces and package ownership. Reuse the existing owner and wire the minimum usable consumer at the named paths.
+- [x] BSC-1.1-I1 Map existing interfaces and package ownership. Reuse the existing owner and wire the minimum usable consumer at the named paths.
 
 Validation:
 
-- [ ] BSC-1.1-V1 Direct bounded contract check: Compare the ownership map to named existing source exports and record gaps; no code suite required. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
+- [x] BSC-1.1-V1 Direct bounded contract check: Compare the ownership map to named existing source exports and record gaps; no code suite required. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -47,7 +47,7 @@ Blocked behavior: Leave BSC-1.1 unchecked; record owner, source/error fingerprin
 
 ### Task BSC-1.2 — Author the HTTP and DTO contract
 
-- [ ] BSC-1.2 Author the HTTP and DTO contract.
+- [x] BSC-1.2 Author the HTTP and DTO contract.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/contracts/openapi.yaml; sdk/contracts/errors.md.
@@ -59,11 +59,11 @@ Acceptance: One authored HTTP schema defines operations, binary base64 fields, i
 
 Implementation:
 
-- [ ] BSC-1.2-I1 Author the HTTP and DTO contract. Reuse the existing owner and wire the minimum usable consumer at the named paths.
+- [x] BSC-1.2-I1 Author the HTTP and DTO contract. Reuse the existing owner and wire the minimum usable consumer at the named paths.
 
 Validation:
 
-- [ ] BSC-1.2-V1 Direct bounded contract check: Lint the authored schema locally and inspect one prepared checkpoint request/response against it. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
+- [x] BSC-1.2-V1 Direct bounded contract check: Lint the authored schema locally and inspect one prepared checkpoint request/response against it. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
