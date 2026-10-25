@@ -23,7 +23,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task BTS-1.1 — Implement Node DTOs and injected HTTP transport
 
-- [ ] BTS-1.1 Implement Node DTOs and injected HTTP transport.
+- [x] BTS-1.1 Implement Node DTOs and injected HTTP transport.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/typescript/.
@@ -37,11 +37,11 @@ Acceptance: Typed client validates runtime responses, binary fields and JS-safe 
 
 Implementation:
 
-- [ ] BTS-1.1-I1 Implement Node DTOs and injected HTTP transport. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BTS-1.1-I1 Implement Node DTOs and injected HTTP transport. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BTS-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BTS-1.1`: Compile one consumer and round-trip the binary/unknown-field fixture through prepared fetch responses. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BTS-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BTS-1.1`: Compile one consumer and round-trip the binary/unknown-field fixture through prepared fetch responses. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -49,7 +49,7 @@ Blocked behavior: Leave BTS-1.1 unchecked; record owner, source/error fingerprin
 
 ### Task BTS-1.2 — Implement Node save and commit-unknown workflows
 
-- [ ] BTS-1.2 Implement Node save and commit-unknown workflows.
+- [x] BTS-1.2 Implement Node save and commit-unknown workflows.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/typescript/.
@@ -63,11 +63,11 @@ Acceptance: Checkpoint/update operations, durable CAS and receipt lookup retain 
 
 Implementation:
 
-- [ ] BTS-1.2-I1 Implement Node save and commit-unknown workflows. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BTS-1.2-I1 Implement Node save and commit-unknown workflows. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BTS-1.2-V1 Run `node scripts/sdk-adapter-delivery.mjs BTS-1.2`: One prepared canceled save resolves by original operation key and one stale expected revision returns a typed conflict. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BTS-1.2-V1 Run `node scripts/sdk-adapter-delivery.mjs BTS-1.2`: One prepared canceled save resolves by original operation key and one stale expected revision returns a typed conflict. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
