@@ -55,7 +55,7 @@ Blocked behavior: Record `BLOCKED ES-1.1` only with owner, fingerprint and exact
 
 ### Task ES-1.2 — Guard optional browser segmentation and movement repair
 
-- [ ] ES-1.2 Guard optional browser segmentation and movement repair.
+- [x] ES-1.2 Guard optional browser segmentation and movement repair.
 
 Purpose: A missing or differing browser segmentation API must not throw or make an unsafe semantic cut.
 Deliverable: Capability-checked selection repair with native-navigation fallback and one documented engine-authoritative cut policy.
@@ -69,12 +69,12 @@ Acceptance: Missing Intl.Segmenter or Selection.modify retains usable native mov
 
 Implementation:
 
-- [ ] ES-1.2-I1 Guard each optional API and isolate exception-safe fallback in the existing selection repair owner.
-- [ ] ES-1.2-I2 Reuse the existing engine helper/prepared-command boundary where mutation admission needs it; expose a narrow read-only query only if visual repair demonstrably needs one; report unqualified visual repair capabilities explicitly rather than claiming browser versions agree.
+- [x] ES-1.2-I1 Guard each optional API and isolate exception-safe fallback in the existing selection repair owner.
+- [x] ES-1.2-I2 Reuse the existing engine helper/prepared-command boundary where mutation admission needs it; expose a narrow read-only query only if visual repair demonstrably needs one; report unqualified visual repair capabilities explicitly rather than claiming browser versions agree.
 
 Validation:
 
-- [ ] ES-1.2-V1 From core run `npm run typecheck --workspace packages/web` and the existing `npm run test:interactions -- --group navigation` only if affected evidence is invalidated. Use one prepared manual missing-API fixture in the existing mounted surface; final automated variants belong to ES-4.1. Budget 5 minutes after current build admission.
+- [x] ES-1.2-V1 From core run `npm run typecheck --workspace packages/web` and the existing `npm run test:interactions -- --group navigation` only if affected evidence is invalidated. Use one prepared manual missing-API fixture in the existing mounted surface; final automated variants belong to ES-4.1. Budget 5 minutes after current build admission.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/tracking-repair/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
