@@ -1,6 +1,6 @@
 # Close BSC-1.1, BSC-1.2, BSC-1.3, BSC-1.4, BSC-1.5, BSC-1.6, BSC-1.7, BSC-1.8 prerequisite ownership
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; paths in task contracts are core-relative.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/10-shared-sdk-contracts.progress.md`.
@@ -167,7 +167,7 @@ Blocked behavior: Leave BSC-1.6 unchecked; record owner, source/error fingerprin
 
 ### Task BSC-1.7 — Add the minimal offline delivery oracle
 
-- [ ] BSC-1.7 Add the minimal offline delivery oracle.
+- [x] BSC-1.7 Add the minimal offline delivery oracle.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: fixtures/sdk-adapters/current/; scripts/sdk-adapter-delivery.mjs.
@@ -179,11 +179,11 @@ Acceptance: A tiny current-format binary/unknown-data/receipt fixture and select
 
 Implementation:
 
-- [ ] BSC-1.7-I1 Add the minimal offline delivery oracle. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BSC-1.7-I1 Add the minimal offline delivery oracle. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BSC-1.7-V1 Run `node scripts/sdk-adapter-delivery.mjs BSC-1.7`: Run node scripts/sdk-adapter-delivery.mjs BSC-1.7 with no network; one known fixture passes and one unknown selector rejects. This small data-loss guard is the early regression exception; broad suite development is deferred. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BSC-1.7-V1 Run `node scripts/sdk-adapter-delivery.mjs BSC-1.7`: Run node scripts/sdk-adapter-delivery.mjs BSC-1.7 with no network; one known fixture passes and one unknown selector rejects. This small data-loss guard is the early regression exception; broad suite development is deferred. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -191,7 +191,7 @@ Blocked behavior: Leave BSC-1.7 unchecked; record owner, source/error fingerprin
 
 ### Task BSC-1.8 — Publish ownership and support manifests
 
-- [ ] BSC-1.8 Publish ownership and support manifests.
+- [x] BSC-1.8 Publish ownership and support manifests.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/contracts/support.json; sdk/contracts/adoption.md.
@@ -203,11 +203,11 @@ Acceptance: Every planned package has an owner role, capability flags, target ru
 
 Implementation:
 
-- [ ] BSC-1.8-I1 Publish ownership and support manifests. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BSC-1.8-I1 Publish ownership and support manifests. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BSC-1.8-V1 Run `node scripts/sdk-adapter-delivery.mjs BSC-1.8`: Validate authored declarations with one named local manifest selector; every requested language and platform maps to a planned owner. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BSC-1.8-V1 Run `node scripts/sdk-adapter-delivery.mjs BSC-1.8`: Validate authored declarations with one named local manifest selector; every requested language and platform maps to a planned owner. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
