@@ -19,6 +19,25 @@ LAUNCH_SPEC.loader.exec_module(LAUNCHER)
 
 
 class GuardTests(unittest.TestCase):
+    def test_read_only_source_uses_current_progress_completion(self):
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory).resolve()
+            source, progress = workspace / "source.md", workspace / "progress.md"
+            source.write_text("- [ ] ES-1.1 original acceptance\n")
+            progress.write_text("Status: IN_PROGRESS\n## History\nStatus: COMPLETE\n")
+            event = dict(runId="owned", type="runner.turn_finished", role="worker", code=0,
+                         roadmap=str(source), progressFile=str(progress), iteration=1)
+            guard = GUARD.CompletedSourceGuard()
+            self.assertIsNone(guard.inspect(event, "owned", workspace))
+            self.assertIsNone(guard.inspect(event | dict(iteration=2), "owned", workspace))
+            progress.write_text("# Progress\n\nStatus: COMPLETE\n\n## Evidence\nPassed\n")
+            completed = event | dict(iteration=3)
+            self.assertIsNone(guard.inspect(completed, "owned", workspace))
+            self.assertIsNone(guard.inspect(completed, "owned", workspace))
+            self.assertEqual(guard.inspect(event | dict(iteration=4), "owned", workspace), progress)
+            source.write_text("- [ ] ES-1.1 revised acceptance\n")
+            self.assertIsNone(guard.inspect(event | dict(iteration=5), "owned", workspace))
+
     def test_real_acceptance_amendment_and_duplicate_event_are_not_loops(self):
         with tempfile.TemporaryDirectory() as directory:
             workspace = Path(directory).resolve()
