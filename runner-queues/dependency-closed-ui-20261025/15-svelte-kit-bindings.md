@@ -1,6 +1,6 @@
 # Close BWF-1.5, BWF-1.6 prerequisite ownership
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; paths in task contracts are core-relative.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/15-svelte-kit-bindings.progress.md`.
@@ -23,7 +23,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task BWF-1.5 — Add the Svelte action/component adapter
 
-- [ ] BWF-1.5 Add the Svelte action/component adapter.
+- [x] BWF-1.5 Add the Svelte action/component adapter.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/web/svelte/.
@@ -37,11 +37,11 @@ Acceptance: Lifecycle cleanup, stores and form hooks wrap the imperative SDK wit
 
 Implementation:
 
-- [ ] BWF-1.5-I1 Add the Svelte action/component adapter. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BWF-1.5-I1 Add the Svelte action/component adapter. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BWF-1.5-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.5`: One local two-editor mount/update/dispose fixture saves only the selected editor and restores its exact checkpoint. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BWF-1.5-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.5`: One local two-editor mount/update/dispose fixture saves only the selected editor and restores its exact checkpoint. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -49,7 +49,7 @@ Blocked behavior: Leave BWF-1.5 unchecked; record owner, source/error fingerprin
 
 ### Task BWF-1.6 — Add SvelteKit client/server boundaries
 
-- [ ] BWF-1.6 Add SvelteKit client/server boundaries.
+- [x] BWF-1.6 Add SvelteKit client/server boundaries.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/web/sveltekit/.
@@ -63,11 +63,11 @@ Acceptance: Browser binding reuses Svelte and server handlers use the common aut
 
 Implementation:
 
-- [ ] BWF-1.6-I1 Add SvelteKit client/server boundaries. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BWF-1.6-I1 Add SvelteKit client/server boundaries. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BWF-1.6-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.6`: One SSR/hydration/route flow with prepared endpoint preserves initialized-empty identity and disposes owned work. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BWF-1.6-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.6`: One SSR/hydration/route flow with prepared endpoint preserves initialized-empty identity and disposes owned work. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
