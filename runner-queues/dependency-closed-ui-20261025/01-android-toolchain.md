@@ -1,6 +1,6 @@
 # Prepare local build prerequisites
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: root edit-ac, source paths identify the owning repository. Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/01-android-toolchain.progress.md`.
 
@@ -16,7 +16,7 @@ Commit only validated owned source after two parents and source boundaries under
 
 ### Task EAD-1.1 — Prepare the existing Android build profile
 
-- [ ] EAD-1.1 Prepare the existing Android build profile.
+- [x] EAD-1.1 Prepare the existing Android build profile.
 
 Purpose: Replace a predictable missing-toolchain gate with owned reproducible setup.
 Deliverable: native/android/probe/control/; tests/native/android-control.py.
@@ -28,11 +28,11 @@ Acceptance: Compile the existing narrow Android probe/consumer with the current 
 
 Implementation:
 
-- [ ] EAD-1.1-I1 Reuse the installed SDK/API36/JDK and the actual Gradle version required by native/android/probe/control lockfiles; discover an existing cached launcher or install that local toolchain. Pin the launcher and SDK paths, single-worker build settings and exact ABI. Do not treat missing shell PATH commands as missing installed caches.
+- [x] EAD-1.1-I1 Reuse the installed SDK/API36/JDK and the actual Gradle version required by native/android/probe/control lockfiles; discover an existing cached launcher or install that local toolchain. Pin the launcher and SDK paths, single-worker build settings and exact ABI. Do not treat missing shell PATH commands as missing installed caches.
 
 Validation:
 
-- [ ] EAD-1.1-V1 Execute only the concrete bootstrap in Acceptance, budget5minutes once installation finishes. Require real runtime/tool provenance, meaningful nonzero pass counts and zero unresolved failures/required skips; report installation/compile failures honestly. Keep receipt and downloaded outputs ignored.
+- [x] EAD-1.1-V1 Execute only the concrete bootstrap in Acceptance, budget5minutes once installation finishes. Require real runtime/tool provenance, meaningful nonzero pass counts and zero unresolved failures/required skips; report installation/compile failures honestly. Keep receipt and downloaded outputs ignored.
 
 Evidence: Configured progress, authored setup/config source, exact commands/version/digests/counts and cleanup. No credentials or compiled images in Git.
 Handoff: Last successful installation/compiler step, paths and exact next command.
