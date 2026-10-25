@@ -1,6 +1,6 @@
 # Close BTS-1.1, BTS-1.2, BTS-1.6, BTS-1.7, BTS-1.8 prerequisite ownership
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; paths in task contracts are core-relative.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/12-node-browser-orchestration.progress.md`.
@@ -127,7 +127,7 @@ Blocked behavior: Leave BTS-1.7 unchecked; record owner, source/error fingerprin
 
 ### Task BTS-1.8 — Connect browser autosave and optional sync orchestration
 
-- [ ] BTS-1.8 Connect browser autosave and optional sync orchestration.
+- [x] BTS-1.8 Connect browser autosave and optional sync orchestration.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: packages/web/; sdk/typescript/browser/.
@@ -141,11 +141,11 @@ Acceptance: Existing editor lifetime maps local flush, remote checkpoint save an
 
 Implementation:
 
-- [ ] BTS-1.8-I1 Connect browser autosave and optional sync orchestration. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BTS-1.8-I1 Connect browser autosave and optional sync orchestration. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BTS-1.8-V1 Run `node scripts/sdk-adapter-delivery.mjs BTS-1.8`: One prepared debounced-save plus later-edit fixture shows receipts cover only captured updates; dispose cancels orchestration and retains recovery. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BTS-1.8-V1 Run `node scripts/sdk-adapter-delivery.mjs BTS-1.8`: One prepared debounced-save plus later-edit fixture shows receipts cover only captured updates; dispose cancels orchestration and retains recovery. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
