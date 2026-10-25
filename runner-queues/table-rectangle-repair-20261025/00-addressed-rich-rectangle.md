@@ -1,6 +1,6 @@
 # Addressed rich table rectangle prerequisite
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal and execution boundary
 
@@ -14,7 +14,7 @@ Final regression/cross-runtime qualification stays with the existing DRA-1.2-V1/
 
 ### Task DTR-1.1 — Replace an addressed rich rectangle through shared preparation
 
-- [ ] DTR-1.1 Deliver and validate the public current-format addressed rich rectangle operation needed by UDM-1.9.
+- [x] DTR-1.1 Deliver and validate the public current-format addressed rich rectangle operation needed by UDM-1.9.
 
 Purpose: Rich paste can replace selected cell contents without replacing the table atom, losing independent cells or introducing JavaScript mutation semantics.
 Deliverable: One prepared Rust semantic operation and its existing shared interchange/Session/WASM/public TypeScript command bindings, plus a narrow deterministic production-linked selector proving the usable public operation. The DOM clipboard integration remains UDM-1.9.
@@ -26,13 +26,13 @@ Acceptance: A public current-format command captures stable table/row/column/cel
 
 Implementation:
 
-- [ ] DTR-1.1-I1 Implement the current addressed rich rectangle command using disposable shared Rust preparation and existing cell/block/mark admission. Extend the authoritative addressed admission contract only as necessary and expose it through the existing shared interchange, Session/WASM/public TypeScript paths. Keep old experimental tuple handling out of this current operation; preserve unsupported data and exact refusal before mutation.
+- [x] DTR-1.1-I1 Implement the current addressed rich rectangle command using disposable shared Rust preparation and existing cell/block/mark admission. Extend the authoritative addressed admission contract only as necessary and expose it through the existing shared interchange, Session/WASM/public TypeScript paths. Keep old experimental tuple handling out of this current operation; preserve unsupported data and exact refusal before mutation.
 
-- [ ] DTR-1.1-I2 Add the smallest production-linked focused selector `node scripts/addressed-rich-rectangle-delivery.mjs DTR-1.1` or an explicitly documented existing equivalent. Reuse existing synthetic rich table fixtures and compiler/build helpers; compile one public TypeScript command consumer and exercise the actual current rebuilt WASM/engine binding. Record produced source/artifact pins and the exact public payload/result UDM-1.9 should consume. Do not implement the mounted clipboard presenter in this repair task.
+- [x] DTR-1.1-I2 Add the smallest production-linked focused selector `node scripts/addressed-rich-rectangle-delivery.mjs DTR-1.1` or an explicitly documented existing equivalent. Reuse existing synthetic rich table fixtures and compiler/build helpers; compile one public TypeScript command consumer and exercise the actual current rebuilt WASM/engine binding. Record produced source/artifact pins and the exact public payload/result UDM-1.9 should consume. Do not implement the mounted clipboard presenter in this repair task.
 
 Validation:
 
-- [ ] DTR-1.1-V1 Run the registered focused selector: one marked multi-block rectangle replaces selected cells, retains a non-target sentinel and stable table/axis identities, returns a usable cell selection, and survives undo/redo plus checkpoint reopen; one stale target or protected-cell refusal proves exact nonmutation. Execute one applicable existing focused Rust history/concurrency selection for the changed owner; reuse compatible prerequisite evidence. Expected runtime 1–5 minutes excluding a declared first rebuild. Record compilations and actual runtime cases separately with nonzero executed/passed counts and zero unresolved failures/required skips. Stop after the affected proof passes; comprehensive matrices remain with final owners.
+- [x] DTR-1.1-V1 Run the registered focused selector: one marked multi-block rectangle replaces selected cells, retains a non-target sentinel and stable table/axis identities, returns a usable cell selection, and survives undo/redo plus checkpoint reopen; one stale target or protected-cell refusal proves exact nonmutation. Execute one applicable existing focused Rust history/concurrency selection for the changed owner; reuse compatible prerequisite evidence. Expected runtime 1–5 minutes excluding a declared first rebuild. Record compilations and actual runtime cases separately with nonzero executed/passed counts and zero unresolved failures/required skips. Stop after the affected proof passes; comprehensive matrices remain with final owners.
 
 Evidence: Separate progress/ignored artifacts record original blocker fingerprint, actual public payload/API, source and executed artifact pins, exact commands, runtime versions, nonzero executed/passed/failed/skipped counts, compatible reuse, preservation checks and remaining qualification. Generated logs/binaries stay ignored. Commit only validated owned source under `.roadmap-coordination/integration.lock` at this source boundary; stage explicit paths or owned hunks, never other tasks' dirty work.
 Handoff: Name the public capture/admission operation and minimal typed invocation, exact passing proof and relevant pins for the next UDM-1.9 worker. Leave broader DRA tasks unchecked and the original UDM block open. The next source must inspect this receipt before retrying UDM-1.9; no unchanged blocker retry.
