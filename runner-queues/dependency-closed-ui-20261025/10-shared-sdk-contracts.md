@@ -71,7 +71,7 @@ Blocked behavior: Leave BSC-1.2 unchecked; record owner, source/error fingerprin
 
 ### Task BSC-1.3 — Specify checkpoint persistence and conflicts
 
-- [ ] BSC-1.3 Specify checkpoint persistence and conflicts.
+- [x] BSC-1.3 Specify checkpoint persistence and conflicts.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/contracts/checkpoint.md; sdk/contracts/receipts.md.
@@ -83,11 +83,11 @@ Acceptance: Create/load/save/initialized-empty and expected-revision CAS have ex
 
 Implementation:
 
-- [ ] BSC-1.3-I1 Specify checkpoint persistence and conflicts. Reuse the existing owner and wire the minimum usable consumer at the named paths.
+- [x] BSC-1.3-I1 Specify checkpoint persistence and conflicts. Reuse the existing owner and wire the minimum usable consumer at the named paths.
 
 Validation:
 
-- [ ] BSC-1.3-V1 Direct bounded contract check: Walk one prepared two-writer save/conflict transcript against the contract and independent expected revision values. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
+- [x] BSC-1.3-V1 Direct bounded contract check: Walk one prepared two-writer save/conflict transcript against the contract and independent expected revision values. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -95,7 +95,7 @@ Blocked behavior: Leave BSC-1.3 unchecked; record owner, source/error fingerprin
 
 ### Task BSC-1.4 — Specify collaborative updates and mode transitions
 
-- [ ] BSC-1.4 Specify collaborative updates and mode transitions.
+- [x] BSC-1.4 Specify collaborative updates and mode transitions.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/contracts/collaboration.md.
@@ -107,11 +107,11 @@ Acceptance: Append/resume/commit lookup, deduplication floors and checkpoint-to-
 
 Implementation:
 
-- [ ] BSC-1.4-I1 Specify collaborative updates and mode transitions. Reuse the existing owner and wire the minimum usable consumer at the named paths.
+- [x] BSC-1.4-I1 Specify collaborative updates and mode transitions. Reuse the existing owner and wire the minimum usable consumer at the named paths.
 
 Validation:
 
-- [ ] BSC-1.4-V1 Direct bounded contract check: Inspect a prepared duplicate update, lost reply and stale checkpoint transcript without contacting a host. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
+- [x] BSC-1.4-V1 Direct bounded contract check: Inspect a prepared duplicate update, lost reply and stale checkpoint transcript without contacting a host. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
