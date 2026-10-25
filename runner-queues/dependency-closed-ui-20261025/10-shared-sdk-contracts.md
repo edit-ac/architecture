@@ -119,7 +119,7 @@ Blocked behavior: Leave BSC-1.4 unchecked; record owner, source/error fingerprin
 
 ### Task BSC-1.5 — Specify the private semantic admission bridge
 
-- [ ] BSC-1.5 Specify the private semantic admission bridge.
+- [x] BSC-1.5 Specify the private semantic admission bridge.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/contracts/admission.md; sdk/contracts/openapi.yaml.
@@ -131,11 +131,11 @@ Acceptance: A staged Rust result binds predecessor, identity and exact input dig
 
 Implementation:
 
-- [ ] BSC-1.5-I1 Specify the private semantic admission bridge. Reuse the existing owner and wire the minimum usable consumer at the named paths.
+- [x] BSC-1.5-I1 Specify the private semantic admission bridge. Reuse the existing owner and wire the minimum usable consumer at the named paths.
 
 Validation:
 
-- [ ] BSC-1.5-V1 Direct bounded contract check: Trace one validation/CAS race and one unavailable companion outcome; verify neither can return committed. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
+- [x] BSC-1.5-V1 Direct bounded contract check: Trace one validation/CAS race and one unavailable companion outcome; verify neither can return committed. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -143,7 +143,7 @@ Blocked behavior: Leave BSC-1.5 unchecked; record owner, source/error fingerprin
 
 ### Task BSC-1.6 — Specify web and native adapter lifetimes
 
-- [ ] BSC-1.6 Specify web and native adapter lifetimes.
+- [x] BSC-1.6 Specify web and native adapter lifetimes.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/contracts/lifecycle.md; sdk/contracts/capabilities.schema.json.
@@ -155,11 +155,11 @@ Acceptance: Mount/open/save/flush/dispose, SSR, form reset, native suspension, c
 
 Implementation:
 
-- [ ] BSC-1.6-I1 Specify web and native adapter lifetimes. Reuse the existing owner and wire the minimum usable consumer at the named paths.
+- [x] BSC-1.6-I1 Specify web and native adapter lifetimes. Reuse the existing owner and wire the minimum usable consumer at the named paths.
 
 Validation:
 
-- [ ] BSC-1.6-V1 Direct bounded contract check: Compare one browser unmount and one native suspension transcript with existing Session lifecycle states. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
+- [x] BSC-1.6-V1 Direct bounded contract check: Compare one browser unmount and one native suspension transcript with existing Session lifecycle states. Budget: 1–3 minutes; record the exact local command or inspected prepared transcript.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
