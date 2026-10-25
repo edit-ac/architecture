@@ -75,7 +75,7 @@ Blocked behavior: Leave BTS-1.2 unchecked; record owner, source/error fingerprin
 
 ### Task BTS-1.6 — Add shared Node SQL repositories
 
-- [ ] BTS-1.6 Add shared Node SQL repositories.
+- [x] BTS-1.6 Add shared Node SQL repositories.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/typescript/storage/.
@@ -89,11 +89,11 @@ Acceptance: Node SQLite/PostgreSQL transaction ports preserve exact bytes and CA
 
 Implementation:
 
-- [ ] BTS-1.6-I1 Add shared Node SQL repositories. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BTS-1.6-I1 Add shared Node SQL repositories. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BTS-1.6-V1 Run `node scripts/sdk-adapter-delivery.mjs BTS-1.6`: One actual SQLite save/reopen and rollback smoke; reuse the unchanged shared PostgreSQL contract evidence until driver-specific final testing. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BTS-1.6-V1 Run `node scripts/sdk-adapter-delivery.mjs BTS-1.6`: One actual SQLite save/reopen and rollback smoke; reuse the unchanged shared PostgreSQL contract evidence until driver-specific final testing. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -101,7 +101,7 @@ Blocked behavior: Leave BTS-1.6 unchecked; record owner, source/error fingerprin
 
 ### Task BTS-1.7 — Add Next.js server route handlers
 
-- [ ] BTS-1.7 Add Next.js server route handlers.
+- [x] BTS-1.7 Add Next.js server route handlers.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/backend/nextjs/.
@@ -115,11 +115,11 @@ Acceptance: App Router handlers are explicitly server-only, reuse application au
 
 Implementation:
 
-- [ ] BTS-1.7-I1 Add Next.js server route handlers. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BTS-1.7-I1 Add Next.js server route handlers. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BTS-1.7-V1 Run `node scripts/sdk-adapter-delivery.mjs BTS-1.7`: One local route-handler save/load smoke and one server/client import-boundary compile check run without secrets. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BTS-1.7-V1 Run `node scripts/sdk-adapter-delivery.mjs BTS-1.7`: One local route-handler save/load smoke and one server/client import-boundary compile check run without secrets. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
