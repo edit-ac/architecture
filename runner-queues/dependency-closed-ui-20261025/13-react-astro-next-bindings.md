@@ -15,6 +15,10 @@ Reuse the one existing Rust/Session/FFI command/history/storage authority and un
 
 Commit only validated owned source after two parents and source boundaries under root `.roadmap-coordination/integration.lock`, preserve unrelated dirty bytes/index and the active worker's WIP, no blanket staging/stash/reset or agents/worktrees. Keep logs/build outputs ignored and bounded; clean inactive task artifacts/browsers/servers and check disk. On a genuine missing host/credential/toolchain input, record task/source/error/prerequisite fingerprint, owner, attempted repair and exact changed-input resume condition once; continue a dependency-ready sibling or exit BLOCKED for the guard. No unchanged retry, automatic provider call or fake fixture qualification. Final BFT/BNT/UI/EDX tasks own broad/new case coverage; functionality uses only focused delivery proof.
 
+## Focused delivery validation authority
+
+Focused runtime delivery checks are authorized by the controller: /Users/bpstr/Github/edit-ac/architecture/runner-queues/dependency-closed-ui-20261025/delivery-check-policy.md. Read that bounded policy before interpreting this source’s validation scope. Execute only the deterministic compiler/fixture/browser/native/manual check named by the current parent; register its minimal missing wrapper when needed and report actual runtime counts separately. Comprehensive suites, case matrices and final qualification remain after functional delivery. A phase label alone is not a runtime prohibition; preserve every acceptance gate and reuse compatible passing evidence.
+
 ## Selected original tasks
 
 ### Task BWF-1.1 — Align the existing React and Astro bindings

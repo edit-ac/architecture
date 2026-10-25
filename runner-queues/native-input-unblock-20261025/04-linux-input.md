@@ -18,6 +18,10 @@ Read owning AGENTS.md and only the current task's named specs/paths. Use determi
 
 At every two completed parents and source boundary, preserve unrelated dirty bytes/index, acquire `.roadmap-coordination/integration.lock` and commit only validated owned source hunks on existing main. Do not blanket stage, stash, reset, create worktrees or agents. Current prior WIP remains unstaged unless exact task ownership and validation are established. Preserve generated failed diagnostics only while useful, keep artifacts ignored and clean inactive task outputs/processes. On an unchanged external toolchain/host blocker, record original owner, task/source/error/prerequisite fingerprint, attempted repair and exact changed-input resume trigger; select another ready sibling. End BLOCKED only when no useful current-source implementation remains, so the guard stops the run. Never start another controller or retry yourself.
 
+## Focused delivery validation authority
+
+Focused runtime delivery checks are authorized by the controller: /Users/bpstr/Github/edit-ac/architecture/runner-queues/dependency-closed-ui-20261025/delivery-check-policy.md. Read that bounded policy before interpreting this source’s validation scope. Execute only the deterministic compiler/fixture/browser/native/manual check named by the current parent; register its minimal missing wrapper when needed and report actual runtime counts separately. Comprehensive suites, case matrices and final qualification remain after functional delivery. A phase label alone is not a runtime prohibition; preserve every acceptance gate and reuse compatible passing evidence.
+
 ### Task NLP-1.1 — Create the production input host and bounded dispatcher
 
 - [ ] NLP-1.1 Create the production input host and bounded dispatcher.

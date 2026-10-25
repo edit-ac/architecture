@@ -8,6 +8,10 @@ The prior queue had32 unqueued prerequisite owners affecting25 parents. This que
 
 All30 original UI source/progress pairs are preserved. The user-authorized order amendment moves the independent Windows branch after Linux/RN/Expo/Flutter functionality and before packages/final verification. Native UIKit/Android/AppKit/C/C++/WinUI/GTK/storage interfaces are implemented before their specific UI consumers. Browser save/autosave orchestration precedes DOM status presentation. Original desktop break tasks are separate bounded extracts so one host does not hold another. Final BFT/BNT cases cover the selected backend and host requirements; original EDX/UI final tasks retain their distinct product/history/visual acceptance and reuse compatible proof.
 
+## Focused delivery validation
+
+The [controller delivery-check policy](delivery-check-policy.md) explicitly authorizes each functional parent’s named narrow deterministic runtime check during implementation. Final-phase ordering applies to comprehensive suites and qualification, not the focused check required to complete a prerequisite. UIS-1.1 retains its real browser/computed-style/command acceptance; source-only receipts cannot satisfy it. The remaining functional worker sources carry this policy directly to prevent the same phase interpretation from blocking later parents.
+
 ## Environment readiness and genuine external input
 
 Local free Lima2.2.1 is installed. The task-owned ARM64 Linux GTK host uses an integrity-pinned Ubuntu26.04 image,2 CPUs,2GiB RAM and24GiB sparse disk, no source/home mounts, SSH agent forwarding or inherited proxy environment. Authored setup and GTK bootstrap live under `architecture/toolchains/` and `architecture/scripts/linux-host.sh`. Keep the guest stopped outside the Linux lane. ELH-1.1 is delivered:3 distinct environment checks passed,0 failed/skipped; GCC15.2.0,GTK4.22.4,libadwaita1.9.1 and Rust/Cargo1.97.1. Its runtime/compiler readiness is separate from application/native UI qualification.
