@@ -1,6 +1,6 @@
 # Close BWF-1.3, BWF-1.4 prerequisite ownership
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; paths in task contracts are core-relative.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/14-vue-nuxt-bindings.progress.md`.
@@ -23,7 +23,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task BWF-1.3 — Add the Vue composition adapter
 
-- [ ] BWF-1.3 Add the Vue composition adapter.
+- [x] BWF-1.3 Add the Vue composition adapter.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/web/vue/.
@@ -37,11 +37,11 @@ Acceptance: Component/composable owns one editor session, reactive save status a
 
 Implementation:
 
-- [ ] BWF-1.3-I1 Add the Vue composition adapter. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BWF-1.3-I1 Add the Vue composition adapter. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BWF-1.3-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.3`: One prepared reactive parent update leaves CRDT identity/history stable and one dispose releases subscriptions. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BWF-1.3-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.3`: One prepared reactive parent update leaves CRDT identity/history stable and one dispose releases subscriptions. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -49,7 +49,7 @@ Blocked behavior: Leave BWF-1.3 unchecked; record owner, source/error fingerprin
 
 ### Task BWF-1.4 — Add the Nuxt module and client plugin
 
-- [ ] BWF-1.4 Add the Nuxt module and client plugin.
+- [x] BWF-1.4 Add the Nuxt module and client plugin.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/web/nuxt/.
@@ -63,11 +63,11 @@ Acceptance: Client-only registration reuses Vue ownership and respects server re
 
 Implementation:
 
-- [ ] BWF-1.4-I1 Add the Nuxt module and client plugin. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BWF-1.4-I1 Add the Nuxt module and client plugin. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BWF-1.4-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.4`: One server-render plus client-hydration smoke creates exactly one client editor and zero server sessions. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BWF-1.4-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.4`: One server-render plus client-hydration smoke creates exactly one client editor and zero server sessions. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
