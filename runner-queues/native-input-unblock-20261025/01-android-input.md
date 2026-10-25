@@ -20,7 +20,7 @@ At every two completed parents and source boundary, preserve unrelated dirty byt
 
 ### Task NAP-1.1 — Create the production input host and bounded dispatcher
 
-- [ ] NAP-1.1 Create the production input host and bounded dispatcher.
+- [x] NAP-1.1 Create the production input host and bounded dispatcher.
 
 Purpose: Remove the concrete missing Android input prerequisite for AND-1.1–1.7; EDX-2.2.
 Deliverable: `native/android/sdk/src/main/kotlin/ac/edit/android/input/` and the relevant existing package/consumer, with focused selector `native/android/sdk/check-input.py bootstrap`.
@@ -33,11 +33,11 @@ Acceptance: An ordinary production consumer creates and disposes one session-bac
 
 Implementation:
 
-- [ ] NAP-1.1-I1 Create native/android/sdk/src/main/kotlin/ac/edit/android/input/ and wire native editable control and InputConnection over the generated Kotlin/JNA NativeSession to one current Session lifecycle. Reuse review ownership/disposal patterns without presenting read-only review as editing. Keep generated bindings sourced from the current owner; initialize unimplemented capabilities honestly. Introduce `native/android/sdk/check-input.py bootstrap` (invoke Python or bash as appropriate), rejecting unknown selectors and zero cases. If a required local compiler is absent, first produce useful platform-independent integration source and a precise compiler requirement without claiming it builds.
+- [x] NAP-1.1-I1 Create native/android/sdk/src/main/kotlin/ac/edit/android/input/ and wire native editable control and InputConnection over the generated Kotlin/JNA NativeSession to one current Session lifecycle. Reuse review ownership/disposal patterns without presenting read-only review as editing. Keep generated bindings sourced from the current owner; initialize unimplemented capabilities honestly. Introduce `native/android/sdk/check-input.py bootstrap` (invoke Python or bash as appropriate), rejecting unknown selectors and zero cases. If a required local compiler is absent, first produce useful platform-independent integration source and a precise compiler requirement without claiming it builds.
 
 Validation:
 
-- [ ] NAP-1.1-V1 Run `native/android/sdk/check-input.py bootstrap` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
+- [x] NAP-1.1-V1 Run `native/android/sdk/check-input.py bootstrap` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
 
 Evidence: Separate configured progress for this file; changed production paths/interfaces, selector results, remaining qualification and original-owner mapping. No generated output in Git.
 Handoff: Last implemented function, exact remaining code/command, source inputs, failure and changed-input next step.
@@ -45,7 +45,7 @@ Blocked behavior: Leave this original boundary unchecked; name toolchain/host/AP
 
 ### Task NAP-1.2 — Project text and UTF-16 selection through one owner
 
-- [ ] NAP-1.2 Project text and UTF-16 selection through one owner.
+- [x] NAP-1.2 Project text and UTF-16 selection through one owner.
 
 Purpose: Remove the concrete missing Android input prerequisite for AND-1.1–1.7; EDX-2.2.
 Deliverable: `native/android/sdk/src/main/kotlin/ac/edit/android/input/` and the relevant existing package/consumer, with focused selector `native/android/sdk/check-input.py projection`.
@@ -58,11 +58,11 @@ Acceptance: A normal mounted control consumes an actual shared projection and ro
 
 Implementation:
 
-- [ ] NAP-1.2-I1 Bind committed projection/results to native/android/sdk/src/main/kotlin/ac/edit/android/input/; map native UTF-16 selection and focus through existing stable targets. Guard projection-origin callbacks and detach/disposal; read-only rejects before mutation. Do not duplicate text or selection semantics.
+- [x] NAP-1.2-I1 Bind committed projection/results to native/android/sdk/src/main/kotlin/ac/edit/android/input/; map native UTF-16 selection and focus through existing stable targets. Guard projection-origin callbacks and detach/disposal; read-only rejects before mutation. Do not duplicate text or selection semantics.
 
 Validation:
 
-- [ ] NAP-1.2-V1 Run `native/android/sdk/check-input.py projection` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
+- [x] NAP-1.2-V1 Run `native/android/sdk/check-input.py projection` through its declared interpreter and pinned toolchain; implement the planned selector before invoking it. Select only the affected compiler/control/real-binding fixture, budget at most 5 minutes after compilation inputs are ready. Record exact command/runtime/exit and executed/passed/failed/required-skipped counts; zero cases, missing tooling and required skips cannot pass. Reuse unchanged prerequisite results.
 
 Evidence: Separate configured progress for this file; changed production paths/interfaces, selector results, remaining qualification and original-owner mapping. No generated output in Git.
 Handoff: Last implemented function, exact remaining code/command, source inputs, failure and changed-input next step.
