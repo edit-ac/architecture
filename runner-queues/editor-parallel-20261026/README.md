@@ -8,8 +8,8 @@ its source/progress FIFO remain untouched. This isolated workspace is
 
 The four bounded worker sources preserve all 18 existing ES parent IDs, original
 acceptance, dependency edges and one final coverage owner per requirement from
-`../editing-standards-20261024/`. Only execution authority, tracking instructions
-and progress locations change. Unicode data/profile and optional browser APIs,
+`../editing-standards-20261024/`. Only execution authority, tracking instructions, prerequisite-refresh ownership
+and progress locations change; accepted checkmarks require retained passing proof. Unicode data/profile and optional browser APIs,
 cross-block selected input and composition, native/TUI navigation, explicit block
 selection and preserved structural moves are functional delivery. Comprehensive
 new tests and support reconciliation remain last. Native OS/IME/AT observations
@@ -22,12 +22,18 @@ retain their original qualification owner and cannot pass through fixtures.
 | 3 | [Block targets and movement](03-block-targets-and-movement.md) | 5 | Contiguous selection, accessible entry/return, safe mixed edits/moves |
 | 4 | [Final conformance](04-final-conformance.md) | 5 | Focused missing cases and current-consumer/support reconciliation |
 
-Read-only source tracking is required by installed Roadmap Runner 0.12.3.
-Separate progress files are listed in manifest.json and the local ignored queue
-spec. A worker handles one ready parent. Use `--blocked-policy stop`, the guarded
-launcher, no automatic resolver retries, and a live guard receipt. Completion needs
-all original nonzero applicable checks; missing entry receipts require current
-input reconciliation or a real changed-input blocker, never fabricated proof.
+The installed 0.12.3 scheduler and worker prompt require live source checkboxes.
+Workers tick verified source tasks/substeps and concise Status; requirements remain
+controller-owned. Separate progress holds only evidence/results/handoff; snapshots
+remain read-only. The package README's contrary read-only claim caused the initial
+lane misconfiguration. Six deterministic scheduler checks reproduced the mismatch
+and verified advancement/dependency/completion after source-checkbox reconciliation.
+ES-1.1's retained accepted proof closes only its four source entries. ES-1.2/ES-1.3
+now explicitly own their bounded current-lane prerequisite rebuild/check refresh.
+All original acceptance remains unchanged. Old stopped progress/history is retained;
+the repaired first source has a distinct successor progress path in manifest.json.
+Use one ready parent per worker, `--blocked-policy stop`, the guarded launcher,
+and a live readiness receipt. Never reset runner-owned state or retry unchanged input.
 
 The immutable ignored baseline manifest records original repository heads and all
 authored source hashes, plus the copied inherited dirty bytes. These are snapshot

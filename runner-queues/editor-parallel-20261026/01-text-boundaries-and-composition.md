@@ -6,11 +6,11 @@ Status: IN_PROGRESS
 
 Close the specific Unicode capability and cross-block composition deltas without replacing the existing text, native-navigation or input pipeline. ES-TEXT-1/2 and ES-INPUT-1 refine existing INT-1.4/1.5/1.7 ownership.
 
-Progress: `.roadmap-runner/editor-parallel-20261026/01-text-boundaries-and-composition.progress.md` relative to the workspace root; generated evidence is ignored and not committed.
+Progress: `.roadmap-runner/editor-parallel-20261026/tracking-repair/01-text-boundaries-and-composition.progress.md` relative to the workspace root; generated evidence is ignored and not committed.
 
 ## Execution boundaries
 
-User-authorized 2026-10-26 editor parallel lane in `/Users/bpstr/Github/edit-ac-editor-20261026`; PRIMARY integrations continue untouched in `/Users/bpstr/Github/edit-ac`. This explicitly supersedes the earlier planning-only/single-runner restriction for this isolated lane. Use the guarded launcher and require live readiness. Roadmap Runner 0.12.3 reads source only: keep this source immutable and record task checkboxes, status and results only in its distinct progress file. Read the active shared coordination section before each parent. Preserve the launch baseline and inherited dirty work; never commit inherited WIP or modify PRIMARY. Keep editor-owned delivery patches and checkpoint receipts after every two parents and each source boundary; safely separable validated changes may be committed, mixed inherited hunks wait for coordinated integration.
+User-authorized editor parallel lane in `/Users/bpstr/Github/edit-ac-editor-20261026`; PRIMARY integrations continue untouched in `/Users/bpstr/Github/edit-ac`. The installed 0.12.3 scheduler and worker prompt use LIVE SOURCE CHECKBOXES as task-completion authority. Workers update only verified task/substep checkboxes and concise Status in this live source; acceptance prose, IDs, requirements and dependency rules remain controller-owned. Snapshots are read-only. The separate configured progress file holds evidence, results and handoff, not the authoritative checklist. This controller correction supersedes the prior read-only-live-source instruction, which caused ES-1.1 redispatch despite accepted proof. Read the active shared coordination section before each parent; require the guarded launcher and live readiness. Preserve the launch baseline and inherited dirty work; never stage inherited WIP or modify PRIMARY. Keep exact editor-owned delivery patches and checkpoint receipts after every two parents and each source boundary; commit only safely separable validated changes and defer mixed inherited hunks for coordinated integration.
 
 Preserve one current document format, one prepared semantic implementation and one shared history. Public positions remain UTF-16; native layout/input stays adapter-owned. Keep current text anchors and scoped table selection. No silent normalization, data migration, profile relabel, second reader, new editor framework or platform history stack. All checks use deterministic fixtures and local/mock transports; no paid inference, credentials, recording, provisioning or publication.
 
@@ -22,11 +22,13 @@ Use existing focused checks during functional delivery; add all new test code an
 
 Current-consumer CFC-1.1–1.5 and EDX-1.1 admission receipt from the existing [editing-experience queue](../editing-experience-20261024/README.md), with actual current source/build pins. Reconcile receipt validity instead of repeating its entire gate. No dependency on unimplemented mobile/desktop adapters or final size qualification. ES-1.1 can inventory the source profile while current-build admission is unresolved; mutation checks wait for that receipt.
 
+Controller prerequisite ownership repair, 2026-10-26: ES-1.2 owns the bounded local current-web build/admission refresh needed for its existing typecheck/navigation check. ES-1.3 owns the bounded local current-format and prepared-fragment/history admission refresh for the changed selected inputs identified in the retained `ES-1.3-prerequisites.json`; it must use the existing admission/fragment/history selectors and actual current production artifacts. This explicitly supplies the missing rebuild owner, without declaring stale receipts current or waiving a gate. Reuse exact compatible proof and rebuild/check only invalidated selected boundaries in this isolated workspace. Include setup in the named parent budget; save a concrete partial checkpoint if preparation exceeds one session. An actual missing toolchain/API or failed check remains a blocker with exact changed-input repair; lack of an assigned refresh owner is now resolved. Broader CFC/EDX qualification and OS observations remain their existing owners. No new automatic suites, provider calls or PRIMARY output changes.
+
 ## Tasks
 
 ### Task ES-1.1 — Publish the deployed coordinate and segmentation profile
 
-- [ ] ES-1.1 Publish the deployed coordinate and segmentation profile.
+- [x] ES-1.1 Publish the deployed coordinate and segmentation profile.
 
 Purpose: Boundary behavior is reviewable against the Unicode data actually used by the engine and host.
 Deliverable: A precise implementation profile and ingress/cut audit with capability limits and retained byte/UTF-16 distinctions.
@@ -40,14 +42,14 @@ Acceptance: Authenticate the pinned Unicode 16.0.0 table declaration and name th
 
 Implementation:
 
-- [ ] ES-1.1-I1 Authenticate the pinned library data declaration and enumerate byte/scalar/UTF-16/grapheme crossings only in current anchors, web selection and selected input adapters.
-- [ ] ES-1.1-I2 Publish the supported segmentation/capability contract; route any confirmed mismatched ingress conversion to its existing boundary, without adding a second format or silently upgrading Unicode.
+- [x] ES-1.1-I1 Authenticate the pinned library data declaration and enumerate byte/scalar/UTF-16/grapheme crossings only in current anchors, web selection and selected input adapters.
+- [x] ES-1.1-I2 Publish the supported segmentation/capability contract; route any confirmed mismatched ingress conversion to its existing boundary, without adding a second format or silently upgrading Unicode.
 
 Validation:
 
-- [ ] ES-1.1-V1 From core run `cargo test -p editac-core --locked --offline --test anchors grapheme_movement_and_deletion_are_extended_and_logical` with task-owned output, or reuse exact compatible evidence; assert one matched test. A changed Rust boundary also requires `cargo check -p editac-core --locked --offline`. Budget 3 minutes; if only prose changes, verify links/profile values and reuse unchanged implementation evidence.
+- [x] ES-1.1-V1 From core run `cargo test -p editac-core --locked --offline --test anchors grapheme_movement_and_deletion_are_extended_and_logical` with task-owned output, or reuse exact compatible evidence; assert one matched test. A changed Rust boundary also requires `cargo check -p editac-core --locked --offline`. Budget 3 minutes; if only prose changes, verify links/profile values and reuse unchanged implementation evidence.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1.
+Evidence: `.roadmap-runner/editor-parallel-20261026/tracking-repair/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-1.1` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
@@ -74,7 +76,7 @@ Validation:
 
 - [ ] ES-1.2-V1 From core run `npm run typecheck --workspace packages/web` and the existing `npm run test:interactions -- --group navigation` only if affected evidence is invalidated. Use one prepared manual missing-API fixture in the existing mounted surface; final automated variants belong to ES-4.1. Budget 5 minutes after current build admission.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1.
+Evidence: `.roadmap-runner/editor-parallel-20261026/tracking-repair/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-1.2` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
@@ -101,7 +103,7 @@ Validation:
 
 - [ ] ES-1.3-V1 Run a bounded existing selected-replacement/fragment fixture with same-owner, compatible cross-block and rejected mixed-scope inputs; compare unchanged state on refusal. Compile only changed crates with `cargo check -p editac-core -p editac-session --locked --offline` plus editac-wasm/editac-ffi only if touched. For TS binding changes typecheck packages/core. Budget 5 minutes; cite the exact existing selector resolved before execution.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
+Evidence: `.roadmap-runner/editor-parallel-20261026/tracking-repair/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-1.3` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
@@ -128,7 +130,7 @@ Validation:
 
 - [ ] ES-1.4-V1 From core run `npm run typecheck --workspace packages/web`, then one affected existing `npm run test:browser -- composition` or `composition-remote` group, chosen by changed boundary. Add a bounded manual cross-block commit/cancel observation in the mounted deterministic surface; new automatic variants remain ES-4.2. Budget 5 minutes after artifact readiness.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
+Evidence: `.roadmap-runner/editor-parallel-20261026/tracking-repair/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-1.4` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
