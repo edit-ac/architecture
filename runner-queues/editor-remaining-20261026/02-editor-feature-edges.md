@@ -28,7 +28,7 @@ Finish the existing editor ES functional sources and applicable safety proof bef
 
 ### Task BTU-1.1 — Add the configurable block menu and handle
 
-- [ ] BTU-1.1 Present Turn into and Insert after through captured block actions.
+- [x] BTU-1.1 Present Turn into and Insert after through captured block actions.
 
 Deliverable: The named BTU-1.1 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Provide discoverable per-block actions without moving semantics into UI code.
@@ -42,11 +42,11 @@ Acceptance: Menu and reorder handle can be enabled independently. Supported edit
 
 Implementation:
 
-- [ ] BTU-1.1-I1 Attach an optional accessible block-actions presenter, derive its items from shared capability data and route commits through existing storage/history. Reuse reorder for its handle rather than duplicating moves.
+- [x] BTU-1.1-I1 Attach an optional accessible block-actions presenter, derive its items from shared capability data and route commits through existing storage/history. Reuse reorder for its handle rather than duplicating moves.
 
 Validation:
 
-- [ ] BTU-1.1-V1 Run `npm run typecheck --workspace @edit-ac/web` and `node --test --test-name-pattern='menu baseline|insert after|menu off' tests/browser/block-actions.spec.ts` for heading conversion, insertion, Escape and menu-off API use. Budget: 5 minutes beyond build. Comprehensive device/focus matrices belong to BTQ-1.3 and final platform owners.
+- [x] BTU-1.1-V1 Run `npm run typecheck --workspace @edit-ac/web` and `node --test --test-name-pattern='menu baseline|insert after|menu off' tests/browser/block-actions.spec.ts` for heading conversion, insertion, Escape and menu-off API use. Budget: 5 minutes beyond build. Comprehensive device/focus matrices belong to BTQ-1.3 and final platform owners.
 
 Evidence: Progress with configuration shape, selected browser counts and owned resource teardown.
 Handoff: Presenter/handle ownership, captured target lifetime and unresolved layout/accessibility cases.
@@ -106,7 +106,7 @@ Blocked behavior: Record a concrete export/provider gap; do not label planned be
 
 ### Task EFG-1.1 — Repair the current large-document input prerequisite
 
-- [ ] EFG-1.1 Admit an authentic current-format large editing fixture without weakening resource safety.
+- [x] EFG-1.1 Admit an authentic current-format large editing fixture without weakening resource safety.
 
 Purpose: The ES-3.5 handoff records INT-1.10 stopping during oversized document construction, before actual editor behavior. A prepared adapter result is not runtime proof.
 Deliverable: One admitted deterministic large checkpoint/fixture and the smallest owning admission repair, or a precise supported refusal with the original required large-workload owner left open.
@@ -120,11 +120,11 @@ Acceptance: Freeze the actual required corpus identity and existing limits befor
 
 Implementation:
 
-- [ ] EFG-1.1-I1 Reproduce the saved admission failure once on authenticated changed/current input; distinguish invalid fixture construction from an engine defect, then correct the owning boundary without changing the required corpus or safety contract.
+- [x] EFG-1.1-I1 Reproduce the saved admission failure once on authenticated changed/current input; distinguish invalid fixture construction from an engine defect, then correct the owning boundary without changing the required corpus or safety contract.
 
 Validation:
 
-- [ ] EFG-1.1-V1 Run only the existing selected INT-1.10 fixture and affected admission negative selector; record nonzero executed/passed/failed/skipped counts, content/selection/history oracle and input pins. Budget: 8 minutes after reused build evidence; comprehensive scaling belongs to QPF-1.2.
+- [x] EFG-1.1-V1 Run only the existing selected INT-1.10 fixture and affected admission negative selector; record nonzero executed/passed/failed/skipped counts, content/selection/history oracle and input pins. Budget: 8 minutes after reused build evidence; comprehensive scaling belongs to QPF-1.2.
 
 Evidence: Configured separate progress contains exact fixture size, original failure, changed-input hypothesis, current accepted/rejected states and focused results; generated bulk remains ignored.
 Handoff: Next unchanged acceptance, owning code/fixture, source pins, failed selector and exact prerequisite; no source delivery prose.
