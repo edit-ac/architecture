@@ -131,7 +131,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-3.5 — Cover replacement payloads and ordinary event correlation
 
-- [ ] PKI-3.5 Complete F08/F09 replacement coverage.
+- [x] PKI-3.5 Complete F08/F09 replacement coverage.
 
 Purpose: Authoritative replacement text is preserved and independent corrections cannot be mistaken for duplicate key notifications.
 Context: [additional comparison](../../research/open-source-editor-input-20261026.md) F08/F09; `core/tests/browser/{input-policy,editing-input}.spec.ts`, `core/tests/browser/interactions/replacement.spec.ts`, existing source-bound browser-input fixtures.
@@ -143,12 +143,12 @@ Acceptance: String `data` and `dataTransfer` text resolve identically for valid 
 
 Implementation:
 
-- [ ] PKI-3.5-I1 Add only missing `PKI-F08` and `PKI-F09` cases with independent state/effect oracles and positive/negative correlation controls; reuse existing composition and Unicode assertions.
+- [x] PKI-3.5-I1 Add only missing `PKI-F08` and `PKI-F09` cases with independent state/effect oracles and positive/negative correlation controls; reuse existing composition and Unicode assertions.
 
 Validation:
 
-- [ ] PKI-3.5-V1 Run affected `input-policy`, `editing-input` or `interaction-replacement` selectors matching `PKI-F0[89]`; use only suites containing new cases. Budget: 8 minutes across declared browsers; require nonzero per-browser counts.
-- [ ] PKI-3.5-V2 Combine these receipts with PKI-3.4 and the original final owners into the 16-finding controller summary. Keep actual spellchecker, IME and platform timing cases explicitly assigned to existing runtime owners and unqualified until their evidence exists; no repeated broad suite run is implied.
+- [x] PKI-3.5-V1 Run affected `input-policy`, `editing-input` or `interaction-replacement` selectors matching `PKI-F0[89]`; use only suites containing new cases. Budget: 8 minutes across declared browsers; require nonzero per-browser counts.
+- [x] PKI-3.5-V2 Combine these receipts with PKI-3.4 and the original final owners into the 16-finding controller summary. Keep actual spellchecker, IME and platform timing cases explicitly assigned to existing runtime owners and unqualified until their evidence exists; no repeated broad suite run is implied.
 
 Evidence: parent progress with event order, operation target, payload source, loaded source and exact effect counts.
 Handoff: remaining correlation ambiguity, unsupported native DOM shape or exact target-runtime observation.
