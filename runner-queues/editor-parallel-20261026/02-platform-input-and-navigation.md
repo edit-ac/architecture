@@ -53,7 +53,7 @@ Blocked behavior: Record `BLOCKED ES-2.1` only with owner, fingerprint and exact
 
 ### Task ES-2.2 — Stage and commit native composition across prose owners
 
-- [ ] ES-2.2 Stage and commit native composition across prose owners.
+- [x] ES-2.2 Stage and commit native composition across prose owners.
 
 Purpose: macOS marked text can replace a compatible selected prose range without an early durable delete.
 Deliverable: Native composition capture/temporary range/commit/cancel paths using the shared replacement contract.
@@ -67,12 +67,14 @@ Acceptance: Compatible cross-owner marked text stages locally, commits once, can
 
 Implementation:
 
-- [ ] ES-2.2-I1 Extend capture beyond same-node ranges only when shared applicability confirms the target and native projection can hold the temporary composition safely.
-- [ ] ES-2.2-I2 Bind commit/cancel/blur to current shared operation/result selection and preserve existing conflict recovery and focus ownership.
+- [x] ES-2.2-I1 Extend capture beyond same-node ranges only when shared applicability confirms the target and native projection can hold the temporary composition safely.
+- [x] ES-2.2-I2 Bind commit/cancel/blur to current shared operation/result selection and preserve existing conflict recovery and focus ownership.
+
+Controller repair authority, 2026-10-26: ES-2.2 may correct the existing `CompositionTests.testInvalidUnicodeAndCrossBlockRangesReject` fixture because its blanket rejection contradicts this parent's compatible-prose acceptance. Preserve the invalid UTF-16 scalar rejection and the suite's 22-case count; assert temporary compatible-cross-owner staging causes no durable mutation and cancellation restores original content. This narrow correction of an existing failing fixture is required delivery validation, not new comprehensive coverage. Keep original failure evidence. ES-4.2 still owns all new automated cross-context cases.
 
 Validation:
 
-- [ ] ES-2.2-V1 From core run `bash native/macos/scripts/check.sh composition` with the current admitted inputs, plus one bounded deterministic cross-owner marked-text commit/cancel observation. This compiles the adapter; OS IME observations remain roadmap43. Budget 5 minutes, new automated variants ES-4.2.
+- [x] ES-2.2-V1 From core run `bash native/macos/scripts/check.sh composition` with the current admitted inputs, plus one bounded deterministic cross-owner marked-text commit/cancel observation. This compiles the adapter; OS IME observations remain roadmap43. Budget 5 minutes, new automated variants ES-4.2.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.

@@ -49,3 +49,13 @@ coordination. Commit only safely separable validated editor changes. Never stage
 inherited WIP or land into PRIMARY while its worker is active. A pending patch is
 an explicit integration handoff, not a claim of a merged feature. Broader release,
 performance/platform gates remain required; no paid inference or credentials.
+
+
+Controller execution order amendment, 2026-10-26: source01 is complete. Deliver
+independent source03 block targets/movement, then return to source02 native focus,
+then source04 final conformance. ES-2.2 existing-fixture correction passed22/22;
+ES-2.1 remains required and blocked on actual foreground access. This changes
+execution order only, not acceptance, dependencies or final completeness. Each
+selected block parent owns its bounded current-lane artifact/admission refresh.
+Do not restart native focus checks unchanged. Pending original source02/source04
+progress paths and prior stopped state remain preserved.
