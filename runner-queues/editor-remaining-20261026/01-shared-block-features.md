@@ -1,6 +1,6 @@
 # Complete shared block conversion and insertion
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal and authority
 
@@ -132,7 +132,7 @@ Blocked behavior: Keep an unresolved mapping disabled and record its design owne
 
 ### Task BTA-1.5 — Add general captured Insert after
 
-- [ ] BTA-1.5 Insert an empty paragraph after any eligible captured sibling.
+- [x] BTA-1.5 Insert an empty paragraph after any eligible captured sibling.
 
 Deliverable: The named BTA-1.5 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Supply the second required block-menu action without splitting or replacing content.
@@ -146,11 +146,11 @@ Acceptance: Create a stable empty paragraph immediately after the target in the 
 
 Implementation:
 
-- [ ] BTA-1.5-I1 Prepare creation/placement/result selection as one shared transaction and expose it through the same captured block-action ports.
+- [x] BTA-1.5-I1 Prepare creation/placement/result selection as one shared transaction and expose it through the same captured block-action ports.
 
 Validation:
 
-- [ ] BTA-1.5-V1 Run `cargo test -p editac-core --locked --offline --test block_actions insert_after` and `node --test --test-name-pattern='insert after port' tests/wasm-block-actions.test.mjs`. Cover root/nested placement, unchanged original content, one undo group and stale rejection. Budget: 5 minutes. Broader history/concurrency cases belong to BTQ-1.1.
+- [x] BTA-1.5-V1 Run `cargo test -p editac-core --locked --offline --test block_actions insert_after` and `node --test --test-name-pattern='insert after port' tests/wasm-block-actions.test.mjs`. Cover root/nested placement, unchanged original content, one undo group and stale rejection. Budget: 5 minutes. Broader history/concurrency cases belong to BTQ-1.1.
 
 Evidence: Separate progress with command shape, focused results and reused primitive evidence.
 Handoff: Functional API summary and exact source pins for all BTA parents; do not repeat passing suites at the file boundary.
