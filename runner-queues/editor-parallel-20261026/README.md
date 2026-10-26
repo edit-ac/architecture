@@ -18,8 +18,8 @@ retain their original qualification owner and cannot pass through fixtures.
 | Order | Source | Parents | Outcome |
 | --- | --- | ---: | --- |
 | 1 | [Text boundaries and composition](01-text-boundaries-and-composition.md) | 4 | Unicode profile, optional APIs, shared replacement, browser IME |
-| 2 | [Platform input and navigation](02-platform-input-and-navigation.md) | 4 | Native selected input/IME, language/direction, terminal keys |
-| 3 | [Block targets and movement](03-block-targets-and-movement.md) | 5 | Contiguous selection, accessible entry/return, safe mixed edits/moves |
+| 3 | [Platform input and navigation](02-platform-input-and-navigation.md) | 4 | Native selected input/IME, language/direction, terminal keys |
+| 2 | [Block targets and movement](03-block-targets-and-movement.md) | 6 | Contiguous selection, accessible entry/return, safe mixed edits/moves |
 | 4 | [Final conformance](04-final-conformance.md) | 5 | Focused missing cases and current-consumer/support reconciliation |
 
 The installed 0.12.3 scheduler and worker prompt require live source checkboxes.
@@ -59,3 +59,14 @@ execution order only, not acceptance, dependencies or final completeness. Each
 selected block parent owns its bounded current-lane artifact/admission refresh.
 Do not restart native focus checks unchanged. Pending original source02/source04
 progress paths and prior stopped state remain preserved.
+
+
+Current-table prerequisite split,2026-10-26: ES-3.6 is one bounded repair parent in
+source03 (19required parents total, including all18 original parents). It owns the
+existing keyboard dispatcher's current rich-cell fixture and any confirmed narrow
+focus/key behavior, preserving all13original case IDs and semantic assertions.
+ES-3.2 waits for this actual validation prerequisite; ES-3.4 remains independent.
+Controller link/selection fixes already pass command-surfaces210, keyboard108 and
+block27 checks, but the full table gate is23/39 and remains required. No acceptance
+or final completeness is waived. The exact safe checkpoint, typed-outcome scope
+repair, original failures and source patches are in the shared monitor ledger.

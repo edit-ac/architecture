@@ -44,9 +44,14 @@
           "dependencies": []
         },
         {
+          "id": "ES-3.6",
+          "dependencies": []
+        },
+        {
           "id": "ES-3.2",
           "dependencies": [
-            "ES-3.1"
+            "ES-3.1",
+            "ES-3.6"
           ]
         },
         {
@@ -68,7 +73,7 @@
           ]
         }
       ],
-      "sha256": "44910e6275942bb1f0d2d47de3615f43c4ffac08137cf139e0492b9d4266c233"
+      "sha256": "4c8a9dcf34279ea4ecf7119aaad1ddbb86482a84dbf280744aa19782bf48585d"
     },
     {
       "file": "02-platform-input-and-navigation.md",
@@ -133,5 +138,6 @@
   "integration": "Shared lock, exact baseline-to-current editor patches, no active PRIMARY mutation",
   "baseline": ".roadmap-runner/editor-parallel-20261026/baseline.json",
   "repair": "README/source-tracking mismatch reproduced with six deterministic checks; ES-1.1 source completion reconciled from retained accepted proof; current-lane prerequisite refresh assigned to ES-1.2/ES-1.3",
-  "executionOrderAmendment": "2026-10-26: completed source01 retained; independent block source03 precedes source02 native focus gate; final04 still waits for all functionality. ES-2.2 existing fixture repair passed22/22; ES-2.1 remains blocked and must not retry unchanged."
+  "executionOrderAmendment": "2026-10-26: completed source01 retained; independent block source03 precedes source02 native focus gate; final04 still waits for all functionality. ES-2.2 existing fixture repair passed22/22; ES-2.1 remains blocked and must not retry unchanged.",
+  "controllerRepairTask": "ES-3.6 is a bounded current-table keyboard prerequisite repair; all18 original parents/acceptance remain required, plus this concrete repair parent."
 }

@@ -28,7 +28,7 @@ Controller independent-work amendment, 2026-10-26: native foreground qualificati
 
 ### Task ES-3.1 — Define ephemeral block selections and captured command targets
 
-- [ ] ES-3.1 Define ephemeral block selections and captured command targets.
+- [x] ES-3.1 Define ephemeral block selections and captured command targets.
 
 Purpose: Selecting editable blocks is distinct from a text range and from a table cell range.
 Deliverable: A view-local discriminated target contract for text, atom, contiguous sibling blocks and existing embedded scope, with stable captured identities and applicability.
@@ -42,16 +42,43 @@ Acceptance: Modes are explicit and cannot be confused by DOM selection. Block mo
 
 Implementation:
 
-- [ ] ES-3.1-I1 Add the smallest local target discriminator and normalized sibling/subtree selection representation at current SDK/adapter capture boundaries.
-- [ ] ES-3.1-I2 Resolve each target to existing commands and result bookmarks with stable unavailable/stale reasons; retain PortableCellRange ownership and per-runtime capability declarations.
+- [x] ES-3.1-I1 Add the smallest local target discriminator and normalized sibling/subtree selection representation at current SDK/adapter capture boundaries.
+- [x] ES-3.1-I2 Resolve each target to existing commands and result bookmarks with stable unavailable/stale reasons; retain PortableCellRange ownership and per-runtime capability declarations.
 
 Validation:
 
-- [ ] ES-3.1-V1 From core typecheck changed packages with `npm run typecheck --workspace packages/core` and/or `--workspace packages/web`, then reuse or run `npm run test:browser -- selection` only for the affected boundary. Manually inspect one contiguous range and one mixed-scope refusal without mutation. Budget 5 minutes; automated new modes ES-4.3.
+- [x] ES-3.1-V1 From core typecheck changed packages with `npm run typecheck --workspace packages/core` and/or `--workspace packages/web`, then reuse or run `npm run test:browser -- selection` only for the affected boundary. Manually inspect one contiguous range and one mixed-scope refusal without mutation. Budget 5 minutes; automated new modes ES-4.3.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/03-block-targets-and-movement.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.3.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-3.1` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
+
+### Task ES-3.6 — Repair the current rich-cell keyboard validation prerequisite
+
+- [ ] ES-3.6 Repair the current rich-cell keyboard validation prerequisite.
+
+Purpose: The existing keyboard dispatcher must exercise the current single active rich-cell control rather than an obsolete textarea interface, without hiding genuine keyboard/history failures.
+Deliverable: Current-API existing table keyboard fixtures and any confirmed narrow existing table focus/key-owner repair, preserving all original semantic assertions and case IDs.
+Context: `core/tests/browser/interactions/keyboard-tables.spec.ts`, `core/packages/web/src/modules/tables/current.ts`, `cell-dom.ts`, existing editor-interactions table focus/Tab/Escape/help/host-priority contract; source03 ES-3.2 gate. Named diagnostic/failed receipts and exact current source are in root monitor `link-dialog-repair/` and lane `core/.artifacts/monitor-link-dialog-repair/`.
+Affected paths/symbols: Existing keyboard-tables fixture and current rich-cell focus, selection, keyboard and history owners; do not add engine/document profiles or runtime textarea compatibility aliases.
+Entry receipts: Controller link-dialog fix typecheck/build passed; actual command-surfaces210/210 and keyboard108/108, plus existing block observation27/27 passed. These remain scoped accepted evidence. The additional table dispatcher first timed out locating inactive textboxes. A current-native DOM fixture correction passes the original first-cell case in all three engines; the full current13-case group is23/39, with16 failures and0skips. Preserve exact failure details before further repair.
+Dependencies: none.
+Independent work: ES-3.4 typed move admission is independent. ES-3.2 now waits for this concrete required keyboard-dispatch prerequisite; ES-3.5 retains its original dependencies. Native ES-2.1 foreground availability is unrelated and must not be retried.
+Session scope: 40 minutes plus5minutes focused local verification. One current table keyboard boundary; if more work is needed, retain an exact partial checkpoint or propose another bounded split rather than weakening acceptance.
+Acceptance: Original thirteen table keyboard cases pass in Chromium, Firefox and WebKit (39 executed,39passed,0failed/skipped) on current production artifacts. Preserve content/identity/geometry/marks, history/journal/update counts, retained directed caret and undo/redo/reopen equality, protected/read-only/resource bounds, host key ownership, and help/Escape/Tab priority. No missing case or stale fixture is relabeled passing. Distinguish obsolete DOM observation from actual product defects against the authoritative spec; stop for an unresolved contract conflict.
+
+Implementation:
+
+- [ ] ES-3.6-I1 Reconcile remaining obsolete DOM accesses with the existing cellDOMSelection/setCellDOMSelection and actual active rich-cell ownership; preserve all original case IDs and strengthen nonvacuous cell permission observations. The current partial fixture is retained, not a passing gate.
+- [ ] ES-3.6-I2 Repair only confirmed existing current-table focus/key/history behavior needed by those assertions. Inspect recorded append-typing, help/Escape, rectangle-cancel and host-owned-key failures; do not replace rich cells, introduce a second planner or relax semantics. Reauthenticate source/packed-artifact pins.
+
+Validation:
+
+- [ ] ES-3.6-V1 Use pinned Node24.19.0/npm11.17.0. Run focused changed/failed named table cases while repairing, then the existing `node scripts/test-browser.mjs interaction-keyboard-tables` to prove all39 current cases and0skips. Compile/typecheck/build only affected packages. Reuse compatible command-surfaces210, keyboard108 and block27 proof; rerun only invalidated selections and explain changed inputs. Keep all new comprehensive test development and OS/AT/platform qualification final-owned.
+
+Evidence: The configured source03 progress and ignored `evidence/ES-3.6/` record exact commands, counts, current source/artifact pins, retained failures, source-versus-fixture decisions, and baseline-relative owned patches. Generated output never enters Git.
+Handoff: Preserve the exact remaining assertion/owner, changed input, failing selector, active task-owned processes and next command. Self-validate structured outcome scope; shared-ledger links belong only in human handoff because the symlink resolves outside the isolated workspace.
+Blocked behavior: Fingerprint task/criteria/failing inputs and exact repair prerequisite. Do not repeat unchanged failures, fabricate qualification or tick incomplete source acceptance. Select independent authorized work only through the controller.
 
 ### Task ES-3.2 — Expose keyboard-accessible contiguous block selection
 
@@ -62,15 +89,19 @@ Deliverable: Visible Select block / extend block selection / return to text comm
 Context: [behavior standards](../../specs/editing-behavior-standards.md) ES-SEL-1 and ES-AX-1; [everyday editing](../../specs/editor-interactions.md) input-owner priority and Escape-then-Tab; optional block menus/reorder controls.
 Affected paths/symbols: `core/packages/web/src/commands/catalog.ts`, `ui/commands.ts`, existing block/reorder presenter and local selection/focus owner.
 Entry receipts: Current presenter lifecycle and captured command controls; ES-3.1 target contract.
-Dependencies: ES-3.1.
+Dependencies: ES-3.1, ES-3.6.
 Independent work: ES-3.4 typed move admission does not require this presenter; conversions remain independently owned by BTA/BTU.
 Session scope: 40 minutes plus 5 minutes focused typecheck/keyboard observation.
 Acceptance: A visible keyboard-accessible command selects the current block and extends to adjacent siblings with announced scope/count. Return-to-text and Enter on a selected editable block restore a valid bookmark or admitted text start; noneditable Enter uses its explicit activation capability. Up/Down in block mode changes selection focus, never content order. Escape exits block mode while preserving the next-Tab focus escape. Composition, popup and nested-control ownership win. Existing Escape cancellation/then-Tab focus exit is unchanged; no default Escape takeover or mandatory drag handle. Selection-only changes create no content, history or storage writes.
 
+Controller prerequisite repair authority, 2026-10-26: ES-3.2 owns the minimal existing link-dialog prerequisite correction needed by V1 (original INT-1.6/INT-1.18/CFS-1.1 boundary): prevent pointer dialog controls from discarding retained selection focus, route non-IME dialog Escape into the existing next-Tab escape owner, and preserve truthful stale/unavailable feedback. Use current `ui/link-dialog.ts` and `input/keyboard.ts` seams; do not create a new semantic target/history implementation or weaken any existing interaction assertion. Retain original/interrupted failures, the rejected shared-ledger outcome and isolated candidate diagnostics. Run the original affected interaction groups, including keyboard-tables, plus current build/typecheck and the bounded select/extend/return observation. New comprehensive keyboard/AT cases remain final-owned.
+
+Controller current-fixture repair, 2026-10-26: the required keyboard dispatcher also invokes table cases whose legacy textarea selector/selection API no longer matches the current single active rich-cell editor. ES-3.2 may update only that existing fixture to focus cells by their accessible name and use current native DOM selection helpers. Preserve every existing case ID, byte/history/persistence/undo/caret assertion; replace the vacuous textarea permission check with all six actual cells. Keep the full dispatcher required. Do not add runtime textarea aliases, relax policies, skip final gate cases or label stopped timeouts passing.
+
 Implementation:
 
-- [ ] ES-3.2-I1 Connect explicit command entry/extension/exit to the local block target mode and existing focus capture.
-- [ ] ES-3.2-I2 Expose accessible labels, selected-state announcement and disabled reasons without loading optional UI in configurations that omit it.
+- [x] ES-3.2-I1 Connect explicit command entry/extension/exit to the local block target mode and existing focus capture.
+- [x] ES-3.2-I2 Expose accessible labels, selected-state announcement and disabled reasons without loading optional UI in configurations that omit it.
 
 Validation:
 
