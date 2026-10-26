@@ -1,0 +1,64 @@
+# Additional open-source editor input comparison
+
+Reviewed 2026-10-26 as an extension of the [ProseMirror comparison](prosemirror-input-navigation-20261026.md). Compared Lexical, Slate, Quill, CKEditor 5 and CodeMirror 6 against the current edit.ac browser adapter. Four distinct additional findings add four delivery parents and two final coverage parents to the [existing plan](../runner-queues/prosemirror-input-20261026/README.md). Existing typing-rule and IME tasks receive narrower acceptance additions. This is planning work; no production input implementation or active runner is changed.
+
+## Source basis
+
+The local working-tree basis remains core `a52882953875a8a3a28f17b33c821f779a76612c` and architecture `def1ab3cbac2f86be1f18ad9d1112a02755a7b84`, with pre-existing dirty work. The commits alone do not reproduce the inspected sources. Reauthenticate the named methods before delivery. Codanna was unavailable; discovery used bounded source searches. Downloaded upstream code and diagnostic probes stay outside Git.
+
+| Editor and pinned primary source | Mechanism examined | Relevance and limits |
+| --- | --- | --- |
+| Lexical: [LexicalEvents at 7bc4baa](https://github.com/facebook/lexical/blob/7bc4baaba215b9d2a4edca81493e22c226c50a46/packages/lexical/src/LexicalEvents.ts), [rich-text commands](https://github.com/facebook/lexical/blob/7bc4baaba215b9d2a4edca81493e22c226c50a46/packages/lexical-rich-text/src/index.ts) | `beforeinput` dispatch for native formatting, insertion, replacement, deletion and history | Standard input intentions have semantic routes independent of hardware shortcuts. Its broader command inventory is a comparison aid; unsupported edit.ac document features are not automatically required. |
+| Slate: [Editable at 5939eb4](https://github.com/ianstormtaylor/slate/blob/5939eb443a99e65229a70b317f03d5ba88fb8ae3/packages/slate-react/src/components/editable.tsx), [hotkeys](https://github.com/ianstormtaylor/slate/blob/5939eb443a99e65229a70b317f03d5ba88fb8ae3/packages/slate-dom/src/utils/hotkeys.ts) | Beforeinput target/selection flush, `deleteEntireSoftLine`, `deleteContent`, `insertFromYank`, Android routing and document/shadow-root selection | The browser's non-keyboard input vocabulary is larger than our table allowlist. Root-scoped selection is an explicit host concern. Slate's Android manager is not a reason to replace our ownership model. |
+| Quill: [input at 539cbff](https://github.com/slab/quill/blob/539cbffd0a13b18e9c65eb84dd35e6596e403158/packages/quill/src/modules/input.ts), [keyboard](https://github.com/slab/quill/blob/539cbffd0a13b18e9c65eb84dd35e6596e403158/packages/quill/src/modules/keyboard.ts), [selection](https://github.com/slab/quill/blob/539cbffd0a13b18e9c65eb84dd35e6596e403158/packages/quill/src/core/selection.ts) | `getPlainTextFromInputEvent`, reported-range replacement, early canceled/composing-key checks and 229 Enter/Backspace handling | `dataTransfer` can carry replacement text when `data` is null. Host cancellation precedes key commands. Quill also has document-global focus assumptions, so it is not a universal embedding reference. |
+| CKEditor 5: [InputObserver at 64df6dd](https://github.com/ckeditor/ckeditor5/blob/64df6dd228d6927313d242c940a82d52843acb9a/packages/ckeditor5-engine/src/view/observer/inputobserver.ts), [typing input](https://github.com/ckeditor/ckeditor5/blob/64df6dd228d6927313d242c940a82d52843acb9a/packages/ckeditor5-typing/src/input.ts), [delete](https://github.com/ckeditor/ckeditor5/blob/64df6dd228d6927313d242c940a82d52843acb9a/packages/ckeditor5-typing/src/delete.ts) | Input data/transfer/range normalization and explicit typing/deletion handling | Its observer reads plain text from the transfer object when needed and carries input metadata to the command boundary. This supports investigating payload routing without treating native DOM mutation as the only source of truth. |
+| CodeMirror 6: [view input at fbff59b](https://github.com/codemirror/view/blob/fbff59ba004d80d8c914f64c42586387b08706ac/src/input.ts), [EditorView root/focus](https://github.com/codemirror/view/blob/fbff59ba004d80d8c914f64c42586387b08706ac/src/editorview.ts), [commands at 5b9bac9](https://github.com/codemirror/commands/blob/5b9bac974f2c4af3e20b045adef949667872ecad/src/commands.ts) | Root-aware focus, browser versus command navigation, and replacement input in EditContext mode | Root scope is explicit. Its EditContext path handles replacement text/target ranges directly. This does not justify adopting EditContext, code-editor multi-selection, indentation or line commands wholesale in a rich-text editor. |
+
+The comparison deliberately retains our Rust semantic engine, native visual navigation, current whitespace policy, literal code LF and contextual Tab choices. Framework/schema differences alone are not defects.
+
+## Additional findings
+
+### F07 — Native formatting input intentions lack a semantic route — P1
+
+Lexical maps `formatBold`, `formatItalic`, `formatUnderline` and `formatStrikeThrough` to formatting commands. Our [`command catalog`](../../core/packages/web/src/commands/catalog.ts) recognizes portable names and `toggle*` aliases, but those standard beforeinput names are absent. [`KeyboardInput.action`](../../core/packages/web/src/input/keyboard.ts) resolves beforeinput through that catalog. [`TextInput`](../../core/packages/web/src/input/text.ts) then leaves the unrecognized event to native mutation.
+
+A current-source Chromium adapter probe delivered `beforeinput: formatBold` without a keydown: action was undefined, the event was not canceled and no semantic request occurred. This proves a routing gap, not that every browser exposes that exact menu gesture. A subsequent native mark wrapper can reach unsupported-structure recovery; a style-attribute-only change is outside this observer's child-list/text observation. Neither path implements the requested semantic formatting command.
+
+**PKI-4.1** routes the supported native formatting intentions through existing captured selection, permissions, mark applicability and history. Scope the target before interception; controls and another editor retain their own input. Unavailable formatting must not become uncontrolled browser-only formatting. Final owner: **PKI-3.4**.
+
+### F08 — Transfer-carried replacement text bypasses the prepared input path — P1 compatibility gap
+
+Quill and CKEditor inspect `event.dataTransfer` for plain text when `event.data` is null. CodeMirror does so in its specific EditContext replacement path. Our [`TextInput`](../../core/packages/web/src/input/text.ts) returns to native fallback for an insertion with null `data`, even if a cancelable event supplies an exact target range and `text/plain` in its transfer object.
+
+The probe supplied `insertReplacementText`, `data: null`, transfer text `the`, and a reported range over `teh`. The payload was available, but the event remained uncanceled, no semantic request occurred, and the intent remained `native-pending`. This does **not** prove text loss: a simple following native DOM change can reconcile successfully. It proves that an available authoritative input payload is ignored and the operation instead depends on a narrower DOM fallback, particularly relevant to rich-span or cross-block correction.
+
+**PKI-4.2** resolves plain input payloads without treating them as a rich paste. Preserve exact Unicode/whitespace validation and reported targets; distinguish absent data, empty text and unavailable MIME. Test safe native fallback when no payload exists. Final owner: **PKI-3.5**.
+
+### F09 — A distinct correction can be consumed by the preceding physical key — P1, observed routing failure
+
+[`TextInput`](../../core/packages/web/src/input/text.ts) chooses `#key ?? #create('beforeinput')`; any non-pending key intent causes the later beforeinput to be prevented before inspecting its replacement target. `input` does not release that key owner; keyup/blur does.
+
+The source-bound probe sent Space keydown, a committed `insertText` for the space, its `input`, then an `insertReplacementText` over a different word before keyup. Request count stayed at one, the correction was canceled, and only the original space intent remained. The same correction after keyup produced a second request. The prepared sequence establishes the correlation defect; actual spellchecker/OS timing still needs target-runtime evidence.
+
+**PKI-4.3** distinguishes a duplicate notification for an already handled action from an independent correction/replacement with a distinct target or operation. Preserve duplicate suppression, deliberate repeat input, composition ownership and history grouping. Do not merely clear all key state after every input and re-enable duplicate commits. Final owner: **PKI-3.5**.
+
+### F10 — Tables reject supported kinds of non-keyboard text editing wholesale — P2 compatibility gap
+
+Slate explicitly routes `deleteEntireSoftLine`, `deleteContent` and `insertFromYank`; Lexical also routes generic deletion and yank input. Our [`CurrentTableView.createCell`](../../core/packages/web/src/modules/tables/current.ts) has a narrower beforeinput allowlist. The probe canceled all three events with “Unsupported cell input; current data preserved.” Root ordinary input may instead reconcile a native text change, so this is also an inconsistency between editing scopes.
+
+The safe refusal is preferable to data corruption, but ordinary platform text operations can appear broken inside a cell. **PKI-4.4** defines and implements the admitted single-cell-block cases using reported ranges, literal input and existing table commands. `deleteEntireSoftLine` means a visual line; do not guess it by splitting stored LF. Preserve deliberate refusal for multi-block, unknown, protected or ambiguous ranges. No multi-cell destructive command or new kill-ring service is implied. Final owner: **PKI-3.4**.
+
+## Additional cases assigned to existing owners
+
+| New evidence or comparison | Existing owner and adoption |
+| --- | --- |
+| A trusted Backspace canceled by a host capture listener still invoked our typing-rule reversal hook once. `TextInput` checks canceled beforeinput early but performs trusted-key reversal before `KeyboardInput.action` checks canceled keydown. Quill checks cancellation before its key bindings. | Extend **PKI-1.1 / PKI-3.1** with host-canceled trusted Enter/Backspace and zero-reversal/zero-conversion assertions. This is the existing F01 precedence boundary, not a fifth new finding. |
+| Quill's 229 guard covers Backspace as well as Enter when `isComposing` is false. | Clarify **PKI-1.3 / PKI-3.3** to include candidate-confirmation Backspace. Reuse the existing near-composition investigation; no new IME implementation. |
+| In an open shadow root, the probe found the editor in `shadowRoot.activeElement`, while `document.activeElement` was its host. `KeyboardInput.captureHistory()` returned no target. Several selection/formatting paths similarly use the owner document directly. Slate and CodeMirror resolve the editing root explicitly. | This is a concrete **existing host-profile qualification gap**, not a claim that edit.ac promises general Shadow DOM support. The [UI integration contract](../specs/editor-ui-integrations.md) explicitly makes it a qualified profile and assigns UDM/final qualification ownership. Add this exact focus/history/selection case to that owner at its safe adoption checkpoint; retain the profile's unqualified status meanwhile. Do not silently mark old UDM checks failed or create a competing shadow-selection subsystem. |
+| Slate/CKEditor/Quill/CodeMirror add browser-specific mobile, IME, selection and layout repair. | Reuse **PKI-1.3/1.4/1.5/2.5/2.6** and ES capability/Unicode work. No duplicate generic “match editor X” parents or broad compatibility campaign. |
+
+## Validation scope and handoff
+
+The temporary Chromium probe used the current TypeScript classes with a mocked engine and minimal DOM. It ran eight bounded observations, including one trusted keyboard event, plus a positive correction-after-keyup control. It checked adapter decisions and request counts, not semantic persistence, browser menu availability, real speech/yank/IME behavior or mobile hardware. The checked sources were fingerprinted for stability. Generated downloads, bundles and probe output are temporary; only this authored analysis and task contracts belong in source Git.
+
+The plan now has **20 parents: 15 delivery and 5 final coverage**, covering the original 12 findings plus F07–F10. Existing source names and IDs remain stable; the new functional source precedes the unchanged final source filename in manifest order. All new task checkboxes remain unchecked. Extend existing deterministic fixtures with one final owner per assertion, and retain exact target-runtime limitations rather than promoting prepared events to platform qualification.

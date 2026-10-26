@@ -1,5 +1,7 @@
 # Remaining editor features, performance and testing
 
+Current scheduling priority, 2026-10-26: the [input-first queue](../editor-input-first-20261026/README.md) supersedes this original FIFO. ProseMirror input/navigation implementation leads; this source retains original feature/performance/test acceptance and progress ownership. Completed ES/BTA work is preserved, never replayed.
+
 User-authorized continuation, 2026-10-26. Gathered from the current editor ES handoffs, the 19-row SDK feature ledger, the block-actions contract, original unfinished single-format feature/performance/test owners, current integration FIFO and the benchmark fitness profile. This is authored work to execute, not a claim that 57 product defects were found or that historical unchecked tasks imply missing implementation.
 
 The 57 parents in 15 bounded sources preserve 56 original task IDs and their acceptance; EFG-1.1 is the one new known admission-prerequisite repair. Workers authenticate prior implementation/proof, close only genuinely missing work and retain original case IDs. Sources are at most 20 KiB. Existing editor sources remain authoritative for ES-4.3/ES-4.5 and are not rewritten. Every source has a distinct ignored progress path. The manifest is the controller's ownership/dependency index; it is outside worker queue inputs.
