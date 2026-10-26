@@ -28,7 +28,7 @@ Finish the existing editor ES functional sources and applicable safety proof bef
 
 ### Task RBO-1.1 — Finish correct loading boundaries and record remaining byte work
 
-- [ ] RBO-1.1 Finish correct loading boundaries and record remaining byte work.
+- [x] RBO-1.1 Finish correct loading boundaries and record remaining byte work.
 
 Deliverable: The named RBO-1.1 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Deliver this named canonical-format boundary safely without retaining unpublished runtime versions.
@@ -42,11 +42,11 @@ Acceptance: Current public imports, instance isolation, optional loading and req
 
 Implementation:
 
-- [ ] RBO-1.1-I1 Reuse applied current-format cleanup and affected loading proof. Fix genuine import/isolation/accounting defects. If a demonstrated remaining retained-code defect warrants optimization, attempt only the bounded budget; otherwise checkpoint and advance. Do not re-run prior unchanged failed inventories or repeat G8 dual-version work.
+- [x] RBO-1.1-I1 Reuse applied current-format cleanup and affected loading proof. Fix genuine import/isolation/accounting defects. If a demonstrated remaining retained-code defect warrants optimization, attempt only the bounded budget; otherwise checkpoint and advance. Do not re-run prior unchanged failed inventories or repeat G8 dual-version work.
 
 Validation:
 
-- [ ] RBO-1.1-V1 Run affected installed/optional-loading/export/current regressions for changed inputs, plus at most the necessary changed-artifact inventory. Record caps as passed/failed honestly. Mandatory full compressed/cache/byte/dispatch proof stays QPF-1.3.
+- [x] RBO-1.1-V1 Run affected installed/optional-loading/export/current regressions for changed inputs, plus at most the necessary changed-artifact inventory. Record caps as passed/failed honestly. Mandatory full compressed/cache/byte/dispatch proof stays QPF-1.3.
 
 Evidence: Separate progress contains changed interfaces, exact input/fixture/runtime hashes, selector/command/exit, executed/passed/failed/skipped counts, reuse decisions and concise failure dispositions. Detailed output remains ignored.
 Handoff: Last verified substep, remaining file/symbol, exact missing predicate and next bounded action.
@@ -54,7 +54,7 @@ Blocked behavior: Keep unfinished criteria unchecked, continue an independent lo
 
 ### Task RBO-1.2 — Bound remaining browser dispatch and resource repairs
 
-- [ ] RBO-1.2 Bound remaining browser dispatch and resource repairs.
+- [x] RBO-1.2 Bound remaining browser dispatch and resource repairs.
 
 Deliverable: The named RBO-1.2 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Deliver this named canonical-format boundary safely without retaining unpublished runtime versions.
@@ -68,11 +68,11 @@ Acceptance: One bounded batch preserves or improves demonstrated work/ownership 
 
 Implementation:
 
-- [ ] RBO-1.2-I1 Authenticate current proof first, repair an actual owner defect or attempt at most 45 minutes/two materially different optimization hypotheses, then checkpoint and move on to final coverage. No optimization is required when no relevant defect is demonstrated.
+- [x] RBO-1.2-I1 Authenticate current proof first, repair an actual owner defect or attempt at most 45 minutes/two materially different optimization hypotheses, then checkpoint and move on to final coverage. No optimization is required when no relevant defect is demonstrated.
 
 Validation:
 
-- [ ] RBO-1.2-V1 Run only affected deterministic dispatch/history/cancellation/disposal cases and needed bounded diagnostics after changes. Reuse unchanged results; QPF owns complete cross-feature/tail/resource coverage.
+- [x] RBO-1.2-V1 Run only affected deterministic dispatch/history/cancellation/disposal cases and needed bounded diagnostics after changes. Reuse unchanged results; QPF owns complete cross-feature/tail/resource coverage.
 
 Evidence: Separate progress contains changed interfaces, exact input/fixture/runtime hashes, selector/command/exit, executed/passed/failed/skipped counts, reuse decisions and concise failure dispositions. Detailed output remains ignored.
 Handoff: Last verified substep, remaining file/symbol, exact missing predicate and next bounded action.
