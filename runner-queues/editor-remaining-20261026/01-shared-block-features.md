@@ -80,7 +80,7 @@ Blocked behavior: Record the exact missing binding or capability; do not route a
 
 ### Task BTA-1.3 — Register extension conversions safely
 
-- [ ] BTA-1.3 Add conversion declarations and indexed preparation to the existing extension registry.
+- [x] BTA-1.3 Add conversion declarations and indexed preparation to the existing extension registry.
 
 Deliverable: The named BTA-1.3 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Make custom block types participate in Turn into through public extension APIs.
@@ -94,11 +94,11 @@ Acceptance: Namespaced source/destination declarations, bounded options, capabil
 
 Implementation:
 
-- [ ] BTA-1.3-I1 Add typed registration and captured-target enumeration, adapting the existing command session and public authoring hooks rather than creating another dispatcher.
+- [x] BTA-1.3-I1 Add typed registration and captured-target enumeration, adapting the existing command session and public authoring hooks rather than creating another dispatcher.
 
 Validation:
 
-- [ ] BTA-1.3-V1 Run `npm run typecheck --workspace @edit-ac/web` and `node --test --test-name-pattern='registration|custom lossless' tests/block-actions-contract.test.mjs`, adapting the existing extension authoring/command fixture for one custom conversion and a rejected registration. Budget: 5 minutes; record counts. BTQ-1.2 owns the remaining lifecycle/unknown-data matrix.
+- [x] BTA-1.3-V1 Run `npm run typecheck --workspace @edit-ac/web` and `node --test --test-name-pattern='registration|custom lossless' tests/block-actions-contract.test.mjs`, adapting the existing extension authoring/command fixture for one custom conversion and a rejected registration. Budget: 5 minutes; record counts. BTQ-1.2 owns the remaining lifecycle/unknown-data matrix.
 
 Evidence: Progress with declaration shape, public import recipe and focused outcomes.
 Handoff: Relevant type indexes, provider lifecycle and per-runtime availability.
@@ -106,7 +106,7 @@ Blocked behavior: Name a missing admitted primitive and its owner; never expose 
 
 ### Task BTA-1.4 — Enforce advanced conversion review and refusal
 
-- [ ] BTA-1.4 Implement typed impact plans and exact-plan approval for advanced conversions.
+- [x] BTA-1.4 Implement typed impact plans and exact-plan approval for advanced conversions.
 
 Deliverable: The named BTA-1.4 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Prevent silent loss when richer block structures are transformed.
@@ -120,11 +120,11 @@ Acceptance: Lossless built-ins need no confirmation. A review-required provider 
 
 Implementation:
 
-- [ ] BTA-1.4-I1 Add classification, review-required outcomes and single-use approval binding; publish the initial available/unavailable mapping catalog without enabling unqualified table/page conversions.
+- [x] BTA-1.4-I1 Add classification, review-required outcomes and single-use approval binding; publish the initial available/unavailable mapping catalog without enabling unqualified table/page conversions.
 
 Validation:
 
-- [ ] BTA-1.4-V1 Run `node --test --test-name-pattern='review approval' tests/block-actions-contract.test.mjs` with refusal, exact approval and relevant-peer-change rejection; assert unchanged bytes on rejection. Budget: 5 minutes; this minimal regression protects a concrete destructive-edit boundary. Remaining cases belong to BTQ-1.2.
+- [x] BTA-1.4-V1 Run `node --test --test-name-pattern='review approval' tests/block-actions-contract.test.mjs` with refusal, exact approval and relevant-peer-change rejection; assert unchanged bytes on rejection. Budget: 5 minutes; this minimal regression protects a concrete destructive-edit boundary. Remaining cases belong to BTQ-1.2.
 
 Evidence: Progress with impact schema, mapping dispositions and focused counts.
 Handoff: UI review data, disabled reasons and exact approval invalidation conditions.
