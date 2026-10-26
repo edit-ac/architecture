@@ -77,7 +77,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-1.3 — Correlate IME confirmation across event boundaries
 
-- [ ] PKI-1.3 Qualify and repair near-composition key ownership.
+- [x] PKI-1.3 Qualify and repair near-composition key ownership.
 
 Purpose: Candidate confirmation produces one text commit without an accidental break, and a new deliberate Enter remains available.
 Context: comparison R01; `input/composition.ts::handle/#dispatchBoundary`, `input/text.ts`, `input/keyboard.ts::action`, `modules/tables/current.ts` composition/keyboard handlers; existing `tests/browser/composition.spec.ts` commit-Enter cases.
@@ -89,12 +89,12 @@ Acceptance: Delayed end-before-confirmation, key-before-end, missing keyup and 2
 
 Implementation:
 
-- [ ] PKI-1.3-I1 Spend at most 10 minutes establishing a deterministic event trace and distinguishing existing passing cases from the missing order; record unsupported real-platform claims explicitly.
-- [ ] PKI-1.3-I2 Add the smallest correlated ownership repair, or retain implementation with exact counter-evidence if the risky sequence is already safely handled; keep real target-runtime qualification open.
+- [x] PKI-1.3-I1 Spend at most 10 minutes establishing a deterministic event trace and distinguishing existing passing cases from the missing order; record unsupported real-platform claims explicitly.
+- [x] PKI-1.3-I2 Add the smallest correlated ownership repair, or retain implementation with exact counter-evidence if the risky sequence is already safely handled; keep real target-runtime qualification open.
 
 Validation:
 
-- [ ] PKI-1.3-V1 Replay the failing prepared sequence and a deliberately independent Enter control against current source; run the affected existing composition selector only. Budget: 4 minutes; broader/real-runtime coverage belongs to PKI-3.3 and existing MWB/43 owners.
+- [x] PKI-1.3-V1 Replay the failing prepared sequence and a deliberately independent Enter control against current source; run the affected existing composition selector only. Budget: 4 minutes; broader/real-runtime coverage belongs to PKI-3.3 and existing MWB/43 owners.
 
 Evidence: parent progress entry with event ordering and synthetic/OS provenance.
 Handoff: exact missing native trace or remaining event order, never a generic IME-support claim.
@@ -104,7 +104,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-1.4 — Route native structural Enter through one prepared command
 
-- [ ] PKI-1.4 Handle supported mobile and targetless Enter sequences once.
+- [x] PKI-1.4 Handle supported mobile and targetless Enter sequences once.
 
 Purpose: An Enter delivered through native input does not disappear into unsupported-structure recovery or create a duplicate split.
 Context: comparison R02; `input/text.ts` action/native jobs, `input/reconcile.ts::reconcileMutation`, `input/protocol.ts`; `specs/web.md` Input routing/Composition gate; `specs/mobile-web.md` keyboard input; EDX-1.4 break semantics.
@@ -116,12 +116,12 @@ Acceptance: Keydown absent, noncancelable beforeinput or native paragraph/BR cre
 
 Implementation:
 
-- [ ] PKI-1.4-I1 Capture the missing native event/DOM shape in the existing fixture, compare with a normal Enter and document the bounded admission rule.
-- [ ] PKI-1.4-I2 Route admitted intent through existing semantic commands and deduplication; leave unsupported shapes on explicit recovery.
+- [x] PKI-1.4-I1 Capture the missing native event/DOM shape in the existing fixture, compare with a normal Enter and document the bounded admission rule.
+- [x] PKI-1.4-I2 Route admitted intent through existing semantic commands and deduplication; leave unsupported shapes on explicit recovery.
 
 Validation:
 
-- [ ] PKI-1.4-V1 Run one recognized native-Enter sequence and one unsupported-shape negative control, checking text owners, selection, commit count and recovery. Budget: 4 minutes; final coverage owner PKI-3.3.
+- [x] PKI-1.4-V1 Run one recognized native-Enter sequence and one unsupported-shape negative control, checking text owners, selection, commit count and recovery. Budget: 4 minutes; final coverage owner PKI-3.3.
 
 Evidence: parent progress entry with native-versus-prepared provenance.
 Handoff: exact unsupported shape and which browser/runtime must supply changed evidence.
