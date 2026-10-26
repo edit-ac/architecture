@@ -26,7 +26,7 @@ All required functional ES-1, ES-2 and ES-3 parents have accepted current-source
 
 ### Task ES-4.1 — Cover Unicode capability and multilingual navigation deltas
 
-- [ ] ES-4.1 Cover Unicode capability and multilingual navigation deltas.
+- [x] ES-4.1 Cover Unicode capability and multilingual navigation deltas.
 
 Purpose: Boundary/fallback and layout-profile claims have independent deterministic oracles.
 Deliverable: Remaining current-format Unicode/API-absence/navigation cases with explicit host-data and native-layout limits.
@@ -40,12 +40,12 @@ Acceptance: Independently authored Indic/combining/emoji/RTL vectors cover only 
 
 Implementation:
 
-- [ ] ES-4.1-I1 Reuse existing vectors and add only uncovered profile/API-fallback/version-mismatch assertions, with expected boundaries authored from declared standards data.
-- [ ] ES-4.1-I2 Separate engine logical boundary assertions from native visual-order/affinity observations and annotate unavailable real runtime rows for roadmap43.
+- [x] ES-4.1-I1 Reuse existing vectors and add only uncovered profile/API-fallback/version-mismatch assertions, with expected boundaries authored from declared standards data.
+- [x] ES-4.1-I2 Separate engine logical boundary assertions from native visual-order/affinity observations and annotate unavailable real runtime rows for roadmap43.
 
 Validation:
 
-- [ ] ES-4.1-V1 Run the named new anchors selectors and affected navigation/selection suite through existing dispatchers with current artifacts; reuse unchanged groups. Typecheck/compile their changed test packages as the existing harness requires. Record nonzero counts and no required skips; budget 8 minutes within session.
+- [x] ES-4.1-V1 Run the named new anchors selectors and affected navigation/selection suite through existing dispatchers with current artifacts; reuse unchanged groups. Typecheck/compile their changed test packages as the existing harness requires. Record nonzero counts and no required skips; budget 8 minutes within session.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
@@ -53,7 +53,7 @@ Blocked behavior: Record `BLOCKED ES-4.1` only with owner, fingerprint and exact
 
 ### Task ES-4.2 — Cover cross-block committed input and composition lifecycle
 
-- [ ] ES-4.2 Cover cross-block committed input and composition lifecycle.
+- [x] ES-4.2 Cover cross-block committed input and composition lifecycle.
 
 Purpose: Selected native/browser replacement retains text, selection, history and cancellation guarantees.
 Deliverable: Remaining web/macOS prepared cross-block replacement cases and shared nonmutating-refusal assertions.
@@ -67,12 +67,12 @@ Acceptance: Forward/backward compatible ranges, prefix/suffix, direct replacemen
 
 Implementation:
 
-- [ ] ES-4.2-I1 Identify missing assertions after EDX and native receipts; add minimized fixtures across shared, web and macOS owners without duplicating identical semantic cases.
-- [ ] ES-4.2-I2 Record which checks prove shared behavior versus adapter staging and route actual IME/keyboard/dictation observations to existing roadmap43 rows.
+- [x] ES-4.2-I1 Identify missing assertions after EDX and native receipts; add minimized fixtures across shared, web and macOS owners without duplicating identical semantic cases.
+- [x] ES-4.2-I2 Record which checks prove shared behavior versus adapter staging and route actual IME/keyboard/dictation observations to existing roadmap43 rows.
 
 Validation:
 
-- [ ] ES-4.2-V1 Execute only changed named shared cases and affected `composition`, `composition-remote` or replacement group plus native edits/composition/commands selector required by the changed adapter. Use current compilation gates, actual nonzero counts and exact source pins. Budget 10 minutes within session; retain failures without broad unchanged reruns.
+- [x] ES-4.2-V1 Execute only changed named shared cases and affected `composition`, `composition-remote` or replacement group plus native edits/composition/commands selector required by the changed adapter. Use current compilation gates, actual nonzero counts and exact source pins. Budget 10 minutes within session; retain failures without broad unchanged reruns.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
