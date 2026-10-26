@@ -1,6 +1,6 @@
 # Correct key intent and text boundaries
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Editor-lane adoption — user decision, 2026-10-26
 
@@ -131,7 +131,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-1.5 — Resolve modified shortcuts across keyboard layouts safely
 
-- [ ] PKI-1.5 Add a documented layout-aware shortcut fallback.
+- [x] PKI-1.5 Add a documented layout-aware shortcut fallback.
 
 Purpose: Supported primary shortcuts remain usable when a layout produces a different character, without consuming AltGraph text or host commands.
 Context: comparison R03; `input/keyboard.ts::action`, `commands/catalog.ts::shortcutCommand`; `specs/platform-editing-services.md` command ownership; ES-KEY-1.
@@ -143,12 +143,12 @@ Acceptance: Specify event.key-first behavior and the supported modified-key fall
 
 Implementation:
 
-- [ ] PKI-1.5-I1 Extend the existing shortcut profile documentation and normalize candidates in one place without introducing an unrelated global keymap.
-- [ ] PKI-1.5-I2 Apply guarded fallback only to supported modified commands and expose accurate help labels.
+- [x] PKI-1.5-I1 Extend the existing shortcut profile documentation and normalize candidates in one place without introducing an unrelated global keymap.
+- [x] PKI-1.5-I2 Apply guarded fallback only to supported modified commands and expose accurate help labels.
 
 Validation:
 
-- [ ] PKI-1.5-V1 Probe a non-Latin Primary+Z, an explicit reservation and an AltGraph printable negative control; record resolved action and event ownership. Budget: 2 minutes; remaining layouts/shifted punctuation belong to PKI-3.1.
+- [x] PKI-1.5-V1 Probe a non-Latin Primary+Z, an explicit reservation and an AltGraph printable negative control; record resolved action and event ownership. Budget: 2 minutes; remaining layouts/shifted punctuation belong to PKI-3.1.
 
 Evidence: parent progress entry, separating prepared events from actual OS layout use.
 Handoff: remaining layout binding or host-policy ambiguity.
