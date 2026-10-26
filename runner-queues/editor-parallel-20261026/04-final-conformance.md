@@ -6,7 +6,7 @@ Status: IN_PROGRESS
 
 After all functional sources, author only missing automated cases, reuse compatible evidence and close a clause-to-behavior/build map. This source owns new standards tests; existing EDX/BTQ and roadmap43 retain their original coverage/qualification ownership.
 
-Progress: `.roadmap-runner/editor-parallel-20261026/04-final-conformance.progress.md` relative to the workspace root; generated evidence is ignored and not committed.
+Progress: `.roadmap-runner/editor-parallel-20261026/group-move-repair-20261026/04-final-conformance.progress.md` relative to the workspace root; generated evidence is ignored and not committed.
 
 ## Execution boundaries
 
@@ -47,7 +47,7 @@ Validation:
 
 - [x] ES-4.1-V1 Run the named new anchors selectors and affected navigation/selection suite through existing dispatchers with current artifacts; reuse unchanged groups. Typecheck/compile their changed test packages as the existing harness requires. Record nonzero counts and no required skips; budget 8 minutes within session.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1.
+Evidence: `.roadmap-runner/editor-parallel-20261026/group-move-repair-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-4.1` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
@@ -74,7 +74,7 @@ Validation:
 
 - [x] ES-4.2-V1 Execute only changed named shared cases and affected `composition`, `composition-remote` or replacement group plus native edits/composition/commands selector required by the changed adapter. Use current compilation gates, actual nonzero counts and exact source pins. Budget 10 minutes within session; retain failures without broad unchanged reruns.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
+Evidence: `.roadmap-runner/editor-parallel-20261026/group-move-repair-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-4.2` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
@@ -101,13 +101,13 @@ Validation:
 
 - [ ] ES-4.3-V1 Run changed named Rust selectors and the smallest affected browser groups through existing dispatchers; reuse already valid compile/build evidence or compile the changed boundary. Record executed/passed/failed/skipped counts and coverage ownership; budget 10 minutes within session, not a repeated full interaction matrix.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.3.
+Evidence: `.roadmap-runner/editor-parallel-20261026/group-move-repair-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.3.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-4.3` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
 ### Task ES-4.4 — Cover terminal commands and accessible selection surfaces
 
-- [ ] ES-4.4 Cover terminal commands and accessible selection surfaces.
+- [x] ES-4.4 Cover terminal commands and accessible selection surfaces.
 
 Purpose: Keyboard and accessible discovery are concrete, with honest separation between simulated mechanics and actual assistive support.
 Deliverable: Remaining terminal command/encoding tests and browser command ownership/focus/announcement cases, plus targeted roadmap43 observation inputs.
@@ -121,14 +121,14 @@ Acceptance: Word/document/page commands, shifted extension, reserved chords and 
 
 Implementation:
 
-- [ ] ES-4.4-I1 Add only missing deterministic TUI command/help/PTY cases and block-selection accessibility/focus assertions to existing families.
-- [ ] ES-4.4-I2 Record exact terminal protocol and browser/platform support, preparing the remaining real OS/AT observation recipes under existing final qualification owners.
+- [x] ES-4.4-I1 Add only missing deterministic TUI command/help/PTY cases and block-selection accessibility/focus assertions to existing families.
+- [x] ES-4.4-I2 Record exact terminal protocol and browser/platform support, preparing the remaining real OS/AT observation recipes under existing final qualification owners.
 
 Validation:
 
-- [ ] ES-4.4-V1 From cli run targeted `cargo test --locked --offline --test tui_input` selectors and only changed PTY/help selectors; from core run the changed accessibility or keyboard group, not the full suite. Confirm current build/typechecks where affected and nonzero counts; budget 8 minutes within session.
+- [x] ES-4.4-V1 From cli run targeted `cargo test --locked --offline --test tui_input` selectors and only changed PTY/help selectors; from core run the changed accessibility or keyboard group, not the full suite. Confirm current build/typechecks where affected and nonzero counts; budget 8 minutes within session.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.4.
+Evidence: `.roadmap-runner/editor-parallel-20261026/group-move-repair-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.4.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-4.4` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
@@ -155,7 +155,7 @@ Validation:
 
 - [ ] ES-4.5-V1 Validate new/changed docs and local links, task/dependency/ownership map and current consumer build receipts. Run only a missing affected current-package/adapter check with a recorded reason, not full workspace builds or a synthetic previous/current matrix. Record pass/fail/skip totals and remaining qualification rows; budget 5 minutes.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.5.
+Evidence: `.roadmap-runner/editor-parallel-20261026/group-move-repair-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.5.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-4.5` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
