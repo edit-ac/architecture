@@ -77,7 +77,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-3.3 — Cover composition, mobile Enter and atom movement
 
-- [ ] PKI-3.3 Complete R01/R02/R05 coverage and runtime handoff.
+- [x] PKI-3.3 Complete R01/R02/R05 coverage and runtime handoff.
 
 Purpose: Prepared event mechanics and actual browser navigation are tested without overstating real keyboard/IME support.
 Context: `core/tests/browser/{composition,editing-input}.spec.ts`, `core/tests/browser/interactions/navigation.spec.ts`, `core/tests/mobile-web/input.spec.ts`; comparison R01/R02/R05 and existing MWB/43 runtime owners.
@@ -89,12 +89,12 @@ Acceptance: Both composition orders, delayed confirmation, pointer confirmation 
 
 Implementation:
 
-- [ ] PKI-3.3-I1 Add only missing `PKI-R01`, `PKI-R02` and `PKI-R05` sequences, keeping synthetic event replay separate from trusted browser navigation.
+- [x] PKI-3.3-I1 Add only missing `PKI-R01`, `PKI-R02` and `PKI-R05` sequences, keeping synthetic event replay separate from trusted browser navigation.
 
 Validation:
 
-- [ ] PKI-3.3-V1 Run the affected `composition`, `editing-input` and `interaction-navigation` selectors matching `PKI-R0[125]`; confirm nonzero per-browser counts. Budget: 10 minutes; no automatic full-suite rerun.
-- [ ] PKI-3.3-V2 Record a concise crosswalk for the original 12 findings: current tested source, fulfilled assertions, reused ES/EDX receipts and exact remaining target-runtime owner/case. PKI-3.4/3.5 supply the F07–F10 extension receipts for the controller's complete 16-finding summary. Required runtime observations remain unchecked with resume conditions; no prepared trace is promoted to device qualification.
+- [x] PKI-3.3-V1 Run the affected `composition`, `editing-input` and `interaction-navigation` selectors matching `PKI-R0[125]`; confirm nonzero per-browser counts. Budget: 10 minutes; no automatic full-suite rerun.
+- [x] PKI-3.3-V2 Record a concise crosswalk for the original 12 findings: current tested source, fulfilled assertions, reused ES/EDX receipts and exact remaining target-runtime owner/case. PKI-3.4/3.5 supply the F07–F10 extension receipts for the controller's complete 16-finding summary. Required runtime observations remain unchecked with resume conditions; no prepared trace is promoted to device qualification.
 
 Evidence: parent progress contains the final coverage crosswalk and provenance.
 Handoff: precise unqualified browser/IME/mobile scenario, named MWB/43 owner and required runtime receipt.
