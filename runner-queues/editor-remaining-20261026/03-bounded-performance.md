@@ -1,6 +1,6 @@
 # Improve loading, dispatch and native command costs
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal and authority
 
@@ -80,7 +80,7 @@ Blocked behavior: Keep unfinished criteria unchecked, continue an independent lo
 
 ### Task RBO-1.3 — Bound remaining native preparation and commit repairs
 
-- [ ] RBO-1.3 Bound remaining native preparation and commit repairs.
+- [x] RBO-1.3 Bound remaining native preparation and commit repairs.
 
 Deliverable: The named RBO-1.3 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Deliver this named canonical-format boundary safely without retaining unpublished runtime versions.
@@ -94,11 +94,11 @@ Acceptance: Current native semantics, history, ownership, observer/receipt and i
 
 Implementation:
 
-- [ ] RBO-1.3-I1 Authenticate current changed-source attribution after single-format cleanup; do not replay rejected or unchanged experiments. Repair a real correctness defect if present; otherwise apply at most 45 minutes/two different measured prepare/commit hypotheses combined, then checkpoint independently useful source and advance.
+- [x] RBO-1.3-I1 Authenticate current changed-source attribution after single-format cleanup; do not replay rejected or unchanged experiments. Repair a real correctness defect if present; otherwise apply at most 45 minutes/two different measured prepare/commit hypotheses combined, then checkpoint independently useful source and advance.
 
 Validation:
 
-- [ ] RBO-1.3-V1 Run affected actual Session/FFI/current anchor/history cases and bounded comparable diagnostics only after material changes. Full exact Task/Long tails, cross-feature costs and unchanged final limits remain QPF-1.1/QPF-1.4/QPF-1.6.
+- [x] RBO-1.3-V1 Run affected actual Session/FFI/current anchor/history cases and bounded comparable diagnostics only after material changes. Full exact Task/Long tails, cross-feature costs and unchanged final limits remain QPF-1.1/QPF-1.4/QPF-1.6.
 
 Evidence: Separate progress contains changed interfaces, exact input/fixture/runtime hashes, selector/command/exit, executed/passed/failed/skipped counts, reuse decisions and concise failure dispositions. Detailed output remains ignored.
 Handoff: Last verified substep, remaining file/symbol, exact missing predicate and next bounded action.
