@@ -82,7 +82,7 @@ Blocked behavior: Record `BLOCKED ES-1.2` only with owner, fingerprint and exact
 
 ### Task ES-1.3 — Expose safe cross-block replacement preparation to input adapters
 
-- [ ] ES-1.3 Expose safe cross-block replacement preparation to input adapters.
+- [x] ES-1.3 Expose safe cross-block replacement preparation to input adapters.
 
 Purpose: Starting IME over a multi-block prose range must preserve the selection until a valid replacement commits.
 Deliverable: An adapter-consumable applicability/result contract using current prepared range/fragment edits, with any missing shared boundary repaired once.
@@ -96,12 +96,12 @@ Acceptance: Compatible paragraph/heading/list-content endpoints within admitted 
 
 Implementation:
 
-- [ ] ES-1.3-I1 Compare existing fragment preparation to ES-INPUT-1; make applicability, captured target lifetime and result selection explicit for web/macOS consumers.
-- [ ] ES-1.3-I2 Repair only an actual missing shared input contract, exposing the existing prepared operation and typed refusal through current bindings; preserve history and current admission rules.
+- [x] ES-1.3-I1 Compare existing fragment preparation to ES-INPUT-1; make applicability, captured target lifetime and result selection explicit for web/macOS consumers.
+- [x] ES-1.3-I2 Repair only an actual missing shared input contract, exposing the existing prepared operation and typed refusal through current bindings; preserve history and current admission rules.
 
 Validation:
 
-- [ ] ES-1.3-V1 Run a bounded existing selected-replacement/fragment fixture with same-owner, compatible cross-block and rejected mixed-scope inputs; compare unchanged state on refusal. Compile only changed crates with `cargo check -p editac-core -p editac-session --locked --offline` plus editac-wasm/editac-ffi only if touched. For TS binding changes typecheck packages/core. Budget 5 minutes; cite the exact existing selector resolved before execution.
+- [x] ES-1.3-V1 Run a bounded existing selected-replacement/fragment fixture with same-owner, compatible cross-block and rejected mixed-scope inputs; compare unchanged state on refusal. Compile only changed crates with `cargo check -p editac-core -p editac-session --locked --offline` plus editac-wasm/editac-ffi only if touched. For TS binding changes typecheck packages/core. Budget 5 minutes; cite the exact existing selector resolved before execution.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/tracking-repair/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
