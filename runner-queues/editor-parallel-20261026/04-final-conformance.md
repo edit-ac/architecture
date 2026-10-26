@@ -80,7 +80,7 @@ Blocked behavior: Record `BLOCKED ES-4.2` only with owner, fingerprint and exact
 
 ### Task ES-4.3 — Cover block selection mixed operations and retained moves
 
-- [ ] ES-4.3 Cover block selection mixed operations and retained moves.
+- [x] ES-4.3 Cover block selection mixed operations and retained moves.
 
 Purpose: New block mode and typed moves cannot discard structure, content or ownership.
 Deliverable: One independent structural oracle matrix across current targets, commands, persistence and history.
@@ -94,12 +94,12 @@ Acceptance: Contiguous block selection/extension/return, text/object mixed appli
 
 Implementation:
 
-- [ ] ES-4.3-I1 Create independently expected selection/content/IDs/payload/history/update-count states for remaining mixed-target and typed-move cases; map existing identical BTQ/EDX assertions by receipt.
-- [ ] ES-4.3-I2 Add only missing cases to current core/browser families, including rejected-operation byte/state equality and post-operation typing at the returned selection.
+- [x] ES-4.3-I1 Create independently expected selection/content/IDs/payload/history/update-count states for remaining mixed-target and typed-move cases; map existing identical BTQ/EDX assertions by receipt.
+- [x] ES-4.3-I2 Add only missing cases to current core/browser families, including rejected-operation byte/state equality and post-operation typing at the returned selection.
 
 Validation:
 
-- [ ] ES-4.3-V1 Run changed named Rust selectors and the smallest affected browser groups through existing dispatchers; reuse already valid compile/build evidence or compile the changed boundary. Record executed/passed/failed/skipped counts and coverage ownership; budget 10 minutes within session, not a repeated full interaction matrix.
+- [x] ES-4.3-V1 Run changed named Rust selectors and the smallest affected browser groups through existing dispatchers; reuse already valid compile/build evidence or compile the changed boundary. Record executed/passed/failed/skipped counts and coverage ownership; budget 10 minutes within session, not a repeated full interaction matrix.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/group-move-repair-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.3.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
