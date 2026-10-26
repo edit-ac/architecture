@@ -23,7 +23,7 @@ One parent per session. Functional checks below use existing fixtures or small t
 
 ### Task PKI-4.1 — Route native formatting intentions through semantic commands
 
-- [ ] PKI-4.1 Handle supported native beforeinput formatting.
+- [x] PKI-4.1 Handle supported native beforeinput formatting.
 
 Purpose: A browser/OS formatting action without a shortcut key uses the same selected marks, permissions and history as the existing editor command.
 Context: comparison F07; `core/packages/web/src/commands/catalog.ts::resolveCommand`, `input/keyboard.ts::action/execute`, `input/text.ts` beforeinput owner, `commands/formatting.ts`; `specs/platform-editing-services.md` command ownership and ES-FMT-1.
@@ -35,12 +35,12 @@ Acceptance: `formatBold`, `formatItalic`, `formatUnderline` and `formatStrikeThr
 
 Implementation:
 
-- [ ] PKI-4.1-I1 Map supported native intention names to existing commands after resolving the actual editing owner and applicability.
-- [ ] PKI-4.1-I2 Preserve cancelability, duplicate-event correlation, pending marks and history through the current formatting path; document unavailable scopes.
+- [x] PKI-4.1-I1 Map supported native intention names to existing commands after resolving the actual editing owner and applicability.
+- [x] PKI-4.1-I2 Preserve cancelability, duplicate-event correlation, pending marks and history through the current formatting path; document unavailable scopes.
 
 Validation:
 
-- [ ] PKI-4.1-V1 Exercise one selected native format intent, its shortcut equivalent and a nested-control/read-only negative control in the existing command-surface fixture. Check marks, selection and semantic commit count. Budget: 3 minutes; final owner PKI-3.4.
+- [x] PKI-4.1-V1 Exercise one selected native format intent, its shortcut equivalent and a nested-control/read-only negative control in the existing command-surface fixture. Check marks, selection and semantic commit count. Budget: 3 minutes; final owner PKI-3.4.
 
 Evidence: parent progress entry with native-intent versus actual-menu provenance.
 Handoff: exact unsupported input type, target or cancelability case.
@@ -50,7 +50,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-4.2 — Read transfer-carried plain input payloads
 
-- [ ] PKI-4.2 Use available plain input text before DOM fallback.
+- [x] PKI-4.2 Use available plain input text before DOM fallback.
 
 Purpose: Targeted correction does not ignore `text/plain` solely because `InputEvent.data` is null.
 Context: comparison F08; `input/text.ts` ordinary beforeinput routing and `#apply`, `input/characters.ts`, reported StaticRange mapping; `specs/web.md` Input routing and ES-INPUT-1.
@@ -62,12 +62,12 @@ Acceptance: For supported text/replacement intentions, prefer an actual string `
 
 Implementation:
 
-- [ ] PKI-4.2-I1 Normalize plain input data with explicit absence/MIME handling and route it through the existing character/range validators.
-- [ ] PKI-4.2-I2 Connect the normalized value to current insertion/replacement and preserve duplicate, read-only and composition guards.
+- [x] PKI-4.2-I1 Normalize plain input data with explicit absence/MIME handling and route it through the existing character/range validators.
+- [x] PKI-4.2-I2 Connect the normalized value to current insertion/replacement and preserve duplicate, read-only and composition guards.
 
 Validation:
 
-- [ ] PKI-4.2-V1 Compare string-data and transfer-data correction over the same reported range, plus empty text and no-plain-MIME controls. Inspect requested target/text and one real-engine result. Budget: 3 minutes; final owner PKI-3.5.
+- [x] PKI-4.2-V1 Compare string-data and transfer-data correction over the same reported range, plus empty text and no-plain-MIME controls. Inspect requested target/text and one real-engine result. Budget: 3 minutes; final owner PKI-3.5.
 
 Evidence: parent progress entry separating prepared payload routing from native fallback observations.
 Handoff: exact missing payload/range shape or shared replacement receipt.
