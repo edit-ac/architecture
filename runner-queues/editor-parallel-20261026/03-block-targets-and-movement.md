@@ -82,7 +82,7 @@ Blocked behavior: Fingerprint task/criteria/failing inputs and exact repair prer
 
 ### Task ES-3.2 — Expose keyboard-accessible contiguous block selection
 
-- [ ] ES-3.2 Expose keyboard-accessible contiguous block selection.
+- [x] ES-3.2 Expose keyboard-accessible contiguous block selection.
 
 Purpose: Users can select a block range without a pointer or a hidden Notion-style shortcut state.
 Deliverable: Visible Select block / extend block selection / return to text commands and accessible selected-state presentation.
@@ -105,7 +105,7 @@ Implementation:
 
 Validation:
 
-- [ ] ES-3.2-V1 From core run `npm run typecheck --workspace packages/web` and the affected existing `npm run test:interactions -- --group keyboard` or `command-surfaces` group after confirming its dispatcher name. Use one deterministic keyboard-only select/extend/return observation and verify no engine update. Budget 5 minutes; new keyboard/accessibility tests ES-4.3/4.4.
+- [x] ES-3.2-V1 From core run `npm run typecheck --workspace packages/web` and the affected existing `npm run test:interactions -- --group keyboard` or `command-surfaces` group after confirming its dispatcher name. Use one deterministic keyboard-only select/extend/return observation and verify no engine update. Budget 5 minutes; new keyboard/accessibility tests ES-4.3/4.4.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/03-block-targets-and-movement.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.3 and ES-4.4.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
