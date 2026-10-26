@@ -104,7 +104,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-3.4 — Cover native formatting and table editing intentions
 
-- [ ] PKI-3.4 Complete F07/F10 native-intention coverage.
+- [x] PKI-3.4 Complete F07/F10 native-intention coverage.
 
 Purpose: Non-keyboard formatting and admitted table text intentions have deterministic semantic oracles independent of hardware shortcuts.
 Context: [additional comparison](../../research/open-source-editor-input-20261026.md) F07/F10; `core/tests/browser/interactions/command-surfaces.spec.ts`, `core/tests/browser/current-table.spec.ts`, existing cell-multiline fixtures and current prepared engine commands.
@@ -116,12 +116,12 @@ Acceptance: Supported `formatBold/Italic/Underline/StrikeThrough` without keydow
 
 Implementation:
 
-- [ ] PKI-3.4-I1 Add only missing `PKI-F07` and `PKI-F10` cases to existing fixtures, reusing PKI-3.2's unchanged table input lifecycle and existing formatting matrices.
+- [x] PKI-3.4-I1 Add only missing `PKI-F07` and `PKI-F10` cases to existing fixtures, reusing PKI-3.2's unchanged table input lifecycle and existing formatting matrices.
 
 Validation:
 
-- [ ] PKI-3.4-V1 Run the affected `interaction-command-surfaces`, `current-table` or `interaction-cell-multiline` selectors matching `PKI-(F07|F10)`; use only suites containing these cases. Budget: 8 minutes across declared browsers; require nonzero per-browser counts.
-- [ ] PKI-3.4-V2 Record the actual supported input vocabulary and target scopes, real-engine result receipts and exact outstanding runtime cases for existing INT/MWB/43 owners. Reuse unchanged history/durability evidence.
+- [x] PKI-3.4-V1 Run the affected `interaction-command-surfaces`, `current-table` or `interaction-cell-multiline` selectors matching `PKI-(F07|F10)`; use only suites containing these cases. Budget: 8 minutes across declared browsers; require nonzero per-browser counts.
+- [x] PKI-3.4-V2 Record the actual supported input vocabulary and target scopes, real-engine result receipts and exact outstanding runtime cases for existing INT/MWB/43 owners. Reuse unchanged history/durability evidence.
 
 Evidence: parent progress with input type, scope, result counts and native-versus-prepared provenance.
 Handoff: exact unqualified native gesture or failing semantic target.
