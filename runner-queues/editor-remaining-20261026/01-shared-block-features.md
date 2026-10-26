@@ -28,7 +28,7 @@ Finish the existing editor ES functional sources and applicable safety proof bef
 
 ### Task BTA-1.1 — Implement lossless captured block conversion
 
-- [ ] BTA-1.1 Implement paragraph/heading conversion over captured block targets.
+- [x] BTA-1.1 Implement paragraph/heading conversion over captured block targets.
 
 Deliverable: The named BTA-1.1 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Change presentation without recreating content or identity.
@@ -42,11 +42,11 @@ Acceptance: Paragraph, heading 1–6 and heading-level changes preserve rich/opa
 
 Implementation:
 
-- [ ] BTA-1.1-I1 Add typed captured targets and prepare/availability routing through existing format semantics; preserve source/owner data and return existing result-selection resources.
+- [x] BTA-1.1-I1 Add typed captured targets and prepare/availability routing through existing format semantics; preserve source/owner data and return existing result-selection resources.
 
 Validation:
 
-- [ ] BTA-1.1-V1 Run `cargo test -p editac-core --locked --offline --test block_actions heading_to_paragraph_is_lossless -- --exact` and the same command with `stale_conversion_is_atomic`. These minimal regressions protect the data-loss boundary; reuse applicable existing formatting/history results. Budget: 5 minutes; record nonzero passed/failed/skipped counts. Comprehensive combinations belong to BTQ-1.1.
+- [x] BTA-1.1-V1 Run `cargo test -p editac-core --locked --offline --test block_actions heading_to_paragraph_is_lossless -- --exact` and the same command with `stale_conversion_is_atomic`. These minimal regressions protect the data-loss boundary; reuse applicable existing formatting/history results. Budget: 5 minutes; record nonzero passed/failed/skipped counts. Comprehensive combinations belong to BTQ-1.1.
 
 Evidence: Separate progress entry with changed symbols, current-format pins, focused counts and reused checks.
 Handoff: Exact captured-target fields, no-op behavior, returned resource ownership and any failed preservation invariant.
@@ -54,7 +54,7 @@ Blocked behavior: Leave unchecked; record missing primitive, owner and changed-i
 
 ### Task BTA-1.2 — Expose one portable typed command contract
 
-- [ ] BTA-1.2 Expose conversion through Rust, WASM and Session/FFI ports.
+- [x] BTA-1.2 Expose conversion through Rust, WASM and Session/FFI ports.
 
 Deliverable: The named BTA-1.2 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Give extensions and all clients the same action without menu dependencies.
@@ -68,11 +68,11 @@ Acceptance: One named capture/enumerate/prepare/commit capability exposes no-op,
 
 Implementation:
 
-- [ ] BTA-1.2-I1 Freeze concrete binding names and schemas, route adapters to the shared primitive and document plan/selection ownership and capability availability.
+- [x] BTA-1.2-I1 Freeze concrete binding names and schemas, route adapters to the shared primitive and document plan/selection ownership and capability availability.
 
 Validation:
 
-- [ ] BTA-1.2-V1 Run `npm run typecheck --workspace @edit-ac/core`, `node --test --test-name-pattern='lossless port' tests/wasm-block-actions.test.mjs` and `cargo test -p editac-session -p editac-ffi --locked --offline block_actions_lossless_port`. Add one minimal round trip per changed binding; require nonzero cases in each crate. Budget: 5 minutes beyond compilation; full cross-port negatives belong to BTQ-1.1.
+- [x] BTA-1.2-V1 Run `npm run typecheck --workspace @edit-ac/core`, `node --test --test-name-pattern='lossless port' tests/wasm-block-actions.test.mjs` and `cargo test -p editac-session -p editac-ffi --locked --offline block_actions_lossless_port`. Add one minimal round trip per changed binding; require nonzero cases in each crate. Budget: 5 minutes beyond compilation; full cross-port negatives belong to BTQ-1.1.
 
 Evidence: Progress with the exact API/ABI shape, selected compile/probe results and runtime scope.
 Handoff: Command descriptor and captured-target/result examples for extension and native/TUI owners.
