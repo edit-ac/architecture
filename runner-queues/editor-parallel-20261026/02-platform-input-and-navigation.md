@@ -1,6 +1,6 @@
 # Complete native selected input and platform navigation profiles
 
-Status: IN_PROGRESS
+Status: BLOCKED
 
 ## Goal
 
@@ -80,7 +80,7 @@ Blocked behavior: Record `BLOCKED ES-2.2` only with owner, fingerprint and exact
 
 ### Task ES-2.3 — Expose language and base direction as host layout policy
 
-- [ ] ES-2.3 Expose language and base direction as host layout policy.
+- [x] ES-2.3 Expose language and base direction as host layout policy.
 
 Purpose: Multilingual rendering and navigation have a documented source of language/direction without inventing persisted metadata.
 Deliverable: Host `lang`/base-direction inheritance and native equivalent capability declarations, preserving existing native visual layout.
@@ -94,12 +94,12 @@ Acceptance: Explicit editor language/base-direction settings precede inherited h
 
 Implementation:
 
-- [ ] ES-2.3-I1 Document host/default inheritance, control ownership, platform equivalents and import/export limits; preserve the current schema and existing local language settings.
-- [ ] ES-2.3-I2 Add only missing host plumbing to current surface/render configuration and publish unsupported native capabilities honestly; never infer or rewrite document language from content.
+- [x] ES-2.3-I1 Document host/default inheritance, control ownership, platform equivalents and import/export limits; preserve the current schema and existing local language settings.
+- [x] ES-2.3-I2 Add only missing host plumbing to current surface/render configuration and publish unsupported native capabilities honestly; never infer or rewrite document language from content.
 
 Validation:
 
-- [ ] ES-2.3-V1 From core run `npm run typecheck --workspace packages/web` if changed and the existing `npm run test:interactions -- --group navigation` bidi comparison only when affected. Inspect ltr/rtl inheritance and unchanged text in one mounted deterministic fixture. Budget 5 minutes; broader locale/AT observations ES-4.1/4.4 and roadmap43.
+- [x] ES-2.3-V1 From core run `npm run typecheck --workspace packages/web` if changed and the existing `npm run test:interactions -- --group navigation` bidi comparison only when affected. Inspect ltr/rtl inheritance and unchanged text in one mounted deterministic fixture. Budget 5 minutes; broader locale/AT observations ES-4.1/4.4 and roadmap43.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1 and ES-4.4.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
@@ -107,7 +107,7 @@ Blocked behavior: Record `BLOCKED ES-2.3` only with owner, fingerprint and exact
 
 ### Task ES-2.4 — Add discoverable conventional terminal navigation commands
 
-- [ ] ES-2.4 Add discoverable conventional terminal navigation commands.
+- [x] ES-2.4 Add discoverable conventional terminal navigation commands.
 
 Purpose: The source TUI supports meaningful word/document/page navigation within actual terminal key reporting.
 Deliverable: Named word movement/deletion, document-boundary and page-movement commands with an accurate terminal shortcut/help profile.
@@ -121,12 +121,12 @@ Acceptance: Supported Ctrl/Alt word, document-boundary and page actions move/ext
 
 Implementation:
 
-- [ ] ES-2.4-I1 Choose unambiguous terminal-specific chords from observed key protocol and existing reserved controls; expose names/help before binding them.
-- [ ] ES-2.4-I2 Implement movement/deletion through current source-position helpers and draft command owner; use viewport height for page movement and preserve selection extension.
+- [x] ES-2.4-I1 Choose unambiguous terminal-specific chords from observed key protocol and existing reserved controls; expose names/help before binding them.
+- [x] ES-2.4-I2 Implement movement/deletion through current source-position helpers and draft command owner; use viewport height for page movement and preserve selection extension.
 
 Validation:
 
-- [ ] ES-2.4-V1 From cli run `cargo check --locked --offline` and `cargo test --locked --offline --test tui_input`; record exact selectors/counts. Use one prepared terminal event per new command family for focused delivery, leaving new automated/PTY cases to ES-4.4. Budget 5 minutes; no broad terminal matrix.
+- [x] ES-2.4-V1 From cli run `cargo check --locked --offline` and `cargo test --locked --offline --test tui_input`; record exact selectors/counts. Use one prepared terminal event per new command family for focused delivery, leaving new automated/PTY cases to ES-4.4. Budget 5 minutes; no broad terminal matrix.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.4.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
