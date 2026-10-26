@@ -23,7 +23,7 @@ For every parent, Evidence means its separate progress section: changed paths, e
 
 ### Task PKI-1.1 — Respect break intent and shortcut policy before typing rules
 
-- [ ] PKI-1.1 Correct typing-rule command precedence.
+- [x] PKI-1.1 Correct typing-rule command precedence.
 
 Purpose: Shift+Enter and host-owned keys retain their intended action; ordinary unmodified fence Enter still converts when enabled.
 Context: comparison F01; `core/packages/web/src/input/text.ts` event dispatcher; `input/keyboard.ts::action`; `core/packages/markdown/src/shortcuts.ts::convert/reverse`; `specs/editing-experience.md` break matrix.
@@ -35,12 +35,12 @@ Acceptance: Shift+Enter after a fence inserts one LF in the same paragraph; rese
 
 Implementation:
 
-- [ ] PKI-1.1-I1 Resolve event ownership/profile and distinguish plain Enter from an explicit line break before conversion or reversal.
-- [ ] PKI-1.1-I2 Preserve the current direct-typing, permission, composition and conversion-history guards.
+- [x] PKI-1.1-I1 Resolve event ownership/profile and distinguish plain Enter from an explicit line break before conversion or reversal.
+- [x] PKI-1.1-I2 Preserve the current direct-typing, permission, composition and conversion-history guards.
 
 Validation:
 
-- [ ] PKI-1.1-V1 Use the existing browser-input/Markdown fixture for plain Enter, Shift+Enter and one reserved-key negative control after a fence; inspect owner, text, caret and transaction count. Budget: 3 minutes; defer full matrix to PKI-3.1.
+- [x] PKI-1.1-V1 Use the existing browser-input/Markdown fixture for plain Enter, Shift+Enter and one reserved-key negative control after a fence; inspect owner, text, caret and transaction count. Budget: 3 minutes; defer full matrix to PKI-3.1.
 
 Evidence: parent progress entry under the contract above.
 Handoff: unresolved chord and exact rule/dispatcher boundary.
@@ -50,7 +50,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-1.2 — Use half-open block ranges for indentation
 
-- [ ] PKI-1.2 Exclude the untouched endpoint block from Tab commands.
+- [x] PKI-1.2 Exclude the untouched endpoint block from Tab commands.
 
 Purpose: Tab and Shift+Tab act on the blocks actually selected.
 Context: comparison F02; `core/packages/web/src/input/keyboard.ts::execute` indent/outdent branch; `specs/editing-behavior-standards.md` ES-BLOCK-1 and ES-KEY-1.
@@ -62,12 +62,12 @@ Acceptance: A range A:1 → B:0 and its reverse affect A only; B:1 includes B; a
 
 Implementation:
 
-- [ ] PKI-1.2-I1 Derive one ordered half-open block extent while retaining the original directional selection.
-- [ ] PKI-1.2-I2 Apply it to prose/list indentation and explicitly classify mixed code/prose applicability through prepared commands.
+- [x] PKI-1.2-I1 Derive one ordered half-open block extent while retaining the original directional selection.
+- [x] PKI-1.2-I2 Apply it to prose/list indentation and explicitly classify mixed code/prose applicability through prepared commands.
 
 Validation:
 
-- [ ] PKI-1.2-V1 Run a current-source command-capture probe for the three endpoint forms and reverse direction, then one existing real-engine indent fixture. Record command owners separately from semantic proof. Budget: 3 minutes; final owner PKI-3.1.
+- [x] PKI-1.2-V1 Run a current-source command-capture probe for the three endpoint forms and reverse direction, then one existing real-engine indent fixture. Record command owners separately from semantic proof. Budget: 3 minutes; final owner PKI-3.1.
 
 Evidence: parent progress entry, including preserved endpoint/caret observations.
 Handoff: exact mixed context or engine admission still unresolved.
