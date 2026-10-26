@@ -1,6 +1,6 @@
 # Close BWF-1.7, BWF-1.8 prerequisite ownership
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; paths in task contracts are core-relative.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/16-angular-form-bindings.progress.md`.
@@ -23,7 +23,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task BWF-1.7 — Add the Angular component and service
 
-- [ ] BWF-1.7 Add the Angular component and service.
+- [x] BWF-1.7 Add the Angular component and service.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/web/angular/.
@@ -37,11 +37,11 @@ Acceptance: Explicit component/service scope, change detection and ControlValueA
 
 Implementation:
 
-- [ ] BWF-1.7-I1 Add the Angular component and service. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BWF-1.7-I1 Add the Angular component and service. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BWF-1.7-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.7`: One local form fixture verifies read-only denial and explicit reset/new identity without a feedback import loop. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BWF-1.7-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.7`: One local form fixture verifies read-only denial and explicit reset/new identity without a feedback import loop. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -49,7 +49,7 @@ Blocked behavior: Leave BWF-1.7 unchecked; record owner, source/error fingerprin
 
 ### Task BWF-1.8 — Define common forms and multi-editor recipes
 
-- [ ] BWF-1.8 Define common forms and multi-editor recipes.
+- [x] BWF-1.8 Define common forms and multi-editor recipes.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: examples/sdk-adapters/web/.
@@ -63,11 +63,11 @@ Acceptance: Each framework documents uncontrolled canonical ownership, explicit 
 
 Implementation:
 
-- [ ] BWF-1.8-I1 Define common forms and multi-editor recipes. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BWF-1.8-I1 Define common forms and multi-editor recipes. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BWF-1.8-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.8`: Compile the named minimal framework consumers and execute one shared prepared submit/conflict transcript; comprehensive matrix is deferred. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BWF-1.8-V1 Run `node scripts/sdk-adapter-delivery.mjs BWF-1.8`: Compile the named minimal framework consumers and execute one shared prepared submit/conflict transcript; comprehensive matrix is deferred. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
