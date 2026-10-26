@@ -1,6 +1,6 @@
 # Repair atomic captured slash conversion
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `/Users/bpstr/Github/edit-ac-editor-20261026`; core paths below are core-relative. Progress: `.roadmap-runner/editor-slash-unblock-20261026/01-atomic-conversion-cleanup.progress.md`.
 
@@ -16,7 +16,7 @@ Workers update only verified checkboxes and Status in this source, using separat
 
 ### Task BTA-2.1 — Prepare exact transient cleanup with captured conversion
 
-- [ ] BTA-2.1 Repair the shared Rust/WASM/typed conversion plan so exact captured slash cleanup commits atomically with conversion.
+- [x] BTA-2.1 Repair the shared Rust/WASM/typed conversion plan so exact captured slash cleanup commits atomically with conversion.
 
 Purpose: Unblock BTU-1.2 without bypassing captured conversion policy, exact-plan review, history or durable admission.
 Deliverable: Existing `crates/editac-core/src/commands/blocks/conversion.rs`, current shared editor preparation helpers, `crates/editac-wasm/src/bridge.rs`, `packages/core/src/engine.ts`, `packages/core/src/extensions/conversions.ts` and `reviewed-conversion.ts`; only directly required current caller forwarding, tests and block-actions contract updates. No menu/slash/keyboard presenter implementation here.
@@ -30,11 +30,11 @@ Acceptance: One optional `transientCleanup: { range: StableRange, expectedText: 
 
 Implementation:
 
-- [ ] BTA-2.1-I1 Implement one bounded shared cleanup descriptor and combined preparation/commit through the current Rust owner; thread it through strict WASM and typed engine/extension review staging, preserving exact-plan invalidation and updating required current callers.
+- [x] BTA-2.1-I1 Implement one bounded shared cleanup descriptor and combined preparation/commit through the current Rust owner; thread it through strict WASM and typed engine/extension review staging, preserving exact-plan invalidation and updating required current callers.
 
 Validation:
 
-- [ ] BTA-2.1-V1 Run focused production-linked `cargo test -p editac-core --locked --offline --test block_actions atomic_conversion_cleanup`, `node --test --test-name-pattern='atomic slash cleanup' tests/wasm-block-actions.test.mjs`, and `node --test --test-name-pattern='cleanup review' tests/block-actions-contract.test.mjs`. Add only minimal regressions for this concrete data-loss/authorization gap: rich Unicode success plus one undo/reopen, same-presentation cleanup, stale/text mismatch/foreign-owner/policy nonmutation and exact-plan changed-query/cancellation. Build current affected WASM and typecheck core/web once; if the Rust signature changes Session/FFI callers, compile them and execute only their existing `block_actions_lossless_port` case. Use current pinned offline Cargo/Node, isolated outputs and nonzero actual case counts; focused runtime budget five minutes after required compilation. Record failures/skips separately; broader entry parity and matrices remain BTU-1.2 and BTQ owners.
+- [x] BTA-2.1-V1 Run focused production-linked `cargo test -p editac-core --locked --offline --test block_actions atomic_conversion_cleanup`, `node --test --test-name-pattern='atomic slash cleanup' tests/wasm-block-actions.test.mjs`, and `node --test --test-name-pattern='cleanup review' tests/block-actions-contract.test.mjs`. Add only minimal regressions for this concrete data-loss/authorization gap: rich Unicode success plus one undo/reopen, same-presentation cleanup, stale/text mismatch/foreign-owner/policy nonmutation and exact-plan changed-query/cancellation. Build current affected WASM and typecheck core/web once; if the Rust signature changes Session/FFI callers, compile them and execute only their existing `block_actions_lossless_port` case. Use current pinned offline Cargo/Node, isolated outputs and nonzero actual case counts; focused runtime budget five minutes after required compilation. Record failures/skips separately; broader entry parity and matrices remain BTU-1.2 and BTQ owners.
 
 Evidence: Separate progress with exact current shared/WASM/TS APIs, touched paths and input pins, check selectors/receipts, nonzero executed/passed/failed/skipped counts, result selection/history/byte oracles and reuse decisions. Current source snapshots/results remain immutable.
 Handoff: Deliver the repaired public request shape and one minimal compiled consumer payload, current source/artifact pins and focused success/refusal/approval proof to BTU-1.2. Its task-local criterion now names this repaired prerequisite; reassessment is authorized only after actual changed implementation and passing proof. Keep BTU's original acceptance open until its own integration checks pass; do not edit deferral memory or manufacture a resolver acknowledgment.
