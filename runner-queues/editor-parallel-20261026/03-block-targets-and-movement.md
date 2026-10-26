@@ -82,7 +82,7 @@ Blocked behavior: Record `BLOCKED ES-3.2` only with owner, fingerprint and exact
 
 ### Task ES-3.3 — Apply one mixed-selection applicability and preservation matrix
 
-- [ ] ES-3.3 Apply one mixed-selection applicability and preservation matrix.
+- [x] ES-3.3 Apply one mixed-selection applicability and preservation matrix.
 
 Purpose: Copy, cut, delete, formatting, Enter and moves have predictable results when text and whole objects share a selection.
 Deliverable: Current command applicability/refusal for mixed text/whole-atom/block targets with exact preserved tails and result selection.
@@ -96,12 +96,12 @@ Acceptance: Partial prose → whole admitted object → partial prose/list range
 
 Implementation:
 
-- [ ] ES-3.3-I1 Crosswalk every matrix row to existing EDX/INT/BTA code/evidence; record preserved prefix/suffix, IDs/metadata and caret/result policy rather than blanket support.
-- [ ] ES-3.3-I2 Repair only remaining target-dispatch/refusal gaps through existing commands and fragment APIs; expose stable reasons in controls and retain one transaction/history unit.
+- [x] ES-3.3-I1 Crosswalk every matrix row to existing EDX/INT/BTA code/evidence; record preserved prefix/suffix, IDs/metadata and caret/result policy rather than blanket support.
+- [x] ES-3.3-I2 Repair only remaining target-dispatch/refusal gaps through existing commands and fragment APIs; expose stable reasons in controls and retain one transaction/history unit.
 
 Validation:
 
-- [ ] ES-3.3-V1 Typecheck changed TS packages; compile changed Rust crates only if preparation changes. Run one affected existing `test:interactions` group among deletion, formatting, paste or text-drag, not all, and a bounded manual mixed-range acceptance/refusal fixture. Budget 5 minutes; full mixed matrix automated once in ES-4.3.
+- [x] ES-3.3-V1 Typecheck changed TS packages; compile changed Rust crates only if preparation changes. Run one affected existing `test:interactions` group among deletion, formatting, paste or text-drag, not all, and a bounded manual mixed-range acceptance/refusal fixture. Budget 5 minutes; full mixed matrix automated once in ES-4.3.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/03-block-targets-and-movement.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.3.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
