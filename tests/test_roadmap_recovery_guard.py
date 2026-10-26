@@ -182,6 +182,15 @@ class GuardProcessTests(unittest.TestCase):
     def test_invalid_event_fails_closed(self):
         self.exercise(["{invalid json"], "stopped-on-guard-error", True)
 
+    def test_invalid_task_result_stops_before_legacy_handoff_redispatch(self):
+        self.exercise([dict(type="runner.task_result_invalid", task="BFT-1.2",
+                            reasonCode="legacy_handoff_retained", iteration=41)],
+                      "stopped-on-invalid-task-result", True)
+
+    def test_foreign_invalid_task_result_does_not_stop_owned_runner(self):
+        self.exercise([dict(type="runner.task_result_invalid", runId="other"),
+                       dict(type="runner.completed")], "runner-ended", False)
+
     def test_guard_expiry_fails_closed(self):
         self.exercise([], "stopped-on-guard-expired", True, max_hours="0")
 

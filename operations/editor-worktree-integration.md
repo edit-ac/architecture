@@ -1,5 +1,7 @@
 # Periodic editor integration into local main
 
+Retired by user decision, 2026-10-27: the schedule is removed and both lanes are consolidated on the existing root main branches. Continue through [the single-main queue](../runner-queues/editor-main-20261027/README.md). The procedure below is retained as historical guidance; it does not authorize another lane or periodic follow-up.
+
 User authorization, 2026-10-26: update both existing runners to merge validated
 editor deliveries into local main periodically. This policy supersedes older
 indefinite source-landing deferrals and blanket cross-lane pause prohibitions only

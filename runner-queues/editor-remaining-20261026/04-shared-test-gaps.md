@@ -2,9 +2,13 @@
 
 Status: IN_PROGRESS
 
+## Current controller authority — 2026-10-27
+
+The user consolidated the editor lane into this root workspace on its existing main branches and removed the periodic merge schedule. Execute this unfinished source in main with one guarded controller. This decision supersedes the older editor-lane isolation wording below; task IDs, acceptance, failed budgets, completion state and proof obligations are unchanged. Preserve unrelated dirty source and every source/progress pair. Native OS checks remain deferred. See ../editor-main-20261027/README.md and the current shared ledger.
+
 ## Goal and authority
 
-Deliver this bounded remaining-editor milestone in `/Users/bpstr/Github/edit-ac-editor-20261026`. The user explicitly requested remaining features, performance improvements and testing gaps on 2026-10-26. This continuation follows the current editor runner's existing required ES work; it does not restart a stopped run. Current verified ES evidence is reused only for exact applicable input pins.
+Deliver this bounded remaining-editor milestone in `/Users/bpstr/Github/edit-ac`. The user explicitly requested remaining features, performance improvements and testing gaps on 2026-10-26. This continuation follows the current editor runner's existing required ES work; it does not restart a stopped run. Current verified ES evidence is reused only for exact applicable input pins.
 
 Progress: `.roadmap-runner/editor-remaining-20261026/04-shared-test-gaps.progress.md` relative to the workspace root. The controller index is README.md; workers need only this source and the current task's named context.
 

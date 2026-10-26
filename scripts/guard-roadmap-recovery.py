@@ -124,6 +124,13 @@ def main():
                     event = json.loads(line)
                     if event.get("runId") != args.run_id:
                         continue
+                    if event.get("type") == "runner.task_result_invalid":
+                        # A rejected structured blocker must never fall back to
+                        # legacy handoff and redispatch the same ready task.
+                        stop("invalid-task-result", task=event.get("task"),
+                             resultFile=event.get("resultFile"),
+                             completedIteration=event.get("iteration"))
+                        return
                     if event.get("type") in ("runner.stopped", "runner.completed", "runner.failed", "runner.finished"):
                         save(state="runner-ended", event=event)
                         return
