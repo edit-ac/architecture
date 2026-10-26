@@ -52,7 +52,12 @@ class CompletedSourceGuard:
         contract = re.sub(r"^Current delivery:.*\n?", "", source.read_text(), flags=re.MULTILINE)
         contract = re.sub(r"^Status:.*$", "", contract, flags=re.MULTILINE)
         fingerprint = (str(source), contract.strip())
-        complete = checks and all(state.lower() == "x" for state, _ in checks)
+        # New runtimes preserve source checkboxes and track completion only in
+        # the active progress header. Historical COMPLETE text is not authority.
+        progress_complete = re.search(r"^Status: COMPLETE\s*$",
+                                      progress.read_text().split("##", 1)[0], re.MULTILINE)
+        complete = checks and (all(state.lower() == "x" for state, _ in checks)
+                               or progress_complete is not None)
         iteration = (str(source), event.get("iteration")) if event.get("iteration") is not None else None
         if iteration is not None and iteration == self.previous_iteration:
             return None
