@@ -1,6 +1,6 @@
 # Add explicit block targeting and safe structural movement
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal
 
@@ -55,7 +55,7 @@ Blocked behavior: Record `BLOCKED ES-3.1` only with owner, fingerprint and exact
 
 ### Task ES-3.6 — Repair the current rich-cell keyboard validation prerequisite
 
-- [ ] ES-3.6 Repair the current rich-cell keyboard validation prerequisite.
+- [x] ES-3.6 Repair the current rich-cell keyboard validation prerequisite.
 
 Purpose: The existing keyboard dispatcher must exercise the current single active rich-cell control rather than an obsolete textarea interface, without hiding genuine keyboard/history failures.
 Deliverable: Current-API existing table keyboard fixtures and any confirmed narrow existing table focus/key-owner repair, preserving all original semantic assertions and case IDs.
@@ -69,12 +69,12 @@ Acceptance: Original thirteen table keyboard cases pass in Chromium, Firefox and
 
 Implementation:
 
-- [ ] ES-3.6-I1 Reconcile remaining obsolete DOM accesses with the existing cellDOMSelection/setCellDOMSelection and actual active rich-cell ownership; preserve all original case IDs and strengthen nonvacuous cell permission observations. The current partial fixture is retained, not a passing gate.
-- [ ] ES-3.6-I2 Repair only confirmed existing current-table focus/key/history behavior needed by those assertions. Inspect recorded append-typing, help/Escape, rectangle-cancel and host-owned-key failures; do not replace rich cells, introduce a second planner or relax semantics. Reauthenticate source/packed-artifact pins.
+- [x] ES-3.6-I1 Reconcile remaining obsolete DOM accesses with the existing cellDOMSelection/setCellDOMSelection and actual active rich-cell ownership; preserve all original case IDs and strengthen nonvacuous cell permission observations. The current partial fixture is retained, not a passing gate.
+- [x] ES-3.6-I2 Repair only confirmed existing current-table focus/key/history behavior needed by those assertions. Inspect recorded append-typing, help/Escape, rectangle-cancel and host-owned-key failures; do not replace rich cells, introduce a second planner or relax semantics. Reauthenticate source/packed-artifact pins.
 
 Validation:
 
-- [ ] ES-3.6-V1 Use pinned Node24.19.0/npm11.17.0. Run focused changed/failed named table cases while repairing, then the existing `node scripts/test-browser.mjs interaction-keyboard-tables` to prove all39 current cases and0skips. Compile/typecheck/build only affected packages. Reuse compatible command-surfaces210, keyboard108 and block27 proof; rerun only invalidated selections and explain changed inputs. Keep all new comprehensive test development and OS/AT/platform qualification final-owned.
+- [x] ES-3.6-V1 Use pinned Node24.19.0/npm11.17.0. Run focused changed/failed named table cases while repairing, then the existing `node scripts/test-browser.mjs interaction-keyboard-tables` to prove all39 current cases and0skips. Compile/typecheck/build only affected packages. Reuse compatible command-surfaces210, keyboard108 and block27 proof; rerun only invalidated selections and explain changed inputs. Keep all new comprehensive test development and OS/AT/platform qualification final-owned.
 
 Evidence: The configured source03 progress and ignored `evidence/ES-3.6/` record exact commands, counts, current source/artifact pins, retained failures, source-versus-fixture decisions, and baseline-relative owned patches. Generated output never enters Git.
 Handoff: Preserve the exact remaining assertion/owner, changed input, failing selector, active task-owned processes and next command. Self-validate structured outcome scope; shared-ledger links belong only in human handoff because the symlink resolves outside the isolated workspace.
@@ -140,7 +140,7 @@ Blocked behavior: Record `BLOCKED ES-3.3` only with owner, fingerprint and exact
 
 ### Task ES-3.4 — Admit identity-preserving moves for qualified typed atoms
 
-- [ ] ES-3.4 Admit identity-preserving moves for qualified typed atoms.
+- [x] ES-3.4 Admit identity-preserving moves for qualified typed atoms.
 
 Purpose: Known movable objects can be reordered without being copied into new identities or flattened.
 Deliverable: An explicit select/move/copy/delete/convert capability matrix and narrow current MoveCommand extension for qualified module atoms.
@@ -154,12 +154,12 @@ Acceptance: A qualified kind moves with identical owner/descendant IDs, payloads
 
 Implementation:
 
-- [ ] ES-3.4-I1 Audit current descriptor/placement preservation and publish per-kind capability/refusal; reuse existing container/plain-block support without widening blindly.
-- [ ] ES-3.4-I2 Extend the existing move allowlist/admission only for kinds with complete preservation guarantees and a current target scope; leave unsupported kinds explicit.
+- [x] ES-3.4-I1 Audit current descriptor/placement preservation and publish per-kind capability/refusal; reuse existing container/plain-block support without widening blindly.
+- [x] ES-3.4-I2 Extend the existing move allowlist/admission only for kinds with complete preservation guarantees and a current target scope; leave unsupported kinds explicit.
 
 Validation:
 
-- [ ] ES-3.4-V1 From core run `cargo check -p editac-core --locked --offline` and one existing move/placement test selector located before execution; use one deterministic known-atom move/no-op/rejection fixture if absent. Compare complete payload/identity snapshots without creating a new suite. Budget 5 minutes; new persistence/concurrency variants ES-4.3.
+- [x] ES-3.4-V1 From core run `cargo check -p editac-core --locked --offline` and one existing move/placement test selector located before execution; use one deterministic known-atom move/no-op/rejection fixture if absent. Compare complete payload/identity snapshots without creating a new suite. Budget 5 minutes; new persistence/concurrency variants ES-4.3.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/03-block-targets-and-movement.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.3.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
@@ -167,7 +167,7 @@ Blocked behavior: Record `BLOCKED ES-3.4` only with owner, fingerprint and exact
 
 ### Task ES-3.5 — Use captured atom and block targets in reorder controls
 
-- [ ] ES-3.5 Use captured atom and block targets in reorder controls.
+- [x] ES-3.5 Use captured atom and block targets in reorder controls.
 
 Purpose: Reorder UI does not require an editable text caret inside a noneditable object.
 Deliverable: Existing reorder controls consume typed targets and shared move availability while retaining keyboard/touch/focus behavior.
@@ -181,12 +181,12 @@ Acceptance: Known atom/block targets reorder through the same shared Move action
 
 Implementation:
 
-- [ ] ES-3.5-I1 Remove the text-bookmark prerequisite only where a validated typed target supplies an appropriate return selection.
-- [ ] ES-3.5-I2 Bind capability/refusal and post-move focus to the existing reorder action, revalidating stale targets and avoiding a separate drag transaction implementation.
+- [x] ES-3.5-I1 Remove the text-bookmark prerequisite only where a validated typed target supplies an appropriate return selection.
+- [x] ES-3.5-I2 Bind capability/refusal and post-move focus to the existing reorder action, revalidating stale targets and avoiding a separate drag transaction implementation.
 
 Validation:
 
-- [ ] ES-3.5-V1 From core run `npm run typecheck --workspace packages/web` and `npm run test:browser -- reorder` only when its retained evidence is invalidated. Use one bounded noneditable-target keyboard move observation; new full target cases ES-4.3. Budget 5 minutes.
+- [x] ES-3.5-V1 From core run `npm run typecheck --workspace packages/web` and `npm run test:browser -- reorder` only when its retained evidence is invalidated. Use one bounded noneditable-target keyboard move observation; new full target cases ES-4.3. Budget 5 minutes.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/03-block-targets-and-movement.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.3 and ES-4.4.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
