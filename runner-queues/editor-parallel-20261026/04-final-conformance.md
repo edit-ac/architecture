@@ -1,6 +1,6 @@
 # Complete standards conformance coverage and handoff
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal
 
@@ -134,7 +134,7 @@ Blocked behavior: Record `BLOCKED ES-4.4` only with owner, fingerprint and exact
 
 ### Task ES-4.5 — Reconcile conformance build compatibility and support claims
 
-- [ ] ES-4.5 Reconcile conformance build compatibility and support claims.
+- [x] ES-4.5 Reconcile conformance build compatibility and support claims.
 
 Purpose: The architecture and capabilities describe what current implementations prove, with no duplicated or silently waived gaps.
 Deliverable: A clause-to-owner-to-evidence completion map, current consumer build handoff and explicit remaining platform/deferred feature list.
@@ -148,12 +148,12 @@ Acceptance: Every ES clause has an existing or new canonical owner, actual outco
 
 Implementation:
 
-- [ ] ES-4.5-I1 Crosswalk every clause and task to current exact evidence, reusing unchanged EDX/BTA/BTQ checks and naming unsupported or deferred block/terminal/platform behavior.
-- [ ] ES-4.5-I2 Reconcile build/typecheck consumer receipts for touched public boundaries and hand remaining actual OS/AT observations to roadmap43 without changing its gate or active source snapshot.
+- [x] ES-4.5-I1 Crosswalk every clause and task to current exact evidence, reusing unchanged EDX/BTA/BTQ checks and naming unsupported or deferred block/terminal/platform behavior.
+- [x] ES-4.5-I2 Reconcile build/typecheck consumer receipts for touched public boundaries and hand remaining actual OS/AT observations to roadmap43 without changing its gate or active source snapshot.
 
 Validation:
 
-- [ ] ES-4.5-V1 Validate new/changed docs and local links, task/dependency/ownership map and current consumer build receipts. Run only a missing affected current-package/adapter check with a recorded reason, not full workspace builds or a synthetic previous/current matrix. Record pass/fail/skip totals and remaining qualification rows; budget 5 minutes.
+- [x] ES-4.5-V1 Validate new/changed docs and local links, task/dependency/ownership map and current consumer build receipts. Run only a missing affected current-package/adapter check with a recorded reason, not full workspace builds or a synthetic previous/current matrix. Record pass/fail/skip totals and remaining qualification rows; budget 5 minutes.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/group-move-repair-20261026/04-final-conformance.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.5.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
