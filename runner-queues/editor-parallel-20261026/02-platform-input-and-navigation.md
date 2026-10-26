@@ -1,6 +1,6 @@
 # Complete native selected input and platform navigation profiles
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal
 
@@ -26,7 +26,7 @@ ES-2.1/2.2 require ES-1.3 in `.roadmap-runner/editor-parallel-20261026/01-text-b
 
 ### Task ES-2.1 — Replace native cross-block selections through shared commands
 
-- [ ] ES-2.1 Replace native cross-block selections through shared commands.
+- [x] ES-2.1 Replace native cross-block selections through shared commands.
 
 Purpose: Ordinary macOS text replacement and Enter do not reject a compatible selection merely because it spans owners.
 Deliverable: Native committed-input and break-command routing using the qualified current shared replacement result.
@@ -40,12 +40,12 @@ Acceptance: Direct replacement and Enter/line-break over compatible prose ranges
 
 Implementation:
 
-- [ ] ES-2.1-I1 Narrow same-owner guards to the actual shared applicability rules and preserve captured native targets.
-- [ ] ES-2.1-I2 Route replacement/break intents to the current prepared request and consume its selection; keep read-only, composition and command ownership gates intact.
+- [x] ES-2.1-I1 Narrow same-owner guards to the actual shared applicability rules and preserve captured native targets.
+- [x] ES-2.1-I2 Route replacement/break intents to the current prepared request and consume its selection; keep read-only, composition and command ownership gates intact.
 
 Validation:
 
-- [ ] ES-2.1-V1 From core run the affected existing `bash native/macos/scripts/check.sh edits` or `commands` gate, which compiles the actual adapter and requires nonzero tests. Reuse compatible existing gate evidence and make one deterministic cross-owner direct-replacement observation; new regression tests belong to ES-4.2. Budget 5 minutes; unsupported toolchain is a blocker for this parent only.
+- [x] ES-2.1-V1 From core run the affected existing `bash native/macos/scripts/check.sh edits` or `commands` gate, which compiles the actual adapter and requires nonzero tests. Reuse compatible existing gate evidence and make one deterministic cross-owner direct-replacement observation; new regression tests belong to ES-4.2. Budget 5 minutes; unsupported toolchain is a blocker for this parent only.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/native-unlock-continuation-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
