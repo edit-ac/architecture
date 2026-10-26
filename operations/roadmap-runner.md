@@ -56,3 +56,7 @@ The CLI queue operation appends; it does not insert or replace pending entries. 
 ## Focused runtime delivery checks
 
 Follow the current queue’s [delivery-check policy](../runner-queues/dependency-closed-ui-20261025/delivery-check-policy.md). Functional-before-final-verification ordering permits each parent’s explicitly required narrow runtime observation and minimal wrapper. It does not permit replacing actual behavior with source inspection, or moving comprehensive matrices and qualification into implementation. Resolve phase-only blockers with explicit controller authority and changed source pins; retain original acceptance and compatible passing evidence.
+
+## Periodic editor integration
+
+The user authorized periodic local-main integration on2026-10-26. Follow [the delivery/landing procedure](editor-worktree-integration.md): EDITOR queues validated source after two completed parents and at source boundaries; PRIMARY lands eligible closed units in its next completed-parent integration phase, preserving unrelated dirty work/indexes. An outside coordinator waits for a successful worker exit before pausing dispatch and landing. EDITOR syncs from main at its own checkpoint. Both lanes check outstanding deliveries before continuing or ending; the hourly follow-up reconciles missed checkpoints. Old inherited source-closure gates require a concrete authenticated repair, not indefinite parking or unchanged retries. Native OS deferrals, existing qualification/caps, mocked-only checks and no publication/push remain unchanged.
