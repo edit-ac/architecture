@@ -1,12 +1,12 @@
 # Complete native selected input and platform navigation profiles
 
-Status: BLOCKED
+Status: IN_PROGRESS
 
 ## Goal
 
 Consume the shared replacement seam, expose language/direction as honest host policy and fill conventional terminal navigation gaps. These are narrow amendments to existing native/TUI/input owners, not parallel adapters.
 
-Progress: `.roadmap-runner/editor-parallel-20261026/02-platform-input-and-navigation.progress.md` relative to the workspace root; generated evidence is ignored and not committed.
+Progress: `.roadmap-runner/editor-parallel-20261026/native-unlock-20261026/02-platform-input-and-navigation.progress.md` relative to the workspace root; generated evidence is ignored and not committed.
 
 ## Execution boundaries
 
@@ -47,7 +47,7 @@ Validation:
 
 - [ ] ES-2.1-V1 From core run the affected existing `bash native/macos/scripts/check.sh edits` or `commands` gate, which compiles the actual adapter and requires nonzero tests. Reuse compatible existing gate evidence and make one deterministic cross-owner direct-replacement observation; new regression tests belong to ES-4.2. Budget 5 minutes; unsupported toolchain is a blocker for this parent only.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
+Evidence: `.roadmap-runner/editor-parallel-20261026/native-unlock-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-2.1` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
@@ -76,7 +76,7 @@ Validation:
 
 - [x] ES-2.2-V1 From core run `bash native/macos/scripts/check.sh composition` with the current admitted inputs, plus one bounded deterministic cross-owner marked-text commit/cancel observation. This compiles the adapter; OS IME observations remain roadmap43. Budget 5 minutes, new automated variants ES-4.2.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
+Evidence: `.roadmap-runner/editor-parallel-20261026/native-unlock-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-2.2` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
@@ -103,7 +103,7 @@ Validation:
 
 - [x] ES-2.3-V1 From core run `npm run typecheck --workspace packages/web` if changed and the existing `npm run test:interactions -- --group navigation` bidi comparison only when affected. Inspect ltr/rtl inheritance and unchanged text in one mounted deterministic fixture. Budget 5 minutes; broader locale/AT observations ES-4.1/4.4 and roadmap43.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1 and ES-4.4.
+Evidence: `.roadmap-runner/editor-parallel-20261026/native-unlock-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.1 and ES-4.4.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-2.3` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
@@ -130,7 +130,7 @@ Validation:
 
 - [x] ES-2.4-V1 From cli run `cargo check --locked --offline` and `cargo test --locked --offline --test tui_input`; record exact selectors/counts. Use one prepared terminal event per new command family for focused delivery, leaving new automated/PTY cases to ES-4.4. Budget 5 minutes; no broad terminal matrix.
 
-Evidence: `.roadmap-runner/editor-parallel-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.4.
+Evidence: `.roadmap-runner/editor-parallel-20261026/native-unlock-20261026/02-platform-input-and-navigation.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.4.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
 Blocked behavior: Record `BLOCKED ES-2.4` only with owner, fingerprint and exact changed-input resume condition; preserve source/data and select the named independent work if ready. Do not retry an unchanged failed check or infer approval from elapsed time.
 
