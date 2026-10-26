@@ -1,6 +1,6 @@
 # Qualify text boundaries and browser selected composition
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal
 
@@ -109,7 +109,7 @@ Blocked behavior: Record `BLOCKED ES-1.3` only with owner, fingerprint and exact
 
 ### Task ES-1.4 — Commit browser composition across compatible prose blocks
 
-- [ ] ES-1.4 Commit browser composition across compatible prose blocks.
+- [x] ES-1.4 Commit browser composition across compatible prose blocks.
 
 Purpose: IME replacement obeys the same selected-text semantics as ordinary cross-block editing.
 Deliverable: Web composition staging and commit across a qualified prose range through the existing shared prepared operation.
@@ -123,12 +123,12 @@ Acceptance: Forward/backward compatible prose selections can begin temporary com
 
 Implementation:
 
-- [ ] ES-1.4-I1 Replace the blanket cross-owner capture rejection only for ES-1.3 qualified targets and stage temporary composition without early shared mutation.
-- [ ] ES-1.4-I2 Route final replacement, cancellation and stale/remote conflict handling through the current once-only input owner; retain prefix/suffix, direction and captured target.
+- [x] ES-1.4-I1 Replace the blanket cross-owner capture rejection only for ES-1.3 qualified targets and stage temporary composition without early shared mutation.
+- [x] ES-1.4-I2 Route final replacement, cancellation and stale/remote conflict handling through the current once-only input owner; retain prefix/suffix, direction and captured target.
 
 Validation:
 
-- [ ] ES-1.4-V1 From core run `npm run typecheck --workspace packages/web`, then one affected existing `npm run test:browser -- composition` or `composition-remote` group, chosen by changed boundary. Add a bounded manual cross-block commit/cancel observation in the mounted deterministic surface; new automatic variants remain ES-4.2. Budget 5 minutes after artifact readiness.
+- [x] ES-1.4-V1 From core run `npm run typecheck --workspace packages/web`, then one affected existing `npm run test:browser -- composition` or `composition-remote` group, chosen by changed boundary. Add a bounded manual cross-block commit/cancel observation in the mounted deterministic surface; new automatic variants remain ES-4.2. Budget 5 minutes after artifact readiness.
 
 Evidence: `.roadmap-runner/editor-parallel-20261026/tracking-repair/01-text-boundaries-and-composition.progress.md` records changed paths/interfaces, exact focused selector and source/runtime pins, executed/passed/failed/skipped counts, no-op/rejection observations, retained evidence reused and any widening reason. Final coverage owner: ES-4.2.
 Handoff: Preserve the next unchecked substep, current target/contract, exact failed fixture or missing receipt, task-owned process/output paths and next precise action; do not write hashes or handoff prose into this source.
