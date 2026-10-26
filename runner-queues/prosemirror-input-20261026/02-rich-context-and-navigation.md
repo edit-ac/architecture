@@ -1,6 +1,6 @@
 # Correct rich-context input and navigation
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Editor-lane adoption — user decision, 2026-10-26
 
@@ -131,7 +131,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-2.5 — Repair demonstrated atom navigation failures
 
-- [ ] PKI-2.5 Qualify visual movement into and out of atom selections.
+- [x] PKI-2.5 Qualify visual movement into and out of atom selections.
 
 Purpose: Arrow keys leave a valid native/text or atom selection without hidden caret stops or semantic edits.
 Context: comparison R05; `dom/selection.ts::trackNativeMovement/toDOM/toModel/selectedNode`, `input/keyboard.ts::navigate`, renderer decoration maps; `specs/editing-behavior-standards.md` ES-TEXT-3/ES-SEL-1.
@@ -143,12 +143,12 @@ Acceptance: Arrow/Shift+Arrow from adjacent text or an exact atom range reaches 
 
 Implementation:
 
-- [ ] PKI-2.5-I1 Bound the investigation to 10 minutes and one source-bound fixture; record the failing native movement or counter-evidence.
-- [ ] PKI-2.5-I2 Add only the required boundary repair using existing mapping/selection ports; keep optional capability and block-selection work with ES.
+- [x] PKI-2.5-I1 Bound the investigation to 10 minutes and one source-bound fixture; record the failing native movement or counter-evidence.
+- [x] PKI-2.5-I2 Add only the required boundary repair using existing mapping/selection ports; keep optional capability and block-selection work with ES.
 
 Validation:
 
-- [ ] PKI-2.5-V1 Exercise the demonstrated edge in both directions and one shifted range, recording DOM/model endpoints and zero writes. Budget: 3 minutes; remaining browser matrix belongs to PKI-3.3.
+- [x] PKI-2.5-V1 Exercise the demonstrated edge in both directions and one shifted range, recording DOM/model endpoints and zero writes. Budget: 3 minutes; remaining browser matrix belongs to PKI-3.3.
 
 Evidence: parent progress entry with browser/version and native-versus-scripted motion.
 Handoff: exact unresolved geometry/bidi/atom boundary.
@@ -158,7 +158,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-2.6 — Own modified deletion at structural boundaries
 
-- [ ] PKI-2.6 Preserve structural deletion when native ranges are missing.
+- [x] PKI-2.6 Preserve structural deletion when native ranges are missing.
 
 Purpose: Word/line deletion at a block edge has an explicit semantic owner and safe fallback.
 Context: comparison R06; `input/keyboard.ts::action/execute`, `input/text.ts` reported deletion, `input/reconcile.ts`; ES-KEY-1/ES-INPUT-1; existing fragment applicability and INT-1.4.
@@ -170,12 +170,12 @@ Acceptance: With or without a target range, supported Control/Option/Command del
 
 Implementation:
 
-- [ ] PKI-2.6-I1 Reproduce the missing-range structural edge and document its platform chord/applicability without changing word segmentation.
-- [ ] PKI-2.6-I2 Delegate recognized boundaries to prepared commands and correlate any following beforeinput; preserve existing reported-range precedence.
+- [x] PKI-2.6-I1 Reproduce the missing-range structural edge and document its platform chord/applicability without changing word segmentation.
+- [x] PKI-2.6-I2 Delegate recognized boundaries to prepared commands and correlate any following beforeinput; preserve existing reported-range precedence.
 
 Validation:
 
-- [ ] PKI-2.6-V1 Compare one boundary deletion without ranges, its reported-range equivalent and an in-text word-deletion control. Inspect semantic and DOM state plus history count. Budget: 4 minutes; final owner PKI-3.1.
+- [x] PKI-2.6-V1 Compare one boundary deletion without ranges, its reported-range equivalent and an in-text word-deletion control. Inspect semantic and DOM state plus history count. Budget: 4 minutes; final owner PKI-3.1.
 
 Evidence: parent progress entry separating prepared traces from actual platform chords.
 Handoff: precise unsupported parent/target-range combination.
