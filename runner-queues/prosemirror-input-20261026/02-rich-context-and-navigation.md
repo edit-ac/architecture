@@ -23,7 +23,7 @@ One parent per session. Functional checks below are bounded; all new permanent t
 
 ### Task PKI-2.1 — Scope table keyboard commands and expire focus escape
 
-- [ ] PKI-2.1 Fix table native-control ownership and one-shot Escape.
+- [x] PKI-2.1 Fix table native-control ownership and one-shot Escape.
 
 Purpose: Typing in a table toolbar field cannot undo the document, and intervening navigation cannot leave an old Escape armed.
 Context: comparison F03/F04; `core/packages/web/src/modules/tables/current.ts::keyboard` and cell listeners; `input/keyboard.ts::action`; `input/focus.ts::leaveEditor`; ES-KEY-1 and `specs/platform-editing-services.md`.
@@ -35,12 +35,12 @@ Acceptance: Link field undo/redo and native control keys belong to that control.
 
 Implementation:
 
-- [ ] PKI-2.1-I1 Resolve the actual control/cell/grid target before command handling, reusing shared shortcut policy where applicable.
-- [ ] PKI-2.1-I2 Apply the root's one-shot focus-escape state rules to table activity and teardown.
+- [x] PKI-2.1-I1 Resolve the actual control/cell/grid target before command handling, reusing shared shortcut policy where applicable.
+- [x] PKI-2.1-I2 Apply the root's one-shot focus-escape state rules to table activity and teardown.
 
 Validation:
 
-- [ ] PKI-2.1-V1 Replay nested URL-input undo, stale-Escape navigation and direct backward escape against the current handler; verify history-call count and focus target. Budget: 3 minutes; final owner PKI-3.2.
+- [x] PKI-2.1-V1 Replay nested URL-input undo, stale-Escape navigation and direct backward escape against the current handler; verify history-call count and focus target. Budget: 3 minutes; final owner PKI-3.2.
 
 Evidence: parent progress entry with control/cell/grid distinction.
 Handoff: exact key/target that still has ambiguous ownership.
@@ -50,7 +50,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-2.2 — Preserve table whitespace and authored breaks visually
 
-- [ ] PKI-2.2 Give cell prose and code an explicit whitespace/caret projection.
+- [x] PKI-2.2 Give cell prose and code an explicit whitespace/caret projection.
 
 Purpose: Spaces and LF in cells appear and navigate as authored under the default host stylesheet.
 Context: comparison F05; `modules/tables/current.ts::render`, `modules/tables/cell-dom.ts::cellDOMText/point/domPoint`, `dom/render.ts` whitespace/placeholder code; `specs/editing-experience.md` repeated breaks and tables; INT-1.8.
@@ -62,12 +62,12 @@ Acceptance: Prose preserves repeated/leading/trailing spaces, TAB and LF while w
 
 Implementation:
 
-- [ ] PKI-2.2-I1 Apply the existing whitespace contract at cell text owners, keeping controls readable and code layout intentional.
-- [ ] PKI-2.2-I2 Resolve the sole-BR ambiguity using canonical text/projection provenance and align DOM/model positions for trailing breaks without persistent sentinel characters.
+- [x] PKI-2.2-I1 Apply the existing whitespace contract at cell text owners, keeping controls readable and code layout intentional.
+- [x] PKI-2.2-I2 Resolve the sole-BR ambiguity using canonical text/projection provenance and align DOM/model positions for trailing breaks without persistent sentinel characters.
 
 Validation:
 
-- [ ] PKI-2.2-V1 In an unstyled mounted cell, inspect computed whitespace, visual line placement and caret after `a  b\n`, then type X. Check one empty/filler control. Budget: 3 minutes; exact round-trip matrix belongs to PKI-3.2.
+- [x] PKI-2.2-V1 In an unstyled mounted cell, inspect computed whitespace, visual line placement and caret after `a  b\n`, then type X. Check one empty/filler control. Budget: 3 minutes; exact round-trip matrix belongs to PKI-3.2.
 
 Evidence: parent progress entry separating stored text from visual/caret observations.
 Handoff: unresolved filler/native-shape mapping.
