@@ -54,7 +54,7 @@ Blocked behavior: Record the missing shared interface; never infer a target from
 
 ### Task BTU-1.2 — Share conversion actions with slash and keyboard commands
 
-- [ ] BTU-1.2 Route slash, keyboard and review UI through the shared conversion capability.
+- [x] BTU-1.2 Route slash, keyboard and review UI through the shared conversion capability.
 
 Deliverable: The named BTU-1.2 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Keep conversion behavior coherent across interaction methods and expose advanced impact plans safely.
@@ -68,11 +68,11 @@ Acceptance: Menu, slash and configured shortcuts use the same conversion identit
 
 Implementation:
 
-- [ ] BTU-1.2-I1 Adapt existing command catalog/slash capture to conversion actions and render the shared impact report with explicit approval, cancellation and predictable focus restoration.
+- [x] BTU-1.2-I1 Adapt existing command catalog/slash capture to conversion actions and render the shared impact report with explicit approval, cancellation and predictable focus restoration.
 
 Validation:
 
-- [ ] BTU-1.2-V1 Run `node --test --test-name-pattern='entry parity|review cancellation' tests/browser/block-actions.spec.ts`, comparing direct API/menu/slash/shortcut results on one rich block and cancelled/stale review. Budget: 5 minutes; reuse BTU-1.1 evidence for unchanged paths. Broader combinations belong to BTQ-1.3.
+- [x] BTU-1.2-V1 Run `node --test --test-name-pattern='entry parity|review cancellation' tests/browser/block-actions.spec.ts`, comparing direct API/menu/slash/shortcut results on one rich block and cancelled/stale review. Budget: 5 minutes; reuse BTU-1.1 evidence for unchanged paths. Broader combinations belong to BTQ-1.3.
 
 Evidence: Progress with shared action IDs, trigger cleanup ownership and exact focused results.
 Handoff: Shortcut/selection policy and review UI outcome mapping for final tests and platform consumers.
