@@ -77,7 +77,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-2.3 — Correlate noncancelable cell input
 
-- [ ] PKI-2.3 Give table beforeinput/input/mutations one edit owner.
+- [x] PKI-2.3 Give table beforeinput/input/mutations one edit owner.
 
 Purpose: A browser edit that cannot be canceled cannot run after a duplicate synchronous semantic edit.
 Context: comparison F06; `modules/tables/current.ts` cell `beforeinput`, `input`, `edit`, `insert` and composition listeners; `input/text.ts` ownership patterns; `specs/table-paste-and-editing.md` and EDX cell-break contract.
@@ -89,12 +89,12 @@ Acceptance: Cancelable and noncancelable Enter/Shift+Enter plus later input/muta
 
 Implementation:
 
-- [ ] PKI-2.3-I1 Separate cancelable command handling from native reconciliation and bind the complete sequence to its captured cell target.
-- [ ] PKI-2.3-I2 Correlate final notifications and rejection/blur cleanup with the existing table history and recovery path.
+- [x] PKI-2.3-I1 Separate cancelable command handling from native reconciliation and bind the complete sequence to its captured cell target.
+- [x] PKI-2.3-I2 Correlate final notifications and rejection/blur cleanup with the existing table history and recovery path.
 
 Validation:
 
-- [ ] PKI-2.3-V1 Replay one noncancelable break plus native mutation/input and one cancelable selected replacement; observe text, caret and transaction/history counts. Budget: 4 minutes; final owner PKI-3.2.
+- [x] PKI-2.3-V1 Replay one noncancelable break plus native mutation/input and one cancelable selected replacement; observe text, caret and transaction/history counts. Budget: 4 minutes; final owner PKI-3.2.
 
 Evidence: parent progress entry including each event's cancelability.
 Handoff: exact unsupported event/DOM shape and recovery state.
@@ -104,7 +104,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-2.4 — Expose keyboard continuation beside code and atoms
 
-- [ ] PKI-2.4 Add a discoverable continuation command through existing block actions.
+- [x] PKI-2.4 Add a discoverable continuation command through existing block actions.
 
 Purpose: Users can continue prose after a final code or noneditable block without a pointer.
 Context: comparison R04; `commands/catalog.ts`, `input/keyboard.ts::execute`, `dom/selection.ts::selectedNode`; `specs/block-actions.md` Insert after; `specs/editing-experience.md` code/atom boundaries.
@@ -116,12 +116,12 @@ Acceptance: Document Primary+Enter as the explicit code-continuation action and 
 
 Implementation:
 
-- [ ] PKI-2.4-I1 Update the selected keyboard continuation contract and help, including reuse-versus-create behavior for an adjacent empty paragraph.
-- [ ] PKI-2.4-I2 Connect the captured code/atom target to the existing block action and result-selection path.
+- [x] PKI-2.4-I1 Update the selected keyboard continuation contract and help, including reuse-versus-create behavior for an adjacent empty paragraph.
+- [x] PKI-2.4-I2 Connect the captured code/atom target to the existing block action and result-selection path.
 
 Validation:
 
-- [ ] PKI-2.4-V1 Run one terminal-code and one selected-atom continuation with undo, plus a Shift+Enter code preservation control. Budget: 3 minutes; final owner PKI-3.1.
+- [x] PKI-2.4-V1 Run one terminal-code and one selected-atom continuation with undo, plus a Shift+Enter code preservation control. Budget: 3 minutes; final owner PKI-3.1.
 
 Evidence: parent progress entry and prerequisite receipt.
 Handoff: unresolved target applicability or block-action prerequisite.
