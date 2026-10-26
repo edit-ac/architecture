@@ -1,6 +1,6 @@
 # Complete optional block actions and large-document admission
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal and authority
 
@@ -80,7 +80,7 @@ Blocked behavior: If slash cannot capture its query safely, record the exact sha
 
 ### Task BTU-1.3 — Publish coherent local API and extension recipes
 
-- [ ] BTU-1.3 Document and wire public local-consumer recipes for block conversion.
+- [x] BTU-1.3 Document and wire public local-consumer recipes for block conversion.
 
 Deliverable: The named BTU-1.3 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Make the required block API usable without knowledge of presenter internals.
@@ -94,11 +94,11 @@ Acceptance: Recipes show a headless lossless heading conversion, optional menu/h
 
 Implementation:
 
-- [ ] BTU-1.3-I1 Expose the single intended facade and update local examples/docs; remove contradictory new examples or accidental aliases before freezing the API.
+- [x] BTU-1.3-I1 Expose the single intended facade and update local examples/docs; remove contradictory new examples or accidental aliases before freezing the API.
 
 Validation:
 
-- [ ] BTU-1.3-V1 Run `node --test --test-name-pattern='documented recipes' tests/block-actions-consumer.test.mjs`, compiling the three documented examples through the existing consumer harness and exercising their public imports. Budget: 5 minutes; broader packed/lazy/disabled-extension checks belong to BTQ-1.2 and BTQ-1.3.
+- [x] BTU-1.3-V1 Run `node --test --test-name-pattern='documented recipes' tests/block-actions-consumer.test.mjs`, compiling the three documented examples through the existing consumer harness and exercising their public imports. Budget: 5 minutes; broader packed/lazy/disabled-extension checks belong to BTQ-1.2 and BTQ-1.3.
 
 Evidence: Progress with public imports, source/runtime pins and focused example results.
 Handoff: Functional completion summary, outstanding final acceptance and named platform owners. Reuse all compatible predecessor evidence.
