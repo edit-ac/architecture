@@ -1,6 +1,6 @@
 # Handle native formatting and replacement intentions
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Editor-lane adoption — user decision, 2026-10-26
 
@@ -77,7 +77,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-4.3 — Separate independent corrections from key notification echoes
 
-- [ ] PKI-4.3 Stop a completed key intent from swallowing a new correction.
+- [x] PKI-4.3 Stop a completed key intent from swallowing a new correction.
 
 Purpose: A distinct replacement before the preceding keyup is processed once instead of canceled as a duplicate.
 Context: comparison F09; `input/text.ts::#handle`, `#key/#pending` lifecycle and `TextIntent`; existing input-policy/editing-input correlation fixtures; `specs/web.md` Input routing and INT-1.7/1.12.
@@ -89,12 +89,12 @@ Acceptance: Space keydown → accepted insertText/input → a distinct reported-
 
 Implementation:
 
-- [ ] PKI-4.3-I1 Define which event attributes/target evidence correlate an echo and which start a new ordinary edit; document this at the existing owner boundary.
-- [ ] PKI-4.3-I2 Apply the correlation rule to terminal key intents while preserving cleanup and existing composition precedence.
+- [x] PKI-4.3-I1 Define which event attributes/target evidence correlate an echo and which start a new ordinary edit; document this at the existing owner boundary.
+- [x] PKI-4.3-I2 Apply the correlation rule to terminal key intents while preserving cleanup and existing composition precedence.
 
 Validation:
 
-- [ ] PKI-4.3-V1 Replay the before-keyup correction, its after-keyup control and a genuine duplicate notification; require request counts 2/2/1 for the respective complete sequences and correct real-engine text/selection. Budget: 4 minutes; final owner PKI-3.5.
+- [x] PKI-4.3-V1 Replay the before-keyup correction, its after-keyup control and a genuine duplicate notification; require request counts 2/2/1 for the respective complete sequences and correct real-engine text/selection. Budget: 4 minutes; final owner PKI-3.5.
 
 Evidence: parent progress entry with complete event order, target ranges, counts and synthetic/OS distinction.
 Handoff: exact ambiguous event sequence or unchanged prerequisite.
@@ -104,7 +104,7 @@ Blocked behavior: Record the task/source/error/prerequisite fingerprint, owner a
 
 ### Task PKI-4.4 — Admit scoped non-keyboard table text commands
 
-- [ ] PKI-4.4 Route supported generic deletion, line deletion and yank input in cells.
+- [x] PKI-4.4 Route supported generic deletion, line deletion and yank input in cells.
 
 Purpose: Standard platform text intentions have an explicit table-cell policy instead of blanket allowlist rejection.
 Context: comparison F10; `modules/tables/current.ts::createCell/edit/insert`, `modules/tables/cell-dom.ts`, existing tableCellInput and cell selection commands; `specs/table-paste-and-editing.md`, ES-KEY-1 and current cell-block identity policy.
@@ -116,12 +116,12 @@ Acceptance: `deleteContent` uses its supported selected/reported range; `deleteE
 
 Implementation:
 
-- [ ] PKI-4.4-I1 Define target/payload requirements per supported input type and reuse current table text/selection commands.
-- [ ] PKI-4.4-I2 Add intention routing with native fallback only where its cell scope is safely bounded, preserving the existing sequence owner and diagnostics.
+- [x] PKI-4.4-I1 Define target/payload requirements per supported input type and reuse current table text/selection commands.
+- [x] PKI-4.4-I2 Add intention routing with native fallback only where its cell scope is safely bounded, preserving the existing sequence owner and diagnostics.
 
 Validation:
 
-- [ ] PKI-4.4-V1 Run one reported-range deletion, one supplied visual-line range and one literal yank plus an unsupported cross-block negative control. Check one accepted transaction per edit and unchanged geometry. Budget: 4 minutes; final owner PKI-3.4.
+- [x] PKI-4.4-V1 Run one reported-range deletion, one supplied visual-line range and one literal yank plus an unsupported cross-block negative control. Check one accepted transaction per edit and unchanged geometry. Budget: 4 minutes; final owner PKI-3.4.
 
 Evidence: parent progress entry with range origin and actual supported platform scope.
 Handoff: exact unsupported intent/range and the native evidence needed to expand it.
