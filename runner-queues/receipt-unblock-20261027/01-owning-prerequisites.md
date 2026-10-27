@@ -1,6 +1,6 @@
 # Repair the owning prerequisites for receipt recovery
 
-Status: NOT_STARTED
+Status: IN_PROGRESS
 
 ## Goal and authority
 
@@ -20,7 +20,7 @@ Workers change only verified checkboxes and Status in this source; hashes, summa
 
 ### Task RCU-1.1 — Validate committed table-selection closure
 
-- [ ] RCU-1.1 Validate and land the table-selection prerequisite closure required by the headless owner.
+- [x] RCU-1.1 Validate and land the table-selection prerequisite closure required by the headless owner.
 
 Purpose: Make the actual Session/SQLite owner buildable from committed core/main while preserving the delivered rich-rectangle selection/history behavior.
 Deliverable: Minimal coherent validated committed DTR/UDM cell-selection source closure and a main-source build/behavior handoff to RCP-1.2.
@@ -34,11 +34,11 @@ Acceptance: Committed core/main contains a minimal coherent implementation of th
 
 Implementation:
 
-- [ ] RCU-1.1-I1 Authenticate the existing DTR/UDM owned patches and executed source pins; trace the missing definitions and minimal dependency closure. Reconcile only necessary hunks using existing owners. Validate the exact candidate source tree, then land the coherent source unit into local main under integration.lock. Preserve unrelated bytes and index entries and map original deliveries to the resulting commits.
+- [x] RCU-1.1-I1 Authenticate the existing DTR/UDM owned patches and executed source pins; trace the missing definitions and minimal dependency closure. Reconcile only necessary hunks using existing owners. Validate the exact candidate source tree, then land the coherent source unit into local main under integration.lock. Preserve unrelated bytes and index entries and map original deliveries to the resulting commits.
 
 Validation:
 
-- [ ] RCU-1.1-V1 Use the existing addressed-rich-rectangle-delivery.mjs DTR-1.1 selector or a documented exact affected equivalent for the public selection/nonmutation/history boundary; reuse compatible cases instead of broad matrices. Run the same recorded locked/offline host-realtime-owner cargo example build from authenticated resulting main bytes. Use existing headless protocol/reopen coverage only where needed to establish the owner/selection bridge; RCP-1.2 owns its final executable receipt and RCP-1.6 owns product composition. Record actual compiler exits and separate nonzero runtime counts, zero required failures/skips, source/binary hashes and child teardown.
+- [x] RCU-1.1-V1 Use the existing addressed-rich-rectangle-delivery.mjs DTR-1.1 selector or a documented exact affected equivalent for the public selection/nonmutation/history boundary; reuse compatible cases instead of broad matrices. Run the same recorded locked/offline host-realtime-owner cargo example build from authenticated resulting main bytes. Use existing headless protocol/reopen coverage only where needed to establish the owner/selection bridge; RCP-1.2 owns its final executable receipt and RCP-1.6 owns product composition. Record actual compiler exits and separate nonzero runtime counts, zero required failures/skips, source/binary hashes and child teardown.
 
 Evidence: Separate configured progress and ignored production/RCU-1.1/, including original blocker fingerprint, changed owning pins, exact landed closure, commands/receipts and dirty/index preservation. Keep original failed build evidence.
 Handoff: Point RCP-1.2 to the changed main source closure and usable owner build; retry only after actual repair. Do not clear its task memory or replace the old failure. Preserve any unrelated broader DRA/UDM/native final gates.
