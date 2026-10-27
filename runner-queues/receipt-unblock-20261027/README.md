@@ -1,0 +1,5 @@
+# Unblock receipt recovery
+
+The user authorized repairing the actual local prerequisites on2026-10-27. Run the two bounded owning tasks in01-owning-prerequisites.md first: committed DTR/UDM cell-selection closure for the headless owner, then the current table source-format action and intrinsic44px Extend control. Both are independent. Original DTR/UDM/DRA and RCP acceptance and failure history remain authoritative. A repaired prerequisite is not broader feature or product qualification.
+
+The current root-main FIFO then resumes the original receipt-recovery source/progress, browser product, performance, terminal and all17 Rust-review parents. Refresh invalidated SDK/source/engine proof under its existing owner; preserve compatible proof, all original source/progress/task-memory pairs and native OS deferrals. One serial guarded runner, source-only commits, mocked/offline checks and no provider spending, secrets, second worktree, push/publication/deployment. Generated proof remains ignored.
