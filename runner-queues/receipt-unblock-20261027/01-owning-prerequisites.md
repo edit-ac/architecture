@@ -1,6 +1,6 @@
 # Repair the owning prerequisites for receipt recovery
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal and authority
 
@@ -46,7 +46,7 @@ Blocked behavior: Leave unchecked for a concrete new failure, exact owning sourc
 
 ### Task RCU-1.2 — Restore current table source action and touch target
 
-- [ ] RCU-1.2 Restore current-table source formatting and the intrinsic Extend touch target.
+- [x] RCU-1.2 Restore current-table source formatting and the intrinsic Extend touch target.
 
 Purpose: Remove the actual production gaps preventing the capabilities/content-controls receipts while preserving direct table editing and source/history safety.
 Deliverable: Current addressed table source-format action through the existing revision-checked source API, and an intrinsically at least44px Extend selection control, with focused production/packed-consumer proof and an owned source commit.
@@ -60,11 +60,11 @@ Acceptance: The current table exposes the originally required source-format acti
 
 Implementation:
 
-- [ ] RCU-1.2-I1 Wire the existing tableSource option to current addressed table controls using the existing source command/revision authority. Apply the existing touch-target mechanism to Extend and any strictly required wrapper. Port affected source-format fixture assertions to current retained snapshots only where the actual API changed, preserving every original safety oracle. Commit only authenticated validated owned hunks at the safe completed task phase.
+- [x] RCU-1.2-I1 Wire the existing tableSource option to current addressed table controls using the existing source command/revision authority. Apply the existing touch-target mechanism to Extend and any strictly required wrapper. Port affected source-format fixture assertions to current retained snapshots only where the actual API changed, preserving every original safety oracle. Commit only authenticated validated owned hunks at the safe completed task phase.
 
 Validation:
 
-- [ ] RCU-1.2-V1 Run the smallest existing mounted table/source-format cases that reproduce the two failures, including real computed hit size, revision refusal, unrelated source/identity preservation and one history undo/reopen path. Use current rebuilt/pinned SDK artifacts and original assertions, nonzero executed/passed counts and zero unresolved failures/skips; record archive/source/runtime pins and teardown. Compile the affected package/current public consumer. RCP-1.1 owns final SDK/setup refresh and RCP-1.3 owns complete original capabilities/content-controls group receipts; do not duplicate those full suites here.
+- [x] RCU-1.2-V1 Run the smallest existing mounted table/source-format cases that reproduce the two failures, including real computed hit size, revision refusal, unrelated source/identity preservation and one history undo/reopen path. Use current rebuilt/pinned SDK artifacts and original assertions, nonzero executed/passed counts and zero unresolved failures/skips; record archive/source/runtime pins and teardown. Compile the affected package/current public consumer. RCP-1.1 owns final SDK/setup refresh and RCP-1.3 owns complete original capabilities/content-controls group receipts; do not duplicate those full suites here.
 
 Evidence: Separate progress and ignored production/RCU-1.2/ with exact changed source pins, affected check selectors/counts, resulting main commit, retained failed observations and preservation/teardown record.
 Handoff: Supply the source/consumer change to RCP-1.1 for current admission/setup, then RCP-1.3 for affected original groups. Reuse assets/formats or formatting proof only while their actual source/archive/runtime inputs remain applicable; never relabel old success after a package change. RCP-1.6 owns final13receipt+3admission binding and prepared host product proof.
