@@ -1,6 +1,6 @@
 # Repair shared history selection and break behavior
 
-Status: BLOCKED
+Status: COMPLETE
 
 ## Goal and execution rules
 
@@ -26,7 +26,7 @@ The predecessor controller was explicitly stopped. Authenticate current source a
 
 ### Task EDX-1.1 — Authenticate and establish the current-format safety gate
 
-- [ ] EDX-1.1 Authenticate and establish the current-format safety gate.
+- [x] EDX-1.1 Authenticate and establish the current-format safety gate.
 
 Purpose: Protect durable content before dependent feature changes Existing owner: existing SFC current-format cutover and focused durability gate.
 Context: crates/editac-core/src/document.rs; crates/editac-session/src/session.rs; architecture/specs/document-durability.md sections Canonical identity and Review and required proof; existing SFC focused receipts; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
@@ -36,11 +36,11 @@ Acceptance: Creation, checkpoint/reopen, journal replay, unsupported-identity no
 
 Implementation:
 
-- [ ] EDX-1.1-I1 Inspect current producers/consumers and prior focused cutover receipts; repair only missing current-identity admission or safety prerequisites at their existing SFC owner, preserving original data. If the missing cutover exceeds one bounded parent, record its exact owner and stop dependent work rather than claim it passed.
+- [x] EDX-1.1-I1 Inspect current producers/consumers and prior focused cutover receipts; repair only missing current-identity admission or safety prerequisites at their existing SFC owner, preserving original data. If the missing cutover exceeds one bounded parent, record its exact owner and stop dependent work rather than claim it passed.
 
 Validation:
 
-- [ ] EDX-1.1-V1 Select existing focused Rust/Session/current-codec cases for the stated invariants; inspect exact immutable receipt pins before reuse. Budget 5 minutes; do not launch full workspace qualification. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
+- [x] EDX-1.1-V1 Select existing focused Rust/Session/current-codec cases for the stated invariants; inspect exact immutable receipt pins before reuse. Budget 5 minutes; do not launch full workspace qualification. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
 
 Evidence: Separate ignored progress for this source, with task ID, changed paths, focused results, reused evidence and remaining limitations. No generated evidence in Git.
 Handoff: Last finished substep, affected symbol/interface, exact failing input or missing prerequisite and next bounded action.
@@ -48,7 +48,7 @@ Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and chan
 
 ### Task EDX-1.2 — Restore semantic history selections through Session and FFI
 
-- [ ] EDX-1.2 Restore semantic history selections through Session and FFI.
+- [x] EDX-1.2 Restore semantic history selections through Session and FFI.
 
 Purpose: Fix the documented P0 undo/redo selection loss Existing owner: RGS-1.3 and shared Session/FFI.
 Context: crates/editac-session/src/{session,edit_service}.rs; crates/editac-ffi/src/session.rs; architecture/specs/editing-experience.md Open regression; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
@@ -58,11 +58,11 @@ Acceptance: Undo of a[bc]d replaced by a line break returns the original directe
 
 Implementation:
 
-- [ ] EDX-1.2-I1 Trace and repair entry/result selection bookmarks and the FFI history result using current public structures. Add the minimal shared regression for this concrete defect; preserve remote-target safety and typing groups.
+- [x] EDX-1.2-I1 Trace and repair entry/result selection bookmarks and the FFI history result using current public structures. Add the minimal shared regression for this concrete defect; preserve remote-target safety and typing groups.
 
 Validation:
 
-- [ ] EDX-1.2-V1 Use existing focused cargo test selectors in editac-session/editac-ffi, offline and locked, for the changed history boundary plus the minimal reproducer. Budget 5 minutes; comprehensive remote/deleted-target combinations remain EDX-3.1. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
+- [x] EDX-1.2-V1 Use existing focused cargo test selectors in editac-session/editac-ffi, offline and locked, for the changed history boundary plus the minimal reproducer. Budget 5 minutes; comprehensive remote/deleted-target combinations remain EDX-3.1. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
 
 Evidence: Separate ignored progress for this source, with task ID, changed paths, focused results, reused evidence and remaining limitations. No generated evidence in Git.
 Handoff: Last finished substep, affected symbol/interface, exact failing input or missing prerequisite and next bounded action.
@@ -70,7 +70,7 @@ Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and chan
 
 ### Task EDX-1.3 — Apply shared history selections in macOS commands
 
-- [ ] EDX-1.3 Apply shared history selections in macOS commands.
+- [x] EDX-1.3 Apply shared history selections in macOS commands.
 
 Purpose: Restore a usable native caret after undo and redo Existing owner: DSK-1.7 and RGS-1.3.
 Context: native/macos/Sources/EditacMacOS/session/NativeSessionExecutor.swift; commands/NativeCommands.swift; native/macos/tests/Commands/CommandsTests.swift; native/macos/capability.json; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
@@ -80,11 +80,11 @@ Acceptance: The enabled testHardBreakSelectorReplacesSelectionInSameOwnerAndRest
 
 Implementation:
 
-- [ ] EDX-1.3-I1 Consume the returned semantic history selection in native command refresh, preserving composition, read-only and shared enablement. Reconcile stale manifest inputs with their validated producing sources; retain the existing test expectation unchanged.
+- [x] EDX-1.3-I1 Consume the returned semantic history selection in native command refresh, preserving composition, read-only and shared enablement. Reconcile stale manifest inputs with their validated producing sources; retain the existing test expectation unchanged.
 
 Validation:
 
-- [ ] EDX-1.3-V1 Use the existing Commands XCTest selector for the reproducer and affected native commands. Check bash native/macos/scripts/check.sh commands admission; a standalone XCTest does not replace a blocked standard gate. Budget 5 minutes for focused check; record any broader required gate for EDX-3.2. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
+- [x] EDX-1.3-V1 Use the existing Commands XCTest selector for the reproducer and affected native commands. Check bash native/macos/scripts/check.sh commands admission; a standalone XCTest does not replace a blocked standard gate. Budget 5 minutes for focused check; record any broader required gate for EDX-3.2. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
 
 Evidence: Separate ignored progress for this source, with task ID, changed paths, focused results, reused evidence and remaining limitations. No generated evidence in Git.
 Handoff: Last finished substep, affected symbol/interface, exact failing input or missing prerequisite and next bounded action.
@@ -92,7 +92,7 @@ Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and chan
 
 ### Task EDX-1.4 — Complete shared and browser paragraph versus line-break intent
 
-- [ ] EDX-1.4 Complete shared and browser paragraph versus line-break intent.
+- [x] EDX-1.4 Complete shared and browser paragraph versus line-break intent.
 
 Purpose: Keep authored breaks and paragraph splits observably distinct Existing owner: INT-1.2 and BRK-01–08 / SEL-01–04.
 Context: crates/editac-core/src/commands/; packages/web/src/input/keyboard.ts; tests/browser/interactions/{breaks,break-tables}.spec.ts; architecture/specs/editor-interactions.md Enter table; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
@@ -102,11 +102,11 @@ Acceptance: ab|cd plus Shift+Enter remains one owner ab\n|cd; Enter creates ab a
 
 Implementation:
 
-- [ ] EDX-1.4-I1 Retain qualified engine primitives and repair only missing prepared routing, duplicate-notification handling or authored-break/filler projection behavior. Preserve current format and all existing BRK/SEL IDs.
+- [x] EDX-1.4-I1 Retain qualified engine primitives and repair only missing prepared routing, duplicate-notification handling or authored-break/filler projection behavior. Preserve current format and all existing BRK/SEL IDs.
 
 Validation:
 
-- [ ] EDX-1.4-V1 Use existing focused Rust command/codec cases and the smallest affected mounted-browser break selector via npm run test:interactions -- --group breaks or a supported narrower selector. Budget 5 minutes; all-browser/context matrix remains EDX-3.2. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
+- [x] EDX-1.4-V1 Use existing focused Rust command/codec cases and the smallest affected mounted-browser break selector via npm run test:interactions -- --group breaks or a supported narrower selector. Budget 5 minutes; all-browser/context matrix remains EDX-3.2. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
 
 Evidence: Separate ignored progress for this source, with task ID, changed paths, focused results, reused evidence and remaining limitations. No generated evidence in Git.
 Handoff: Last finished substep, affected symbol/interface, exact failing input or missing prerequisite and next bounded action.

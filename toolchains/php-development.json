@@ -1,0 +1,112 @@
+{
+  "task": "EWP-1.1",
+  "scope": "Local macOS ARM64 PHP/Composer/PDO SQLite bootstrap only; framework versions are metadata compatibility selections, not runtime qualification.",
+  "php": {
+    "version": "8.5.4",
+    "executable": "/opt/homebrew/Cellar/php/8.5.4/bin/php",
+    "sha256": "9da6c3a173be06a628c98752bcb67244bbf6c48da06839840c453bed2d8a934e",
+    "source": "https://www.php.net/releases/8.5/",
+    "distribution": "Homebrew homebrew/core stable bottle",
+    "receipt": "/opt/homebrew/Cellar/php/8.5.4/INSTALL_RECEIPT.json",
+    "requiredExtensions": [
+      "PDO",
+      "pdo_sqlite"
+    ],
+    "sqliteVersion": "3.54.1"
+  },
+  "composer": {
+    "version": "2.9.5",
+    "executable": "/opt/homebrew/Cellar/composer/2.9.5/bin/composer",
+    "sha256": "c86ce603fe836bf0861a38c93ac566c8f1e69ac44b2445d9b7a6a17ea2e9972a",
+    "source": "https://getcomposer.org/download/2.9.5/",
+    "distribution": "Homebrew homebrew/core stable bottle",
+    "receipt": "/opt/homebrew/Cellar/composer/2.9.5/INSTALL_RECEIPT.json"
+  },
+  "frameworkSelection": {
+    "owners": [
+      "runner-queues/backend-sdk-adapters-20261024/02-php-laravel-symfony.md",
+      "runner-queues/backend-sdk-adapters-20261024/02a-filament-admin.md"
+    ],
+    "documentation": "https://filamentphp.com/docs/5.x/introduction/installation",
+    "packages": {
+      "laravel/framework": {
+        "version": "13.38.0",
+        "metadata": "https://repo.packagist.org/p2/laravel/framework.json",
+        "source": {
+          "url": "https://github.com/laravel/framework.git",
+          "type": "git",
+          "reference": "c42f9abd4a3d2f9a3cd6be109255ddce8092ceb8"
+        },
+        "compatibilityRequirements": {
+          "php": "^8.3",
+          "composer-runtime-api": "^2.2"
+        }
+      },
+      "filament/filament": {
+        "version": "5.10.3",
+        "metadata": "https://repo.packagist.org/p2/filament/filament.json",
+        "source": {
+          "url": "https://github.com/filamentphp/panels.git",
+          "type": "git",
+          "reference": "4869a1592c0ef037abc429cb9d1db62059e2d455"
+        },
+        "compatibilityRequirements": {
+          "php": "^8.2",
+          "composer-runtime-api": "^2.1"
+        }
+      },
+      "filament/support": {
+        "version": "5.10.3",
+        "metadata": "https://repo.packagist.org/p2/filament/support.json",
+        "source": {
+          "url": "https://github.com/filamentphp/support.git",
+          "type": "git",
+          "reference": "ac059bb5443d923702c93e360f2114387ebc0813"
+        },
+        "compatibilityRequirements": {
+          "php": "^8.2",
+          "composer-runtime-api": "^2.1",
+          "illuminate/contracts": "^11.28|^12.0|^13.0",
+          "livewire/livewire": "^4.4.7"
+        }
+      },
+      "livewire/livewire": {
+        "version": "4.4.8",
+        "metadata": "https://repo.packagist.org/p2/livewire/livewire.json",
+        "source": {
+          "url": "https://github.com/livewire/livewire.git",
+          "type": "git",
+          "reference": "8d7f8fc6138274a2f3384c9db354ca012215a259"
+        },
+        "compatibilityRequirements": {
+          "php": "^8.1",
+          "illuminate/database": "^10.0|^11.0|^12.0|^13.0",
+          "illuminate/routing": "^10.0|^11.0|^12.0|^13.0",
+          "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
+          "illuminate/validation": "^10.0|^11.0|^12.0|^13.0"
+        }
+      }
+    },
+    "status": "Metadata-compatible baseline only. Framework owners must lock the full dependency graph and perform their own runtime checks."
+  },
+  "consumer": {
+    "manifest": "toolchains/php-bootstrap/composer.json",
+    "lock": "toolchains/php-bootstrap/composer.lock",
+    "dependency": "psr/log:3.0.2",
+    "frameworks": []
+  },
+  "commands": {
+    "install": [
+      "python3",
+      "toolchains/php-bootstrap/bootstrap.py",
+      "install"
+    ],
+    "check": [
+      "python3",
+      "toolchains/php-bootstrap/bootstrap.py",
+      "check"
+    ]
+  },
+  "reproduction": "Run commands from architecture. Reuse the pinned Homebrew Cellar executables; bootstrap rejects changed digests/versions. On another host explicitly provision these maintained official versions and review/update host paths/digests; no automatic runtime upgrade or framework install.",
+  "outputs": ".artifacts/ewp-1.1/ and toolchains/php-bootstrap/vendor/ (ignored); temporary databases removed after check"
+}

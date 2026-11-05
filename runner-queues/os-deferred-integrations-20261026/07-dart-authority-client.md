@@ -1,6 +1,6 @@
 # 07 dart authority client
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; task paths are core-relative unless repository-prefixed.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/os-deferred-integrations-20261026/07-dart-authority-client.progress.md`.
@@ -20,7 +20,7 @@ Workers update only verified checkbox states and Status in this selected source.
 
 ### Task BCP-1.1 — Implement the Dart authority client
 
-- [ ] BCP-1.1 Implement the Dart authority client.
+- [x] BCP-1.1 Implement the Dart authority client.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/dart/.
@@ -34,11 +34,11 @@ Acceptance: Typed async client preserves exact bytes/receipt identities, explici
 
 Implementation:
 
-- [ ] BCP-1.1-I1 Implement the Dart authority client. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BCP-1.1-I1 Implement the Dart authority client. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BCP-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BCP-1.1`: One prepared save/lost-response lookup and binary round-trip through a local Dart consumer match the shared oracle. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BCP-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BCP-1.1`: One prepared save/lost-response lookup and binary round-trip through a local Dart consumer match the shared oracle. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.

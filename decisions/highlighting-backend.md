@@ -1,5 +1,50 @@
 # Select an optional portable highlighting backend
 
+## Current recovery — 2026-10-28
+
+RCH-1.2 recovered the current Syntect/two-face inputs without changing the backend,
+grammar envelope or runtime contract. The original receipt linked below was
+unavailable; its numbers and failed-attempt descriptions remain historical
+provenance. They are not reused as current passing proof.
+
+Current direct checks pass: native debug and release each cover seven cases
+(six original cases plus an isolated span-limit case); wasm32 compilation passes;
+the qualification binding covers six cases and the production `browser-wasm`
+web-target binding covers seven. Four inventory cases authenticate crate pins,
+grammar identities, raw asset hashes, all 66 bundled syntax notices and backend
+notices, and exclusion from minimum engine/engine-WASM normal dependencies.
+Passing unchanged case bodies were retained; only added or repaired coverage was
+rerun. Each runtime/profile has 100 warm samples per language. No tests skipped.
+
+On macOS arm64, Rust 1.97.1, Node 24.19.0 and wasm-bindgen 0.2.129, the production
+binding is **2,791,629 raw / 1,435,671 gzip-9 bytes** of WASM plus **8,456 raw /
+2,408 gzip-9 bytes** of web glue. Its Node-hosted module initialization observation
+is 3.13 ms; first Rust/TypeScript/JSON projections are 64.76 / 286.30 / 2.90 ms.
+Optimized native first tokenizations are 23.20 / 305.82 / 3.00 ms. These are exact
+small-corpus observations, not browser fetch, worker/UI latency or device budgets.
+The 959,011-byte grammar asset retains its pinned SHA-256; this Node compressor
+produces 869,430 gzip-9 bytes. Historical compressed sizes use another compressor
+and remain provenance. Current sizes use Node's recorded zlib version.
+
+The harness now executes the production feature separately from qualification
+glue and honors `CARGO_TARGET_DIR`. It preserves source/labels, native token parity,
+UTF-16 runs, atomic line/count/span fallback and rejection before mutation for an
+oversized production input. Initial inventory failures (compressor-size equality,
+structured license data, trailing whitespace) and their focused repairs remain in
+ignored evidence. The Runner check command was rejected by worker-mode protection
+before execution; these are direct command results, with no Runner receipt claimed.
+
+Current logs, exact input/artifact hashes, commands and case-level reuse are
+recorded from the workspace root in
+`.roadmap-runner/wasm-extensions-recovery-20261028/01-code-prerequisites.progress.md`
+and its referenced `RCH-1.2-delivery.json`. Generated outputs remain ignored.
+RCH-1.3–1.5 retain their original cache, scheduler and presenter acceptance;
+full workload qualification and final extension hard caps remain open. No
+browser-only alternative was needed or compared, and no footprint/startup win,
+native UI, browser worker lifecycle or release readiness is inferred.
+
+## Original selection and historical observations
+
 Decision: select **Syntect 5.3.0**, pure Rust `fancy-regex`, with
 **two-face 0.5.2+bat-0.26.1**'s newline-aware syntax bundle for the initial
 Rust, TypeScript and JSON envelope. RCH-1.2's native and executable WASM probes

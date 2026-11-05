@@ -37,7 +37,7 @@
       "entryConditions": "Prior controller is verified stopped; current branches and preserved source are available. These inventory parents have no retired-runtime or historical receipt prerequisite.",
       "entryTaskPrerequisites": [],
       "originalTasks": [],
-      "sha256": "9f2aafc1974227574da14ad899f8fd204da7b1fc5320dfeac64adce9c3d19bbf"
+      "sha256": "eec2513f25242a755857b53aa99d44ad9b5c1a0e4146d139f5c9efe3e7f7bfb5"
     },
     {
       "file": "01-canonical-admission-and-replay.md",
@@ -50,49 +50,90 @@
         "SFC-1.2"
       ],
       "originalTasks": [],
-      "sha256": "650b1953c4aabd48bb633c8bf1d7d589eabda47a68cb0ebc34e1c49b6464f441"
+      "sha256": "8fad11b1288fbf080a2195e7ca1742bb408e5a527ae79bb11435a4f87b227b84"
     },
     {
-      "file": "02-canonical-projection-and-consumers.md",
+      "file": "01b-durable-tables-and-lifetime.md",
       "phase": "implementation",
-      "parents": 3,
-      "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/02-canonical-projection-and-consumers-5c7386479018/progress.md",
-      "entryConditions": "SFC-2.1/2.2/2.3 current identity, initialization and witnessed replay interfaces are validated; consume only the named prerequisite rows. A missing independent interface blocks only its dependent task.",
+      "parents": 5,
+      "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/01b-durable-tables-and-lifetime-b86e32c44a61/progress.md",
+      "entryConditions": "The preceding source has verified SFC-2.1, SFC-2.2, SFC-2.3. Consume its bounded progress and source-pinned interface proof. These are entry prerequisites, not local task dependencies. Read SFC-1.1/1.2 handoff once; do not rerun inventory or refresh completed source prose.",
       "entryTaskPrerequisites": [
         "SFC-2.1",
         "SFC-2.2",
         "SFC-2.3"
       ],
       "originalTasks": [],
-      "sha256": "5d73f8dfe8aaf3aeee2d9a45f574b8f073fdb7dc76d7d14d1844faddb7c8a068"
+      "sha256": "9fbc2345706ea370ffa1112bfdb717349b06c3ac15f21bb9068089a91b6a4739"
     },
     {
-      "file": "03-regression-oracles-and-version-scaffolding.md",
+      "file": "02-canonical-projection-and-consumers.md",
       "phase": "implementation",
       "parents": 3,
-      "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/03-regression-oracles-and-version-scaffolding-685060b5ea63/progress.md",
-      "entryConditions": "SFC-3 current projection/command/consumer interfaces are applicable; exact prior source tests remain available for semantic mapping, without requiring old readers in production.",
+      "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/02-canonical-projection-and-consumers-5c7386479018/progress.md",
+      "entryConditions": "SFC-2.1/2.2/2.3 current identity, initialization and witnessed replay interfaces are validated; consume only the named prerequisite rows. A missing independent interface blocks only its dependent task. Alpha audit prerequisite rows named here must be implemented and have current focused proof; authored plans alone do not satisfy entry.",
+      "entryTaskPrerequisites": [
+        "SFC-2.1",
+        "SFC-2.2",
+        "SFC-2.3",
+        "DRA-1.1",
+        "DRA-1.2",
+        "DRA-1.3",
+        "DRA-1.4",
+        "DRA-1.5"
+      ],
+      "originalTasks": [],
+      "sha256": "627c823a443f559efe161f3d60bb3cd24da41a90b292c94c9f583b167d03ae92"
+    },
+    {
+      "file": "02b-shared-block-actions.md",
+      "phase": "implementation",
+      "parents": 5,
+      "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/02b-shared-block-actions-b528d8f88a12/progress.md",
+      "entryConditions": "The preceding source has verified SFC-3.1, SFC-3.2, SFC-3.3. Consume its bounded progress and source-pinned interface proof. These are entry prerequisites, not local task dependencies. Read SFC-1.1/1.2 handoff once; do not rerun inventory or refresh completed source prose.",
       "entryTaskPrerequisites": [
         "SFC-3.1",
         "SFC-3.2",
         "SFC-3.3"
       ],
       "originalTasks": [],
-      "sha256": "403fb762b9f6a1f142af157b5ec6101bfc5582a40577206789aef55dcbfde918"
+      "sha256": "dfd41a06fc4f51835d6e3c0e54d912cbf41cb32cc3f5d4de6beb43bc3ecee9ab"
+    },
+    {
+      "file": "03-regression-oracles-and-version-scaffolding.md",
+      "phase": "implementation",
+      "parents": 6,
+      "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/03-regression-oracles-and-version-scaffolding-685060b5ea63/progress.md",
+      "entryConditions": "SFC-3 current projection/command/consumer interfaces are applicable; exact prior source tests remain available for semantic mapping, without requiring old readers in production. Alpha audit prerequisite rows named here must be implemented and have current focused proof; authored plans alone do not satisfy entry.",
+      "entryTaskPrerequisites": [
+        "SFC-3.1",
+        "SFC-3.2",
+        "SFC-3.3",
+        "BTA-1.1",
+        "BTA-1.2",
+        "BTA-1.3",
+        "BTA-1.4",
+        "BTA-1.5"
+      ],
+      "originalTasks": [],
+      "sha256": "80f9a421734bb8250c711ea154eed78a6d9c36abbe06dc501b8d76cace8e269e"
     },
     {
       "file": "04-durability-gate-and-guide-handoff.md",
       "phase": "gate",
       "parents": 2,
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/04-durability-gate-and-guide-handoff-bcf5f1c80148/progress.md",
-      "entryConditions": "SFC-2/3/4 interfaces and semantic regression mapping are delivered and source-compatible. This narrow shared-contract safety gate is required before new native feature work; exhaustive matrices stay later.",
+      "entryConditions": "SFC-2/3/4 interfaces and semantic regression mapping are delivered and source-compatible. This narrow shared-contract safety gate is required before new native feature work; exhaustive matrices stay later. Alpha audit prerequisite rows named here must be implemented and have current focused proof; authored plans alone do not satisfy entry.",
       "entryTaskPrerequisites": [
         "SFC-4.1",
         "SFC-4.2",
-        "SFC-4.3"
+        "SFC-4.3",
+        "BTU-1.1",
+        "BTU-1.2",
+        "BTU-1.3"
       ],
       "originalTasks": [],
-      "sha256": "88ad1c486e7d5361f49af6f350ffe03b9f41530024af4584e3bbd6940ba4a30e"
+      "sha256": "8c41577a339bd823c6a7f9152456aaf5344839aba0dc847536dd73f291bb79cd"
     },
     {
       "file": "05-macos-input-part-1.md",
@@ -101,7 +142,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/05-macos-input-part-1-9a0901914ce3/progress.md",
       "entryConditions": "RRD current-source macos rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "aea84db0db378ba49588150d545a417b7756262b94764682fddfe9aea012fa03",
+      "sha256": "16d089d6f9705b75e75dd27641c34888cda1339bdbb8134812f998efb4fc11ac",
       "originalTasks": [
         "DSK-1.1",
         "DSK-1.2",
@@ -120,7 +161,7 @@
         "RMC-1.4",
         "RMC-1.5"
       ],
-      "sha256": "cc7b9858c5254e4bdc6d50aa055e358f201f3745cbd6a693aceb936d87547d66",
+      "sha256": "e80f2eb6a5a34e83bbcd48d72c972d477c8ad8637f4994796a6e96a9e0264f7a",
       "originalTasks": [
         "DSK-1.6",
         "DSK-1.7",
@@ -134,7 +175,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/07-macos-rich-content-dee8658b9f89/progress.md",
       "entryConditions": "RRD current-source macos rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "68b0fc2adc9d682b20e9a268b2de4c7b5c548b4d9ddf9b19cef05e11890e17f4",
+      "sha256": "5d50627868cda1a3779f4a68ce896b84464089e1a5e6b79b8c1086857f89723c",
       "originalTasks": [
         "DSK-1.9",
         "DSK-1.10",
@@ -150,7 +191,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/08-macos-lifecycle-ee764eed7c4e/progress.md",
       "entryConditions": "RRD current-source macos rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "b467d3c7eb1dce729d25166a4570098fa3a3a89eef5d44343cb3018735e2d2eb",
+      "sha256": "79a9b13fd3dc7051ac71af9a73f6fb6602863b16b0effa67751ddc94a11490fb",
       "originalTasks": [
         "DSK-1.14",
         "DSK-1.15",
@@ -166,7 +207,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/09-macos-extensions-package-part-1-7757edd930e3/progress.md",
       "entryConditions": "Exact implemented macos SDK/public shared extension, format and link interfaces are authenticated in prior rows; no whole-track qualification label is required",
       "entryTaskPrerequisites": [],
-      "sha256": "a5cc54ebf0bb74f0c5ca2c2a740fa09d177e9131c009ad1884698408108a2242",
+      "sha256": "0c73f4415d0b4b87d948c1eadf375aba527e14df50084d0b528c196a4402ad38",
       "originalTasks": [
         "NMX-1.1",
         "NMX-1.2",
@@ -183,7 +224,7 @@
       "entryTaskPrerequisites": [
         "RMX-1.1"
       ],
-      "sha256": "e187e5fc66cb1592dc31a2446cfd97b850f2c4a5766684eb6e58dbcab8cdadc6",
+      "sha256": "99d0f0a601e16c76f13b9c751d2e07017b1a878047f1bbff65045aaadba01db3",
       "originalTasks": [
         "NMX-1.5",
         "NMX-1.6",
@@ -198,7 +239,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/11-macos-extensions-package-part-3-7bd9214f9d4a/progress.md",
       "entryConditions": "Exact implemented macos SDK/public shared extension, format and link interfaces are authenticated in prior rows; no whole-track qualification label is required",
       "entryTaskPrerequisites": [],
-      "sha256": "de4c00b052860a2f8f66e875f3447fd3d613fff220e0835cfc906481c359cb16",
+      "sha256": "870149c0bf485a9750a86238e0f44c24883bc36d618b71214f79478e4ae09602",
       "originalTasks": [
         "DSK-2.1",
         "DSK-2.2"
@@ -211,7 +252,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/12-ios-input-part-1-3a8dba9b17fa/progress.md",
       "entryConditions": "RRD current-source ios rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "e331ff414c657f35c68992fc913ee4e5d59533ef239c2b420cb134d3504c2397",
+      "sha256": "a2496a05bfc811bedcc9c365f53c94f119c9617a1e186ef04a8e8822e1c4b31d",
       "originalTasks": [
         "IOS-1.1",
         "IOS-1.2",
@@ -230,7 +271,7 @@
         "RIO-1.4",
         "RIO-1.5"
       ],
-      "sha256": "a5d3b3c8466f47827e5778ca68b4333b71b700f896f7a93ffd4754cfa5081b47",
+      "sha256": "392e2f571aba15be14947805a81d0654079acfe16795fc73bf52937ea6c5d9a0",
       "originalTasks": [
         "IOS-1.6",
         "IOS-1.7",
@@ -244,7 +285,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/14-ios-rich-content-fc6466729102/progress.md",
       "entryConditions": "RRD current-source ios rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "4dba06318f03ef20b515b5c31ed0893d344ebdacb9da820572af88730602bd90",
+      "sha256": "12d52c1673e613872bcbf2c27ae9ada1c50038ca51687ee0fa1c626119802020",
       "originalTasks": [
         "IOS-1.9",
         "IOS-1.10",
@@ -260,7 +301,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/15-ios-lifecycle-1a554a450d46/progress.md",
       "entryConditions": "RRD current-source ios rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "685a5290c0981c775325d1d34ad7281a6cd743faabd8399cda99d356cd14b6a8",
+      "sha256": "07510d9ac431d623efe7c6060fd05d8f62ff00916a97cca5cd7292ed6132229d",
       "originalTasks": [
         "IOS-1.14",
         "IOS-1.15",
@@ -276,7 +317,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/16-ios-extensions-package-part-1-1982e8360fd9/progress.md",
       "entryConditions": "Exact implemented ios SDK/public shared extension, format and link interfaces are authenticated in prior rows; no whole-track qualification label is required",
       "entryTaskPrerequisites": [],
-      "sha256": "5cd4a045af06cc2ab3b04028dcfab9cd881e4951e9b84179b45c42905775758d",
+      "sha256": "5e05ee0673dba7aa2a666b48af21b3bb025499e622a48504e322b46fbdf27304",
       "originalTasks": [
         "NIX-1.1",
         "NIX-1.2",
@@ -293,7 +334,7 @@
       "entryTaskPrerequisites": [
         "RIX-1.1"
       ],
-      "sha256": "d5b574bfca3dfac7a677d0f58ea3560efa4fda836f7ad2b56bc92bb5cea8c2e9",
+      "sha256": "66850c03a337a292b53e269fc57f8671308b8074c8ffe38773fba6a98ffe68d7",
       "originalTasks": [
         "NIX-1.5",
         "NIX-1.6",
@@ -308,7 +349,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/18-ios-extensions-package-part-3-41e3fa06a833/progress.md",
       "entryConditions": "Exact implemented ios SDK/public shared extension, format and link interfaces are authenticated in prior rows; no whole-track qualification label is required",
       "entryTaskPrerequisites": [],
-      "sha256": "68ff0f94dd34931ef650419977cddfa8b72b236334cda2226dabaafa7420b159",
+      "sha256": "f2cab25799a521cf9b79c4d9ee8ec1b2ad72feb0ceb8d1c0799312c8d053926e",
       "originalTasks": [
         "IOS-2.1",
         "IOS-2.2"
@@ -321,7 +362,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/19-android-input-part-1-2da4bce46676/progress.md",
       "entryConditions": "RRD current-source android rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "cd6f2367b402b0a982f32ef698208cc74e69ecdca331cfec1ccc5d2c6cd07ce0",
+      "sha256": "39936b6e3f4efdd3962859e477669b282d2470f7cf463e585163df3ca42c0ece",
       "originalTasks": [
         "AND-1.1",
         "AND-1.2",
@@ -340,7 +381,7 @@
         "RAN-1.4",
         "RAN-1.5"
       ],
-      "sha256": "e972f30222ba012fb3c8f79ea980e791cdd7286556ecc1436cc0b6be91979498",
+      "sha256": "f0736a187ee25b67011a56e907ceb7330964381e7fc5555667eed06d85b7f4a6",
       "originalTasks": [
         "AND-1.6",
         "AND-1.7",
@@ -354,7 +395,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/21-android-rich-content-41d77d9fdbcf/progress.md",
       "entryConditions": "RRD current-source android rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "287451630ed2b29665f802783964480425cc9c28afbd6603730c59e0485ac2d3",
+      "sha256": "324894cf6b1c25a0fd531f8958dc15b7d6844e2e1097d4d00176179110524fdb",
       "originalTasks": [
         "AND-1.9",
         "AND-1.10",
@@ -370,7 +411,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/22-android-lifecycle-124b61e17ad0/progress.md",
       "entryConditions": "RRD current-source android rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "357a72f69f3604137fa30fc42f096fbc8150048fa0a92387d760a14a2e49c606",
+      "sha256": "96f30536925be2f276f2377f9e51c72d59a32126996b8a85f19177453a1ba25b",
       "originalTasks": [
         "AND-1.14",
         "AND-1.15",
@@ -386,7 +427,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/23-android-extensions-package-part-1-b9ea9551ed9e/progress.md",
       "entryConditions": "Exact implemented android SDK/public shared extension, format and link interfaces are authenticated in prior rows; no whole-track qualification label is required",
       "entryTaskPrerequisites": [],
-      "sha256": "b0f1d61b6e3e0cdf393ff1e99b83465696564d0443adedf180469f056d6775fd",
+      "sha256": "65827020195666219db9b9dae8dd59944280bd5a4a208b9d231b4a172dcf21d3",
       "originalTasks": [
         "NAX-1.1",
         "NAX-1.2",
@@ -403,7 +444,7 @@
       "entryTaskPrerequisites": [
         "RAX-1.1"
       ],
-      "sha256": "696d15e34279182ad043d31e04efe33680696936be641d07ee0b4ab7f4a75c4e",
+      "sha256": "85bb76c92427563bee5700d8418141636ed6547c36763438fcbdfe107e8f7502",
       "originalTasks": [
         "NAX-1.5",
         "NAX-1.6",
@@ -418,7 +459,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/25-android-extensions-package-part-3-4d57c4492dbf/progress.md",
       "entryConditions": "Exact implemented android SDK/public shared extension, format and link interfaces are authenticated in prior rows; no whole-track qualification label is required",
       "entryTaskPrerequisites": [],
-      "sha256": "ff0537ab67deee19e606da3e5db6c0cf3477928a759d00c2b1eeefc6ffaf6653",
+      "sha256": "8da977531a0596b1a5d7ac023bde9bd0fa9294372ce805f7c3a1e32b8695ccab",
       "originalTasks": [
         "AND-2.1",
         "AND-2.2"
@@ -431,7 +472,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/26-windows-input-part-1-a30259c7eac3/progress.md",
       "entryConditions": "RRD current-source windows rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "50d0b970e78e3b5111458fd7a236141dcb9561d147ad7037902b94108852eb11",
+      "sha256": "6ed46c5f3d9268ab03df5f9e0f3c3037bdcd5edaeeaf7bee4b7e23ae05a83fe9",
       "originalTasks": [
         "WIN-1.1",
         "WIN-1.2",
@@ -450,7 +491,7 @@
         "RWI-1.4",
         "RWI-1.5"
       ],
-      "sha256": "646d06e373c508fe8fc19b1a8e8afae0386a926a237262010d2a68dec3334b5d",
+      "sha256": "53ca0115e0feb671dd8eb193844d0a7694e092ae3e4f942ce50069f5f438c6ae",
       "originalTasks": [
         "WIN-1.6",
         "WIN-1.7",
@@ -464,7 +505,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/28-windows-rich-content-ad079b11d832/progress.md",
       "entryConditions": "RRD current-source windows rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "bc2046bcc4f205aea1e196221dbc687e9f128b2d6702568f49d53eee149c9e6c",
+      "sha256": "ede9949b3e45a70a1681da2e88756326044df1ccc8b9ca3b058e5f51ca040214",
       "originalTasks": [
         "WIN-1.9",
         "WIN-1.10",
@@ -480,7 +521,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/29-windows-lifecycle-27146372e350/progress.md",
       "entryConditions": "RRD current-source windows rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "1bc5ed1309a8c903713fc7147c5d82258b65ba8f4778d94d7029cba4fd519597",
+      "sha256": "54626c26dd65c7ad5f5006b777afd475cad81a233bc13a895d5d10fc9ffeff88",
       "originalTasks": [
         "WIN-1.14",
         "WIN-1.15",
@@ -496,7 +537,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/30-windows-extensions-package-part-1-f1c79b575c50/progress.md",
       "entryConditions": "Exact implemented windows SDK/public shared extension, format and link interfaces are authenticated in prior rows; no whole-track qualification label is required",
       "entryTaskPrerequisites": [],
-      "sha256": "572dcd6724d09af8a1f89e4a293d73271d122d8e0271b9728e0e727fd83bfdcd",
+      "sha256": "f14c0e517caf4214942e7296fb7ad5cd5ee8986a434560422a41032f6be183a0",
       "originalTasks": [
         "NWX-1.1",
         "NWX-1.2",
@@ -513,7 +554,7 @@
       "entryTaskPrerequisites": [
         "RWX-1.1"
       ],
-      "sha256": "4184b257f3d6ed6df399eb2735c31d0c5db801a3723301ba61c821a0f948fdae",
+      "sha256": "3a0edce3ca209d6e9fa444569a7e2232bc99c63a37d647ae3bf897d6be5e68a2",
       "originalTasks": [
         "NWX-1.5",
         "NWX-1.6",
@@ -528,7 +569,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/32-windows-extensions-package-part-3-072858027c2d/progress.md",
       "entryConditions": "Exact implemented windows SDK/public shared extension, format and link interfaces are authenticated in prior rows; no whole-track qualification label is required",
       "entryTaskPrerequisites": [],
-      "sha256": "697c1742b25e04dd1fc8101359f6e751af8b5f7d4ec56bf79a3e786df3a8da8d",
+      "sha256": "1f301ae28b1fd9d6c03c552a46b791f9d80eefda0b36c64d85ce80960acba2a3",
       "originalTasks": [
         "WIN-2.1",
         "WIN-2.2"
@@ -541,7 +582,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/33-linux-input-part-1-83ece7332863/progress.md",
       "entryConditions": "RRD current-source linux rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "56d7a9f26ae8cd05f18fdc2d23684367c07039c16307c01bf500afe7c9952fc3",
+      "sha256": "5b796edd12f3228c6dab8f5d333c0c741fe5640a6bd429ccb368c4184c50f828",
       "originalTasks": [
         "LNX-1.1",
         "LNX-1.2",
@@ -560,7 +601,7 @@
         "RLN-1.4",
         "RLN-1.5"
       ],
-      "sha256": "b03a1597354f880c258801988c0fe29ee93ec8e17be56776a45f79394b033f37",
+      "sha256": "3d6096d5fd9297c07496984a0b84fc9ad26653e6e2bc56788ac2ce5b93579141",
       "originalTasks": [
         "LNX-1.6",
         "LNX-1.7",
@@ -574,7 +615,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/35-linux-rich-content-17f01d935102/progress.md",
       "entryConditions": "RRD current-source linux rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "c9703740f880ffc6e3b4d05e3d69d1639ca2df0d0ed5ba851f8461622d0d5688",
+      "sha256": "3aa9b12703b2fe2f8f9cc8536da50254407390b21906e69dac18a1f0ab53e553",
       "originalTasks": [
         "LNX-1.9",
         "LNX-1.10",
@@ -590,7 +631,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/36-linux-lifecycle-e992e576307e/progress.md",
       "entryConditions": "RRD current-source linux rows and exact prior native API/patch/style inputs referenced by the current parent are available; missing runtime-only proof is owned by final testing",
       "entryTaskPrerequisites": [],
-      "sha256": "9d1238b12ab37086bdfd409e244a724afc2604cba17dd5dfbee29d7d6cf1e610",
+      "sha256": "73d586967842e80920f96c80e47e223612e680a3abc79d0db658cfeaa6b8fb33",
       "originalTasks": [
         "LNX-1.14",
         "LNX-1.15",
@@ -606,7 +647,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/37-linux-extensions-package-part-1-7b3f62ad5fd3/progress.md",
       "entryConditions": "Exact implemented linux SDK/public shared extension, format and link interfaces are authenticated in prior rows; no whole-track qualification label is required",
       "entryTaskPrerequisites": [],
-      "sha256": "cdc5172b5ce85ef00e828a734e4bf33b167b45fbcdfc32c7043fe38ca9381d15",
+      "sha256": "59115dbebfc53e1bdcdcc7d34dc4813b7d2dc1029fa284e6e23b044615ba5f04",
       "originalTasks": [
         "NLX-1.1",
         "NLX-1.2",
@@ -623,7 +664,7 @@
       "entryTaskPrerequisites": [
         "RLX-1.1"
       ],
-      "sha256": "719c022465f9b2da9e66c08005a9ca3bd3690bbbc93e05cf8346cd823cbf4f6d",
+      "sha256": "9f9a41f6dacb8f8e523d2973421d5dd1565fc0a2a3bad670064127b128a3a218",
       "originalTasks": [
         "NLX-1.5",
         "NLX-1.6",
@@ -638,7 +679,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/39-linux-extensions-package-part-3-ddd571ea40f9/progress.md",
       "entryConditions": "Exact implemented linux SDK/public shared extension, format and link interfaces are authenticated in prior rows; no whole-track qualification label is required",
       "entryTaskPrerequisites": [],
-      "sha256": "e062fa18f5b9a5eacd37c6d732742342cf8e0db638a2d89075c4e61fb415d72a",
+      "sha256": "57ea814c43097af0b0a945c581041573b08d335e55a5355c86213db14a41dc11",
       "originalTasks": [
         "LNX-2.1",
         "LNX-2.2"
@@ -649,9 +690,9 @@
       "phase": "implementation",
       "parents": 4,
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/40-terminal-recovery-7e07f766ec31/progress.md",
-      "entryConditions": "Current applicable TUI-1.1–1.7 shared-session/source-buffer evidence, not stale hashes alone; hosted services use local prepared transports",
+      "entryConditions": "Current applicable TUI-1.1\u20131.7 shared-session/source-buffer evidence, not stale hashes alone; hosted services use local prepared transports",
       "entryTaskPrerequisites": [],
-      "sha256": "9db7d966a48d051528bfed0ac4e60ce98ffd87734ec88a1260e4a4b6ebcee48e",
+      "sha256": "42d8639eefe29324c49c5556077b494d4fe820e340a03d6031ca17f528fe4f86",
       "originalTasks": [
         "TUI-1.8",
         "TUI-1.9",
@@ -666,7 +707,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/41-terminal-extensions-f7c98562e9b5/progress.md",
       "entryConditions": "Exact public terminal/session and shared extension/format/link APIs from prior accepted rows; no remote service or whole-ecosystem release gate",
       "entryTaskPrerequisites": [],
-      "sha256": "e0945548309c6065c67ec4daf9e76ba76c009792450a789d9c32cc453e6ba74a",
+      "sha256": "10813fc8ebb55d57b976832726e6b4e85ce49d3ecf7f86b35ef13d6d9f75c28c",
       "originalTasks": [
         "TCX-1.1",
         "TCX-1.2",
@@ -683,16 +724,26 @@
       "entryConditions": "All queued functional/native/terminal projections are complete or authenticated. No new pre-feature optimization campaign is authorized; these are bounded batches before final qualification.",
       "entryTaskPrerequisites": [],
       "originalTasks": [],
-      "sha256": "cf55a0ab57f710ef53da382c05b24bdbb51c18c8090b1704db8313efed72148e"
+      "sha256": "53560a5a5e43b0c6560c04592b7d870dc7666a1c4ce80c41f8d914647e9fef14"
     },
     {
       "file": "43-full-shared-suites.md",
       "phase": "testing",
-      "parents": 2,
+      "parents": 4,
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/43-full-shared-suites-8af7d593d974/progress.md",
-      "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources",
-      "entryTaskPrerequisites": [],
-      "sha256": "302fb5fd65c22cd50814f384c7549a120ed8305b9f5b8441c662edcc2fab6dba",
+      "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources Alpha audit prerequisite rows named here must be implemented and have current focused proof; authored plans alone do not satisfy entry.",
+      "entryTaskPrerequisites": [
+        "SFC-5.1",
+        "BTA-1.1",
+        "BTA-1.2",
+        "BTA-1.3",
+        "BTA-1.4",
+        "BTA-1.5",
+        "BTU-1.1",
+        "BTU-1.2",
+        "BTU-1.3"
+      ],
+      "sha256": "eb91f8e64cc1641ba0b8b52e7f26fed96b23f9e482f451d4431bfab8afb0df73",
       "originalTasks": []
     },
     {
@@ -702,17 +753,20 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/44-full-web-suites-part-1-b2f9a5f6563e/progress.md",
       "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources",
       "entryTaskPrerequisites": [],
-      "sha256": "255c3ca630f3e643034b0d91197f6b37cdb3a4d99e21944d9a707ce93566799d",
+      "sha256": "ab80f48f16f8756c46daff0d8b80394c2dbd699ed42bc02ff795017f8e6c1489",
       "originalTasks": []
     },
     {
       "file": "45-full-web-suites-part-2.md",
       "phase": "testing",
-      "parents": 2,
+      "parents": 3,
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/45-full-web-suites-part-2-ad0b9fe0ffd8/progress.md",
-      "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources",
-      "entryTaskPrerequisites": [],
-      "sha256": "a67ee9a5fc3ea9d8e5f43623a9d10f1c583544fc545c87daf2386b6abb43a43b",
+      "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources Alpha audit prerequisite rows named here must be implemented and have current focused proof; authored plans alone do not satisfy entry.",
+      "entryTaskPrerequisites": [
+        "BTQ-1.1",
+        "BTQ-1.2"
+      ],
+      "sha256": "8fb32f02afe95f4a0084de6e960843c1d6a44379f418811403ff6031c60aa190",
       "originalTasks": []
     },
     {
@@ -722,7 +776,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/46-full-macos-suites-2b01e9457882/progress.md",
       "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources; exact macos installed artifact and accepted runtime from RRD-1.2 are present, otherwise continue independent local groups and record the platform blocker",
       "entryTaskPrerequisites": [],
-      "sha256": "4e9d2caec403c68ce7ce383b6ead9a3d0695ed4d724b917ab51583f9edaf73c4",
+      "sha256": "2bc780570af418cc629dce8be2aeb80c50f360ac98921d8c7c4bedc2b1bbcea6",
       "originalTasks": [
         "NMX-1.8",
         "DSK-2.4",
@@ -736,7 +790,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/47-full-ios-suites-94358c2e37ec/progress.md",
       "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources; exact ios installed artifact and accepted runtime from RRD-1.2 are present, otherwise continue independent local groups and record the platform blocker",
       "entryTaskPrerequisites": [],
-      "sha256": "065e92c46c188884b14964ae86680a0f8c3d0dc28a2b5dd485edaec6747c799e",
+      "sha256": "c3f170b8f59599c9301f45256a88f170436a50014ac4ee1c479624ceb1ebd5b3",
       "originalTasks": [
         "NIX-1.8",
         "IOS-2.4",
@@ -750,7 +804,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/48-full-android-suites-2da9ef030631/progress.md",
       "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources; exact android installed artifact and accepted runtime from RRD-1.2 are present, otherwise continue independent local groups and record the platform blocker",
       "entryTaskPrerequisites": [],
-      "sha256": "361f433297e41dc41fca520fc990b208bda3f3a40b13b3a89c90d4ed4704a91c",
+      "sha256": "4bedba8d98062a2fb9dbea1f19dc38cd8708222f513ce1f6cfc2e6ba993ee9f0",
       "originalTasks": [
         "NAX-1.8",
         "AND-2.4",
@@ -764,7 +818,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/49-full-windows-suites-389369cb1843/progress.md",
       "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources; exact windows installed artifact and accepted runtime from RRD-1.2 are present, otherwise continue independent local groups and record the platform blocker",
       "entryTaskPrerequisites": [],
-      "sha256": "a397342b7faba8975b0347d4773bdbd1eaf2a90c644329f1bc61b6f5634ba251",
+      "sha256": "bfdf1e2d6ce74a3552e721e1216daa4b69629e96d610000e240d344307f37dd0",
       "originalTasks": [
         "NWX-1.8",
         "WIN-2.4",
@@ -778,7 +832,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/50-full-linux-suites-5b6fd65eabc3/progress.md",
       "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources; exact linux installed artifact and accepted runtime from RRD-1.2 are present, otherwise continue independent local groups and record the platform blocker",
       "entryTaskPrerequisites": [],
-      "sha256": "c8da0b6cd67869f38a25aedc0df6fb4443deeb83c1b2150120fd6f92bf5a5bf3",
+      "sha256": "09dbb03189e1b83a11ab73fac65b558f8bc4dc9c3d55e6e100ed357ab1b08bc5",
       "originalTasks": [
         "NLX-1.8",
         "LNX-2.4",
@@ -792,7 +846,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/51-full-terminal-suites-af6a21d3fd7d/progress.md",
       "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources",
       "entryTaskPrerequisites": [],
-      "sha256": "7fa9d27e63d226f85b0936c98f595c8b24942c56152a45f82718a4b7cdff2c62",
+      "sha256": "f6bf675125f1205fc3ee29b94e8d90814e6ca632896142a4986c11ffbd9a45e0",
       "originalTasks": [
         "TUI-1.11",
         "TCX-1.6"
@@ -805,7 +859,7 @@
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/52-full-performance-part-1-fbbc18f6bec9/progress.md",
       "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources; all required functional/runtime suite inputs and fixed candidate features are authenticated before release-budget measurements",
       "entryTaskPrerequisites": [],
-      "sha256": "05d4d77cf70559862d1e63b4e2f046d6cf42a205eefc83002f2ebefe1b97669f",
+      "sha256": "df8709b215f1080612354f42b979b295dc9e7cadfab98f66e126aa3381611465",
       "originalTasks": []
     },
     {
@@ -817,7 +871,7 @@
       "entryTaskPrerequisites": [
         "QPF-1.5"
       ],
-      "sha256": "202ff6b2134e7f0133a97f13d3896c4f78adc6063523467d20b04a1d122f3428",
+      "sha256": "2b8fdfaadad2cde6e62b467feac514911283d1c7c05893a8aa9c6792a88cb05c",
       "originalTasks": []
     },
     {
@@ -825,11 +879,37 @@
       "phase": "testing",
       "parents": 3,
       "progressFile": "/Users/bpstr/Github/edit-ac/.roadmap-runner/54-aggregate-readiness-130052dca613/progress.md",
-      "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources; all required complete-suite/native-runtime/performance rows are applicable and passed before declaring overall readiness",
-      "entryTaskPrerequisites": [],
-      "sha256": "12a58bd68c1fbcf651028b694786fea6fd6af1d0ab1c71036c0a28e87416ec19",
+      "entryConditions": "All queued functional projections are delivered or authenticated with exact relevant interface/source rows; final test tasks repair gaps on their existing owner, add missing harnesses here, and never waive failures. Read only applicable predecessor summaries, not their full sources; all required complete-suite/native-runtime/performance rows are applicable and passed before declaring overall readiness Alpha audit prerequisite rows named here must be implemented and have current focused proof; authored plans alone do not satisfy entry.",
+      "entryTaskPrerequisites": [
+        "DRA-1.1",
+        "DRA-1.2",
+        "DRA-1.3",
+        "DRA-1.4",
+        "DRA-1.5",
+        "BTA-1.1",
+        "BTA-1.2",
+        "BTA-1.3",
+        "BTA-1.4",
+        "BTA-1.5",
+        "BTU-1.1",
+        "BTU-1.2",
+        "BTU-1.3",
+        "BTQ-1.1",
+        "BTQ-1.2",
+        "BTQ-1.3"
+      ],
+      "sha256": "e6d4fe23c97047a247bf2870c72905e24952a455bebad52230346c895b631f0f",
       "originalTasks": []
     }
   ],
-  "sourceRoadmapPolicyUpdated": true
+  "sourceRoadmapPolicyUpdated": true,
+  "alphaAuditIntegration": {
+    "date": "2026-10-23T00:14:57.459626+00:00",
+    "runId": "6bd65538752cad53b001fcb8",
+    "source": "architecture/runner-queues/alpha-block-actions-20261023/README.md",
+    "requiredMap": "requirement-map.json.alphaAuditRequirements",
+    "addedParents": 16,
+    "queueOrderUnchanged": true,
+    "activeSourceUnchanged": true
+  }
 }

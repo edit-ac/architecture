@@ -9,6 +9,8 @@ The [research](../evidence/editor-interaction-research.md) records primary docum
 
 ## State and command ownership
 
+The [text and block standards supplement](editing-behavior-standards.md) consolidates the [2026-10-24 research/source review](../research/text-editing-standards.md) and specifies residual Unicode-version, cross-block input, host language/direction, terminal and explicit block-target behavior. Existing rules below retain authority; its [planned queue](../runner-queues/editing-standards-20261024/README.md) reuses INT/EDX owners and current evidence rather than reopening completed foundations. Adoption into an active run occurs only at its coordinator's safe checkpoint.
+
 The [baseline browser guarantees](web.md#baseline-typing-and-rendering-guarantees)
 already own basic whitespace presentation and heading-end Enter before a list.
 This contract adds the broader variants and qualification layers; a failing basic
@@ -21,6 +23,8 @@ One user intent commits once, regardless of whether it arrives as keydown, befor
 Expanded selections use stable endpoints, including backward selections. A toolbar must capture selection before focus moves, revalidate it at activation, and return focus predictably. Asynchronous actions carry session identity, cancellation and relative anchors; a deleted target returns a recoverable result. Never redirect an old action to the current caret.
 
 ## Enter and line breaks
+
+The [editing experience supplement](editing-experience.md) distinguishes visual wrapping, authored in-paragraph breaks and paragraph structure, supplies feature descriptions and concrete implementation actions, and binds the [cross-platform acceptance matrix](../tests/editing-experience-platform-matrix.md). Its [source review](../research/editing-reference-review.md) includes the complete local CKEditor recommendations archive and primary standards/platform references. Existing case IDs and context semantics below remain authoritative.
 
 | Context | Enter | Shift+Enter |
 |---|---|---|
@@ -50,7 +54,7 @@ The prepared `deleteGraphemeAt` command accepts an owner, UTF-16 offset and back
 
 Retain native visual navigation when it is correct: arrows, Shift+arrows, Home/End, PageUp/PageDown, platform word/line/document modifiers, Select All and selection collapse. Test wrapped lines, vertical movement's preferred x position, RTL/bidi visual order, empty blocks, atoms and scroll-to-caret. Logical storage order does not define visual left/right. Keyboard shortcuts use semantic keys and platform conventions, not US physical-key assumptions. Browser find, zoom, navigation and OS/screen-reader commands remain available. Escape closes the highest active editor popup, then returns to ordinary editing without deleting text.
 
-Tab in ordinary prose moves focus; Shift+Tab moves backward. Lists indent/outdent only when a structural action is applicable. Code Tab inserts one literal tab at a collapsed caret; a selection indents touched lines by one tab and Shift+Tab removes at most one leading tab or the configured indentation width (the baseline profile removes up to four spaces). Existing whitespace is preserved. Table Tab/Shift+Tab moves among cells; forward Tab at the final editable cell creates one bounded row if allowed, otherwise exits; Shift+Tab at the first cell exits. Code/list/table profiles expose visible keyboard help and a one-shot focus escape: Escape dismisses the active editor popup if present and arms the next Tab/Shift+Tab to leave the editor forward/backward. Any other edit/navigation clears that escape state. IME-owned Escape is not intercepted. No exit route requires a mouse. Switching focus or opening menus must not strand composition.
+Tab in ordinary prose increases semantic block indentation; Shift+Tab decreases it, following [block layout](block-layout.md). The Indent/Outdent controls use the same operation. At zero/max bounds these are handled no-ops that retain focus. Lists indent/outdent only when a structural action is applicable. Code Tab inserts one literal tab at a collapsed caret; a selection indents touched lines by one tab and Shift+Tab removes at most one leading tab or the configured indentation width (the baseline profile removes up to four spaces). Existing whitespace is preserved. Table Tab/Shift+Tab moves among cells; forward Tab at the final editable cell creates one bounded row if allowed, otherwise exits; Shift+Tab at the first cell exits. All editable profiles expose visible keyboard help and a one-shot focus escape: Escape dismisses the active editor popup if present and arms the next Tab/Shift+Tab to leave the editor forward/backward. Read-only prose keeps focus traversal. Any other edit/navigation clears that escape state. IME-owned Escape is not intercepted. No exit route requires a mouse. Switching focus or opening menus must not strand composition.
 
 The default shortcut profile uses `Primary` = Command on macOS and Control on Windows/Linux. Bind only while the relevant editor control owns focus and an applicable command exists; hosts may remap explicitly and expose the mapping in keyboard help.
 
@@ -74,6 +78,13 @@ Preserve typed leading/trailing/repeated U+0020 spaces, tabs, NBSP, narrow NBSP 
 The portable web input profile admits TAB, CR and LF and rejects other C0/C1 controls (including DEL), plus unpaired UTF-16 surrogates, before passing strings through JSON/WASM or HTML tokenization. Diagnostics identify the UTF-16 offset and retain recoverable input. Literal paste converts CRLF/CR to LF once. The renderer's opt-in `setInvisibleCharacters` shows a bounded native tooltip listing invisible code points and UTF-16 offsets; it adds no text nodes or document/history changes. Clipboard HTML declares whitespace-preserving presentation, while internal fragments and plain text retain the exact characters.
 
 ## Slash commands
+
+The popup follows the captured caret, including after query filtering, host/editor scrolling
+and visual-viewport resize. Clamp its horizontal bounds, choose space above the caret
+when the lower region is too small, and scroll long result lists internally. Popover
+geometry belongs to the shared presenter; the demo stylesheet must not force it into
+document flow. Default styling remains replaceable by a host integration.
+
 
 Open only from a local, noncomposing typed slash at a valid text boundary (start of block or after whitespace), with a collapsed selection and no literal/code/link-target context. A URL/path slash, escaped slash, pasted slash, imported content and remote updates do not auto-open it. Preserve the literal query until a command actually succeeds.
 

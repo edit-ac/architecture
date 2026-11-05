@@ -15,6 +15,8 @@ SEQ-11 may use the engine's ordered `replaceAt`/`markAt` editor commands and fin
 
 ## Prevention boundaries
 
+The [editing experience matrix](../tests/editing-experience-platform-matrix.md) adds explicit delivery-path variants to existing BRK/SEL/MRK/NAV/SPC and G01–G07 cases. Cover hardware and beforeinput-only intents separately, assert same-owner text plus a typed sentinel, and distinguish semantic, adapter, OS-input and accessibility evidence. See the [implementation checklist](editing-experience.md#concrete-implementation-actions-and-completion-rules); no fixture/catalog pass qualifies an unexecuted platform.
+
 | Guard | Required boundary | Falsifying test |
 |---|---|---|
 | G01 Intent correlation | Each observed input intent has editor/document epoch, input/composition session, origin and a terminal disposition. keydown/beforeinput/input/observer notifications may refer to one intent; identical text alone is never its identity | Replay duplicate notifications, then a deliberate identical second insertion; one commit for each real intent |

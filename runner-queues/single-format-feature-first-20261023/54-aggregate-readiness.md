@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Workers change only task checkboxes and Status in this source. Keep delivery summaries, source hashes, counts and reconciliation records in separate progress/ignored receipts. Never add a Current delivery paragraph; it triggers source-reconciliation loops.
+
 ## Superseding current-format policy
 
 Apply `architecture/decisions/006-single-format-before-publication.md` and `architecture/specs/document-durability.md`: one current witnessed v5 production format, fixture-only old readers, current API/ABI contracts before publication, no silent data conversion or retired runtime fallback. Port useful old semantic assertions; preserve actual revision history and distinct external/protocol/encoding contracts. Current prerequisites are in the successor runtime root below. Complete dependent native/terminal features after SFC-5.1 before remaining optimization; a size batch ends at 45 minutes or two changed hypotheses and cannot block independent features. Unmet original hard-budget predicates stay with QPF final owners; no cap is waived. Prior run is stopped, its source/progress/dirty work preserved. One root workspace/main controller, no subagents/worktrees, paid inference, physical-device qualification or publication. These rules supersede conflicting historical version/whole-track prerequisite text below.
@@ -40,7 +42,7 @@ Context: Original tracks 10/19/20/24/27/30/37; baseline unencrypted readiness ro
 Dependencies: none.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One boundary, normally 15–45 minutes including focused validation.
-Acceptance: All baseline safety, unsafe-paste/trust, resource/permission, atomicity/durability/recovery/offline/prepared sync, format-loss/source-preservation, package and accessibility gates for the declared readiness profile have current complete evidence. Existing encrypted/mock tests still execute when discovered; optional encrypted/cloud release claims remain outside scope.
+Acceptance: All baseline safety, unsafe-paste/trust, resource/permission, atomicity/durability/recovery/offline/prepared sync, format-loss/source-preservation, package and accessibility gates for the declared readiness profile have current complete evidence. Existing encrypted/mock tests still execute when discovered; optional encrypted/cloud release claims remain outside scope. Every alphaAuditRequirements row below has its named current implementation and final-testing evidence; missing or design-only rows are blockers.
 
 Implementation:
 
@@ -86,7 +88,7 @@ Context: Current readiness matrix, complete-suite discovery and QSH/QWB/native/Q
 Dependencies: QRD-1.2.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One boundary, normally 15–45 minutes including focused validation.
-Acceptance: A concise local readiness decision states exact supported web/native runtimes/packages, full-suite pass/fail/skip totals, performance/byte/resource results and limits. COMPLETE requires every required queue entry and predicate; any unresolved required runtime/test/budget keeps overall readiness incomplete. Physical-only/cloud/optional encrypted/publication claims remain explicitly deferred, without masking baseline failures.
+Acceptance: A concise local readiness decision states exact supported web/native runtimes/packages, full-suite pass/fail/skip totals, performance/byte/resource results and limits. COMPLETE requires every required queue entry and predicate; any unresolved required runtime/test/budget keeps overall readiness incomplete. Physical-only/cloud/optional encrypted/publication claims remain explicitly deferred, without masking baseline failures. The Mandatory alpha audit release gates below and the actual audit-result validator must pass. Any unresolved DRA/BTA/BTU/BTQ parent or audit predicate requires NOT READY FOR ALPHA.
 
 Implementation:
 
@@ -99,3 +101,11 @@ Validation:
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
 Blocked behavior: Leave unchecked; try an independent ready parent, otherwise record fingerprint/owner/repair/resume condition and return BLOCKED for controller stop.
+
+## Mandatory alpha audit release gates
+
+QRD-1.1 must authenticate every row of `requirement-map.json.alphaAuditRequirements` against its named implementation and final-testing owner, current source/artifact/runtime pins and nonzero behavioral results. A row is incomplete if absent, design-only, unimplemented, stale, failed or required-skipped. Read `architecture/specs/alpha-durability-closures.md` and `architecture/specs/block-actions.md` only for unresolved predicates. No checked historical roadmap or source-plan validation substitutes for runtime proof.
+
+QRD-1.3 acceptance additionally requires all DRA, BTA, BTU and BTQ parents and every alphaAuditRequirements final predicate complete. This includes both independent concurrent table edits, recovery beyond 4096 updates, structural lifetime/reconnect behavior, the one current format across installed consumers, lossless Turn into through shared APIs and extensions, guarded advanced mappings, independently configurable block menu/reorder, Insert after and all claimed native action routes. The release decision must list each audit row with its owning evidence and explicitly remain **NOT READY FOR ALPHA** while any required predicate is unresolved. Complete original full-runtime/functional suites and unchanged 512 KiB total/32 KiB editor-JS gzip/resource gates remain required; a bounded optimization batch is never a pass.
+
+Before accepting alpha, run the planned deterministic `scripts/validate-alpha-readiness.py` audit-row check. SFC-5.2 owns adding its source and explicit result-input contract; QRD-1.3 owns running it on actual final results. It must reject missing/duplicate owners, unresolved parents, zero cases, failed/required-skipped results and stale source/runtime pins, and must never manufacture evidence from checkbox state. Validate its negative fixtures using prepared data only. This check supplements, rather than replaces, the full existing readiness collector.

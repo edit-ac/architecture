@@ -60,7 +60,7 @@ Deliverable: The named BTU-1.2 outcome and unchanged Acceptance below, with scop
 Purpose: Keep conversion behavior coherent across interaction methods and expose advanced impact plans safely.
 Context: Contract sections Shared command and target contract and Conversion classification; BTU-1.1 presenter; `core/packages/web/src/commands/catalog.ts`, `modules/slash.ts`, `input/keyboard.ts`, existing command controls and result-selection ownership.
 Affected paths/symbols: Only this task's Context implementation/dispatcher and configured local progress; discover actual symbols before editing.
-Entry receipts: The task-local current interfaces and applicable proof described in Context and this source's entry conditions; historical source hashes are leads only.
+Entry receipts: The task-local current interfaces and applicable proof described in Context and this source's entry conditions; historical source hashes are leads only. Required repaired prerequisite: [BTA-2.1](../editor-slash-unblock-20261026/01-atomic-conversion-cleanup.md) and its current focused proof at `.roadmap-runner/editor-slash-unblock-20261026/01-atomic-conversion-cleanup.progress.md`. Reassess only after that owner delivers atomic captured cleanup; the unchanged menu/slash/shortcut acceptance below is not waived.
 Dependencies: BTU-1.1.
 Independent work: Read existing shortcut reservations and slash selection behavior before integration.
 Session scope: One action-routing integration, 30–45 minutes; no new semantic implementation.

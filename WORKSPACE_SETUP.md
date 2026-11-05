@@ -2,6 +2,8 @@
 
 The workspace is one parent directory containing independent Git repositories. Keep the checkout names below: contracts, fixture tools and runner paths use sibling repositories. The parent directory is not a Git repository.
 
+The [dedicated integration repository plan](specs/integration-distribution.md) adds sibling checkouts as integrations are extracted. The layout below describes the existing base workspace, not a requirement to keep integrations in `core`. Clone instructions for each integration must use its confirmed repository and package identity after extraction; proposed names are not existing remotes.
+
 ```text
 edit-ac/
   AGENTS.md          # local copy of architecture/ROOT_AGENTS.md
@@ -51,6 +53,34 @@ From the workspace root, prepare locked dependencies:
 ```
 
 For core browser checks, install the browsers belonging to the locked Playwright dependency from `core`: `npx --no-install playwright install chromium firefox webkit`. The default baseline check runs all three engines. Dependency installation may download packages and browsers; validation uses deterministic fixtures and prepared/mock transports. Follow the root paid-inference policy before any AI test or separately authorized live-content dogfood.
+
+## Required Yrs source
+
+The core repository owns the required Yrs 0.28.0 fork at `core/vendor/yrs`.
+Current editor crates use its additional history and traversal methods
+(`copy_local_redone_from`, `try_visit_map` and `try_visit_sequence`); the registry
+release at the same version is not an interchangeable implementation. Keep the
+fork and its version unchanged when repairing dependency sources.
+
+Declare Yrs with a relative `path` to that directory and `version = "=0.28.0"`.
+Core workspace members inherit this declaration from `core/Cargo.toml`.
+Independent consumers with their own Yrs dependency must use the same path:
+CLI, formats, highlight-engine-effects and the macOS fixture generators. The
+formats-native and formats-WASM roots inherit it through their current core and
+formats dependencies. This source requirement travels with those dependencies;
+downstream applications do not need a root patch. Cargo only honors
+[`[patch]` at the consumer's workspace root](https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html#the-patch-section),
+so dependency workspaces must not rely on one to select the required fork.
+See also Cargo's [path dependency rules](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#specifying-path-dependencies).
+
+Keep each supported standalone root's lockfile consistent with this one local
+Yrs identity. Check changed roots with `cargo metadata --format-version 1 --locked
+--offline`; exercise formats with `--features jobs` and compile an isolated
+formats consumer without a patch before accepting a source repair. Native
+fixture metadata is a dependency check, not platform qualification.
+`cli/vendor/core` is frozen, inactive history, excluded from current source
+repairs. Packaging and publication still require their existing separate gates;
+these local path declarations do not authorize registry fallback or publication.
 
 ## Verify each checkout
 

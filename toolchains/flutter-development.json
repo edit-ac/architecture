@@ -1,0 +1,54 @@
+{
+  "task": "ECM-1.1",
+  "scope": "Pinned local compiler/bootstrap metadata only; no native target or runtime qualification.",
+  "host": { "os": "Darwin", "architecture": "arm64" },
+  "flutter": {
+    "version": "3.47.8",
+    "channel": "stable",
+    "revision": "737ba8f885dc774b53b442759999a312c9461e4e",
+    "dartVersion": "3.13.7",
+    "metadataUrl": "https://storage.googleapis.com/flutter_infra_release/releases/releases_macos.json",
+    "archiveUrl": "https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_3.47.8-stable.zip",
+    "archiveSha256": "6114edc2dae3636cfefb7e4456a4510399ee856e324149b34dbacb509e329d05",
+    "archiveBytes": 2267355570,
+    "installDirectory": "~/.local/share/editac-toolchains/flutter-3.47.8"
+  },
+  "storage": {
+    "minimumFreeBytes": 12884901888,
+    "maximumArchiveBytes": 3221225472,
+    "maximumExtractedBytes": 8589934592,
+    "retainArchive": false
+  },
+  "environment": {
+    "DEVELOPER_DIR": "/Applications/Xcode.app/Contents/Developer",
+    "ANDROID_HOME": "~/Library/Android/sdk",
+    "ANDROID_SDK_ROOT": "~/Library/Android/sdk",
+    "FLUTTER_SUPPRESS_ANALYTICS": "true",
+    "DART_SUPPRESS_ANALYTICS": "true",
+    "CI": "true"
+  },
+  "subprocessPath": [
+    "{flutter}/bin",
+    "~/Library/Android/sdk/platform-tools",
+    "~/Library/Android/sdk/cmdline-tools/latest/bin",
+    "/opt/homebrew/opt/cocoapods/bin",
+    "/usr/bin",
+    "/bin",
+    "/usr/sbin",
+    "/sbin"
+  ],
+  "consumer": "sdk/dart/toolchain_consumer/main.dart",
+  "capabilities": {
+    "headlessDart": "compiler check required",
+    "web": "Flutter compiler metadata only; application build deferred",
+    "android": "existing SDK metadata only; device/emulator/runtime qualification deferred",
+    "ios": "existing Xcode metadata only; simulator/device/runtime qualification deferred",
+    "desktop": {
+      "macos": "unsupported-desktop-host",
+      "windows": "unsupported-desktop-host",
+      "linux": "unsupported-desktop-host",
+      "authority": "../core/native/ui/desktop-feasibility.ts",
+      "owners": ["UFW-1.4", "BCP-1.2", "BCP-1.3", "BNT", "roadmap43"]
+    }
+  }
+}

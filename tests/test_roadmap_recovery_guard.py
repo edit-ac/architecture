@@ -128,15 +128,36 @@ class GuardTests(unittest.TestCase):
             self.assertIsNone(GUARD.blocked_worker(event, "owned", workspace / "owned"))
 
 
+class ResolverRecoveryTests(unittest.TestCase):
+    def test_one_resolver_per_failure_with_duplicate_event_deduplication(self):
+        guard = GUARD.ResolverRecoveryGuard()
+        event = dict(roadmap="source", task="A", iteration=1, sessionId="one", failureFingerprint="original")
+        self.assertTrue(guard.permit(event, 10))
+        self.assertTrue(guard.permit(event | dict(type="runner.turn_finished"), 20))
+        self.assertFalse(guard.permit(event | dict(iteration=2, sessionId="two"), 30))
+        self.assertTrue(guard.permit(event | dict(iteration=3, sessionId="three", failureFingerprint="changed-input"), 40))
+
+    def test_missing_resolver_times_out_and_actual_resolver_clears_deadline(self):
+        guard = GUARD.ResolverRecoveryGuard()
+        event = dict(roadmap="source", task="A", iteration=1, sessionId="one")
+        guard.permit(event, 10)
+        self.assertFalse(guard.expired(69))
+        self.assertTrue(guard.expired(70))
+        guard.observe(dict(type="runner.turn_starting", role="resolver"))
+        self.assertFalse(guard.expired(100))
+
+
 class GuardProcessTests(unittest.TestCase):
     """Exercise the real event watcher against a local fake management CLI."""
 
-    def exercise(self, lines, expected_state, stopped, max_hours="0.01", last_iteration=None):
+    def exercise(self, lines, expected_state, stopped, max_hours="0.01", last_iteration=None, allow_resolver=False, blocked_progress=False):
         with tempfile.TemporaryDirectory(prefix="editac-loop-test-") as directory:
             workspace = Path(directory).resolve()
             source, progress = workspace / "source.md", workspace / "progress.md"
             source.write_text("Status: COMPLETE\n- [x] SFC-1.1 done\nCurrent delivery: previous source hash\n")
             progress.write_text("Status: IN_PROGRESS\nReconcile the new hash\n")
+            if blocked_progress:
+                progress.write_text("Status: BLOCKED\nExact source-bound prerequisite\n")
             next_source = workspace / "next.md"
             next_source.write_text("Status: IN_PROGRESS\n- [ ] DRA-1.2 implementation\n")
             events, receipt, calls = workspace / "events.jsonl", workspace / "guard.json", workspace / "calls.json"
@@ -149,6 +170,8 @@ class GuardProcessTests(unittest.TestCase):
             command = [sys.executable, str(Path(GUARD.__file__)), "--run-id", "owned",
                        "--workspace", str(workspace), "--events", str(events), "--receipt", str(receipt),
                        "--cli", str(cli), "--poll-seconds", "0.01", "--max-hours", max_hours]
+            if allow_resolver:
+                command.append("--allow-resolver-recovery")
             with (workspace / "guard.log").open("w") as log:
                 process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT)
                 try:
@@ -175,6 +198,39 @@ class GuardProcessTests(unittest.TestCase):
                     if process.poll() is None:
                         process.terminate()
                         process.wait(timeout=3)
+
+    def test_repairable_result_handoff_allows_resolver_and_normal_completion(self):
+        self.exercise([
+            dict(type="runner.task_result_invalid", recovery="resolver", failureFingerprint="shape", task="A", sessionId="one", iteration=1),
+            dict(type="runner.turn_starting", role="resolver"),
+            dict(type="runner.completed"),
+        ], "runner-ended", False, allow_resolver=True)
+
+    def test_valid_blocked_worker_allows_one_resolver(self):
+        self.exercise([
+            dict(type="runner.task_result", task="A", failureFingerprint="source-bound"),
+            dict(task="A", iteration=1, sessionId="one"),
+            dict(type="runner.turn_starting", role="resolver"),
+            dict(type="runner.completed"),
+        ], "runner-ended", False, allow_resolver=True, blocked_progress=True)
+
+    def test_repeated_unchanged_blocked_worker_stops(self):
+        self.exercise([
+            dict(type="runner.task_result", task="A", failureFingerprint="source-bound"),
+            dict(task="A", iteration=1, sessionId="one"),
+            dict(type="runner.turn_starting", role="resolver"),
+            dict(task="A", iteration=2, sessionId="two"),
+        ], "stopped-on-blocked-worker", True, allow_resolver=True, blocked_progress=True)
+
+    def test_repeated_identical_repairable_result_still_stops(self):
+        self.exercise([
+            dict(type="runner.task_result_invalid", recovery="resolver", failureFingerprint="shape", task="A", sessionId="one", iteration=1),
+            dict(type="runner.turn_starting", role="resolver"),
+            dict(type="runner.task_result_invalid", recovery="resolver", failureFingerprint="shape", task="A", sessionId="two", iteration=2),
+        ], "stopped-on-invalid-task-result", True, allow_resolver=True)
+
+    def test_unsafe_result_still_stops_with_recovery_enabled(self):
+        self.exercise([dict(type="runner.task_result_invalid", recovery="stop")], "stopped-on-invalid-task-result", True, allow_resolver=True)
 
     def test_completed_source_loop_invokes_exact_stop(self):
         self.exercise([dict(iteration=41), dict(iteration=42)], "stopped-on-repeated-completed-source", True)
@@ -250,6 +306,25 @@ class GuardedLauncherTests(unittest.TestCase):
                     self.assertEqual(result["loopGuard"]["state"], "armed")
                     self.assertEqual(runner.call_args.args[0],
                                      ["/fake/runner", "start" if mode == "start" else "status", *args, "--json"])
+
+
+    def test_resolver_mode_is_explicit_and_propagated_without_queue_changes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = str(Path(directory).resolve())
+            record = dict(id="owned", workspace=workspace, processState="running", progressFile=workspace + "/progress.md")
+            arguments = ["source.md", "--queue", "next.md", "--workspace", workspace]
+            with patch.object(LAUNCHER.subprocess, "run", return_value=SimpleNamespace(returncode=0, stdout=json.dumps(record), stderr="")), \
+                    patch.object(LAUNCHER, "arm_guard", return_value={"state": "armed"}) as guard:
+                result = LAUNCHER.run("/fake/runner", "start", arguments, True)
+                guard.assert_called_once_with("/fake/runner", result, True)
+
+    def test_resolver_guard_rejects_a_nonresolving_controller(self):
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory).resolve()
+            record = dict(id="owned", workspace=str(workspace), progressFile=str(workspace / "progress.md"),
+                          artifacts=dict(events=str(workspace / "events.jsonl")), options=dict(blockedPolicy="stop"))
+            with self.assertRaisesRegex(ValueError, "requires --blocked-policy resolve"):
+                LAUNCHER.arm_guard("/fake/runner", record, True)
 
 
 if __name__ == "__main__":

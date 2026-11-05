@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Workers change only task checkboxes and Status in this source. Keep delivery summaries, source hashes, counts and reconciliation records in separate progress/ignored receipts. Never add a Current delivery paragraph; it triggers source-reconciliation loops.
+
 ## Superseding current-format policy
 
 Apply `architecture/decisions/006-single-format-before-publication.md` and `architecture/specs/document-durability.md`: one current witnessed v5 production format, fixture-only old readers, current API/ABI contracts before publication, no silent data conversion or retired runtime fallback. Port useful old semantic assertions; preserve actual revision history and distinct external/protocol/encoding contracts. Current prerequisites are in the successor runtime root below. Complete dependent native/terminal features after SFC-5.1 before remaining optimization; a size batch ends at 45 minutes or two changed hypotheses and cannot block independent features. Unmet original hard-budget predicates stay with QPF final owners; no cap is waived. Prior run is stopped, its source/progress/dirty work preserved. One root workspace/main controller, no subagents/worktrees, paid inference, physical-device qualification or publication. These rules supersede conflicting historical version/whole-track prerequisite text below.
@@ -36,7 +38,7 @@ Context: `core/package.json` check:rust; `core/Cargo.toml`; `cli/Cargo.toml`; cu
 Dependencies: none.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One suite shard normally 15–45 minutes; an indivisible longer command needs recorded cost/checkpoint before execution.
-Acceptance: All discovered required core/CLI Rust workspace targets and required feature variants execute with nonzero totals, no required skips/failures, exact fixture/toolchain pins and complete discovery accounting. Prepared transports cover all network/provider behavior.
+Acceptance: All discovered required core/CLI Rust workspace targets and required feature variants execute with nonzero totals, no required skips/failures, exact fixture/toolchain pins and complete discovery accounting. Prepared transports cover all network/provider behavior. Include the new current-format table concurrency and long-session structural lifetime fixtures and negative resource/admission cases; historical v4 move tests do not qualify the current document.
 
 Implementation:
 
@@ -59,7 +61,7 @@ Context: `core/package.json` check/check:wasm/check:packages/check:protocol/chec
 Dependencies: none.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One coherent suite shard normally 15–45 minutes; enumerate outstanding commands and time cost before each shard.
-Acceptance: Every required package/type/export/protocol/WASM/schema/fixture/codec/consumer suite has applicable passing current-source evidence; installed tarballs use public imports without workspace aliases. Counts explicitly distinguish build-only checks from executed behavior.
+Acceptance: Every required package/type/export/protocol/WASM/schema/fixture/codec/consumer suite has applicable passing current-source evidence; installed tarballs use public imports without workspace aliases. Counts explicitly distinguish build-only checks from executed behavior. Include actual current Rust/WASM/Session checkpoint and action-port exchanges for table cell identity and retained structural history.
 
 Implementation:
 
@@ -72,3 +74,53 @@ Validation:
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
 Blocked behavior: Leave unchecked; try an independent ready parent, otherwise record fingerprint/owner/repair/resume condition and return BLOCKED for controller stop.
+
+## Epic ALPHA_BLOCK_SHARED_TESTING — Close semantic and extension proof
+
+Entry requires completed BTA/BTU and focused SFC-5.1 durability proof. These are the final named block semantic/extension owners within the existing complete-suite phase. Reuse exact applicable QSH evidence; add only uncovered cases, and leave native runtime observations to their existing final owners.
+
+### Task BTQ-1.1 — Complete shared semantic and persistence coverage
+
+- [ ] BTQ-1.1 Prove current-format lossless conversion and general insertion semantics.
+
+Purpose: Prevent content loss or divergent behavior in the shared action contract.
+Context: BTA-1.1, BTA-1.2 and BTA-1.5 focused evidence; contract sections Lossless presentation changes, Shared command and Alpha acceptance; existing core format/history/checkpoint and WASM/Session tests.
+Dependencies: none.
+Independent work: BTQ-1.2 may proceed independently once functional entry is satisfied.
+Session scope: Fill missing semantic/port cases and reuse existing proof, 30–45 minutes. Split the remaining matrix through the controller if larger; never weaken it.
+Acceptance: Cover paragraph/heading levels, no-op, rich/opaque Unicode preservation, same parent/ID/source/descendants, directional selection, explicit multi-target atomicity, structural and presentation staleness, peer text/undo/redo, unknown data, current checkpoint/journal reopen and general root/nested Insert after. Direct Rust, WASM and Session/FFI outcomes agree. No old-reader test substitutes for current-format coverage.
+
+Implementation:
+
+- [ ] BTQ-1.1-I1 Map existing evidence to these requirements and add only uncovered deterministic fixtures, including immutable before/after state assertions for rejected batches.
+
+Validation:
+
+- [ ] BTQ-1.1-V1 From `core`, run outstanding cases in `cargo test -p editac-core --locked --offline --test block_actions`, `node --test tests/wasm-block-actions.test.mjs` and `cargo test -p editac-session -p editac-ffi --locked --offline block_actions`, narrowing to uncovered selectors when compatible evidence exists. Record nonzero per-target executed/passed/failed/skipped counts, pins and failure dispositions. Budget: 10 minutes execution; widen only for demonstrated impact or an explicit existing gate.
+
+Evidence: Progress mapping each invariant to reused or fresh evidence with current format/runtime provenance.
+Handoff: Covered semantics and exact residual platform, lifetime or recovery gates without claiming those separate gates passed.
+Blocked behavior: Record the failed semantic boundary and repair hypothesis; do not retry unchanged failures or rewrite source bytes as a workaround.
+
+### Task BTQ-1.2 — Complete extension and advanced-plan conformance
+
+- [ ] BTQ-1.2 Prove extension conversion availability, preservation and review safety.
+
+Purpose: Keep custom conversions within the same loss, permission and lifecycle rules.
+Context: BTA-1.3/BTA-1.4/BTU-1.3 evidence; contract sections Extension participation and Conversion classification; existing extension command/authoring/consumer fixtures.
+Dependencies: none.
+Independent work: Registry/provider cases do not require browser gesture qualification.
+Session scope: One remaining extension conformance matrix, 30–45 minutes.
+Acceptance: Cover duplicate/invalid registration; lossless custom mapping; disabled/unknown payload retention; unavailable source/destination/runtime; menu-off API use; forged or stale approval; cancellation/disposal; permission change; impact-change reapproval; unsupported advanced families; and inability to bypass admission through callbacks. Verify public recipe imports and bounded per-type dispatch without a document scan.
+
+Implementation:
+
+- [ ] BTQ-1.2-I1 Extend existing deterministic conformance fixtures only for uncovered conversion obligations and capture per-runtime availability in the shared capability handoff.
+
+Validation:
+
+- [ ] BTQ-1.2-V1 From `core`, run uncovered selectors in `node --test tests/block-actions-contract.test.mjs tests/block-actions-consumer.test.mjs`, reusing compatible functional checks and excluding the web-loading cases owned by BTQ-1.3. Budget: 10 minutes execution; record nonzero counts and runtime provenance. Prepared fixtures do not qualify arbitrary third-party plugin semantics.
+
+Evidence: Progress with conversion mapping dispositions, rejected unsafe proposals and source/artifact pins.
+Handoff: Supported mappings and precise disabled reasons for the public API and platform consumers.
+Blocked behavior: Keep an unqualified mapping unavailable; preserve baseline lossless conversion and record the mapping owner/unblock condition.

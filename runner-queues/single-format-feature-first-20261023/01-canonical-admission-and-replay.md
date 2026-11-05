@@ -1,6 +1,6 @@
 # Converge production admission and structural replay
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal and entry conditions
 
@@ -10,7 +10,7 @@ SFC-1.1/1.2 exact current-source ownership and durability rows are validated. No
 
 Superseding user decision, 2026-10-23: follow `architecture/decisions/006-single-format-before-publication.md` and `architecture/specs/document-durability.md`. One production document schema/profile (the existing witnessed v5 format) and one current implementation per API/wire/ABI contract until publication. Retired development readers and fabricated previous/current release matrices are fixture history only; preserve useful behavior assertions on current-format cases. Never silently relabel, migrate, reset or reseed real data. Retain actual protocol/update-encoding semantics, external formats and document revision/history. Older version-specific runtime clauses in copied historical acceptance are superseded by this decision, not by dropping their semantic regressions.
 
-One serial controller, root `/Users/bpstr/Github/edit-ac`, existing main branches only; no worktree, parallel lane, subagents or second run. Use only active source/progress and its named prerequisite summary. Prior run f6915e733a5ecb9c1c64e7ff is stopped, not restarted. Preserve its dirty work and exact successful/failing evidence. Live progress is separate; source files stay immutable. Read current prerequisites from `.roadmap-runner/single-format-feature-first-20261023/readiness.json` and its bounded handoff rows. The first source adapts existing collectors to this successor manifest; old matrix paths are historical evidence only.
+One serial controller, root `/Users/bpstr/Github/edit-ac`, existing main branches only; no worktree, parallel lane, subagents or second run. Use only active source/progress and its named prerequisite summary. Prior run f6915e733a5ecb9c1c64e7ff is stopped, not restarted. Preserve its dirty work and exact successful/failing evidence. Workers may change only task checkboxes and the Status line in this source. Put delivery summaries, source hashes, reconciliation receipts, timestamps and counts only in the separate progress file or ignored receipts. Never add or update a Current delivery paragraph here: changing acceptance prose on each pass forces another reconciliation. Read current prerequisites from `.roadmap-runner/single-format-feature-first-20261023/readiness.json` and its bounded handoff rows. The first source adapts existing collectors to this successor manifest; old matrix paths are historical evidence only.
 
 Canonical shared-format cleanup and a focused safety gate precede native consumers. Then complete independent features before remaining optimization and comprehensive final suites. Size/latency work gets at most 45 minutes OR two materially different measured hypotheses per batch, whichever comes first. Checkpoint useful code and honest unresolved numbers, then advance independent feature work. Parent completion for a bounded optimization batch never closes its original hard-budget predicate; QPF final gates still own unchanged 512 KiB total/32 KiB editor-JS gzip caps and complete resource/tail proof. Never rerun an unchanged failing inventory. A true semantic/data-safety defect or missing required interface blocks only its dependents.
 
@@ -24,7 +24,7 @@ One parent per worker, normally 15–45 minutes including focused checks. Commit
 
 ### Task SFC-2.1 — Converge current identity and admission
 
-- [ ] SFC-2.1 Converge current identity and admission.
+- [x] SFC-2.1 Converge current identity and admission.
 
 Purpose: Deliver this named canonical-format boundary safely without retaining unpublished runtime versions.
 Context: `architecture/decisions/006-single-format-before-publication.md`; `architecture/specs/document-durability.md`; only task-local original APIs/specs and prerequisite rows; `core/crates/editac-core/src/document.rs`; current identity factories and unsupported-profile tests
@@ -35,11 +35,11 @@ Acceptance: Production creation, restore and update admission support only the c
 
 Implementation:
 
-- [ ] SFC-2.1-I1 Update factory callers before removing obsolete constructors/constants, with only temporary build-coherent aliases during this cutover and no new supported profile/legacy feature. Port positive semantic tests to current fixtures; preserve useful old input rejection tests. Give remaining unavoidable compile-callsite work an exact dependent owner, not runtime support.
+- [x] SFC-2.1-I1 Update factory callers before removing obsolete constructors/constants, with only temporary build-coherent aliases during this cutover and no new supported profile/legacy feature. Port positive semantic tests to current fixtures; preserve useful old input rejection tests. Give remaining unavoidable compile-callsite work an exact dependent owner, not runtime support.
 
 Validation:
 
-- [ ] SFC-2.1-V1 Run `current_document_format` and affected identity/locator/admission selectors with pinned tools. Verify old/future envelopes reject without bytes/history/receipts changes; no silent renaming or old-reader fallback.
+- [x] SFC-2.1-V1 Run `current_document_format` and affected identity/locator/admission selectors with pinned tools. Verify old/future envelopes reject without bytes/history/receipts changes; no silent renaming or old-reader fallback.
 
 Evidence: Separate progress contains changed interfaces, exact input/fixture/runtime hashes, selector/command/exit, executed/passed/failed/skipped counts, reuse decisions and concise failure dispositions. Detailed output remains ignored.
 Handoff: Last verified substep, remaining file/symbol, exact missing predicate and next bounded action.
@@ -47,7 +47,7 @@ Blocked behavior: Keep unfinished criteria unchecked, continue an independent lo
 
 ### Task SFC-2.2 — Converge creation, restore and journal validation
 
-- [ ] SFC-2.2 Converge creation, restore and journal validation.
+- [x] SFC-2.2 Converge creation, restore and journal validation.
 
 Purpose: Deliver this named canonical-format boundary safely without retaining unpublished runtime versions.
 Context: `architecture/decisions/006-single-format-before-publication.md`; `architecture/specs/document-durability.md`; only task-local original APIs/specs and prerequisite rows; current `Document` initialization/restore/replay; `core/crates/editac-session` stores and deterministic checkpoint fixtures
@@ -58,11 +58,11 @@ Acceptance: Current-only root initialization and staged restore preserve empty i
 
 Implementation:
 
-- [ ] SFC-2.2-I1 Remove obsolete initialization/validation dispatch only after current semantic assertions are ported. Keep bounds and missing-binary-dependency errors intact. Fix an actual durability defect if discovered; never reseed restored empty bytes or replace source identities.
+- [x] SFC-2.2-I1 Remove obsolete initialization/validation dispatch only after current semantic assertions are ported. Keep bounds and missing-binary-dependency errors intact. Fix an actual durability defect if discovered; never reseed restored empty bytes or replace source identities.
 
 Validation:
 
-- [ ] SFC-2.2-V1 Run affected initialization/checkpoint/current-format and Session recovery selectors with independent content/identity/journal oracles and explicit failure/duplicate/reordered/empty cases. Reuse matching current-format passes.
+- [x] SFC-2.2-V1 Run affected initialization/checkpoint/current-format and Session recovery selectors with independent content/identity/journal oracles and explicit failure/duplicate/reordered/empty cases. Reuse matching current-format passes.
 
 Evidence: Separate progress contains changed interfaces, exact input/fixture/runtime hashes, selector/command/exit, executed/passed/failed/skipped counts, reuse decisions and concise failure dispositions. Detailed output remains ignored.
 Handoff: Last verified substep, remaining file/symbol, exact missing predicate and next bounded action.
@@ -70,7 +70,7 @@ Blocked behavior: Keep unfinished criteria unchecked, continue an independent lo
 
 ### Task SFC-2.3 — Retain only witnessed structural replay
 
-- [ ] SFC-2.3 Retain only witnessed structural replay.
+- [x] SFC-2.3 Retain only witnessed structural replay.
 
 Purpose: Deliver this named canonical-format boundary safely without retaining unpublished runtime versions.
 Context: `architecture/decisions/006-single-format-before-publication.md`; `architecture/specs/document-durability.md`; only task-local original APIs/specs and prerequisite rows; interrupted `core/crates/editac-core/src/editor.rs` and `editor_replay.rs`; independent current/historical fixture mappers
@@ -81,12 +81,16 @@ Acceptance: One production current-format replay implementation has no v4/v5 pol
 
 Implementation:
 
-- [ ] SFC-2.3-I1 Authenticate interrupted G8 changes, keep useful factoring, and remove old policy rather than finish dual-version optimization. Move production-owned current replay/helpers into authored src modules; historical independent mappers remain fixture-only oracles. Do not fork semantics or reduce retained data/limits.
+- [x] SFC-2.3-I1 Authenticate interrupted G8 changes, keep useful factoring, and remove old policy rather than finish dual-version optimization. Move production-owned current replay/helpers into authored src modules; historical independent mappers remain fixture-only oracles. Do not fork semantics or reduce retained data/limits.
 
 Validation:
 
-- [ ] SFC-2.3-V1 Run the current stable/retained presentation, structural/history/anchor affected selectors and pinned Rust/Yjs exchanges after the actual change. Include metadata-after-join/split, Unicode/multi-source and malformed witness cases; record meaningful counts.
+- [x] SFC-2.3-V1 Run the current stable/retained presentation, structural/history/anchor affected selectors and pinned Rust/Yjs exchanges after the actual change. Include metadata-after-join/split, Unicode/multi-source and malformed witness cases; record meaningful counts.
 
 Evidence: Separate progress contains changed interfaces, exact input/fixture/runtime hashes, selector/command/exit, executed/passed/failed/skipped counts, reuse decisions and concise failure dispositions. Detailed output remains ignored.
 Handoff: Last verified substep, remaining file/symbol, exact missing predicate and next bounded action.
 Blocked behavior: Keep unfinished criteria unchecked, continue an independent local parent, otherwise record fingerprint/owner/repair/resume condition and return BLOCKED for controller stop.
+
+## Epic ALPHA_DURABILITY — Close observed data-lifetime defects
+
+User-authorized alpha audit additions, 2026-10-23. These parents follow the current admission/replay cleanup and precede projection, command and consumer convergence. Read only the named contract and current task inputs. Earlier checked roadmaps do not prove these newly required behaviors. The observations and final owners are in `architecture/runner-queues/alpha-block-actions-20261023/README.md`.

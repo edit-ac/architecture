@@ -1,6 +1,6 @@
 # Close BPH-1.1, BPH-1.2, BPH-1.9, BPH-1.11 prerequisite ownership
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; paths in task contracts are core-relative.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/17-plain-php-sdk.progress.md`.
@@ -23,7 +23,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task BPH-1.1 — Implement the PHP envelope and HTTP client
 
-- [ ] BPH-1.1 Implement the PHP envelope and HTTP client.
+- [x] BPH-1.1 Implement the PHP envelope and HTTP client.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/php/.
@@ -37,11 +37,11 @@ Acceptance: Composer autoload exposes exact binary/base64 handling, scoped ident
 
 Implementation:
 
-- [ ] BPH-1.1-I1 Implement the PHP envelope and HTTP client. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BPH-1.1-I1 Implement the PHP envelope and HTTP client. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BPH-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.1`: A plain PHP consumer without Laravel/Filament round-trips non-ASCII current checkpoint bytes through a prepared HTTP response and preserves unknown bounded fields. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BPH-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.1`: A plain PHP consumer without Laravel/Filament round-trips non-ASCII current checkpoint bytes through a prepared HTTP response and preserves unknown bounded fields. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -49,7 +49,7 @@ Blocked behavior: Leave BPH-1.1 unchecked; record owner, source/error fingerprin
 
 ### Task BPH-1.2 — Implement PHP conditional saves and commit recovery
 
-- [ ] BPH-1.2 Implement PHP conditional saves and commit recovery.
+- [x] BPH-1.2 Implement PHP conditional saves and commit recovery.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/php/.
@@ -63,11 +63,11 @@ Acceptance: Framework-independent create/load/save client operations use durable
 
 Implementation:
 
-- [ ] BPH-1.2-I1 Implement PHP conditional saves and commit recovery. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BPH-1.2-I1 Implement PHP conditional saves and commit recovery. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BPH-1.2-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.2`: One prepared lost reply resolves the same operation; a different payload under that key rejects and a stale revision stays conflicted. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BPH-1.2-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.2`: One prepared lost reply resolves the same operation; a different payload under that key rejects and a stale revision stays conflicted. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -75,7 +75,7 @@ Blocked behavior: Leave BPH-1.2 unchecked; record owner, source/error fingerprin
 
 ### Task BPH-1.9 — Implement framework-neutral PHP persistence orchestration
 
-- [ ] BPH-1.9 Implement framework-neutral PHP persistence orchestration.
+- [x] BPH-1.9 Implement framework-neutral PHP persistence orchestration.
 
 Purpose: Deliver this integration boundary while keeping shared persistence behavior in the framework-independent PHP SDK.
 Deliverable: sdk/php/src/Persistence/; sdk/php/storage/pdo/; sdk/php/src/Admission/.
@@ -89,11 +89,11 @@ Acceptance: The SDK owns application-supplied policy/repository/transaction port
 
 Implementation:
 
-- [ ] BPH-1.9-I1 Connect the existing shared authority/transaction contract to framework-neutral PHP services and one minimal PDO repository. Keep application authentication callbacks and injected connection ownership explicit. Register one focused delivery selector; defer broad test authoring to the final testing files.
+- [x] BPH-1.9-I1 Connect the existing shared authority/transaction contract to framework-neutral PHP services and one minimal PDO repository. Keep application authentication callbacks and injected connection ownership explicit. Register one focused delivery selector; defer broad test authoring to the final testing files.
 
 Validation:
 
-- [ ] BPH-1.9-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.9`: In plain PHP without Laravel/Filament, save/reopen one current checkpoint through actual local SQLite, then force rollback and a stale predecessor; only the committed write receives a receipt. Budget: 1–3 minutes or at most 5 minutes for local build/bootstrap; reuse unchanged passing results.
+- [x] BPH-1.9-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.9`: In plain PHP without Laravel/Filament, save/reopen one current checkpoint through actual local SQLite, then force rollback and a stale predecessor; only the committed write receives a receipt. Budget: 1–3 minutes or at most 5 minutes for local build/bootstrap; reuse unchanged passing results.
 
 Evidence: The ignored progress path above records source inputs, command/runtime/exit and meaningful executed/passed/failed/skipped counts; retain only active failure diagnostics.
 Handoff: Delivered interface, exact last substep, missing prerequisite and next bounded action.
@@ -101,7 +101,7 @@ Blocked behavior: Leave BPH-1.9 unchecked; record owner, source/error fingerprin
 
 ### Task BPH-1.11 — Package and demonstrate plain PHP usage
 
-- [ ] BPH-1.11 Package and demonstrate plain PHP usage.
+- [x] BPH-1.11 Package and demonstrate plain PHP usage.
 
 Purpose: Deliver this integration boundary while keeping shared persistence behavior in the framework-independent PHP SDK.
 Deliverable: sdk/php/composer.json; sdk/php/README.md; examples/sdk-adapters/php/.
@@ -115,11 +115,11 @@ Acceptance: A local Composer package and minimal plain PHP example install and p
 
 Implementation:
 
-- [ ] BPH-1.11-I1 Add authored install metadata, license/notices and a minimal fixture-backed usage recipe. Keep packed dependencies and generated output ignored and separate from source. Register one focused delivery selector; defer broad test authoring to the final testing files.
+- [x] BPH-1.11-I1 Add authored install metadata, license/notices and a minimal fixture-backed usage recipe. Keep packed dependencies and generated output ignored and separate from source. Register one focused delivery selector; defer broad test authoring to the final testing files.
 
 Validation:
 
-- [ ] BPH-1.11-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.11`: Install into a fresh ignored plain PHP consumer, inspect the dependency graph for framework absence and run the documented SQLite checkpoint save/reopen using prepared content. Budget: 1–3 minutes or at most 5 minutes for local build/bootstrap; reuse unchanged passing results.
+- [x] BPH-1.11-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.11`: Install into a fresh ignored plain PHP consumer, inspect the dependency graph for framework absence and run the documented SQLite checkpoint save/reopen using prepared content. Budget: 1–3 minutes or at most 5 minutes for local build/bootstrap; reuse unchanged passing results.
 
 Evidence: The ignored progress path above records source inputs, command/runtime/exit and meaningful executed/passed/failed/skipped counts; retain only active failure diagnostics.
 Handoff: Delivered interface, exact last substep, missing prerequisite and next bounded action.

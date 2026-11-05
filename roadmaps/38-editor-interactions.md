@@ -142,7 +142,7 @@ Purpose: Implement contextual Tab and platform shortcuts as one bounded behavior
 Context: `packages/web/src/input/keyboard.ts`; `packages/web/src/commands/`; `tests/browser/interactions/keyboard.spec.ts`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md). [Platform editing contract](../specs/platform-editing-services.md); [ENV acceptance variants](../tests/platform-editing-cases.md).
 Dependencies: INT-1.5.
 Session scope: One named behavior group plus its focused validation; change only named paths and directly required test/configuration glue.
-Acceptance: KEY-01–KEY-07 pass for prose focus traversal, list indentation, literal code indentation, table-cell navigation, keyboard escape and default shortcut/toolbar parity. Modifier handling permits AltGraph/dead keys and preserves browser/OS commands. ENV-08 preserves system shortcut/focus behavior and command applicability across nested host controls.
+Acceptance: KEY-01–KEY-07 pass for persisted prose block indentation, list indentation, literal code indentation, table-cell navigation, Escape-Tab focus exit, read-only traversal and default shortcut/toolbar parity. Apply the 2026-10-24 [block-layout amendment](../specs/block-layout.md), including bounds/no-ops, range direction, split/history/reopen and atomic admission. Earlier prose-focus receipts are historical evidence, not acceptance of the new user requirement. Modifier handling permits AltGraph/dead keys and preserves browser/OS commands. ENV-08 preserves system shortcut/focus behavior and command applicability across nested host controls.
 
 Implementation:
 
@@ -208,7 +208,7 @@ Purpose: Complete slash-menu command and focus behavior as one bounded behavior 
 Context: `packages/web/src/modules/slash/`; `tests/browser/interactions/slash.spec.ts`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md).
 Dependencies: INT-1.5, INT-1.7.
 Session scope: One named behavior group plus its focused validation; change only named paths and directly required test/configuration glue.
-Acceptance: SLH-01–SLH-07 pass for local trigger exclusions, disabled/empty results, navigation/commit/dismissal, composing Enter, anchored async results, pointer parity and one-group undo.
+Acceptance: SLH-01–SLH-08 pass for local trigger exclusions, disabled/empty results, navigation/commit/dismissal, composing Enter, anchored async results, pointer parity, one-group undo and caret-relative placement through scroll/viewport changes. The installed demo also exposes and exercises heading levels 1–6 and bullet/numbered lists.
 
 Implementation:
 

@@ -1,4 +1,4 @@
-# Stable retained-structure presentation v5
+# Canonical retained-structure presentation
 
 Current canonical production target: [single-format policy](../decisions/006-single-format-before-publication.md) and [durability contract](document-durability.md). Earlier numbered layouts are fixture history only. The qualification notes below preserve original acceptance/history and do not require executable v4 compatibility.
 
@@ -6,13 +6,18 @@ Status: controller-authored correction for ENG-1.9-F1; qualification ENG-1.22 an
 
 ## Profile and version boundary
 
-Schema `editac.registry.editor.v5`, profile `editac.yrs-yjs.editor.v5`; protocol version 1, update encoding 1, UTF-16 and the same pinned Yrs/Yjs/toolchain pair as [schema-v4.md](schema-v4.md). Retain v4's exact ten roots, value shapes, namespaces, bounds, containers, presentation/check/control metadata and immutable original-source identities, including the ordered-start contract of integral 0…2147483647 with no coercion and atomic malformed-tuple rejection, except the split/join tuples and replay rule explicitly changed below. The tuple change requires a new profile; no implicit v4 mutation, automatic migration, reseeding restore or mixed-epoch update. V4 readers reject the v5 envelope before live mutation. Retired envelopes reject before mutation; v4-only presentation guards are not part of the current runtime. Any needed development-data conversion is explicit and offline, preserving the old checkpoint and using a fresh destination/epoch.
+Pre-alpha canonical target, clarified 2026-10-24: schema `editac.registry.editor`, profile `editac.yrs-yjs.editor`; protocol version 1, update encoding 1, UTF-16 and the same pinned Yrs/Yjs/toolchain pair as [schema-v4.md](schema-v4.md). This file's numbered filename and references to earlier layouts are development history, not supported production versions. Retain the inherited exact ten roots, value shapes, namespaces, bounds, containers, presentation/check/control metadata and immutable original-source identities, including the ordered-start contract of integral 0…2147483647 with no coercion and atomic malformed-tuple rejection, except the split/join tuples and replay rule explicitly changed below. Keep one implementation of this current layout; no `.v5` alias, alternate profile reader, automatic migration, reseeding restore or mixed-epoch update. Retired envelopes reject before mutation; earlier presentation guards are fixture history only. Any needed development-data conversion is explicit and offline, preserving the old checkpoint and using a fresh destination/epoch. The cutover and evidence requirements are in the [single-format decision](../decisions/006-single-format-before-publication.md).
 
 ## Pre-publication independent-table amendment
 
 The [DRA-1.1 table descriptor](table-merge.md) is the chosen pending amendment to this single current layout. Its exact outer reference, `registry-table-records` map, `table-text/…` Y.Text root namespace, event arrays, IDs, unknown-data rules and bounds supersede the inherited whole-table atom policy when DRA-1.2 implements the cutover. The ten-root sentence above records the existing non-table baseline, not permission to reject the authored namespace after that cutover. No changes to split/join witnesses or ordinary roots are implied. Table-free checkpoints remain reopenable; retired whole-table descriptors reject before mutation and real incompatible table data uses explicit offline adoption preserving original bytes. Until DRA-1.2 passes its consumer proof, this amendment is a design decision, not current runtime support.
 
 ## Immutable preparation witnesses
+
+The current layout also includes the optional `registry-block-layout` map defined
+by [block layout](block-layout.md). Missing entries mean unindented blocks; its
+bounded atomic owner metadata is independent of immutable presentation witnesses.
+No stored identity is changed and no document is migrated on open.
 
 The [DRA-1.4 structural lifetime policy](structural-lifetime.md) is the chosen
 pending replay/resource amendment. It keeps the exact persisted layout and
@@ -22,7 +27,7 @@ container nesting or authorize record collection. DRA-1.5 owns implementation an
 actual long-session/consumer proof; the inherited replay limits remain a current
 implementation risk until that proof passes.
 
-V5 ownership-operation values are:
+Current ownership-operation values are:
 
 - Split: `["split", leftOwner, leftVersion, spanIndex, sourceId, binaryRelativeCut, leftPresentation]`.
 - Join: `["join", leftOwner, leftVersion, rightOwner, rightVersion, leftPresentation, rightPresentation]`.

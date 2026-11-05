@@ -23,7 +23,7 @@ Record exact selectors, loaded sources, expected/actual state, counts, browser/p
 
 ### Task PKI-3.1 — Cover chords, selections, rules and boundary commands
 
-- [ ] PKI-3.1 Complete F01/F02/R03/R04/R06 regression coverage.
+- [x] PKI-3.1 Complete F01/F02/R03/R04/R06 regression coverage.
 
 Purpose: One deterministic case set for root command ownership and exact selection effects.
 Context: `core/tests/browser/interactions/{keyboard,breaks,deletion,command-surfaces}.spec.ts`, `core/tests/browser/shortcuts.spec.ts`, existing browser-input fixtures; comparison F01/F02/R03/R04/R06.
@@ -35,12 +35,12 @@ Acceptance: Plain/Shift/reserved/remapped/host-canceled Enter and Backspace, hal
 
 Implementation:
 
-- [ ] PKI-3.1-I1 Reconcile retained coverage, then add only missing named cases and negative controls to existing suites; keep a single assertion owner per finding.
+- [x] PKI-3.1-I1 Reconcile retained coverage, then add only missing named cases and negative controls to existing suites; keep a single assertion owner per finding.
 
 Validation:
 
-- [ ] PKI-3.1-V1 Run the affected `shortcuts`, `interaction-keyboard`, `interaction-breaks`, `interaction-deletion` or `interaction-command-surfaces` selectors for this parent's `PKI-(F01|F02|R03|R04|R06)` cases. Select only suites containing new cases. Budget: 10 minutes; count each browser separately.
-- [ ] PKI-3.1-V2 Reconcile passing delivery evidence, native-layout limitations and actual affected package checks; require a concrete changed input before repeating a passing selector.
+- [x] PKI-3.1-V1 Run the affected `shortcuts`, `interaction-keyboard`, `interaction-breaks`, `interaction-deletion` or `interaction-command-surfaces` selectors for this parent's `PKI-(F01|F02|R03|R04|R06)` cases. Select only suites containing new cases. Budget: 10 minutes; count each browser separately.
+- [x] PKI-3.1-V2 Reconcile passing delivery evidence, native-layout limitations and actual affected package checks; require a concrete changed input before repeating a passing selector.
 
 Evidence: parent progress with selectors/counts and current-source oracle results.
 Handoff: missing fixture or failed command/selection boundary and exact repair prerequisite.
@@ -67,7 +67,7 @@ Implementation:
 Validation:
 
 - [ ] PKI-3.2-V1 Run the affected `current-table`, `interaction-keyboard-tables`, `interaction-break-tables` or `interaction-cell-multiline` selectors matching `PKI-F0[3-6]`; use `interaction-whitespace` only if it owns a new case. Budget: 10 minutes across the declared browsers.
-- [ ] PKI-3.2-V2 For the whitespace/one-edit case, verify one real current-engine undo and durable reopen; reuse an existing compatible receipt for unchanged table persistence rather than rerunning a broad suite.
+- [x] PKI-3.2-V2 For the whitespace/one-edit case, verify one real current-engine undo and durable reopen; reuse an existing compatible receipt for unchanged table persistence rather than rerunning a broad suite.
 
 Evidence: parent progress distinguishes computed style, rendered/caret effects, canonical text and durable state.
 Handoff: exact browser/event/whitespace variant still failing.

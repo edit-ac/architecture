@@ -1,6 +1,6 @@
 # Deliver Vue controls composition
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 ## Goal and entry conditions
 
@@ -86,7 +86,7 @@ Blocked behavior: Leave UVU-1.2 unchecked; record the blocking fingerprint and e
 
 ### Task UVU-1.3 — Add Vue overlay and suggestion composition
 
-- [ ] UVU-1.3 Add Vue overlay and suggestion composition.
+- [x] UVU-1.3 Add Vue overlay and suggestion composition.
 
 Purpose: Add Vue overlay and suggestion composition so applications can reuse this integration boundary.
 Deliverable: `packages/vue/src/ui/`.
@@ -99,12 +99,12 @@ Acceptance: Menu/dialog/status and suggestion slots preserve captured targets, h
 
 Implementation:
 
-- [ ] UVU-1.3-I1 Expose overlay ownership context, typed result builders and status binding; reuse UCS session/queries rather than fork behavior.
-- [ ] UVU-1.3-I2 Wire the named consumer/exports and focused selector; record missing prerequisite APIs with their existing owner.
+- [x] UVU-1.3-I1 Expose overlay ownership context, typed result builders and status binding; reuse UCS session/queries rather than fork behavior.
+- [x] UVU-1.3-I2 Wire the named consumer/exports and focused selector; record missing prerequisite APIs with their existing owner.
 
 Validation:
 
-- [ ] UVU-1.3-V1 Run `node scripts/ui-integration-delivery.mjs UVU-1.3`: Mount one reference picker in a host dialog and cancel an in-flight prepared result after unmount. Budget: 1–3 minutes; prepared native startup at most 5. Count inspection cases separately.
+- [x] UVU-1.3-V1 Run `node scripts/ui-integration-delivery.mjs UVU-1.3`: Mount one reference picker in a host dialog and cancel an in-flight prepared result after unmount. Budget: 1–3 minutes; prepared native startup at most 5. Count inspection cases separately.
 
 Evidence: Progress path above; source/interface, selector/runtime/exit, inspected or executed/passed/failed/skipped counts and reused receipt.
 Handoff: In progress, record last substep/symbol, failing input, owner receipt and next bounded action.
@@ -112,7 +112,7 @@ Blocked behavior: Leave UVU-1.3 unchecked; record the blocking fingerprint and e
 
 ### Task UVU-1.4 — Export Vue UI subpaths and one example
 
-- [ ] UVU-1.4 Export Vue UI subpaths and one example.
+- [x] UVU-1.4 Export Vue UI subpaths and one example.
 
 Purpose: Export Vue UI subpaths and one example so applications can reuse this integration boundary.
 Deliverable: `packages/vue/package.json; examples/ui/vue/`.
@@ -125,12 +125,12 @@ Acceptance: Lifecycle-only imports exclude UI/CSS; UI imports resolve types and 
 
 Implementation:
 
-- [ ] UVU-1.4-I1 Add optional controls/UI exports and example import/stylesheet instructions; reuse BWF SSR/lifecycle evidence rather than new lifecycle suite.
-- [ ] UVU-1.4-I2 Wire the named consumer/exports and focused selector; record missing prerequisite APIs with their existing owner.
+- [x] UVU-1.4-I1 Add optional controls/UI exports and example import/stylesheet instructions; reuse BWF SSR/lifecycle evidence rather than new lifecycle suite.
+- [x] UVU-1.4-I2 Wire the named consumer/exports and focused selector; record missing prerequisite APIs with their existing owner.
 
 Validation:
 
-- [ ] UVU-1.4-V1 Run `node scripts/ui-integration-delivery.mjs UVU-1.4`: Pack/install the affected binding in one existing isolated consumer; run its compile/SSR-import selection and one client composition check. Budget: 1–3 minutes; prepared native startup at most 5. Count inspection cases separately.
+- [x] UVU-1.4-V1 Run `node scripts/ui-integration-delivery.mjs UVU-1.4`: Pack/install the affected binding in one existing isolated consumer; run its compile/SSR-import selection and one client composition check. Budget: 1–3 minutes; prepared native startup at most 5. Count inspection cases separately.
 
 Evidence: Progress path above; source/interface, selector/runtime/exit, inspected or executed/passed/failed/skipped counts and reused receipt.
 Handoff: In progress, record last substep/symbol, failing input, owner receipt and next bounded action.

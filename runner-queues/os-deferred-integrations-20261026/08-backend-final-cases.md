@@ -20,7 +20,7 @@ Workers update only verified checkbox states and Status in this selected source.
 
 ### Task BFT-1.1 — Build the final requirement-to-case map
 
-- [ ] BFT-1.1 Build the final requirement-to-case map.
+- [x] BFT-1.1 Build the final requirement-to-case map.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: tests/sdk-adapters/backend/; sdk/contracts/qualification.json.
@@ -32,11 +32,11 @@ Acceptance: Each backend requirement B01–B06 in the index has exactly one fina
 
 Implementation:
 
-- [ ] BFT-1.1-I1 Build the final requirement-to-case map. Reuse compatible evidence; author only uncovered cases and connect runtime results to the named qualification owner.
+- [x] BFT-1.1-I1 Build the final requirement-to-case map. Reuse compatible evidence; author only uncovered cases and connect runtime results to the named qualification owner.
 
 Validation:
 
-- [ ] BFT-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BFT-1.1` as a bounded final selector: Locally validate the requirement map and result references; every planned language/DB has an executed or explicitly outstanding disposition. Budget: at most 10 minutes of execution per selected boundary; shard a larger matrix into controller-defined parents before running.
+- [x] BFT-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BFT-1.1` as a bounded final selector: Locally validate the requirement map and result references; every planned language/DB has an executed or explicitly outstanding disposition. Budget: at most 10 minutes of execution per selected boundary; shard a larger matrix into controller-defined parents before running.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.

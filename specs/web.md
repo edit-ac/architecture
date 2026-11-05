@@ -38,6 +38,38 @@ surface releases adapters and anchors while leaving its engine with the host.
 The persistent facade retains its recovery, durability and destruction contract.
 Examples consume the public package mount and the same behavior defaults.
 
+## Core and expanded consumer readiness
+
+The [frozen core/companion boundary](extension-dx.md#frozen-core-and-companion-contract--2026-10-28)
+and [`expanded-document-v1`](extension-library.md#expanded-document-reference-configuration)
+select one canonical runtime and current document format. Keep the normal
+persistent editor's recovery/input/history/clipboard guarantees when no extension
+is enabled. A borrowed-engine edit-only benchmark is explicitly different from
+that product; it cannot supply Task durability or byte admission.
+
+| Signal / operation | Required observation |
+|---|---|
+| Visible | Independent expected projection is in the DOM; this alone permits no input. |
+| Local edit-ready | Authoritative restore/admission, selection/input handlers, local persistence attachment where promised, and required-input adapters settled; a real accepted first edit reaches committed visible content. Measure this separately from an init promise, shell, preview or first projection. |
+| Command/presentation first use | Clock from explicit user intent through any load/decode/init plus prepared commit/render, real exported bytes or first correct decoration. Report loading/failure/unavailable; a fast refusal is not a successful first use. |
+| Local versus remote commitment | Existing storage transaction versus durable service receipt, never conflated with connection or ready status. Remote readiness delays input only when the host explicitly selected that gate. |
+| Disable/destroy | Abort per-instance requests, invalidate generations/targets, dispose listeners/resources and settle durability work under the existing recovery-export policy. Shared code can remain cached without retaining a disposed replica. |
+
+Use the existing resource/asset gateway, immutable initialization promise and
+status interface. Required-input failure leaves an accessible recovery/read-only
+view with authored source retained. Command-lazy export and optional background
+services do not block ordinary typing or synchronous composition/selection/commit.
+Unknown/disabled data stays inert and losslessly preserved; document content
+cannot nominate executable code. Version/URL conflicts, dependency or binding
+conflicts reject explicitly before partial attachment.
+
+The core-only, legacy Task and expanded consumer report distinct initial/deferred
+inventories and the unique site union under the same accounting. No-editor routes
+request zero editor artifacts where the host permits isolation. The tiny-editor
+[endpoints and profiles](verification.md#small-editor-comparison-protocol) govern
+measurement; browser DOM/layout readiness is not native IME or compositor-paint
+qualification.
+
 ## Shared resources across editors and site routes
 
 This is planned delivery under SDK-1.9/1.10, with independent loading checks in FIT-1.6 and release measurements in REL-1.3. Existing module-local initialization and multi-mount tests are useful prerequisites; they do not establish the complete site-wide contract below.
@@ -143,6 +175,34 @@ Document whether failed persistence requires recovery export before a host disca
 
 ## Platform editing services
 
+Language and base direction are host presentation policy (ES-TEXT-3), outside the
+document schema. `platform.locale` and `platform.baseDirection` request root
+`lang` and `dir`; the legacy `inputHints.lang/dir` path retains its existing
+composition-deferred ownership. These configuration paths are mutually exclusive.
+Valid explicit settings precede existing root/ancestor attributes, then browser
+defaults. Missing settings leave host attributes intact. Language accepts an empty
+HTML unknown-language value or a locale tag supported by `Intl.getCanonicalLocales`;
+direction accepts `ltr`, `rtl` or `auto`. Unsupported requests leave inherited
+layout available and are reported by `layoutProfile`, alongside live effective
+values, their source and computed CSS direction. Unknown default language stays
+unknown; browser UI language is not document language.
+
+Editable descendants inherit through HTML/CSS. Nested controls and module-owned
+content may explicitly override language/direction; the editor does not rewrite
+them. Detached overlays remain their presenter's ownership. Host CSS can override
+HTML direction, so the requested base direction and rendered CSS direction are
+distinct observations. Native layout owns visual movement, shaping and affinity;
+`auto` is browser first-strong layout, never text inference committed to the engine.
+Setting or disposing host policy creates no document/history transaction and
+preserves exact text, including bidi controls. Dispose restores attributes only
+while they still equal the editor's last write, preserving subsequent host edits.
+
+These settings are not persisted per block, copied with fragments or retained by
+Markdown/HTML export/reopen. Existing admitted format metadata remains its format
+owner's responsibility; no new language/direction preservation or lossless export
+claim follows from this host policy. Native capability limits are declared by the
+[current native host owner](../../core/native/macos/README.md#host-language-and-base-direction).
+
 Follow the [platform editing contract](platform-editing-services.md) and [ENV variants](../tests/platform-editing-cases.md). Spellcheck defaults to platform/user behavior with explicit off/custom modes; preserve host/inherited attributes and keep autocorrection separate. Reuse browser spelling UI and native input facilities without loading a checker in platform/off mode. Effective settings may be unknown. Route browser historyUndo/historyRedo, menus and keyboard intents through shared history exactly once, preserving focused nested controls and OS-reserved shortcuts. Actual browser/OS observations are distinct from prepared event replays.
 
 ## Input routing
@@ -156,6 +216,30 @@ Do not serialize the whole document or scan all formatting on the typing path.
 Do not synchronously invoke networking, Markdown export or React document rendering from input handlers.
 Honor read-only state in keyboard, paste, drag/drop, composition and command paths.
 Selection-only changes emit scoped selection state without document updates.
+
+An ordinary key owner correlates notifications by operation, decoded plain
+payload and mapped target, rather than by the physical key's lifetime. Before
+the matching `input` acknowledgment, another `beforeinput` with the same
+operation/payload and no known target change remains an echo of that owner.
+A different operation, payload or known mapped target starts an independent
+ordinary intent even before keyup. The matching `input` closes that ordinary
+`beforeinput` claim: a subsequent fresh `beforeinput` can deliberately repeat
+the same text. Reusing the same Event still belongs to its original intent;
+extra `input` notifications without a new mutation never commit another edit.
+Keep key cleanup and composition precedence separate from this claim; do not
+clear all key ownership merely because an `input` was delivered. A terminal
+directional deletion command likewise cannot consume an unrelated correction.
+
+For supported ordinary text insertion and replacement, use an actual string
+`InputEvent.data` first (including the empty string); otherwise use the event's
+transfer payload only when it advertises `text/plain`. An empty plain payload is
+an empty replacement, while absent MIME, inaccessible transfer data or a missing
+payload retains bounded native fallback/recovery. Keep the exact reported target,
+first-selected-character formatting, UTF-16/control validation and literal
+whitespace policy of the current prepared replacement route. Missing or ambiguous
+replacement targets never justify a guessed caret edit. This payload route does
+not read HTML or clipboard services, apply rich-paste policy, or enable typing
+rules; composition, read-only and duplicate-intent ownership remain unchanged.
 
 Heading-end Enter uses the atomic `headingEnd` engine command qualified by WEB-1.14 under [the engine contract](engine.md#atomic-heading-end-enter). WEB-1.8 applies the resulting stable caret and qualifies the full keyboard suite. Separate live split/format commits or guessed generated owner IDs do not satisfy that behavior.
 

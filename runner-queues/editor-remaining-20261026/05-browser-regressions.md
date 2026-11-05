@@ -34,7 +34,7 @@ All functional sources01–02 are complete. Source03 has checkpointed bounded op
 
 ### Task QWB-1.1 — Complete editing infrastructure and uncovered case coverage
 
-- [ ] QWB-1.1 Complete editing infrastructure and uncovered case coverage.
+- [x] QWB-1.1 Complete editing infrastructure and uncovered case coverage.
 
 Deliverable: The named QWB-1.1 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Keep full editing coverage honest
@@ -48,11 +48,11 @@ Acceptance: All canonical editing groups and required case variants are accounte
 
 Implementation:
 
-- [ ] QWB-1.1-I1 Discover promised recipes/variants and existing suite evidence, add missing tests/dispatch groups here and repair actual owner defects. Keep unrelated source catalogs behind targeted row references.
+- [x] QWB-1.1-I1 Discover promised recipes/variants and existing suite evidence, add missing tests/dispatch groups here and repair actual owner defects. Keep unrelated source catalogs behind targeted row references.
 
 Validation:
 
-- [ ] QWB-1.1-V1 Run `npm run test:editing -- --group all` and the configured infrastructure coverage command against its actual ignored output; record complete counts and unqualified variants. Complete remaining functional case coverage, never promote infrastructure alone.
+- [x] QWB-1.1-V1 Run `npm run test:editing -- --group all` and the configured infrastructure coverage command against its actual ignored output; record complete counts and unqualified variants. Complete remaining functional case coverage, never promote infrastructure alone.
 
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.

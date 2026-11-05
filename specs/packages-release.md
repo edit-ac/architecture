@@ -2,9 +2,12 @@
 
 ## Canonical ownership
 
+Integration ownership is superseded by [Decision 007](../decisions/007-integration-repositories-and-packages.md), 2026-10-26. The [integration distribution catalog and delivery plan](integration-distribution.md) owns dedicated repository/package targets, registry listings and extraction handoff. Existing core-relative integration paths are staging locations until a validated extraction lands; they are not the long-term repository boundary.
+
 | Repository | Contents | Distribution |
 |---|---|---|
-| `edit-ac/core` | Rust crates, WASM, framework-independent browser SDK, first-party React/Astro integrations, fixtures and native probes | npm SDKs; Rust crates later if useful |
+| `edit-ac/core` | Shared Rust engine, WASM, framework-independent browser SDK, canonical contracts, fixtures and native probes; integration source retained only until extraction | Shared npm SDKs and qualified engine artifacts; Rust crates as scoped |
+| Dedicated `edit-ac/<integration>` repositories | Each language SDK, framework/component-library adapter and native host integration, with its own examples, packaging and CI | Independently installable ecosystem package or versioned source-kit registry distribution; see the catalog |
 | `edit-ac/architecture` | Contracts, roadmaps and evidence | Documentation; private npm tooling package only |
 | `edit-ac/docs` | Public guides, generated references and release-backed demo consumers | Static documentation/demo site; no editor implementation |
 | `edit-ac/cli` | Local-first Markdown/text editor client with optional hosted document sync | Native CLI artifacts, separately qualified |
@@ -13,7 +16,7 @@ Cargo names in the current scaffold use `editac-*` (Rust imports `editac_*`). np
 
 Initial npm packages are `@edit-ac/core`, `@edit-ac/web`, `@edit-ac/react`. The core package owns one WASM engine, the web package owns imperative DOM plus storage/sync/module subpaths, and React owns lifecycle bindings. Additional packages require a real independently consumed boundary. The user-approved 2026-10-13 packaging change makes Markdown an optional first-party extension, exposed through a separately consumed `@edit-ac/markdown` boundary and an independently loadable Rust/WASM parser artifact. The default Task engine and browser entry do not import, instantiate or request Markdown code. The extension prepares interchange data and semantic commands for the existing engine; it never creates another authoritative writable document. The portable `editac-markdown` crate remains available to CLI and native consumers that explicitly include it. This supersedes the original decision to compile Markdown into every Task preset engine.
 
-The 2026-10-13 integration scope adds planned `@edit-ac/astro` alongside React. Framework bindings are optional first-party packages over the same core/web contracts; framework runtimes stay out of the shared SDK. Astro supplies a .astro host and browser lifecycle bridge, requires no React runtime, preserves safe static/SSR rendering and disposes editors on ClientRouter navigation. SDK-1.7 owns implementation, SDK-1.4 packed consumers and SDK-1.6 executable integration guidance. This supersedes Decision 001's React-only initial integration scope. Future frameworks can reuse this package boundary when separately scoped, with verified peer versions, lifecycle tests, packed consumers and useful getting-started examples.
+The 2026-10-13 integration scope adds planned `@edit-ac/astro` alongside React. Framework bindings are optional first-party packages over the same core/web contracts; framework runtimes stay out of the shared SDK. Astro supplies a .astro host and browser lifecycle bridge, requires no React runtime, preserves safe static/SSR rendering and disposes editors on ClientRouter navigation. SDK-1.7 owns implementation, SDK-1.4 packed consumers and SDK-1.6 executable integration guidance. This supersedes Decision 001's React-only initial integration scope. Future frameworks reuse this package boundary in dedicated repositories, with verified peer versions, lifecycle tests, packed consumers and useful getting-started examples.
 
 Astro 7's [Rust compiler rewrite](https://astro.build/blog/astro-7/) supports the shared Rust-first positioning. Its compiler is a build-time concern; edit.ac's Rust/WASM engine remains the editor runtime. This rationale does not substitute for Astro compatibility or editor performance qualification.
 
@@ -58,6 +61,8 @@ The separately requested qualification WASM is not loaded by production.
 
 
 ## Publishing
+
+Each integration's own repository owns its release configuration and registry metadata. Shared CI templates may be reused; publisher identity, namespace access and permissions must match the actual source repository. The integration catalog covers non-npm channels and listing readiness separately from publication. Final names and current registry rules are verified during release preparation, not inferred from this plan.
 
 Use public scoped packages, a `next` tag for the first qualified prerelease, a reviewed immutable revision, clean artifacts and declared version. Publish in dependency order core → web → qualified framework integrations (react and astro are independent siblings). Test exact registry versions in isolated consumer fixtures and record tarball integrity/provenance. Promotion to latest is a later release decision.
 

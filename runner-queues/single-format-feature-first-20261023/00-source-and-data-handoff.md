@@ -1,8 +1,7 @@
 # Authenticate preserved work and durable-format inputs
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
-Current delivery: SFC-1.1 verified: successor metadata collectors and exact preserved-source provenance; interrupted G8 and concurrent edits remain unqualified. Next SFC-1.2.
 
 ## Goal and entry conditions
 
@@ -12,7 +11,7 @@ Prior controller is verified stopped; current branches and preserved source are 
 
 Superseding user decision, 2026-10-23: follow `architecture/decisions/006-single-format-before-publication.md` and `architecture/specs/document-durability.md`. One production document schema/profile (the existing witnessed v5 format) and one current implementation per API/wire/ABI contract until publication. Retired development readers and fabricated previous/current release matrices are fixture history only; preserve useful behavior assertions on current-format cases. Never silently relabel, migrate, reset or reseed real data. Retain actual protocol/update-encoding semantics, external formats and document revision/history. Older version-specific runtime clauses in copied historical acceptance are superseded by this decision, not by dropping their semantic regressions.
 
-One serial controller, root `/Users/bpstr/Github/edit-ac`, existing main branches only; no worktree, parallel lane, subagents or second run. Use only active source/progress and its named prerequisite summary. Prior run f6915e733a5ecb9c1c64e7ff is stopped, not restarted. Preserve its dirty work and exact successful/failing evidence. Live progress is separate; source files stay immutable. Read current prerequisites from `.roadmap-runner/single-format-feature-first-20261023/readiness.json` and its bounded handoff rows. The first source adapts existing collectors to this successor manifest; old matrix paths are historical evidence only.
+One serial controller, root `/Users/bpstr/Github/edit-ac`, existing main branches only; no worktree, parallel lane, subagents or second run. Use only active source/progress and its named prerequisite summary. Prior run f6915e733a5ecb9c1c64e7ff is stopped, not restarted. Preserve its dirty work and exact successful/failing evidence. Workers may change only task checkboxes and the Status line in this source. Put delivery summaries, source hashes, reconciliation receipts, timestamps and counts only in the separate progress file or ignored receipts. Never add or update a Current delivery paragraph here: changing acceptance prose on each pass forces another reconciliation. Read current prerequisites from `.roadmap-runner/single-format-feature-first-20261023/readiness.json` and its bounded handoff rows. The first source adapts existing collectors to this successor manifest; old matrix paths are historical evidence only.
 
 Canonical shared-format cleanup and a focused safety gate precede native consumers. Then complete independent features before remaining optimization and comprehensive final suites. Size/latency work gets at most 45 minutes OR two materially different measured hypotheses per batch, whichever comes first. Checkpoint useful code and honest unresolved numbers, then advance independent feature work. Parent completion for a bounded optimization batch never closes its original hard-budget predicate; QPF final gates still own unchanged 512 KiB total/32 KiB editor-JS gzip caps and complete resource/tail proof. Never rerun an unchanged failing inventory. A true semantic/data-safety defect or missing required interface blocks only its dependents.
 
@@ -49,7 +48,7 @@ Blocked behavior: Keep unfinished criteria unchecked, continue an independent lo
 
 ### Task SFC-1.2 — Review durable format and real-data conversion needs
 
-- [ ] SFC-1.2 Review durable format and real-data conversion needs.
+- [x] SFC-1.2 Review durable format and real-data conversion needs.
 
 Purpose: Deliver this named canonical-format boundary safely without retaining unpublished runtime versions.
 Context: `architecture/decisions/006-single-format-before-publication.md`; `architecture/specs/document-durability.md`; only task-local original APIs/specs and prerequisite rows; `core/crates/editac-core/src/document.rs`; `editor_replay.rs`; Session/storage/sync envelopes; current actual data locations, not synthetic old fixtures
@@ -60,11 +59,11 @@ Acceptance: One documented canonical layout and durability risk/coverage map cov
 
 Implementation:
 
-- [ ] SFC-1.2-I1 Authenticate the authored review against actual current owners. Identify concrete remaining durability bugs with named implementation owners. Inspect metadata/headers of relevant local development data without dumping content or credentials. If a real conversion is needed, specify a bounded offline copy/new-epoch procedure with original bytes preserved; no in-place rewrite or runtime fallback.
+- [x] SFC-1.2-I1 Authenticate the authored review against actual current owners. Identify concrete remaining durability bugs with named implementation owners. Inspect metadata/headers of relevant local development data without dumping content or credentials. If a real conversion is needed, specify a bounded offline copy/new-epoch procedure with original bytes preserved; no in-place rewrite or runtime fallback.
 
 Validation:
 
-- [ ] SFC-1.2-V1 Run only relevant existing envelope/storage contract checks for changed conclusions. Validate completeness of risk-to-task/test ownership and exact saved data provenance; source review alone cannot claim crash or interoperability qualification.
+- [x] SFC-1.2-V1 Run only relevant existing envelope/storage contract checks for changed conclusions. Validate completeness of risk-to-task/test ownership and exact saved data provenance; source review alone cannot claim crash or interoperability qualification.
 
 Evidence: Separate progress contains changed interfaces, exact input/fixture/runtime hashes, selector/command/exit, executed/passed/failed/skipped counts, reuse decisions and concise failure dispositions. Detailed output remains ignored.
 Handoff: Last verified substep, remaining file/symbol, exact missing predicate and next bounded action.

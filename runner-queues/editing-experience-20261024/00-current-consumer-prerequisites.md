@@ -1,6 +1,6 @@
 # Finish current-format consumer prerequisites
 
-Status: BLOCKED
+Status: COMPLETE
 
 ## Goal and execution rules
 
@@ -30,7 +30,7 @@ Read only this source, the active parent's named contract/paths and its exact pr
 
 ### Task CFC-1.1 — Bind the terminal consumer to the current canonical engine
 
-- [ ] CFC-1.1 Bind the terminal consumer to the current canonical engine.
+- [x] CFC-1.1 Bind the terminal consumer to the current canonical engine.
 
 Purpose: Complete a concrete missing current-format prerequisite at existing SFC consumer cutover / terminal owner before dependent editing features.
 Context: cli/Cargo.toml, Cargo.lock, src/{local,hosted,host_adapter,client_commands,diagnostics,storage}.rs, src/tui/session.rs; cli/README.md and scripts/package-local.py; core/crates/editac-{core,session,markdown,diff}; architecture/specs/document-durability.md Canonical identity.
@@ -40,11 +40,11 @@ Acceptance: The normal root-workspace CLI build consumes the same current engine
 
 Implementation:
 
-- [ ] CFC-1.1-I1 Read cli/AGENTS.md. Replace obsolete pre-alpha source bindings with the existing root current source dependencies, including the same patched Yrs instance; reconcile the lockfile offline. Port CLI admission/creation and relevant current expectations to one current selector. Keep historical bytes as unsupported-input fixtures. Do not generate or commit a new vendored/source snapshot. Update build/provenance documentation and only directly required packaging glue. If an unrelated release/package qualification remains missing, retain it as a later gate rather than block current local semantic proof.
+- [x] CFC-1.1-I1 Read cli/AGENTS.md. Replace obsolete pre-alpha source bindings with the existing root current source dependencies, including the same patched Yrs instance; reconcile the lockfile offline. Port CLI admission/creation and relevant current expectations to one current selector. Keep historical bytes as unsupported-input fixtures. Do not generate or commit a new vendored/source snapshot. Update build/provenance documentation and only directly required packaging glue. If an unrelated release/package qualification remains missing, retain it as a later gate rather than block current local semantic proof.
 
 Validation:
 
-- [ ] CFC-1.1-V1 Run cargo metadata/check on the actual CLI manifest, locked and offline; inspect the dependency graph for one current engine/Session/Yrs source. Select existing focused empty/Unicode checkpoint+tail reopen, current admission and retired-identity nonmutation tests with nonzero cases. Use the provisioned pinned compiler and task-owned ignored output. Budget 5 minutes for a warm targeted selector; no broad CLI suite or package publication. Record exact source/runtime/selector/exit and nonzero executed/passed/failed/skipped counts.
+- [x] CFC-1.1-V1 Run cargo metadata/check on the actual CLI manifest, locked and offline; inspect the dependency graph for one current engine/Session/Yrs source. Select existing focused empty/Unicode checkpoint+tail reopen, current admission and retired-identity nonmutation tests with nonzero cases. Use the provisioned pinned compiler and task-owned ignored output. Budget 5 minutes for a warm targeted selector; no broad CLI suite or package publication. Record exact source/runtime/selector/exit and nonzero executed/passed/failed/skipped counts.
 
 Evidence: Separate root `.roadmap-runner/editing-experience-20261024/00-current-consumer-prerequisites.progress.md`, task-scoped ignored receipts, changed paths and exact reused/current proof; no generated output in Git.
 Handoff: Last finished substep, changed interface, exact missing input/failing case, relevant source revision and next bounded action.
@@ -52,7 +52,7 @@ Blocked behavior: Keep acceptance unchecked; record task/source/error/prerequisi
 
 ### Task CFC-1.2 — Reconcile the real shared native and TypeScript table command catalog
 
-- [ ] CFC-1.2 Reconcile the real shared native and TypeScript table command catalog.
+- [x] CFC-1.2 Reconcile the real shared native and TypeScript table command catalog.
 
 Purpose: Complete a concrete missing current-format prerequisite at existing DRA table consumer and shared Session/FFI owners before dependent editing features.
 Context: core/crates/editac-ffi/tests/native_session_command_profiles.rs catalog_reuses_all_portable_command_ids_and_exact_shared_identity; core/packages/core/src/engine.ts EditorCommand; actual shared command/parser/catalog definitions discovered from that test; architecture/specs/table-merge.md.
@@ -62,11 +62,11 @@ Acceptance: The existing exact catalog equality assertion passes without relaxin
 
 Implementation:
 
-- [ ] CFC-1.2-I1 Trace the mismatch and choose the authoritative already-implemented current table boundary under the existing DRA owner. Repair the stale declaration/parser/catalog and directly affected callers as one usable API boundary; retain actual functionality and independent expected checks. The known failure is source/interface drift, not evidence that current document identities are still versioned. Preserve unrelated table WIP and stage only validated owned hunks.
+- [x] CFC-1.2-I1 Trace the mismatch and choose the authoritative already-implemented current table boundary under the existing DRA owner. Repair the stale declaration/parser/catalog and directly affected callers as one usable API boundary; retain actual functionality and independent expected checks. The known failure is source/interface drift, not evidence that current document identities are still versioned. Preserve unrelated table WIP and stage only validated owned hunks.
 
 Validation:
 
-- [ ] CFC-1.2-V1 Rerun only the failed catalog_reuses_all_portable_command_ids_and_exact_shared_identity case, plus the smallest affected real table command fixture and package typecheck. Reuse the other 12 passing native checks where source-compatible. Budget 5 minutes per selected compiler/fixture; log any concretely justified widening. Record exact source/runtime/selector/exit and nonzero executed/passed/failed/skipped counts.
+- [x] CFC-1.2-V1 Rerun only the failed catalog_reuses_all_portable_command_ids_and_exact_shared_identity case, plus the smallest affected real table command fixture and package typecheck. Reuse the other 12 passing native checks where source-compatible. Budget 5 minutes per selected compiler/fixture; log any concretely justified widening. Record exact source/runtime/selector/exit and nonzero executed/passed/failed/skipped counts.
 
 Evidence: Separate root `.roadmap-runner/editing-experience-20261024/00-current-consumer-prerequisites.progress.md`, task-scoped ignored receipts, changed paths and exact reused/current proof; no generated output in Git.
 Handoff: Last finished substep, changed interface, exact missing input/failing case, relevant source revision and next bounded action.
@@ -74,7 +74,7 @@ Blocked behavior: Keep acceptance unchecked; record task/source/error/prerequisi
 
 ### Task CFC-1.3 — Reconcile pending current consumer source pins honestly
 
-- [ ] CFC-1.3 Reconcile pending current consumer source pins honestly.
+- [x] CFC-1.3 Reconcile pending current consumer source pins honestly.
 
 Purpose: Complete a concrete missing current-format prerequisite at existing SFC current consumer / native pending-manifest owner before dependent editing features.
 Context: core/contracts/profiles/portable-editor-v5.json; core/native/{macos,ios,android,desktop}/capability.json; relevant scoped capability/profile validators and current input hashes; architecture/specs/document-durability.md; earlier CFC receipts.
@@ -84,11 +84,11 @@ Acceptance: Current consumer descriptors name unversioned semantic/sync identity
 
 Implementation:
 
-- [ ] CFC-1.3-I1 Inspect the exact stale revision/input pins; reconcile only affected pending descriptors against validated owned source and explicit current local provenance. Preserve prior failed/historical evidence. Resolve source provenance without committing unrelated dirty code, modifying stored data or making receipt hashes self-referential. Separate static/source admission from runtime qualification and record remaining platform claims.
+- [x] CFC-1.3-I1 Inspect the exact stale revision/input pins; reconcile only affected pending descriptors against validated owned source and explicit current local provenance. Preserve prior failed/historical evidence. Resolve source provenance without committing unrelated dirty code, modifying stored data or making receipt hashes self-referential. Separate static/source admission from runtime qualification and record remaining platform claims.
 
 Validation:
 
-- [ ] CFC-1.3-V1 Run the existing focused descriptor/source-input validators for the changed records and inspect exact source pins. Use a bounded native gate admission check where supported; do not execute a known unchanged failing history XCTest merely for this metadata task. Budget 3 minutes; required runtime history remains open for its implementation owner. Record exact source/runtime/selector/exit and nonzero executed/passed/failed/skipped counts.
+- [x] CFC-1.3-V1 Run the existing focused descriptor/source-input validators for the changed records and inspect exact source pins. Use a bounded native gate admission check where supported; do not execute a known unchanged failing history XCTest merely for this metadata task. Budget 3 minutes; required runtime history remains open for its implementation owner. Record exact source/runtime/selector/exit and nonzero executed/passed/failed/skipped counts.
 
 Evidence: Separate root `.roadmap-runner/editing-experience-20261024/00-current-consumer-prerequisites.progress.md`, task-scoped ignored receipts, changed paths and exact reused/current proof; no generated output in Git.
 Handoff: Last finished substep, changed interface, exact missing input/failing case, relevant source revision and next bounded action.
@@ -96,7 +96,7 @@ Blocked behavior: Keep acceptance unchecked; record task/source/error/prerequisi
 
 ### Task CFC-1.5 — Retire numbered current-factory source aliases
 
-- [ ] CFC-1.5 Retire numbered current-factory source aliases.
+- [x] CFC-1.5 Retire numbered current-factory source aliases.
 
 Purpose: Finish the existing SFC source-alias cleanup without preserving a fabricated pre-publication API matrix.
 Context: core/crates/editac-core/src/document.rs DocumentIdentity::v1–v5; their actual Rust source/test/example and native-fixture callers; CFC-1.1 terminal source binding; architecture/decisions/006-single-format-before-publication.md.
@@ -106,11 +106,11 @@ Acceptance: Active production and current test consumers use DocumentIdentity::c
 
 Implementation:
 
-- [ ] CFC-1.5-I1 Discover all actual factory call sites, port current factories/function references to the one current implementation, and remove the obsolete constructor wrappers. Consolidate redundant numbered-selector lists without deleting distinct behavior assertions. Preserve existing historical fixture input bytes, unrelated WIP and real document history.
+- [x] CFC-1.5-I1 Discover all actual factory call sites, port current factories/function references to the one current implementation, and remove the obsolete constructor wrappers. Consolidate redundant numbered-selector lists without deleting distinct behavior assertions. Preserve existing historical fixture input bytes, unrelated WIP and real document history.
 
 Validation:
 
-- [ ] CFC-1.5-V1 Compile the affected root Rust workspace targets and current CLI against one actual current source graph, locked/offline; then run the existing focused current factory/admission regression selector. Record nonzero cases and exact source/runtime/counts. Budget 5 minutes per warm compiler/selector; reuse unchanged semantic proof instead of replaying every fixture.
+- [x] CFC-1.5-V1 Compile the affected root Rust workspace targets and current CLI against one actual current source graph, locked/offline; then run the existing focused current factory/admission regression selector. Record nonzero cases and exact source/runtime/counts. Budget 5 minutes per warm compiler/selector; reuse unchanged semantic proof instead of replaying every fixture.
 
 Evidence: Separate prefix progress and ignored task receipt, exact changed callers and unchanged behavioral proof. No generated source snapshots or qualification output in Git.
 Handoff: Next missing caller, interface compile error or precise remaining substep.
@@ -118,7 +118,7 @@ Blocked behavior: Leave unchecked with owner/fingerprint/changed-input resume co
 
 ### Task CFC-1.4 — Close the focused current-format prerequisite receipt
 
-- [ ] CFC-1.4 Close the focused current-format prerequisite receipt.
+- [x] CFC-1.4 Close the focused current-format prerequisite receipt.
 
 Purpose: Complete a concrete missing current-format prerequisite at existing SFC focused safety owner / EDX-1.1 before dependent editing features.
 Context: core/.artifacts/unblock-editing-format-20261024/receipt.json; CFC-1.1–1.3 receipts; core/tests/current-document-format.test.mjs; core/crates/editac-core/tests/{current_document_format,initialization,retained_presentation_profile}.rs; core/crates/editac-session/tests/{compatibility,ports,native_store}.rs; native ABI and CLI current consumer selectors.
@@ -128,11 +128,11 @@ Acceptance: A source-pinned scoped receipt covers current creation; empty/Unicod
 
 Implementation:
 
-- [ ] CFC-1.4-I1 Authenticate and reuse the existing compatible 149 passing checks by exact source inputs; incorporate repaired native-catalog and CLI proof and any genuinely uncovered current-format invariant only. Record consumed working-tree/source revisions truthfully, pending broader owners and an exact EDX handoff in separate progress. Do not regenerate broad historical qualification archives.
+- [x] CFC-1.4-I1 Authenticate and reuse the existing compatible 149 passing checks by exact source inputs; incorporate repaired native-catalog and CLI proof and any genuinely uncovered current-format invariant only. Record consumed working-tree/source revisions truthfully, pending broader owners and an exact EDX handoff in separate progress. Do not regenerate broad historical qualification archives.
 
 Validation:
 
-- [ ] CFC-1.4-V1 Run only checks invalidated by the CFC repairs or an uncovered required invariant. Use tests/current-document-format.test.mjs against actual current production WASM and pinned Node 24.19 when its inputs changed; never mock the semantic engine or rerecord expected output. Preserve original hard gates; budget 5 minutes per selected safety boundary. A fresh session or source boundary alone does not justify rerunning all suites. Record exact source/runtime/selector/exit and nonzero executed/passed/failed/skipped counts.
+- [x] CFC-1.4-V1 Run only checks invalidated by the CFC repairs or an uncovered required invariant. Use tests/current-document-format.test.mjs against actual current production WASM and pinned Node 24.19 when its inputs changed; never mock the semantic engine or rerecord expected output. Preserve original hard gates; budget 5 minutes per selected safety boundary. A fresh session or source boundary alone does not justify rerunning all suites. Record exact source/runtime/selector/exit and nonzero executed/passed/failed/skipped counts.
 
 Evidence: Separate root `.roadmap-runner/editing-experience-20261024/00-current-consumer-prerequisites.progress.md`, task-scoped ignored receipts, changed paths and exact reused/current proof; no generated output in Git.
 Handoff: Last finished substep, changed interface, exact missing input/failing case, relevant source revision and next bounded action.

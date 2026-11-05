@@ -394,6 +394,39 @@ All parser/fragment/anchor/history/persistence semantics remain in the existing
 Rust owners. No Swift semantic parser, native replica, OS clipboard write, asset
 fetch or foreign callback is introduced.
 
+For literal input, `prepareReplacement(revision, range, text, origin, now)` stages
+the same EditService fragment operation, preserving the exact string without
+clipboard parsing or newline normalization. The range holds the original directed
+anchor tokens from composition start; retain them until commit/cancel. Preparation
+may be used for applicability and then canceled without deletion or semantic undo.
+Prepare the final candidate at those anchors using a fresh revision. Typed Session
+errors distinguish invalid anchors, stale revisions, policy refusal and resource
+limits. Literal replacement maps engine target/presentation refusal to
+`UnsupportedTarget` / `PresentationConflict`, and invalid commands to `CommandInput`;
+other engine diagnostics retain their existing representation. No failure
+authorizes a fallback at a newer caret.
+
+For a literal input plan, successful `commitTransfer` returns optional `selection`
+in the existing owned `NativeSessionHistorySelection` endpoint representation.
+Native break adapters may commit an existing prepared command batch with
+`commitCommandsWithSelection(token, now)`. This applies the same EditService plan
+and returns its engine-owned result bookmark in the existing
+`NativeSessionHistoryCommit` representation. Result capacity is reserved before
+mutation; cancel still uses `cancelCommands`. Ordinary `commitCommands` retains
+its existing no-result-handle lifetime. Selection replacement and the break form
+one applicability-checked batch with the original directed history entry. Resolve
+the result after projection; never infer it from newly registered nodes.
+
+Existing clipboard paste/cut/move calls keep their result-handle lifetime unchanged
+and return no selection.
+Result slots and token IDs are reserved before mutation. Resolve the result only
+after success and release both tokens when finished, including both collapsed
+endpoints. Literal input never creates a destination-deletion receipt. A failed
+commit yields no result selection; keep composed text recoverable. Cancellation
+uses `cancelTransfer` and restores adapter selection by resolving the original
+endpoints before releasing their tokens, preserving concurrent document edits. See
+[captured input lifetime](engine.md#captured-input-replacement-es-13).
+
 `NativeTransferSource` and `NativeTransferReceipt` have no consumer constructors
 or writable fields. An exact canonical internal-fragment paste can return the
 latter only alongside a nonempty process-crash-durable Session commit. It binds

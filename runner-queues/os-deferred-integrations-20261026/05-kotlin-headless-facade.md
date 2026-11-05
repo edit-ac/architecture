@@ -1,6 +1,6 @@
 # 05 kotlin headless facade
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; task paths are core-relative unless repository-prefixed.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/os-deferred-integrations-20261026/05-kotlin-headless-facade.progress.md`.
@@ -20,7 +20,7 @@ Workers update only verified checkbox states and Status in this selected source.
 
 ### Task BNA-1.5 — Add the Kotlin Android coroutine facade
 
-- [ ] BNA-1.5 Add the Kotlin Android coroutine facade.
+- [x] BNA-1.5 Add the Kotlin Android coroutine facade.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/native/android/.
@@ -34,11 +34,11 @@ Acceptance: Existing Android engine binding receives typed storage/authority ope
 
 Implementation:
 
-- [ ] BNA-1.5-I1 Add the Kotlin Android coroutine facade. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BNA-1.5-I1 Add the Kotlin Android coroutine facade. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BNA-1.5-V1 Run `node scripts/sdk-adapter-delivery.mjs BNA-1.5`: Compile one Kotlin headless consumer and run a prepared uncertain-write lookup through the existing Session binding. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BNA-1.5-V1 Run `node scripts/sdk-adapter-delivery.mjs BNA-1.5`: Compile one Kotlin headless consumer and run a prepared uncertain-write lookup through the existing Session binding. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.

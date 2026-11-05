@@ -4,9 +4,11 @@ Authority: [single-format decision, 2026-10-23](../decisions/006-single-format-b
 
 ## Canonical identity
 
-Use schema `editac.registry.editor.v5`, profile `editac.yrs-yjs.editor.v5`, protocol 1, Yrs/Yjs update encoding 1 and UTF-16 public offsets. `DocumentIdentity::current` is the application-facing selector. Keep document ID and epoch as separately validated stable UUIDs. SDK version, build revision, process ID and current writer ID must not become document-format identity. The current v5 roots, immutable source identities and witnessed split/join semantics are the normative layout; older spec references describe the origin of those rules, not additional supported runtimes.
+Pre-alpha clarification, 2026-10-24: use schema `editac.registry.editor`, profile `editac.yrs-yjs.editor`, protocol 1, Yrs/Yjs update encoding 1 and UTF-16 public offsets. Schema/profile names have no development-version suffix. `DocumentIdentity::current` is the application-facing selector. Keep document ID and epoch as separately validated stable UUIDs. SDK version, build revision, process ID and current writer ID must not become document-format identity. The current roots, immutable source identities and witnessed split/join semantics are the normative layout; older spec references describe the origin of those rules, not additional supported runtimes.
 
-Keep the existing v5 identifiers for already written canonical checkpoints. A cosmetic rename to v1 would create an unnecessary data boundary. All production creation, restore, sync, Session/FFI, WASM, converters, native and terminal consumers must select this same current identity. Unknown, retired or mismatched schema/profile/protocol/encoding/offset tuples reject before live mutation. Do not guess a format from root names, retry an older reader, or silently relabel bytes.
+All production creation, restore, sync, Session/FFI, WASM, converters, native and terminal consumers must select this same unversioned current identity. Removing the earlier `.v5` labels is a required implementation cutover owned by the existing core/Session coordinator, not permission to rewrite stored envelopes or keep a second reader. Current fixtures and scope hashes must follow the same cutover before dependent SDK checks pass. Unknown, retired or mismatched schema/profile/protocol/encoding/offset tuples reject before live mutation. Preserve original recovery bytes and use a separately reviewed offline operation if real stored data needs conversion; do not guess a format from root names, retry an older reader, or silently relabel bytes.
+
+The unpublished WASM/TypeScript and JSON native creation API selects `profile: "current"`. It has one selector, with no numbered creation aliases. This selector creates the unversioned identity above; it never changes or relabels a stored checkpoint. Historical numbered inputs remain rejection/regression fixtures, not another runtime profile.
 
 ## Required persistence invariants
 
@@ -17,6 +19,8 @@ Keep the existing v5 identifiers for already written canonical checkpoints. A co
 5. Keep split/join presentation witnesses immutable. Later formatting, code-language changes, undo/redo, peer update order or checkpoint reopen must not reinterpret previously committed ownership. Preserve dormant/absorbed text, marks and recoverable intentions. Fresh invalid operations still reject atomically.
 6. Preserve unknown bounded JSON/opaque feature data through reopen, sync, supported export and disabled-extension round trips. Unknown data grants no editing/execution permission. Malformed known records, depth/byte/operation overflow, non-finite values and forged incompatible witnesses reject with typed errors, without lossy fallback or repair writes.
 7. Durable storage, schema and application upgrades must not be keyed to one development Git hash. Hashes authenticate a test or artifact; they do not authorize a document write or require the exact old build to reopen the same supported format. Capability permission/availability remains distinct from format admission.
+
+A contiguous sync state vector is a request boundary, not a complete received-state witness when independently integrated items follow a missing clock. Checkpoints and update encoding must retain those later items and their gap markers. Replay duplicate detection must compare received item/GC identities as well as deletion state; unchanged contiguous clocks alone cannot justify discarding an admitted update. This preserves the existing Yrs/Yjs encoding and retained history, without relabeling data or changing resource limits.
 
 ## Independently mergeable table target
 
@@ -32,7 +36,7 @@ Use deterministic fixtures and mocked transports only. Full functional, storage/
 
 ## Current layout and storage ownership
 
-The current layout is the witnessed layout specified in [schema-v5](schema-v5.md). The inherited root definitions below describe that single layout, not permission to open an earlier envelope. `editor_replay::ROOTS` is its production root list; `document::ROOTS` is an older five-root list and must not be mistaken for the current descriptor.
+The current layout is the witnessed layout in the [canonical schema specification](schema-v5.md); its numbered filename is historical, not a versioned runtime identifier. The inherited root definitions below describe that single layout, not permission to open an earlier envelope. `editor_replay::ROOTS` is its production root list; `document::ROOTS` is an older five-root list and must not be mistaken for the current descriptor.
 
 | Y.Map root | Retained value |
 | --- | --- |

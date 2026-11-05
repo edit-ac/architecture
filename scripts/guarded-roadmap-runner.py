@@ -28,7 +28,7 @@ def stop(cli, record):
         raise RuntimeError("Guard failed and runner stop failed: " + result.stderr[-1000:])
 
 
-def arm_guard(cli, record):
+def arm_guard(cli, record, allow_resolver=False):
     workspace = Path(record["workspace"]).resolve()
     progress = Path(record["progressFile"]).resolve()
     if not progress.is_relative_to(workspace):
@@ -50,9 +50,15 @@ def arm_guard(cli, record):
             command = subprocess.run(["ps", "-p", str(pid), "-o", "command="],
                                      capture_output=True, text=True, timeout=5).stdout
             if str(script) in command and f"--run-id {record['id']}" in command:
+                if bool(existing.get("allowResolverRecovery")) != allow_resolver:
+                    raise ValueError("Existing live guard has another recovery policy; use a safe controller checkpoint")
                 return {"pid": pid, "receipt": str(receipt), "state": "armed"}
     command = [sys.executable, str(script), "--run-id", record["id"], "--workspace", str(workspace),
                "--events", str(events), "--receipt", str(receipt), "--cli", cli]
+    if allow_resolver:
+        if record.get("options", {}).get("blockedPolicy") != "resolve":
+            raise ValueError("Resolver recovery requires --blocked-policy resolve")
+        command.append("--allow-resolver-recovery")
     with (directory / (record["id"] + ".log")).open("a") as log:
         process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
     deadline = time.monotonic() + 10
@@ -67,7 +73,7 @@ def arm_guard(cli, record):
     raise RuntimeError("Guard did not acknowledge readiness within 10 seconds")
 
 
-def run(cli, mode, arguments):
+def run(cli, mode, arguments, allow_resolver=False):
     workspace = workspace_argument(arguments)
     command = [cli, "start" if mode == "start" else "status", *arguments]
     if "--json" not in command:
@@ -80,7 +86,7 @@ def run(cli, mode, arguments):
         if Path(record["workspace"]).resolve() != workspace:
             raise ValueError("Runner returned another workspace")
         if record["processState"] in ("running", "starting"):
-            record["loopGuard"] = arm_guard(cli, record)
+            record["loopGuard"] = arm_guard(cli, record, allow_resolver) if allow_resolver else arm_guard(cli, record)
     except Exception:
         stop(cli, record)
         raise
@@ -90,12 +96,13 @@ def run(cli, mode, arguments):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cli", default=shutil.which("roadmap-runner"))
+    parser.add_argument("--allow-resolver-recovery", action="store_true")
     parser.add_argument("mode", choices=("start", "attach"))
     parser.add_argument("runner_arguments", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     if not args.cli:
         parser.error("roadmap-runner is unavailable; select --cli /absolute/path/to/roadmap-runner")
-    print(json.dumps(run(str(Path(args.cli).resolve()), args.mode, args.runner_arguments), indent=2))
+    print(json.dumps(run(str(Path(args.cli).resolve()), args.mode, args.runner_arguments, args.allow_resolver_recovery), indent=2))
 
 
 if __name__ == "__main__":

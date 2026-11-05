@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Workers change only task checkboxes and Status in this source. Keep delivery summaries, source hashes, counts and reconciliation records in separate progress/ignored receipts. Never add a Current delivery paragraph; it triggers source-reconciliation loops.
+
 ## Superseding current-format policy
 
 Apply `architecture/decisions/006-single-format-before-publication.md` and `architecture/specs/document-durability.md`: one current witnessed v5 production format, fixture-only old readers, current API/ABI contracts before publication, no silent data conversion or retired runtime fallback. Port useful old semantic assertions; preserve actual revision history and distinct external/protocol/encoding contracts. Current prerequisites are in the successor runtime root below. Complete dependent native/terminal features after SFC-5.1 before remaining optimization; a size batch ends at 45 minutes or two changed hypotheses and cannot block independent features. Unmet original hard-budget predicates stay with QPF final owners; no cap is waived. Prior run is stopped, its source/progress/dirty work preserved. One root workspace/main controller, no subagents/worktrees, paid inference, physical-device qualification or publication. These rules supersede conflicting historical version/whole-track prerequisite text below.
@@ -59,7 +61,7 @@ Context: Original tracks 21/25/26/27; existing extension-DX/conversion/link/AI s
 Dependencies: none.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One feature-family suite or coherent case group, normally 15–45 minutes.
-Acceptance: All required in-scope rich-content, table/code/asset/reference, conversion fidelity/source-preservation and prepared-AI mechanics suites pass on exact public consumer inputs, including cancellation/permission/readonly/history/unknown data/disposal. Prepared AI results establish mechanics only.
+Acceptance: All required in-scope rich-content, table/code/asset/reference, conversion fidelity/source-preservation and prepared-AI mechanics suites pass on exact public consumer inputs, including cancellation/permission/readonly/history/unknown data/disposal. Prepared AI results establish mechanics only. Include independent concurrent table-cell edits, same-cell/structural conflict policy, stable cell IDs and current table conversion/reopen semantics under DRA-1.1/1.2.
 
 Implementation:
 
@@ -72,3 +74,31 @@ Validation:
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
 Blocked behavior: Leave unchecked; try an independent ready parent, otherwise record fingerprint/owner/repair/resume condition and return BLOCKED for controller stop.
+
+## Epic ALPHA_BLOCK_BROWSER_TESTING — Close product interaction proof
+
+Entry requires BTQ-1.1/1.2 from source 43 and the complete engine-specific QWB results from source 44. Reuse those results for shared cases; add only missing block-action cases. Native runtime coverage stays with each existing platform final owner.
+
+### Task BTQ-1.3 — Complete menu interaction and packaged consumer acceptance
+
+- [ ] BTQ-1.3 Qualify the optional block menu, shared entry points and consumer handoff.
+
+Purpose: Deliver a stable discoverable block experience with coherent command behavior.
+Context: BTU functional evidence, BTQ-1.1/BTQ-1.2 accepted contracts; existing browser reorder/slash/command, mobile presenter and packed consumer fixtures.
+Dependencies: QWB-1.6, QWB-1.7.
+Independent work: Enumerate missing browser/focus cases before shared final checks finish, without asserting a pass.
+Session scope: One bounded remaining presenter/consumer matrix, 30–45 minutes; split through the controller if residual work exceeds the boundary.
+Acceptance: Exercise mouse/touch/keyboard access, focus and directional selection, Escape/cancel, stale targets, IME/read-only/nested controls, two-editor isolation, disposal, menu/handle independent configuration and direct API with menu off. Menu/slash/shortcut results share semantic/history behavior; Insert after preserves source subtrees. Packed public recipes work and disabled UI does not load its presenter. Record actual browser/runtime scope; hand native/TUI UI cases to their existing final owners rather than claiming browser equivalence.
+
+Implementation:
+
+- [ ] BTQ-1.3-I1 Add only missing browser/consumer cases, reconcile all eleven parents and attach exact source/capability handoffs to existing final platform/readiness owners.
+
+Validation:
+
+- [ ] BTQ-1.3-V1 From `core`, run uncovered selectors in `node --test tests/browser/block-actions.spec.ts` on each claimed browser through the existing harness and `node --test --test-name-pattern='web loading' tests/block-actions-consumer.test.mjs`. Record nonzero counts and failures/skips. Budget: 10 minutes execution; reuse unchanged checks. Teardown owned browsers/servers and remove inactive reproducible bulk artifacts.
+- [ ] BTQ-1.3-V2 Validate task/requirement ownership and documentation claims against the delivered API; require every supplement requirement to have evidence and an honest platform disposition. This does not close unrelated full-product or publication gates.
+
+Evidence: Final progress coverage map, focused totals, runtime provenance and remaining external gate owners.
+Handoff: Controller-ready alpha block-action acceptance with explicit native/platform and unrelated durability/readiness boundaries.
+Blocked behavior: Leave incomplete acceptance unchecked; identify the exact failed input/owner/resume condition and stop unchanged retries.

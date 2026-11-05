@@ -1,0 +1,403 @@
+{
+  "status": "ADOPTED",
+  "planningOnly": false,
+  "activeRunnerMutationAllowed": true,
+  "workspace": "/Users/bpstr/Github/edit-ac",
+  "parentCount": 29,
+  "budgetDecision": {
+    "coreTotalGzip": 524288,
+    "coreJsGzip": 32768,
+    "expandedUnitClarificationPending": false,
+    "runtimeBudgetChangesAllowedByPlanAlone": false,
+    "expandedTotalGzip": 1048576,
+    "confirmedByUserOn": "2026-10-28",
+    "includedResources": [
+      "core",
+      "enabled extensions",
+      "JS",
+      "generated glue",
+      "Wasm",
+      "CSS",
+      "required assets",
+      "required lazy code"
+    ],
+    "measurement": "total canonical gzip bytes; existing gzip-9 accounting"
+  },
+  "sources": [
+    {
+      "file": "01-core-boundaries.md",
+      "kind": "functional",
+      "entryCondition": "All RAQ sources 01-04 complete, including RAQ-4.1-4.4 current applicable receipts.",
+      "progress": ".roadmap-runner/wasm-extensions-20261027/01-core-boundaries.progress.md",
+      "tasks": [
+        {
+          "id": "WEX-1.1",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-1.2",
+          "dependencies": [
+            "WEX-1.1"
+          ]
+        },
+        {
+          "id": "WEX-1.3",
+          "dependencies": [
+            "WEX-1.2"
+          ]
+        },
+        {
+          "id": "WEX-1.4",
+          "dependencies": [
+            "WEX-1.2"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "02-optional-extensions.md",
+      "kind": "functional",
+      "entryCondition": "WEX-1.1-1.4 validated boundaries and resolved contracts; no queue-advance substitute.",
+      "progress": ".roadmap-runner/wasm-extensions-20261027/02-optional-extensions.progress.md",
+      "tasks": [
+        {
+          "id": "WEX-2.1",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-2.2",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-2.3",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-2.4",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-2.5",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-2.6",
+          "dependencies": [
+            "WEX-2.1",
+            "WEX-2.2",
+            "WEX-2.3",
+            "WEX-2.4",
+            "WEX-2.5"
+          ]
+        },
+        {
+          "id": "WEX-2.7",
+          "dependencies": [
+            "WEX-2.6"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "02a-package-size-gaps.md",
+      "kind": "functional",
+      "entryCondition": "Accepted source 02, current WEX-2.6 artifacts and resolved WEX-2.7 optimization allowance; original blockers remain binding.",
+      "progress": ".roadmap-runner/wasm-extensions-20261027/02a-package-size-gaps.progress.md",
+      "tasks": [
+        {
+          "id": "WEX-6.1",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-6.2",
+          "dependencies": [
+            "WEX-6.1"
+          ]
+        },
+        {
+          "id": "WEX-6.3",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-6.4",
+          "dependencies": [
+            "WEX-6.3"
+          ]
+        },
+        {
+          "id": "WEX-6.5",
+          "dependencies": []
+        }
+      ]
+    },
+    {
+      "file": "02b-core-package-deep-review.md",
+      "kind": "functional",
+      "entryCondition": "Source 02a admitted implementation receipts; requested Deep Review skill must be available and invoked, not replaced by a generic review.",
+      "progress": ".roadmap-runner/wasm-extensions-20261027/02b-core-package-deep-review.progress.md",
+      "tasks": [
+        {
+          "id": "WEX-7.1",
+          "dependencies": []
+        }
+      ],
+      "executionKind": "user-requested-deep-review",
+      "activeDispatch": false,
+      "controllerDisposition": "SKIPPED by user; not complete"
+    },
+    {
+      "file": "02c-core-size-delivery.md",
+      "kind": "functional",
+      "entryCondition": "WEX-7.1 actual Deep Review and WEX-6 delivery; adopted contracts and remaining shared allowance before candidate work.",
+      "progress": ".roadmap-runner/wasm-extensions-20261027/02c-core-size-delivery.progress.md",
+      "tasks": [
+        {
+          "id": "WEX-8.1",
+          "dependencies": []
+        }
+      ],
+      "activeDispatch": false,
+      "controllerDisposition": "SKIPPED by user; not complete"
+    },
+    {
+      "file": "02d-rust-build-size.md",
+      "kind": "functional",
+      "entryCondition": "Accepted original source02 correctness and current canonical artifact; consume source02a accepted/deferred dispositions. WEX-9.1/9.2 read-only audit does not depend on skipped WEX-7.1/WEX-8.1. Candidate/delivery tasks retain their actual prerequisites and zero renewed allowance.",
+      "progress": ".roadmap-runner/wasm-extensions-20261027/02d-rust-build-size.progress.md",
+      "tasks": [
+        {
+          "id": "WEX-9.1",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-3.1",
+          "dependencies": [
+            "WEX-9.1"
+          ]
+        },
+        {
+          "id": "WEX-3.2",
+          "dependencies": [
+            "WEX-3.1"
+          ]
+        },
+        {
+          "id": "WEX-9.2",
+          "dependencies": [
+            "WEX-9.1"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "03-production-compression.md",
+      "kind": "functional",
+      "entryCondition": "Original source01/02 correctness, current WEX-9.1/WEX-3.1 inventory/protocol and retained canonical artifact; accept explicit pending/deferred source02a dispositions without claiming reductions complete. User-skipped WEX-7.1/WEX-8.1 are not entry gates. All failed caps remain final gates.",
+      "progress": ".roadmap-runner/wasm-extensions-20261027/03-production-compression.progress.md",
+      "tasks": [
+        {
+          "id": "WEX-3.3",
+          "dependencies": []
+        }
+      ]
+    },
+    {
+      "file": "03a-small-editor-performance.md",
+      "kind": "verification",
+      "entryCondition": "Current source 01/02 physical functionality and source 03 production delivery; frozen WEX-1.2 objectives and WEX-2.7 work/candidate ledger. Budget failures do not block honest diagnostic timings, but cannot qualify readiness.",
+      "progress": ".roadmap-runner/wasm-extensions-20261027/03a-small-editor-performance.progress.md",
+      "tasks": [
+        {
+          "id": "WEX-5.1",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-5.2",
+          "dependencies": [
+            "WEX-5.1"
+          ]
+        },
+        {
+          "id": "WEX-5.3",
+          "dependencies": [
+            "WEX-5.1"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "04-final-qualification.md",
+      "kind": "verification",
+      "entryCondition": "Sources 01/02 complete and source 03 canonical production delivery complete; preserve candidate deferrals and original failed budget assertions. WEX-4.3 consumes current WEX-5.1-5.3 collection/oracle receipts and preserves competitive gaps; WEX-4.1/4.2 may proceed independently on valid inputs. Consume WEX-6/7/8 delivery, actual Deep Review and finding dispositions; preserve both total and JS caps and incomplete acceptance.",
+      "progress": ".roadmap-runner/wasm-extensions-20261027/04-final-qualification.progress.md",
+      "tasks": [
+        {
+          "id": "WEX-4.1",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-4.2",
+          "dependencies": []
+        },
+        {
+          "id": "WEX-4.3",
+          "dependencies": [
+            "WEX-4.1",
+            "WEX-4.2"
+          ]
+        }
+      ]
+    }
+  ],
+  "researchInputs": [
+    "architecture/research/wasm-code-size-methods-20261027.md",
+    "architecture/research/small-editor-and-loading-methods-20261027.md"
+  ],
+  "optimizationPolicy": {
+    "afterAllArchitectureAndExtensionFunctionality": true,
+    "maximumCandidateMinutes": 45,
+    "maximumDistinctMeasuredHypotheses": 2,
+    "firstLimitReachedStopsCandidates": true,
+    "canonicalGzipLevel": 9,
+    "alternateCompressionMayReplaceCanonicalMetric": false,
+    "requiredProfilerDependency": false,
+    "sharedCandidateOwners": [
+      "WEX-2.7",
+      "WEX-3.1",
+      "WEX-3.2",
+      "WEX-3.3"
+    ],
+    "comparativeMeasurementDoesNotAuthorizeNewTuning": true,
+    "sharedTaskOwners": [
+      "WEX-2.7",
+      "WEX-6.1",
+      "WEX-6.2",
+      "WEX-6.4",
+      "WEX-6.5",
+      "WEX-8.1",
+      "WEX-3.1",
+      "WEX-3.2"
+    ],
+    "ledgerDiscrepancyMustBeResolvedBeforeCandidates": true,
+    "compilerCandidateSource": "02d-rust-build-size.md"
+  },
+  "researchSections": {
+    "leptosBinarySize": "architecture/research/wasm-code-size-methods-20261027.md#leptos-binary-size-guide-addendum--2026-10-27"
+  },
+  "additionalAssessments": [
+    "Function-split Wasm versus standalone companions at async leaf boundaries; material ABI/runtime change requires proposal before implementation.",
+    "Retained regex/Unicode and serializer costs; no semantic weakening or automatic dependency replacement.",
+    "Conditional final chunk-loader cache identity and stale/mixed artifact controls."
+  ],
+  "adoption": {
+    "authorizedBy": "User request to start this plan, 2026-10-28",
+    "queueSpec": "architecture/runner-queues/wasm-extensions-20261027/queue-spec.json",
+    "currentQueueSpec": "architecture/runner-queues/editor-main-20261027/queue-spec.json",
+    "prerequisiteReceipt": ".roadmap-runner/wasm-extensions-20261028-adoption/prerequisites.json",
+    "priorRun": "c494f3a97b8e79e06c67fdf6",
+    "priorRunState": "complete",
+    "sourceParents": 20
+  },
+  "recoveryAdoption": {
+    "authorizedOn": "2026-10-28",
+    "plan": "architecture/runner-queues/wasm-extensions-recovery-20261028/manifest.json",
+    "queueSpec": "architecture/runner-queues/wasm-extensions-recovery-20261028/queue-spec.json",
+    "priorRunStopped": "05ee9df6a612ff7b0b8398d4",
+    "originalAcceptancePreserved": true,
+    "optimizationRenewed": false
+  },
+  "packageSizeAmendment": {
+    "authorizedOn": "2026-10-28",
+    "request": "Add investigated package sizing gaps and queue Deep Review of core compactness and further savings",
+    "newParentIds": [
+      "WEX-6.1",
+      "WEX-6.2",
+      "WEX-6.3",
+      "WEX-6.4",
+      "WEX-6.5",
+      "WEX-7.1",
+      "WEX-8.1"
+    ],
+    "parentCount": 27,
+    "queueOnly": true,
+    "runnerStartedOrResumed": false,
+    "lastInspectedRun": "3c85435bbcc1758d7949a270",
+    "lastInspectedRunState": "stopped",
+    "existingSource02BlockerPreserved": true,
+    "optimizationRenewed": false,
+    "deepReviewSkillAvailableAtAuthoring": false,
+    "skillResumeCondition": "Resolve/read the actual requested Deep Review SKILL.md before WEX-7.1; no generic-review substitution",
+    "runtimeAdoptionCondition": "Resolve current original source blocker, re-pin current remaining FIFO and requirement hashes at a safe checkpoint, then use guarded launcher with live readiness; old stopped run/continuation snapshots are historical",
+    "currentUserOverride": {
+      "date": "2026-10-28",
+      "request": "Check what required the deep review skill. It was not asked. Lets skip this",
+      "excludedParentIds": [
+        "WEX-7.1",
+        "WEX-8.1"
+      ],
+      "excludedSources": [
+        "02b-core-package-deep-review.md",
+        "02c-core-size-delivery.md"
+      ],
+      "disposition": "SKIPPED by explicit user scope correction; preserve all unchecked acceptance and source/progress pairs; no generic review substitute",
+      "optimizationRenewed": false
+    }
+  },
+  "compilerSizeAmendment": {
+    "authorizedOn": "2026-10-28",
+    "request": "Add compiler-size research to a new roadmap and queue it in the runner",
+    "source": "/Users/bpstr/Github/edit-ac/architecture/runner-queues/wasm-extensions-20261027/02d-rust-build-size.md",
+    "progress": "/Users/bpstr/Github/edit-ac/.roadmap-runner/wasm-extensions-20261027/02d-rust-build-size.progress.md",
+    "newParentIds": [
+      "WEX-9.1",
+      "WEX-9.2"
+    ],
+    "relocatedUnstartedParentIds": [
+      "WEX-3.1",
+      "WEX-3.2"
+    ],
+    "parentCount": 29,
+    "runtimeEnqueue": {
+      "state": "not_enqueued_stopped_runner",
+      "runId": "3c85435bbcc1758d7949a270",
+      "reason": "Supported enqueue failed: stopped controller has no control socket (ENOENT); no supported stopped-run insertion",
+      "receipt": ".roadmap-runner/compiler-size-queue-20261028/enqueue-receipt.json",
+      "runtimeQueueChanged": false,
+      "canonicalNextStartQueuePrepared": true
+    },
+    "runnerStartedOrResumed": false,
+    "originalCorrectnessBlocker": "WEX-2.7 / ENG-1.14 malformed-request accessor admission",
+    "optimizationRenewed": false,
+    "effectiveAuthorizedCandidateSecondsAtAuthoring": 0,
+    "nextStartQueueSpec": "architecture/runner-queues/editor-main-20261027/queue-spec.json",
+    "adoptionCondition": "Concrete original blocker repair, accepted input receipts and current remaining FIFO through guarded launcher with live readiness; no unchanged restart or implicit tuning renewal"
+  },
+  "taskRelocations": [
+    {
+      "ids": [
+        "WEX-3.1",
+        "WEX-3.2"
+      ],
+      "from": "03-production-compression.md",
+      "to": "02d-rust-build-size.md",
+      "previousStatus": "NOT_STARTED",
+      "originalProgressPreservedFor": "WEX-3.3",
+      "priorProgressExisted": false,
+      "acceptance": "Original six checkboxes and original scoped acceptance preserved; compiler survey adds explicit controls; WEX-3.1 local prerequisite becomes WEX-9.1"
+    }
+  ],
+  "deepReviewScopeCorrection": {
+    "date": "2026-10-28",
+    "request": "Check what required the deep review skill. It was not asked. Lets skip this",
+    "excludedParentIds": [
+      "WEX-7.1",
+      "WEX-8.1"
+    ],
+    "excludedSources": [
+      "02b-core-package-deep-review.md",
+      "02c-core-size-delivery.md"
+    ],
+    "disposition": "SKIPPED by explicit user scope correction; preserve all unchecked acceptance and source/progress pairs; no generic review substitute",
+    "optimizationRenewed": false
+  }
+}

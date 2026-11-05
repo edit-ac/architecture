@@ -14,7 +14,31 @@ Subscriptions filter changed kind/range/selection. Stable renderer views receive
 
 Markdown is an optional conversion/input capability over existing semantic nodes and marks, rather than a new CRDT content type. Its parser prepares validated interchange data and semantic commands for the same document owner. Hosts opt in explicitly; absent registration cannot trigger Markdown loading or shortcut interpretation. Capability reporting, disabled literal behavior, enabled grammar/fidelity and independent asset qualification follow formats.md and packages-release.md. Native and CLI consumers may include the shared Rust implementation without changing their platform semantics.
 
+## Session capability features
+
+`editac-session` has no default features. Its base library provides local sessions,
+assets, revisions, history, ports and durable request tokens/records without
+Markdown. `asset-serde` adds host asset serialization; `native-store` adds SQLite
+durability and enables `asset-serde`. Neither enables source editing.
+
+The additive `source-edit` feature enables `edit_service`, `review_apply`,
+`ai_proposal`, source request proposals, the `RequestError::Service` variant and
+source-service Session methods, using the shared Rust Markdown implementation.
+Common `RequestError` variants and token decoding remain available without it.
+Combining these features adds capabilities without changing document, request or
+storage encodings. Durable sessions can reopen retained request records without
+source editing enabled.
+
+CLI, FFI, reference host examples and formats job consumers declare `source-edit`
+explicitly. Core/security source-edit test adapters and the native tables fixture
+also opt in. The asset-only `editac-wasm` bridge enables only `asset-serde`; its
+normal dependency graph excludes Markdown. The separate `editac-markdown-wasm`
+codec remains an optional browser capability with its own registration/loading
+boundary; enabling host asset serialization does not load that codec.
+
 ## First-party modules
+
+The optional [block-actions presenter](block-actions.md#optional-block-menu-and-insert-after) exposes Turn into and general Insert after whenever its menu is enabled for a supported editable block. Its menu and reorder handle are independently configurable. Conversion semantics and extension registration belong to the shared block API even with all presenters disabled; existing reorder delivery does not close this new alpha requirement. Native/terminal command surfaces consume the same captured-target contract through their platform owners.
 
 | Module | Required behavior | Boundary |
 |---|---|---|

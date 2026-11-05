@@ -119,6 +119,18 @@ The machine-readable dependency graph is [manifest.json](roadmaps/manifest.json)
 
 ## Contract map
 
+- [Rust architecture and code quality review](research/rust-architecture-quality-20261026.md): the [planned editor roadmap](runner-queues/rust-architecture-quality-20261026/README.md) contains 13 focused delivery parents and four final verification parents for dependency boundaries, safe error diagnostics, planner structure, test ownership and measured compile feedback. It supplements existing ENG/NAT/FIT/ECO owners and changes no live runner queue.
+
+- [Small core and optional Wasm extensions](runner-queues/wasm-extensions-20261027/README.md): a planned 20-parent follow-up after all Rust architecture jobs, using the existing Tiptap-style composition contracts. Deliver core/extension boundaries and public consumers first, investigate production optimization/compression afterward, then qualify preservation and configuration budgets. The [Rust/Wasm code-size methods review](research/wasm-code-size-methods-20261027.md) adds retained-size attribution, compiler/optimizer candidates, source/JS/glue reductions and production precompression with current tooling/safety caveats. Retain core caps of 512 KiB total/32 KiB JS gzip; the expanded app ceiling is user-confirmed on 2026-10-28 as 1 MiB total gzip including required lazy assets. The [small-editor/loading review](research/small-editor-and-loading-methods-20261027.md) adds tiny-document Tiptap comparisons, first-use/readiness and many-editor costs, plus applicability checks for Blazyload, wasm-squeeze and component compression. No active runner or runtime budget changes.
+
+- [Open-source editor input comparisons](research/open-source-editor-input-20261026.md), extending the [ProseMirror review](research/prosemirror-input-navigation-20261026.md): the [planned follow-up queue](runner-queues/prosemirror-input-20261026/README.md) contains 15 focused delivery parents and 5 final coverage parents. Lexical, Slate, Quill, CKEditor 5 and CodeMirror 6 add native formatting, replacement-payload/correlation and table-intent gaps to the existing keyboard/navigation findings. The plan distinguishes observed adapter decisions from runtime qualification risks, reuses existing ES/EDX/UDM owners and changes no live runner queue.
+
+- [Text and block editing standards](specs/editing-behavior-standards.md): the [research and source audit](research/text-editing-standards.md) distinguishes formal standards, editor conventions and our selected behavior. The [planned gap-closing queue](runner-queues/editing-standards-20261024/README.md) covers residual Unicode/input, terminal navigation and block-selection/movement work while retaining existing INT/EDX/BTA ownership. It starts no runner and makes no runtime conformance claim.
+
+- [Backend SDKs and framework adapters](specs/backend-sdk-adapters.md): the [2026-10-24 delivery plan](runner-queues/backend-sdk-adapters-20261024/README.md) adds Laravel-first persistence, language SDKs, web frameworks and native host adapters as a separate planned integration expansion. It starts no runner and leaves the current 43-track manifest and active queue unchanged.
+
+- [Block conversion and actions](specs/block-actions.md): alpha-required lossless Turn into, extension conversion registration, guarded advanced mappings and optional block menus with Insert after. The [alpha audit adoption map](runner-queues/alpha-block-actions-20261023/README.md) assigns required delivery and final proof inside the active single-format queue; implementation remains pending.
+
 - [Engine](specs/engine.md): state ownership, prepared mutation, anchors, history and schema spike.
 - [Browser](specs/web.md): DOM, IME, loading, selection and disposal.
 - [Formats](specs/formats.md): CommonMark/GFM profile, fallback, safe import and export.
@@ -131,6 +143,7 @@ The machine-readable dependency graph is [manifest.json](roadmaps/manifest.json)
 - [Rich content](specs/rich-content-extensions.md), [link resolution](specs/link-resolution.md) and [document conversion](specs/document-conversion.md): optional first-party services.
 - [Cloud store](specs/cloud-document-store.md), [public docs/demo](specs/public-docs-demo.md) and [maintainability](specs/ecosystem-maintainability.md): ecosystem ownership and qualification.
 - [Packages/release](specs/packages-release.md): package ownership, artifacts, publishing and CLI.
+- [Integration repositories and registry listings](specs/integration-distribution.md): dedicated repositories/packages per maintained integration, ecosystem channels, listing metadata and extraction handoffs under [Decision 007](decisions/007-integration-repositories-and-packages.md).
 - [Verification](specs/verification.md): evidence, supported envelope and provisional budgets.
 
 The foundation produces `schema-v1.md` and `protocol-v1.md` only after adversarial probes. They are development outputs; production schema decisions must not be invented to make a task appear complete.
@@ -199,3 +212,7 @@ Content migrations and editor migration guides are [deferred until full app comp
 ## Wordcraft reliability and converter refinements
 
 [Source research and overlap](sources/wordcraft-research.md) adds [19 planned cases](tests/wordcraft-regression-cases.md) to the existing suite and refines eight existing case variants. Priorities are failure paths, converter qualification, then cache/command checks. Existing parent owners receive the acceptance and validation changes; roadmap, parent and dependency counts stay unchanged. No runtime execution, new format direction, dependency, general layout engine or offline proofing feature is claimed. Adopt at a safe controller checkpoint without rewriting active progress or treating earlier receipts as proof of the new assertions.
+
+## Local native testing infrastructure
+
+[Local Windows and Linux testing](operations/local-native-testing.md) records the shared Mac-controlled ARM64 guests and testing skills. Linux CLI/X11 infrastructure is verified; Windows is installed; first-run/provisioning remains pending. Product qualification and feature-first sequencing remain governed by the existing policy.

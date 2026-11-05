@@ -1,6 +1,6 @@
 # Close BAS-1.1, BAS-1.2, BAS-1.3, BAS-1.4, BAS-1.6, BAS-1.7, BAS-1.8 prerequisite ownership
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; paths in task contracts are core-relative.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/11-local-authority.progress.md`.
@@ -23,7 +23,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task BAS-1.1 — Expose the existing Rust staged validator
 
-- [ ] BAS-1.1 Expose the existing Rust staged validator.
+- [x] BAS-1.1 Expose the existing Rust staged validator.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/reference/admission/; services/document-store/src/.
@@ -37,11 +37,11 @@ Acceptance: The existing engine validates detached current-format checkpoint/upd
 
 Implementation:
 
-- [ ] BAS-1.1-I1 Expose the existing Rust staged validator. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BAS-1.1-I1 Expose the existing Rust staged validator. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BAS-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.1`: One current-format checkpoint validates and one incompatible envelope rejects with unchanged fixture state. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BAS-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.1`: One current-format checkpoint validates and one incompatible envelope rejects with unchanged fixture state. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -49,7 +49,7 @@ Blocked behavior: Leave BAS-1.1 unchecked; record owner, source/error fingerprin
 
 ### Task BAS-1.2 — Implement the bounded private validation companion
 
-- [ ] BAS-1.2 Implement the bounded private validation companion.
+- [x] BAS-1.2 Implement the bounded private validation companion.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/reference/companion/.
@@ -63,11 +63,11 @@ Acceptance: A local authenticated companion exposes only the agreed validator op
 
 Implementation:
 
-- [ ] BAS-1.2-I1 Implement the bounded private validation companion. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BAS-1.2-I1 Implement the bounded private validation companion. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BAS-1.2-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.2`: One prepared request and deadline failure through the actual local companion return the expected typed results; shut it down afterward. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BAS-1.2-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.2`: One prepared request and deadline failure through the actual local companion return the expected typed results; shut it down afterward. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -75,7 +75,7 @@ Blocked behavior: Leave BAS-1.2 unchecked; record owner, source/error fingerprin
 
 ### Task BAS-1.3 — Define repository migrations and transaction port
 
-- [ ] BAS-1.3 Define repository migrations and transaction port.
+- [x] BAS-1.3 Define repository migrations and transaction port.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/reference/repository/; sdk/contracts/storage.md.
@@ -89,11 +89,11 @@ Acceptance: Scoped document/checkpoint/update/operation records have binary-safe
 
 Implementation:
 
-- [ ] BAS-1.3-I1 Define repository migrations and transaction port. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BAS-1.3-I1 Define repository migrations and transaction port. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BAS-1.3-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.3`: Apply and inspect the planned schema in a fresh task-owned SQLite file; existing fixture bytes remain byte-identical. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BAS-1.3-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.3`: Apply and inspect the planned schema in a fresh task-owned SQLite file; existing fixture bytes remain byte-identical. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -101,7 +101,7 @@ Blocked behavior: Leave BAS-1.3 unchecked; record owner, source/error fingerprin
 
 ### Task BAS-1.4 — Implement the SQLite repository adapter
 
-- [ ] BAS-1.4 Implement the SQLite repository adapter.
+- [x] BAS-1.4 Implement the SQLite repository adapter.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/reference/sqlite/.
@@ -115,11 +115,11 @@ Acceptance: Real SQLite commit/rollback owns checkpoint and operation outcome at
 
 Implementation:
 
-- [ ] BAS-1.4-I1 Implement the SQLite repository adapter. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BAS-1.4-I1 Implement the SQLite repository adapter. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BAS-1.4-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.4`: Execute one save/reopen and one rolled-back save using the same local file; compare exact bytes and ledger result. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BAS-1.4-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.4`: Execute one save/reopen and one rolled-back save using the same local file; compare exact bytes and ledger result. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -127,7 +127,7 @@ Blocked behavior: Leave BAS-1.4 unchecked; record owner, source/error fingerprin
 
 ### Task BAS-1.6 — Connect checkpoint endpoints to application transactions
 
-- [ ] BAS-1.6 Connect checkpoint endpoints to application transactions.
+- [x] BAS-1.6 Connect checkpoint endpoints to application transactions.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/reference/http/; sdk/reference/repository/.
@@ -141,11 +141,11 @@ Acceptance: Create/load/checkpoint-save/commit-lookup compose the private valida
 
 Implementation:
 
-- [ ] BAS-1.6-I1 Connect checkpoint endpoints to application transactions. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BAS-1.6-I1 Connect checkpoint endpoints to application transactions. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BAS-1.6-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.6`: One prepared create/save/lost-response lookup through local HTTP returns a matching committed receipt and stable reopen. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BAS-1.6-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.6`: One prepared create/save/lost-response lookup through local HTTP returns a matching committed receipt and stable reopen. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -153,7 +153,7 @@ Blocked behavior: Leave BAS-1.6 unchecked; record owner, source/error fingerprin
 
 ### Task BAS-1.7 — Connect incremental append and resume
 
-- [ ] BAS-1.7 Connect incremental append and resume.
+- [x] BAS-1.7 Connect incremental append and resume.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/reference/http/; services/document-store/src/.
@@ -165,11 +165,11 @@ Acceptance: Append/read/observe reuse existing committed update ledger and basel
 
 Implementation:
 
-- [ ] BAS-1.7-I1 Connect incremental append and resume. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BAS-1.7-I1 Connect incremental append and resume. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BAS-1.7-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.7`: One prepared duplicate append and cursor resume preserve exact update coverage and one operation result. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BAS-1.7-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.7`: One prepared duplicate append and cursor resume preserve exact update coverage and one operation result. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -177,7 +177,7 @@ Blocked behavior: Leave BAS-1.7 unchecked; record owner, source/error fingerprin
 
 ### Task BAS-1.8 — Expose scoped asset and lifecycle integration points
 
-- [ ] BAS-1.8 Expose scoped asset and lifecycle integration points.
+- [x] BAS-1.8 Expose scoped asset and lifecycle integration points.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/reference/http/; sdk/contracts/capabilities.schema.json.
@@ -189,11 +189,11 @@ Acceptance: Existing asset finalization, tombstone and retention ports remain op
 
 Implementation:
 
-- [ ] BAS-1.8-I1 Expose scoped asset and lifecycle integration points. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BAS-1.8-I1 Expose scoped asset and lifecycle integration points. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BAS-1.8-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.8`: A checkpoint-only consumer runs without optional services and a prepared pending asset stays explicitly unavailable. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BAS-1.8-V1 Run `node scripts/sdk-adapter-delivery.mjs BAS-1.8`: A checkpoint-only consumer runs without optional services and a prepared pending asset stays explicitly unavailable. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.

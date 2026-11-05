@@ -1,6 +1,6 @@
 # 03 desktop feasibility
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; task paths are core-relative unless repository-prefixed.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/os-deferred-integrations-20261026/03-desktop-feasibility.progress.md`.
@@ -20,7 +20,7 @@ Workers update only verified checkbox states and Status in this selected source.
 
 ### Task UFW-1.4 — Resolve Flutter and React Native desktop host feasibility
 
-- [ ] UFW-1.4 Resolve Flutter and React Native desktop host feasibility.
+- [x] UFW-1.4 Resolve Flutter and React Native desktop host feasibility.
 
 Purpose: Resolve Flutter and React Native desktop host feasibility so applications can reuse this integration boundary.
 Deliverable: `adapters/native/flutter/; adapters/native/react-native/; ../architecture/specs/native-ui-integrations.md`.
@@ -33,12 +33,12 @@ Acceptance: A bounded decision for macOS/Windows/Linux records actual available 
 
 Implementation:
 
-- [ ] UFW-1.4-I1 Time-box documentation/API inspection to 30 minutes; name an implementable extension task set for any proven path, otherwise return typed unsupported capability and exact unblock condition. Do not create a new renderer.
-- [ ] UFW-1.4-I2 Wire the named consumer/exports and focused selector; record missing prerequisite APIs with their existing owner.
+- [x] UFW-1.4-I1 Time-box documentation/API inspection to 30 minutes; name an implementable extension task set for any proven path, otherwise return typed unsupported capability and exact unblock condition. Do not create a new renderer.
+- [x] UFW-1.4-I2 Wire the named consumer/exports and focused selector; record missing prerequisite APIs with their existing owner.
 
 Validation:
 
-- [ ] UFW-1.4-V1 Run `node scripts/ui-integration-delivery.mjs UFW-1.4`: Inspect one capability response per candidate stack/OS and verify every claimed available path cites a current host API; report investigation counts rather than fabricated runtime passes. Budget: 1–3 minutes; prepared native startup at most 5. Count inspection cases separately.
+- [x] UFW-1.4-V1 Run `node scripts/ui-integration-delivery.mjs UFW-1.4`: Inspect one capability response per candidate stack/OS and verify every claimed available path cites a current host API; report investigation counts rather than fabricated runtime passes. Budget: 1–3 minutes; prepared native startup at most 5. Count inspection cases separately.
 
 Evidence: Progress path above; source/interface, selector/runtime/exit, inspected or executed/passed/failed/skipped counts and reused receipt.
 Handoff: In progress, record last substep/symbol, failing input, owner receipt and next bounded action.

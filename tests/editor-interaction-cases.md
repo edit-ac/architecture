@@ -18,6 +18,8 @@ Priorities: **P0** prevents data loss, broken basic input or inaccessible operat
 
 ## Breaks and block structure — INT-1.2
 
+The [editing experience platform matrix](editing-experience-platform-matrix.md) refines these IDs with beforeinput-only, visual-wrap negative controls, native command/soft-input routes and per-platform completion evidence. Existing passes do not qualify those added variants. [Feature descriptions and action owners](../specs/editing-experience.md) define their observable results.
+
 | ID | Priority | Setup and action | Required result |
 |---|---|---|---|
 | BRK-01 | P0 | Paragraph `ab|cd`; Enter; type `X` | `ab¶Xcd`; caret after X in new block, one split transaction |
@@ -72,8 +74,8 @@ Priorities: **P0** prevents data loss, broken basic input or inaccessible operat
 
 | ID | Priority | Setup and action | Required result |
 |---|---|---|---|
-| KEY-01 | P0 | Ordinary prose; Tab and Shift+Tab | Focus moves to next/previous control; no literal tab and no keyboard trap |
-| KEY-02 | P1 | List selection; Tab/Shift+Tab including first item and nesting bound | Applicable indent/outdent once; invalid action does not mutate or swallow focus escape |
+| KEY-01 | P0 | Ordinary prose; Tab and Shift+Tab | Shared persisted paragraph/heading indentation; no inserted whitespace; bounds retain focus without mutations; Escape then Tab/Shift+Tab exits; read-only keeps traversal |
+| KEY-02 | P1 | List selection; Tab/Shift+Tab including first item and nesting bound | Applicable indent/outdent once; inapplicable action keeps focus without mutation; Escape-Tab remains available |
 | KEY-03 | P1 | Code single caret / multi-line selection; Tab then Shift+Tab | Tab/indent and bounded dedent preserve authored whitespace and selection |
 | KEY-04 | P1 | Table interior/last/first cell; Tab/Shift+Tab | Move cells; append at most one allowed row at last; backward first and bounded last can exit |
 | KEY-05 | P0 | Code/list/table with popup open/closed; Escape then Tab or Shift+Tab | Popup dismissal arms one-shot forward/backward exit; other editing clears it; IME Escape remains native; focus/help visible |
@@ -115,8 +117,8 @@ Priorities: **P0** prevents data loss, broken basic input or inaccessible operat
 | SLH-04 | P0 | Escape; Tab; Shift+Enter in menu | Escape preserves query, Tab dismisses and follows context, Shift+Enter inserts same-block break |
 | SLH-05 | P1 | Backspace query/trigger; move caret out; blur/read-only/destroy | Update/dismiss as specified, no focus theft or lingering active-descendant reference |
 | SLH-06 | P0 | Reordered async query responses and remote deletion of trigger | Stale response ignored; only current valid anchor can commit; failure preserves literal query |
-| SLH-07 | P0 | Pointerdown → editor blur → item click, internal AT focus transition, or keyboard activation | Composite focus preserves valid activation; external focus dismisses; same semantic result/selection and one undo; clear name/state/result announcement |
 | SLH-08 | P0 | Open at an empty/text caret; filter; scroll host/editor; resize or show visual viewport | Menu follows its stable caret, flips above when needed, remains inside the visible viewport and scrolls its results; no page jump or focus theft |
+| SLH-07 | P0 | Pointerdown → editor blur → item click, internal AT focus transition, or keyboard activation | Composite focus preserves valid activation; external focus dismisses; same semantic result/selection and one undo; clear name/state/result announcement |
 
 ## Paste formats and failure paths — INT-1.10
 
@@ -169,3 +171,5 @@ Priorities: **P0** prevents data loss, broken basic input or inaccessible operat
 INT-1.1 creates a machine-readable fixture index from these IDs and ensures every row has an implementation test owner. INT-1.2–INT-1.13 run the corresponding deterministic cases; INT-1.14 closes physical or virtual platform rows (EVT-03/05/06/07, NAV-05/06, KEY-06 and A11-02/04/05/06) and browser integration. Semantic cases also run against native Rust/WASM with equivalent snapshots where relevant; DOM/layout assertions remain browser-specific. Platform adapters reuse the same expected semantics through AIN tasks and existing native qualification; they do not inherit a browser pass.
 
 For each case record status (`planned`, `pass`, `fail`, `unsupported`, `blocked`), command/manual steps, executed/passed/failed/skipped counts, artifact and revision. Only actual assertions or device observations can mark pass. Zero matches, missing scripts, unchecked manual rows and skipped mandatory combinations prevent qualification. Retain failed evidence and describe the support envelope; adding these documents does not establish support.
+
+Installed-demo regression coverage must type heading prefixes 1–6 consecutively after Enter, activate each heading control, and exercise bullet/numbered lists through both slash and controls, including indent/outdent and history. Preloading a prefix alone does not cover this sequence.

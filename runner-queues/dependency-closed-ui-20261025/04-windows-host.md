@@ -1,6 +1,6 @@
 # Prepare local build prerequisites
 
-Status: IN_PROGRESS
+Status: BLOCKED
 
 Workspace: root edit-ac, source paths identify the owning repository. Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/04-windows-host.progress.md`.
 

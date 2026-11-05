@@ -6,6 +6,7 @@ event-file guard performs no inference and never restarts a controller.
 """
 import argparse
 import datetime
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -67,6 +68,40 @@ class CompletedSourceGuard:
         return progress if stuck else None
 
 
+class ResolverRecoveryGuard:
+    """Permit one bounded resolver per source-bound failure, never a worker retry."""
+
+    def __init__(self, fingerprints=()):
+        self.fingerprints = set(fingerprints)
+        self.failures = {}
+        self.events = set()
+        self.awaiting_resolver = None
+
+    def observe(self, event):
+        if event.get("type") in ("runner.task_result", "runner.task_result_invalid"):
+            self.failures[(event.get("roadmap"), event.get("task"))] = event.get("failureFingerprint")
+        if event.get("type") == "runner.turn_starting" and event.get("role") == "resolver":
+            self.awaiting_resolver = None
+
+    def permit(self, event, now):
+        key = (event.get("roadmap"), event.get("task"))
+        fingerprint = event.get("failureFingerprint") or self.failures.get(key)
+        if not fingerprint:
+            fingerprint = hashlib.sha256(json.dumps([key, event.get("sourceRevision")]).encode()).hexdigest()
+        identity = (key, event.get("iteration"), event.get("sessionId"))
+        if identity in self.events:
+            return True
+        self.events.add(identity)
+        if fingerprint in self.fingerprints:
+            return False
+        self.fingerprints.add(fingerprint)
+        self.awaiting_resolver = now + 60
+        return True
+
+    def expired(self, now):
+        return self.awaiting_resolver is not None and now >= self.awaiting_resolver
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-id", required=True)
@@ -76,12 +111,16 @@ def main():
     parser.add_argument("--cli", required=True, type=Path)
     parser.add_argument("--max-hours", type=float, default=168)
     parser.add_argument("--poll-seconds", type=float, default=5)
+    parser.add_argument("--allow-resolver-recovery", action="store_true")
     args = parser.parse_args()
     cursor = args.events.stat().st_size if args.events.exists() else 0
     deadline = time.monotonic() + max(0, args.max_hours) * 3600
     state = {"runId": args.run_id, "workspace": str(args.workspace), "state": "armed",
              "pid": os.getpid(), "events": str(args.events)}
     completed = CompletedSourceGuard()
+    previous = json.loads(args.receipt.read_text()) if args.receipt.exists() else {}
+    recovery = ResolverRecoveryGuard(previous.get("resolverFingerprints", ()))
+    state["allowResolverRecovery"] = args.allow_resolver_recovery
 
     def save(**fields):
         state.update(fields, checkedAt=datetime.datetime.now(datetime.timezone.utc).isoformat())
@@ -107,6 +146,9 @@ def main():
             if time.monotonic() >= deadline:
                 stop("guard-expired")
                 return
+            if recovery.expired(time.monotonic()):
+                stop("resolver-did-not-start")
+                return
             if not args.events.exists():
                 time.sleep(max(0.01, args.poll_seconds))
                 continue
@@ -124,7 +166,14 @@ def main():
                     event = json.loads(line)
                     if event.get("runId") != args.run_id:
                         continue
+                    recovery.observe(event)
+                    if event.get("type") == "runner.turn_starting" and event.get("role") == "resolver":
+                        save(recovery="resolver-running")
                     if event.get("type") == "runner.task_result_invalid":
+                        if (args.allow_resolver_recovery and event.get("recovery") == "resolver"
+                                and recovery.permit(event, time.monotonic())):
+                            save(recovery="awaiting-resolver", resolverFingerprints=sorted(recovery.fingerprints))
+                            continue
                         # A rejected structured blocker must never fall back to
                         # legacy handoff and redispatch the same ready task.
                         stop("invalid-task-result", task=event.get("task"),
@@ -136,6 +185,10 @@ def main():
                         return
                     progress = blocked_worker(event, args.run_id, args.workspace)
                     reason = "blocked-worker"
+                    if (progress is not None and args.allow_resolver_recovery
+                            and recovery.permit(event, time.monotonic())):
+                        save(recovery="awaiting-resolver", resolverFingerprints=sorted(recovery.fingerprints))
+                        continue
                     if progress is None:
                         progress = completed.inspect(event, args.run_id, args.workspace)
                         reason = "repeated-completed-source"

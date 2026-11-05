@@ -1,6 +1,6 @@
 # 04 swift headless facade
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; task paths are core-relative unless repository-prefixed.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/os-deferred-integrations-20261026/04-swift-headless-facade.progress.md`.
@@ -20,7 +20,7 @@ Workers update only verified checkbox states and Status in this selected source.
 
 ### Task BNA-1.1 — Add the Swift storage and authority facade
 
-- [ ] BNA-1.1 Add the Swift storage and authority facade.
+- [x] BNA-1.1 Add the Swift storage and authority facade.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/native/apple/.
@@ -34,11 +34,11 @@ Acceptance: Typed Swift async identity/receipt/transport facade wraps existing n
 
 Implementation:
 
-- [ ] BNA-1.1-I1 Add the Swift storage and authority facade. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BNA-1.1-I1 Add the Swift storage and authority facade. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BNA-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BNA-1.1`: Compile one Swift headless consumer with a prepared save/lookup and fresh-writer checkpoint reopen. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BNA-1.1-V1 Run `node scripts/sdk-adapter-delivery.mjs BNA-1.1`: Compile one Swift headless consumer with a prepared save/lookup and fresh-writer checkpoint reopen. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.

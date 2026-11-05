@@ -1,6 +1,6 @@
 # 02 web package exports
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; task paths are core-relative unless repository-prefixed.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/os-deferred-integrations-20261026/02-web-package-exports.progress.md`.
@@ -20,7 +20,7 @@ Workers update only verified checkbox states and Status in this selected source.
 
 ### Task UPG-1.1 — Finalize web exports and peer manifests
 
-- [ ] UPG-1.1 Finalize web exports and peer manifests.
+- [x] UPG-1.1 Finalize web exports and peer manifests.
 
 Purpose: Finalize web exports and peer manifests so applications can reuse this integration boundary.
 Deliverable: `packages/*/package.json; registry/`.
@@ -33,12 +33,12 @@ Acceptance: All new web UI adapter exports resolve types and CSS, declare real o
 
 Implementation:
 
-- [ ] UPG-1.1-I1 Reconcile package graph/exports with implementation receipts and authored license/notices; remove accidental aggregator imports.
-- [ ] UPG-1.1-I2 Wire the named consumer/exports and focused selector; record missing prerequisite APIs with their existing owner.
+- [x] UPG-1.1-I1 Reconcile package graph/exports with implementation receipts and authored license/notices; remove accidental aggregator imports.
+- [x] UPG-1.1-I2 Wire the named consumer/exports and focused selector; record missing prerequisite APIs with their existing owner.
 
 Validation:
 
-- [ ] UPG-1.1-V1 Run `node scripts/ui-integration-delivery.mjs UPG-1.1`: Inspect export targets and build only changed package declarations; final all-consumer matrix remains final-owned. Budget: 1–3 minutes; prepared native startup at most 5. Count inspection cases separately.
+- [x] UPG-1.1-V1 Run `node scripts/ui-integration-delivery.mjs UPG-1.1`: Inspect export targets and build only changed package declarations; final all-consumer matrix remains final-owned. Budget: 1–3 minutes; prepared native startup at most 5. Count inspection cases separately.
 
 Evidence: Progress path above; source/interface, selector/runtime/exit, inspected or executed/passed/failed/skipped counts and reused receipt.
 Handoff: In progress, record last substep/symbol, failing input, owner receipt and next bounded action.

@@ -236,6 +236,54 @@ Untrusted internal fragments follow the same safety/resource checks as external 
 
 The baseline HTML adapter admits absolute HTTP(S)/mailto destinations only; relative URLs, credentials and encoded controls become inert text with diagnostics. Styles are reduced to the named text marks; no CSS enters the live tree. The common Rust `editac-html` codec owns the whitelist and semantic mapping for NativeSession and browser WASM. Native uses an inert HTML5 tokenizer; browsers serialize their inert template tokens to the same codec, without host semantic mapping or a second bundled tokenizer. Inert HTML5 fragment parsing is capped at 1 MiB, 4,096 visits, depth 32, 128 blocks, 1,024 text runs and 4,096 characters per attribute. Inert token transport is capped at 8 MiB to allow JSON escaping of the 1 MiB source; common node, depth, text-run and decoded-text limits still apply. Dropped content retains exact source in bounded clipboard recovery. Optional resource elements require explicit codecs.
 
+## Structural hygiene at the import boundary
+
+Committed rich text uses typed blocks, text and mark sets, never an HTML wrapper
+tree. Empty inline wrappers contribute no runs or marks; equivalent adjacent HTML
+runs coalesce regardless of tag aliases or mark nesting order. Normal HTML text
+collapses only ASCII space, tab, CR, LF and form feed across inline boundaries and
+trims that layout whitespace at block and explicit-break boundaries. Indentation
+between blocks must not create invisible paragraphs. Explicit `br` elements retain
+their breaks, including repeated and trailing breaks. An explicitly empty block
+retains one editable paragraph even when it contains empty formatting tags; a
+wrapper around existing blocks adds no extra paragraph.
+
+Preformatted text, NBSP, narrow NBSP, zero-width spaces and Unicode joiners retain
+their exact text. They can be meaningful authored content, including script and
+emoji composition. This HTML admission rule does not trim ordinary typing,
+internal fragments, code, table-cell text or persisted documents. Renderer caret
+placeholders must stay outside committed content. Import normalization is bounded
+and makes progress in a single traversal; canonical output is stable on reimport.
+Input limits count source tokens before coalescing, so redundant wrappers cannot
+bypass resource bounds.
+
+Table cells have a finite nonrecursive block vocabulary; no cell can contain a
+table, column container or arbitrary child tree. Zero-dimensional or ragged grids,
+invalid spans and duplicate mark keys reject through shared descriptor validation.
+A single-cell table and an empty cell are valid user structures, not debris to
+flatten or delete. An empty rich cell retains its paragraph, and deleting the last
+row/column is forbidden by the existing structural commands. Malformed known data
+rejects before live mutation; do not repeatedly repair or silently rewrite stored
+content. Unknown bounded data retains the durability contract's inert recovery.
+
+Regression ownership stays with FMT-1.8 (shared `editac-html` native parser and
+browser-token tests), `extension_rich_table` (descriptor admission),
+`table_structure`/`table_shape` (atomic edits and geometry), and `format_commands`
+(empty/no-op mark operations). Existing `editing_regressions::reg07_separated_pre_*`
+protects literal whitespace in prepared internal fragments, while browser
+`interactions/whitespace.spec.ts` owns empty-block caret placeholders. Extend these
+existing suites rather than duplicate
+the same malformed geometry, depth or no-op assertions. FMT-1.8 acceptance now also
+requires wrapper/whitespace canonicalization, intentional-empty and Unicode
+preservation, and partition/reimport invariance; historical browser receipts do
+not establish these new assertions. Descriptor acceptance includes duplicate mark
+keys and nested single-cell table attempts in both supported cell shapes.
+
+Review basis: [Slate's normalization constraints and infinite-loop warning](https://docs.slatejs.org/concepts/11-normalizing)
+and [Quill's compact, canonical text-run model](https://quilljs.com/docs/guides/designing-the-delta-format).
+Their principles inform bounded admission and regression cases; they do not define
+our wire format or require destructive cleanup of intentional empty content.
+
 ## Export and representability
 
 Markdown export is deterministic semantic serialization, not recovery of the author's original spelling.

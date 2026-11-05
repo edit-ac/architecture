@@ -1,6 +1,6 @@
 # Close BPH-1.3, BPH-1.4, BPH-1.7 prerequisite ownership
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; paths in task contracts are core-relative.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/18-laravel-bindings.progress.md`.
@@ -23,7 +23,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task BPH-1.3 — Add the Laravel service provider and policy boundary
 
-- [ ] BPH-1.3 Add the Laravel service provider and policy boundary.
+- [x] BPH-1.3 Add the Laravel service provider and policy boundary.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/backend/laravel/.
@@ -37,11 +37,11 @@ Acceptance: A separate Laravel Composer wrapper requires the PHP SDK and binds c
 
 Implementation:
 
-- [ ] BPH-1.3-I1 Add the Laravel service provider and policy boundary. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BPH-1.3-I1 Add the Laravel service provider and policy boundary. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BPH-1.3-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.3`: Boot one local Laravel application with prepared principals; one allowed and one denied request have the expected typed outcomes. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BPH-1.3-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.3`: Boot one local Laravel application with prepared principals; one allowed and one denied request have the expected typed outcomes. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -49,7 +49,7 @@ Blocked behavior: Leave BPH-1.3 unchecked; record owner, source/error fingerprin
 
 ### Task BPH-1.4 — Bind Eloquent to PHP SDK transactions
 
-- [ ] BPH-1.4 Bind Eloquent to PHP SDK transactions.
+- [x] BPH-1.4 Bind Eloquent to PHP SDK transactions.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: adapters/backend/laravel/database/; adapters/backend/laravel/src/.
@@ -63,11 +63,11 @@ Acceptance: Thin Eloquent/connection adapters map the existing application trans
 
 Implementation:
 
-- [ ] BPH-1.4-I1 Bind Eloquent to PHP SDK transactions. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BPH-1.4-I1 Bind Eloquent to PHP SDK transactions. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BPH-1.4-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.4`: Save and reopen using real local SQLite, then force a rollback and verify neither checkpoint nor committed event changed. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BPH-1.4-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.4`: Save and reopen using real local SQLite, then force a rollback and verify neither checkpoint nor committed event changed. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -75,7 +75,7 @@ Blocked behavior: Leave BPH-1.4 unchecked; record owner, source/error fingerprin
 
 ### Task BPH-1.7 — Build the Laravel editor save/load example
 
-- [ ] BPH-1.7 Build the Laravel editor save/load example.
+- [x] BPH-1.7 Build the Laravel editor save/load example.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: examples/sdk-adapters/laravel/.
@@ -89,11 +89,11 @@ Acceptance: A documented Blade/Vite page mounts the real editor, saves to the ap
 
 Implementation:
 
-- [ ] BPH-1.7-I1 Build the Laravel editor save/load example. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BPH-1.7-I1 Build the Laravel editor save/load example. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BPH-1.7-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.7`: Run one local browser create/edit/save/reopen flow plus a prepared stale-save conflict using the actual adapter; capture concise counts and tear down owned resources. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BPH-1.7-V1 Run `node scripts/sdk-adapter-delivery.mjs BPH-1.7`: Run one local browser create/edit/save/reopen flow plus a prepared stale-save conflict using the actual adapter; capture concise counts and tear down owned resources. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.

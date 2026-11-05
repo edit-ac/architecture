@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Workers change only task checkboxes and Status in this source. Keep delivery summaries, source hashes, counts and reconciliation records in separate progress/ignored receipts. Never add a Current delivery paragraph; it triggers source-reconciliation loops.
+
 ## Superseding current-format policy
 
 Apply `architecture/decisions/006-single-format-before-publication.md` and `architecture/specs/document-durability.md`: one current witnessed v5 production format, fixture-only old readers, current API/ABI contracts before publication, no silent data conversion or retired runtime fallback. Port useful old semantic assertions; preserve actual revision history and distinct external/protocol/encoding contracts. Current prerequisites are in the successor runtime root below. Complete dependent native/terminal features after SFC-5.1 before remaining optimization; a size batch ends at 45 minutes or two changed hypotheses and cannot block independent features. Unmet original hard-budget predicates stay with QPF final owners; no cap is waived. Prior run is stopped, its source/progress/dirty work preserved. One root workspace/main controller, no subagents/worktrees, paid inference, physical-device qualification or publication. These rules supersede conflicting historical version/whole-track prerequisite text below.
@@ -141,3 +143,7 @@ Validation:
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
 Blocked behavior: Leave unchecked; try an independent ready parent, otherwise record fingerprint/owner/repair/resume condition and return BLOCKED for controller stop.
+
+## Shared alpha block-action acceptance
+
+The existing final platform owner additionally covers current shared Turn into and Insert after through the real installed Session/FFI/native or terminal route claimed by this platform, including lossless heading/paragraph content, directional selection, one undo, stale/readonly refusal, and lifecycle/disposal. Consume BTA/BTU/BTQ exact handoff rows; reuse shared semantic evidence but execute platform-specific command/focus integration on this target. JavaScript extension providers are not assumed portable: unavailable providers have an explicit typed result. If this platform exposes a block menu, verify its configuration and shared dispatch without creating a separate conversion engine. A host-only/mock pass cannot qualify a target runtime. Missing applicable platform integration blocks this existing final parent and QRD-1.3.

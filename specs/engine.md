@@ -1,5 +1,7 @@
 # Shared engine contract
 
+Alpha block conversion requirement, 2026-10-23: [Turn into and block actions](block-actions.md) are shared prepared semantics. Paragraph/heading changes preserve rich content, stable identity and placement; advanced mappings require explicit preservation/impact rules. Menu visibility is independent of command capability. The [bounded implementation plan](../runner-queues/alpha-block-actions-20261023/README.md) owns the additional work and current-format acceptance; this requirement is not a delivered-runtime claim.
+
 Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
 
 Status: development contract; the bounded foundation profile is locally qualified in [foundation evidence](../evidence/foundation.md). Production engine behavior remains subject to its own gates.
@@ -178,6 +180,12 @@ An optional final `selectionAt` supplies anchor/focus owner, UTF-16 offset and l
 
 These synchronous coordinates are not asynchronous targets. Preparing a batch does not mutate live state; commit checks the original replica/revision/checkpoint and rejects a stale plan rather than rebasing integer offsets onto unrelated content. Use stable anchors for asynchronous work. Exact atomic text/mark and selection vectors are in `crates/editac-core/tests/atomic_batch.rs`, bridge capacity tests, and the packed `tests/editing/atomic-batch.test.mjs` proof. These tests unblock the missing SEQ-11 primitive; they do not close all RGS-1.2 recipes or native device qualification.
 
+### Qualified structural atom moves (ES-3.4)
+
+MoveCommand retains its captured structural versions, current root/list/quote destination scope, cycle/sibling checks and source-relative selection. Its known atom allowlist uses the same current descriptor validation as Place: image, asset, reference, callout and the bounded inert-extension carrier. See the [per-kind capability matrix](editing-behavior-standards.md#es-block-2--identity-movement-and-conversion-preservation). It writes only an existing placement intention; no content tuple, source, reference target or external asset record is rewritten. Current addressed-table Place remains separately owned; MoveCommand does not gain table or arbitrary opaque-kind admission.
+
+After target/destination/sibling admission, placing an owner under its current parent before its current next sibling (or appending an already-last sibling) is a no-op. Prepared batch output compares both the staged state vector and deletion set with entry state before producing an empty update; a deletion-only change must not be mistaken for a no-op. This prevents historical deletion-set replay from advancing revision on an unchanged batch. Core retains its existing revision and result selection without content/history publication. Session maps an unchanged committed revision to no journal/outbox receipt, rechecking read-only/expiry and prepared revision at the existing boundary. No storage, wire or result shape changes.
+
 ### Prepared grapheme deletion
 
 `deleteGraphemeAt { owner, offset, backward }` uses the core extended-grapheme boundary helper against the disposable batch state. The public cut is UTF-16. Interior grapheme/surrogate cuts, missing owners and invalid offsets reject the entire preparation; no preceding staged change becomes live. A successful deletion preserves retained runs and returns a separate stable caret at the deleted range start. An empty document-edge range is a zero-update, zero-history result. Entry/result bookmarks use the existing semantic history owner. Shared native and mounted-WASM cases consume `fixtures/editing-failures/deletion-vectors.json`; the adapter owns native word/line range capture and selection-first atom presentation.
@@ -278,6 +286,27 @@ Selected code/text cross-owner fragment replacement aligns incompatible selected
 The additive packed handle `validateFragment(raw)` / WASM `validate_fragment` checks a bounded v1 clipboard JSON envelope against this engine's schema and the existing browser structural limits. It returns no document data or success mutation: validation is pure, allocates no second document or prepared plan, and changes no anchors, history, revision, subscriptions or updates. Browser decoding retains JSON syntax diagnostics and the `fragment-*` structural diagnostics; malformed source remains recoverable. Semantic/capability and target admission still run through the existing fragment prepare/can/commit boundary. Portable Rust exposes the same structural validator for consumers that need this interchange check. This is an implementation move for SDK-1.8 retained-code reduction, with unchanged stored/wire/schema contracts and clipboard acceptance.
 
 Literal one-block replacements with no presentation, container, checklist or inline mark payload reuse the existing prepared text-edit path when both endpoints belong to one owner. They inherit admitted destination character attributes and preserve that owner's presentation/source identity, and create no structural suffix/empty block. The retained semantic selection follows the committed replacement; compound or rich fragments keep the existing structural planner.
+
+### Captured input replacement (ES-1.3)
+
+Input adapters retain both stable endpoints, their direction and their owning
+Session from composition start. Capture and preparation do not change durable
+content or selection. Provisional text remains adapter-owned. At final input,
+prepare the existing fragment operation against those endpoints and a freshly
+observed revision; never redirect it to the current visible caret. Same-owner
+literal input reuses the existing text path; compatible cross-owner prose uses
+the existing fragment split/join/container admission. Partial atoms, incompatible
+container relations, deleted targets and stale plans refuse before live mutation.
+Preparation success is applicability for that exact plan, not a lease across edits.
+
+`PreparedEdit::result_selection` exposes the engine's explicit selection or its
+collapsed result caret. These anchors may name staged sources and must only be
+resolved after successful application of that exact plan. A refused commit grants
+no result selection. One accepted replacement retains the original directed entry
+and committed result in shared history. Cancel drops transient plans/anchors and
+restores the captured visible selection by resolving its anchors, without semantic
+undo or restoring an obsolete document snapshot. Outside edits require fresh
+preparation at the retained anchors; rejected overlaps preserve recoverable input.
 
 ### Bounded fragment preflight reuse
 

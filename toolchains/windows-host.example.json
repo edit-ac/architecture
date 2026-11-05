@@ -1,0 +1,57 @@
+{
+  "purpose": "EWH-1.1 private Windows WinUI host binding template; not an executable runner or readiness receipt",
+  "state": "awaiting-first-run-and-provisioning",
+  "privateConfiguration": "Keep the populated copy outside source Git; never include passwords or private keys.",
+  "host": {
+    "kind": "existing-user-approved-local-vm",
+    "name": "windows-qa",
+    "osEdition": "Windows 11 Pro",
+    "architecture": "arm64",
+    "sshAlias": "windows-qa",
+    "desktopUser": "qa",
+    "interactiveTask": "NativeQA",
+    "osBuild": null,
+    "activationState": null
+  },
+  "connection": {
+    "controller": "/Users/bpstr/Documents/Codex/native-qa",
+    "sshConfig": "/Users/bpstr/Documents/Codex/native-qa/ssh_config",
+    "endpoint": "127.0.0.1:2222",
+    "forwardAgent": false
+  },
+  "toolchain": {
+    "windowsSdkVersion": null,
+    "windowsAppSdkVersion": null,
+    "winuiVersion": null,
+    "msvcVersion": null,
+    "dotnetSdkVersion": null,
+    "dotnetRequired": null,
+    "msbuildVersion": null,
+    "targetArchitecture": "arm64",
+    "pinningRule": "Set exact installed versions from the selected native consumer manifests before compilation. Null fields are unresolved prerequisites, never wildcards or latest-version selectors. Record whether .NET is required by that consumer."
+  },
+  "consumer": {
+    "guestCheckout": null,
+    "sourceRevision": null,
+    "bootstrapProject": null,
+    "buildArgv": [],
+    "desktopBootstrapArgv": [],
+    "commandPolicy": "Populate only reviewed bootstrap/build commands with explicit native exit handling. No arbitrary remote command dispatcher."
+  },
+  "readiness": {
+    "ssh": false,
+    "unlockedDesktop": false,
+    "toolchainInstalled": false,
+    "bootstrapCompiled": false,
+    "bootstrapExecuted": false
+  },
+  "receiptRequired": [
+    "actual OS build and activation state",
+    "guest/application/compiler/runtime architectures and any emulation",
+    "exact SDK/MSVC/MSBuild/Windows App SDK/WinUI and applicable .NET versions",
+    "source and package digests",
+    "native compile exit",
+    "interactive WinUI control bootstrap executed/passed/failed/skipped counts, with nonzero cases and no unresolved failures or required skips"
+  ],
+  "resume": "Finish Windows first-run/account setup manually, provision the existing QA harness, and establish SSH plus unlocked desktop readiness before installing the selected WinUI toolchain. See architecture/operations/local-native-testing.md."
+}

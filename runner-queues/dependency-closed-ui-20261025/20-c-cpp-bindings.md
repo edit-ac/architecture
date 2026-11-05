@@ -1,6 +1,6 @@
 # Close BRC-1.4, BRC-1.5, BRC-1.6 prerequisite ownership
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; paths in task contracts are core-relative.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/20-c-cpp-bindings.progress.md`.
@@ -23,7 +23,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task BRC-1.4 — Freeze the minimal C ABI ownership contract
 
-- [ ] BRC-1.4 Freeze the minimal C ABI ownership contract.
+- [x] BRC-1.4 Freeze the minimal C ABI ownership contract.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/c/include/; sdk/contracts/c-abi.md; crates/editac-ffi/.
@@ -37,11 +37,11 @@ Acceptance: Opaque handles, owned buffers, explicit destroy, cancellation, error
 
 Implementation:
 
-- [ ] BRC-1.4-I1 Freeze the minimal C ABI ownership contract. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BRC-1.4-I1 Freeze the minimal C ABI ownership contract. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BRC-1.4-V1 Run `node scripts/sdk-adapter-delivery.mjs BRC-1.4`: Compile one header-only C consumer and inspect a prepared invalid descriptor/ownership transcript against the contract. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BRC-1.4-V1 Run `node scripts/sdk-adapter-delivery.mjs BRC-1.4`: Compile one header-only C consumer and inspect a prepared invalid descriptor/ownership transcript against the contract. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -49,7 +49,7 @@ Blocked behavior: Leave BRC-1.4 unchecked; record owner, source/error fingerprin
 
 ### Task BRC-1.5 — Implement C checkpoint and authority entry points
 
-- [ ] BRC-1.5 Implement C checkpoint and authority entry points.
+- [x] BRC-1.5 Implement C checkpoint and authority entry points.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/c/; crates/editac-ffi/.
@@ -63,11 +63,11 @@ Acceptance: Current checkpoint validation/load/export and typed save/receipt tra
 
 Implementation:
 
-- [ ] BRC-1.5-I1 Implement C checkpoint and authority entry points. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BRC-1.5-I1 Implement C checkpoint and authority entry points. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BRC-1.5-V1 Run `node scripts/sdk-adapter-delivery.mjs BRC-1.5`: Run one compiled C current-format round-trip consumer and explicit destroy path with a prepared transport. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BRC-1.5-V1 Run `node scripts/sdk-adapter-delivery.mjs BRC-1.5`: Run one compiled C current-format round-trip consumer and explicit destroy path with a prepared transport. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.
@@ -75,7 +75,7 @@ Blocked behavior: Leave BRC-1.5 unchecked; record owner, source/error fingerprin
 
 ### Task BRC-1.6 — Add an ownership-safe C++ wrapper
 
-- [ ] BRC-1.6 Add an ownership-safe C++ wrapper.
+- [x] BRC-1.6 Add an ownership-safe C++ wrapper.
 
 Purpose: Make this integration boundary usable without application-owned protocol reimplementation.
 Deliverable: sdk/cpp/.
@@ -89,11 +89,11 @@ Acceptance: RAII handles/move-only buffers and typed results wrap C ownership wi
 
 Implementation:
 
-- [ ] BRC-1.6-I1 Add an ownership-safe C++ wrapper. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
+- [x] BRC-1.6-I1 Add an ownership-safe C++ wrapper. Reuse the existing owner and wire the minimum usable consumer at the named paths. Register its focused selector; defer comprehensive suites.
 
 Validation:
 
-- [ ] BRC-1.6-V1 Run `node scripts/sdk-adapter-delivery.mjs BRC-1.6`: Compile one C++ consumer that moves a handle, saves/reopens a checkpoint and disposes with a pending prepared callback. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
+- [x] BRC-1.6-V1 Run `node scripts/sdk-adapter-delivery.mjs BRC-1.6`: Compile one C++ consumer that moves a handle, saves/reopens a checkpoint and disposes with a pending prepared callback. Budget: 1–3 minutes, or at most 5 minutes for a declared compiler/package/database startup; reuse unchanged passing prerequisite results.
 
 Evidence: Progress path above; changed source inputs, actual command/runtime/exit and meaningful pass/fail/skip counts. Contract inspections record cases, not invented test results.
 Handoff: Delivered interface, last substep, failing input/selector and next bounded action.

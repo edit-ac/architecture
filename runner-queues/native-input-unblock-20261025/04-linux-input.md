@@ -1,6 +1,6 @@
 # Implement the missing Linux input owner
 
-Status: IN_PROGRESS
+Status: BLOCKED
 
 ## Goal and bounded entry conditions
 

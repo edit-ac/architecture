@@ -64,3 +64,18 @@ The user authorized periodic local-main integration on2026-10-26. Follow [the de
 ## Consolidated main continuation, 2026-10-27
 
 The editor integration schedule and parallel editor lane are retired. Use the existing root main branches and [current unfinished FIFO](../runner-queues/editor-main-20261027/README.md), preserving every source/progress pair. Native OS sources and final all-platform qualification remain deferred. The prior unchanged backend verification loop stays stopped. The guard now fails closed when0.12.4 rejects a structured result, preventing legacy-handoff redispatch of its lost blocker.
+
+## Bounded resolver recovery, 2026-10-28
+
+The current user authorization enables one automatic resolver per source-bound failure instead of stopping on every valid blocked worker. Start with `guarded-roadmap-runner.py --allow-resolver-recovery --cli PINNED_CLI start ... --blocked-policy resolve --resolver-attempts 1`. Keep the ordinary timeout, source/progress FIFO and live guard. The exact tested CLI and current run are pinned in `.roadmap-runner/wasm-extensions-20261028-recovery/active-handoff.json`; preserve the installed global runtime for other workspaces.
+
+The locally validated 0.12.4 recovery patch accepts bounded string argv in `nextAction.command` as a nonexecuted suggestion. Selected recoverable metadata errors emit an explicit resolver handoff and enter a blocker before any fresh worker; invalid results never grant acceptance. The optional guard mode permits that handoff and valid blocked workers once per failure/input fingerprint. A resolver must start within60 seconds. Repeated unchanged failure, resolver exhaustion, unsafe/stale result binding, completed-source loops, guard errors and expiry remain stop conditions. Default guard behavior without the flag remains immediate stop.
+
+Use normal original-source scheduling for no-change dispositions; finite implementation accounting must not force artificial source edits. Existing completed receipts, failed caps, paid-inference prohibition, one current editor format and all original prerequisite/qualification owners remain binding. Read the current mirrored FIFO rather than an old stopped-run queue when adopting controller-approved source amendments.
+
+The2026-10-28 follow-up preserves out-of-workspace paths named only as failure
+prerequisites as opaque `externalInputPaths`; it never reads/hashes them and forces
+coverageComplete=false. They cannot authorize a retry. Changed files, evidence
+and actionable file targets remain workspace-bound. The user also removed the
+unrequested Deep Review and its review-dependent finding task from active dispatch;
+retain their unchecked history and the current mirrored queue scope correction.

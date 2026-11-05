@@ -86,7 +86,7 @@ Blocked behavior: Leave unchecked; try an independent ready parent, otherwise re
 
 ### Task BTQ-1.1 — Complete shared semantic and persistence coverage
 
-- [ ] BTQ-1.1 Prove current-format lossless conversion and general insertion semantics.
+- [x] BTQ-1.1 Prove current-format lossless conversion and general insertion semantics.
 
 Deliverable: The named BTQ-1.1 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Prevent content loss or divergent behavior in the shared action contract.
@@ -100,11 +100,11 @@ Acceptance: Cover paragraph/heading levels, no-op, rich/opaque Unicode preservat
 
 Implementation:
 
-- [ ] BTQ-1.1-I1 Map existing evidence to these requirements and add only uncovered deterministic fixtures, including immutable before/after state assertions for rejected batches.
+- [x] BTQ-1.1-I1 Map existing evidence to these requirements and add only uncovered deterministic fixtures, including immutable before/after state assertions for rejected batches.
 
 Validation:
 
-- [ ] BTQ-1.1-V1 From `core`, run outstanding cases in `cargo test -p editac-core --locked --offline --test block_actions`, `node --test tests/wasm-block-actions.test.mjs` and `cargo test -p editac-session -p editac-ffi --locked --offline block_actions`, narrowing to uncovered selectors when compatible evidence exists. Record nonzero per-target executed/passed/failed/skipped counts, pins and failure dispositions. Budget: 10 minutes execution; widen only for demonstrated impact or an explicit existing gate.
+- [x] BTQ-1.1-V1 From `core`, run outstanding cases in `cargo test -p editac-core --locked --offline --test block_actions`, `node --test tests/wasm-block-actions.test.mjs` and `cargo test -p editac-session -p editac-ffi --locked --offline block_actions`, narrowing to uncovered selectors when compatible evidence exists. Record nonzero per-target executed/passed/failed/skipped counts, pins and failure dispositions. Budget: 10 minutes execution; widen only for demonstrated impact or an explicit existing gate.
 
 Evidence: Progress mapping each invariant to reused or fresh evidence with current format/runtime provenance.
 Handoff: Covered semantics and exact residual platform, lifetime or recovery gates without claiming those separate gates passed.
@@ -112,7 +112,7 @@ Blocked behavior: Record the failed semantic boundary and repair hypothesis; do 
 
 ### Task BTQ-1.2 — Complete extension and advanced-plan conformance
 
-- [ ] BTQ-1.2 Prove extension conversion availability, preservation and review safety.
+- [x] BTQ-1.2 Prove extension conversion availability, preservation and review safety.
 
 Deliverable: The named BTQ-1.2 outcome and unchanged Acceptance below, with scoped current-source proof.
 Purpose: Keep custom conversions within the same loss, permission and lifecycle rules.
@@ -126,11 +126,11 @@ Acceptance: Cover duplicate/invalid registration; lossless custom mapping; disab
 
 Implementation:
 
-- [ ] BTQ-1.2-I1 Extend existing deterministic conformance fixtures only for uncovered conversion obligations and capture per-runtime availability in the shared capability handoff.
+- [x] BTQ-1.2-I1 Extend existing deterministic conformance fixtures only for uncovered conversion obligations and capture per-runtime availability in the shared capability handoff.
 
 Validation:
 
-- [ ] BTQ-1.2-V1 From `core`, run uncovered selectors in `node --test tests/block-actions-contract.test.mjs tests/block-actions-consumer.test.mjs`, reusing compatible functional checks and excluding the web-loading cases owned by BTQ-1.3. Budget: 10 minutes execution; record nonzero counts and runtime provenance. Prepared fixtures do not qualify arbitrary third-party plugin semantics.
+- [x] BTQ-1.2-V1 From `core`, run uncovered selectors in `node --test tests/block-actions-contract.test.mjs tests/block-actions-consumer.test.mjs`, reusing compatible functional checks and excluding the web-loading cases owned by BTQ-1.3. Budget: 10 minutes execution; record nonzero counts and runtime provenance. Prepared fixtures do not qualify arbitrary third-party plugin semantics.
 
 Evidence: Progress with conversion mapping dispositions, rejected unsafe proposals and source/artifact pins.
 Handoff: Supported mappings and precise disabled reasons for the public API and platform consumers.

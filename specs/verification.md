@@ -47,6 +47,56 @@ SDK-1.8 implements the default Task artifact reductions, reproducible inventory 
 
 The existing SDK and architecture-fitness roadmaps' [extension DX and size work](extension-dx.md#size-reduction-and-compression), especially FIT-1.10, SDK-1.13, reuses this harness and these unchanged caps. Generic public preset naming cannot reclassify existing required Task bytes or erase legacy evidence. Measure facade overhead, each optional extension, dedicated initial/deferred assets and combinations, with exact raw/gzip/Brotli inventories and local HTTP compression/cache provenance. Attribute before optimizing, preserve Unicode and feature-equivalent behavior, and report actual savings/tradeoffs rather than promise a percentage. Compression transfer savings do not establish smaller decompressed memory or faster WASM compilation.
 
+## Expanded reference budget
+
+The user-confirmed 2026-10-28 ceiling applies only to the frozen
+[`expanded-document-v1`](extension-library.md#expanded-document-reference-configuration):
+**1 MiB = 1,048,576 total canonical gzip bytes**. This supplements, and does not
+replace, the existing default Task 524,288-total / 32,768-JS hard caps and
+256,000/16,000 preferred targets. A failed Task cannot be renamed expanded.
+The same canonical kernel serves every configuration; there is no schema or
+runtime per preset. The expanded configuration's **JS allocation is 128 KiB
+(131,072 bytes)**, including generated glue and all required lazy JavaScript;
+it is an allocation within the total, not an additional allowance. Do not apply
+the Task-only 32 KiB JS cap to that expanded configuration.
+
+WEX-1.2 freezes these engineering allocations before gate implementation. They
+are ceilings for planning/admission, not measured contributions or promised
+savings. All enabled features and required assets remain in the named inventory;
+an overrun stays failed/pending. Reallocation needs an explicit updated inventory
+and ownership/arithmetic review within the unchanged user-approved total, never
+a result-dependent relabeling or increased ceiling.
+
+| Resource ownership allocation | Canonical gzip bytes | Included contribution |
+|---|---:|---|
+| Common kernel/adapter and promised baseline | 524,288 | Core JS/glue/Wasm, HTML/clipboard, Unicode, persistence, update primitives and essential CSS; baseline JS allocation remains 32,768 within this amount |
+| Markdown | 98,304 | Parser Wasm/glue, required shortcuts/adapter and codec assets |
+| Advanced tables and images | 65,536 | Table/media tools and presenters; shared validation stays charged to core |
+| Math | 131,072 | Typesetter, glue, CSS and all required fonts |
+| Code highlighting | 98,304 | Worker/presenter, companion Wasm and required grammar resources, including any bundled languages beyond the selected Rust fixture |
+| Collaboration/presence | 65,536 | Connector/session/presence/peer-caret orchestration; common update primitives counted only in core |
+| Document tools and shared optional loading | 65,536 | Search, reorder, block actions, slash, references and optional loader/common code |
+| **Unique required union ceiling** | **1,048,576** | **524,288 core + 524,288 optional allocations** |
+
+The expanded JS subtotal is independently at most 131,072 bytes: at most 32,768
+baseline JS plus 98,304 optional JS, all already contained in the rows above.
+Shared optional code has one owner in the document-tools/loading row; shared
+core code has one owner in core. Attribute a resource once by its actual build
+identity/URL, not once per feature or editor. Report each feature's standalone
+and incremental contribution, shared residual, initial/deferred/combined union,
+and the site union with its selection rationale. Do not sum overlapping retained
+subgraphs or component gzip estimates. Missing assets or incompatible identities
+fail. User data/media payloads remain document content, not static SDK assets.
+
+Keep the current producer and runtime gate unchanged until WEX-2.6 supplies the
+complete named public consumer and WEX-4.2 implements its profile-specific
+assertions. The current producer measures the legacy Task root only; its output
+cannot prove the expanded inventory or these allocations. Reuse its canonical
+gzip-9/fixed-metadata and separate raw/Brotli accounting, required-lazy counting,
+minifier/compressor pins and negative controls. Brotli/Zopfli representations
+never replace canonical gzip admission. FIT-1.10 owns the artifact/delivery
+contract; WEX-4.2 supplies the expanded checks and FIT-1.11 consumes final receipts.
+
 ## Multi-editor and cross-route resource accounting
 
 The [SHR-01–SHR-08 cases](web.md#required-shared-resource-cases) add resource-reuse evidence to the existing single-profile budgets. Keep the default Task caps above unchanged and independently enforced; a mixed page containing optional features is a separately reported union. Report each profile's standalone inventory, the page/site union of unique required resources, incremental resources for the second editor/route, and actual network body transfers. Count an artifact referenced through one shared URL once in that union; identical bytes emitted or delivered under different URLs are duplicate delivery candidates, not a deduplication win. Required lazy assets still count. Do not divide bytes by editor count to pass a cap or hide duplicates behind a warm cache.
@@ -94,6 +144,150 @@ Work-count assertions are deterministic regression gates even when timing is inc
 REL-1.2 owns pinned optimized Tiptap/Lexical/edit.ac configurations and the limited plain-contenteditable reference; DOC-1.29/1.30 document and publish its evidence without another harness. Record minimal and feature-equivalent runs separately, exact versions/builds, schema/extension capabilities, rendering settings, collaboration/durability policy and all JS/WASM/CSS/optional costs. Use the fixture corpus above, identical hardware/browser/network settings and declared warmup/order/sample counts; retain unavoidable differences. Unsupported Large/Aged envelopes remain diagnostic.
 
 REL-1.3 measures cold/warm first visible content and actual edit readiness separately, input-to-visible latency, HTML/Markdown paste, large-document operations, save/restore and reconnect with prepared local transports. REL-1.4 covers remote bursts, backpressure and mount/edit/destroy memory. Retain raw samples, p50/p95/p99 where supported by the sample count, artifact/profile hashes, failures/skips and reproduction commands. Include regressions; do not substitute targets or empty/insufficient samples for measured results. Synthetic input cannot establish real mobile/IME correctness. Public tables/charts expose provenance, Not yet measured and Inconclusive states, separate minimal/full configurations and downloadable sanitized data. No paid inference, ambient secrets or fixture recording is authorized.
+
+## Small-editor comparison protocol
+
+WEX-1.2 freezes this protocol before WEX-2.7 candidates or WEX-5 comparisons.
+Use `core/benchmarks/comparison/` and existing REL-1.2/1.3/1.4 owners. This is a
+prospective protocol, not measurements or a second harness. Preserve original
+Task/Long identities, assertions and failures. WEX-5.1 adds only the missing
+fixture/profile coverage; WEX-5.2 measures activation/first use and WEX-5.3
+measures input/resources after physical delivery. A contract freeze or compiled
+adapter is not runtime qualification.
+
+### Fixtures and capability classes
+
+Byte counts below describe the LF-joined paragraph text, not JSON/checkpoint
+framing. Preserve exact code points, including a decomposed accent; never
+normalize/reseed an existing document. Let `P = "Aé😀e\u0301"` (10 UTF-8 bytes,
+6 UTF-16 units). Independent text/schema oracles must confirm the counts.
+
+| Fixture identity | Exact text construction | Paragraphs | UTF-8 bytes / UTF-16 units |
+|---|---|---:|---:|
+| `small-empty-v1` | One supported empty paragraph, no placeholder content | 1 | 0 / 0 |
+| `small-128-v1` | `P + "x".repeat(118)` | 1 | 128 / 124 |
+| `small-1k-v1` | Four paragraphs: first three `P + "x".repeat(246)`, last `P + "x".repeat(243)`, joined with three LF separators | 4 | 1,024 / 1,008 |
+
+| Comparison class | edit.ac inventory | Competent Tiptap 3.32.0 inventory |
+|---|---|---|
+| `core-edit-only-v1` | Current kernel and borrowed-engine browser surface; paragraph/text, selection, undo/redo; no optional parser/presenter/provider or persistence claim. Same kernel, not a new smaller binary. | Vanilla `@tiptap/core` plus individually declared `@tiptap/extension-document`, `extension-paragraph`, `extension-text`, and `@tiptap/extensions/undo-redo`, all compatible locked 3.32.0. No StarterKit or unused expensive plugin in this genuinely basic profile. |
+| `rich-edit-only-v1` | The same editing control with six marks, headings 1–6, blockquote, bullet/ordered lists, hard break, separator and source code blocks; no syntax highlighting or table/media capability claim. | Vanilla StarterKit 3.32.0 with the matching declared feature list and competent public options. Do not disable comparison features merely to obtain a faster cell. Keep the historical StarterKit-based `tiptap-minimal` identity unchanged and label it accurately. |
+| `rich-durable-local-v1` | The same rich commands through the normal checkpoint/journal/recovery editor. | Existing Tiptap Collaboration/Yjs plus y-indexeddb; duplicate standalone undo is disabled in favor of its collaboration history. Verify a sentinel edit survives destroy/reopen. Document edit.ac writer-lease/crash/outbox differences; this is not complete durability/protocol parity. |
+
+A separately named collaborative variant uses prepared local transports and
+explicit presence settings on both sides. It cannot inherit an edit-only timing
+or byte pass. Keep React integrations separate from vanilla, with isolated mounts
+and selected-state subscriptions; no whole-editor rerender handicap. All added
+package imports must be direct declared locked dependencies, never an accidental
+transitive dependency. No version upgrade is required by this freeze. Missing
+supported comparator behavior is an unavailable cell, not a timing win.
+
+### Endpoints, conditions and objectives
+
+Record navigation/import start, first matching DOM projection, actual accepted
+first edit and its committed visible result separately. The edit-ready endpoint
+requires authoritative admission/recovery, the declared persistence attachment,
+selection/input handlers and required-input adapters; prove it by the first
+accepted browser edit, not only `ready` or a preview. Report input-event to
+committed DOM/layout, command-to-layout and serialization/kernel/patch phases.
+DOM/layout/animation-frame observations are explicit proxies, not compositor
+paint or native/IME qualification. Before readiness the shell remains read-only
+or explicitly retains unaccepted input; no temporary writable JS document.
+
+For each enabled lazy feature, clock explicit intent through loading/transfer,
+compile/init, validated execution and the first correct decoration, committed
+result or real export bytes. Keep parser/command source on failure. A failed,
+cancelled or unsupported first use is not a successful low-latency sample.
+
+Freeze exact host CPU/RAM/OS, optimized package/compiler/browser hashes and
+server encoding before each paired cell. Use the same artifacts/environment for
+both editors, with 1/10/50 live mounts and destroy/reopen rounds reported
+separately. Desktop: 1280×800, DPR1, CPU1×, 9 Mbps down / 1.5 Mbps up / 20 ms
+latency. Phone diagnostic: 390×844, DPR3, CPU4× slowdown, the same bandwidth /
+150 ms latency. Use browser emulation consistently; never label it native phone
+or OS/IME evidence. Any actual-device cell gets a separate pinned identity.
+
+Cold means a new realm, disabled HTTP cache, no initialized module/compiled-Wasm
+reuse, and pre-existing deterministic local data for durable profiles; fixture
+preparation is outside the timer and cannot reseed reopen. Record document
+transfer separately. HTTP-warm full navigation, same-realm module/compiled-Wasm
+reuse and service-worker caching are three distinct conditions. Warm activation
+still includes the declared document restore and new adapter attachment.
+No-editor routes request zero editor assets where isolation is supported.
+
+| Objective, p95 unless stated | Desktop | Phone diagnostic |
+|---|---:|---:|
+| Existing core ordinary edit | 1 ms | 2 ms |
+| Existing input to visible / selection-format-undo to layout at controlled 60 Hz | 16.7 ms | 33 ms |
+| Existing warm Task activation, also applied to tiny actual edit readiness | 50 ms | 100 ms |
+| Tiny cold navigation/import through actual edit readiness, prospective objective | 1,000 ms | 2,000 ms |
+| Cold lazy first use including transfer/initialization, prospective objective | 1,000 ms | 2,000 ms |
+| Warm 10 KiB Markdown paste to formatted frame | 50 ms | 100 ms |
+| Warm 100 KiB Markdown paste to formatted frame | 150 ms | 300 ms |
+| Warm local slash menu after ready | one frame | two frames |
+
+These do not relax any existing Task/Long/core/size target. Warm lazy execution
+also retains the affected operation's existing ordinary-edit/input/paste target;
+a cheap initial shell cannot hide a first-use stall. Before timing, bind every
+cell to the applicable numerical row, capability class and one REL owner.
+Failures remain failures; passing these prospective objectives is not a size,
+platform or release qualification waiver.
+
+The competitive objective is p95 latency ratio edit.ac/Tiptap **≤1.00** within
+matched class, fixture, endpoint and cache condition; report startup, first edit,
+selection/formatting/undo and supported paste separately. Resource byte ratios
+are descriptive; independent Task/expanded hard caps remain mandatory. A durable
+versus edit-only cell is a labeled product-cost observation, never parity or a
+universal speed claim. Record slower and inconclusive outcomes and exact gaps.
+
+Use two discarded warmups per paired cell and interleave equal baseline and
+comparison samples in AB/BA blocks with fixed order seed `0x20261028`. At least
+100 independent samples permit p95 and 1,000 permit p99; report lower-count
+observations without those tail claims. Keep raw samples, dispersions and a
+95% percentile interval for the paired p95 ratio: 10,000 paired AB/BA-block
+bootstrap resamples with replacement, nearest-rank p95 recomputed per lane,
+2.5th/97.5th percentiles, xorshift32 seed `0x20261028`. Preserve independent
+block boundaries; the method and seed cannot change after candidate results. Noise floor is
+`max(0.1 ms, 2 × measured timer resolution, 5% of matched Tiptap p95)`; a smaller
+difference is inconclusive, never a faster claim. A competitive objective is
+met only when the ratio interval's upper bound is ≤1.00; a speedup claim also
+needs separation beyond the frozen noise floor. An unstable load/environment or
+insufficient samples is inconclusive. No result-dependent tolerances, changed
+competitor settings or average hiding a regressed input cell.
+
+Resource limits remain canonical Task/expanded byte caps and required unions,
+one compatible core initialization per realm/artifact, zero disabled-feature
+provider/timer/subscription/request work, exactly one live handle per mounted
+editor and zero instance-owned handles/listeners/observers/requests/workers after
+destroy. Measure retained/peak JS and Wasm bytes at 1/10/50 mounts and five
+mount/edit/destroy rounds after a declared warmup. Existing REL-1.4 requires no
+monotonic retained-reference growth; shared immutable code/high-water capacity
+is reported separately. There is no pre-existing universal absolute heap cap:
+do not invent a heap pass from missing telemetry. Unsupported memory telemetry
+is unavailable, and noisy byte growth is inconclusive; deterministic resource
+leaks fail regardless of noise. Preserve native and device deferrals.
+
+## Shared optimization allowance
+
+One ignored workspace ledger,
+`.roadmap-runner/wasm-extensions-20261027/optimization-ledger.json`, is shared by
+WEX-2.7 and source 03 (WEX-3.1/3.2). At most **45 minutes / two materially
+different measured hypotheses**, whichever is reached first, after source01/02
+physical boundaries through WEX-2.6 are complete. Contract/attribution work is
+not an optimizer candidate. On first actual candidate work set `startedAt` and
+an absolute `candidateDeadline` 45 minutes later once; pauses, source boundaries,
+new sessions, hashes or renamed operations cannot extend/reset it. Record each
+hypothesis before a change, consumed source/artifact/protocol pins, commands,
+actual duration, result, rejection/rollback and remaining allowance. Stop at the
+deadline or second hypothesis even with open size/latency targets.
+
+WEX-3.1 reads the remaining allowance; WEX-3.2 retains only a safe evaluated
+winner or the unchanged baseline. WEX-3.3's independent standard HTTP delivery
+and WEX-5 final measurements do not grant tuning or reset the ledger. Retain
+rejected QPF/RBO and WEX evidence and their retry conditions; this ledger never
+authorizes an unchanged rejected candidate or old stopped optimization loop.
+Further tuning requires a separately authorized changed scope/decision. No
+provider/credential calls or new runner are part of this allowance.
 
 ## Matrix and lifecycle
 

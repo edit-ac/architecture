@@ -46,6 +46,29 @@ others. Each OS must pass its own toolkit feasibility, implementation, packaged
 consumer, input and accessibility gates. Cross-platform qualification records
 each result separately; a missing mandatory target remains an open deliverable.
 
+### Android coroutine checkpoint authority (BNA-1.5)
+
+`core/adapters/native/android/` is the checkpoint-only coroutine facade over the
+existing generated UniFFI `NativeAuthoritySession`/`NativeEngine` binding. The
+thin Rust session adapter delegates exact immutable request capture, load and
+receipt admission to the shared `sdk/c/authority.rs` implementation and the
+existing canonical engine. It introduces no HTTP schema, semantic mapper,
+durability class or database. `create`, `open`, explicit checkpoint `restore`,
+local commands/read/checkpoint, conditional save/create, explicit exact retry,
+and operation-scoped ledger lookup retain the current shared contracts.
+
+Blocking native work runs on a coroutine I/O dispatcher; a suspending host-owned
+authenticated transport runs outside the native/state lock. State becomes
+commit-unknown before dispatching a write. Cancellation never means rollback or
+forgets its captured bytes/digest; a caller cancels and joins transport work
+before close returns checkpoint and pending-operation recovery. Only a shared
+Rust-validated receipt with exact identity/operation/revision/coverage/ETag can
+report committed. Unknown/pending lookup stays uncertain; only a scoped explicit
+not-committed rejection is terminal. There are no automatic retries, network
+clients, credentials, background jobs or collaboration claims. A JVM headless
+consumer proves this boundary only; Android lifecycle, UI/IME, target ABI/package
+and device qualification remain in their existing owners.
+
 ## Platform services and preferences
 
 The [platform editing contract](platform-editing-services.md) refines the existing native input/command owners and their [ENV variants](../tests/platform-editing-cases.md). Default platform spellcheck reuses the chosen control and respects user settings; off and explicit custom modes expose unsupported/coupled traits without silently changing independent autocorrection or keyboard behavior. Reuse system selection, clipboard, text services, accessibility and command affordances through existing session boundaries. Platform Edit menus, Cmd/Ctrl+Z, redo and native gestures must forward to shared history; enabling a second native undo stack or merely disabling it does not satisfy command support. Native -1.6/-1.7 supply prepared/control evidence and DEL-1.7 supplies exact-artifact platform observations, including on/off settings and missing-provider fallbacks. Old preparation/completion receipts do not qualify these added variants.

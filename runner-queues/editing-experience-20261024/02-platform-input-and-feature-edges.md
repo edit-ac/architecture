@@ -1,6 +1,6 @@
 # Deliver platform break actions and editing feature edges
 
-Status: IN_PROGRESS
+Status: BLOCKED
 
 ## Goal and execution rules
 
@@ -112,7 +112,7 @@ Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and chan
 
 ### Task EDX-2.5 — Distinguish terminal source newlines from semantic hard breaks
 
-- [ ] EDX-2.5 Distinguish terminal source newlines from semantic hard breaks.
+- [x] EDX-2.5 Distinguish terminal source newlines from semantic hard breaks.
 
 Purpose: Give terminal users an honest discoverable break command Existing owner: roadmaps15/36 terminal owner.
 Context: cli/src/; architecture/roadmaps/15-tui-client.md and 36-terminal-extension-integration.md or actual terminal roadmap filenames; existing PTY drivers; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
@@ -122,11 +122,11 @@ Acceptance: Source Enter inserts literal newline. A rich command surface exposes
 
 Implementation:
 
-- [ ] EDX-2.5-I1 Locate the real CLI/TUI parser and rich command bridge; expose the named action and protocol-specific help using existing engine/history authority.
+- [x] EDX-2.5-I1 Locate the real CLI/TUI parser and rich command bridge; expose the named action and protocol-specific help using existing engine/history authority.
 
 Validation:
 
-- [ ] EDX-2.5-V1 Run one existing focused CLI/TUI command selector and a bounded PTY key-protocol fixture; inspect the actual selected terminal protocol. Budget 3 minutes; broad protocol matrix stays EDX-3.3. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
+- [x] EDX-2.5-V1 Run one existing focused CLI/TUI command selector and a bounded PTY key-protocol fixture; inspect the actual selected terminal protocol. Budget 3 minutes; broad protocol matrix stays EDX-3.3. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
 
 Evidence: Separate ignored progress for this source, with task ID, changed paths, focused results, reused evidence and remaining limitations. No generated evidence in Git.
 Handoff: Last finished substep, affected symbol/interface, exact failing input or missing prerequisite and next bounded action.
@@ -134,7 +134,7 @@ Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and chan
 
 ### Task EDX-2.6 — Apply feature-table editing boundaries to existing commands
 
-- [ ] EDX-2.6 Apply feature-table editing boundaries to existing commands.
+- [x] EDX-2.6 Apply feature-table editing boundaries to existing commands.
 
 Purpose: Keep formatting, movement, transfer and popup actions predictable Existing owner: INT-1.3–1.18 and platform services.
 Context: architecture/specs/editing-experience.md Feature descriptions and Required test oracle; existing INT-1.3–1.18 command groups; packages/web/ and shared commands for affected behavior; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
@@ -144,11 +144,11 @@ Acceptance: All feature-table rows have an implementation/owner disposition: mar
 
 Implementation:
 
-- [ ] EDX-2.6-I1 Audit only the named feature-table rows against existing commands, reuse current implementations, and repair missing edge behavior at its existing owner one bounded group at a time. Leave unimplemented rows open with an exact next subgroup rather than mark an audit as implementation.
+- [x] EDX-2.6-I1 Audit only the named feature-table rows against existing commands, reuse current implementations, and repair missing edge behavior at its existing owner one bounded group at a time. Leave unimplemented rows open with an exact next subgroup rather than mark an audit as implementation.
 
 Validation:
 
-- [ ] EDX-2.6-V1 Use the smallest existing affected npm run test:interactions -- --group GROUP selector or narrower test. Budget 3 minutes per changed group; do not rerun every group during delivery. Final cross-feature coverage remains EDX-3.2. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
+- [x] EDX-2.6-V1 Use the smallest existing affected npm run test:interactions -- --group GROUP selector or narrower test. Budget 3 minutes per changed group; do not rerun every group during delivery. Final cross-feature coverage remains EDX-3.2. Record nonzero meaningful counts, exact selector/runtime/exit and source pins; required skips or zero matches cannot close this parent.
 
 Evidence: Separate ignored progress for this source, with task ID, changed paths, focused results, reused evidence and remaining limitations. No generated evidence in Git.
 Handoff: Last finished substep, affected symbol/interface, exact failing input or missing prerequisite and next bounded action.

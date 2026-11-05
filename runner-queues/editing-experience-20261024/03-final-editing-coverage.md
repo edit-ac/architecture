@@ -29,6 +29,7 @@ Functional sources 01 and 02 must have validated scoped outcomes, or an explicit
 Purpose: Prove the P0 repair survives rebasing and rejected actions Existing owner: RGS-1.3 and current durability owners.
 Context: shared Session/FFI history tests; architecture/specs/editing-experience.md Open regression and Required test oracle; existing RGS-1.3 fixtures; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
 Dependencies: none.
+Entry receipts: [EDX-2.1](../native-input-unblock-20261025/02-mobile-breaks.md), [EDX-2.2](../native-input-unblock-20261025/02-mobile-breaks.md), [EDX-2.3](../dependency-closed-ui-20261025/30-windows-breaks.md), [EDX-2.4](../dependency-closed-ui-20261025/31-linux-breaks.md).
 Session scope: One named integration boundary, 15–45 minutes including focused validation; record a concrete split/handoff before exceeding it.
 Acceptance: Native-history selection contract passes shared entry/result directed-selection, remote rebase, deleted-target, typing-group and nonmutating rejection variants. Current identity/save/reopen preserve authored and trailing breaks and unknown data. Required failures/skips remain open.
 
@@ -51,6 +52,7 @@ Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and chan
 Purpose: Prove actual adapter behavior rather than command-return or screenshot success Existing owner: INT-1.2–1.18, DSK-1.7 and RGS-1.3.
 Context: tests/browser/interactions/{breaks,break-tables}.spec.ts; native/macos/tests/Commands/CommandsTests.swift; architecture/specs/editing-experience.md Required test oracle; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
 Dependencies: EDX-3.1.
+Entry receipts: [EDX-2.1](../native-input-unblock-20261025/02-mobile-breaks.md), [EDX-2.2](../native-input-unblock-20261025/02-mobile-breaks.md), [EDX-2.3](../dependency-closed-ui-20261025/30-windows-breaks.md), [EDX-2.4](../dependency-closed-ui-20261025/31-linux-breaks.md).
 Session scope: One named integration boundary, 15–45 minutes including focused validation; record a concrete split/handoff before exceeding it.
 Acceptance: Chromium/Firefox/WebKit each execute nonzero break coverage, including native key and beforeinput-only intent, duplicate delivery, empty/start/middle/end/repeated/trailing/selected/emoji/marked/following-list/cell/read-only/composition/focus/remote variants. Feature-table cases map to exact existing families. macOS standard commands admission and enabled P0 reproducer pass with actual selector/responder input, correct undo/redo selection and sentinel; stale pin repair alone does not pass.
 
@@ -73,6 +75,7 @@ Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and chan
 Purpose: Separate shared semantic proof from actual platform input observations Existing owner: PHY-1.4 / roadmap43 and affected platform input owners.
 Context: architecture/tests/editing-experience-platform-matrix.md; source02 platform receipts; architecture/roadmaps/43-physical-device-verification.md; [editing experience](../../specs/editing-experience.md), relevant rows only. Paths are core-relative unless repository-prefixed.
 Dependencies: EDX-3.1.
+Entry receipts: [EDX-2.1](../native-input-unblock-20261025/02-mobile-breaks.md), [EDX-2.2](../native-input-unblock-20261025/02-mobile-breaks.md), [EDX-2.3](../dependency-closed-ui-20261025/30-windows-breaks.md), [EDX-2.4](../dependency-closed-ui-20261025/31-linux-breaks.md).
 Session scope: One named integration boundary, 15–45 minutes including focused validation; record a concrete split/handoff before exceeding it.
 Acceptance: Every platform matrix row has exact source, browser/OS/toolkit/keyboard/AT version and engine/adapter/runtime/assistive evidence classification. iOS hardware/software input, Android commit/composition/batch/delete/actions, Windows/Linux real toolkit and terminal PTY protocol are distinguished. Required runtime failures remain open; unavailable physical-only observations are handed to PHY-1.4 as deferred, never passed. No unsupported platform readiness claim.
 
@@ -87,3 +90,12 @@ Validation:
 Evidence: Separate ignored progress for this source, with task ID, changed paths, focused results, reused evidence and remaining limitations. No generated evidence in Git.
 Handoff: Last finished substep, affected symbol/interface, exact failing input or missing prerequisite and next bounded action.
 Blocked behavior: Leave acceptance unchecked; record owner, fingerprint and changed-input resume condition; continue an independent dependency-ready parent or end BLOCKED. Do not restart unchanged input.
+
+## Current prerequisite receipts
+
+Controller repair2026-10-25: the selected prerequisite owners below are queued before their consumers. Read only the named task/interface result from its exact progress file; source order alone is not proof. Missing planned paths/selectors owned by the selected task must be implemented, not treated as someone else's absent roadmap. No acceptance criterion is waived.
+
+- EDX-2.1: `/Users/bpstr/Github/edit-ac/.roadmap-runner/native-input-unblock-20261025/02-mobile-breaks.progress.md`.
+- EDX-2.2: `/Users/bpstr/Github/edit-ac/.roadmap-runner/native-input-unblock-20261025/02-mobile-breaks.progress.md`.
+- EDX-2.3: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/30-windows-breaks.progress.md`.
+- EDX-2.4: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/31-linux-breaks.progress.md`.

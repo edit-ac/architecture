@@ -1,6 +1,6 @@
 # Prepare local build prerequisites
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: root edit-ac, source paths identify the owning repository. Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/dependency-closed-ui-20261025/00-web-php-toolchain.progress.md`.
 
@@ -20,7 +20,7 @@ Focused runtime delivery checks are authorized by the controller: /Users/bpstr/G
 
 ### Task EWP-1.1 — Prepare the local PHP Composer and SQLite profile
 
-- [ ] EWP-1.1 Prepare the local PHP Composer and SQLite profile.
+- [x] EWP-1.1 Prepare the local PHP Composer and SQLite profile.
 
 Purpose: Replace a predictable missing-toolchain gate with owned reproducible setup.
 Deliverable: architecture/toolchains/php-development.json; existing Composer package lockfiles.
@@ -32,11 +32,11 @@ Acceptance: Run php/composer versions, verify PDO SQLite, and install one minima
 
 Implementation:
 
-- [ ] EWP-1.1-I1 Install or reuse the repository-pinned PHP/Composer runtime and PDO SQLite extension in task-owned/local development paths. Resolve Laravel/Filament compatible versions from the selected original owners and maintained official package metadata; lock ordinary dependencies. Do not install unrelated databases or services.
+- [x] EWP-1.1-I1 Install or reuse the repository-pinned PHP/Composer runtime and PDO SQLite extension in task-owned/local development paths. Resolve Laravel/Filament compatible versions from the selected original owners and maintained official package metadata; lock ordinary dependencies. Do not install unrelated databases or services.
 
 Validation:
 
-- [ ] EWP-1.1-V1 Execute only the concrete bootstrap in Acceptance, budget5minutes once installation finishes. Require real runtime/tool provenance, meaningful nonzero pass counts and zero unresolved failures/required skips; report installation/compile failures honestly. Keep receipt and downloaded outputs ignored.
+- [x] EWP-1.1-V1 Execute only the concrete bootstrap in Acceptance, budget5minutes once installation finishes. Require real runtime/tool provenance, meaningful nonzero pass counts and zero unresolved failures/required skips; report installation/compile failures honestly. Keep receipt and downloaded outputs ignored.
 
 Evidence: Configured progress, authored setup/config source, exact commands/version/digests/counts and cleanup. No credentials or compiled images in Git.
 Handoff: Last successful installation/compiler step, paths and exact next command.

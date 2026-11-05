@@ -1,6 +1,6 @@
 # Restore current prerequisite receipts
 
-Status: NOT_STARTED
+Status: IN_PROGRESS
 
 ## Goal and execution contract
 
@@ -24,7 +24,7 @@ A passing behavioral receipt needs a real nonzero existing case selection, zero 
 
 ### Task RCP-1.1 — Produce current immutable SDK admission and installed-site setup
 
-- [ ] RCP-1.1 Produce current immutable SDK admission and installed-site setup.
+- [x] RCP-1.1 Produce current immutable SDK admission and installed-site setup.
 
 Deliverable: Deliver authenticated immutable core/web/markdown archives, all three admission JSON inputs and installed-site.json for the current intended main source closure. Setup carries no behavioral pass claim.
 Purpose: Restore RVP-3.2/WFE-3.1 package prerequisites without bypassing their main/source/member checks.
@@ -38,11 +38,11 @@ Acceptance: All three missing admission inputs exist through explicit current bi
 
 Implementation:
 
-- [ ] RCP-1.1-I1 Authenticate current produced archives and their build inputs; resolve only necessary owned source closure at a safe checkpoint. Preserve unrelated WIP/index. Existing prepareShell checks host sources against main; current host/index.ts has an unlanded presentation type export. Validate its exact closure rather than deleting the export or weakening main applicability. Build/install immutable packages offline using existing producers; emit current source pins, runtime-member pins, package catalog and installed-site setup with actual hashes and toolchains.
+- [x] RCP-1.1-I1 Authenticate current produced archives and their build inputs; resolve only necessary owned source closure at a safe checkpoint. Preserve unrelated WIP/index. Existing prepareShell checks host sources against main; current host/index.ts has an unlanded presentation type export. Validate its exact closure rather than deleting the export or weakening main applicability. Build/install immutable packages offline using existing producers; emit current source pins, runtime-member pins, package catalog and installed-site setup with actual hashes and toolchains.
 
 Validation:
 
-- [ ] RCP-1.1-V1 Use existing admitImmutableSdk/prepareFromOwner validations and the smallest affected TypeScript/compiler/packed-consumer check; authenticate every declared archive member and installed SDK artifact. Record real exits and file pins, including main applicability and setup-only scope. Failed or absent preparation never unlocks UI parents.
+- [x] RCP-1.1-V1 Use existing admitImmutableSdk/prepareFromOwner validations and the smallest affected TypeScript/compiler/packed-consumer check; authenticate every declared archive member and installed SDK artifact. Record real exits and file pins, including main applicability and setup-only scope. Failed or absent preparation never unlocks UI parents.
 
 Evidence: The separate progress records exact source/main/artifact/runtime pins, command and exit, meaningful executed/passed/failed/skipped/cancelled counts, compatible proof reuse and ignored output paths. Setup/build proof is labeled separately from behavior.
 Handoff: Current receipt/schema/binding and validated closure, original owner mapping, remaining failure, preserved dirty/index state and exact bounded next action. Keep original source/progress pairs and failed proof intact.

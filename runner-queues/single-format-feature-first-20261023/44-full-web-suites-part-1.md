@@ -2,6 +2,8 @@
 
 Status: IN_PROGRESS
 
+Workers change only task checkboxes and Status in this source. Keep delivery summaries, source hashes, counts and reconciliation records in separate progress/ignored receipts. Never add a Current delivery paragraph; it triggers source-reconciliation loops.
+
 ## Superseding current-format policy
 
 Apply `architecture/decisions/006-single-format-before-publication.md` and `architecture/specs/document-durability.md`: one current witnessed v5 production format, fixture-only old readers, current API/ABI contracts before publication, no silent data conversion or retired runtime fallback. Port useful old semantic assertions; preserve actual revision history and distinct external/protocol/encoding contracts. Current prerequisites are in the successor runtime root below. Complete dependent native/terminal features after SFC-5.1 before remaining optimization; a size batch ends at 45 minutes or two changed hypotheses and cannot block independent features. Unmet original hard-budget predicates stay with QPF final owners; no cap is waived. Prior run is stopped, its source/progress/dirty work preserved. One root workspace/main controller, no subagents/worktrees, paid inference, physical-device qualification or publication. These rules supersede conflicting historical version/whole-track prerequisite text below.
@@ -128,7 +130,7 @@ Context: `core/tests/scenarios/run.mjs` web-product-checkpoint; `core/examples/t
 Dependencies: none.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One boundary, normally 15–45 minutes including focused validation.
-Acceptance: Installed SDK/WASM/IndexedDB Task/comment and React/routes flows, readonly/history, save/reopen/crash recovery, offline/reconnect and prepared host-MCP coediting have complete applicable three-engine case evidence. No external cloud or real AI service is required.
+Acceptance: Installed SDK/WASM/IndexedDB Task/comment and React/routes flows, readonly/history, save/reopen/crash recovery, offline/reconnect and prepared host-MCP coediting have complete applicable three-engine case evidence. No external cloud or real AI service is required. Include real current WASM/IndexedDB recovery at 4096/4097 updates and repeated rollover, previous-checkpoint fallback, unacknowledged outbox preservation and crash boundaries under DRA-1.3.
 
 Implementation:
 

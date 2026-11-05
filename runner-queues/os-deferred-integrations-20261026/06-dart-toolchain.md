@@ -1,6 +1,6 @@
 # 06 dart toolchain
 
-Status: IN_PROGRESS
+Status: COMPLETE
 
 Workspace: `core` from root `/Users/bpstr/Github/edit-ac`; task paths are core-relative unless repository-prefixed.
 Progress: `/Users/bpstr/Github/edit-ac/.roadmap-runner/os-deferred-integrations-20261026/06-dart-toolchain.progress.md`.
@@ -20,7 +20,7 @@ Workers update only verified checkbox states and Status in this selected source.
 
 ### Task ECM-1.1 — Prepare a pinned local Flutter and Dart profile
 
-- [ ] ECM-1.1 Prepare a pinned local Flutter and Dart profile.
+- [x] ECM-1.1 Prepare a pinned local Flutter and Dart profile.
 
 Purpose: Replace a predictable missing-toolchain gate with owned reproducible setup.
 Deliverable: architecture/toolchains/flutter-development.json; sdk/dart/; adapters/native/flutter/.
@@ -32,11 +32,11 @@ Acceptance: Run the pinned doctor/compiler and compile one empty local Dart cons
 
 Implementation:
 
-- [ ] ECM-1.1-I1 Install/reuse one maintained local Flutter/Dart toolchain for the selected mobile/web plugins, using official archives and verified hashes. Keep downloaded SDK/cache outside Git, bound storage, and configure existing Xcode/Android SDK. No paid remote build or publishing.
+- [x] ECM-1.1-I1 Install/reuse one maintained local Flutter/Dart toolchain for the selected mobile/web plugins, using official archives and verified hashes. Keep downloaded SDK/cache outside Git, bound storage, and configure existing Xcode/Android SDK. No paid remote build or publishing.
 
 Validation:
 
-- [ ] ECM-1.1-V1 Execute only the concrete bootstrap in Acceptance, budget5minutes once installation finishes. Require real runtime/tool provenance, meaningful nonzero pass counts and zero unresolved failures/required skips; report installation/compile failures honestly. Keep receipt and downloaded outputs ignored.
+- [x] ECM-1.1-V1 Execute only the concrete bootstrap in Acceptance, budget5minutes once installation finishes. Require real runtime/tool provenance, meaningful nonzero pass counts and zero unresolved failures/required skips; report installation/compile failures honestly. Keep receipt and downloaded outputs ignored.
 
 Evidence: Configured progress, authored setup/config source, exact commands/version/digests/counts and cleanup. No credentials or compiled images in Git.
 Handoff: Last successful installation/compiler step, paths and exact next command.

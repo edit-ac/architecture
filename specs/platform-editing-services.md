@@ -6,6 +6,8 @@ Status: planned contract amendment, 2026-10-17. Reuse browser/OS editor faciliti
 
 ## Ownership
 
+The [standards behavior profile](editing-behavior-standards.md) adds a declared segmentation/runtime capability boundary, host language/base direction, cross-block replacement and a scoped terminal keyboard profile. It preserves the platform ownership and history rules here; [its delivery plan](../runner-queues/editing-standards-20261024/README.md) consumes existing platform/EDX evidence and keeps actual OS/IME/AT observations with final roadmap43.
+
 Browser and native controls own temporary composition, platform presentation and user interaction. The shared engine/session remains the owner of committed content, selection bookmarks, command admission and semantic history. Native text storage and the DOM are projections. Reusing an OS feature must not introduce another writable document, undo stack, spell dictionary or service account in the engine.
 
 Configuration and learned/ignored words are host/user preferences, not synchronized document marks. Spelling underlines, candidate windows and suggestions are transient presentation. Only an accepted correction or other committed platform edit becomes a normal semantic command. Preserve existing readonly, permission, composition, UTF-16, captured-target and disposal rules.
@@ -39,6 +41,38 @@ Reuse the platform's command affordances while retaining one shared semantic his
 Native undo managers may be a forwarding facade to shared history. They must not record projection refreshes, remote changes or a second copy of accepted semantic edits. Disabling a native stack alone does not implement menu/gesture undo: qualification must prove routing, enabled/disabled state and resulting content/selection. Browser native-history leakage must be prevented or explicitly reconciled through the existing bounded input policy; never use a whole-document DOM diff as an undo strategy.
 
 Menu/key enablement uses current shared command applicability and history state; execution rechecks it. Empty history, readonly/denied actions and disposed sessions do nothing. Preserve remote edits, correction undo/redo, typing groups, selection/pending marks and stable redo behavior under the existing history contract. During active IME/candidate editing, honor the qualified platform composition policy before issuing document history. Nested search fields, code controls and host inputs retain their own command ownership. Keydown plus beforeinput/menu delivery must not cause two undos.
+
+### Web native formatting intentions
+
+For the focused root editing owner, cancelable `formatBold`, `formatItalic`, `formatUnderline` and `formatStrikeThrough` beforeinput intentions delegate to the existing mark commands. They share directional selection, pending typing marks, permissions, applicability and semantic history with shortcuts. Correlate a matching shortcut and its beforeinput notification once; a separate menu intention must not inherit an unrelated key's result. Native controls, foreign editors and embedded editing scopes keep their own events. Table range formatting and other `format*` types are unavailable; cancel unavailable root intentions without a semantic commit or browser-only formatting.
+
+Noncancelable formatting is unavailable as a semantic command. Preserve an explicit recovery diagnostic and restore the captured bounded root projection, including attribute-only native styling, without importing browser markup or inventing a semantic/history edit. Unmapped or unbounded recovery requires the existing read-only/remount safety path. Prepared beforeinput probes demonstrate adapter routing only; actual OS/menu provenance and full browser coverage remain with the final qualification owner.
+
+### Web shortcut profile and layout fallback
+
+Use the existing catalog/profile as the authority. Normalize the interpreted
+`event.key` first, lowercasing single characters and retaining Shift. Only a
+Primary or Primary+Shift chord may consider a physical `event.code` fallback,
+and only for the existing modified letter bindings B/I/U/K/Z, Shift+X/Shift+Z
+and non-Apple Y. A non-Latin character or shifted punctuation on those physical
+keys may reach that same command. Never discard Shift, translate ordinary text,
+infer a binding from a named key/digit/punctuation code, or replace an unbound
+interpreted ASCII letter's native shortcut with a physical editor command.
+
+Reservations on any considered candidate win over everything. Explicit remaps
+on either candidate precede defaults, with interpreted-key precedence between
+two remaps; null/invalid/unsupported mappings retain native ownership without
+default fallthrough. Otherwise prefer the interpreted default, then the supported
+fallback. AltGraph, Ctrl+Alt, mixed Ctrl+Meta, Dead/Process/Unidentified, keyCode229
+and composing events remain with their existing owner. Browser/OS commands and
+unmodified printable input gain no physical bindings. Nested native controls,
+clipboard and scoped Select All retain their separate existing routes.
+
+Accessible keyboard help must reflect the effective profile, including removed
+reservations/defaults and explicit remaps, with the platform's Primary label.
+Default catalog descriptors are not effective-binding promises. Adapter-event
+resolution is prepared evidence; actual OS layout/shifted-punctuation qualification
+remains with PKI-3.1 and the existing final browser/OS owners.
 
 ## Other reusable environment features
 

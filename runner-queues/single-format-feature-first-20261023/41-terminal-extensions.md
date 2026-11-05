@@ -1,6 +1,8 @@
 # Finish terminal extension command wiring
 
-Status: IN_PROGRESS
+Status: COMPLETE
+
+Workers change only task checkboxes and Status in this source. Keep delivery summaries, source hashes, counts and reconciliation records in separate progress/ignored receipts. Never add a Current delivery paragraph; it triggers source-reconciliation loops.
 
 ## Superseding current-format policy
 
@@ -29,10 +31,10 @@ For a blocker, first select an independent ready parent in THIS source. If none 
 
 ### Task RTX-1.1 — Verify terminal extension service bindings
 
-- [ ] RTX-1.1 Verify terminal extension service bindings.
+- [x] RTX-1.1 Verify terminal extension service bindings.
 
 Purpose: Verify terminal extension service bindings as one bounded integration or qualification boundary.
-Context: `architecture/roadmaps/36-terminal-extension-integration.md`, ONLY Task TCX-1.1; canonical affected context: `src/tui/`; `tests/extension_entry.rs`; `../architecture/specs/ecosystem-maintainability.md`. Read core-relative paths from `core/`. Prior inputs: none beyond the source entry summary
+Context: `architecture/roadmaps/36-terminal-extension-integration.md`, ONLY Task TCX-1.1; canonical affected context: `src/tui/`; `tests/extension_entry.rs`; `../architecture/specs/ecosystem-maintainability.md`. Read CLI-relative paths from `cli/`. Prior inputs: none beyond the source entry summary
 Dependencies: none.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One boundary, normally 15–45 minutes including focused validation.
@@ -40,11 +42,11 @@ Acceptance: Feature projection of TCX-1.1: authenticate applicable existing deli
 
 Implementation:
 
-- [ ] RTX-1.1-I1 Authenticate current ownership and existing accepted proof; change only the missing original boundary. Bind the shared capability/profile and optional provider ports; record actual terminal representation limits, and keep network/conversion optional. Read prior input rows before use; whole-platform qualification is not an implementation prerequisite. Leave broad harness additions for final testing unless a concrete defect needs a minimal regression.
+- [x] RTX-1.1-I1 Authenticate current ownership and existing accepted proof; change only the missing original boundary. Bind the shared capability/profile and optional provider ports; record actual terminal representation limits, and keep network/conversion optional. Read prior input rows before use; whole-platform qualification is not an implementation prerequisite. Leave broad harness additions for final testing unless a concrete defect needs a minimal regression.
 
 Validation:
 
-- [ ] RTX-1.1-V1 Use an existing selector for this boundary or reuse exact applicable passing proof (normally 1–5 minutes). Prove nonzero relevant behavior; source checks alone cannot prove runtime behavior. Original final-validation contract, owned by QTS-1.2: `cargo test --test extension_entry --locked`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
+- [x] RTX-1.1-V1 Use an existing selector for this boundary or reuse exact applicable passing proof (normally 1–5 minutes). Prove nonzero relevant behavior; source checks alone cannot prove runtime behavior. Original final-validation contract, owned by QTS-1.2: `cargo test --test extension_entry --locked`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
 
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
@@ -52,10 +54,10 @@ Blocked behavior: Leave unchecked; try an independent ready parent, otherwise re
 
 ### Task RTX-1.2 — Add bounded code syntax and table formatting actions
 
-- [ ] RTX-1.2 Add bounded code syntax and table formatting actions.
+- [x] RTX-1.2 Add bounded code syntax and table formatting actions.
 
 Purpose: Add bounded code syntax and table formatting actions as one bounded integration or qualification boundary.
-Context: `architecture/roadmaps/36-terminal-extension-integration.md`, ONLY Task TCX-1.2; canonical affected context: `src/tui/extensions/content.rs`; `tests/tui_content_extensions.rs`; `../architecture/specs/ecosystem-maintainability.md`. Read core-relative paths from `core/`. Prior inputs: none beyond the source entry summary
+Context: `architecture/roadmaps/36-terminal-extension-integration.md`, ONLY Task TCX-1.2; canonical affected context: `src/tui/extensions/content.rs`; `tests/tui_content_extensions.rs`; `../architecture/specs/ecosystem-maintainability.md`. Read CLI-relative paths from `cli/`. Prior inputs: none beyond the source entry summary
 Dependencies: RTX-1.1.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One boundary, normally 15–45 minutes including focused validation.
@@ -63,11 +65,11 @@ Acceptance: Feature projection of TCX-1.2: authenticate applicable existing deli
 
 Implementation:
 
-- [ ] RTX-1.2-I1 Authenticate current ownership and existing accepted proof; change only the missing original boundary. Use25 provider spans and formatter; do not silently rewrite hosted source baselines. Add cancellation, limit fallback and one-group undo while retaining recoverable dirty buffers. Read prior input rows before use; whole-platform qualification is not an implementation prerequisite. Leave broad harness additions for final testing unless a concrete defect needs a minimal regression.
+- [x] RTX-1.2-I1 Authenticate current ownership and existing accepted proof; change only the missing original boundary. Use25 provider spans and formatter; do not silently rewrite hosted source baselines. Add cancellation, limit fallback and one-group undo while retaining recoverable dirty buffers. Read prior input rows before use; whole-platform qualification is not an implementation prerequisite. Leave broad harness additions for final testing unless a concrete defect needs a minimal regression.
 
 Validation:
 
-- [ ] RTX-1.2-V1 Use an existing selector for this boundary or reuse exact applicable passing proof (normally 1–5 minutes). Prove nonzero relevant behavior; source checks alone cannot prove runtime behavior. Original final-validation contract, owned by QTS-1.2: `cargo test --test tui_content_extensions --locked`; run prepared terminal render/performance fixtures. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
+- [x] RTX-1.2-V1 Use an existing selector for this boundary or reuse exact applicable passing proof (normally 1–5 minutes). Prove nonzero relevant behavior; source checks alone cannot prove runtime behavior. Original final-validation contract, owned by QTS-1.2: `cargo test --test tui_content_extensions --locked`; run prepared terminal render/performance fixtures. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
 
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
@@ -75,10 +77,10 @@ Blocked behavior: Leave unchecked; try an independent ready parent, otherwise re
 
 ### Task RTX-1.3 — Add asset and embed source workflows
 
-- [ ] RTX-1.3 Add asset and embed source workflows.
+- [x] RTX-1.3 Add asset and embed source workflows.
 
 Purpose: Add asset and embed source workflows as one bounded integration or qualification boundary.
-Context: `architecture/roadmaps/36-terminal-extension-integration.md`, ONLY Task TCX-1.3; canonical affected context: `src/tui/extensions/assets.rs`; `tests/tui_asset_extensions.rs`; `../architecture/specs/ecosystem-maintainability.md`. Read core-relative paths from `core/`. Prior inputs: none beyond the source entry summary
+Context: `architecture/roadmaps/36-terminal-extension-integration.md`, ONLY Task TCX-1.3; canonical affected context: `src/tui/extensions/assets.rs`; `tests/tui_asset_extensions.rs`; `../architecture/specs/ecosystem-maintainability.md`. Read CLI-relative paths from `cli/`. Prior inputs: none beyond the source entry summary
 Dependencies: RTX-1.1.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One boundary, normally 15–45 minutes including focused validation.
@@ -86,11 +88,11 @@ Acceptance: Feature projection of TCX-1.3: authenticate applicable existing deli
 
 Implementation:
 
-- [ ] RTX-1.3-I1 Authenticate current ownership and existing accepted proof; change only the missing original boundary. Wire25 staged transfers and explicit open/download actions with permission, byte limits and recovery; no automatic external process launch from document content. Read prior input rows before use; whole-platform qualification is not an implementation prerequisite. Leave broad harness additions for final testing unless a concrete defect needs a minimal regression.
+- [x] RTX-1.3-I1 Authenticate current ownership and existing accepted proof; change only the missing original boundary. Wire25 staged transfers and explicit open/download actions with permission, byte limits and recovery; no automatic external process launch from document content. Read prior input rows before use; whole-platform qualification is not an implementation prerequisite. Leave broad harness additions for final testing unless a concrete defect needs a minimal regression.
 
 Validation:
 
-- [ ] RTX-1.3-V1 Use an existing selector for this boundary or reuse exact applicable passing proof (normally 1–5 minutes). Prove nonzero relevant behavior; source checks alone cannot prove runtime behavior. Original final-validation contract, owned by QTS-1.2: `cargo test --test tui_asset_extensions --locked`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
+- [x] RTX-1.3-V1 Use an existing selector for this boundary or reuse exact applicable passing proof (normally 1–5 minutes). Prove nonzero relevant behavior; source checks alone cannot prove runtime behavior. Original final-validation contract, owned by QTS-1.2: `cargo test --test tui_asset_extensions --locked`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
 
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
@@ -98,10 +100,10 @@ Blocked behavior: Leave unchecked; try an independent ready parent, otherwise re
 
 ### Task RTX-1.4 — Add permission-aware references and link metadata
 
-- [ ] RTX-1.4 Add permission-aware references and link metadata.
+- [x] RTX-1.4 Add permission-aware references and link metadata.
 
 Purpose: Add permission-aware references and link metadata as one bounded integration or qualification boundary.
-Context: `architecture/roadmaps/36-terminal-extension-integration.md`, ONLY Task TCX-1.4; canonical affected context: `src/tui/extensions/links.rs`; `tests/tui_link_extensions.rs`; `../architecture/specs/ecosystem-maintainability.md`. Read core-relative paths from `core/`. Prior inputs: none beyond the source entry summary
+Context: `architecture/roadmaps/36-terminal-extension-integration.md`, ONLY Task TCX-1.4; canonical affected context: `src/tui/extensions/links.rs`; `tests/tui_link_extensions.rs`; `../architecture/specs/ecosystem-maintainability.md`. Read CLI-relative paths from `cli/`. Prior inputs: none beyond the source entry summary
 Dependencies: RTX-1.1.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One boundary, normally 15–45 minutes including focused validation.
@@ -109,11 +111,11 @@ Acceptance: Feature projection of TCX-1.4: authenticate applicable existing deli
 
 Implementation:
 
-- [ ] RTX-1.4-I1 Authenticate current ownership and existing accepted proof; change only the missing original boundary. Use the shared resolvers and safe terminal presentation with explicit refresh/open commands; sanitize terminal control sequences and never trust imported permission labels. Read prior input rows before use; whole-platform qualification is not an implementation prerequisite. Leave broad harness additions for final testing unless a concrete defect needs a minimal regression.
+- [x] RTX-1.4-I1 Authenticate current ownership and existing accepted proof; change only the missing original boundary. Use the shared resolvers and safe terminal presentation with explicit refresh/open commands; sanitize terminal control sequences and never trust imported permission labels. Read prior input rows before use; whole-platform qualification is not an implementation prerequisite. Leave broad harness additions for final testing unless a concrete defect needs a minimal regression.
 
 Validation:
 
-- [ ] RTX-1.4-V1 Use an existing selector for this boundary or reuse exact applicable passing proof (normally 1–5 minutes). Prove nonzero relevant behavior; source checks alone cannot prove runtime behavior. Original final-validation contract, owned by QTS-1.2: `cargo test --test tui_link_extensions --locked`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
+- [x] RTX-1.4-V1 Use an existing selector for this boundary or reuse exact applicable passing proof (normally 1–5 minutes). Prove nonzero relevant behavior; source checks alone cannot prove runtime behavior. Original final-validation contract, owned by QTS-1.2: `cargo test --test tui_link_extensions --locked`. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
 
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.
@@ -121,10 +123,10 @@ Blocked behavior: Leave unchecked; try an independent ready parent, otherwise re
 
 ### Task RTX-1.5 — Expose qualified format conversion commands
 
-- [ ] RTX-1.5 Expose qualified format conversion commands.
+- [x] RTX-1.5 Expose qualified format conversion commands.
 
 Purpose: Expose qualified format conversion commands as one bounded integration or qualification boundary.
-Context: `architecture/roadmaps/36-terminal-extension-integration.md`, ONLY Task TCX-1.5; canonical affected context: `src/commands/convert.rs`; `tests/conversion_commands.rs`; `../architecture/specs/ecosystem-maintainability.md`. Read core-relative paths from `core/`. Prior inputs: none beyond the source entry summary
+Context: `architecture/roadmaps/36-terminal-extension-integration.md`, ONLY Task TCX-1.5; canonical affected context: `src/commands/convert.rs`; `tests/conversion_commands.rs`; `../architecture/specs/ecosystem-maintainability.md`. Read CLI-relative paths from `cli/`. Prior inputs: none beyond the source entry summary
 Dependencies: RTX-1.1.
 Independent work: Any local parent whose named inputs are available.
 Session scope: One boundary, normally 15–45 minutes including focused validation.
@@ -132,11 +134,11 @@ Acceptance: Feature projection of TCX-1.5: authenticate applicable existing deli
 
 Implementation:
 
-- [ ] RTX-1.5-I1 Authenticate current ownership and existing accepted proof; change only the missing original boundary. Bind27 jobs with explicit file destinations and format detection/override policy; optional heavyweight providers are separately loaded and unavailable providers fail actionably. Read prior input rows before use; whole-platform qualification is not an implementation prerequisite. Leave broad harness additions for final testing unless a concrete defect needs a minimal regression.
+- [x] RTX-1.5-I1 Authenticate current ownership and existing accepted proof; change only the missing original boundary. Bind27 jobs with explicit file destinations and format detection/override policy; optional heavyweight providers are separately loaded and unavailable providers fail actionably. Read prior input rows before use; whole-platform qualification is not an implementation prerequisite. Leave broad harness additions for final testing unless a concrete defect needs a minimal regression.
 
 Validation:
 
-- [ ] RTX-1.5-V1 Use an existing selector for this boundary or reuse exact applicable passing proof (normally 1–5 minutes). Prove nonzero relevant behavior; source checks alone cannot prove runtime behavior. Original final-validation contract, owned by QTS-1.2: `cargo test --test conversion_commands --locked`; validate MD/DOCX/secondary formats and deterministic PDF export fixtures. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
+- [x] RTX-1.5-V1 Use an existing selector for this boundary or reuse exact applicable passing proof (normally 1–5 minutes). Prove nonzero relevant behavior; source checks alone cannot prove runtime behavior. Original final-validation contract, owned by QTS-1.2: `cargo test --test conversion_commands --locked`; validate MD/DOCX/secondary formats and deterministic PDF export fixtures. Record exact commands/exits, nonzero case counts, failures/skips, implementation/profile revisions and artifact hashes. Missing required manual evidence stays unqualified.
 
 Evidence: Separate progress records exact source/profile/runtime pins, command/exit, meaningful executed/passed/failed/skipped counts, reused evidence and concise failure dispositions. Generated detail stays in ignored task scratch, not Git.
 Handoff: Delivered interface/path, prerequisite row, remaining substep, exact failing selector and next bounded action.

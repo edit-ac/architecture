@@ -1,5 +1,7 @@
 # Public extension library contract
 
+Alpha requirement, 2026-10-23: extensions participate in the shared [block conversion registry and prepared Turn into API](block-actions.md#extension-participation). Custom conversions declare source/destination mappings and preservation constraints; raw mutation and silent text fallback are forbidden. The [block-actions plan](../runner-queues/alpha-block-actions-20261023/README.md) owns the new acceptance without treating earlier extension deliveries as proof.
+
 Device sequencing (superseding user decision, 2026-10-18): every device/target-runtime/OS-input/AT observation in this document is owned by [final roadmap43](../roadmaps/43-physical-device-verification.md) under the [web feature-first policy](../operations/web-feature-first-20261018.md). Feature implementation keeps focused deterministic correctness/data-safety checks; device rows and D observations run later on accepted simulators/emulators/VMs/OS hosts without waiting for physical hardware. Preserve original case IDs and criteria; deferred observations remain unchecked and do not block web feature completeness. Exhaustive qualification/performance follows the stated later phase.
 
 Qualification amendment (user decision, 2026-10-14): Named target-platform simulators/emulators and desktop OS VMs/test hosts may satisfy platform and release gates when physical hardware is unavailable. Follow the [platform qualification policy](../specs/verification.md#platform-qualification-with-simulators-emulators-and-vms) for required runtime checks, tested virtual equivalents for hardware-only observations, counts and physical/virtual provenance. Earlier physical-only/manual-only wording in this document is superseded. This changes accepted evidence, not required implementation or correctness.
@@ -190,6 +192,39 @@ consumer artifacts, not merely copied implementation snippets.
 Build/pack/consumer qualification belongs here; publication follows the release
 policy. No marketplace, downloaded plugin execution, remote service deployment
 or provider inference is required to demonstrate the library.
+
+## Expanded document reference configuration
+
+The named **`expanded-document-v1`** is a frozen integration inventory, not a
+new document format, implemented preset export or universal extension budget.
+WEX-2.6 delivers its public consumer using explicit facade configuration (no
+legacy Task option spread). It includes the minimum kernel/adapter guarantees
+and the following selections; no omitted member may be silently removed to pass
+its [1 MiB budget](verification.md#expanded-reference-budget).
+
+| Selected capability | Exact configuration / assets | Readiness and remaining owner |
+|---|---|---|
+| Core rich text and durability | All six existing marks (`bold`, `italic`, `strike`, `underline`, `code`, `link`), paragraphs, headings 1–6 and existing lists/undo/clipboard; current checkpoint/journal recovery. Platform spellcheck and inherited autocorrection. | Local readiness, independent of any remote connector. WEX-2.1 preserves the baseline paths. |
+| Markdown | `Markdown.configure({input: true})`; existing Markdown package, stateless Wasm codec, glue and shortcut adapter. | Required input adapter; source retained on failure. WEX-2.2. |
+| Document tools | `DocumentSearch`, `BlockReorder`, `BlockActions` with existing defaults; `Images`, `Tables`; `References` with an explicitly supplied authorized host and no automatic trigger; `SlashCommands` with host command entries for `paragraph`, `heading1`–`heading6`. | Descriptor admission and declared input helpers before ready; media lookup is explicit. Advanced table/media UI uses the same kernel primitives. WEX-2.1 composition, WEX-2.4 table isolation. |
+| Math | `MathNotation` with bounded source and declared fallback; current typesetter, CSS and every required font included. | Preserve its declared required-input admission; do not report source fallback as typesetting parity. WEX-2.2. |
+| Code highlighting | `Code.configure()` / `editac.code` v1, Rust grammar and the existing worker/presenter/Wasm assets; no auto-pair behavior. | Presentation-lazy production facade admitted by WCU-1.1 over current RCH-1.2–1.5 and the EXT-1.14 contract. Literal input does not await assets; failure preserves editable source. WEX-2.2/2.6 consume this source-bound admission for full expanded-consumer/asset-union proof, which remains open. Pairs/code-tools remain pending; no production fixture override. |
+| Collaboration and presence | Explicit host connector, `readiness: 'local'`, `awareness: true`, `peerCarets: true`, existing identity/authority/update ports. | Local input/recovery do not await remote readiness. Connector and presence work start only for this editor. WEX-1.4 isolates orchestration; WEX-2.5 owns any residual host-service seam. |
+
+Version 1 is a configuration/fixture identity only. All cells use the same
+current schema/profile/protocol and canonical kernel. PDF/DOCX conversion,
+custom dictionaries, automatic resolver recipes, AI assistance and arbitrary
+third-party extensions are outside this named inventory; their enabled unions
+are reported separately under their existing feature owners, not claimed below
+this ceiling. No provider credits, real credentials or external services are
+needed for deterministic reference-consumer qualification.
+
+The ordinary no-extension consumer retains the frozen minimum kernel/adapter
+inventory; the existing default Task retains all its promised semantics and
+its own cap. Required implementation or qualification gaps above mean unavailable
+or pending cells, never a passing reduced configuration. Registry admission,
+per-instance configuration, deterministic conflicts and cleanup follow the
+[frozen companion contract](extension-dx.md#frozen-core-and-companion-contract--2026-10-28).
 
 ## Rich ecosystem delivery
 
