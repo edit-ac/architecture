@@ -34,6 +34,8 @@ Browser workers are optional scheduling adapters, not owners of document state. 
 
 ## Table editing, layout and source formatting
 
+The [table-control contract](table-controls.md) adds the 2026-11-08 scoped control, width and capability requirements. RCH-1.34 owns typed geometry; RCH-1.35 owns span/color decisions. Current direct-cell implementation is recorded in the [table continuation](../rea/notion-tables.md); earlier textarea descriptions below are historical. UI and final-runtime owners remain separate.
+
 Product correction, 2026-10-25: [proper table paste and direct cell editing](table-paste-and-editing.md) defines required default presentation. The textarea-per-cell and duplicated preview/control arrangement described below is intermediate behavior, not final product acceptance. Earlier textarea-specific focus details remain historical baseline evidence; the new direct cell adapter must preserve semantic selection/history and accessibility. Existing receipts do not qualify the new paste/presentation outcome.
 
 Keep bounded rectangular tables and simple cells; merged cells, spreadsheet formulas and a general layout engine remain outside this contract. Extend the existing module with explicit row/column insert/remove, header/alignment, cell selection, keyboard movement and cell-range copy/paste commands where missing. Record behavior when deleting the last row/column and for readonly/invalid targets. Every accepted operation has one intentional undo group.

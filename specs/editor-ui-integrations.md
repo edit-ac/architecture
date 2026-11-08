@@ -44,6 +44,8 @@ Preserve the [web contract](web.md), [block actions](block-actions.md), [extensi
 
 ## Default product surface
 
+Table refinement, 2026-11-08: [table controls](table-controls.md) requires contextual table/axis/cell surfaces, guarded geometry and axis manipulation under UDM-1.10–1.12. Keep completed direct-cell/paste owners and the common semantic/UI boundary; final NTC proof remains UTW-1.2 and runtime observations roadmap43.
+
 User correction, 2026-10-25: [table paste and direct cell editing](table-paste-and-editing.md) is required for the default rich editor. Pasted tables must present one coherent document grid and edit cell content directly, without a permanent textarea/input and duplicate preview in every cell. UDM-1.8/1.9 deliver the adapter; UIS-1.4 supplies scoped appearance and UTW-1.2 owns final TPT-01–08 UI proof. Existing semantic table receipts do not establish this product outcome.
 
 The initial design should be familiar to users of Tiptap-style editors: compact grouped icon controls, a block-type selector, clear pressed states, separators, contextual menus and restrained borders. Use edit.ac branding rather than copy another product's assets or exact layout.

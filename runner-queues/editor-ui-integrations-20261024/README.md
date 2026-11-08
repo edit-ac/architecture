@@ -1,6 +1,6 @@
 # Editor UI and native integration delivery plan
 
-Status: PLANNED. User scope: 2026-10-24. 30 focused roadmap files, 162 unfinished parents. This controller index is not a worker queue entry. No active runner, backend/framework source, runtime configuration or existing progress is changed by creating this plan.
+Status: PLANNED. User scope: 2026-10-24. 31 focused roadmap files, 165 parent tasks. This controller index is not a worker queue entry. No active runner, backend/framework source, runtime configuration or existing progress is changed by creating this plan.
 
 [Web product/API contract](../../specs/editor-ui-integrations.md) · [Native/Expo/Flutter contract](../../specs/native-ui-integrations.md) · [Staged ownership map](adoption-map.md) · [Machine-readable queue/requirements](manifest.json)
 
@@ -26,6 +26,7 @@ Source budget: at most 24 KiB and ten parents per file. Most sources are smaller
 | 01 [01-default-styles.md](01-default-styles.md) | Style current product surfaces | 5 | `.roadmap-runner/editor-ui-integrations-20261024/01-default-styles.progress.md` |
 | 02 [02-controls-state.md](02-controls-state.md) | Implement reusable controls and suggestion state | 6 | `.roadmap-runner/editor-ui-integrations-20261024/02-controls-state.progress.md` |
 | 03 [03-default-dom-controls.md](03-default-dom-controls.md) | Deliver accessible default DOM controls | 9 | `.roadmap-runner/editor-ui-integrations-20261024/03-default-dom-controls.progress.md` |
+| 03b [03b-table-controls.md](03b-table-controls.md) | Refine contextual table controls | 3 | `.roadmap-runner/editor-ui-integrations-20261024/03b-table-controls.progress.md` |
 | 04 [04-react-ui.md](04-react-ui.md) | Deliver React controls composition | 4 | `.roadmap-runner/editor-ui-integrations-20261024/04-react-ui.progress.md` |
 | 05 [05-vue-ui.md](05-vue-ui.md) | Deliver Vue controls composition | 4 | `.roadmap-runner/editor-ui-integrations-20261024/05-vue-ui.progress.md` |
 | 06 [06-svelte-ui.md](06-svelte-ui.md) | Deliver Svelte controls composition | 4 | `.roadmap-runner/editor-ui-integrations-20261024/06-svelte-ui.progress.md` |
@@ -105,3 +106,7 @@ node scripts/validate-editor-ui-roadmaps.mjs
 ```
 
 It checks unique standalone IDs, fields, local/earlier/external dependencies, cycles/order, progress separation, requirement/final ownership, named local links and source size. It does not start the runner or validate implementation. Existing 43-track manifest and all current queues remain unchanged.
+
+## Notion table follow-up — 2026-11-08
+
+The [new source](03b-table-controls.md) adds three planning-only parents after the default DOM controls, preserving completed direct-cell/paste delivery. Its width parent consumes the new RCH-1.34 receipt; the reserved semantic progress destination is not active configuration. Final UTW-1.2 consumes these new functional receipts and NTC cases. No active queue, immutable snapshot, coordinator or progress is changed; adopt through the existing guarded source-refresh process.

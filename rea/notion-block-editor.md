@@ -62,3 +62,7 @@ The [planned 40-case catalog](../tests/notion-block-cases.md) assigns finite pro
 The documented feature boundary uses [writing and editing](https://www.notion.com/help/writing-and-editing-basics), [keyboard shortcuts](https://www.notion.com/help/keyboard-shortcuts), [columns and tables](https://www.notion.com/help/columns-headings-and-dividers), [synced blocks](https://www.notion.com/help/synced-blocks), [comments](https://www.notion.com/help/comments-mentions-and-reminders), [sharing](https://www.notion.com/help/sharing-and-permissions), [mobile UI](https://www.notion.com/help/workspaces-on-mobile) and the [public Block API](https://developers.notion.com/reference/block). Public API shape is not proof of Notion's internal editor library, collaboration algorithm or storage architecture.
 
 Notion internals, multi-user/permission/offline behavior, native mobile/touch/IME/AT, full clipboard fidelity and the documented bulk-toggle shortcut discrepancy remain unverified. These are explicit evidence limits, not missing edit.ac features by inference. The plan's own device/host/recovery tests must establish edit.ac behavior independently; a competitor capture cannot qualify this SDK.
+
+## Table continuation — 2026-11-08
+
+The [simple-table investigation](notion-tables.md) uses current GitHub core a0ec43bc and supersedes this report's older baseline for table implementation claims. Direct rich cell editing is present; contextual controls, geometry and honest capabilities remain the new planning scope.

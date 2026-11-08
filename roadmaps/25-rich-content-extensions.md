@@ -145,10 +145,10 @@ Blocked behavior: Leave `RCH-1.5` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, 
 - [ ] RCH-1.6 Implement and validate complete bounded table row and column commands.
 
 Purpose: Fill missing table shape operations using the existing schema.
-Context: `crates/editac-core/src/modules/tables/`; `crates/editac-core/tests/table_shape.rs`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md). [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
+Context: `crates/editac-core/src/table/`; `crates/editac-core/tests/table_shape.rs`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md). [Wordcraft-derived cases](../tests/wordcraft-regression-cases.md).
 Dependencies: RCH-1.1.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Row/column operations validate before mutation and form one undo group; concurrent shape/cell edits and deleted destinations converge under fixed fixtures without presenter repair writes. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly. WCF-08: Self-paste and already over-depth fragments reject before mutation under the existing simple-cell profile; subsequent copy/serialization/history/disposal remain bounded. No nested-table support is added.
+Acceptance: Row/column operations validate before mutation and form one undo group; concurrent shape/cell edits and deleted destinations converge under fixed fixtures without presenter repair writes. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly. WCF-08: Self-paste and already over-depth fragments reject before mutation under the existing simple-cell profile; subsequent copy/serialization/history/disposal remain bounded. No nested-table support is added. NTC-04/05 additionally require captured-axis duplicate and reorder through current prepared commands, non-drag movement contracts, distinct clear versus structural delete, last-axis focus and explicit header/width movement policy. Inspect the current table/commands.rs and table.rs owners before inventing a new operation.
 
 Implementation:
 
@@ -163,15 +163,16 @@ Handoff: Record the last completed substep, relevant symbols, remaining acceptan
 Blocked behavior: Leave `RCH-1.6` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, owner/unblock condition and bounded retry trigger. Continue another dependency-ready parent only in a later iteration; if none exists, report the gate without polling.
 
 
+
 ### Task RCH-1.7 — Define header and alignment table attributes
 
 - [ ] RCH-1.7 Implement and validate define header and alignment table attributes.
 
 Purpose: Make table formatting semantics explicit and portable.
-Context: `crates/editac-core/src/modules/tables/`; `crates/editac-core/tests/table_attributes.rs`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
+Context: `crates/editac-core/src/table/`; `crates/editac-core/tests/table_attributes.rs`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
 Dependencies: RCH-1.6.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Header/alignment changes round-trip under the declared Markdown profile, reject invalid values before mutation and preserve cell identities through undo and remote changes.
+Acceptance: Header/alignment changes round-trip under the declared Markdown profile, reject invalid values before mutation and preserve cell identities through undo and remote changes. NTC-06 requires aggregate first-row/first-column state and correct column/row header associations, including mixed and intersection cases; do not equate every header cell with scope=col.
 
 Implementation:
 
@@ -186,6 +187,7 @@ Handoff: Record the last completed substep, relevant symbols, remaining acceptan
 Blocked behavior: Leave `RCH-1.7` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, owner/unblock condition and bounded retry trigger. Continue another dependency-ready parent only in a later iteration; if none exists, report the gate without polling.
 
 
+
 ### Task RCH-1.8 — Qualify cell selection and rectangular clipboard
 
 - [ ] RCH-1.8 Implement and validate qualify cell selection and rectangular clipboard.
@@ -194,7 +196,7 @@ Purpose: Complete the existing cell interaction contract without a spreadsheet m
 Context: `packages/web/src/modules/tables/`; `tests/browser/table-selection.spec.ts`; `fixtures/tables/selection/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md). [Wordcraft amendment](../sources/wordcraft-research.md).
 Dependencies: RCH-1.7.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Selection/navigation and rectangular paste preserve cell content and intended dimensions; illegal/oversized ranges and readonly targets fail safely with one paste history group. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly. The refined TBL-03/NCL-20 clipboard variants require declared row/column boundaries in HTML/TSV fallbacks; newline-only flattening into one cell is not success.
+Acceptance: Selection/navigation and rectangular paste preserve cell content and intended dimensions; illegal/oversized ranges and readonly targets fail safely with one paste history group. TBL-01–TBL-04 distinguish text/cell rectangles, clear-content versus structural delete, paste dimensions/protected ranges and gesture ownership; unsupported merges reject explicitly. The refined TBL-03/NCL-20 clipboard variants require declared row/column boundaries in HTML/TSV fallbacks; newline-only flattening into one cell is not success. NTC-02/03/09/14 preserve native text versus cell-rectangle ownership, explicit final-cell Tab/append and escape-to-exit policy, captured clipboard targets and zero mutation/history for selection/cancel.
 
 Implementation:
 
@@ -207,6 +209,7 @@ Validation:
 Evidence: Progress entry `RCH-1.8` links changed paths, source/implementation revisions, commands/results and fixture/artifact hashes. Preserve failures; durable summaries belong in `../architecture/evidence/`.
 Handoff: Record the last completed substep, relevant symbols, remaining acceptance, exact failure/missing decision and next bounded action for `RCH-1.8`.
 Blocked behavior: Leave `RCH-1.8` unchecked; record BLOCKED/PROBLEM/NEEDS_INFO, owner/unblock condition and bounded retry trigger. Continue another dependency-ready parent only in a later iteration; if none exists, report the gate without polling.
+
 
 
 ### Task RCH-1.9 — Format only the selected Markdown table
@@ -491,7 +494,7 @@ Purpose: Deliver the named transfer boundary with reproducible evidence and expl
 Context: `packages/web/src/modules/tables/`; `tests/browser/extension-formatting.spec.ts`; `fixtures/rich-presenters/formatting/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/extension-library.md`
 Dependencies: RCH-1.8, RCH-1.11, RCH-1.18.
 Session scope: One named boundary; target 15–45 minutes plus focused validation. These are future tasks; this roadmap revision does not execute native tests or authorize device runs.
-Acceptance: Table cells admit the declared inline/block formatting palette, retain styles through row/column edits, rectangular copy/paste and undo, and expose scoped formatting commands. Image/file captions, references, math and other registered inline/block extensions preserve admitted formatting and source data. Unsupported styles/codecs have explicit inert fallback; literal paste remains optional and bypasses rich transformation.
+Acceptance: Table cells admit the declared inline/block formatting palette, retain styles through row/column edits, rectangular copy/paste and undo, and expose scoped formatting commands. Image/file captions, references, math and other registered inline/block extensions preserve admitted formatting and source data. Unsupported styles/codecs have explicit inert fallback; literal paste remains optional and bypasses rich transformation. NTC-12/14 preserve admitted formatting through scoped menus; generic metadata does not admit arbitrary CSS/colors. RCH-1.35 owns new color/span decisions.
 
 Implementation:
 
@@ -504,6 +507,7 @@ Validation:
 Evidence: Separate progress entry with commands, exact environment and artifact hashes; catalogs remain planned until the corresponding runs exist.
 Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
 Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Accept target-platform simulators/emulators/VMs under verification.md and retain virtual provenance; never relabel their results as physical-device observations.
+
 
 ### Task RCH-1.24 — Qualify collapsible-section semantics
 
@@ -725,13 +729,57 @@ Evidence: Record exact selectors and concise pass/fail/skip counts in ignored pr
 Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.33` in the separate progress file.
 Blocked behavior: Leave `RCH-1.33` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
 
+### Task RCH-1.34 — Define and implement guarded table layout capabilities
+
+- [ ] RCH-1.34 Define and implement guarded table layout capabilities.
+
+Purpose: Make table widths and fit/distribution portable before exposing browser gestures.
+Context: crates/editac-core/src/table.rs; crates/editac-core/src/table/; packages/core/src/; existing table attribute/shape/history tests; [table controls](../specs/table-controls.md); [planned NTC cases](../tests/notion-table-cases.md).
+Dependencies: RCH-1.7.
+Session scope: One named contract boundary, 15–45 minutes plus focused checks; split an oversized boundary before implementation, retaining acceptance and existing owners.
+Acceptance: NTC-07/08: settle shared authored versus host-local width ownership, units/bounds, per-axis identity, prepare-time admission, stale/protected/readonly handling, concurrency/history and supported format loss policy in the owning spec before implementation. Width, fit and distribution are distinct atomic commands; preserve content, explicit widths and data on rejection under the one current format. A generic metadata write is not this capability.
+
+Implementation:
+
+- [ ] RCH-1.34-I1 Inspect current column attributes/projection and use one existing prepared table/codec/history path; add typed width/capability descriptors and only missing bounded operations. No new replica/store, schema relabel or DOM-only persistence.
+
+Validation:
+
+- [ ] RCH-1.34-V1 Run only the changed table attribute/layout/history selectors after declaring exact fixtures; existing table_attributes/table_shape/history selectors are starting points, not permission for the full core suite. Add one minimal distinct width rejection/undo fixture where coverage is absent and report actual selected test names/counts. No broad performance/device matrix during feature delivery; final runtime/AT proof remains roadmap43.
+
+Evidence: Record source/interface decisions, exact focused command and nonzero executed/passed/failed/skipped counts in the planned separate .roadmap-runner/notion-tables-20261108/rch.progress.md; do not write worker progress into this source. Generated output remains ignored. This path is a planned receipt destination, not active-runner configuration.
+Handoff: Record last substep, accepted contract or unresolved decision, failing input and exact next bounded action.
+Blocked behavior: Keep unchecked; record the specific missing decision/API owner and changed-input resume condition. No DOM repair, automatic conversion, paid inference or unchanged retries.
+
+### Task RCH-1.35 — Decide table color and merged-cell capabilities
+
+- [ ] RCH-1.35 Decide table color and merged-cell capabilities.
+
+Purpose: Make scope and data-preservation limits explicit before presenting unsupported features.
+Context: specs/table-controls.md; specs/rich-content-extensions.md; specs/formats.md; decisions/006-single-format-before-publication.md; [table controls](../specs/table-controls.md); [planned NTC cases](../tests/notion-table-cases.md).
+Dependencies: RCH-1.1.
+Session scope: One named contract boundary, 15–45 minutes plus focused checks; split an oversized boundary before implementation, retaining acceptance and existing owners.
+Acceptance: NTC-12/13: record accept/defer/reject separately for cell/axis text/background colors and merged cells. Include safe tokens/contrast/serialization or span identity/anchors/concurrency/history/content-preservation and loss policy. Keep current no-merge rejection/recovery until an accepted engine contract is delivered; Notion non-anchor clearing is not adopted. A deferred decision is labelled as unsupported, never completed feature support.
+
+Implementation:
+
+- [ ] RCH-1.35-I1 Write a bounded decision with chosen scope, unresolved user choice if necessary and exact existing implementation owners for any accepted follow-up. Keep schema/format/native policy and source-only rules; do not implement a presenter as a substitute for the decision.
+
+Validation:
+
+- [ ] RCH-1.35-V1 Documentation-only: check decision/owner/case links and the explicit capability matrix. No application suite, provider call or implementation qualification is warranted for the decision record. No broad performance/device matrix during feature delivery; final runtime/AT proof remains roadmap43.
+
+Evidence: Record source/interface decisions, exact focused command and nonzero executed/passed/failed/skipped counts in the planned separate .roadmap-runner/notion-tables-20261108/rch.progress.md; do not write worker progress into this source. Generated output remains ignored. This path is a planned receipt destination, not active-runner configuration.
+Handoff: Record last substep, accepted contract or unresolved decision, failing input and exact next bounded action.
+Blocked behavior: Keep unchecked; record the specific missing decision/API owner and changed-input resume condition. No DOM repair, automatic conversion, paid inference or unchanged retries.
+
 ### Task RCH-1.19 — Publish per-feature portable presenter contracts
 
 - [ ] RCH-1.19 Implement and validate publish per-feature portable presenter contracts.
 
 Purpose: Give downstream native/TUI work concrete feature APIs and fixtures.
 Context: `packages/core/`; `packages/web/package.json`; `tests/rich-presenter-contracts.test.mjs`; `fixtures/rich-presenters/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
-Dependencies: RCH-1.5, RCH-1.10, RCH-1.13, RCH-1.14, RCH-1.15, RCH-1.16, RCH-1.17, RCH-1.18, RCH-1.21, RCH-1.22, RCH-1.23, RCH-1.24, RCH-1.25, RCH-1.26, RCH-1.27, RCH-1.28, RCH-1.29, RCH-1.30, RCH-1.31, RCH-1.32, RCH-1.33.
+Dependencies: RCH-1.5, RCH-1.10, RCH-1.13, RCH-1.14, RCH-1.15, RCH-1.16, RCH-1.17, RCH-1.18, RCH-1.21, RCH-1.22, RCH-1.23, RCH-1.24, RCH-1.25, RCH-1.26, RCH-1.27, RCH-1.28, RCH-1.29, RCH-1.30, RCH-1.31, RCH-1.32, RCH-1.33, RCH-1.34, RCH-1.35.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
 Acceptance: Clean public consumers need no private paths; Swift/Kotlin/desktop/terminal records define lifecycle/focus/selection/cancel/accessibility obligations and every feature has explicit preservation/view/edit capabilities for roadmaps31–36. Publish search/code command, selection, scope and fallback contracts with exact first-party profile identities for native/terminal consumers. The Notion additions publish explicit data-preservation/view/edit/copy/source and host-required states for toggles, palette, columns, outline, block links, annotations and human review; the three strategic capabilities retain their decision dispositions. Native/terminal implementations remain separately qualified.
 

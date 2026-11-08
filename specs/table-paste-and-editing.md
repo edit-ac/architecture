@@ -4,6 +4,8 @@ Status: PLANNED — user correction, 2026-10-25. The user reported pasted tables
 
 ## Product outcome
 
+The 2026-11-08 [table-control refinement](table-controls.md) extends the surrounding menus/geometry, preserving completed UDM-1.8 direct editing and UDM-1.9 paste. New controls must not restore idle form chrome or duplicate those owners. Final NTC cases join TPT cases under UTW-1.2.
+
 A supported table pasted into the document looks like a normal document table: one coherent grid with cell text, formatting, headers, padding, borders, wrapping and meaningful column layout. Clicking text edits that cell in place. The idle table must not look like a form containing an always-visible textarea/input in each cell, repeat content in both a preview and a field, or show editing buttons and scrollbars in every cell. Contextual cell/rectangle controls appear when useful, with discoverable keyboard and accessibility equivalents.
 
 The current textarea-per-cell presenter is an intermediate implementation. Styling those textareas to remove their borders alone does not satisfy direct rich cell editing, native selection, composition or paste fidelity. Reuse existing shared prepared cell commands and cell-range history; do not introduce another document replica, independently writable per-cell model, persistence owner or undo stack. An accessible active editing host may legitimately expose a textbox role; the requirement concerns repeated form widgets and visible field chrome, not removing necessary assistive semantics.

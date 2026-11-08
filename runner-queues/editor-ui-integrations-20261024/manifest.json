@@ -243,6 +243,41 @@
       ]
     },
     {
+      "file": "03b-table-controls.md",
+      "prefix": "UDM",
+      "kind": "functional",
+      "progress": ".roadmap-runner/editor-ui-integrations-20261024/03b-table-controls.progress.md",
+      "tasks": [
+        {
+          "id": "UDM-1.10",
+          "dependencies": [],
+          "entryReceipts": [
+            "UDM-1.3",
+            "UDM-1.8"
+          ]
+        },
+        {
+          "id": "UDM-1.11",
+          "dependencies": [
+            "UDM-1.10"
+          ],
+          "entryReceipts": [
+            "UDM-1.8",
+            "RCH-1.34"
+          ]
+        },
+        {
+          "id": "UDM-1.12",
+          "dependencies": [
+            "UDM-1.10"
+          ],
+          "entryReceipts": [
+            "UDM-1.8"
+          ]
+        }
+      ]
+    },
+    {
       "file": "04-react-ui.md",
       "prefix": "URC",
       "kind": "functional",
@@ -1355,7 +1390,10 @@
           ],
           "entryReceipts": [
             "UDM-1.8",
-            "UDM-1.9"
+            "UDM-1.9",
+            "UDM-1.10",
+            "UDM-1.11",
+            "UDM-1.12"
           ]
         },
         {
@@ -1757,6 +1795,11 @@
       "id": "BWF-1.8",
       "file": "../backend-sdk-adapters-20261024/08-web-frameworks.md",
       "progress": ".roadmap-runner/backend-sdk-adapters-20261024/08-web-frameworks.progress.md"
+    },
+    {
+      "id": "RCH-1.34",
+      "file": "../../roadmaps/25-rich-content-extensions.md",
+      "progress": ".roadmap-runner/notion-tables-20261108/rch.progress.md"
     }
   ],
   "requirements": [
@@ -2128,6 +2171,19 @@
       ],
       "finalOwner": "UTW-1.2",
       "existingEvidenceOwners": []
+    },
+    {
+      "id": "UI-TABLE-CONTROLS",
+      "outcome": "Contextual table/axis/cell controls, guarded geometry and direct manipulation without idle control clutter",
+      "implementation": [
+        "UDM-1.10",
+        "UDM-1.11",
+        "UDM-1.12"
+      ],
+      "finalOwner": "UTW-1.2",
+      "existingEvidenceOwners": [
+        "RCH-1.34"
+      ]
     }
   ]
 }

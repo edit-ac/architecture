@@ -106,7 +106,7 @@ Rows enumerate concrete source-controlled controls or repeated control families.
 | S27 | Table styles: Paragraph cells, Heading 1–6 cells, Code block cells | src/modules/tables/current.ts | Same semantic owner; UDM-1.8/1.9 |
 | S28 | Header cells, Body cells, Align cells none/left/center/right | src/modules/tables/current.ts | Same semantic owner; UDM-1.8/1.9 |
 | S29 | Paste cells as literal text checkbox; Extend table selection toggle; per-cell Select row/column buttons | src/modules/tables/current.ts | Existing cell-range owner; UDM-1.8/1.9 |
-| S30 | Per-cell textarea plus rich preview, grid, navigation help, retained-data diagnostics | src/modules/tables/current.ts | Existing scaffolding is a known product defect, not direct rich cell editing; UDM-1.8/1.9 and UIS-1.4 |
+| S30 | Direct rich cell grid, navigation help, retained-data diagnostics | src/modules/tables/current.ts | Current core a0ec43bc has direct cells (UDM-1.8); scoped control/geometry refinement remains UDM-1.10–1.12, final UTW-1.2 |
 | S31 | Table updated/rejected, selection limits/dimensions, copy/paste and retained-data status | src/modules/tables/current.ts | Existing command/clipboard results; UTW-1.2 retains final TPT proof |
 | S32 | Unsupported table source readonly textarea and preserved-data status | src/modules/content.ts | Existing safe fallback; UDM/UIS |
 | S33 | Add file, optional Take photo, matching hidden file inputs, Cancel adding asset | src/modules/asset-input.ts | Existing describe/host/receipt path, optional capture; UDM |
@@ -201,7 +201,7 @@ There is no new package in UIC-1.1. The ledger is consumed from the shared spec 
 | Generic @edit-ac/ui installing all frameworks | Unsupported design; use optional per-framework boundaries above |
 | Framework-rendered editable descendants or a second simultaneous toolbar owner | Unsupported; existing DOM/native input owner remains authoritative |
 | Automatic durable-save/offline/conflict status inferred from UI | Unsupported; real storage/transport receipts required by UDM and existing persistence owners |
-| Current table textarea plus preview as completed direct-cell product UI | Unsupported claim; UDM-1.8/1.9, UIS-1.4 and UTW-1.2 retain the correction |
+| Textarea plus preview as completed direct-cell product UI | Unsupported claim; UDM-1.8/1.9, UIS-1.4 and UTW-1.2 retain the correction |
 | Native platform qualification inferred from browser UI or DTO compilation | Unsupported; existing native/BNT and roadmap43 observations required |
 | RN macOS/Windows or Flutter desktop embedding inferred from native SDK availability | Candidate only; UFW-1.4 requires feasibility and existing BDH/BCP handoff |
 | Native mobile editor implemented as hidden WebView/iframe | Unsupported architecture; reuse BCP-owned native platform surface |
@@ -214,3 +214,7 @@ There is no new package in UIC-1.1. The ledger is consumed from the shared spec 
 2. Compare the public seam names with their existing index exports and owning methods. Check every surface row at its named constructor/render/status code, including data-driven controls, conditional launchers, readonly fallbacks and temporary body-mounted paste UI. Count inspected rows separately from runtime cases.
 3. Compare planned boundaries to the owning task's declared path and the existing BWF/BFA/BCP/BNA/BDH handoff. A missing planned API remains with that owner and is not a current runtime failure of the inventory task.
 4. Run `git diff --check` only in each edited owning repository. No browser, native startup, AI/provider transport, broad test suite, generated package or external service is required. Keep inspection receipts in ignored runner evidence, not source Git.
+
+## Table control continuation — 2026-11-08
+
+[Current table evidence](../rea/notion-tables.md) supersedes the older S30 implementation description. S25–S31 retain semantic and clipboard owners; [table controls](table-controls.md) schedules compact target-aware menus (UDM-1.10), geometry (UDM-1.11) and axis manipulation (UDM-1.12). Generic namespaced metadata is not width/color support; rich direct cells already exist. Default and optional control consumers must identify their single active owner.

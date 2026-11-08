@@ -63,11 +63,11 @@ Blocked behavior: Leave UTW-1.1 unchecked; record the blocking fingerprint and e
 Purpose: Cover default styles and host overrides so applications can reuse this integration boundary.
 Deliverable: `tests/ui-integrations/default/`.
 Context: [named contract section](../../specs/editor-ui-integrations.md#acceptance-and-support-gates); actual exported symbols in Deliverable and the named predecessor receipt only.
-Entry receipts: [UDM-1.8](03-default-dom-controls.md), [UDM-1.9](03-default-dom-controls.md).
+Entry receipts: [UDM-1.8](03-default-dom-controls.md), [UDM-1.9](03-default-dom-controls.md), [UDM-1.10](03b-table-controls.md), [UDM-1.11](03b-table-controls.md), [UDM-1.12](03b-table-controls.md).
 Dependencies: UTW-1.1.
 Independent work: Any sibling with its own prerequisites satisfied; no inherited sibling-platform blocker.
 Session scope: One named boundary, 15–45 minutes including checks; return missing host/semantic work to its owner.
-Acceptance: Content/chrome separation, all inventoried states, two-editor/portal themes, responsive layout, RTL and forced-color cases have passing focused evidence or explicit open observations. Table-paste product acceptance additionally requires [TPT-01–08](../../specs/table-paste-and-editing.md): actual packed direct cell editing/paste, coherent idle grid without repeated input/textarea chrome, formatting/target/history/reopen and nonmutating rejection; reuse semantic-owner proof and record exact remaining OS/AT observations. UDM-1.8/1.9 receipts are prerequisites for this added slice; no fixture-only or screenshot-only pass.
+Acceptance: Content/chrome separation, all inventoried states, two-editor/portal themes, responsive layout, RTL and forced-color cases have passing focused evidence or explicit open observations. Table-paste product acceptance additionally requires [TPT-01–08](../../specs/table-paste-and-editing.md): actual packed direct cell editing/paste, coherent idle grid without repeated input/textarea chrome, formatting/target/history/reopen and nonmutating rejection; reuse semantic-owner proof and record exact remaining OS/AT observations. UDM-1.8/1.9 receipts are prerequisites for this added slice; no fixture-only or screenshot-only pass. The table-control follow-up additionally consumes UDM-1.10–1.12 and [NTC-01–16](../../tests/notion-table-cases.md): scoped menus/headers, stable geometry, safe axis actions and honest capability limits. Carry existing direct-cell/paste passes forward; repeat only invalidated scopes.
 
 Implementation:
 
