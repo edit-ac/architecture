@@ -89,4 +89,3 @@ Validation:
 Evidence: Separate progress above; exact source/interface/fixture/runtime and counts, inspected visuals, reused receipts and explicit unverified cases. No screenshots/generated diagnostics in Git.
 Handoff: Record the last substep/symbol, missing semantic receipt or failing input, and next bounded action.
 Blocked behavior: Keep unchecked with owner/fingerprint and changed-input resume condition; no unchanged retry, runner mutation, alternate replica or DOM-only semantic workaround.
-
