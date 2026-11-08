@@ -398,19 +398,85 @@ Evidence: Progress entry `INT-1.18` links immutable implementation/profile/fixtu
 Handoff: Record last completed substep, failing case/missing primitive, changed paths and next bounded action for `INT-1.18`.
 Blocked behavior: Leave `INT-1.18` unchecked with owner, unblock condition and retry trigger; never replace missing qualified engine behavior with a DOM-only workaround.
 
+### Task INT-1.19 — Open an anchored block context from the handle
+
+- [ ] INT-1.19 Open an anchored block context from the handle.
+
+Purpose: Make the six-dot handle a click/tap/keyboard command surface for the clicked block, separate from its drag gesture and the current text caret.
+Context: `packages/web/src/surface.ts`; `packages/web/src/modules/registry.ts`; `packages/web/src/modules/reorder.ts`; new `packages/web/src/blocks/context-menu.ts`; `../architecture/specs/editor-interactions.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: INT-1.13, INT-1.15, INT-1.18.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NBM-01–NBM-05 hold: with the caret in A, B’s handle opens B’s type/actions and mutates B only; conversion preserves admitted child content and checklist state; keyboard/touch dismissal restores useful focus; a stale/deleted/unauthorized target is refused. Drag threshold, ordinary scrolling and menu click do not conflict. Only registered/applicable commands appear. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] INT-1.19-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Capture a stable document/session/block target from hit testing, resolve/revalidate it through Rust before action, and compose one contextual menu over the existing command registry. Include admitted Turn into, copy, duplicate, move, indent/outdent and delete actions; add optional color/link/review items only when their capability is present. Keep click versus drag distinct, submenu focus/labels accessible, text-query cancellation lossless, and each successful edit one engine/history batch. Do not copy another editor’s menu engine or add a mandatory UI dependency.
+
+Validation:
+
+- [ ] INT-1.19-V1 Use the existing command-surfaces/pointer-context selector plus the new block-context branch in `tests/browser/interactions/` for wrong-caret targeting, cancellation and stale-target refusal; inspect one desktop and touch-capable host path. Reuse INT-1.18 routing and qualified move receipts. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `INT-1.19` in the separate progress file.
+Blocked behavior: Leave `INT-1.19` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task INT-1.20 — Define and expose prepared block-range operations
+
+- [ ] INT-1.20 Define and expose prepared block-range operations.
+
+Purpose: Provide the semantic block-range target and lossless bulk copy/duplicate/delete/move operations needed by a block-selection presenter.
+Context: `crates/editac-core/src/anchors.rs`; `crates/editac-core/src/commands/editor.rs`; `crates/editac-core/src/commands/move.rs`; `crates/editac-core/src/commands/format.rs`; `crates/editac-wasm/`; `packages/core/`; `../architecture/specs/engine.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: INT-1.12.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NBR-01–NBR-04 define canonical ordered membership, subtree deduplication, new identities for copies, identity retention for moves, bounds and stale-target outcomes. A prepared batch affects exactly the admitted range once, retains nested content/attributes/references and one Undo group, and preserves concurrent human edits or explicitly refuses an unresolvable operation. Text-range and table-cell semantics are not silently redefined. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] INT-1.20-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Inspect and reuse qualified multi-owner formatting, fragment replacement, atomic editor batches, anchors and cross-parent move preparation. Define a versioned block-range command/view contract without changing stored data merely for selection UI. Fill only proved missing semantic/ABI pieces in Rust, prepare on the existing isolated replica, revalidate before the one live update and expose the qualified result through WASM/SDK. Amend the owning engine/ABI contract before changing shared semantics; never implement bulk operations by repeated DOM mutation or by treating a parent and its selected descendants as independent duplicates.
+
+Validation:
+
+- [ ] INT-1.20-V1 Select affected existing Rust anchor/editor-batch/move cases and a minimal new range-membership/clone/move case only where a distinct primitive is added; exercise the affected WASM adapter with the same deterministic inputs. Do not rerun the complete engine suite solely because a new consumer exists. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `INT-1.20` in the separate progress file.
+Blocked behavior: Leave `INT-1.20` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task INT-1.21 — Present multi-block selection and bulk actions
+
+- [ ] INT-1.21 Present multi-block selection and bulk actions.
+
+Purpose: Make text, single-block and block-range selection explicit and usable by keyboard, pointer and touch over the prepared engine operations.
+Context: `packages/web/src/dom/selection.ts`; `packages/web/src/surface.ts`; new `packages/web/src/blocks/selection.ts`; `packages/web/src/blocks/context-menu.ts`; `../architecture/specs/editor-interactions.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: INT-1.19, INT-1.20.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NBR-05–NBR-07 hold: Escape/Enter transitions and Shift-arrow range extension are discoverable, selected subtrees have truthful visible/announced feedback, and bulk menu/clipboard/history behavior uses the captured range. IME, ordinary text selection, nested control focus, table-cell selection, remote deletion and host teardown remain safe. Actual touch/AT claims await their own observations. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] INT-1.21-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Build a derived selection presenter over the qualified block-range API; keep ordered membership and mutation validation engine-owned. Wire admitted bulk commands to the same registry/context menu and current movement controller. Preserve source-relative selection across remote updates and cancel stale sessions; export only document content and the admitted clipboard representation, never selection chrome. Cross-container moves reuse the already qualified semantic move and RCH-1.17 pointer owner rather than inventing another writer.
+
+Validation:
+
+- [ ] INT-1.21-V1 Use focused interaction block-selection cases for parent/child deduplication, duplicate/delete/Undo, a stale range and two-editor focus ownership; reuse the INT-1.20 semantic receipt. Leave the full keyboard/AT/mobile and mixed-feature matrix to the existing final owners. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `INT-1.21` in the separate progress file.
+Blocked behavior: Leave `INT-1.21` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
 ### Task INT-1.14 — Qualify actual typing and assistive-technology support
 
 - [ ] INT-1.14 Qualify actual typing and assistive-technology support.
 
 Purpose: Qualify actual typing and assistive-technology support as one bounded behavior and regression boundary.
 Context: `tests/browser/interactions/`; `../architecture/evidence/editor-interactions/`; `../architecture/specs/verification.md`; [behavior contract](../specs/editor-interactions.md); [case catalog](../tests/editor-interaction-cases.md). [Platform editing contract](../specs/platform-editing-services.md); [ENV acceptance variants](../tests/platform-editing-cases.md).
-Dependencies: INT-1.12, INT-1.13, INT-1.17, INT-1.18.
+Dependencies: INT-1.12, INT-1.13, INT-1.17, INT-1.18, INT-1.19, INT-1.20, INT-1.21.
 Session scope: One named behavior group plus its focused validation; change only named paths and directly required test/configuration glue.
-Acceptance: Every mandatory catalog case has passing exact-revision evidence across the declared browser/device matrix. IME, native dictation/correction, screen-reader editing, voice control and non-US layouts have physical or target-platform virtual observations or tested hardware-only equivalents under verification.md; record their limitations and untested combinations explicitly. Include the owned SEL/MOV/XFR/CMD variants and mandatory platform gesture/OS-command observations from the additional catalog. Optional rich tools remain owned by track 25. Consume ENV-01–12 for each claimed browser/OS capability, especially actual platform spelling on/off, separate autocorrection, unknown/unavailable locale/provider, accepted correction and key/Edit/context-menu history. Optional service absence requires a tested fallback, not a service-support pass.
+Acceptance: Every mandatory catalog case has passing exact-revision evidence across the declared browser/device matrix. IME, native dictation/correction, screen-reader editing, voice control and non-US layouts have physical or target-platform virtual observations or tested hardware-only equivalents under verification.md; record their limitations and untested combinations explicitly. Include the owned SEL/MOV/XFR/CMD variants and mandatory platform gesture/OS-command observations from the additional catalog. Optional rich tools remain owned by track 25. Consume ENV-01–12 for each claimed browser/OS capability, especially actual platform spelling on/off, separate autocorrection, unknown/unavailable locale/provider, accepted correction and key/Edit/context-menu history. Optional service absence requires a tested fallback, not a service-support pass. Consume the NBM and NBR-01–07 rows in the planned Notion catalog after their producers; author/register only missing executable cases in the shared harness and run changed keyboard/touch/AT/clipboard claims. Reuse retained semantic receipts instead of repeating the engine suite.
 
 Implementation:
 
-- [ ] INT-1.14-I1 Run browser integration and actual device protocols for the named catalog rows; record browser/OS/keyboard/locale/AT versions and minimize failures. Reconcile baseline platform capability records and hand off the reviewed supported envelope to REL-1.1.
+- [ ] INT-1.14-I1 Run browser integration and actual device protocols for the named catalog rows; record browser/OS/keyboard/locale/AT versions and minimize failures. Reconcile baseline platform capability records and hand off the reviewed supported envelope to REL-1.1. Own final NBM/NBR-01–07 case completion and declared input/AT qualification after the functional batch; a source checkbox/count change alone invalidates no passing evidence.
 
 Validation:
 

@@ -8,7 +8,7 @@ Superseding delivery decision, 2026-10-18: [web feature completeness first](oper
 
 [Shared editor, GitHub and website styling](design/brand-guide.md)
 
-This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 43 roadmap files and 577 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
+This repository defines a Rust-first editor SDK for web, native iOS, Android, macOS, Windows and Linux, with a separate CLI/TUI client. It contains 43 roadmap files and 590 bounded parent tasks. These are development contracts, not claims of shipped capability; implementation status belongs in the runner’s separate progress and qualification evidence.
 
 The user selected public repositories and Apache-2.0. [Decision 001](decisions/001-web-first.md) resolves scope, ownership, naming and release conflicts. [Decision003](decisions/003-extension-ecosystem.md) adds the requested extension, format, cloud and public-documentation delivery. The [original proposal](sources/initial-roadmap.md) is archived unchanged as reference material; current specs and task acceptance supersede it. [Decision 002](decisions/002-full-delivery.md) extends delivery beyond the initial browser release; the [requirement review](requirements.md) maps each requested capability to concrete tasks.
 
@@ -101,7 +101,7 @@ The initial browser milestone remains independently deliverable. These tracks co
 
 | Track | Parent tasks | Whole-track prerequisites | Exit artifact |
 |---|---:|---|---|
-| [25 Rich content and AI](roadmaps/25-rich-content-extensions.md) | 37 | 05, 07, 12, 13, 21 | Code highlighting, tables, assets/embeds, interactions and optional AI writing |
+| [25 Rich content and AI](roadmaps/25-rich-content-extensions.md) | 47 | 05, 07, 12, 13, 21 | Code highlighting, tables, assets/embeds, interactions and optional AI writing |
 | [26 Public and internal links](roadmaps/26-link-resolution.md) | 12 | 12, 21 | Automatic metadata, permission-scoped references and safe activation |
 | [27 Document formats](roadmaps/27-document-conversion.md) | 18 | 05, 12, 21, 25 | Direction/fidelity profiles; PDF export only |
 | [28 Cloud-store readiness](roadmaps/28-cloud-document-store.md) | 21 | 06, 12, 25 | Durable reference service, tenant isolation, assets and recovery |
@@ -150,11 +150,13 @@ The foundation produces `schema-v1.md` and `protocol-v1.md` only after adversari
 
 ## Everyday typing and assistive input
 
+[The REA/Notion block-editor comparison](rea/notion-block-editor.md), reviewed 2026-11-08, maps observed interactions against actual Rust/Yrs and browser source. Thirteen new unchecked parents extend the existing tracks 25/38 for block context/ranges, collapsible sections, authored palettes, columns, outline, host block links and review presenters; strategic shared/executable content remains explicitly deferred. The [40-case planned catalog](tests/notion-block-cases.md) supplies future acceptance, not passing support. Existing completed engine receipts, the current roadmap graph and final roadmap-43 target-runtime/device ownership remain intact.
+
 [Research](evidence/editor-interaction-research.md) draws on ProseMirror/Tiptap, Lexical, Slate and their documented regressions; [assistive research](evidence/assistive-input-research.md) adds platform and accessibility sources. [The behavior contract](specs/editor-interactions.md) and [targeted case catalog](tests/editor-interaction-cases.md) specify Enter/Shift+Enter, selected formatting, deletion, whitespace/Unicode, keyboard/selection, slash controls, parsing and paste. These are planned acceptance requirements, not shipped support.
 
 | Track | Parent tasks | Whole-track prerequisites | Exit artifact |
 |---|---:|---|---|
-| [38 Everyday editing](roadmaps/38-editor-interactions.md) | 18 | 04, 05, 07, 42 | Deterministic regression corpus and real input/accessibility evidence; required by 10 |
+| [38 Everyday editing](roadmaps/38-editor-interactions.md) | 21 | 04, 05, 07, 42 | Deterministic regression corpus and real input/accessibility evidence; required by 10 |
 | [39 Assistive input](roadmaps/39-assistive-input.md) | 11 | 38, 21; native/TUI gates per task | Optional portable assistance extension and independent platform evidence; required by 37 |
 
 Baseline keyboard access, screen-reader editing and OS dictation work without the optional extension. Assistance adds discoverable commands, status and explicit host capabilities, with prepared/mock transports in automated tests. No speech provider or paid inference testing is added. Existing engine work and its progress remain independently owned; these roadmap edits do not start another runner.
@@ -195,7 +197,7 @@ Mobile baseline support does not load optional rich-content, converter, gesture 
 
 | Track | Parent tasks | Whole-track prerequisites | Exit artifact |
 |---|---:|---|---|
-| [25 AI epic](roadmaps/25-rich-content-extensions.md#epic-rch-2--deliver-optional-ai-writing-through-existing-edit-contracts) | 14 of 36 | Existing 25 gates; AI-only 08, 38, 40 and per-task native/TUI/docs gates | Ask AI, fill/continue, selected-text actions and opt-in autocomplete; mock-backed consumers and independent platform evidence |
+| [25 AI epic](roadmaps/25-rich-content-extensions.md#epic-rch-2--deliver-optional-ai-writing-through-existing-edit-contracts) | 14 of 47 | Existing 25 gates; AI-only 08, 38, 40 and per-task native/TUI/docs gates | Ask AI, fill/continue, selected-text actions and opt-in autocomplete; mock-backed consumers and independent platform evidence |
 
 Deliver explicit Ask AI/fill and selected-text actions first, then bounded autocomplete. AI uses optional host-owned transports, explicit context and request limits, transient previews and reviewed semantic edits. Vercel AI SDK Core is the default TypeScript host/backend adapter, qualified with pinned stable versions and prepared mocks through the same portable transport; editor consumers may provide another conforming host transport. It adds no baseline release gate or mandatory provider dependency. Prepared responses qualify integration only; no paid inference or live dogfood is authorized. Additional first-party candidates include glossary checks, notes-to-checklists, source-referenced explanations, reusable templates and anchored review comments; these remain suggestions, not committed tasks.
 

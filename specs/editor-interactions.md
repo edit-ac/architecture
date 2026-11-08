@@ -5,6 +5,8 @@ Device sequencing (superseding user decision, 2026-10-18): every device/target-r
 Status: development contract; behavior is unimplemented until the owning task and its evidence pass.
 Scope: the default rich editor, with explicit code, list, table and literal-text contexts. Hosts may publish named keyboard profiles; silent platform-dependent content semantics are unsupported.
 
+The [Notion comparison](../rea/notion-block-editor.md) adds planned block-context and range acceptance under INT-1.19–1.21. It does not reopen the qualified engine or establish new format/native support. [The planned cases](../tests/notion-block-cases.md) remain descriptions until their producers supply executable fixtures.
+
 The [research](../evidence/editor-interaction-research.md) records primary documentation and historical regressions. The [case catalog](../tests/editor-interaction-cases.md) supplies stable IDs and expected outcomes. [Track 38](../roadmaps/38-editor-interactions.md) owns implementation and regression qualification after the baseline tracks; it is a browser release prerequisite. Existing engine, browser and format contracts remain authoritative for schema, transactions, event reconciliation and parsing. If a behavior needs an unqualified primitive, record the engine/schema dependency and qualify it before implementing that behavior; a DOM-only workaround cannot satisfy it.
 
 ## State and command ownership
@@ -141,6 +143,18 @@ The optional first-party search and code-command contracts live in [rich content
 ## Changed-field formatting surfaces
 
 [WCF-19](../tests/wordcraft-regression-cases.md) refines INT-1.3 for existing/claimed formatting surfaces; it does not require a new Word-style property dialog. Capture mixed and unrepresented values without normalizing them to the caret's values. Accept only intentional changed fields through one prepared semantic batch. Unchanged acceptance/cancellation makes no edit/history, and undo restores original supported properties. Revalidate captured target/revision/permission before commit and assert pending marks with a next typed sentinel. Existing REG-01/REG-02/REG-05 variants cover alias grouping, selection replacement after typing and pending Bold across successful history navigation versus empty-history Undo.
+
+## Block contexts and selected subtrees — 2026-11-08
+
+**Planned:** INT-1.19 owns the context menu, INT-1.20 the qualified block-range command boundary, and INT-1.21 its browser selection presenter. Existing engine anchors, prepared batches, cross-parent movement and history are inputs, not missing behavior to reimplement. NBM/NBR cases in the [planned catalog](../tests/notion-block-cases.md) define observable acceptance.
+
+The handle has distinct click/tap/keyboard opening and intentional thresholded drag gestures. A menu captures its clicked document/session/block target even when the text caret is elsewhere. It exposes type-appropriate conversion, copy, duplicate, move, indent/outdent and delete through the existing registry; optional color/link/review items appear only with their declared capability. No hover-only essential action, second command catalog or mandatory third-party UI runtime is introduced. Opening, submenu navigation, cancellation and closing preserve useful visible focus and recoverable authored text.
+
+Resolve and revalidate captured targets through the authoritative engine/session boundary after intervening accepted transactions and immediately before dispatch. Deleted, incompatible, stale-generation or denied targets are refused, never replaced by whichever block now occupies a DOM index or caret. Host-domain authorization remains host-owned. A valid conversion retains supported children, references, attachments, marks and checklist state in one Undo group; an impossible conversion preserves source and reports why.
+
+Text, single-block and ordered block-range selection are explicit, distinct from table-cell selection and temporary IME composition. Escape/Enter and Shift-arrow behavior must expose and announce scope; pointer/touch has an equivalent usable route. Canonical range membership deduplicates descendants under a selected parent. A true copy/duplicate creates identities according to the accepted format; a move retains identities and current source-relative selection. Bulk edits prepare/validate together before one live update and Undo group. Rust owns membership validation and mutations; the DOM only presents selection/drag geometry. Bounds, unresolved anchors and concurrent structural changes produce explicit outcomes rather than partial application.
+
+Native/touch, clipboard and assistive-technology support are independent observations. A narrow desktop viewport or success toast is insufficient qualification. INT-1.14 consumes minimal producer receipts and fills only missing/invalidated platform and combined-interaction assertions after functional delivery.
 
 ## Regression prevention and shared suite
 

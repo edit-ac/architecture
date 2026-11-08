@@ -355,11 +355,11 @@ Purpose: Keep passive link cards separate from active third-party content.
 Context: `packages/web/src/modules/embeds/`; `tests/browser/controlled-embeds.spec.ts`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
 Dependencies: RCH-1.11.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Raw provider HTML never enters the editor DOM; unauthorized/unsupported/offline embeds preserve a safe label, and no document-open/remote-update event activates or fetches an embed.
+Acceptance: Raw provider HTML never enters the editor DOM; unauthorized/unsupported/offline embeds preserve a safe label, and no document-open/remote-update event activates or fetches an embed. The Notion comparison adds no arbitrary embeds: declare the finite bookmark/audio/video/provider descriptor set or an explicit deferred/unavailable disposition, with safe link/source fallback and host-controlled activation.
 
 Implementation:
 
-- [ ] RCH-1.15-I1 Use prepared host resolver outputs from the link-resolution port for safe cards; register bounded allowlisted presenter templates with explicit isolated/sandboxed activation and source fallback.
+- [ ] RCH-1.15-I1 Use prepared host resolver outputs from the link-resolution port for safe cards; register bounded allowlisted presenter templates with explicit isolated/sandboxed activation and source fallback. Keep passive metadata, attachment presentation and activated third-party media distinct; expose unsupported/unavailable cases truthfully and keep optional-disabled consumers free of embed requests.
 
 Validation:
 
@@ -401,11 +401,11 @@ Purpose: Finish pointer interaction around the already qualified semantic move.
 Context: `packages/web/src/modules/reorder/`; `tests/browser/reorder-pointer.spec.ts`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
 Dependencies: RCH-1.1.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Hover emits no document update, final drop emits one semantic move/history group, concurrent/deleted targets retain content/selection and both keyboard and non-drag pointer paths work.
+Acceptance: Hover emits no document update, final drop emits one semantic move/history group, concurrent/deleted targets retain content/selection and both keyboard and non-drag pointer paths work. Use already qualified Rust cross-parent root/list/quote moves rather than reproducing the narrower sibling-only limitation of another editor. The NBM/NBR presenter is consumed only for the selected-range branch after INT-1.21 is qualified; independent single-block pointer work remains available beforehand.
 
 Implementation:
 
-- [ ] RCH-1.17-I1 Add derived drag thresholds, bounded hit testing/auto-scroll, cancel/drop target revalidation and a clickable Move before/after or up/down alternative; retain keyboard movement and accessibility announcements.
+- [ ] RCH-1.17-I1 Add derived drag thresholds, bounded hit testing/auto-scroll, cancel/drop target revalidation and a clickable Move before/after or up/down alternative; retain keyboard movement and accessibility announcements. Keep the handle click menu owned by INT-1.19 and selection/bulk semantics owned by INT-1.20/1.21. Revalidate legal parent destinations, reject cycles and preserve complete subtrees; do not add a second range or move engine.
 
 Validation:
 
@@ -505,19 +505,239 @@ Evidence: Separate progress entry with commands, exact environment and artifact 
 Handoff: Last completed substep, unavailable environment or failing case, owner and next bounded action.
 Blocked behavior: Leave unchecked; name owner, unblock condition and retry trigger. Accept target-platform simulators/emulators/VMs under verification.md and retain virtual provenance; never relabel their results as physical-device observations.
 
+### Task RCH-1.24 — Qualify collapsible-section semantics
+
+- [ ] RCH-1.24 Qualify collapsible-section semantics.
+
+Purpose: Produce the portable toggle/toggle-heading contract and the minimal prepared structural operations that preserve its children.
+Context: `crates/editac-core/src/document.rs`; `crates/editac-core/src/commands/editor.rs`; `crates/editac-core/src/commands/move.rs`; `crates/editac-wasm/`; `packages/core/`; `../architecture/specs/document-durability.md`; `../architecture/specs/rich-content-extensions.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: RCH-1.1.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NTG-01–NTG-03 establish an accepted current-format representation, legal title/child/heading structure, unsupported-input fallback and lossless conversion/Undo. Fold state is presenter-local by default; folded content remains authored content. No new kind is admitted until the format/engine/Markdown/ABI obligations are explicit and the semantic producer is qualified. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] RCH-1.24-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Define the family in the current-format/durability owner before implementation; probe whether existing ownership/presentation primitives suffice and add only the missing prepared semantics in Rust. Preserve source identities, nested checked state, marks, references and selection through conversion, movement, remote edits and Undo; specify Markdown/export fallback and unsupported-client preservation. Bind only the qualified contract into the shared SDK. A formatting Toggle enum is not evidence of a collapsible section.
+
+Validation:
+
+- [ ] RCH-1.24-V1 Run the affected Rust structural/format/interchange selector and the affected WASM consumer with a nested checked-child conversion/Undo and unsupported-format case. Keep the new family separate from retained ENG acceptance. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.24` in the separate progress file.
+Blocked behavior: Leave `RCH-1.24` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task RCH-1.25 — Present collapsible sections and toggle headings
+
+- [ ] RCH-1.25 Present collapsible sections and toggle headings.
+
+Purpose: Expose a usable optional toggle presenter over the qualified semantic family, without deleting or hiding content from editing operations.
+Context: `packages/web/src/modules/registry.ts`; `packages/web/src/modules/slash.ts`; new `packages/web/src/modules/toggles/`; `../architecture/specs/rich-content-extensions.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: RCH-1.16, RCH-1.24.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NTG-04–NTG-05 show accessible disclosure state, preserved checked children after close/open and conversion Undo, and a defined focus/selection/search/copy behavior for folded descendants. Toggle headings participate in the generated outline. Disabled/older consumers retain a truthful fallback and load no presenter code. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] RCH-1.25-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Register insert/Turn into actions and the disclosure presenter, keeping fold geometry/state derived and committed edits Rust-owned. Resolve selection into folded descendants explicitly, restore visible focus and define expansion when navigating/searching to hidden content. Handle read-only mode, keyboard/touch, resource changes and teardown without recreating the editor or fetching content merely to unfold.
+
+Validation:
+
+- [ ] RCH-1.25-V1 Exercise the new toggle-presenter branch with one nested checked-child fold/reopen, conversion/Undo and focus-to-folded-content case; reuse RCH-1.24 semantics and existing slash/focus receipts. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.25` in the separate progress file.
+Blocked behavior: Leave `RCH-1.25` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task RCH-1.26 — Add token-based text and block palettes
+
+- [ ] RCH-1.26 Add token-based text and block palettes.
+
+Purpose: Offer a finite portable text/background palette through existing mark/block commands and optional presenters.
+Context: `crates/editac-core/src/modules/registry.rs`; `crates/editac-core/src/commands/format.rs`; `packages/web/src/modules/registry.ts`; new `packages/web/src/modules/palette/`; `../architecture/specs/formats.md`; `../architecture/specs/rich-content-extensions.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: RCH-1.1.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NPA-01–NPA-03 distinguish inline text color/highlight from block background, define inheritance/default/clear behavior, preserve existing marks/children and support one Undo batch. The selected tokens have theme/contrast and interchange/fallback rules; arbitrary CSS colors and code syntax-token state are excluded. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] RCH-1.26-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Use the qualified declarative mark/attribute registration path and settle codec/capability/format behavior before admission. Add only necessary Rust command semantics, then wire shared selection/block/toolbar actions to a small named palette with accessible state. Preserve links and existing marks and do not serialize CSS classes or UI labels as semantic data.
+
+Validation:
+
+- [ ] RCH-1.26-V1 Run affected registry/format/Markdown cases and the palette presenter’s range-versus-block, clear/default and Undo branch, including the selected light/dark/contrast variants. Reuse unchanged code-highlighting evidence rather than conflating it with authored color. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.26` in the separate progress file.
+Blocked behavior: Leave `RCH-1.26` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task RCH-1.27 — Qualify column-container semantics
+
+- [ ] RCH-1.27 Qualify column-container semantics.
+
+Purpose: Define a bounded portable layout container with independent child sources and safe prepared changes.
+Context: `crates/editac-core/src/document.rs`; `crates/editac-core/src/commands/editor.rs`; `crates/editac-core/src/commands/move.rs`; `crates/editac-wasm/`; `packages/core/`; `../architecture/specs/document-durability.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: RCH-1.1.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NCO-01–NCO-02 define accepted child/nesting/count/width bounds, authored-versus-derived layout data, deterministic reading/export order and unsupported-input fallback. A two-column conversion, child move and Undo retain all content and identity. Table columns remain a separate feature; no current schema kind is silently repurposed. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] RCH-1.27-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Amend the owning representation and compatibility contract, probe existing ownership primitives, and add only the missing prepared column/container semantics. Extend legal destination validation without introducing cycles or a second placement/history owner. Define Markdown/source/export and cross-client preservation before exposing a writable ABI; speculative broader layout capability stays excluded.
+
+Validation:
+
+- [ ] RCH-1.27-V1 Use affected structural/move/interchange cases for conversion, illegal recursive destinations, child identity and Undo plus the affected SDK/WASM binding. Reuse existing cross-parent move proof where its accepted container set is unchanged. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.27` in the separate progress file.
+Blocked behavior: Leave `RCH-1.27` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task RCH-1.28 — Present responsive column layouts
+
+- [ ] RCH-1.28 Present responsive column layouts.
+
+Purpose: Make the qualified column family editable and navigable through an optional browser presenter.
+Context: `packages/web/src/modules/reorder.ts`; new `packages/web/src/modules/columns/`; `packages/web/src/modules/slash.ts`; `../architecture/specs/mobile-web.md`; `../architecture/specs/rich-content-extensions.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: RCH-1.17, RCH-1.27.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NCO-03–NCO-04 establish independent editing, keyboard-accessible width controls, legal cross-column movement and useful narrow/mobile reading/focus order. Only the final authored width/move commits; hover/resize previews remain derived. A desktop resize cannot qualify native/touch/keyboard behavior. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] RCH-1.28-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Register insert/conversion and width actions; reuse the semantic move/drag owner and bounded viewport geometry. Keep columns’ child content available through responsive changes, read-only rendering, keyboard navigation and optional-disabled fallback. Record the actual device-mode decision instead of copying the observed narrow desktop squeeze.
+
+Validation:
+
+- [ ] RCH-1.28-V1 Run the column presenter’s focused resize/move/focus cases and inspect desktop/narrow layouts; consume RCH-1.27 semantic receipts. Actual selected mobile behavior and combined resource/layout budgets remain with existing mobile/final owners. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.28` in the separate progress file.
+Blocked behavior: Leave `RCH-1.28` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task RCH-1.29 — Add a generated heading outline
+
+- [ ] RCH-1.29 Add a generated heading outline.
+
+Purpose: Navigate long documents with a bounded generated heading outline, without introducing a stored table-of-contents node.
+Context: `packages/core/`; `packages/web/src/surface.ts`; new `packages/web/src/modules/outline/`; `../architecture/specs/editor-interactions.md`; `../architecture/specs/rich-content-extensions.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: RCH-1.1.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NOU-01–NOU-03 define hierarchy/duplicate labels, incremental heading invalidation and stable navigation. Rename/reorder/removal, folded headings, read-only use and resource replacement cannot direct focus to unrelated content. Navigation changes no committed document or Undo history. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] RCH-1.29-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Derive a heading view from existing source identities and scoped patches; update affected heading structure rather than scanning/layout-reading on every caret event. Expose an optional localized keyboard/touch presenter and explicit availability state. Use current anchors for navigation; durable host URLs belong to RCH-1.30.
+
+Validation:
+
+- [ ] RCH-1.29-V1 Select outline hierarchy/invalidation and bounded work counters plus one mounted rename/reorder/navigation and read-only/folded-target branch. Reuse current engine anchors; native/public link behavior is not inferred. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.29` in the separate progress file.
+Blocked behavior: Leave `RCH-1.29` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task RCH-1.30 — Expose host-owned block links
+
+- [ ] RCH-1.30 Expose host-owned block links.
+
+Purpose: Separate public durable block addresses and host navigation from transient edit anchors, then expose Copy link when a host supports the contract.
+Context: `crates/editac-core/src/anchors.rs`; `packages/core/`; new `packages/web/src/modules/block-links/`; `../architecture/specs/client-contracts.md`; `../architecture/specs/link-resolution.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: RCH-1.1.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NBL-01–NBL-03 define a versioned host address/resolution contract, copy/duplicate/import identity, deletion/revocation and migration behavior. A conforming host demonstrates copy/readback/navigation after move/reload; missing host support produces an explicit unavailable capability. StickyIndex bytes, DOM IDs and headings are not silently advertised as permanent URLs. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] RCH-1.30-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Define the host formatter/resolver port over accepted document/source identities and current authorization/revision/session context; no URL routing or access authority moves into Rust. Integrate the block-context action and safe target/focus presentation, keeping asynchronous results fenced. Reuse qualified editing anchors and link resolution; any new long-lived identity/storage contract needs its owner’s decision before admission.
+
+Validation:
+
+- [ ] RCH-1.30-V1 Use a deterministic conforming host for copied-value readback, move/reload and denied/deleted/stale targets plus one real browser clipboard observation when available. A success toast alone is insufficient; preserve unavailable clipboard outcomes. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.30` in the separate progress file.
+Blocked behavior: Leave `RCH-1.30` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task RCH-1.31 — Expose anchored discussion presenter contracts
+
+- [ ] RCH-1.31 Expose anchored discussion presenter contracts.
+
+Purpose: Provide portable text/block annotation targets and an optional discussion UI while the host retains thread storage and permissions.
+Context: `packages/core/`; new `packages/web/src/modules/annotations/`; `../architecture/specs/client-contracts.md`; `../architecture/specs/engine.md`; `../architecture/specs/rich-content-extensions.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: RCH-1.1.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NAN-01–NAN-03 define document/session-scoped block/range anchors, reply/resolution state and deleted/ambiguous target handling. Opening/replying/resolving does not author body changes; the host owns authorization/audit/retention. A reference host demonstrates focus, reconnect/revocation and retained discussions without claiming a cloud thread service ships. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] RCH-1.31-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Define and qualify a bounded host adapter and annotation presentation records over existing engine anchors. Add selection-preserving entry, markers and thread navigation with explicit view/comment/edit states, cancellation and late-result fencing. Keep discussion data outside accepted document content; real cloud persistence, notifications and cross-tenant policy remain separate host deliverables.
+
+Validation:
+
+- [ ] RCH-1.31-V1 Run a minimal mock-host anchor-edit/move/deletion and permission-change case with the changed composer/navigation branch. Reuse anchor and host lifecycle receipts; do not add a new backend, model call or whole-document writer. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.31` in the separate progress file.
+Blocked behavior: Leave `RCH-1.31` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task RCH-1.32 — Present human suggested edits through change review
+
+- [ ] RCH-1.32 Present human suggested edits through change review.
+
+Purpose: Expose human proposal/accept/reject controls through the existing revisioned change-review contracts, independently of AI generation.
+Context: `packages/core/`; new `packages/web/src/modules/review/`; `../architecture/specs/change-diffs.md`; `../architecture/specs/ai-extensions.md`; `../architecture/specs/rich-content-extensions.md`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: RCH-1.1.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NHR-01–NHR-03 separate proposed and accepted text, gate accept/reject on host permission/current revision, retain intervening human edits and expose stale/conflicted outcomes. DIF-1.4/1.5 qualified APIs are actual upstream inputs under this track’s existing 13 gate; history or an AI preview alone is not a review store. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] RCH-1.32-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. Consume the qualified semantic diff/hunk apply and host proposal records, preserving one engine/history writer and host persistence/audit. Build an optional review presenter and human proposal input with original-text visibility, safe targeting and cancellation. Reuse these review boundaries for future AI-produced proposals without making AI transport or model access a prerequisite for human review.
+
+Validation:
+
+- [ ] RCH-1.32-V1 Use prepared human proposal/accept/reject, intervening edit and revoked/stale revision inputs against the existing qualified change APIs, plus the changed review controls. Reuse DIF mutation proof; never run a provider or grade generated content. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.32` in the separate progress file.
+Blocked behavior: Leave `RCH-1.32` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
+### Task RCH-1.33 — Disposition shared and executable block capabilities
+
+- [ ] RCH-1.33 Disposition shared and executable block capabilities.
+
+Purpose: Close the planning gaps for synced blocks, embedded database views and button blocks without smuggling host-domain features into the SDK.
+Context: `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/cloud-document-store.md`; `../architecture/specs/extension-library.md`; `../architecture/decisions/`; [Notion comparison](../rea/notion-block-editor.md); [planned acceptance catalog](../tests/notion-block-cases.md). Paths named as new are created by this task; inspect existing owning APIs first.
+Dependencies: RCH-1.1.
+Session scope: One named contract/implementation boundary and its focused check. Keep the semantic producer and presenter separate where the tasks below do so. If a missing primitive exceeds this boundary, record its exact owner/output and request a controller split; do not fake completion with DOM-only state or weaken acceptance. Independent spec/fixture preparation may proceed while an actual external input is unavailable; writable admission may not. Follow ADR 006 and one current durable format. Final target-runtime/device/AT qualification belongs to roadmap 43 and accepts appropriate simulators/emulators/VMs; it does not block independent feature delivery. A real missing shared API or focused correctness/data-safety failure still blocks its dependent.
+Acceptance: NAD-01–NAD-03 each have an explicit Deferred/Rejected or separately approved Adopted disposition, concrete use case, owner, permissions, lifecycle/recovery, bounded cost and interface/fallback decision. The default remains deferred. This decision packet admits no new persisted block, third-party request, executable callback or runtime support claim. These are planned criteria, not passing evidence. Existing qualified engine behavior is reused without reopening its completed source tasks.
+
+Implementation:
+
+- [ ] RCH-1.33-I1 Inspect current source and completed receipts first; reuse any already delivered behavior rather than implementing it again. For synced content, resolve source/instance identity, source access, editing, unsync, propagation and deletion/recovery. For database views, resolve real host data ownership, query bounds, filtering, authorization and exports separately from tables. For buttons, resolve a finite typed action set, actor permission, consequential-action confirmation, idempotency and audit; arbitrary JavaScript or prompt-derived authority is excluded. Publish proposals and blockers; obtain explicit feature/contract selection before scheduling implementation.
+
+Validation:
+
+- [ ] RCH-1.33-V1 Run only decision/citation, owner/contract and local-link consistency checks for the three entries. No live account actions, cloud deployment, provider traffic or application suite. Select only the changed producer/presenter branch and a minimal deterministic proving case during delivery. Comprehensive case development and mixed-feature qualification remain with INT-1.14 or RCH-1.20 after their actual inputs. Record source/artifact identity, selector, nonzero executed/passed/failed/skipped counts, failures and reuse/invalidation reason; missing/zero/skipped required cases do not pass. No provider calls or credential loading.
+
+Evidence: Record exact selectors and concise pass/fail/skip counts in ignored progress or the delivery message. Git contains authored contracts and deterministic input fixtures only; do not commit screenshots, qualification output, packed artifacts or generated snapshots. Keep diagnostics only for active failures, then remove task-owned reproducible output; preserve real user data and source.
+Handoff: Record the last completed substep, exact missing input or failed assertion, retained evidence and next bounded action for `RCH-1.33` in the separate progress file.
+Blocked behavior: Leave `RCH-1.33` unchecked with owner, unblock condition and bounded retry trigger. Do not claim native/device, multi-user, public-link or release qualification from a mock, narrow desktop viewport or source inspection. Start no runner, deployment or live AI work from this plan edit.
+
 ### Task RCH-1.19 — Publish per-feature portable presenter contracts
 
 - [ ] RCH-1.19 Implement and validate publish per-feature portable presenter contracts.
 
 Purpose: Give downstream native/TUI work concrete feature APIs and fixtures.
 Context: `packages/core/`; `packages/web/package.json`; `tests/rich-presenter-contracts.test.mjs`; `fixtures/rich-presenters/`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`.
-Dependencies: RCH-1.5, RCH-1.10, RCH-1.13, RCH-1.14, RCH-1.15, RCH-1.16, RCH-1.17, RCH-1.18, RCH-1.21, RCH-1.22, RCH-1.23.
+Dependencies: RCH-1.5, RCH-1.10, RCH-1.13, RCH-1.14, RCH-1.15, RCH-1.16, RCH-1.17, RCH-1.18, RCH-1.21, RCH-1.22, RCH-1.23, RCH-1.24, RCH-1.25, RCH-1.26, RCH-1.27, RCH-1.28, RCH-1.29, RCH-1.30, RCH-1.31, RCH-1.32, RCH-1.33.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Clean public consumers need no private paths; Swift/Kotlin/desktop/terminal records define lifecycle/focus/selection/cancel/accessibility obligations and every feature has explicit preservation/view/edit capabilities for roadmaps31–36. Publish search/code command, selection, scope and fallback contracts with exact first-party profile identities for native/terminal consumers.
+Acceptance: Clean public consumers need no private paths; Swift/Kotlin/desktop/terminal records define lifecycle/focus/selection/cancel/accessibility obligations and every feature has explicit preservation/view/edit capabilities for roadmaps31–36. Publish search/code command, selection, scope and fallback contracts with exact first-party profile identities for native/terminal consumers. The Notion additions publish explicit data-preservation/view/edit/copy/source and host-required states for toggles, palette, columns, outline, block links, annotations and human review; the three strategic capabilities retain their decision dispositions. Native/terminal implementations remain separately qualified.
 
 Implementation:
 
-- [ ] RCH-1.19-I1 Export versioned code-token, table-selection/commands, asset, embed, menu, reference and reorder records/actions through owning packages/crates; extend capability schema and headless presenter conformance.
+- [ ] RCH-1.19-I1 Export versioned code-token, table-selection/commands, asset, embed, menu, reference and reorder records/actions through owning packages/crates; extend capability schema and headless presenter conformance. Consume the new per-family producer receipts and publish only their qualified contracts; do not mark a host-owned service implemented from its optional presenter contract.
 
 Validation:
 
@@ -536,11 +756,11 @@ Purpose: Publish measured portable/web evidence without implying native implemen
 Context: `tests/rich-content-performance.test.mjs`; `tests/rich-content-bundles.test.mjs`; `../architecture/evidence/rich-content.md`; `../architecture/specs/rich-content-extensions.md`; `../architecture/specs/verification.md`. [additional interaction cases](../tests/desktop-editing-cases.md).
 Dependencies: RCH-1.19.
 Session scope: One named boundary; target 15–45 minutes plus validation. Limit edits to named paths and directly required test/configuration glue.
-Acceptance: Every advertised portable/web feature has nonzero passing fixtures, exact artifacts and honest performance envelope; disabled assets issue zero requests, failures remain visible and no native/TUI parity is inferred. Task-specific evidence gates: current INT-1.16 selected-text-drag qualification and RGS-1.8 shared-driver handoff must exist before this combined qualification runs; keep the task blocked if either is missing, without implementing their behavior here. Qualify FND/IDE/TBL and actual FPX mixed-feature variants; PRF-01–PRF-06 compare supported presets with baseline at fixed workloads, including continuous drag and resource teardown. Feature absence is distinct from a passed optional test.
+Acceptance: Every advertised portable/web feature has nonzero passing fixtures, exact artifacts and honest performance envelope; disabled assets issue zero requests, failures remain visible and no native/TUI parity is inferred. Task-specific evidence gates: current INT-1.16 selected-text-drag qualification and RGS-1.8 shared-driver handoff must exist before this combined qualification runs; keep the task blocked if either is missing, without implementing their behavior here. Qualify FND/IDE/TBL and actual FPX mixed-feature variants; PRF-01–PRF-06 compare supported presets with baseline at fixed workloads, including continuous drag and resource teardown. Feature absence is distinct from a passed optional test. Own NBR-08 and remaining NTG/NPA/NCO/NOU/NBL/NAN/NHR/NAD catalog coverage after the named functional/decision inputs. Reuse exact compatible child evidence and add only missing/invalidated combined-feature, disabled-footprint, lifecycle and actual clipboard/device observations; a new parent or source revision is not a full-suite trigger.
 
 Implementation:
 
-- [ ] RCH-1.20-I1 Run the contract corpus and aggregate cold/warm timings, size/token/DOM/memory counters and disposal; verify optional-disabled packed consumers and record exact platform-wiring obligations for roadmaps31–36.
+- [ ] RCH-1.20-I1 Run the contract corpus and aggregate cold/warm timings, size/token/DOM/memory counters and disposal; verify optional-disabled packed consumers and record exact platform-wiring obligations for roadmaps31–36. Keep rich-content final testing after the extended functional batch, register runnable cases only when their actual APIs/fixtures exist, and distinguish planned Markdown cases from executed support evidence.
 
 Validation:
 

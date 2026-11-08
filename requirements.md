@@ -18,6 +18,27 @@ Reviewed against the current docs on 2026-10-12. “Covered” below means plann
 | First-class extension library and thin core | Built-in browser modules and descriptors | 21 publishes coherent portable contracts, conformance harness, adapter hooks and third-party recipes; keep UI/network/MCP/crypto out of the semantic core |
 | Optional encryption/private documents | Baseline safe import/auth only | 19 builds explicit local/E2EE profiles after threat-model/protocol selection; 24 gates real key providers, protected scenarios and independent review |
 
+## Notion block-workflow additions — 2026-11-08
+
+The requester selected a source-backed Notion comparison and plan updates, without code implementation. [Research and provenance](rea/notion-block-editor.md) distinguish observed UI, inspected source, retained receipts and planned-only features. Detailed requirements belong to [editor interactions](specs/editor-interactions.md#block-contexts-and-selected-subtrees--2026-11-08) and [rich-content extensions](specs/rich-content-extensions.md#planned-block-families-and-host-review--2026-11-08); the [planned cases](tests/notion-block-cases.md) carry no execution credit.
+
+| Requirement/gap | Existing coverage | Planning disposition |
+| --- | --- | --- |
+| Headings, marks, source anchors, prepared batches and cross-parent root/list/quote moves | Implemented source and retained engine receipts | Reuse; do not import another editor's narrower movement limitation or reopen completed engine tasks |
+| Click/tap/keyboard handle context and conversion | Command, reorder and command-surface foundations | INT-1.19 captures/revalidates the clicked block through one command catalog |
+| Semantic block range and user-facing bulk selection | Multi-owner formatting, fragment replacement and atomic batch inputs | INT-1.20 qualified range producer, then INT-1.21 presenter; INT-1.14 final interaction consumer |
+| Toggle/toggle-heading family | No admitted structural family | RCH-1.24 representation/semantics, then RCH-1.25 disclosure/presentation |
+| Authored text/highlight/block palette | Registry and six basic marks; code highlighting is distinct | RCH-1.26 with token, applicability, contrast and interchange contract |
+| Column-layout family | Generic ownership/moves, but no admitted column kind | RCH-1.27 semantics, then RCH-1.28 responsive presentation; table columns remain separate |
+| Generated heading navigation | Heading identities, patches and anchors | RCH-1.29 generated outline, no stored TOC required |
+| Durable host block links | Editing anchors are implemented; public addressing is not established | RCH-1.30 host address/resolver and read-back/navigation qualification |
+| Anchored discussion | Anchors are inputs, not a thread service | RCH-1.31 host-required annotation/presenter contract; persistence/auth/audit remain host-owned |
+| Human suggested edits | Planned track-13 diffs/hunk application and optional AI proposal work | RCH-1.32 consumes qualified change APIs without an AI prerequisite or second writer |
+| Rich assets, metadata cards and controlled embeds | Inert basic descriptors and existing RCH-1.6–1.15 scope | Reuse existing owners; explicitly identify supported/deferred media/providers and prohibit document-open activation |
+| Synced content, database views and executable buttons | No admitted semantic/domain families | RCH-1.33 publishes three deferred decision packets; no runtime admission without separately selected contracts |
+
+RCH-1.19/1.20 retain portable-contract and final rich-content ownership. Functional checks remain narrow; final consumers reuse compatible producer evidence and fill only missing/invalidated coverage. No new roadmap, runner, paid inference, code implementation or publication is authorized by recording this mapping.
+
 ## Corrections to the proposed statements
 
 - **Offline-first** includes cached/new local documents, supported crash recovery and explicit pending/rejected uploads. It cannot make uncached remote data available, prevent browser eviction, or erase a revoked user's already-held plaintext.
